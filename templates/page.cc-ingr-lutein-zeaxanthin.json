@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Protect your eyes from age-related decline",
+            "text": "<p>Lutein and zeaxanthin increase macular pigment density, protecting your eyes from light damage. They reduce progression to advanced AMD (age-related macular degeneration) and improve vision in people with existing eye conditions.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Support cognitive function and memory",
+            "text": "<p>At 10 mg lutein + 2 mg zeaxanthin, these carotenoids improve word learning in older adults and enhance attention, memory, and reasoning in younger adults. Lutein accumulates in the hippocampus and frontal cortex -- key brain regions for learning.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Protect skin from UV radiation",
+            "text": "<p>At 10 mg, lutein protects skin against UV radiation, increases skin elasticity and hydration, and reduces skin lipid peroxidation. <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a> also protects skin from UV damage -- together these carotenoids provide broad coverage.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Increase BDNF in the brain",
+            "text": "<p>These carotenoids increase brain-derived neurotrophic factor (BDNF) -- a protein critical for learning, memory, and the growth of new neurons. <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> also increases BDNF through a different pathway.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improve vision in people with eye disease",
+            "text": "<p>Beyond preventing decline, lutein and zeaxanthin can improve vision in people who already have eye conditions. They filter the most damaging wavelengths of light and act as antioxidants directly in eye tissue.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Blue light filtration",
+            "text": "<p>Lutein and zeaxanthin filter short-wavelength (blue) light in the eye. At 440nm, it takes about 100x less energy to cause damage compared to 590nm. These carotenoids are your eyes' natural blue-light filter.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Complementary eye protection",
+            "text": "<p>Zeaxanthin dominates the fovea (central vision), while lutein dominates the peripheral retina. Together, they provide complete coverage across your entire field of vision -- which is why they are always paired.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Brain antioxidant activity",
+            "text": "<p>Beyond the eyes, lutein accumulates in the hippocampus and frontal cortex where it acts as an antioxidant. Both carotenoids increase BDNF, supporting neuroplasticity and cognitive function throughout life.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Skin antioxidant protection",
+            "text": "<p>Lutein and zeaxanthin act as antioxidants in skin tissue, reducing lipid peroxidation from UV exposure. This increases skin elasticity and hydration from the inside out.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Why are lutein and zeaxanthin combined?",
+            "answer": "<p>They work together. Zeaxanthin protects your central vision (fovea), while lutein protects your peripheral retina. The 10 mg + 2 mg ratio matches the AREDS2 study -- one of the largest eye health trials ever conducted.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough from food?",
+            "answer": "<p>Most US adults only get 1-2 mg per day -- far below optimal levels. The richest food sources are parsley (85 mg per 100g), kale (81 mg), basil (71 mg), and spinach (69 mg). You would need to eat large amounts of these daily.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Are they safe to take long-term?",
+            "answer": "<p>Very safe. The EFSA Acceptable Daily Intake is 75 mg for lutein and 56 mg for zeaxanthin (for a 75kg person). The Coastline dose of 10 mg + 2 mg is well below these limits.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Where do they come from?",
+            "answer": "<p>Coastline sources lutein and zeaxanthin from marigold flower extract, suspended in oil for optimal absorption. Marigold extract is the most common and well-studied source for supplementation.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How do they work with other Coastline ingredients?",
+            "answer": "<p>They work alongside <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a> as part of a combined carotenoid approach in the Softgels. Like <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a>, they increase BDNF -- supporting neuroplasticity from multiple angles.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Does timing matter?",
+            "answer": "<p>Not significantly. As fat-soluble nutrients, they build up in your system over time. They are in the Softgels for convenience and optimal absorption with the oil base.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need these if I already eat leafy greens?",
+            "answer": "<p>Even people who eat leafy greens regularly often fall short. Absorption from food depends on cooking method, fat intake, and other variables. Supplementation provides a consistent, reliable dose -- especially important for eye and brain protection over decades.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Are these the same as what is in AREDS2 formulas?",
+            "answer": "<p>Yes. The AREDS2 study used 10 mg lutein + 2 mg zeaxanthin -- the exact same dose and ratio that Coastline provides. AREDS2 is one of the largest and most rigorous eye health studies ever conducted.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Lutein & Zeaxanthin",
+        "ingredient_dose": "10 mg lutein + 2 mg zeaxanthin",
+        "ingredient_form": "Marigold flower extract, suspended in oil (fat-soluble)",
+        "product_name": "Morning Softgels",
+        "product_step": "Softgels",
+        "dose_rationale": "10 mg + 2 mg matches the AREDS2 study dose and multiple cognition and skin studies.",
+        "safety_note": "Very safe. EFSA Acceptable Daily Intake: 75 mg lutein, 56 mg zeaxanthin for a 75kg person.",
+        "typical_intake": "1-2 mg per day for most US adults -- far below optimal. Best food sources: parsley, kale, basil, spinach.",
+        "synergy_note": "Works alongside <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a> as part of a combined carotenoid approach in the Softgels. All three carotenoids provide complementary antioxidant support for eyes, skin, and brain.",
+        "at_a_glance": "<p>Lutein and zeaxanthin are carotenoids that concentrate in your eyes and brain, where they filter blue light and protect against age-related decline. They also support skin health by shielding cells from UV damage.</p><p>Most Americans get only 1-2mg per day through diet. Coastline delivers the AREDS2 clinical dose -- 10mg lutein + 2mg zeaxanthin -- in oil-based softgels for optimal absorption.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

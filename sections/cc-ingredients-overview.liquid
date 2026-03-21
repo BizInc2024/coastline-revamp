@@ -1,0 +1,536 @@
+{% comment %}
+  CC-INGREDIENTS-OVERVIEW: All 13 ingredients organized by product
+  Editorial layout with product photos + clean ingredient rows
+{% endcomment %}
+
+<script>
+  if (!window.Alpine) {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js';
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+</script>
+
+<noscript>
+  <style>
+    .ccio .reveal { opacity: 1 !important; transform: none !important; }
+  </style>
+</noscript>
+
+<div class="ccio">
+
+  {%- comment -%} === HERO === {%- endcomment -%}
+  <section style="padding: 100px 24px 80px; background-color: #FAF9F6;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 16px;">
+        {{ section.settings.label | default: "THE COASTLINE SYSTEM" }}
+      </p>
+      <h1 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; color: #0A0A0A; margin: 0 0 24px; text-wrap: balance;">
+        {{ section.settings.heading | default: "13 clinical-dose ingredients. Nothing&nbsp;hidden." }}
+      </h1>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 17px; color: #6B6B6B; line-height: 1.7; margin: 0 auto; max-width: 540px; text-wrap: balance;">
+        {{ section.settings.subheading | default: "Every ingredient chosen for its evidence in human trials, dosed at clinical levels, and formulated for optimal&nbsp;absorption." }}
+      </p>
+    </div>
+  </section>
+
+
+  {%- comment -%} === MORNING BLEND === {%- endcomment -%}
+  <section style="padding: 0 24px 80px; background-color: #FAF9F6;">
+    <div style="max-width: 960px; margin: 0 auto;">
+
+      {%- comment -%} Product header with image {%- endcomment -%}
+      <div class="ccio-product-header reveal">
+        <div class="ccio-product-img">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194" alt="Coastline Morning Blend" loading="lazy" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <div class="ccio-product-info">
+          <p style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 8px;">
+            Morning step &middot; Powder
+          </p>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 8px;">
+            Morning Blend
+          </h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #6B6B6B; line-height: 1.6; margin: 0;">
+            7 ingredients in a daily powder. Mix with water, take with your first meal.
+          </p>
+        </div>
+      </div>
+
+      {%- comment -%} Ingredient rows {%- endcomment -%}
+      <div class="ccio-list">
+        <a href="/pages/ergothioneine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png" alt="Ergothioneine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Ergothioneine</h3>
+            <p class="ccio-row-dose">5 mg</p>
+          </div>
+          <p class="ccio-row-desc">Extends lifespan in animal models. Raises NAD+ and crosses the blood-brain barrier to support cognitive function.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/taurine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png" alt="Taurine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Taurine</h3>
+            <p class="ccio-row-dose">3.05 g</p>
+          </div>
+          <p class="ccio-row-desc">Extended lifespan 10-12% in mice. Targets nearly all hallmarks of aging including inflammation, senescent cells, and mitochondrial dysfunction.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/creatine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png" alt="Creatine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Creatine</h3>
+            <p class="ccio-row-dose">5.25 g</p>
+          </div>
+          <p class="ccio-row-desc">Extended disease-free lifespan 9% in mice. Supports muscle, bone, and cognitive function by buffering ATP energy in every cell.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/glycine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png" alt="Glycine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Glycine</h3>
+            <p class="ccio-row-dose">5 g</p>
+          </div>
+          <p class="ccio-row-desc">Extended lifespan in mice. Improves sleep quality, reduces blood sugar swings, and is a precursor for glutathione.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/inulin" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png" alt="Inulin" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Inulin</h3>
+            <p class="ccio-row-dose">5 g</p>
+          </div>
+          <p class="ccio-row-desc">Prebiotic fiber that feeds beneficial gut bacteria. Increases calcium absorption and supports blood sugar control.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/magnesium" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png" alt="Magnesium" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Magnesium</h3>
+            <p class="ccio-row-dose">150 mg</p>
+          </div>
+          <p class="ccio-row-desc">Cofactor in 300+ enzymatic reactions. Supports sleep, blood pressure, blood sugar, and bone density. Most adults are deficient.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/glucosamine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png" alt="Glucosamine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Glucosamine</h3>
+            <p class="ccio-row-dose">750 mg (AM)</p>
+          </div>
+          <p class="ccio-row-desc">Associated with 39% lower all-cause mortality. Activates NRF2 and AMPK longevity pathways. Split AM/PM for sustained activation.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+      </div>
+
+      {%- comment -%} Product link {%- endcomment -%}
+      <div class="ccio-product-link reveal" style="text-align: center; padding: 32px 0 0;">
+        <a href="/products/coastline-welcome-pack" style="font-family: 'Inter', sans-serif; font-size: 13px; color: #0A0A0A; text-decoration: underline; text-underline-offset: 3px; letter-spacing: 0.02em; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+          View the complete Welcome Pack &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} === SOFTGELS === {%- endcomment -%}
+  <section style="padding: 80px 24px; background-color: #F7F7F7;">
+    <div style="max-width: 960px; margin: 0 auto;">
+
+      <div class="ccio-product-header reveal">
+        <div class="ccio-product-img">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" alt="Coastline Morning Softgels" loading="lazy" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <div class="ccio-product-info">
+          <p style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 8px;">
+            Taken with morning blend &middot; Softgels
+          </p>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 8px;">
+            Morning Softgels
+          </h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #6B6B6B; line-height: 1.6; margin: 0;">
+            3 fat-soluble ingredients in oil-based softgels for optimal absorption.
+          </p>
+        </div>
+      </div>
+
+      <div class="ccio-list">
+        <a href="/pages/coq10" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png" alt="CoQ10" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">CoQ10</h3>
+            <p class="ccio-row-dose">100 mg</p>
+          </div>
+          <p class="ccio-row-desc">Essential for mitochondrial energy production. Supports cardiovascular health, reduces oxidative stress, and may support fertility.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/astaxanthin" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png" alt="Astaxanthin" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Astaxanthin</h3>
+            <p class="ccio-row-dose">6 mg</p>
+          </div>
+          <p class="ccio-row-desc">Extended lifespan 12% in male mice. Over 100x more potent than vitamin E. Activates 5 major longevity pathways.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/lutein-zeaxanthin" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png" alt="Lutein and Zeaxanthin" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Lutein & Zeaxanthin</h3>
+            <p class="ccio-row-dose">10 mg + 2 mg</p>
+          </div>
+          <p class="ccio-row-desc">Protect eyes from age-related decline and support cognitive function. Protect skin from UV radiation. AREDS2 clinical dose.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+      </div>
+
+      {%- comment -%} Product link {%- endcomment -%}
+      <div class="ccio-product-link reveal" style="text-align: center; padding: 32px 0 0;">
+        <a href="/products/coastline-welcome-pack" style="font-family: 'Inter', sans-serif; font-size: 13px; color: #0A0A0A; text-decoration: underline; text-underline-offset: 3px; letter-spacing: 0.02em; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+          View the complete Welcome Pack &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} === EVENING CAPSULES === {%- endcomment -%}
+  <section style="padding: 80px 24px; background-color: #FAF9F6;">
+    <div style="max-width: 960px; margin: 0 auto;">
+
+      <div class="ccio-product-header reveal">
+        <div class="ccio-product-img">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766" alt="Coastline Evening Capsules" loading="lazy" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <div class="ccio-product-info">
+          <p style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 8px;">
+            Evening step &middot; Capsules
+          </p>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 8px;">
+            Evening Capsules
+          </h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #6B6B6B; line-height: 1.6; margin: 0;">
+            3 ingredients to support sleep, mood, and overnight recovery.
+          </p>
+        </div>
+      </div>
+
+      <div class="ccio-list">
+        <a href="/pages/l-theanine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png" alt="L-Theanine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">L-Theanine</h3>
+            <p class="ccio-row-dose">200 mg</p>
+          </div>
+          <p class="ccio-row-desc">Reduces stress and anxiety at clinical doses. Improves sleep quality without drowsiness. Substrate for glutathione synthesis.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/lithium" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png" alt="Lithium" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Lithium</h3>
+            <p class="ccio-row-dose">400 mcg</p>
+          </div>
+          <p class="ccio-row-desc">Associated with longer lifespan in population studies. Supports cognitive function at trace doses. Increases BDNF and brain autophagy.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+
+        <a href="/pages/glucosamine" class="ccio-row reveal">
+          <img class="ccio-row-thumb" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png" alt="Glucosamine" loading="lazy">
+          <div class="ccio-row-left">
+            <h3 class="ccio-row-name">Glucosamine</h3>
+            <p class="ccio-row-dose">750 mg (PM)</p>
+          </div>
+          <p class="ccio-row-desc">Second daily dose for sustained longevity pathway activation. Chronobiotic effects support circadian rhythm in the evening.</p>
+          <span class="ccio-row-link">Learn more &rarr;</span>
+        </a>
+      </div>
+
+      {%- comment -%} Product link {%- endcomment -%}
+      <div class="ccio-product-link reveal" style="text-align: center; padding: 32px 0 0;">
+        <a href="/products/coastline-welcome-pack" style="font-family: 'Inter', sans-serif; font-size: 13px; color: #0A0A0A; text-decoration: underline; text-underline-offset: 3px; letter-spacing: 0.02em; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+          View the complete Welcome Pack &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} === WHY ONLY 13 === {%- endcomment -%}
+  <section style="padding: 80px 24px; background-color: #F7F7F7;">
+    <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 16px;">
+        OUR PHILOSOPHY
+      </p>
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 20px; line-height: 1.15; text-wrap: balance;">
+        Why only 13&nbsp;ingredients?
+      </h2>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 17px; color: #6B6B6B; line-height: 1.7; margin: 0 0 12px; text-wrap: balance;">
+        Most supplements pack in dozens of under-dosed ingredients to make the label look impressive. We took the opposite approach: fewer ingredients, each at its full clinical dose.
+      </p>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 17px; color: #6B6B6B; line-height: 1.7; margin: 0 0 32px; text-wrap: balance;">
+        Every ingredient earned its place through human clinical trials. Nothing is included for marketing. Nothing is hidden.
+      </p>
+      <a href="/pages/approach-to-formulation" class="reveal" style="display: inline-block; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #0A0A0A; border: 1px solid #0A0A0A; padding: 16px 40px; text-decoration: none; transition: background-color 0.3s ease, color 0.3s ease;" onmouseover="this.style.backgroundColor='#0A0A0A';this.style.color='#FAF9F6'" onmouseout="this.style.backgroundColor='transparent';this.style.color='#0A0A0A'">
+        Read our approach to formulation
+      </a>
+    </div>
+  </section>
+
+
+  {%- comment -%} === BOTTOM CTA === {%- endcomment -%}
+  <section style="padding: 100px 24px; background-color: #0A0A0A;">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin: 0 0 20px;">
+        THE COMPLETE LONGEVITY SYSTEM
+      </p>
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 500; letter-spacing: -0.02em; color: #FAF9F6; margin: 0 0 16px; line-height: 1.15; text-wrap: balance;">
+        Every ingredient at its clinical dose. Nothing&nbsp;hidden.
+      </h2>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 17px; color: #9A9A9A; line-height: 1.7; margin: 0 0 12px;">
+        Morning blend + softgels + evening capsules. Everything your body needs to stay sharp, strong, and energized for decades to&nbsp;come.
+      </p>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #6B6B6B; margin: 0 0 32px;">
+        $99/month (save 34%) &middot; Free shipping &middot; 60-day guarantee
+      </p>
+      <a href="/products/coastline-welcome-pack" class="reveal" style="display: inline-block; background: #FAF9F6; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px; text-decoration: none; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+        Start my system
+      </a>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 20px 0 0;">
+        VEGAN &middot; SUGAR-FREE &middot; CAFFEINE-FREE &middot; GMP CERTIFIED
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<style>
+  .ccio * { box-sizing: border-box; }
+  .ccio p { max-width: none !important; }
+  .ccio h1, .ccio h2 { text-wrap: balance; }
+
+  /* Product header: image + info side by side */
+  .ccio-product-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+
+  .ccio-product-img {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+  }
+
+  .ccio-product-info {
+    flex: 1;
+  }
+
+  /* Ingredient rows */
+  .ccio-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ccio-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid #E8E8E8;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ccio-row:first-child {
+    border-top: 1px solid #E8E8E8;
+  }
+
+  .ccio-row:hover {
+    background-color: rgba(0, 0, 0, 0.035);
+  }
+
+  .ccio-row-thumb {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ccio-row-left {
+    flex-shrink: 0;
+    width: 180px;
+  }
+
+  .ccio-row-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #0A0A0A;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .ccio-row-dose {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6B6B6B;
+    margin: 0;
+  }
+
+  .ccio-row-desc {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #6B6B6B;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .ccio-row-link {
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #0A0A0A;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .ccio-row:hover .ccio-row-link {
+    opacity: 1;
+  }
+
+  /* Tablet */
+  @media (max-width: 767px) {
+    .ccio-product-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .ccio-product-img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .ccio-row {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .ccio-row-thumb {
+      width: 48px;
+      height: 48px;
+    }
+
+    .ccio-row-left {
+      width: auto;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ccio-row-name {
+      font-size: 16px;
+    }
+
+    .ccio-row-dose {
+      font-size: 12px;
+    }
+
+    .ccio-row-desc {
+      font-size: 13px;
+      width: 100%;
+      padding-left: 60px;
+    }
+
+    .ccio-row-link {
+      opacity: 1;
+      font-size: 12px;
+      position: absolute;
+      right: 16px;
+      top: 28px;
+    }
+
+    .ccio-row {
+      position: relative;
+    }
+  }
+
+  /* Scroll reveal */
+  .ccio .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .ccio .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var reveals = document.querySelectorAll('.ccio .reveal');
+    if (!reveals.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function(el) { obs.observe(el); });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "CC Ingredients Overview",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top label",
+      "default": "THE COASTLINE SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "13 clinical-dose ingredients. Nothing hidden."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every ingredient chosen for its evidence in human trials, dosed at clinical levels, and formulated for optimal absorption."
+    }
+  ],
+  "presets": [
+    { "name": "CC Ingredients Overview" }
+  ]
+}
+{% endschema %}

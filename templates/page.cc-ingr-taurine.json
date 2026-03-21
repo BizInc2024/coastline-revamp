@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Extended lifespan 10-12% in mice",
+            "text": "<p>Taurine supplementation extended lifespan by 10-12% in both male and female mice. It targets nearly all hallmarks of aging at once -- one of the few single nutrients to do so.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports cardiovascular health",
+            "text": "<p>Taurine reduces blood pressure (both systolic and diastolic), lowers LDL cholesterol and triglycerides, and increases hydrogen sulfide -- which helps blood vessels relax and dilate.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improves metabolic function",
+            "text": "<p>Taurine improves fasting insulin and blood sugar control in a dose-dependent manner. It reduces AGE formation (advanced glycation end products) and affects adiponectin levels -- both important for long-term metabolic health.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Enhances endurance performance",
+            "text": "<p>Taurine supports endurance performance, especially during exercise in the heat. It helps maintain hydration and electrolyte balance during physical activity.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces chronic inflammation",
+            "text": "<p>Taurine reduces key inflammatory markers including C-reactive protein and malondialdehyde. Chronic inflammation is a hallmark of aging, and managing it is critical for long-term health.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Targets nearly all hallmarks of aging",
+            "text": "<p>Taurine addresses epigenetic alterations, chronic inflammation, mitochondrial dysfunction, and senescent cell accumulation. Few single nutrients affect this many aging pathways at once.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Supports blood vessel function",
+            "text": "<p>Taurine increases hydrogen sulfide production, which helps blood vessels relax and dilate. This supports healthy blood pressure and cardiovascular function over time.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Reduces AGE formation",
+            "text": "<p>Advanced glycation end products (AGEs) contribute to tissue stiffening and inflammation. Taurine helps reduce AGE formation, protecting your tissues from age-related damage. <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a> also reduces AGE formation through a separate pathway.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Insulin and adiponectin pathways",
+            "text": "<p>Taurine affects insulin signaling pathways and adiponectin levels -- a hormone that improves insulin sensitivity and reduces inflammation. This helps explain its dose-dependent effect on blood sugar control.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is taurine the same thing that is in energy drinks?",
+            "answer": "<p>Taurine is included in some energy drinks, but at much lower doses than what clinical studies use. It is not a stimulant. Taurine is actually the most abundant amino acid in your cells and plays essential roles in heart, brain, and muscle function.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much taurine does Coastline include?",
+            "answer": "<p>Coastline provides 3.05g of taurine per serving, matching the scaled-up dose from mouse lifespan studies and clinical trials showing cardiovascular and metabolic improvements.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is taurine safe to take long-term?",
+            "answer": "<p>Very safe. Studies have used up to 10g per day for 6 months (more than 3x the Coastline dose) with no adverse effects. Taurine is naturally present in your body in large amounts and is one of the most well-studied amino acids.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Do vegans need taurine more than omnivores?",
+            "answer": "<p>Yes. Omnivores get more taurine from meat and seafood, while vegans get very little. Your body can make some taurine, but production declines with age. Supplementation helps bridge the gap regardless of diet.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is taurine in the morning step?",
+            "answer": "<p>The morning step is taken with food, which supports absorption. Taurine's metabolic and cardiovascular support aligns well with daytime activity. Its endurance-enhancing effects are also most useful during your active hours.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough taurine from food alone?",
+            "answer": "<p>Most people only get 40-400 mg per day from diet -- far below the clinical dose of 3.05g. Meat and seafood are the richest sources, but even heavy meat eaters rarely reach effective levels through food alone.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How does taurine work with other Coastline ingredients?",
+            "answer": "<p>Taurine and <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a> both reduce AGE formation through different pathways -- doubling your protection against glycation damage. Both are in the Morning Blend and support metabolic health from complementary angles.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "What form of taurine does Coastline use?",
+            "answer": "<p>Coastline uses synthetic taurine powder -- the same form used in clinical studies. Synthetic taurine is chemically identical to the taurine found in food and produced by your body.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5",
+        "mechanism_1", "mechanism_2", "mechanism_3", "mechanism_4",
+        "faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Taurine",
+        "ingredient_dose": "3.05 g",
+        "ingredient_form": "Synthetic powder",
+        "product_name": "Morning Blend",
+        "product_step": "Morning",
+        "dose_rationale": "Matches the scaled-up dose from mouse lifespan studies and clinical trials showing cardiovascular and metabolic improvements.",
+        "safety_note": "Very safe even at 10g per day for 6 months -- more than 3x the Coastline dose.",
+        "typical_intake": "40-400 mg per day for most people. Omnivores consume more than vegans.",
+        "synergy_note": "Like <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a>, taurine reduces AGE formation. Both are in the Morning Blend and work through different pathways to protect your tissues from glycation damage.",
+        "at_a_glance": "<p>Taurine is the most abundant amino acid in your cells -- essential for your heart, brain, and muscles. A landmark 2023 study showed it extended lifespan by 10-12% in mice, making it one of the most exciting longevity nutrients in recent science.</p><p>Your body makes less taurine as you age, and most people only get a fraction of the clinical dose through food. Coastline delivers 3.05g per serving -- matching the dose from lifespan and cardiovascular studies.</p>"
+      }
+    }
+  },
+  "order": ["ingredient"]
+}

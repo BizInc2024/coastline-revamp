@@ -1,0 +1,320 @@
+{{ 'cc-deep-dive.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign number_of_comments = article.comments_count
+  if comment.status == 'pending'
+    assign number_of_comments = article.comments_count | plus: 1
+  endif
+-%}
+
+<div class="dd-article">
+  {%- comment -%} Back to blog {%- endcomment -%}
+  <div class="dd-article__back">
+    <a href="{{ blog.url }}" class="dd-article__back-link">&larr; Back to {{ blog.title }}</a>
+  </div>
+
+  {%- comment -%} Article Header {%- endcomment -%}
+  <header class="dd-article__header" itemscope itemtype="http://schema.org/BlogPosting">
+    {%- if article.tags.size > 0 -%}
+      <div class="dd-article__tags">
+        {%- for tag in article.tags -%}
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="dd-article__tag">{{ tag }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <h1 class="dd-article__h1" itemprop="headline">{{ article.title }}</h1>
+
+    <p class="dd-article__byline">
+      By <strong itemprop="author">{{ article.author }}</strong>
+      <span style="margin: 0 8px; color: #E8E8E8;">|</span>
+      <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+        {{ article.published_at | date: '%B %d, %Y' }}
+      </time>
+      {%- if article.comments_count > 0 -%}
+        <span style="margin: 0 8px; color: #E8E8E8;">|</span>
+        <a href="#comments" style="color: #6B6B6B;">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment', 'comments' }}</a>
+      {%- endif -%}
+    </p>
+  </header>
+
+  <div class="dd-article__divider"></div>
+
+  {%- comment -%} Article Body {%- endcomment -%}
+  <div class="dd-article__body" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+
+  {%- comment -%} Disclaimer {%- endcomment -%}
+  {%- if section.settings.show_disclaimer -%}
+    <div class="dd-article__disclaimer">
+      <p>{{ section.settings.disclaimer_text }}</p>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Share {%- endcomment -%}
+  <div class="dd-article__share">
+    <span class="dd-article__share-label">Share</span>
+    <div class="dd-article__share-links">
+      <a href="https://twitter.com/intent/tweet?text={{ article.title | url_encode }}&url={{ shop.url }}{{ article.url }}" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ shop.url }}{{ article.url }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">LinkedIn</a>
+      <a href="mailto:?subject={{ article.title | url_encode }}&body={{ shop.url }}{{ article.url }}" aria-label="Share via email">Email</a>
+    </div>
+  </div>
+
+  {%- comment -%} Author Bio {%- endcomment -%}
+  {%- if section.settings.show_author_bio -%}
+    <div class="dd-article__author">
+      <div class="dd-article__author-card">
+        {%- if section.settings.author_photo != blank -%}
+          <div class="dd-article__author-photo">
+            {{ section.settings.author_photo | image_url: width: 144 | image_tag: loading: 'lazy' }}
+          </div>
+        {%- endif -%}
+        <div>
+          <p class="dd-article__author-name">{{ section.settings.author_name | default: article.author }}</p>
+          <p class="dd-article__author-role">{{ section.settings.author_role }}</p>
+          <p class="dd-article__author-bio">{{ section.settings.author_bio }}</p>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} CTA Box {%- endcomment -%}
+  {%- if section.settings.show_cta -%}
+    <div class="dd-article__cta">
+      <div class="dd-article__cta-box">
+        <div class="dd-article__cta-img">
+          {%- if section.settings.cta_image != blank -%}
+            {{ section.settings.cta_image | image_url: width: 400 | image_tag: loading: 'lazy' }}
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg" alt="Coastline Welcome Kit" loading="lazy" width="400">
+          {%- endif -%}
+        </div>
+        <p class="dd-article__cta-headline">{{ section.settings.cta_headline }}</p>
+        <p class="dd-article__cta-text">{{ section.settings.cta_text }}</p>
+        <a href="{{ section.settings.cta_url }}" class="dd-article__cta-btn">{{ section.settings.cta_button }}</a>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Related Posts {%- endcomment -%}
+  {%- if blog.articles_count > 1 -%}
+    <div class="dd-article__related">
+      <div class="dd-article__related-header">
+        <h2 class="dd-article__related-title">More from Deep Dive</h2>
+      </div>
+      <div class="dd-article__related-grid">
+        {%- for related_article in blog.articles limit: 3 -%}
+          {%- unless related_article.id == article.id -%}
+            <div class="dd-card">
+              {%- if related_article.image != blank -%}
+                <a href="{{ related_article.url }}" class="dd-card__media">
+                  {{ related_article.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400,600,800', sizes: '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw' }}
+                </a>
+              {%- endif -%}
+              <div class="dd-card__content">
+                <div class="dd-card__meta">
+                  <time>{{ related_article.published_at | date: '%b %d, %Y' }}</time>
+                </div>
+                <h3 class="dd-card__title">
+                  <a href="{{ related_article.url }}">{{ related_article.title }}</a>
+                </h3>
+                <a href="{{ related_article.url }}" class="dd-card__read-more">Read</a>
+              </div>
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Comments {%- endcomment -%}
+  {%- if blog.comments_enabled? and section.settings.show_comments -%}
+    <div style="max-width: 680px; margin: 0 auto; padding: 0 24px 80px;">
+      {%- paginate article.comments by 10 -%}
+        {%- if number_of_comments > 0 -%}
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; letter-spacing: -0.02em; color: #0A0A0A; margin-bottom: 32px;">
+            {{ number_of_comments }} {{ number_of_comments | pluralize: 'Comment', 'Comments' }}
+          </h3>
+          {%- for comment in article.comments -%}
+            <div style="padding: 24px 0; border-bottom: 1px solid #E8E8E8;">
+              <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: #6B6B6B; margin: 0 0 8px;">
+                <strong style="color: #0A0A0A;">{{ comment.author }}</strong>
+                <span style="margin: 0 8px; color: #E8E8E8;">|</span>
+                {{ comment.created_at | date: '%B %d, %Y' }}
+              </p>
+              <div style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: #3A3A3A;">
+                {{ comment.content }}
+              </div>
+            </div>
+          {%- endfor -%}
+
+          {%- if paginate.pages > 1 -%}
+            <div class="dd-blog__pagination" style="margin-top: 32px;">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}#comments">&larr; Prev</a>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}#comments">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="current">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}#comments">Next &rarr;</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
+        <div id="comments" style="margin-top: 48px;">
+          {%- form 'new_comment', article -%}
+            <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; letter-spacing: -0.02em; color: #0A0A0A; margin-bottom: 24px;">Leave a comment</h3>
+
+            {%- if form.errors -%}
+              <div style="background: #fef2f2; padding: 12px 16px; margin-bottom: 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: #991b1b;">
+                {{ form.errors | default_errors }}
+              </div>
+            {%- endif -%}
+
+            {%- if form.posted_successfully? -%}
+              <div style="background: #f0fdf4; padding: 12px 16px; margin-bottom: 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: #166534;">
+                {%- if blog.moderated? -%}
+                  Your comment was posted successfully. It will be published shortly.
+                {%- else -%}
+                  Your comment was posted successfully.
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <input type="text" name="comment[author]" placeholder="Name" required
+                style="font-family: 'Inter', sans-serif; font-size: 14px; padding: 14px 16px; border: 1px solid #E8E8E8; background: transparent; color: #0A0A0A; width: 100%;">
+              <input type="email" name="comment[email]" placeholder="Email" required
+                style="font-family: 'Inter', sans-serif; font-size: 14px; padding: 14px 16px; border: 1px solid #E8E8E8; background: transparent; color: #0A0A0A; width: 100%;">
+            </div>
+            <textarea name="comment[body]" placeholder="Your comment" rows="5" required
+              style="font-family: 'Inter', sans-serif; font-size: 14px; padding: 14px 16px; border: 1px solid #E8E8E8; background: transparent; color: #0A0A0A; width: 100%; margin-bottom: 16px; resize: vertical;"></textarea>
+            <button type="submit"
+              style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; background: #0A0A0A; color: #FAF9F6; padding: 16px 36px; border: none; cursor: pointer; transition: opacity 0.3s ease;"
+              onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+              Post Comment
+            </button>
+          {%- endform -%}
+        </div>
+      {%- endpaginate -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Deep Dive Article",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Author bio"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author_bio",
+      "label": "Show author bio",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author name",
+      "default": "Greg Potter, PhD, MSc"
+    },
+    {
+      "type": "text",
+      "id": "author_role",
+      "label": "Author role",
+      "default": "Chief Science Officer, Coastline Longevity"
+    },
+    {
+      "type": "textarea",
+      "id": "author_bio",
+      "label": "Author bio",
+      "default": "Greg holds a PhD in sleep, nutrition, and metabolic health from the University of Leeds. He has worked with the US Naval Special Warfare Command and serves as a health coach at the London Psychiatry Clinic. His research has been featured by the BBC, The Washington Post, and TIME Magazine."
+    },
+    {
+      "type": "image_picker",
+      "id": "author_photo",
+      "label": "Author photo"
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA box",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_image",
+      "label": "CTA product image"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA headline",
+      "default": "Science-backed. Clinically dosed. Designed for longevity."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA description",
+      "default": "13 ingredients selected by our Chief Science Officer to support every major body system, morning and evening."
+    },
+    {
+      "type": "text",
+      "id": "cta_button",
+      "label": "CTA button text",
+      "default": "EXPLORE THE SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "cta_url",
+      "label": "CTA link",
+      "default": "/pages/ingredients"
+    },
+    {
+      "type": "header",
+      "content": "Disclaimer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_disclaimer",
+      "label": "Show FDA disclaimer",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "Disclaimer text",
+      "default": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    {
+      "type": "header",
+      "content": "Comments"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_comments",
+      "label": "Show comments section",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

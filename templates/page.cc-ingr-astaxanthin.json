@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Extended lifespan 12% in mice",
+            "text": "<p>Astaxanthin extended lifespan by 12% in male mice in a large-scale ITP study. It targets most hallmarks of aging including inflammation, nutrient sensing, epigenetic alterations, autophagy, genomic instability, and mitochondrial dysfunction.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports cardiovascular health",
+            "text": "<p>Astaxanthin reduces LDL cholesterol, total cholesterol, and systolic blood pressure. It reduces malondialdehyde (an oxidative damage marker) and increases superoxide dismutase and your body's total antioxidant capacity.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports cognitive function",
+            "text": "<p>At 12 mg per day, astaxanthin improves working memory and reaction time. It activates key longevity pathways in the brain including SIRT1 and FOXO3.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports fertility",
+            "text": "<p>Astaxanthin improves egg maturation and fertility outcomes in PCOS (6-16 mg per day). It also increases sperm velocity and conception rates (16 mg per day). <a href=\"/pages/coq10\" target=\"_blank\">CoQ10</a> also supports fertility through different pathways.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Protects skin from UV damage",
+            "text": "<p>At just 4 mg per day, astaxanthin protects skin against UV damage, improves hydration, and increases skin smoothness. <a href=\"/pages/lutein-zeaxanthin\" target=\"_blank\">Lutein</a> also protects skin from UV radiation, and together these carotenoids provide broad skin defense.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "100x more potent than vitamin E",
+            "text": "<p>Astaxanthin is over 100x more potent than alpha-tocopherol (vitamin E) as an antioxidant. It accumulates in both sides of cell membranes, protecting lipids from oxidative damage.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Activates key longevity pathways",
+            "text": "<p>Astaxanthin activates NRF2 (detoxification and antioxidant defenses), FOXO3 (mimics calorie restriction effects), SIRT1 (deacetylation and histone modification), AMP kinase (nutrient sensing), and PGC-1-alpha (mitochondrial biogenesis and fat burning).</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Protects mitochondria directly",
+            "text": "<p>Astaxanthin accumulates in mitochondria -- the energy centers of your cells -- where it protects against free radical damage at the source of cellular energy production.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Targets most hallmarks of aging",
+            "text": "<p>Astaxanthin addresses inflammation, nutrient sensing, epigenetic alterations, autophagy, genomic instability, and mitochondrial dysfunction. Few single compounds cover this many aging hallmarks.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Where does astaxanthin come from?",
+            "answer": "<p>Coastline sources astaxanthin from Haematococcus pluvialis microalgae -- the richest natural source. It is suspended in oil for optimal absorption as a fat-soluble nutrient.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much astaxanthin does Coastline include?",
+            "answer": "<p>Coastline provides 6 mg of astaxanthin per serving -- at or above the lowest effective dose for all documented outcomes including skin, cardiovascular, and cognitive support.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is astaxanthin safe to take long-term?",
+            "answer": "<p>Yes. The European Food Safety Authority deems astaxanthin safe up to 8 mg per day. Studies have used 12+ mg per day safely. The Coastline dose of 6 mg is well within safety limits.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Does timing matter for astaxanthin?",
+            "answer": "<p>Not significantly. Astaxanthin has a slow metabolism, so it builds up in your system over time. It is in the Softgels for convenience, but the timing of your dose is flexible.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough astaxanthin from food?",
+            "answer": "<p>Very difficult. Salmon contains about 2 mg per 100g, so you would need to eat roughly 300g of salmon daily to match the Coastline dose. Most people get very little through diet alone.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "How does astaxanthin work with other Coastline ingredients?",
+            "answer": "<p>Astaxanthin works alongside <a href=\"/pages/lutein-zeaxanthin\" target=\"_blank\">Lutein and Zeaxanthin</a> as part of a combined carotenoid approach. All three are in the Softgels and provide complementary antioxidant and skin protection. Like <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a>, astaxanthin also activates NRF2 and AMP kinase.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Is astaxanthin just another antioxidant?",
+            "answer": "<p>No. Astaxanthin is over 100x more potent than vitamin E and activates at least five major longevity pathways (NRF2, FOXO3, SIRT1, AMPK, PGC-1-alpha). Most antioxidants simply neutralize free radicals -- astaxanthin also reprograms your cells' protective responses.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is it in the softgels and not the powder?",
+            "answer": "<p>Astaxanthin is fat-soluble, meaning it absorbs best when dissolved in oil. The softgels contain astaxanthin suspended in oil for optimal absorption. It would not dissolve well in a water-based powder blend.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Astaxanthin",
+        "ingredient_dose": "6 mg",
+        "ingredient_form": "Natural astaxanthin from Haematococcus pluvialis microalgae, suspended in oil",
+        "product_name": "Morning Softgels",
+        "product_step": "Softgels",
+        "dose_rationale": "6 mg is at or above the lowest effective dose for all documented outcomes including skin, cardiovascular, and cognitive support.",
+        "safety_note": "EFSA deems safe up to 8 mg per day. Very safe even at 12+ mg per day in studies.",
+        "typical_intake": "About 2 mg per 100g of salmon. Most people get very little through diet.",
+        "synergy_note": "Works alongside <a href=\"/pages/lutein-zeaxanthin\" target=\"_blank\">Lutein and Zeaxanthin</a> as part of a combined carotenoid approach. All three are in the Softgels and provide complementary antioxidant and skin protection support.",
+        "at_a_glance": "<p>Astaxanthin is a carotenoid pigment from microalgae that gives salmon its pink color. It is over 100x more potent than vitamin E as an antioxidant and extended lifespan by 12% in male mice. It activates five major longevity pathways simultaneously.</p><p>Coastline delivers 6mg of natural astaxanthin in oil-based softgels -- at or above the effective dose for skin, cardiovascular, and cognitive support.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces stress and anxiety",
+            "text": "<p>L-theanine consistently reduces stress and anxiety at 200-400 mg. It also reduces blood pressure increases during stressful situations, protecting your cardiovascular system from the effects of chronic stress.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improves sleep quality",
+            "text": "<p>L-theanine helps you fall asleep faster, improves sleep quality, and supports better daytime function. It can even offset the negative effects of caffeine on sleep -- 50 mg counters 30 mg of caffeine.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports mood and mental health",
+            "text": "<p>At 200 mg per night for 4 weeks, L-theanine improves depression and anxiety scores. It promotes a calm, focused state without drowsiness -- unlike sedatives that impair daytime function.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support cognitive function",
+            "text": "<p>L-theanine improves cognition in those with lower baseline function. It promotes alpha-wave brain activity -- the brain state associated with calm alertness and creativity.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support immune function",
+            "text": "<p>L-theanine may support immune function during exercise stress. It has also shown improvements in sleep quality in children with ADHD, adults with schizophrenia, and people with anxiety disorders.</p>"
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Substrate for glutathione synthesis",
+            "text": "<p>L-theanine is a substrate for glutathione -- your body's master antioxidant. <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a> is also a glutathione precursor, so both ingredients support your antioxidant defenses from different angles.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Glutamate receptor modulation",
+            "text": "<p>L-theanine weakly blocks glutamate receptors (AMPA, kainate, NMDA), helping to calm overactive brain signaling without sedation. It may also activate GABA(A) receptors, promoting relaxation.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Alpha brain wave activity",
+            "text": "<p>L-theanine may increase alpha-wave brain activity -- the brain state associated with calm alertness. It also affects monoamines including serotonin, norepinephrine, and dopamine.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Core temperature regulation for sleep",
+            "text": "<p>L-theanine acts on the suprachiasmatic nucleus to promote peripheral vasodilation and core temperature lowering -- the body's natural signal that it is time to sleep. <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a> also acts on this brain region to support sleep.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Cortisol rhythm support",
+            "text": "<p>L-theanine may help reduce evening cortisol levels, supporting a healthy cortisol rhythm -- high in the morning for alertness, low at night for restful sleep. Chronic stress disrupts this rhythm and accelerates aging.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get L-theanine from tea?",
+            "answer": "<p>Yes, but amounts vary widely -- 8-60 mg per 200ml cup. You would need several cups to reach the 200 mg clinical dose. Tea also contains caffeine, which can counteract the sleep support.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is L-theanine in the evening step?",
+            "answer": "<p>Studies showing sleep improvements give L-theanine before bed. It may help reduce evening cortisol, supporting a healthy cortisol rhythm -- high in the morning, low at night. It works alongside <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> and <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a> in the Evening Capsules.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is L-theanine safe to take long-term?",
+            "answer": "<p>Extremely safe. FDA GRAS status up to 250 mg per serving or 1,200 mg per day. A rat study found no toxicity at 4,000 mg per kg per day for 13 weeks. The Coastline dose of 200 mg is very conservative.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Why not branded Suntheanine?",
+            "answer": "<p>There is no fundamental difference between branded Suntheanine and regular synthetic L-theanine. Both are the same molecule. Using non-branded L-theanine is more cost-effective without any compromise in quality.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How does L-theanine work with other Coastline ingredients?",
+            "answer": "<p>L-theanine works alongside <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> and <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a> in the Evening Capsules. Like <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a>, L-theanine is a substrate for glutathione and acts on the suprachiasmatic nucleus to support sleep.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Will L-theanine make me drowsy during the day?",
+            "answer": "<p>No. L-theanine promotes calm alertness, not drowsiness. It increases alpha-wave brain activity -- a state of relaxed focus. When taken in the evening, it supports natural sleep onset without next-day grogginess.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Does L-theanine help with caffeine jitters?",
+            "answer": "<p>Yes. Studies show that 50 mg of L-theanine can offset the negative effects of 30 mg of caffeine on sleep. L-theanine promotes relaxation without sedation, which can smooth out the jittery effects of caffeine.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "What form does Coastline use?",
+            "answer": "<p>Coastline uses synthetic L-theanine -- chemically identical to the L-theanine found in tea. Synthetic production ensures a consistent, reliable dose at the 200 mg clinical level.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "L-Theanine",
+        "ingredient_dose": "200 mg",
+        "ingredient_form": "Synthetic L-theanine (not branded Suntheanine -- no fundamental difference, more cost-effective)",
+        "product_name": "Evening Capsules",
+        "product_step": "Evening",
+        "dose_rationale": "200 mg matches studies showing reduced stress and anxiety, improved sleep, and cognitive function.",
+        "safety_note": "Extremely safe. FDA GRAS status up to 250 mg per serving or 1,200 mg per day.",
+        "typical_intake": "8-60 mg per 200ml cup of tea (variable). Most people get far less than the clinical dose.",
+        "synergy_note": "Works alongside <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> and <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a> in the Evening Capsules. Like <a href=\"/pages/glycine\" target=\"_blank\">Glycine</a>, L-theanine is a substrate for glutathione -- your body's master antioxidant. Both also act on the suprachiasmatic nucleus to support sleep.",
+        "at_a_glance": "<p>L-Theanine is an amino acid found naturally in tea leaves. It reduces stress and anxiety without causing drowsiness, and improves sleep quality by promoting calm alpha brain waves. It is also a substrate for glutathione -- your body's master antioxidant.</p><p>A cup of tea contains only 8-60mg. Coastline delivers 200mg per serving in the evening step -- matching the clinical dose for stress reduction and improved sleep.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

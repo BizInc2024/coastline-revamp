@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Counters gut dysbiosis",
+            "text": "<p>Gut dysbiosis is a hallmark of aging. Inulin supports the growth of healthy gut bacteria -- especially Bifidobacteria -- restoring balance to your microbiome as you age.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports calcium absorption and bone health",
+            "text": "<p>Inulin increases calcium uptake and improves bone mineral density. This is especially important as calcium absorption naturally declines with age.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports healthy weight and appetite",
+            "text": "<p>Inulin modestly reduces bodyweight and ghrelin (the hunger hormone). It slows gastric emptying, helping you feel fuller for longer after meals. Obesity accelerates aging, making appetite control an upstream longevity factor.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improves cognition in adults over 60",
+            "text": "<p>A 12-week study showed inulin supplementation improved cognition in adults aged 60 and older. It may also help lift mood and reduce anxiety -- part of the growing gut-brain connection research.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces inflammation and supports blood sugar",
+            "text": "<p>Inulin reduces C-reactive protein (a key inflammation marker), lowers LDL cholesterol and triglycerides, and may improve blood sugar control and HbA1c.</p>"
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports digestive regularity",
+            "text": "<p>Inulin softens stools and increases bowel movement frequency. As a soluble fiber, it feeds your gut bacteria and strengthens the gut lining -- supporting digestive health from multiple angles.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Produces short-chain fatty acids",
+            "text": "<p>Your gut bacteria ferment inulin into short-chain fatty acids (acetate, butyrate, propionate). These support gut lining integrity, reduce inflammation, and fuel colon cells.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "The second meal effect",
+            "text": "<p>Inulin creates a second meal effect -- it improves your blood sugar response not just to the meal you eat it with, but to your next meal too. It slows gastric emptying and reduces liver lipid synthesis genes.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Strengthens gut lining integrity",
+            "text": "<p>Inulin strengthens the gut lining by feeding beneficial bacteria that produce butyrate -- a short-chain fatty acid that fuels the cells lining your colon. A strong gut barrier helps keep harmful substances out of your bloodstream.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Will inulin cause bloating?",
+            "answer": "<p>Some people experience temporary bloating when starting inulin, especially if their diet is low in fiber. This usually fades as your gut adjusts. Coastline uses 4g -- below the 5g threshold where digestive discomfort typically begins. Start with a half scoop if you are sensitive.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much inulin does Coastline include?",
+            "answer": "<p>Coastline provides 4g of short-chain inulin per serving -- within the range of effective doses and below the threshold for digestive discomfort.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does inulin work with magnesium?",
+            "answer": "<p>Yes. Inulin enhances <a href=\"/pages/magnesium\" target=\"_blank\">Magnesium</a> absorption in the gut. Since both are in the Morning Blend, they work together to optimize your mineral uptake.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Why short-chain inulin?",
+            "answer": "<p>Short-chain inulin (chicory-derived) dissolves better in cold water, making it easier to mix into your morning drink. It is fermented more quickly by gut bacteria, meaning faster production of supportive short-chain fatty acids.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough inulin from food?",
+            "answer": "<p>Most people consume 1-10g per day depending on diet. Chicory root, garlic, onions, and leeks are the richest sources. Most people do not meet fiber recommendations, making supplementation a practical way to support your gut.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is inulin safe to take long-term?",
+            "answer": "<p>Perfectly safe. Inulin is a natural dietary fiber found in about 15% of flowering plants. Most people already consume it through their diet. The Coastline dose of 4g is conservative and well-tolerated.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is inulin in the morning step?",
+            "answer": "<p>Taking inulin with your first meal maximizes its second meal effect -- improving your blood sugar response to both your current meal and your next one. It also enhances <a href=\"/pages/magnesium\" target=\"_blank\">Magnesium</a> absorption when taken together.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "How does inulin support the gut-brain connection?",
+            "answer": "<p>Inulin feeds gut bacteria that produce short-chain fatty acids. These molecules can influence brain function through the gut-brain axis. A 12-week study showed improved cognition in adults over 60 who supplemented with inulin.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Inulin",
+        "ingredient_dose": "4 g",
+        "ingredient_form": "Short-chain inulin (better cold-water solubility)",
+        "product_name": "Morning Blend",
+        "product_step": "Morning",
+        "dose_rationale": "4g is within the range of effective doses and below the threshold for digestive discomfort (approximately 5g).",
+        "safety_note": "Perfectly safe. Most people naturally consume 1-10g per day through diet.",
+        "typical_intake": "1-10g per day depending on location. Most people do not meet fiber recommendations.",
+        "synergy_note": "Enhances <a href=\"/pages/magnesium\" target=\"_blank\">Magnesium</a> absorption. Both are in the Morning Blend, so they work together to optimize mineral uptake.",
+        "at_a_glance": "<p>Inulin is a prebiotic fiber that feeds the beneficial bacteria in your gut. A healthy gut microbiome supports everything from immune function to nutrient absorption -- and most adults fall well short of recommended fiber intake.</p><p>Coastline delivers 4g of short-chain inulin per serving -- enough to meaningfully support your microbiome while staying below the threshold for digestive discomfort.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

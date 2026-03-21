@@ -1,0 +1,879 @@
+{% comment %}
+  CC-INGREDIENT: Complete ingredient page section
+  Handles hero, summary, research, science, study references, FAQs, CTA
+  Renders page.content as "Study references" accordions above FAQs
+{% endcomment %}
+
+{%- comment -%} === ALPINE.JS === {%- endcomment -%}
+<script>
+  if (!window.Alpine) {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js';
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+</script>
+
+<noscript>
+  <style>
+    .cci .reveal { opacity: 1 !important; transform: none !important; }
+    .cci-study-content { max-height: none !important; }
+  </style>
+</noscript>
+
+{%- comment -%} === SETTINGS === {%- endcomment -%}
+{%- assign ingredient_name = section.settings.ingredient_name | default: "Ingredient" -%}
+{%- assign ingredient_dose = section.settings.ingredient_dose | default: "" -%}
+{%- assign ingredient_form = section.settings.ingredient_form | default: "" -%}
+{%- assign ingredient_tagline = section.settings.ingredient_tagline | default: "" -%}
+{%- assign youtube_id = section.settings.youtube_id | default: "" -%}
+{%- assign product_name = section.settings.product_name | default: "Complete System" -%}
+{%- assign product_step = section.settings.product_step | default: "Morning" -%}
+{%- assign dose_rationale = section.settings.dose_rationale | default: "" -%}
+{%- assign safety_note = section.settings.safety_note | default: "" -%}
+{%- assign typical_intake = section.settings.typical_intake | default: "" -%}
+{%- assign synergy_note = section.settings.synergy_note | default: "" -%}
+{%- assign benefits = section.blocks | where: "type", "benefit" -%}
+{%- assign mechanisms = section.blocks | where: "type", "mechanism" -%}
+{%- assign faqs = section.blocks | where: "type", "faq" -%}
+
+{%- comment -%} Product image URL based on step {%- endcomment -%}
+{%- case product_step -%}
+  {%- when 'Morning' -%}
+    {%- assign product_img = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194' -%}
+  {%- when 'Softgels' -%}
+    {%- assign product_img = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188' -%}
+  {%- when 'Evening' -%}
+    {%- assign product_img = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766' -%}
+{%- endcase -%}
+
+<div class="cci" x-data="{ openBenefit: null, openMechanism: null, openFaq: null }">
+
+  {%- comment -%} ============================================================
+     1. HERO — full-width dark with ingredient name + key stats
+  ============================================================ {%- endcomment -%}
+  <section class="cci-hero">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png?v=1742830305"
+      alt=""
+      class="cci-hero-img"
+      loading="eager"
+    >
+    <div class="cci-hero-overlay"></div>
+    <div class="cci-hero-content">
+      <a href="/pages/ingredients" class="cci-back-link reveal">&larr; All ingredients</a>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 16px;">
+        {{ product_step }} step &middot; {{ product_name }}
+      </p>
+      <h1 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 6vw, 72px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; color: #0A0A0A; margin: 0 0 20px;">
+        {{ ingredient_name }}
+      </h1>
+      {%- if ingredient_dose != blank -%}
+        <p class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 500; color: #0A0A0A; margin: 0 0 12px;">
+          {{ ingredient_dose }} per serving
+        </p>
+      {%- endif -%}
+      {%- if ingredient_form != blank -%}
+        <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #6B6B6B; margin: 0;">
+          {{ ingredient_form }}
+        </p>
+      {%- endif -%}
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     2. AT A GLANCE — horizontal stats bar
+  ============================================================ {%- endcomment -%}
+  <section style="padding: 48px 24px; background-color: #0A0A0A;">
+    <div style="max-width: 960px; margin: 0 auto;">
+      <div class="cci-stats-bar reveal">
+        {%- if ingredient_dose != blank -%}
+          <div class="cci-stat">
+            <p class="cci-stat-label">Dose</p>
+            <p class="cci-stat-value">{{ ingredient_dose }}</p>
+          </div>
+        {%- endif -%}
+        {%- if ingredient_form != blank -%}
+          <div class="cci-stat">
+            <p class="cci-stat-label">Form</p>
+            <p class="cci-stat-value">{{ ingredient_form }}</p>
+          </div>
+        {%- endif -%}
+        <div class="cci-stat">
+          <p class="cci-stat-label">Found in</p>
+          <p class="cci-stat-value">{{ product_name }}</p>
+        </div>
+        {%- if safety_note != blank -%}
+          <div class="cci-stat">
+            <p class="cci-stat-label">Safety</p>
+            <p class="cci-stat-value">{{ safety_note }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     3. SUMMARY — full-width copy with inset image
+  ============================================================ {%- endcomment -%}
+  <section style="padding: 80px 24px; background-color: #FAF9F6;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 12px;">
+        Why {{ ingredient_name | downcase }}?
+      </h2>
+      {%- if ingredient_tagline != blank -%}
+        <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 17px; color: #6B6B6B; line-height: 1.7; margin: 0 0 32px;">
+          {{ ingredient_tagline }}
+        </p>
+      {%- endif -%}
+
+      <div class="reveal cci-summary-body">
+        {%- if page.metafields.custom.summary_image != blank -%}
+          <div class="cci-summary-inset">
+            <img
+              src="{{ page.metafields.custom.summary_image.value | image_url: width: 480 }}"
+              alt="{{ ingredient_name }}"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            >
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.at_a_glance != blank -%}
+          <p style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 16px;">
+            At a glance
+          </p>
+          <div style="font-family: 'Inter', sans-serif; font-size: 15px; color: #6B6B6B; line-height: 1.8;">
+            {{ section.settings.at_a_glance }}
+          </div>
+        {%- endif -%}
+
+        {%- if dose_rationale != blank -%}
+          <div class="cci-summary-detail">
+            <p class="cci-summary-detail-label">Our dose</p>
+            <p class="cci-summary-detail-value">{{ ingredient_dose }} &mdash; {{ dose_rationale }}</p>
+          </div>
+        {%- endif -%}
+
+        {%- if typical_intake != blank -%}
+          <div class="cci-summary-detail">
+            <p class="cci-summary-detail-label">From food alone</p>
+            <p class="cci-summary-detail-value">{{ typical_intake }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     4. RESEARCH — "What the research shows" accordions
+  ============================================================ {%- endcomment -%}
+  {%- if benefits.size > 0 -%}
+  <section style="padding: 80px 24px; background-color: #FAF9F6;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 40px;">
+        What the research shows
+      </h2>
+
+      {%- for block in benefits -%}
+        <div class="reveal" style="border-top: 1px solid #E8E8E8; {% if forloop.last %}border-bottom: 1px solid #E8E8E8;{% endif %}">
+          <button
+            @click="openBenefit === {{ forloop.index }} ? openBenefit = null : openBenefit = {{ forloop.index }}"
+            class="cci-accordion-btn"
+          >
+            <span class="cci-accordion-title">{{ block.settings.title }}</span>
+            <svg :style="openBenefit === {{ forloop.index }} ? 'transform: rotate(45deg)' : ''" class="cci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div x-show="openBenefit === {{ forloop.index }}" x-collapse>
+            <div class="cci-accordion-body">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+
+  {%- comment -%} ============================================================
+     5. SCIENCE — mechanisms + dose cards
+  ============================================================ {%- endcomment -%}
+  <section style="padding: 80px 24px; background-color: #F7F7F7;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 16px;">
+        The science behind {{ ingredient_name | downcase }}
+      </h2>
+
+      {%- if mechanisms.size > 0 -%}
+        <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 32px;">
+          How it works
+        </p>
+
+        {%- for block in mechanisms -%}
+          <div class="reveal" style="border-top: 1px solid #E8E8E8; {% if forloop.last %}border-bottom: 1px solid #E8E8E8;{% endif %}">
+            <button
+              @click="openMechanism === {{ forloop.index }} ? openMechanism = null : openMechanism = {{ forloop.index }}"
+              class="cci-accordion-btn"
+            >
+              <span class="cci-accordion-title" style="font-size: 16px;">{{ block.settings.title }}</span>
+              <svg :style="openMechanism === {{ forloop.index }} ? 'transform: rotate(45deg)' : ''" class="cci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div x-show="openMechanism === {{ forloop.index }}" x-collapse>
+              <div class="cci-accordion-body">{{ block.settings.text }}</div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- comment -%} Dose, Typical Intake, Synergy cards {%- endcomment -%}
+      <div class="reveal" style="margin-top: 48px; display: grid; gap: 24px;">
+        {%- if dose_rationale != blank -%}
+          <div style="border-top: 1px solid #E8E8E8; padding-top: 24px;">
+            <p class="cci-card-label">Dose rationale</p>
+            <p class="cci-card-value">{{ dose_rationale }}</p>
+          </div>
+        {%- endif -%}
+        {%- if typical_intake != blank -%}
+          <div style="border-top: 1px solid #E8E8E8; padding-top: 24px;">
+            <p class="cci-card-label">Typical dietary intake</p>
+            <p class="cci-card-value">{{ typical_intake }}</p>
+          </div>
+        {%- endif -%}
+        {%- if synergy_note != blank -%}
+          <div style="border-top: 1px solid #E8E8E8; padding-top: 24px;">
+            <p class="cci-card-label">Synergy with other ingredients</p>
+            <p class="cci-card-value">{{ synergy_note }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     6. FOUND IN — product callout with image
+  ============================================================ {%- endcomment -%}
+  <section style="padding: 60px 24px; background-color: #FAF9F6;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <div class="cci-product-row reveal">
+        {%- if product_img -%}
+          <div class="cci-product-img">
+            <img src="{{ product_img }}" alt="Coastline {{ product_name }}" loading="lazy" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+        {%- endif -%}
+        <div>
+          <p style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 8px;">
+            Found in
+          </p>
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 500; color: #0A0A0A; margin: 0 0 8px;">
+            Coastline {{ product_name }}
+          </h3>
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: #6B6B6B; line-height: 1.6; margin: 0 0 20px;">
+            Part of the {{ product_step }} step.
+            {%- if ingredient_dose != blank %} Each serving delivers {{ ingredient_dose | downcase }}.{% endif -%}
+          </p>
+          <a href="/products/coastline-welcome-pack" style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; text-decoration: none; border-bottom: 1px solid #0A0A0A; padding-bottom: 2px; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+            View the complete system
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     7. IMAGE BREAK — atmospheric coastal image
+  ============================================================ {%- endcomment -%}
+  <section class="cci-image-break">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-11_2_1.png?v=1769557907"
+      alt=""
+      loading="lazy"
+      style="width: 100%; height: 100%; object-fit: cover; display: block;"
+    >
+  </section>
+
+
+  {%- comment -%} ============================================================
+     8. STUDY REFERENCES — page.content parsed into accordions
+  ============================================================ {%- endcomment -%}
+  {%- if page.content != blank -%}
+  <section style="padding: 80px 24px; background-color: #F7F7F7;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 40px;">
+        Study references
+      </h2>
+
+      <div id="cci-body-source" style="display: none;">{{ page.content }}</div>
+      <div id="cci-study-accordions"></div>
+    </div>
+  </section>
+  {%- endif -%}
+
+
+  {%- comment -%} ============================================================
+     9. FAQs
+  ============================================================ {%- endcomment -%}
+  {%- if faqs.size > 0 -%}
+  <section style="padding: 80px 24px; background-color: #FAF9F6;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin: 0 0 40px;">
+        Frequently asked questions
+      </h2>
+
+      {%- for block in faqs -%}
+        <div class="reveal" style="border-top: 1px solid #E8E8E8; {% if forloop.last %}border-bottom: 1px solid #E8E8E8;{% endif %}">
+          <button
+            @click="openFaq === {{ forloop.index }} ? openFaq = null : openFaq = {{ forloop.index }}"
+            class="cci-accordion-btn"
+          >
+            <span class="cci-accordion-title" style="font-size: 16px;">{{ block.settings.question }}</span>
+            <svg :style="openFaq === {{ forloop.index }} ? 'transform: rotate(45deg)' : ''" class="cci-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div x-show="openFaq === {{ forloop.index }}" x-collapse>
+            <div class="cci-accordion-body">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+
+  {%- comment -%} ============================================================
+     10. VIDEO (if available)
+  ============================================================ {%- endcomment -%}
+  {%- if youtube_id != blank -%}
+  <section style="padding: 80px 24px; background-color: #0A0A0A;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin: 0 0 20px; text-align: center;">
+        THE SCIENCE WITH DR. NIC VERHOEVEN
+      </p>
+      <div class="reveal" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe
+          src="https://www.youtube.com/embed/{{ youtube_id }}"
+          title="{{ ingredient_name }} -- Dr. Nic Verhoeven"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+
+  {%- comment -%} ============================================================
+     11. BOTTOM CTA
+  ============================================================ {%- endcomment -%}
+  <section style="padding: 100px 24px; background-color: #0A0A0A;">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #9A9A9A; margin: 0 0 20px;">
+        THE COMPLETE LONGEVITY SYSTEM
+      </p>
+      <h2 class="reveal" style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 500; letter-spacing: -0.02em; color: #FAF9F6; margin: 0 0 16px; line-height: 1.15; text-wrap: balance;">
+        13 ingredients. One simple&nbsp;system.
+      </h2>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 17px; color: #9A9A9A; line-height: 1.7; margin: 0 0 12px;">
+        Morning blend + softgels + evening capsules. Everything your body needs to stay sharp, strong, and energized for decades to&nbsp;come.
+      </p>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 14px; color: #6B6B6B; margin: 0 0 32px;">
+        $99/month (save 34%) &middot; Free shipping &middot; 60-day guarantee
+      </p>
+      <a href="/products/coastline-welcome-pack" class="reveal" style="display: inline-block; background: #FAF9F6; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px; text-decoration: none; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+        Start my system
+      </a>
+      <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 20px 0 0;">
+        VEGAN &middot; SUGAR-FREE &middot; CAFFEINE-FREE &middot; GMP CERTIFIED
+      </p>
+    </div>
+  </section>
+
+  {%- comment -%} === DISCLAIMER === {%- endcomment -%}
+  <section style="padding: 32px 24px; background-color: #0A0A0A;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <p style="font-family: 'Inter', sans-serif; font-size: 11px; color: #6B6B6B; line-height: 1.6; margin: 0; text-align: center;">
+        * Individual results may vary. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+      </p>
+    </div>
+  </section>
+
+</div>
+
+{%- comment -%} === STYLES === {%- endcomment -%}
+<style>
+  .cci * { box-sizing: border-box; }
+  .cci p { max-width: none !important; }
+  .cci h1, .cci h2, .cci h3 { text-wrap: balance; }
+
+  /* Hero */
+  .cci-hero {
+    position: relative;
+    height: clamp(400px, 50vh, 600px);
+    overflow: hidden;
+  }
+  .cci-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cci-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(250,249,246,0.85) 0%, rgba(250,249,246,0.4) 100%);
+  }
+  .cci-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+  }
+
+  .cci-back-link {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6B6B6B;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    z-index: 2;
+  }
+  .cci-back-link:hover {
+    color: #0A0A0A;
+  }
+
+  @media (max-width: 767px) {
+    .cci-back-link {
+      top: 16px;
+      left: 16px;
+      font-size: 12px;
+    }
+    .cci-hero {
+      height: clamp(320px, 60vh, 480px);
+    }
+    .cci-hero-overlay {
+      background: linear-gradient(to top, rgba(250,249,246,0.85) 0%, rgba(250,249,246,0.4) 100%);
+    }
+    .cci-hero-content {
+      padding-bottom: 40px;
+    }
+  }
+
+  /* Summary */
+  .cci-summary-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #6B6B6B;
+    line-height: 1.7;
+  }
+  .cci-summary-inset {
+    float: right;
+    width: 240px;
+    height: 240px;
+    margin: 0 0 24px 32px;
+    overflow: hidden;
+  }
+  .cci-summary-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    overflow: hidden;
+  }
+  .cci-summary-bullets li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #0A0A0A;
+    line-height: 1.6;
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px solid #E8E8E8;
+  }
+  .cci-summary-bullets li:first-child {
+    border-top: 1px solid #E8E8E8;
+  }
+  .cci-summary-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 6px;
+    height: 6px;
+    background: #0A0A0A;
+    border-radius: 50%;
+  }
+  .cci-summary-meta {
+    margin: 0 0 32px;
+  }
+  .cci-summary-meta p {
+    margin: 0 0 12px;
+  }
+  .cci-summary-detail {
+    border-top: 1px solid #E8E8E8;
+    padding: 16px 0 0;
+    margin: 0 0 16px;
+  }
+  .cci-summary-detail-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    margin: 0 0 6px;
+  }
+  .cci-summary-detail-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #0A0A0A;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .cci-summary-inset {
+      float: none;
+      width: 100%;
+      height: 200px;
+      margin: 0 0 24px 0;
+    }
+  }
+
+  /* Stats bar */
+  .cci-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background-color: rgba(255,255,255,0.1);
+  }
+  .cci-stat {
+    padding: 20px 24px;
+    background-color: #0A0A0A;
+  }
+  .cci-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 6px;
+  }
+  .cci-stat-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Accordion shared styles */
+  .cci-accordion-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .cci-accordion-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #0A0A0A;
+    line-height: 1.4;
+    padding-right: 16px;
+  }
+  .cci-accordion-body {
+    padding: 0 0 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #6B6B6B;
+    line-height: 1.7;
+  }
+  .cci-accordion-body a {
+    color: #0A0A0A;
+    text-underline-offset: 2px;
+  }
+  .cci-icon {
+    flex-shrink: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    max-width: 20px !important;
+    transition: transform 0.3s ease;
+    color: #6B6B6B;
+  }
+
+  /* Info cards */
+  .cci-card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    margin: 0 0 8px;
+  }
+  .cci-card-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #0A0A0A;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .cci-card-value a {
+    color: #0A0A0A;
+    text-underline-offset: 2px;
+  }
+
+  /* Product callout */
+  .cci-product-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .cci-product-img {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+  }
+
+  @media (max-width: 767px) {
+    .cci-product-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .cci-product-img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  /* Image break */
+  .cci-image-break {
+    height: 300px;
+    overflow: hidden;
+  }
+  @media (max-width: 767px) {
+    .cci-image-break {
+      height: 200px;
+    }
+  }
+
+  /* Study reference accordions (JS-generated) */
+  .cci-study-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .cci-study-btn span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #0A0A0A;
+    line-height: 1.4;
+    padding-right: 16px;
+  }
+  .cci-study-btn svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    transition: transform 0.3s ease;
+    color: #6B6B6B;
+  }
+  .cci-study-content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+  .cci-study-content.open {
+    max-height: 8000px;
+  }
+  .cci-study-inner {
+    padding: 0 0 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #6B6B6B;
+    line-height: 1.7;
+  }
+  .cci-study-inner h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0A0A0A;
+    margin: 24px 0 12px;
+  }
+  .cci-study-inner h3:first-child { margin-top: 0; }
+  .cci-study-inner p { margin: 0 0 12px; }
+  .cci-study-inner a { color: #0A0A0A; text-underline-offset: 2px; }
+  .cci-study-inner ul, .cci-study-inner ol { padding-left: 20px; margin: 0 0 12px; }
+  .cci-study-inner li { margin-bottom: 6px; }
+
+  /* Scroll reveal */
+  .cci .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .cci .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hide duplicate hamburger on desktop */
+  @media (min-width: 1024px) {
+    .header__icons--start .menu-drawer-button { display: none !important; }
+  }
+</style>
+
+{%- comment -%} === STUDY REFERENCES ACCORDION JS === {%- endcomment -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Scroll reveals
+    var reveals = document.querySelectorAll('.cci .reveal');
+    if (reveals.length) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      reveals.forEach(function(el) { obs.observe(el); });
+    }
+
+    // Study references: parse page.content h2s into accordions
+    var source = document.getElementById('cci-body-source');
+    var container = document.getElementById('cci-study-accordions');
+    if (!source || !container) return;
+
+    var tempDiv = document.createElement('div');
+    tempDiv.innerHTML = source.innerHTML;
+
+    var sections = [];
+    var currentSection = null;
+
+    Array.from(tempDiv.childNodes).forEach(function(node) {
+      if (node.nodeType === 1 && node.tagName === 'H2') {
+        if (currentSection) sections.push(currentSection);
+        currentSection = { title: node.textContent.trim(), content: '' };
+      } else if (node.nodeType === 1 && node.tagName === 'H1') {
+        // Skip page title
+      } else if (currentSection && node.nodeType === 1) {
+        currentSection.content += node.outerHTML;
+      } else if (currentSection && node.nodeType === 3 && node.textContent.trim()) {
+        currentSection.content += node.textContent;
+      }
+    });
+    if (currentSection) sections.push(currentSection);
+    if (!sections.length) return;
+
+    sections.forEach(function(sec, idx) {
+      var wrapper = document.createElement('div');
+      wrapper.style.borderTop = '1px solid #E8E8E8';
+      if (idx === sections.length - 1) wrapper.style.borderBottom = '1px solid #E8E8E8';
+
+      var btn = document.createElement('button');
+      btn.className = 'cci-study-btn';
+      btn.innerHTML = '<span>' + sec.title + '</span>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+
+      var contentDiv = document.createElement('div');
+      contentDiv.className = 'cci-study-content';
+      contentDiv.innerHTML = '<div class="cci-study-inner">' + sec.content + '</div>';
+
+      btn.addEventListener('click', function() {
+        var isOpen = contentDiv.classList.contains('open');
+        container.querySelectorAll('.cci-study-content.open').forEach(function(el) {
+          el.classList.remove('open');
+          el.previousElementSibling.querySelector('svg').style.transform = '';
+        });
+        if (!isOpen) {
+          contentDiv.classList.add('open');
+          btn.querySelector('svg').style.transform = 'rotate(45deg)';
+        }
+      });
+
+      wrapper.appendChild(btn);
+      wrapper.appendChild(contentDiv);
+      container.appendChild(wrapper);
+    });
+
+    // Open links in new tab
+    container.querySelectorAll('a').forEach(function(a) {
+      a.setAttribute('target', '_blank');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "CC Ingredient Page",
+  "tag": "div",
+  "class": "cc-ingredient-wrapper",
+  "settings": [
+    { "type": "text", "id": "ingredient_name", "label": "Name" },
+    { "type": "text", "id": "ingredient_tagline", "label": "Tagline" },
+    { "type": "text", "id": "ingredient_dose", "label": "Dose" },
+    { "type": "text", "id": "ingredient_form", "label": "Form" },
+    { "type": "text", "id": "youtube_id", "label": "YouTube ID" },
+    { "type": "text", "id": "product_name", "label": "Product name" },
+    { "type": "text", "id": "product_step", "label": "Step (Morning, Softgels, Evening)" },
+    { "type": "textarea", "id": "dose_rationale", "label": "Dose rationale" },
+    { "type": "textarea", "id": "safety_note", "label": "Safety" },
+    { "type": "textarea", "id": "typical_intake", "label": "Typical intake" },
+    { "type": "textarea", "id": "synergy_note", "label": "Synergy" },
+    { "type": "richtext", "id": "at_a_glance", "label": "At a glance" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Research finding",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "text", "label": "Detail" }
+      ]
+    },
+    {
+      "type": "mechanism",
+      "name": "Mechanism",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "text", "label": "Detail" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    { "name": "CC Ingredient Page" }
+  ]
+}
+{% endschema %}

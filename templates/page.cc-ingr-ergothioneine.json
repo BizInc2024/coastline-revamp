@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support longer, healthier lifespan",
+            "text": "<p>Ergothioneine has been shown to extend lifespan in roundworms and mice. In humans, higher blood levels are associated with reduced frailty and age-related decline.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports cognitive function and memory",
+            "text": "<p>Clinical trials show ergothioneine improves cognitive function and memory. It also mitigates neurodegeneration in adults with mild cognitive impairment. Unlike many antioxidants, it crosses the blood-brain barrier and accumulates in the brain.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Increases NAD+ levels in cells",
+            "text": "<p>Ergothioneine raises NAD+ concentration via persulfidation pathways. NAD+ is critical for cellular energy and repair, and it declines significantly with age. Boosting NAD+ is one of the most promising strategies in longevity science.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Protects mitochondrial DNA",
+            "text": "<p>Ergothioneine protects mitochondrial DNA from oxidative damage. Your mitochondria have their own DNA that is especially vulnerable to free radicals, and damage here accelerates aging.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces frailty and age-related changes",
+            "text": "<p>Studies show higher ergothioneine levels are associated with reduced frailty markers. Most people consume minimal amounts through diet, making supplementation especially valuable.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "NAD+ via persulfidation pathways",
+            "text": "<p>Ergothioneine raises NAD+ concentration in cells through persulfidation pathways, supporting cellular energy production and repair mechanisms that decline with age.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Crosses the blood-brain barrier",
+            "text": "<p>Unlike many antioxidants, ergothioneine crosses the blood-brain barrier and accumulates in brain tissue, where it protects neurons from oxidative damage and supports cognitive function.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Targets multiple hallmarks of aging",
+            "text": "<p>Ergothioneine addresses genomic instability, mitochondrial dysfunction, and chronic inflammation -- three hallmarks that accelerate aging when left unchecked. <a href=\"/pages/coq10\" target=\"_blank\">CoQ10</a> also targets these same three hallmarks through different pathways.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Protects mitochondrial DNA directly",
+            "text": "<p>Your mitochondria have their own DNA that is especially vulnerable to free radical damage. Ergothioneine accumulates in cells and protects this DNA, helping maintain healthy energy production as you age.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What is ergothioneine and where does it come from?",
+            "answer": "<p>Ergothioneine is a sulfur-containing amino acid thiol -- a potent antioxidant found naturally in mushrooms, spirulina, and fermented foods. Most people consume very little through diet. Around 80g of fresh mushrooms provides about 8 mg.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much ergothioneine does Coastline include?",
+            "answer": "<p>Coastline provides 5 mg of ergothioneine per serving, matching the dose used in a recent clinical trial that showed improved cognition and reduced neurodegeneration markers.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is ergothioneine safe to take long-term?",
+            "answer": "<p>Yes. The European Food Safety Authority deems ergothioneine safe at up to 30 mg per day in adults. The US FDA lists it as Generally Regarded as Safe. The Coastline dose (5 mg) is well within established safety limits.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Why can I not just eat more mushrooms?",
+            "answer": "<p>You could, but you would need to eat roughly 80g of fresh mushrooms every day to get about 8 mg. Most people do not eat mushrooms daily, and amounts vary widely depending on the variety. Supplementation provides a consistent, reliable dose.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is ergothioneine in the morning step?",
+            "answer": "<p>The morning step is taken with food, which supports absorption. Ergothioneine's cognitive and neuroprotective support aligns well with daytime function, helping you stay sharp throughout the day.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "How does ergothioneine work with other Coastline ingredients?",
+            "answer": "<p>Ergothioneine targets the same three hallmarks of aging as <a href=\"/pages/coq10\" target=\"_blank\">CoQ10</a> -- genomic instability, mitochondrial dysfunction, and chronic inflammation -- but through different mechanisms. This layered approach provides broader protection.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "What form does Coastline use and why?",
+            "answer": "<p>Coastline uses synthetic, food-safe ergothioneine -- chemically identical to what is found in mushrooms. Synthetic production ensures a consistent, reliable dose without the variability of food sources.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Is ergothioneine just another antioxidant?",
+            "answer": "<p>No. Unlike most antioxidants, ergothioneine crosses the blood-brain barrier, raises NAD+ levels, and protects mitochondrial DNA directly. It is one of the few compounds that your body actively transports into cells using a dedicated transporter protein.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5",
+        "mechanism_1", "mechanism_2", "mechanism_3", "mechanism_4",
+        "faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Ergothioneine",
+        "ingredient_dose": "5 mg",
+        "ingredient_form": "Synthetic (food-safe)",
+        "product_name": "Morning Blend",
+        "product_step": "Morning",
+        "dose_rationale": "5 mg matches the dose used in a recent clinical trial showing improved cognition and reduced neurodegeneration markers.",
+        "safety_note": "European Food Safety Authority deems safe up to 30 mg/day in adults. US FDA lists as Generally Regarded as Safe.",
+        "typical_intake": "Most people consume minimal amounts through diet. 80g of fresh mushrooms contains approximately 8 mg.",
+        "synergy_note": "Ergothioneine targets the same three hallmarks of aging as <a href=\"/pages/coq10\" target=\"_blank\">CoQ10</a> -- genomic instability, mitochondrial dysfunction, and chronic inflammation -- but through different mechanisms.",
+        "at_a_glance": "<p>Ergothioneine is a rare amino acid your body actively seeks out -- it even has a dedicated transporter protein to pull it into cells. Found mostly in mushrooms, it crosses the blood-brain barrier and raises NAD+ levels, making it uniquely valuable for brain and cellular health.</p><p>Most people consume almost none through diet. Coastline delivers 5mg per serving -- the dose shown in clinical trials to improve cognition and reduce neurodegeneration markers.</p>"
+      }
+    }
+  },
+  "order": ["ingredient"]
+}

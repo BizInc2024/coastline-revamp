@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports heart health",
+            "text": "<p>CoQ10 reduces hospitalizations and all-cause mortality in heart failure (moderate evidence). It also offsets the negative effects of statin medications, which deplete your body's CoQ10 stores.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces migraine frequency",
+            "text": "<p>CoQ10 reduces migraine frequency and duration. The American Academy of Neurology recommends 1-3 mg per kg per day for migraine prevention.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports fertility",
+            "text": "<p>CoQ10 improves glucose, insulin, and insulin sensitivity in PCOS (at 100 mg per day). It also improves sperm count and motility -- the greatest effect of all antioxidants tested. <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a> also supports fertility through complementary pathways.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces inflammation and fatigue",
+            "text": "<p>CoQ10 reduces C-reactive protein, IL-6, and TNF-alpha (key inflammatory markers). It also reduces fatigue in fibromyalgia and heart failure.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports kidney function",
+            "text": "<p>CoQ10 can improve kidney function after urinary stone treatment. Its role in cellular energy production supports recovery in tissues with high metabolic demands.</p>"
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Regenerates vitamins C and E",
+            "text": "<p>CoQ10 helps regenerate vitamins C and E after they neutralize free radicals. This amplifies your body's entire antioxidant defense network rather than acting alone.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Essential for ATP production",
+            "text": "<p>CoQ10 shuttles electrons from Complexes I and II to Complex III in the Q-cycle -- a fundamental step in how every cell produces energy. Without adequate CoQ10, cellular energy drops.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Protects cell membranes and mitochondria",
+            "text": "<p>CoQ10 protects cell membranes, lipoproteins, and mitochondria from oxidative stress. It also helps regenerate vitamins C and E, amplifying your body's antioxidant defenses.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Targets key hallmarks of aging",
+            "text": "<p>CoQ10 addresses genomic instability, mitochondrial dysfunction, and chronic inflammation -- the same three hallmarks that <a href=\"/pages/ergothioneine\" target=\"_blank\">Ergothioneine</a> targets through different pathways. Together they provide layered protection.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Why ubiquinone and not ubiquinol?",
+            "answer": "<p>Ubiquinone is actually more effective than ubiquinol for cardiovascular outcomes. Your body converts between the two forms as needed. Most ubiquinol products actually oxidize to ubiquinone anyway (they turn yellow). Coastline uses the trans-form -- the same form your body produces.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much CoQ10 does Coastline include?",
+            "answer": "<p>Coastline provides 200 mg of CoQ10 (ubiquinone) per serving -- matching effective doses across heart health, migraines, PCOS, and fertility outcomes.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is CoQ10 safe to take long-term?",
+            "answer": "<p>Excellent safety profile even at 900-1,200 mg per day long-term. The Coastline dose of 200 mg is conservative and well-tolerated. Its half-life is over 24 hours, so timing is flexible.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Should I take CoQ10 if I am on a statin?",
+            "answer": "<p>Statin medications deplete CoQ10 levels in your body. Supplementing with CoQ10 may help offset some of the side effects associated with statins. Consult your healthcare provider for personalized advice.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough CoQ10 from food?",
+            "answer": "<p>Only about 5 mg per day through a typical diet. Beef heart is the richest source at 11 mg per 100g. Reaching the 200 mg clinical dose through food alone is not practical.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "How does CoQ10 work with other Coastline ingredients?",
+            "answer": "<p><a href=\"/pages/creatine\" target=\"_blank\">Creatine</a> and CoQ10 have been studied together for respiratory support. Both support mitochondrial energy production. CoQ10 also targets the same three hallmarks as <a href=\"/pages/ergothioneine\" target=\"_blank\">Ergothioneine</a> through different mechanisms.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is CoQ10 in the softgels?",
+            "answer": "<p>CoQ10 is fat-soluble and absorbs best when dissolved in oil. The Coastline softgels contain crystalline-dispersed CoQ10 in oil for optimal absorption. Its half-life is over 24 hours, so timing is flexible.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Do CoQ10 levels decline with age?",
+            "answer": "<p>Yes. Your body produces CoQ10 naturally, but production declines with age. Combined with potential depletion from statin medications, many adults over 40 have suboptimal CoQ10 levels -- making supplementation increasingly important.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Coenzyme Q10",
+        "ingredient_dose": "200 mg",
+        "ingredient_form": "Ubiquinone (trans-form, crystalline-dispersed in oil)",
+        "product_name": "Morning Softgels",
+        "product_step": "Softgels",
+        "dose_rationale": "200 mg matches effective doses across heart health, migraines, PCOS, and sperm health outcomes.",
+        "safety_note": "Excellent safety even at 900-1,200 mg per day long-term. Half-life over 24 hours.",
+        "typical_intake": "About 5 mg per day through diet. Beef heart is the richest source at 11 mg per 100g.",
+        "synergy_note": "<a href=\"/pages/creatine\" target=\"_blank\">Creatine</a> and CoQ10 have been studied together for respiratory support. Both support mitochondrial energy production. CoQ10 also targets the same three hallmarks as <a href=\"/pages/ergothioneine\" target=\"_blank\">Ergothioneine</a> through different mechanisms.",
+        "at_a_glance": "<p>CoQ10 is essential for mitochondrial energy production -- the process that powers every cell in your body. Your natural CoQ10 levels peak around age 20 and decline steadily, making supplementation increasingly valuable with age.</p><p>Coastline delivers 200mg of ubiquinone in oil-based softgels for optimal absorption. This dose matches clinical studies showing cardiovascular, cognitive, and fertility support.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

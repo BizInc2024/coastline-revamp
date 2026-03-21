@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Associated with reduced all-cause mortality",
+            "text": "<p>Regular glucosamine use is associated with reduced all-cause mortality and lower cardiovascular, cancer, and respiratory disease mortality in population studies. It also extends maximum lifespan in male mice.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports joint health and function",
+            "text": "<p>Glucosamine reduces joint space narrowing in osteoarthritis, reduces pain, and enhances physical function. It reduces markers of collagen breakdown (CTX-II) and activates autophagy in cartilage tissue.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "May mimic calorie restriction",
+            "text": "<p>Glucosamine blocks hexokinase-1, inhibiting the first step of glycolysis in the liver. This mimics aspects of calorie and carbohydrate restriction -- one of the most consistent longevity interventions.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support skin health",
+            "text": "<p>Glucosamine may improve skin health by increasing expression of collagen and hyaluronan synthase genes -- key components of youthful, resilient skin.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Anti-inflammatory effects in joints",
+            "text": "<p>Beyond structural support, glucosamine has direct anti-inflammatory effects in joint tissue. It reduces the chronic low-grade inflammation that contributes to cartilage breakdown over time.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Cartilage precursor",
+            "text": "<p>Glucosamine is a direct precursor for glycosaminoglycans -- the building blocks of cartilage. Glucosamine sulfate is the preferred form because sulfate is directly incorporated into cartilage and synovial fluid.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Activates pro-longevity pathways",
+            "text": "<p>Glucosamine increases AMP kinase activity and autophagy. It creates transient mitochondrial oxidative stress (mitohormesis via NRF2), triggering adaptive responses that protect cells long-term. <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a> also activates NRF2 and AMP kinase through a separate pathway.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Targets 5 hallmarks of aging",
+            "text": "<p>Glucosamine addresses deregulated nutrient sensing, disabled macroautophagy, mitochondrial dysfunction, chronic inflammation, and gut dysbiosis -- five key hallmarks of aging.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Blocks glycolysis in the liver",
+            "text": "<p>By inhibiting hexokinase-1, glucosamine blocks the first step of sugar metabolism in the liver. This creates a metabolic signal similar to fasting or carbohydrate restriction, activating pro-longevity adaptive responses.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Coastline's glucosamine vegan?",
+            "answer": "<p>Yes. Most glucosamine supplements come from shellfish, but Coastline uses vegan-sourced glucosamine sulfate. Same effectiveness, no animal products.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is the dose split between morning and evening?",
+            "answer": "<p>Coastline provides 1,500 mg per day total (750 mg in the Morning Blend, 750 mg in the Evening Capsules). Split dosing has been shown to be more effective than a single dose for pain relief. It works alongside <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> and <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> in the Evening Capsules.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does glucosamine affect blood sugar?",
+            "answer": "<p>No. Despite being an amino sugar, systematic reviews show glucosamine does not impair blood sugar control. It is very safe with no difference in adverse events compared to placebo.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Why sulfate instead of hydrochloride?",
+            "answer": "<p>Glucosamine sulfate is superior to hydrochloride because the sulfate component is directly incorporated into cartilage and synovial fluid, providing additional joint support beyond what the glucosamine alone offers.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough glucosamine from food?",
+            "answer": "<p>Very little. Omnivores get small amounts from cartilage-rich foods and shellfish exoskeletons. Vegans and vegetarians get essentially zero. Supplementation is the only practical way to reach effective doses.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is glucosamine safe to take long-term?",
+            "answer": "<p>Very safe. Systematic reviews found no difference in adverse events versus placebo. Population studies showing reduced mortality involve people who take glucosamine regularly for years or decades.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How does glucosamine work with other Coastline ingredients?",
+            "answer": "<p>Glucosamine works alongside <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> and <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> in the Evening Capsules. Like <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a>, glucosamine activates NRF2 and AMP kinase -- key longevity pathways -- through a separate mechanism.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Is glucosamine just for joint problems?",
+            "answer": "<p>No. While glucosamine is well-known for joint support, its longevity effects go much further. It mimics calorie restriction, activates autophagy, and is associated with reduced all-cause mortality in population studies. It targets five hallmarks of aging.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Glucosamine",
+        "ingredient_dose": "1,500 mg total daily (split AM/PM)",
+        "ingredient_form": "Vegan glucosamine sulfate (not shellfish-derived)",
+        "product_name": "Morning Blend + Evening Capsules",
+        "product_step": "Morning + Evening",
+        "dose_rationale": "1,500 mg per day is the most common effective dose for osteoarthritis. Split dose (750 mg AM, 750 mg PM) is more effective than single dose for pain relief.",
+        "safety_note": "Very safe. Systematic reviews found no difference in adverse events versus placebo. Does NOT impair blood sugar control.",
+        "typical_intake": "Very small for omnivores (from cartilage-rich foods and shellfish). Zero for vegans and vegetarians.",
+        "synergy_note": "Works alongside <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> and <a href=\"/pages/lithium\" target=\"_blank\">Lithium</a> in the Evening Capsules. Like <a href=\"/pages/astaxanthin\" target=\"_blank\">Astaxanthin</a>, glucosamine activates NRF2 and AMP kinase -- key longevity pathways.",
+        "at_a_glance": "<p>Glucosamine is best known for joint health, but recent research tells a much bigger story. Regular users show 39% lower all-cause mortality in large population studies. It activates NRF2 and AMPK -- two of the most important longevity pathways.</p><p>Coastline splits the clinical dose across morning and evening (750mg + 750mg) for sustained pathway activation throughout the day. Vegan-sourced, not shellfish-derived.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

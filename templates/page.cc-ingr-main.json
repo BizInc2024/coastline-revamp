@@ -9,16 +9,14 @@
  */
 {
   "sections": {
-    "main-blog": {
-      "type": "cc-deep-dive-blog",
+    "ingredients-overview": {
+      "type": "cc-ingredients-overview",
       "settings": {
-        "subtitle": "Science-backed insights on longevity, sleep, nutrition, and aging from Dr. Greg Potter and world-class researchers.",
-        "show_author": true,
-        "show_excerpt": true
+        "label": "THE COASTLINE SYSTEM",
+        "heading": "13 clinical-dose ingredients. Nothing hidden.",
+        "subheading": "Every ingredient chosen for its evidence in human trials, dosed at clinical levels, and formulated for optimal absorption."
       }
     }
   },
-  "order": [
-    "main-blog"
-  ]
+  "order": ["ingredients-overview"]
 }

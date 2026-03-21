@@ -1,0 +1,122 @@
+{{ 'cc-deep-dive.css' | asset_url | stylesheet_tag }}
+
+{%- paginate blog.articles by 12 -%}
+  <div class="dd-blog">
+    <div class="dd-blog__header">
+      <p class="dd-blog__label">Coastline Blog</p>
+      <h1 class="dd-blog__title">{{ blog.title }}</h1>
+      <p class="dd-blog__subtitle">{{ section.settings.subtitle }}</p>
+
+      <div class="dd-blog__tags">
+        <a href="{{ blog.url }}" class="dd-blog__tag{% if current_tags == blank %} active{% endif %}">All</a>
+        <a href="{{ blog.url }}/tagged/science" class="dd-blog__tag{% if current_tags contains 'science' %} active{% endif %}">Science</a>
+        <a href="{{ blog.url }}/tagged/lifestyle" class="dd-blog__tag{% if current_tags contains 'lifestyle' %} active{% endif %}">Lifestyle</a>
+        <a href="{{ blog.url }}/tagged/expert" class="dd-blog__tag{% if current_tags contains 'expert' %} active{% endif %}">Expert</a>
+      </div>
+    </div>
+
+    <div class="dd-blog__grid">
+      {%- for article in blog.articles -%}
+        <div class="dd-card">
+          {%- if article.image != blank -%}
+            <a href="{{ article.url }}" class="dd-card__media">
+              {%- if forloop.first -%}
+                {{ article.image | image_url: width: 1200 | image_tag: loading: 'eager', widths: '400,600,800,1000,1200', sizes: '(max-width: 1023px) 100vw, 60vw' }}
+              {%- else -%}
+                {{ article.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,400,600,800', sizes: '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw' }}
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+
+          <div class="dd-card__content">
+            <div class="dd-card__meta">
+              {%- if article.tags.size > 0 -%}
+                <a href="{{ blog.url }}/tagged/{{ article.tags.first | handleize }}" class="dd-card__tag-link">{{ article.tags.first }}</a>
+                <span class="dd-card__meta-divider"></span>
+              {%- endif -%}
+              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+                {{ article.published_at | date: '%b %d, %Y' }}
+              </time>
+              {%- if section.settings.show_author -%}
+                <span class="dd-card__meta-divider"></span>
+                <span>{{ article.author }}</span>
+              {%- endif -%}
+            </div>
+
+            <h2 class="dd-card__title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+
+            {%- if section.settings.show_excerpt -%}
+              <p class="dd-card__excerpt">
+                {%- if article.excerpt.size > 0 -%}
+                  {{ article.excerpt | strip_html | truncatewords: 25 }}
+                {%- else -%}
+                  {{ article.content | strip_html | truncatewords: 25 }}
+                {%- endif -%}
+              </p>
+            {%- endif -%}
+
+            <a href="{{ article.url }}" class="dd-card__read-more">Read</a>
+          </div>
+        </div>
+
+        {%- if forloop.first -%}
+          <div class="dd-blog__press-bar">
+            <p class="dd-blog__press-bar-label">Our research featured in</p>
+            <div class="dd-blog__press-bar-logos">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/639aa4636723b06bf32ec5ab_2560px-BBC_logo_white_svg.png?v=1738114960" alt="BBC">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/The_Washington_Post_White.png?v=1738115154" alt="The Washington Post" style="height: 96px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/kindpng_2532766.png?v=1738115288" alt="TIME">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/reuters-6-logo-black-and-white.png?v=1738115081" alt="Reuters">
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <div class="dd-blog__pagination">
+        {%- if paginate.previous -%}
+          <a href="{{ paginate.previous.url }}">&larr; Prev</a>
+        {%- endif -%}
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}">{{ part.title }}</a>
+          {%- else -%}
+            <span class="current">{{ part.title }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.next -%}
+          <a href="{{ paginate.next.url }}">Next &rarr;</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Deep Dive Blog",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Science-backed insights on longevity, sleep, nutrition, and aging from Dr. Greg Potter and world-class researchers."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

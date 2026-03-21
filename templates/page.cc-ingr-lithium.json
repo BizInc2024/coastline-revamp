@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Associated with longer lifespan",
+            "text": "<p>Higher tap water lithium is associated with lower suicide rates and longer lifespan in population studies. Lithium also extends lifespan in yeast, roundworms, and fruit flies.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports cognitive function",
+            "text": "<p>At just 300 mcg per day, lithium maintained cognitive function in Alzheimer's patients over a 15-month trial. It increases autophagy in the brain, clearing dysfunctional proteins like amyloid that contribute to cognitive decline.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports mood",
+            "text": "<p>At 400 mcg per day, lithium improved mood in adults with substance abuse history. It increases BDNF transcription -- a key protein for neuroplasticity and emotional resilience. <a href=\"/pages/lutein-zeaxanthin\" target=\"_blank\">Lutein and Zeaxanthin</a> also increase BDNF through a different pathway.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support neuroprotection",
+            "text": "<p>Low-dose lithium may reduce risk and progression of Parkinson's disease. It improves brain health metrics in Alzheimer's-prone mice and reduces inflammatory responses by microglia (the brain's immune cells).</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improves stem cell function",
+            "text": "<p>Lithium improves stem cell proliferation, maintenance, and homing -- your body's ability to repair and regenerate tissue. It may also affect telomere length, another key marker of biological aging.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Increases autophagy in the brain",
+            "text": "<p>Lithium increases autophagy -- your brain's cleanup process that clears dysfunctional proteins. This helps prevent the buildup of amyloid plaques associated with cognitive decline.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Chronobiotic effects on circadian rhythm",
+            "text": "<p>Lithium inhibits glycogen synthase kinase-3-beta, which has a chronobiotic effect -- it helps regulate your circadian rhythm. This is why it is placed in the evening step, working alongside <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> and <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a>.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "BDNF and neuroplasticity",
+            "text": "<p>Lithium increases BDNF transcription, supporting neuroplasticity -- your brain's ability to form new connections and adapt. It reduces inflammatory responses by microglia and may prevent amyloid plaques from sequestering lithium.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Inositol monophosphatase inhibition",
+            "text": "<p>Lithium inhibits inositol monophosphatase, which affects cell signaling pathways involved in mood regulation. At trace doses, this contributes to its neuroprotective effects without the side effects seen at prescription doses.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this the same lithium used for bipolar disorder?",
+            "answer": "<p>Same element, but a completely different dose. Prescription lithium for bipolar disorder uses doses 100x or more higher than the Coastline trace dose (400 mcg). Our dose is consistent with amounts found naturally in tap water in many regions.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why lithium orotate instead of carbonate?",
+            "answer": "<p>Lithium orotate appears more effective than carbonate at delivering lithium to the brain. Less ionization means less uptake by amyloid plaques, allowing more lithium to reach brain tissue where it is needed.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is trace-dose lithium safe to take long-term?",
+            "answer": "<p>Extremely safe. The Coastline dose of 400 mcg is a trace amount -- consistent with protective tap water levels found in many regions around the world. This is far below any dose associated with side effects.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is lithium in the evening step?",
+            "answer": "<p>Lithium has chronobiotic effects -- it helps regulate your circadian rhythm. High-dose lithium also has sedative effects and affects sleep architecture. Placing it in the evening step aligns with your body's natural rhythms.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How does lithium work with other Coastline ingredients?",
+            "answer": "<p>Lithium works alongside <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> and <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a> in the Evening Capsules. Like <a href=\"/pages/lutein-zeaxanthin\" target=\"_blank\">Lutein and Zeaxanthin</a>, lithium increases BDNF -- supporting neuroplasticity from multiple angles.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "How much lithium do I get from tap water?",
+            "answer": "<p>It varies dramatically by geography -- from 10 to over 400 mcg per day depending on your water source. Regions with higher tap water lithium levels consistently show lower rates of suicide and violent behavior in population studies.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Can lithium interact with medications?",
+            "answer": "<p>At prescription doses (100x+ higher), lithium interacts with many medications. At trace doses like the Coastline 400 mcg, interactions are not expected. However, if you are taking prescription lithium or other psychiatric medications, consult your healthcare provider.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Is lithium only for older adults?",
+            "answer": "<p>No. While cognitive protection is especially relevant as you age, lithium's mood support, BDNF production, and circadian rhythm regulation are valuable at any age. Chronic stress accelerates aging, and lithium supports resilience against that.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Lithium",
+        "ingredient_dose": "400 mcg",
+        "ingredient_form": "Lithium orotate",
+        "product_name": "Evening Capsules",
+        "product_step": "Evening",
+        "dose_rationale": "400 mcg matches clinical trials showing cognitive and mood improvements. Consistent with protective tap water levels.",
+        "safety_note": "Extremely safe at trace doses. Clinical bipolar doses are 100x+ higher. Very conservative dose.",
+        "typical_intake": "Varies dramatically by geography -- 10-400+ mcg per day depending on water source.",
+        "synergy_note": "Works alongside <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> and <a href=\"/pages/glucosamine\" target=\"_blank\">Glucosamine</a> in the Evening Capsules. Like <a href=\"/pages/lutein-zeaxanthin\" target=\"_blank\">Lutein and Zeaxanthin</a>, lithium increases BDNF -- supporting neuroplasticity from multiple angles.",
+        "at_a_glance": "<p>Lithium at trace doses is associated with longer lifespan in population studies. It increases BDNF (a key protein for brain plasticity), supports mood stability, and promotes brain autophagy -- your brain's natural cleanup process.</p><p>Coastline delivers 400mcg of lithium orotate -- a trace dose consistent with naturally protective tap water levels. Clinical bipolar doses are 100x+ higher. This is nutritional, not pharmaceutical.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

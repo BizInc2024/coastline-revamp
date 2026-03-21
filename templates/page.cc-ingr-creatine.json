@@ -1,0 +1,162 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports muscle strength and power",
+            "text": "<p>Creatine consistently increases muscle strength and power output. It accelerates muscle mass gains during resistance training -- including in older adults who need it most.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Sharpens cognitive function",
+            "text": "<p>Creatine improves cognitive function during sleep deprivation and mental stress. Your brain uses a large amount of ATP, and creatine helps buffer that energy supply.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support longer disease-free lifespan",
+            "text": "<p>In studies, creatine extended disease-free lifespan by 9% in female mice. It reduces lipofuscin -- cellular waste that builds up with age.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports bone mineral density",
+            "text": "<p>When combined with resistance training, creatine improves bone mineral density in older men. Bipedal humans fall harder than quadrupedal animals, making bone health especially important for human longevity.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "May accelerate antidepressant response",
+            "text": "<p>Research suggests creatine can accelerate antidepressant treatment response and support mood through its role in brain energy metabolism.</p>"
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "May help counter long COVID symptoms",
+            "text": "<p>Emerging research suggests creatine may help counter long COVID symptoms. Because creatine buffers ATP at a cellular level, it may support recovery in tissues affected by prolonged illness.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "ATP energy buffer",
+            "text": "<p>Creatine acts as a temporal and spatial energy buffer for ATP -- the primary energy currency of every cell. It ensures your muscles and brain have ready access to energy when demand spikes.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Reduces cellular waste accumulation",
+            "text": "<p>Creatine reduces brain lipofuscin accumulation -- a type of cellular waste that builds up with aging and impairs cell function.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Activates muscle protein synthesis",
+            "text": "<p>Creatine activates tissue-specific muscle protein synthesis pathways including IGF-1 and mTOR. Unlike metformin or berberine, creatine amplifies exercise adaptations rather than blunting them.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Reduces adenosine accumulation",
+            "text": "<p>Creatine reduces adenosine buildup in the brain. Adenosine is the molecule that makes you feel sleepy as the day goes on. By buffering adenosine levels, creatine supports wakefulness and mental clarity.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Does creatine cause kidney damage?",
+            "answer": "<p>No. Creatine may slightly increase creatinine levels -- this is a normal response to supplementation, not a sign of kidney damage. Cystatin C is a better marker for kidney function in creatine users. Creatine has been shown to be very safe even at 30g per day for 5 years.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why regular monohydrate and not micronized?",
+            "answer": "<p>There is no meaningful advantage to micronized creatine monohydrate over regular creatine monohydrate. Both dissolve and absorb effectively. We use the most studied, most proven form.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How much creatine does Coastline include?",
+            "answer": "<p>Coastline provides 5.25g of creatine monohydrate per serving -- based on studies showing improvements in muscle, bone, and cognitive function. This dose is effective for both younger and older adults.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need to do a loading phase?",
+            "answer": "<p>No loading phase is required. Consistent daily use at our clinical dose will saturate your muscle stores over 3-4 weeks. Loading (20g/day for 5-7 days) simply speeds up saturation but is not necessary.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How much creatine do I get from food?",
+            "answer": "<p>Omnivores typically get 1-3g per day from meat and fish. But 70% of adults over 65 consume less than 1g per day, and vegans and vegetarians consume 0g. Supplementation is the most practical way to reach effective doses.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Does creatine cause bloating or water retention?",
+            "answer": "<p>Creatine increases water content inside muscle cells (intracellular), which is different from subcutaneous water retention. This is actually a positive effect -- it supports muscle protein synthesis and cell signaling. Most people do not experience visible bloating at standard doses.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is creatine in the morning step?",
+            "answer": "<p>The morning step is taken with food, and adding carbohydrate or protein has been shown to increase creatine retention in tissues. A single dose can also acutely improve cognitive functions, especially when sleep has been limited.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Is creatine just for athletes?",
+            "answer": "<p>No. While creatine is well-known in sports, its cognitive, bone, and longevity support make it relevant for anyone over 35 -- especially those at risk of sarcopenia (age-related muscle loss). Adults over 65 may actually stand to gain the most.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5", "benefit_6",
+        "mechanism_1", "mechanism_2", "mechanism_3", "mechanism_4",
+        "faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Creatine",
+        "ingredient_dose": "5.25 g",
+        "ingredient_form": "Regular creatine monohydrate (not micronized)",
+        "product_name": "Morning Blend",
+        "product_step": "Morning",
+        "dose_rationale": "Based on studies showing improvements in muscle, bone, and cognitive function. Effective for older adults with standard or slightly higher doses.",
+        "safety_note": "Very safe even at 30g per day for 5 years. May slightly increase creatinine -- this is normal, not kidney damage.",
+        "typical_intake": "1-3g per day for omnivores. 70% of adults over 65 consume less than 1g per day. Vegans and vegetarians consume 0g.",
+        "synergy_note": "<a href=\"/pages/coq10\" target=\"_blank\">CoQ10</a> and creatine have been studied together for respiratory support. Both support mitochondrial energy production through different pathways.",
+        "at_a_glance": "<p>Creatine is one of the most studied supplements in human history. Found naturally in meat and fish, it acts as an energy buffer for every cell in your body -- keeping your muscles, brain, and bones fueled when demand is highest.</p><p>Most adults over 35 fall short of optimal creatine levels, and production declines further with age. Coastline delivers 5.25g per serving -- the clinical dose shown to support muscle strength, cognitive function, and bone density in both younger and older adults.</p>"
+      }
+    }
+  },
+  "order": ["ingredient"]
+}

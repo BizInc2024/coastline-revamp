@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "May support longer lifespan",
+            "text": "<p>Glycine extended lifespan 3.7% in female mice and 6.2% in male mice in a large-scale ITP study. It may mimic the longevity effects of methionine restriction -- one of the most consistent dietary interventions for extending lifespan.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improves sleep quality",
+            "text": "<p>Taking 3g of glycine before bed improves sleep quality, reduces daytime sleepiness, and improves daytime alertness and memory. It works through your body's internal clock -- the suprachiasmatic nucleus.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports blood sugar control",
+            "text": "<p>Glycine reduces blood sugar swings when taken with meals. At higher doses (15g per day), it lowers HbA1c in type-2 diabetes. It also reduces AGE formation -- the same harmful glycation products that <a href=\"/pages/taurine\" target=\"_blank\">Taurine</a> helps block.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Precursor for glutathione",
+            "text": "<p>Glycine is a building block for glutathione -- your body's master antioxidant. <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> is also a substrate for glutathione synthesis, so both ingredients support your antioxidant defenses.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Reduces inflammation",
+            "text": "<p>Glycine reduces multiple inflammatory markers including IL-6, TNF-R1, IFN-gamma, and IL-1-beta. It modulates macrophage polarization toward anti-inflammatory states, helping manage chronic low-grade inflammation.</p>"
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports collagen and connective tissue",
+            "text": "<p>Glycine makes up about 30% of collagen by weight, supporting skin, joints, and connective tissue. It may also reduce blood pressure and improve symptoms of various psychiatric conditions.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Mimics methionine restriction",
+            "text": "<p>Glycine may mimic the longevity effects of methionine restriction -- one of the most consistent dietary interventions for extending lifespan in animal models. This makes it a practical way to gain some of these effects without restrictive dieting.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Sleep regulation via your internal clock",
+            "text": "<p>Glycine acts as a co-agonist at NMDA receptors and influences the suprachiasmatic nucleus -- your brain's master clock. This is how it improves sleep onset and quality. <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> also acts on this same brain region to support sleep.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Anti-inflammatory and anti-glycation",
+            "text": "<p>Glycine reduces AGE formation (advanced glycation end products), modulates macrophage polarization toward anti-inflammatory states, and affects one-carbon metabolism and mitochondrial function.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Glutathione precursor",
+            "text": "<p>Glycine is one of three amino acids needed to make glutathione -- your body's master antioxidant. Without enough glycine, glutathione production drops, leaving your cells more vulnerable to oxidative stress.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How much glycine does Coastline include?",
+            "answer": "<p>Coastline provides 5g of glycine per serving, matching the dose shown to improve insulin response and reduce inflammation at individual meals.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Is glycine safe to take long-term?",
+            "answer": "<p>Extremely safe. Studies have used up to 60g per day with few adverse events. The Coastline dose of 5g is well within established safety limits and has been studied extensively.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get enough glycine from food?",
+            "answer": "<p>Most people only get 2-3g per day through diet. Collagen-rich foods are the best sources, but supplementation helps bridge the gap between typical intake and optimal levels.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Does glycine help with sleep?",
+            "answer": "<p>Yes. Studies show that 3g of glycine before bed improves sleep quality and reduces daytime sleepiness the next day. It works by acting on your brain's internal clock to promote relaxation. Coastline also includes <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> in the Evening Capsules for additional sleep support.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is glycine in the morning step?",
+            "answer": "<p>Glycine is taken with food in the morning to reduce blood sugar swings from your first meal. It creates a \"second meal effect\" -- improving your blood sugar response to your next meal too. Its collagen and metabolic support works throughout the day.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "How does glycine work with other Coastline ingredients?",
+            "answer": "<p>Glycine and <a href=\"/pages/taurine\" target=\"_blank\">Taurine</a> both reduce AGE formation through different pathways. Glycine and <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> are both substrates for glutathione -- your body's master antioxidant. These overlapping mechanisms provide layered support.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "What form of glycine does Coastline use?",
+            "answer": "<p>Coastline uses synthetic glycine powder -- chemically identical to the glycine found in food and produced by your body. It is the same form used in clinical studies.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Is glycine just for older adults?",
+            "answer": "<p>No. While glycine is especially important as you age (collagen production declines, glutathione levels drop), younger adults also see improvements in sleep quality, blood sugar control, and inflammation. It supports long-term health at any age.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Glycine",
+        "ingredient_dose": "5 g",
+        "ingredient_form": "Synthetic powder",
+        "product_name": "Morning Blend",
+        "product_step": "Morning",
+        "dose_rationale": "5g matches the dose shown to improve insulin response and reduce inflammation at individual meals.",
+        "safety_note": "Extremely safe. Studies used up to 60g per day with few adverse events.",
+        "typical_intake": "2-3g per day for most people. Collagen-rich foods are the best sources.",
+        "synergy_note": "Like <a href=\"/pages/taurine\" target=\"_blank\">Taurine</a>, glycine reduces AGE formation through a different pathway. Both support metabolic health in the Morning Blend. Glycine and <a href=\"/pages/l-theanine\" target=\"_blank\">L-Theanine</a> are both substrates for glutathione -- your body's master antioxidant.",
+        "at_a_glance": "<p>Glycine is the simplest amino acid, but its impact is anything but simple. It extended lifespan in animal models, improves sleep quality, stabilizes blood sugar, and is a building block for glutathione -- your body's master antioxidant.</p><p>Most people only get 2-3g per day through food. Coastline delivers 5g per serving -- the dose shown to improve insulin response and reduce inflammation.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}

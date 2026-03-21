@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ingredient": {
+      "type": "cc-ingredient",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Associated with reduced mortality",
+            "text": "<p>Higher magnesium intake is associated with 6% reduced all-cause mortality per 100 mg per day. About half of adults do not meet the recommended daily intake.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports healthy blood pressure",
+            "text": "<p>Magnesium consistently reduces both systolic and diastolic blood pressure. It increases hydrogen sulfide production, which helps blood vessels relax and dilate -- similar to how <a href=\"/pages/taurine\" target=\"_blank\">Taurine</a> supports blood vessel function.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Improves blood sugar and insulin sensitivity",
+            "text": "<p>Magnesium improves fasting blood sugar, HbA1c, and insulin sensitivity. It affects insulin receptor activity and GLUT4 glucose transporter expression in your cells.</p>"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports sleep and reduces stress",
+            "text": "<p>Magnesium improves sleep (speeds onset by about 17 minutes), reduces stress, anxiety, and depression symptoms. It is one of several ions that regulate sleep and wake cycles in the brain.</p>"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Supports muscle recovery and bone health",
+            "text": "<p>Magnesium reduces muscle soreness and speeds recovery from exercise. It also reduces bone turnover rates -- especially important for postmenopausal women and long-term skeletal health.</p>"
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Helps treat restless legs syndrome",
+            "text": "<p>Magnesium supplementation can help reduce restless legs symptoms, improving both sleep quality and comfort. It stabilizes cell membranes and affects nerve conduction.</p>"
+          }
+        },
+        "mechanism_1": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Cofactor for 300+ enzymes",
+            "text": "<p>Magnesium is required for ATP function (the magnesium-ATP complex). Without it, hundreds of enzymatic reactions in your body slow down or stop entirely.</p>"
+          }
+        },
+        "mechanism_2": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Insulin and glucose pathways",
+            "text": "<p>Magnesium affects insulin receptor tyrosine kinase activity and GLUT4 transporter expression -- two key mechanisms that control how your body processes blood sugar.</p>"
+          }
+        },
+        "mechanism_3": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Vitamin D activation",
+            "text": "<p>Magnesium is involved in vitamin D synthesis and activation. Without enough magnesium, your body cannot fully use vitamin D -- even if your levels are adequate.</p>"
+          }
+        },
+        "mechanism_4": {
+          "type": "mechanism",
+          "settings": {
+            "title": "Cell membrane stability and nerve function",
+            "text": "<p>Magnesium stabilizes cell membranes, affects nerve conduction, and regulates calcium and potassium transport across membranes. It also increases hydrogen sulfide, supporting blood vessel relaxation.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Why magnesium citrate and not oxide?",
+            "answer": "<p>Magnesium citrate has better bioavailability than magnesium oxide. It is well-studied, cost-effective, and absorbed more efficiently by your body.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much magnesium does Coastline include?",
+            "answer": "<p>Coastline provides 150 mg of magnesium citrate per serving. This bridges the gap between typical dietary intakes and optimal levels for health-conscious individuals.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Am I getting enough magnesium from food?",
+            "answer": "<p>Probably not. About 50% of adults fail to meet the Estimated Average Requirement. The RDA is 420 mg per day for men over 30 and 310 mg for women over 30. Most adults average only 276-300 mg per day.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can medications affect my magnesium needs?",
+            "answer": "<p>Yes. Many common medications affect magnesium status, including diuretics and proton pump inhibitors. Needs also vary by muscle mass, bone mass, and activity level. If you are on medications, consult your healthcare provider.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Why is magnesium in the morning step?",
+            "answer": "<p>Taking magnesium with food improves absorption. <a href=\"/pages/inulin\" target=\"_blank\">Inulin</a> (also in the Morning Blend) further enhances magnesium uptake in the gut, so taking them together maximizes absorption.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "Is magnesium safe to take long-term?",
+            "answer": "<p>Excellent safety profile. Most people do not even meet the RDA through diet alone. The Coastline dose of 150 mg is conservative and well within established safety limits.</p>"
+          }
+        },
+        "faq_7": {
+          "type": "faq",
+          "settings": {
+            "question": "How does magnesium work with other Coastline ingredients?",
+            "answer": "<p><a href=\"/pages/inulin\" target=\"_blank\">Inulin</a> enhances magnesium absorption in the gut. Like <a href=\"/pages/taurine\" target=\"_blank\">Taurine</a>, magnesium also increases hydrogen sulfide production, supporting blood vessel relaxation through complementary pathways.</p>"
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "question": "Why not just take a higher dose?",
+            "answer": "<p>150 mg is designed to bridge the gap between typical dietary intake and optimal levels. Most health-conscious individuals get some magnesium from food, and excessive supplementation can cause digestive discomfort. This dose is effective without overdoing it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6",
+        "mechanism_1",
+        "mechanism_2",
+        "mechanism_3",
+        "mechanism_4",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8"
+      ],
+      "settings": {
+        "ingredient_name": "Magnesium",
+        "ingredient_dose": "150 mg",
+        "ingredient_form": "Magnesium citrate (better bioavailability than oxide)",
+        "product_name": "Morning Blend",
+        "product_step": "Morning",
+        "dose_rationale": "150 mg bridges the gap between typical intakes and optimal levels for health-conscious individuals.",
+        "safety_note": "Excellent safety profile. Most people do not meet the RDA. Needs vary by muscle mass, bone mass, and activity level.",
+        "typical_intake": "About 50% of adults fail to meet the Estimated Average Requirement. Average intake is 276-300 mg per day. RDA is 420 mg (men 30+) and 310 mg (women 30+).",
+        "synergy_note": "<a href=\"/pages/inulin\" target=\"_blank\">Inulin</a> (also in the Morning Blend) enhances magnesium absorption in the gut, helping you get more from every dose.",
+        "at_a_glance": "<p>Magnesium is a cofactor in over 300 enzymatic reactions in your body. It supports sleep, blood pressure, blood sugar, and bone density -- yet about half of all adults fail to meet the recommended daily intake.</p><p>Coastline delivers 150mg of highly bioavailable magnesium citrate per serving -- enough to bridge the gap between what you get from food and what your body actually needs.</p>"
+      }
+    }
+  },
+  "order": [
+    "ingredient"
+  ]
+}
