@@ -1,0 +1,164 @@
+{%- capture direction -%}{% render 'direction' %}{%- endcapture -%}
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ direction }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://coastlinelongevity.com/#org",
+  "name": "Coastline Longevity",
+  "url": "https://coastlinelongevity.com/",
+  "logo": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CoastlineLongevity_LogoOnly_DarkBlue.png?v=1742841454",
+  "sameAs": [
+    "https://www.instagram.com/coastlinelongevity/",
+    "https://www.facebook.com/p/Coastline-Longevity-61559815767985/"
+  ]
+}
+</script>
+
+{%- if template == 'index' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://coastlinelongevity.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "https://coastlinelongevity.com/products/coastline-welcome-pack"
+    }
+  ]
+}
+</script>
+{%- endif -%}
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button_background }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+  {% # theme-check-disable RemoteAsset %}
+ 
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" type="image/png" />
+  {%- endif -%}
+
+  <title>
+    {{- page_title -}}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+    {%- if template == 'password' -%}
+      {{- shop.name -}}
+    {%- else -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- liquid
+    render 'social-meta-tags'
+    
+    render 'css-variables'
+    echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+    
+    if direction == 'rtl'
+      echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+    endif
+  -%}
+
+  <link rel="stylesheet" href="{{ 'apps.css' | asset_url }}" media="print" fetchpriority="low" onload="this.media='all'">
+
+  {{ content_for_header }}
+
+  <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+  {%- if request.page_type contains 'customers/' -%}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {%- render 'js-variables' -%}
+</head>
+
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}" data-rounded-button="{{ settings.rounded_button }}" data-rounded-input="{{ settings.rounded_input }}" data-rounded-block="{{ settings.rounded_block }}" data-rounded-card="{{ settings.rounded_card }}" data-button-hover="{{ settings.buttons_hover }}"{% if settings.enable_lazy_image %} data-lazy-image{% endif %} data-title-animation data-page-rendering>
+  <a class="sr-only skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {%- liquid
+    if settings.enable_page_transition
+      render 'loading-bar'
+    endif
+    
+
+    sections 'header-group'
+    sections 'overlay-group'
+  -%}
+
+  <div class="page-container" id="PageContainer">
+    <main class="main-content relative" id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    <footer-group class="footer-group block w-full">
+      {%- sections 'footer-group' -%}
+    </footer-group>
+  </div>
+
+  <ul hidden>
+    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+    <li id="a11y-new-window-message">{{ 'general.accessibility.link_messages.new_window' | t }}</li>
+  </ul>
+
+  {%- if request.design_mode == false -%}
+    <script src="{{ 'instant-page.js' | asset_url }}" type="module" fetchpriority="low" defer="defer"></script>
+  {%- endif -%}
+
+  <script>
+document.addEventListener('click', function (e) {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const hash = a.getAttribute('href'); const target = document.querySelector(hash); if (!target) return;
+  e.preventDefault();
+  const header = document.querySelector('header, .header, .site-header, .header-wrapper, .shopify-section-header-sticky');
+  const offset = header ? header.getBoundingClientRect().height : 0;
+  const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top, behavior: 'smooth' }); history.pushState(null, '', hash);
+});
+</script>
+<script>
+/* Delaying non-critical App JS to improve Page Speed */
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // This signals Shopify/Recharge to 'hydrate' the widget
+          window.dispatchEvent(new CustomEvent('recharge:load'));
+          observer.disconnect();
+        }
+      });
+    });
+    const target = document.querySelector('.product-form') || document.body;
+    observer.observe(target);
+  }, 2000); // Wait 2 seconds after load to start watching
+});
+</script>
+</body>
+</html>

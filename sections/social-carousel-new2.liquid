@@ -1,0 +1,710 @@
+<style>
+    /* ======================
+       CUSTOMIZABLE VARIABLES
+       ====================== */
+    #shopify-section-{{ section.id }} {
+        --bg-color: {{ section.settings.bg_color }};
+        --card-bg: {{ section.settings.card_bg_color }};
+        --primary-text: {{ section.settings.text_color }};
+        --accent-yellow: {{ section.settings.accent_yellow }};
+        --accent-blue: {{ section.settings.accent_blue }};
+        --accent-teal: {{ section.settings.accent_teal }};
+    }
+
+    #shopify-section-{{ section.id }} * {
+        box-sizing: border-box;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-section {
+        font-family: 'Lato', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--primary-text);
+        width: 100%;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-header {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-subtitle {
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--accent-blue);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .stars {
+        color: var(--accent-yellow);
+    }
+
+    #shopify-section-{{ section.id }} .carousel-title {
+        font-family: 'Lato', sans-serif;
+        font-size: 48px;
+        line-height: 1.2;
+        color: var(--accent-yellow);
+    }
+
+    /* ======================
+       CAROUSEL WRAPPER
+       ====================== */
+    #shopify-section-{{ section.id }} .carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        padding: 0 60px;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-track {
+        display: flex;
+        gap: 24px;
+        transition: transform 0.5s ease;
+        justify-content: flex-start;
+    }
+
+    /* ======================
+       TESTIMONIAL CARDS
+       ====================== */
+    #shopify-section-{{ section.id }} .testimonial-card {
+        flex: 0 0 280px;
+        background: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .play-icon-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 64px;
+        height: 64px;
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    #shopify-section-{{ section.id }} .play-icon-overlay::after {
+        content: '▶';
+        color: var(--accent-yellow);
+        font-size: 26px;
+        margin-left: 3px;
+    }
+
+    @media (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .testimonial-card {
+            flex: 0 0 340px;
+        }
+        
+        #shopify-section-{{ section.id }} .carousel-track {
+            gap: 32px;
+        }
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(253, 236, 106, 0.2);
+    }
+
+    #shopify-section-{{ section.id }} .card-media {
+        width: 100%;
+        aspect-ratio: 9/16;
+        object-fit: cover;
+        display: block;
+    }
+
+    #shopify-section-{{ section.id }} .card-content {
+        padding: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .card-category {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent-blue);
+        margin-bottom: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .card-name {
+        font-family: 'Lato', sans-serif;
+        font-size: 18px;
+        color: var(--accent-yellow);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    #shopify-section-{{ section.id }} .verified-badge {
+        width: 16px;
+        height: 16px;
+        background: var(--accent-teal);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .card-rating {
+        color: var(--accent-yellow);
+        margin-top: 8px;
+    }
+
+    /* ======================
+       NAVIGATION
+       ====================== */
+    #shopify-section-{{ section.id }} .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: rgba(184, 216, 219, 0.15);
+        border: none;
+        border-radius: 50%;
+        color: var(--accent-yellow);
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .nav-button:hover {
+        background: var(--accent-yellow);
+        color: var(--bg-color);
+    }
+
+    #shopify-section-{{ section.id }} .nav-button.prev {
+        left: 0;
+    }
+
+    #shopify-section-{{ section.id }} .nav-button.next {
+        right: 0;
+    }
+
+    /* ======================
+       PAGINATION
+       ====================== */
+    #shopify-section-{{ section.id }} .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .pagination-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(184, 216, 219, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .pagination-dot.active {
+        background: var(--accent-yellow);
+        width: 32px;
+        border-radius: 6px;
+    }
+
+    /* ======================
+       MODAL
+       ====================== */
+    #shopify-section-{{ section.id }} .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .modal.active {
+        display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .modal-frame {
+        width: min(90vw, calc(90vh * 0.5625));
+        height: min(90vh, calc(90vw * 1.7778));
+        aspect-ratio: 9 / 16;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .modal-media {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        background: #000;
+    }
+
+    #shopify-section-{{ section.id }} .modal-close {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001;
+        transition: background 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .modal-close:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ======================
+       RESPONSIVE
+       ====================== */
+    @media (max-width: 768px) {
+        #shopify-section-{{ section.id }} .carousel-title {
+            font-size: 32px;
+        }
+
+        #shopify-section-{{ section.id }} .carousel-wrapper {
+            padding: 0 40px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #shopify-section-{{ section.id }} .carousel-wrapper {
+            padding: 0 30px;
+        }
+    }
+</style>
+
+<div class="carousel-section">
+    <div class="carousel-header">
+        {% if section.settings.subtitle != blank %}
+            <div class="carousel-subtitle">
+                <span class="stars">★★★★★</span>
+                {{ section.settings.subtitle }}
+            </div>
+        {% endif %}
+        {% if section.settings.title != blank %}
+            <h2 class="carousel-title">{{ section.settings.title }}</h2>
+        {% endif %}
+    </div>
+
+    <div class="carousel-wrapper">
+        <button class="nav-button prev" onclick="window['carousel_{{ section.id }}'].moveCarousel(-1)">‹</button>
+        
+        <div class="carousel-track" id="carouselTrack-{{ section.id }}">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'testimonial' %}
+                        <div class="testimonial-card" onclick="window['carousel_{{ section.id }}'].openModal('{{ block.id }}')" {{ block.shopify_attributes }}>
+                            {% if block.settings.image != blank %}
+                                <img src="{{ block.settings.image | image_url: width: 400, height: 711, crop: 'center' }}" 
+                                     alt="{{ block.settings.name }}" 
+                                     class="card-media">
+                                {% if block.settings.video_file != blank %}
+                                    <div class="play-icon-overlay"></div>
+                                {% endif %}
+                            {% else %}
+                                <div class="card-media" style="background: #0A2A30; display: flex; align-items: center; justify-content: center;">
+                                    <span style="font-size: 48px; color: var(--accent-blue);">+</span>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="card-content">
+                                {% if block.settings.category != blank %}
+                                    <div class="card-category">{{ block.settings.category }}</div>
+                                {% endif %}
+                                
+                                {% if block.settings.name != blank %}
+                                    <div class="card-name">
+                                        {{ block.settings.name }}
+                                        {% if block.settings.verified %}
+                                            <span class="verified-badge">✓</span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                
+                                {% if block.settings.rating > 0 %}
+                                    <div class="card-rating">
+                                        {% for i in (1..block.settings.rating) %}★{% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                {% endcase %}
+            {% endfor %}
+        </div>
+
+        <button class="nav-button next" onclick="window['carousel_{{ section.id }}'].moveCarousel(1)">›</button>
+    </div>
+
+    <div class="pagination" id="pagination-{{ section.id }}"></div>
+</div>
+
+<div class="modal" id="modal-{{ section.id }}">
+    <button class="modal-close" onclick="window['carousel_{{ section.id }}'].closeModal()">✕</button>
+    <div class="modal-content" id="modalContent-{{ section.id }}"></div>
+</div>
+
+<script>
+(function() {
+    const testimonials = [
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'testimonial' %}
+                    {
+                        id: "{{ block.id }}",
+                        hasVideo: {% if block.settings.video_file != blank %}true{% else %}false{% endif %},
+                        videoUrl: {% if block.settings.video_file != blank %}"{{ block.settings.video_file.sources[0].url }}"{% else %}""{% endif %},
+                        imageUrl: "{{ block.settings.image | image_url: width: 800 }}",
+                        category: "{{ block.settings.category }}",
+                        name: "{{ block.settings.name }}",
+                        verified: {{ block.settings.verified }},
+                        rating: {{ block.settings.rating }}
+                    }{% unless forloop.last %},{% endunless %}
+            {% endcase %}
+        {% endfor %}
+    ];
+
+    let currentIndex = 0;
+    const sectionId = "{{ section.id }}";
+    const isDesktop = window.innerWidth >= 1024;
+    const cardWidth = isDesktop ? 340 : 280;
+    const cardGap = isDesktop ? 32 : 24;
+    const cardsToShow = window.innerWidth > 768 ? 4 : window.innerWidth > 480 ? 3 : 2;
+
+    function renderPagination() {
+        const pagination = document.getElementById('pagination-' + sectionId);
+        const totalDots = testimonials.length;
+        pagination.innerHTML = Array.from({length: totalDots}, (_, i) => 
+            `<div class="pagination-dot ${i === currentIndex ? 'active' : ''}" onclick="window['carousel_${sectionId}'].goToSlide(${i})"></div>`
+        ).join('');
+    }
+
+    function moveCarousel(direction) {
+        const totalCards = testimonials.length;
+        currentIndex = (currentIndex + direction + totalCards) % totalCards;
+        updateCarousel();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        const track = document.getElementById('carouselTrack-' + sectionId);
+        const totalWidth = cardWidth + cardGap;
+        track.style.transform = `translateX(-${currentIndex * totalWidth}px)`;
+        renderPagination();
+    }
+
+    function openModal(id) {
+        const testimonial = testimonials.find(t => t.id === id);
+        const modal = document.getElementById('modal-' + sectionId);
+        const modalContent = document.getElementById('modalContent-' + sectionId);
+        
+        if (testimonial.hasVideo && testimonial.videoUrl) {
+            // Has video - play the video
+            modalContent.innerHTML = `
+                <div class="modal-frame">
+                    <video class="modal-media" controls autoplay playsinline>
+                        <source src="${testimonial.videoUrl}" type="video/mp4">
+                    </video>
+                </div>
+            `;
+        } else {
+            // No video - show the image
+            modalContent.innerHTML = `
+                <div class="modal-frame">
+                    <img src="${testimonial.imageUrl}" alt="${testimonial.name}" class="modal-media" />
+                </div>
+            `;
+        }
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('modal-' + sectionId);
+        modal.classList.remove('active');
+        document.getElementById('modalContent-' + sectionId).innerHTML = '';
+        document.body.style.overflow = '';
+    }
+
+    // Subtle auto-scroll (slower and less aggressive)
+    {% if section.settings.enable_auto_scroll %}
+    const autoScrollInterval = setInterval(() => {
+        moveCarousel(1);
+    }, 8000); // Every 8 seconds instead of 5
+
+    // Pause auto-scroll on hover
+    const carouselWrapper = document.querySelector('#shopify-section-{{ section.id }} .carousel-wrapper');
+    carouselWrapper.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
+    {% endif %}
+
+    // Initialize
+    renderPagination();
+
+    // Close modal on background click
+    document.getElementById('modal-' + sectionId).addEventListener('click', (e) => {
+        if (e.target.id === 'modal-' + sectionId) closeModal();
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const newCardsToShow = window.innerWidth > 768 ? 4 : window.innerWidth > 480 ? 3 : 2;
+        if (newCardsToShow !== cardsToShow) {
+            location.reload();
+        }
+    });
+
+    // Touch swipe support for mobile/tablet
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const carouselTrack = document.getElementById('carouselTrack-' + sectionId);
+    
+    carouselTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    carouselTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipeGesture();
+    }, { passive: true });
+    
+    function handleSwipeGesture() {
+        const swipeThreshold = 60;
+        const horizontalDiff = touchStartX - touchEndX;
+        const verticalDiff = Math.abs(touchStartY - touchEndY);
+        
+        // Only swipe if horizontal movement is greater than vertical
+        if (Math.abs(horizontalDiff) > swipeThreshold && Math.abs(horizontalDiff) > verticalDiff) {
+            if (horizontalDiff > 0) {
+                moveCarousel(1); // Swiped left
+            } else {
+                moveCarousel(-1); // Swiped right
+            }
+        }
+    }
+
+    // Expose functions globally for onclick handlers
+    window['carousel_' + sectionId] = {
+        moveCarousel,
+        goToSlide,
+        openModal,
+        closeModal
+    };
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Social Proof Carousel New",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "500+ FIVE STAR REVIEWS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Everyone is raving about Coastline:"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_auto_scroll",
+      "label": "Enable auto-scroll",
+      "default": true,
+      "info": "Automatically advances carousel every 8 seconds (pauses on hover)"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#031518"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#0A2A30"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_yellow",
+      "label": "Accent Yellow",
+      "default": "#FDEC6A"
+    },
+    {
+      "type": "color",
+      "id": "accent_blue",
+      "label": "Accent Blue",
+      "default": "#B8D8DB"
+    },
+    {
+      "type": "color",
+      "id": "accent_teal",
+      "label": "Accent Teal",
+      "default": "#4AB3C5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image",
+          "info": "This image will always display on the card (9:16 ratio recommended)"
+        },
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "Video File (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Energy"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show Verified Badge",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "info": "0 = No stars shown"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof Carousel New",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "category": "Energy",
+            "name": "Malou Peterson",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "category": "Magnesium",
+            "name": "Gabriel W",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "category": "Hydration",
+            "name": "Sami Spalter",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "category": "Recovery",
+            "name": "Sarah Johnson",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "category": "Energy",
+            "name": "Emma Davis",
+            "verified": true,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "category": "Hydration",
+            "name": "Olivia Martinez",
+            "verified": true,
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

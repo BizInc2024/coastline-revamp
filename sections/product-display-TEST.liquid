@@ -1,0 +1,1144 @@
+{% comment %}
+  Product Display Section for Shopify
+  Features: Desktop expandable cards, condensed mobile view without images
+  Optimized for performance and user experience
+{% endcomment %}
+
+<style>
+  .product-display-section {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.section_padding_top }}px {{ section.settings.section_padding_horizontal }}px {{ section.settings.section_padding_bottom }}px;
+  }
+
+  .product-display-container {
+    max-width: {{ section.settings.container_max_width }}px;
+    margin: 0 auto;
+  }
+
+  .product-display-header {
+    margin-bottom: {{ section.settings.header_margin_bottom }}px;
+    text-align: center;
+  }
+
+  .product-display-title {
+    margin-bottom: {{ section.settings.title_margin_bottom }}px;
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+    font-weight: {{ section.settings.title_font_weight }};
+    line-height: {{ section.settings.title_line_height }};
+    color: {{ section.settings.title_color }};
+  }
+
+  @media (min-width: 768px) {
+    .product-display-title {
+      font-size: {{ section.settings.title_font_size_tablet }}px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-display-title {
+      font-size: {{ section.settings.title_font_size_desktop }}px;
+    }
+  }
+
+  .product-display-subtitle {
+    font-size: {{ section.settings.subtitle_font_size_mobile }}px;
+    font-style: italic;
+    color: {{ section.settings.subtitle_color }};
+  }
+
+  @media (min-width: 768px) {
+    .product-display-subtitle {
+      font-size: {{ section.settings.subtitle_font_size_desktop }}px;
+    }
+  }
+
+  .product-cards-grid {
+    display: grid;
+    gap: {{ section.settings.card_gap }}px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .product-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid {{ section.settings.card_border_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    background-color: {{ section.settings.card_background }};
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile: Condensed view without images */
+  @media (max-width: 767px) {
+    .product-card {
+      padding: 20px;
+    }
+  }
+
+  /* Desktop: Collapsible cards */
+  @media (min-width: 768px) {
+    .product-card {
+      padding: {{ section.settings.card_padding }}px;
+    }
+    
+    .product-card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+  }
+
+  .product-card-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  @media (max-width: 767px) {
+    .product-card-header {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .product-card-header {
+      margin-bottom: {{ section.settings.card_header_margin }}px;
+    }
+  }
+
+  .product-header-info {
+    flex: 1;
+  }
+
+  .product-step {
+    font-size: {{ section.settings.step_font_size }}px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: {{ section.settings.step_color }};
+    margin-bottom: 4px;
+  }
+
+  .product-title {
+    font-size: {{ section.settings.product_title_font_size }}px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    color: {{ section.settings.product_title_color }};
+    line-height: 1.1;
+  }
+
+  @media (max-width: 767px) {
+    .product-title {
+      font-size: 20px;
+    }
+  }
+
+  .product-subtitle {
+    font-size: {{ section.settings.product_subtitle_font_size }}px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    color: {{ section.settings.product_title_color }};
+    line-height: 1.1;
+  }
+
+  @media (max-width: 767px) {
+    .product-subtitle {
+      font-size: 18px;
+    }
+  }
+
+  .product-icon-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .product-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    .product-icon {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .product-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .expand-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: {{ section.settings.accent_color }};
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 767px) {
+    .expand-indicator {
+      padding: 6px 12px;
+      gap: 6px;
+    }
+  }
+
+  .expand-indicator:hover {
+    background: {{ section.settings.accent_color_light }};
+    transform: translateY(-1px);
+  }
+
+  .expand-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  @media (max-width: 767px) {
+    .expand-text {
+      font-size: 11px;
+    }
+  }
+
+  .expand-indicator svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+    stroke: #ffffff;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    .expand-indicator svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .product-card.expanded .expand-indicator svg {
+    transform: rotate(180deg);
+  }
+
+  /* Hide images on mobile */
+  @media (max-width: 767px) {
+    .product-image-container {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .product-image-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: {{ section.settings.image_margin_bottom }}px;
+      transition: all 0.5s ease-out;
+    }
+  }
+
+  .product-image-wrapper {
+    position: relative;
+    transition: all 0.5s ease-out;
+  }
+
+  .product-image {
+    width: auto;
+    height: 192px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    transition: all 0.5s ease;
+  }
+
+  .product-card.expanded .product-image {
+    height: 224px;
+  }
+
+  .product-card.expanded .product-image-wrapper {
+    transform: scale(1.05);
+  }
+
+  .product-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.3s ease;
+  }
+
+  .product-card.expanded .product-content {
+    max-height: 2000px;
+    opacity: 1;
+    margin-top: 24px;
+  }
+
+  @media (max-width: 767px) {
+    .product-card.expanded .product-content {
+      margin-top: 16px;
+    }
+  }
+
+  .serving-info {
+    text-align: center;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 767px) {
+    .serving-info {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .directions-box {
+    background: {{ section.settings.directions_background }};
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 767px) {
+    .directions-box {
+      padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .directions-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 767px) {
+    .directions-label {
+      font-size: 13px;
+    }
+  }
+
+  .directions-text {
+    font-size: 14px;
+    color: {{ section.settings.text_color }};
+    line-height: 1.5;
+  }
+
+  @media (max-width: 767px) {
+    .directions-text {
+      font-size: 13px;
+    }
+  }
+
+  .divider {
+    height: 1px;
+    width: 100%;
+    background: {{ section.settings.divider_color }};
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 767px) {
+    .divider {
+      margin-bottom: 16px;
+    }
+  }
+
+  .ingredients-list {
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 767px) {
+    .ingredients-list {
+      margin-bottom: 16px;
+    }
+  }
+
+  .ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: {{ section.settings.text_color }};
+    gap: 12px;
+  }
+
+  @media (max-width: 767px) {
+    .ingredient-item {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+  }
+
+  .ingredient-name {
+    flex: 1;
+  }
+
+  .ingredient-amount {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .other-ingredients {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid {{ section.settings.divider_color }};
+  }
+
+  @media (max-width: 767px) {
+    .other-ingredients {
+      margin-top: 16px;
+      padding-top: 12px;
+    }
+  }
+
+  .other-ingredients-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: {{ section.settings.muted_text_color }};
+  }
+
+  @media (max-width: 767px) {
+    .other-ingredients-text {
+      font-size: 11px;
+    }
+  }
+
+  .benefits-section {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid {{ section.settings.divider_color }};
+  }
+
+  @media (max-width: 767px) {
+    .benefits-section {
+      margin-top: 16px;
+      padding-top: 12px;
+    }
+  }
+
+  .benefits-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 767px) {
+    .benefits-title {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: start;
+    font-size: 14px;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 767px) {
+    .benefit-item {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+  }
+
+  .benefit-bullet {
+    color: {{ section.settings.accent_color }};
+    font-weight: bold;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .bottom-decoration {
+    display: flex;
+    justify-content: center;
+    margin-top: {{ section.settings.decoration_margin_top }}px;
+  }
+
+  .decoration-line {
+    height: 4px;
+    width: 96px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, {{ section.settings.accent_color }}, {{ section.settings.accent_color_light }});
+  }
+
+  /* Accessibility improvements */
+  .product-card-header:focus {
+    outline: 2px solid {{ section.settings.accent_color }};
+    outline-offset: 2px;
+  }
+
+  .product-card-header:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Smooth scrolling for better UX */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+</style>
+
+<section class="product-display-section">
+  <div class="product-display-container">
+    
+    <!-- Header -->
+    <div class="product-display-header">
+      <h1 class="product-display-title">
+        {{ section.settings.main_title | newline_to_br }}
+      </h1>
+      <p class="product-display-subtitle">
+        {{ section.settings.subtitle }}
+      </p>
+    </div>
+
+    <!-- Product Cards Grid -->
+    <div class="product-cards-grid">
+      {% for block in section.blocks %}
+        <div class="product-card" id="product-card-{{ block.id }}" {{ block.shopify_attributes }}>
+          
+          <!-- Header (clickable) -->
+          <div 
+            class="product-card-header" 
+            onclick="toggleCard('{{ block.id }}')"
+            role="button"
+            tabindex="0"
+            onkeydown="handleKeyPress(event, '{{ block.id }}')"
+            aria-expanded="false"
+            aria-controls="content-{{ block.id }}"
+          >
+            <div class="product-header-info">
+              <p class="product-step">{{ block.settings.step }}</p>
+              <h3 class="product-title">{{ block.settings.title }}</h3>
+              <p class="product-subtitle">{{ block.settings.subtitle }}</p>
+            </div>
+            <div class="product-icon-wrapper">
+              <div class="product-icon">
+                {% if block.settings.icon == 'sun' %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.accent_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+                  </svg>
+                {% elsif block.settings.icon == 'moon' %}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.accent_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                  </svg>
+                {% endif %}
+              </div>
+              <div class="expand-indicator">
+                <span class="expand-text">Click To Learn More</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Image (hidden on mobile) -->
+          <div class="product-image-container">
+            <div class="product-image-wrapper">
+              {% if block.settings.product_image != blank %}
+                <img 
+                  src="{{ block.settings.product_image | img_url: 'master' }}" 
+                  alt="{{ block.settings.title }} {{ block.settings.subtitle }}"
+                  class="product-image"
+                  loading="lazy"
+                >
+              {% else %}
+                <div style="width: 200px; height: 192px; background: #f3f4f6; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                  <span style="color: #9ca3af; font-size: 14px;">No image</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Content Section (collapsible) -->
+          <div class="product-content" id="content-{{ block.id }}">
+            
+            <p class="serving-info">{{ block.settings.serving_info }}</p>
+            
+            <!-- Directions -->
+            <div class="directions-box">
+              <p class="directions-label">Directions:</p>
+              <p class="directions-text">{{ block.settings.directions }}</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Ingredients List -->
+            <div class="ingredients-list">
+              {% assign ingredients = block.settings.ingredients | split: '|' %}
+              {% for ingredient in ingredients %}
+                {% assign parts = ingredient | split: ':' %}
+                <div class="ingredient-item">
+                  <span class="ingredient-name">{{ parts[0] }}</span>
+                  <span class="ingredient-amount">{{ parts[1] }}</span>
+                </div>
+              {% endfor %}
+            </div>
+
+            <!-- Other Ingredients -->
+            <div class="other-ingredients">
+              <p class="other-ingredients-text">{{ block.settings.other_ingredients }}</p>
+            </div>
+
+            <!-- Benefits Section -->
+            {% if block.settings.benefits != blank %}
+              <div class="benefits-section">
+                <h4 class="benefits-title">Key Benefits:</h4>
+                <ul class="benefits-list">
+                  {% assign benefits = block.settings.benefits | split: '|' %}
+                  {% for benefit in benefits %}
+                    <li class="benefit-item">
+                      <span class="benefit-bullet">•</span>
+                      <span>{{ benefit }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Bottom decorative element -->
+    <div class="bottom-decoration">
+      <div class="decoration-line"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function toggleCard(blockId) {
+    const card = document.getElementById('product-card-' + blockId);
+    const header = card.querySelector('.product-card-header');
+    const isExpanded = card.classList.contains('expanded');
+    
+    if (isExpanded) {
+      card.classList.remove('expanded');
+      header.setAttribute('aria-expanded', 'false');
+    } else {
+      card.classList.add('expanded');
+      header.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function handleKeyPress(event, blockId) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleCard(blockId);
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product Display",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal",
+      "label": "Padding Horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Container Max Width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "default": 1300,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Main Title"
+    },
+    {
+      "type": "textarea",
+      "id": "main_title",
+      "label": "Title (use line breaks for formatting)",
+      "default": "Supports All\nBody Systems.\nTargets All\nHallmarks of\nAging."
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size (Mobile)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_tablet",
+      "label": "Title Font Size (Tablet)",
+      "min": 32,
+      "max": 96,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title Font Size (Desktop)",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "title_line_height",
+      "label": "Title Line Height",
+      "min": 1.0,
+      "max": 2.0,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "title_margin_bottom",
+      "label": "Title Margin Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "What's in Coastline?"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle Font Size (Mobile)",
+      "min": 14,
+      "max": 48,
+      "step": 2,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "label": "Subtitle Font Size (Desktop)",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "label": "Header Margin Bottom",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Product Cards"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card Border Radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card Padding (Desktop)",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap Between Cards",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card_header_margin",
+      "label": "Card Header Margin Bottom",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_margin_bottom",
+      "label": "Product Image Margin Bottom",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Muted Text Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "range",
+      "id": "step_font_size",
+      "label": "Step Font Size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "step_color",
+      "label": "Step Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "range",
+      "id": "product_title_font_size",
+      "label": "Product Title Font Size",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_subtitle_font_size",
+      "label": "Product Subtitle Font Size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product Title Color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "header",
+      "content": "Colors & Accents"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#1294ad"
+    },
+    {
+      "type": "color",
+      "id": "accent_color_light",
+      "label": "Accent Color Light",
+      "default": "#a8e8e2"
+    },
+    {
+      "type": "color",
+      "id": "directions_background",
+      "label": "Directions Box Background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Decoration"
+    },
+    {
+      "type": "range",
+      "id": "decoration_margin_top",
+      "label": "Decoration Margin Top",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "default": 60,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step",
+          "label": "Step Label",
+          "default": "STEP 1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "MORNING"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Product Subtitle",
+          "default": "BLEND"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "sun", "label": "Sun" },
+            { "value": "moon", "label": "Moon" }
+          ],
+          "default": "sun"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "serving_info",
+          "label": "Serving Information",
+          "default": "30 Servings (Scoops)"
+        },
+        {
+          "type": "textarea",
+          "id": "directions",
+          "label": "Directions",
+          "default": "Mix 1 scoop with 8-12 oz of water or your favorite beverage each morning."
+        },
+        {
+          "type": "textarea",
+          "id": "ingredients",
+          "label": "Main Ingredients (format: Name:Amount|Name:Amount)",
+          "default": "Magnesium (Citrate):150 mg|Creatine Monohydrate:5.25 g|Glycine:5 g",
+          "info": "Use pipe | to separate ingredients, and colon : to separate name from amount"
+        },
+        {
+          "type": "textarea",
+          "id": "other_ingredients",
+          "label": "Other Ingredients",
+          "default": "Other Ingredients: Allulose, Natural Flavours, Citric Acid, Stevia Extract"
+        },
+        {
+          "type": "textarea",
+          "id": "benefits",
+          "label": "Key Benefits (separate with |)",
+          "default": "Supports muscle strength and cognitive function|Enhances cellular energy production|Promotes healthy inflammatory response",
+          "info": "Use pipe | to separate each benefit"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Display",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "step": "STEP 1",
+            "title": "MORNING",
+            "subtitle": "BLEND",
+            "icon": "sun",
+            "serving_info": "30 Servings (Scoops)",
+            "directions": "Mix 1 scoop with 8-12 oz of water or your favorite beverage each morning.",
+            "ingredients": "Magnesium (Citrate):150 mg|Creatine Monohydrate:5.25 g|Glycine:5 g|Inulin:4 g|Taurine:3.05 g|Glucosamine Hydrochloride:750 mg|L-Ergothioneine:5 mg",
+            "other_ingredients": "Other Ingredients (flavored only): Allulose, Natural Flavours, Citric Acid, Stevia Extract (Reb A)",
+            "benefits": "Supports muscle strength and cognitive function|Enhances cellular energy production|Promotes healthy inflammatory response|Supports gut health with prebiotic fiber|Aids in muscle recovery and performance"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "step": "STEP 2",
+            "title": "MORNING",
+            "subtitle": "SOFTGELS",
+            "icon": "sun",
+            "serving_info": "30 Servings (30 SoftGels)",
+            "directions": "Take 1 softgel each morning with food.",
+            "ingredients": "Coenzyme Q10:200 mg|Astaxanthin:6 mg|Lutein:10 mg|Zeaxanthin:2 mg",
+            "other_ingredients": "Other Ingredients: Sunflower Seed Oil, Vegan Gelatin, Glycerin, Purified Water, Annatto Extract (for color), Sunflower Lecithin, Glyceryl Monostearate",
+            "benefits": "Powerful antioxidant protection for cells|Supports cardiovascular and heart health|Protects eye health and visual function|Promotes healthy skin and reduces UV damage|Supports mitochondrial energy production"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "step": "STEP 3",
+            "title": "EVENING",
+            "subtitle": "CAPSULES",
+            "icon": "moon",
+            "serving_info": "30 Servings (60 Capsules)",
+            "directions": "Take 2 capsules each evening, preferably 30 minutes before bed.",
+            "ingredients": "Glucosamine Hydrochloride:750 mg|L-Theanine:200 mg|Lithium (as Lithium Orotate):400 mcg",
+            "other_ingredients": "Other Ingredients: Microcrystalline Cellulose and Hypromellose (capsules), Magnesium Stearate (vegan source)",
+            "benefits": "Supports joint health and mobility|Promotes relaxation and quality sleep|May support cognitive function and neuroprotection|Helps reduce stress and anxiety|Supports healthy aging at the cellular level"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

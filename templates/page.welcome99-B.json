@@ -1,0 +1,2079 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-page": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "heading_size": "title-xl tracking-heading",
+        "heading_alignment": "text-left",
+        "heading_tag": "h1",
+        "text_size": "text-base",
+        "padding_top": 72,
+        "padding_bottom": 120,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "image_with_text_overlay_DGttQJ": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "spacing_qrdHYG": {
+          "type": "spacing",
+          "settings": {
+            "height": 0,
+            "height_mobile": 20
+          }
+        },
+        "heading_BLCULP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>$150 VALUE  FOR $99</em>",
+            "heading_size": "title-sm",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "heading_hGQnfg": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>UNLOCK YOUR BEST HEALTH</strong>",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_Eg9G4i": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ENERGY • CLARITY • RECOVERY • SLEEP</p>",
+            "text_size": "subtext-sm",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_3tzQde": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_size": "subtext-custom",
+            "text_max_size": 16,
+            "text_font": "body",
+            "secondary_color": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_Wyz9Bh": {
+          "type": "button",
+          "settings": {
+            "button_label": "GET STARTED FOR $99",
+            "button_link": "shopify://products/coastline-welcome-pack",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true,
+            "button_secondary_style": false
+          }
+        },
+        "text_7pwYB3": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>Renews at $120.00/mo. Modify or cancel anytime.</em></p>",
+            "text_size": "subtext-sm",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "spacing_qrdHYG",
+        "heading_BLCULP",
+        "heading_hGQnfg",
+        "text_Eg9G4i",
+        "text_3tzQde",
+        "button_Wyz9Bh",
+        "text_7pwYB3"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "transparent_header": true,
+        "image": "shopify://shop_images/WelcomeBoxOnBlue_16_9.png",
+        "image_height": "adapt",
+        "content_width": "small",
+        "content_position": "md:items-center md:justify-start",
+        "text_alignment": "left",
+        "image_mobile": "shopify://shop_images/WelcomeBoxOnBlue_9_16.png",
+        "image_height_mobile": "adapt",
+        "content_position_mobile": "items-end justify-center",
+        "text_alignment_mobile": "center",
+        "color_text": "#062f3d",
+        "color_highlight": "#f78273",
+        "gradient_highlight": "",
+        "color_button_text": "#f7f7f7",
+        "color_button_background": "#062f3d",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "multicolumn_with_icons_bBdBjV": {
+      "type": "features-multicolumn",
+      "blocks": {
+        "column_QFq67W": {
+          "type": "column",
+          "settings": {
+            "icon": "star",
+            "custom_icon": "",
+            "heading": "Clinically proven",
+            "text": "<p>Safe & Effective Ingredients</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_4tkzPG": {
+          "type": "column",
+          "settings": {
+            "icon": "ruler_3",
+            "custom_icon": "",
+            "heading": "Optimal Doses",
+            "text": "<p>At the required amounts</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_UNUYwa": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "custom_icon": "",
+            "heading": "GMP Certified",
+            "text": "<p>Highest Manufacturing Standards</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_nXbaMi": {
+          "type": "column",
+          "settings": {
+            "icon": "trophy",
+            "custom_icon": "",
+            "heading": "Third-Party Tested",
+            "text": "<p>Purity & potency verified</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_KqdJcX": {
+          "type": "column",
+          "settings": {
+            "icon": "eye",
+            "custom_icon": "",
+            "heading": "Transparent Labeling",
+            "text": "<p>No proprietary blends</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_GiVbeh": {
+          "type": "column",
+          "settings": {
+            "icon": "award",
+            "custom_icon": "",
+            "heading": "Rigorously Curated",
+            "text": "<p>The Highest Scientific Standards</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_QFq67W",
+        "column_4tkzPG",
+        "column_UNUYwa",
+        "column_nXbaMi",
+        "column_KqdJcX",
+        "column_GiVbeh"
+      ],
+      "name": "t:sections.multicolumn-with-icons.presets.name",
+      "settings": {
+        "style": "with-border",
+        "columns": 3,
+        "text_alignment": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#062f3d",
+        "color_background": "#f7f7f7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 64,
+        "padding_bottom": 48,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "image_with_text_78pGf4": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_4BBYnb": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>WHAT IS COASTLINE?</strong></p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_NF4gGx": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><em>Not a Greens Drink  •  Not a Multivitamin •  Not a Protein Shake •  Not a Probiotic</em></p>",
+            "text_size": "subtext-sm",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "heading_VmWTaC": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>A streamlined supplement system for optimal health today, tomorrow, and the exciting journey ahead.</strong>",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_7YaKKq": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>13 of the most clinically-supported supplements – at optimal doses, in 1 simple AM/PM system. No fads. No fluff. Just trusted science with real results.</em></p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_UKzxxU": {
+          "type": "button",
+          "settings": {
+            "button_label": "GET STARTED FOR $99",
+            "button_link": "#shop",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": false,
+            "button_secondary_style": false
+          }
+        }
+      },
+      "block_order": [
+        "text_4BBYnb",
+        "text_NF4gGx",
+        "heading_VmWTaC",
+        "text_7YaKKq",
+        "button_UKzxxU"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/FAMILY_FRONT__1.png",
+        "image_height": "750px",
+        "image_width": "medium",
+        "layout": "image_first",
+        "text_alignment": "left",
+        "content_position": "align-self-center",
+        "image_height_mobile": "300px",
+        "text_alignment_mobile": "center",
+        "color_text": "#062f3d",
+        "color_background": "#f7f7f7",
+        "gradient_background": "",
+        "color_background_2": "",
+        "gradient_background_2": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#f7f7f7",
+        "color_button_background": "#f78273",
+        "color_button_gradient": "",
+        "padding_top": 28,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "image_with_text_overlay_BKzFdk": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_fmCLtz": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "heading_UrJ8MQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_TLewKa": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fmCLtz",
+        "heading_UrJ8MQ",
+        "text_TLewKa"
+      ],
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/CL-3_Part_AMPM_System-WebImage-HORI-v3.png",
+        "image_height": "adapt",
+        "content_width": "small",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_mobile": "shopify://shop_images/CL-3_Part_AMPM_System-WebImage-VERT.png",
+        "image_height_mobile": "adapt",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_highlight": "#f78273",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 52,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "testimonials_banner_NBNy6r": {
+      "type": "testimonials-banner",
+      "blocks": {
+        "testimonial_nCyiCK": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p><em>\"Sleep quality improved within the first week. I wake up feeling actually refreshed.\"</em> </p>",
+            "author": "David L., 38",
+            "author_info": "",
+            "author_url": "",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_jBKhcC": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p><em>\"Finally, a system I can stick to. No more cabinet full of half-empty bottles.\"</em> </p>",
+            "author": "James R., 45",
+            "author_info": "",
+            "author_url": "",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "testimonial_3KnpBQ": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "quote",
+            "text": "<p><em>\"The afternoon energy crash is gone. I feel consistent throughout my entire workday now.\"   </em></p>",
+            "author": "Marcus T., 42",
+            "author_info": "",
+            "author_url": "",
+            "image_ratio": "rounded",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_nCyiCK",
+        "testimonial_jBKhcC",
+        "testimonial_3KnpBQ"
+      ],
+      "name": "t:sections.testimonials-banner.presets.name",
+      "settings": {
+        "transparent_header": false,
+        "image_height": "650px",
+        "content_position": "md:items-center md:justify-center",
+        "image_height_mobile": "auto",
+        "content_position_mobile": "items-center justify-center",
+        "color_text": "#f7f7f7",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_overlay": "#062f3d",
+        "overlay_opacity": 100,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "rounded": false,
+        "enable_parallax": true,
+        "parallax_direction": "vertical"
+      }
+    },
+    "multicolumn_PCwCdq": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_9TQCwM": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Greg_Portrait_1.png",
+            "image_ratio": "portrait",
+            "heading": "<em>\"The 13 ingredients of Coastline I consider to be foundational to the future of human health.\"</em>",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>\"After reviewing thousands of research papers and analyzing countless supplement protocols, these 13 ingredients represent the gold standard. Each one has robust clinical evidence and addresses fundamental aspects of healthy aging that I see compromised in my practice every day.\"<br/><br/><strong>– Greg Potter, PhD, MSc</strong><br/><em>Sleep & Circadian Health Researcher</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_VfrfLJ": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Jessicabodasphotography-jacques.jpg",
+            "image_ratio": "portrait",
+            "heading": "<em><strong>\"Coastline is what happens when you combine scientific rigor with real-world clinical understanding.\"</strong></em>",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>\"After over two decades working in the clinical nutrition industry, I’ve seen how confusing the supplement landscape can be — even for health professionals. Coastline takes a refreshingly disciplined approach: evidence-driven ingredients, clinically meaningful doses, and clear intent behind every inclusion.</p><p>It’s a formulation built not to follow trends, but to stand the test of time — one that truly supports the biology of aging from the inside out.\"</p><p><strong> – Dr. Jacqueline Jacques, ND</strong><br/><em>Doctor of Naturopathic Medicine<br/>Wellness Industry Expert</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_8wWFyg": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Nic_Portrait.png",
+            "image_ratio": "portrait",
+            "heading": "<em><strong>\"I value Coastline's quality, scientifically rigorous ingredients. It eliminates hassle with the greatest certainty of results.\"</strong></em>",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>\"When I'm looking at a supplement, I'm considering two primary factors – one, is it noticeably effective as determined by, primarily, human trials, and two, is it dosed appropriately. Coastline does both to the fullest degree. Additionally, it does this in one simple supplement matrix that hits all aspects of healthspan, and with a certainty in quality.\"<br/><br/><strong>– Dr. Nicolas Verhoeven</strong><br/><em>Ph.D. in Molecular Medicine (Track: Physiology) M.S. Kinesiology - Exercise PhysiologyACSM CPT</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_DprhDY": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/CL-ChrisP-Scientist.png",
+            "image_ratio": "portrait",
+            "heading": "<em>\"Coastline represents a new era of precision supplementation — one rooted in clarity, science, and consistency.\"</em>",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>\"Most supplements are built around marketing stories rather than measurable outcomes. What Coastline has done is strip away that noise and focus only on ingredients with real mechanistic data behind them — compounds that directly influence the pathways of cellular health, recovery, and longevity.</p><p>For me, that’s the future: fewer ingredients, more certainty, and an evidence-based foundation people can trust every single day.\"<br/><br/><strong>– Dr. Chris Pollock, PhD</strong></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_9TQCwM",
+        "column_VfrfLJ",
+        "column_8wWFyg",
+        "column_DprhDY"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "gap": "large",
+        "columns": 4,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Expert Opinions",
+        "heading_size": "title-lg tracking-heading",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "multicolumn_c4ChtM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_pQeCHJ": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "adapt",
+            "heading": "1. Healthy Aging",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Supports 11 key body systems<br/>Targets 12 hallmarks of aging<br/>Helps maintain vitality over time</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_DE8DAg": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "adapt",
+            "heading": "2. Sustained Energy",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Supports energy that lasts<br/>Helps maintain all day vitality<br/>Supports cellular energy production</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_rHwakw": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "adapt",
+            "heading": "3. Mental Clarity",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Think clearly when it counts<br/>Improve ognitive function<br/>Maintain focus and concentration</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_Uh6Kag": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "adapt",
+            "heading": "4. Recovery Support",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Bounce back faster<br/>Supports muscle recovery<br/>Maintain joint health and mobility</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_BmdfYg": {
+          "type": "column",
+          "settings": {
+            "show_border": true,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image_ratio": "adapt",
+            "heading": "5. Sleep Quality",
+            "heading_size": "text-2xl lg:text-3xl",
+            "text": "<p>Deeper, restorative sleep<br/>Fall asleep more easily<br/>Healthy sleep-wake cycles</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_pQeCHJ",
+        "column_DE8DAg",
+        "column_rHwakw",
+        "column_Uh6Kag",
+        "column_BmdfYg"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "gap": "large",
+        "columns": 2,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "The 5 Main Benefits:",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>13 clinically-backed ingredients working together to provide both short-term and long-term benefit as follows:</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#f7f7f7",
+        "color_background": "#062f3d",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 96,
+        "padding_bottom": 60,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "multicolumn_fG4pVz": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_3MyJVc": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Artboard_18.png",
+            "image_ratio": "portrait",
+            "heading": "★★★★★ Brooke Y., 34",
+            "heading_size": "text-base-xl",
+            "text": "<p><em>“I like that I don’t have to second-guess what to take, or order 5 different products anymore. Now I get most of what I'm looking for in one place.”</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_M4qgCL": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Artboard_20.png",
+            "image_ratio": "portrait",
+            "heading": "★★★★★ Martin R., 46",
+            "heading_size": "text-base-xl",
+            "text": "<p><em>\"I was excited to find Coastline. The 13 included ingredients are definitely the most proven, and I appreciate the clinically significant doses as well as the links to all the studies.\"</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_73qYYX": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/BlondeStandingByCounter_ea704908-fea4-489a-842d-b059e245d5f3.png",
+            "image_ratio": "portrait",
+            "heading": "★★★★★ Rachel S., 35",
+            "heading_size": "text-lg-2xl",
+            "text": "<p><em>\"I'm loving the energy, and clarity I'm feeling from Coastline. Definitely feels likes it's helping me keep up with my kids, and the hectic schedule.\" </em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_XrUHMG": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Guy_In_Red_Shirt_2.png",
+            "image_ratio": "portrait",
+            "heading": "★★★★★ Calvin, 35",
+            "heading_size": "text-base-xl",
+            "text": "<p><em>\"Finally! Coastline has all the ingredients I was already taking – plus a few new ones I'm excited to include in my supplements regimen.\"</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_NtmRzT": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/BlondeHoldingPack_e830a39e-8a26-4016-909b-5e62fe930024.png",
+            "image_ratio": "portrait",
+            "heading": "★★★★★ Janet S., 51",
+            "heading_size": "text-base-xl",
+            "text": "<p><em>\"I love how Coastline makes my supplement routine easy. I used to have bottles everywhere. Now I get all the ingredients I want and more in one place.\" </em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_NDmTbj": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Artboard_16_cf885d57-f058-42c6-a34d-b9a42d633379.png",
+            "image_ratio": "portrait",
+            "heading": "★★★★★ Ades S., 38",
+            "heading_size": "text-base-xl",
+            "text": "<p><em>“Approching middle age, I want to do everything I can to maintain my energy and health. It feels good knowing I’m taking only the most trusted ingredients.\"</em></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_3MyJVc",
+        "column_M4qgCL",
+        "column_73qYYX",
+        "column_XrUHMG",
+        "column_NtmRzT",
+        "column_NDmTbj"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "gap": "large",
+        "columns": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "What New Coastliners Are Saying",
+        "heading_size": "title-lg tracking-heading",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 36,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "rich_text_ahywUW": {
+      "type": "rich-text",
+      "blocks": {
+        "text_e7jqQt": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>The product reviews reflect individual experiences, and as individuals vary, so may results. To support and complement benefits, it is important to prioritize healthy lifestyle choices, including consistent exercise, a balanced diet, ample rest, and mindfulness. Use as directed.</em></p>",
+            "text_size": "subtext-sm",
+            "text_max_size": 12,
+            "text_font": "body",
+            "secondary_color": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text_e7jqQt"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#062f3d",
+        "color_background": "#f7f7f7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 16,
+        "padding_bottom": 20,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "rich_text_xDhMGr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_N4ijVP": {
+          "type": "heading",
+          "settings": {
+            "heading": "How we compare to the competition:",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_LHwyHt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>See why Coastline delivers better value with fewer, higher-quality ingredients</p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_xg4bWg": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true,
+            "button_secondary_style": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_N4ijVP",
+        "text_LHwyHt",
+        "button_xg4bWg"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "text_alignment": "center",
+        "text_alignment_mobile": "center",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#062f3d",
+        "color_background": "#f7f7f7",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 92,
+        "padding_bottom": 20,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "image_with_text_overlay_KAJ3DW": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_dyTT87": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "heading_NDq6fP": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_nVha9H": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_dyTT87",
+        "heading_NDq6fP",
+        "text_nVha9H"
+      ],
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/CLCompetitionComparisonChart-Sept18_25_1.png",
+        "image_height": "650px",
+        "content_width": "small",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_mobile": "shopify://shop_images/CLComparison-Mobile-Sept18_1.png",
+        "image_height_mobile": "auto",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "custom_liquid_QwQxaV": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "liquid": "<a id=\"shop\"></a>",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "featured_product_wcLyNe": {
+      "type": "featured-product",
+      "blocks": {
+        "title_4Kgce3": {
+          "type": "title",
+          "settings": {
+            "title_size": "product-title-md",
+            "title_size_mobile": "product-title-md",
+            "show_price": false,
+            "show_rating": true
+          }
+        },
+        "description_raF6BU": {
+          "type": "description",
+          "settings": {
+            "text_size": "text-base"
+          }
+        },
+        "variant_picker_DEWTqf": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "enable_color_swatches": true,
+            "color_swatch_type": "color",
+            "size_chart": ""
+          }
+        },
+        "liquid_6d9N7U": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<script src=\"https://cdn.rechargeassets.com/static/js/widget.js\"></script>\n<div class=\"recharge-widget\" data-product-handle=\"coastline-welcome-pack\"></div>"
+          }
+        },
+        "buy_buttons_8Hxndh": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "enable_back_in_stock": false,
+            "show_back_in_stock_name": false,
+            "show_back_in_stock_phone": false
+          }
+        },
+        "spinning_text_VB3qe3": {
+          "type": "spinning_text",
+          "settings": {
+            "text": "Featured product"
+          }
+        }
+      },
+      "block_order": [
+        "title_4Kgce3",
+        "description_raF6BU",
+        "variant_picker_DEWTqf",
+        "liquid_6d9N7U",
+        "buy_buttons_8Hxndh",
+        "spinning_text_VB3qe3"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "coastline-welcome-pack",
+        "enable_sticky_info": true,
+        "media_size": 66,
+        "gallery_layout": "thumbnail",
+        "thumbnail_position": "beside",
+        "image_ratio": "adapt",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "mobile_layout": "full_width",
+        "image_ratio_mobile": "square",
+        "mobile_thumbnail": false,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "multicolumn_MtP9Dj": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_xwwzYd": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/CL-MORNING_08d0289a-9aa1-43f0-a5ef-995373f5a93f.png",
+            "image_ratio": "adapt",
+            "heading": "MORNING BLEND + 1x MORNING SOFTGEL",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Start your day in the most powerful way, with targeted supplements for energy, focus, and cellular protection.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_eGdGUN": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "image": "shopify://shop_images/CL-EVENING.png",
+            "image_ratio": "adapt",
+            "heading": "2x EVENING CAPSULES",
+            "heading_size": "text-lg-2xl",
+            "text": "<p>Wind down with supplements clinically-proven to support recovery, sleep quality, and overnight cellular repair. </p>",
+            "button_label": "",
+            "button_link": "",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_xwwzYd",
+        "column_eGdGUN"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "gap": "large",
+        "columns": 2,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "How Coastline Works:",
+        "heading_size": "title-lg tracking-heading",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>A simple AM/PM system designed to fit seamlessly into your day</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#f7f7f7",
+        "color_background": "#062f3d",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "image_with_text_overlay_T9XEGT": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_LDVM9V": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "heading_4jNcNC": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_P9tfjd": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_LDVM9V",
+        "heading_4jNcNC",
+        "text_P9tfjd"
+      ],
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/AM_Powder_1.png",
+        "image_height": "650px",
+        "content_width": "small",
+        "content_position": "md:items-start md:justify-start",
+        "text_alignment": "left",
+        "image_mobile": "shopify://shop_images/POWDER_1.png",
+        "image_height_mobile": "400px",
+        "content_position_mobile": "items-start justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#062f3d",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "portfolio_aVwBdh": {
+      "type": "portfolio",
+      "blocks": {
+        "profile_tCLPJb": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_67.png",
+            "heading": "Creatine Monohydrate - 5250 mg",
+            "text": "<p>The gold standard form for cellular energy metabolism and cognitive function. Supports muscle strength, power output, and brain health while helping maintain ATP production - your body's primary energy currency. Research shows it may help preserve muscle mass and cognitive performance as you age, making everyday activities feel easier and supporting mental clarity throughout your day.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_chzmeA": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_54.png",
+            "heading": "L-Glycine 5000 mg",
+            "text": "<p>A foundational amino acid that's crucial for collagen synthesis, supporting healthy skin, joints, and connective tissues. Acts as a calming neurotransmitter that can improve sleep quality while supporting detoxification processes in the liver. As glycine production declines with age, supplementation helps maintain tissue repair, wound healing, and may support longevity pathways.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_BqCzEy": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_55.png",
+            "heading": "Inulin (from Chicory) 4000 mg",
+            "text": "<p>A premium prebiotic fiber that selectively feeds beneficial gut bacteria, supporting digestive health and immune function. Helps improve mineral absorption, particularly calcium and magnesium, while promoting regular bowel movements. A healthy gut microbiome is linked to better mood, immune response, and even cognitive function - making this a foundation for overall wellness.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_XX7ggm": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_60.png",
+            "heading": "Taurine 3050 mg",
+            "text": "<p>An essential amino acid that declines significantly with age, supporting cardiovascular health, exercise performance, and cellular protection. Helps regulate electrolyte balance, supports healthy blood pressure, and may improve insulin sensitivity. Research suggests taurine supplementation can help maintain youthful cellular function and energy levels as you age.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_fJ3gYf": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_57.png",
+            "heading": "Glucosamine 750 mg",
+            "text": "<p>A building block compound essential for healthy cartilage and joint function. Helps maintain joint mobility, reduces stiffness, and supports the body's natural ability to repair and maintain connective tissues. Particularly important as natural glucosamine production decreases with age, leading to joint discomfort and reduced mobility over time.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_dpiJz3": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/bizhillingdon_image_of_banana_slices_for_a_magnesium_ingredient_e1b70161-bc32-409d-ab0c-740ca755e575.png",
+            "heading": "Magnesium Citrate 150 mg",
+            "text": "<p>An essential mineral cofactor in over 300 enzymatic reactions, supporting energy production, muscle function, and nervous system health. Helps regulate blood sugar, supports bone health, and promotes restful sleep. Most people don't get enough magnesium from diet alone, making supplementation crucial for optimal cellular function and stress management.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_aHraB3": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_59.png",
+            "heading": "L-Ergothioneine 5mg",
+            "text": "<p>A powerful 'longevity vitamin' and master antioxidant that accumulates in tissues throughout the body, particularly the brain, heart, and liver. Provides cellular protection against oxidative stress and inflammation while supporting mitochondrial health. Research suggests it may help maintain cognitive function and support healthy aging at the cellular level.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        }
+      },
+      "block_order": [
+        "profile_tCLPJb",
+        "profile_chzmeA",
+        "profile_BqCzEy",
+        "profile_XX7ggm",
+        "profile_fJ3gYf",
+        "profile_dpiJz3",
+        "profile_aHraB3"
+      ],
+      "name": "t:sections.portfolio.presets.name",
+      "settings": {
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "layout": "default",
+        "image_ratio": "portrait",
+        "image_ratio_mobile": "landscape",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "Morning Blend Ingredients",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left justify-start",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 56,
+        "padding_bottom": 120,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "image_with_text_overlay_d8ca9M": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/CL_MorningSoftGelsOnly_Mockup_ExtendedBackground_2.png",
+        "image_height": "750px",
+        "content_width": "small",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_mobile": "shopify://shop_images/CL_MorningSoftGelsOnly_Mockup_ExtendedBackground_1.png",
+        "image_height_mobile": "400px",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 70,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "portfolio_kQtBhX": {
+      "type": "portfolio",
+      "blocks": {
+        "profile_6iypNX": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_56.png",
+            "heading": "Coenzyme Q10 200 mg",
+            "text": "<p>An essential cofactor for mitochondrial energy production, supporting heart health and cellular energy metabolism. Acts as a powerful antioxidant protecting cells from oxidative damage while supporting cardiovascular function. CoQ10 levels naturally decline with age, making supplementation important for maintaining energy levels, exercise performance, and long-term heart health.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_CJzzAD": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_63.png",
+            "heading": "Lutein 10 mg",
+            "text": "<p>A carotenoid antioxidant that selectively accumulates in the retina, providing protection against blue light damage and supporting long-term eye health. Helps maintain visual acuity, reduces eye strain from screen time, and may support cognitive function. As natural lutein leve</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_tEtbhX": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_62.png",
+            "heading": "Zeaxanthin 2 mg",
+            "text": "<p>Works synergistically with lutein to form the macular pigment, providing enhanced protection for the central retina and supporting sharp, clear vision. Helps filter harmful blue light, reduces glare sensitivity, and supports overall eye comfort during daily activities. Essential for maintaining long-term eye health and visual performance as you age.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_wjL8UK": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_63.png",
+            "heading": "Astaxanthin 6 mg",
+            "text": "<p>One of nature's most potent antioxidants, providing comprehensive cellular protection and supporting skin health, eye health, and exercise recovery. Helps reduce inflammation, supports cardiovascular health, and may improve skin elasticity and hydration. Research shows it can help reduce exercise-induced fatigue and support overall vitality and healthy aging.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        }
+      },
+      "block_order": [
+        "profile_6iypNX",
+        "profile_CJzzAD",
+        "profile_tEtbhX",
+        "profile_wjL8UK"
+      ],
+      "name": "t:sections.portfolio.presets.name",
+      "settings": {
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "layout": "default",
+        "image_ratio": "portrait",
+        "image_ratio_mobile": "landscape",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "Morning SoftGel Ingredients",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left justify-start",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 52,
+        "padding_bottom": 120,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "image_with_text_overlay_bJ397z": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image-with-text-overlay.presets.name",
+      "settings": {
+        "transparent_header": false,
+        "image": "shopify://shop_images/PM_Capsule_Wide.png",
+        "image_height": "650px",
+        "content_width": "small",
+        "content_position": "md:items-end md:justify-start",
+        "text_alignment": "left",
+        "image_mobile": "shopify://shop_images/PM_Capsule.png",
+        "image_height_mobile": "400px",
+        "content_position_mobile": "items-end justify-start",
+        "text_alignment_mobile": "left",
+        "color_text": "#ffffff",
+        "color_highlight": "#e0a580",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 70,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "portfolio_ip8kjN": {
+      "type": "portfolio",
+      "blocks": {
+        "profile_hcxCqd": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_57.png",
+            "heading": "Glucosamine Sulphate 750 mg",
+            "text": "<p>Supports joint health and cartilage repair during overnight recovery when your body naturally rebuilds and repairs tissues. Helps maintain joint flexibility, reduces morning stiffness, and supports the body's natural healing processes. Taking it in the evening aligns with your body's natural repair cycle for optimal joint support and long-term mobility.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_UVTFLn": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_64.png",
+            "heading": "Lithium 400 mcg",
+            "text": "<p>A trace mineral that supports brain health, mood stability, and cognitive function at safe nutritional doses. May help protect neurons, support healthy brain aging, and promote emotional balance. Research suggests it can support longevity pathways and help maintain cognitive clarity and mental resilience as you age, making it an important component of brain health optimization.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        },
+        "profile_bPMib6": {
+          "type": "profile",
+          "settings": {
+            "image": "shopify://shop_images/Group_65.png",
+            "heading": "L-Theanine 200 mg",
+            "text": "<p>An amino acid from tea that promotes calm, focused relaxation without drowsiness while supporting better sleep quality. Helps reduce stress and anxiety, promotes alpha brain wave activity associated with relaxed alertness, and can improve sleep onset and quality. Perfect for evening use to help you unwind and prepare for restorative sleep.</p>",
+            "color_text": "#ffffff",
+            "color_background": "#171717"
+          }
+        }
+      },
+      "block_order": [
+        "profile_hcxCqd",
+        "profile_UVTFLn",
+        "profile_bPMib6"
+      ],
+      "name": "t:sections.portfolio.presets.name",
+      "settings": {
+        "columns": 4,
+        "carousel_on_desktop": false,
+        "layout": "default",
+        "image_ratio": "portrait",
+        "image_ratio_mobile": "landscape",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "heading": "Evening Capsules",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left justify-start",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "image_with_text_CRg9YM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_z3HUtF": {
+          "type": "heading",
+          "settings": {
+            "heading": "RECEIVE A FREE GIFT WITH PURCHASE",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "heading_YhGAxW": {
+          "type": "heading",
+          "settings": {
+            "heading": "<em>Receive a FREE Glass Shaker ($15 Value) with your Coastline Welcome Pack.</em>",
+            "heading_size": "title-sm",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_XAmfBg": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_dtyfKr": {
+          "type": "button",
+          "settings": {
+            "button_label": "Use checkout code WELCOME99",
+            "button_link": "shopify://products/coastline-welcome-pack",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true,
+            "button_secondary_style": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_z3HUtF",
+        "heading_YhGAxW",
+        "text_XAmfBg",
+        "button_dtyfKr"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/WATERBOTTLE.jpg",
+        "image_height": "650px",
+        "image_width": "medium",
+        "layout": "text_first",
+        "text_alignment": "left",
+        "content_position": "align-self-center",
+        "image_height_mobile": "auto",
+        "text_alignment_mobile": "left",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_background_2": "",
+        "gradient_background_2": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": true,
+        "parallax_direction": "vertical"
+      }
+    },
+    "faq_64f36A": {
+      "type": "faq",
+      "blocks": {
+        "question_UMdW7G": {
+          "type": "question",
+          "settings": {
+            "title": "When will I notice results?",
+            "text": "<p>Most members report feeling more consistent energy within the first week, with sleep quality improvements often noticed within 3-5 days. More significant benefits like improved recovery and sustained vitality typically develop over 4-8 weeks of consistent use as your body reaches optimal nutrient levels.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_NMRfUD": {
+          "type": "question",
+          "settings": {
+            "title": "How is Coastline different from other supplements?",
+            "text": "<p>Coastline is a complete AM/PM system targeting 11 body systems and 12 hallmarks of aging, not just isolated nutrients. We use research-backed dosages, third-party testing, and transparent labeling. No proprietary blends, artificial flavors, or under-dosed ingredients common in other products.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_7n7H8R": {
+          "type": "question",
+          "settings": {
+            "title": "Can I take Coastline with my current supplements?",
+            "text": "<p>Coastline is designed as a comprehensive foundation, potentially replacing multiple individual supplements. However, we recommend consulting your healthcare provider before making changes to your current regimen, especially if you take medications or have health conditions.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_PgqVpU": {
+          "type": "question",
+          "settings": {
+            "title": "What is your subscription policy?",
+            "text": "<p>You're in complete control. Pause, skip, or cancel anytime through your account dashboard. No contracts, hidden fees, or cancellation hassles. We'll always show your next charge date and send reminders before processing orders.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_7ynfaq": {
+          "type": "question",
+          "settings": {
+            "title": "Is Coastline safe for long-term use?",
+            "text": "<p>Yes, Coastline uses nutritional doses of ingredients that are generally recognized as safe for long-term use. All ingredients are third-party tested for purity and potency. However, we recommend periodic check-ins with your healthcare provider as part of your overall wellness routine.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_MhnXFE": {
+          "type": "question",
+          "settings": {
+            "title": "What if I don't like it?",
+            "text": "<p>We offer a 60-day money-back guarantee. If you're not satisfied for any reason, contact our customer support team for a full refund. We want you to feel confident trying Coastline risk-free.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_76M9dY": {
+          "type": "question",
+          "settings": {
+            "title": "How do you take Coastline?",
+            "text": "<p>Take the Morning Blend and SoftGels with breakfast and the Evening Capsules ideally 1-hour before bed. This timing supports natural circadian rhythms and optimizes absorption. Each step is clearly labeled and contains the optimal daily dose.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_nDJmGf": {
+          "type": "question",
+          "settings": {
+            "title": "Are there any side effects?",
+            "text": "<p>Coastline uses ingredients at nutritional doses with excellent safety profiles. Some people may experience mild digestive changes initially as their body adjusts. If you experience any concerning symptoms, discontinue use and consult your healthcare provider.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "question_UMdW7G",
+        "question_NMRfUD",
+        "question_7n7H8R",
+        "question_PgqVpU",
+        "question_7ynfaq",
+        "question_MhnXFE",
+        "question_76M9dY",
+        "question_nDJmGf"
+      ],
+      "name": "t:sections.faq.presets.name",
+      "settings": {
+        "style": "with-border",
+        "heading": "FAQs",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "color_overlay": "#ffffff",
+        "overlay_opacity": 4,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "image_with_text_tWC3Gd": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_crpA4W": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "UNBELIEVABLE SAVINGS",
+            "subheading_size": "subtitle-md",
+            "secondary_color": true
+          }
+        },
+        "heading_gR8diz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get Your First Month of Coastline Right Now for only $99.00",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "text_3LKkk8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Use code: WELCOME99 at checkout. Get 13 safe, effective ingredients to start your  comprehensive journey of total body health today. Plus FREE glass shaker!</p>",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "button_7MbPQF": {
+          "type": "button",
+          "settings": {
+            "button_label": "Claim my first month for $99",
+            "button_link": "shopify://products/coastline-welcome-pack",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": false,
+            "button_secondary_style": false
+          }
+        },
+        "text_CBhXGM": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>• 60-day money-back guarantee on your first order, no questions asked.<br/>• Cancel, pause, or modify your subscription anytime online.<br/>• Third-party tested for purity and potency - see the results online.</em></p>",
+            "text_size": "subtext-sm",
+            "text_max_size": 32,
+            "text_font": "body",
+            "secondary_color": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_crpA4W",
+        "heading_gR8diz",
+        "text_3LKkk8",
+        "button_7MbPQF",
+        "text_CBhXGM"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Group_74_1_1_1.png",
+        "image_height": "650px",
+        "image_width": "medium",
+        "layout": "text_first",
+        "text_alignment": "left",
+        "content_position": "align-self-center",
+        "image_mobile": "shopify://shop_images/Group_74_1_1.png",
+        "image_height_mobile": "adapt",
+        "text_alignment_mobile": "left",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_background_2": "",
+        "gradient_background_2": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#f7f7f7",
+        "color_button_background": "#f78273",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "multicolumn_with_icons_MqcnL4": {
+      "type": "features-multicolumn",
+      "blocks": {
+        "column_9hyygt": {
+          "type": "column",
+          "settings": {
+            "icon": "support",
+            "custom_icon": "",
+            "heading": "60-Day Money-Back Guarantee",
+            "text": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_qYCjb7": {
+          "type": "column",
+          "settings": {
+            "icon": "box",
+            "custom_icon": "",
+            "heading": "Free Shipping & Fast",
+            "text": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_pMkdHQ": {
+          "type": "column",
+          "settings": {
+            "icon": "shield",
+            "custom_icon": "",
+            "heading": "Cancel/Modify Anytime",
+            "text": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_9hyygt",
+        "column_qYCjb7",
+        "column_pMkdHQ"
+      ],
+      "name": "t:sections.multicolumn-with-icons.presets.name",
+      "settings": {
+        "style": "with-border",
+        "columns": 3,
+        "text_alignment": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "color_text": "#f7f7f7",
+        "color_background": "#062f3d",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    }
+  },
+  "order": [
+    "main-page",
+    "image_with_text_overlay_DGttQJ",
+    "multicolumn_with_icons_bBdBjV",
+    "image_with_text_78pGf4",
+    "image_with_text_overlay_BKzFdk",
+    "testimonials_banner_NBNy6r",
+    "multicolumn_PCwCdq",
+    "multicolumn_c4ChtM",
+    "multicolumn_fG4pVz",
+    "rich_text_ahywUW",
+    "rich_text_xDhMGr",
+    "image_with_text_overlay_KAJ3DW",
+    "custom_liquid_QwQxaV",
+    "featured_product_wcLyNe",
+    "multicolumn_MtP9Dj",
+    "image_with_text_overlay_T9XEGT",
+    "portfolio_aVwBdh",
+    "image_with_text_overlay_d8ca9M",
+    "portfolio_kQtBhX",
+    "image_with_text_overlay_bJ397z",
+    "portfolio_ip8kjN",
+    "image_with_text_CRg9YM",
+    "faq_64f36A",
+    "image_with_text_tWC3Gd",
+    "multicolumn_with_icons_MqcnL4"
+  ]
+}

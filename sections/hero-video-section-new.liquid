@@ -1,0 +1,692 @@
+{% assign ai_gen_id = section.id | replace: '_', '' | downcase %}
+
+{% liquid
+  if section.settings.section_height == 'adapt'
+    assign section_height_desktop = 'auto'
+  elsif section.settings.section_height == 'fullscreen'
+    assign section_height_desktop = '100vh'
+  else
+    assign section_height_desktop = section.settings.section_height_custom | append: 'px'
+  endif
+
+  if section.settings.section_height_mobile == 'adapt'
+    assign section_height_mobile = 'auto'
+  elsif section.settings.section_height_mobile == 'fullscreen'
+    assign section_height_mobile = '100vh'
+  else
+    assign section_height_mobile = section.settings.section_height_mobile_custom | append: 'px'
+  endif
+%}
+
+{% style %}
+  {% if section.settings.hide_header_menu %}
+    body .header__navigation,
+    body .header__menu,
+    body nav[role="navigation"],
+    body .header nav,
+    body header nav,
+    body .header .header__menu,
+    body #shopify-section-header nav,
+    body [class*="header"] nav {
+      display: none !important;
+      visibility: hidden !important;
+    }
+  {% endif %}
+
+  .ai-hero-section-{{ ai_gen_id }} {
+    background-color: {{ section.settings.background_color }};
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  {% if section.settings.transparent_header %}
+    /* Transparent header with announcement banner support */
+    .shopify-section-header-sticky + * .ai-hero-section-{{ ai_gen_id }},
+    .shopify-section-header-hidden + * .ai-hero-section-{{ ai_gen_id }},
+    .shopify-section:first-child .ai-hero-section-{{ ai_gen_id }} {
+      margin-top: calc(-1 * var(--header-height, 100px));
+    }
+    
+    /* When announcement banner exists, don't pull up as much */
+    .shopify-section-announcement-bar + .shopify-section-header-sticky + * .ai-hero-section-{{ ai_gen_id }},
+    .shopify-section-announcement-bar + .shopify-section-header-hidden + * .ai-hero-section-{{ ai_gen_id }} {
+      margin-top: 0;
+    }
+    
+    .ai-hero-container-{{ ai_gen_id }} {
+      padding-top: var(--header-height, 100px);
+    }
+    
+    /* When announcement banner exists, add its height too */
+    .shopify-section-announcement-bar + .shopify-section-header-sticky + * .ai-hero-container-{{ ai_gen_id }},
+    .shopify-section-announcement-bar + .shopify-section-header-hidden + * .ai-hero-container-{{ ai_gen_id }} {
+      padding-top: calc(var(--header-height, 100px) + var(--announcement-bar-height, 40px));
+    }
+  {% endif %}
+
+  .ai-hero-container-{{ ai_gen_id }} {
+    display: flex;
+    width: 100%;
+    min-height: {{ section_height_desktop }};
+    height: {{ section_height_desktop }};
+  }
+
+  .ai-hero-video-column-{{ ai_gen_id }} {
+    flex: 0 0 50%;
+    position: relative;
+    overflow: hidden;
+    height: {{ section_height_desktop }};
+  }
+
+  .ai-hero-video-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: {{ section.settings.video_background_color }};
+  }
+
+  .ai-hero-video-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ section.settings.video_crop_position }};
+  }
+
+  .ai-hero-video-mobile-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-hero-video-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.video_background_color }};
+  }
+
+  .ai-hero-video-placeholder-{{ ai_gen_id }} svg {
+    max-width: 300px;
+    max-height: 300px;
+    opacity: 0.3;
+  }
+
+  .ai-hero-content-column-{{ ai_gen_id }} {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    padding: 40px 60px {{ section.settings.section_padding_bottom }}px;
+  }
+
+  .ai-hero-content-wrapper-{{ ai_gen_id }} {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .ai-hero-content-wrapper-{{ ai_gen_id }} > * {
+    margin-bottom: {{ section.settings.element_spacing_desktop }}px;
+  }
+
+  .ai-hero-content-wrapper-{{ ai_gen_id }} > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-hero-content-wrapper-{{ ai_gen_id }} > .ai-hero-headline-{{ ai_gen_id }} {
+    margin-bottom: {{ section.settings.headline_margin_bottom }}px !important;
+  }
+
+  .ai-hero-badge-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-hero-badge-desktop-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: {{ section.settings.badge_background_color }};
+    color: {{ section.settings.badge_text_color }};
+    font-size: {{ section.settings.badge_font_size_desktop }}px;
+    border-radius: {{ section.settings.badge_border_radius }}px;
+    width: {{ section.settings.badge_width }}%;
+    text-align: center;
+  }
+
+  .ai-hero-review-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-hero-stars-{{ ai_gen_id }} {
+    display: flex;
+    gap: 6px;
+    color: {{ section.settings.star_color }};
+  }
+
+  .ai-hero-stars-{{ ai_gen_id }} svg {
+    width: {{ section.settings.star_size_desktop }}px;
+    height: {{ section.settings.star_size_desktop }}px;
+  }
+
+  .ai-hero-review-text-{{ ai_gen_id }} {
+    font-size: {{ section.settings.review_font_size_desktop }}px;
+    color: {{ section.settings.review_text_color }};
+  }
+
+  .ai-hero-headline-{{ ai_gen_id }} {
+    font-size: {{ section.settings.headline_font_size_desktop }}px;
+    color: {{ section.settings.headline_color }};
+    margin: 0 0 {{ section.settings.headline_margin_bottom }}px 0 !important;
+    line-height: {{ section.settings.headline_line_height }};
+  }
+
+  .ai-hero-headline-{{ ai_gen_id }} p {
+    margin: 0;
+  }
+
+  .ai-hero-subheadline-{{ ai_gen_id }} {
+    font-size: {{ section.settings.subheadline_font_size_desktop }}px;
+    color: {{ section.settings.subheadline_color }};
+    line-height: 1.5;
+  }
+
+  .ai-hero-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: clamp(10px, 1.5vw, 14px) clamp(16px, 2.2vw, 24px);
+    background-color: {{ section.settings.button_background_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ section.settings.button_border_radius }}px;
+    font-size: {{ section.settings.button_font_size_desktop }}px;
+    font-weight: 700;
+    line-height: 1.1;
+    transition: all 0.3s ease;
+    width: {{ section.settings.button_width }}%;
+    text-align: center;
+    margin-bottom: {{ section.settings.button_margin_bottom }}px;
+  }
+
+  .ai-hero-button-{{ ai_gen_id }}:hover {
+    background-color: {{ section.settings.button_hover_background_color }};
+    color: {{ section.settings.button_hover_text_color }};
+  }
+
+  .ai-hero-callouts-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: {{ section.settings.callout_gap }}px;
+    margin-top: {{ section.settings.button_margin_bottom }}px;
+  }
+
+  .ai-hero-callout-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 48%;
+  }
+
+  .ai-hero-callout-icon-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    color: {{ section.settings.callout_icon_color }};
+    flex-shrink: 0;
+  }
+
+  .ai-hero-callout-text-{{ ai_gen_id }} {
+    font-size: {{ section.settings.callout_font_size_desktop }}px;
+    color: {{ section.settings.callout_text_color }};
+  }
+
+  .ai-hero-trust-badges-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    padding-top: {{ section.settings.trust_badges_padding_top }}px;
+    margin-top: {{ section.settings.trust_badges_spacing_top }}px;
+    {% if section.settings.trust_badges_border_width > 0 %}
+      border-top: {{ section.settings.trust_badges_border_width }}px solid {{ section.settings.trust_badges_border_color }};
+    {% endif %}
+  }
+
+  .ai-hero-trust-badge-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 auto;
+  }
+
+  .ai-hero-trust-badge-icon-{{ ai_gen_id }} {
+    width: {{ section.settings.trust_badge_icon_size_desktop }}px;
+    height: {{ section.settings.trust_badge_icon_size_desktop }}px;
+    color: {{ section.settings.trust_badge_icon_color }};
+    flex-shrink: 0;
+  }
+
+  .ai-hero-trust-badge-icon-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ai-hero-trust-badge-text-{{ ai_gen_id }} {
+    font-size: {{ section.settings.trust_badge_font_size_desktop }}px;
+    font-weight: {{ section.settings.trust_badge_font_weight }};
+    color: {{ section.settings.trust_badge_text_color }};
+    line-height: 1.3;
+    white-space: normal;
+  }
+
+  @media (max-width: 749px) {
+    {% if section.settings.transparent_header %}
+      .shopify-section:first-child .ai-hero-section-{{ ai_gen_id }} {
+        margin-top: calc(-1 * var(--header-height, 60px));
+      }
+      .ai-hero-container-{{ ai_gen_id }} {
+        padding-top: var(--header-height, 60px);
+      }
+    {% endif %}
+
+    .ai-hero-container-{{ ai_gen_id }} {
+      flex-direction: column;
+      height: auto;
+      min-height: auto;
+    }
+
+    .ai-hero-video-column-{{ ai_gen_id }} {
+      flex: 0 0 auto;
+      width: 100%;
+      height: {{ section_height_mobile }} !important;
+      min-height: {{ section_height_mobile }} !important;
+      max-height: {{ section_height_mobile }} !important;
+    }
+
+    .ai-hero-video-wrapper-{{ ai_gen_id }} {
+      width: 100%;
+      height: {{ section_height_mobile }} !important;
+      min-height: {{ section_height_mobile }} !important;
+      max-height: {{ section_height_mobile }} !important;
+      overflow: hidden;
+    }
+
+    .ai-hero-video-desktop-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-hero-video-mobile-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-hero-video-{{ ai_gen_id }} {
+      object-position: {{ section.settings.video_crop_position_mobile }};
+      height: 100% !important;
+      width: 100% !important;
+    }
+
+    .ai-hero-content-column-{{ ai_gen_id }} {
+      flex: 0 0 auto;
+      width: 100%;
+      padding: 40px 20px {{ section.settings.section_padding_bottom_mobile }}px;
+      text-align: center;
+      min-height: auto;
+    }
+
+    .ai-hero-content-wrapper-{{ ai_gen_id }} {
+      margin-top: -55px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .ai-hero-content-wrapper-{{ ai_gen_id }} > * {
+      margin-bottom: {{ section.settings.element_spacing_mobile }}px;
+    }
+
+    .ai-hero-content-wrapper-{{ ai_gen_id }} > *:last-child {
+      margin-bottom: 0;
+    }
+
+    .ai-hero-content-wrapper-{{ ai_gen_id }} > .ai-hero-headline-{{ ai_gen_id }} {
+      margin-bottom: {{ section.settings.headline_margin_bottom }}px !important;
+    }
+
+    .ai-hero-badge-desktop-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-hero-badge-{{ ai_gen_id }} {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: {{ section.settings.badge_background_color }};
+      color: {{ section.settings.badge_text_color }};
+      font-size: {{ section.settings.badge_font_size_mobile }}px;
+      border-radius: {{ section.settings.badge_border_radius }}px;
+      width: {{ section.settings.badge_width }}%;
+      text-align: center;
+    }
+
+    .ai-hero-button-{{ ai_gen_id }} {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: {{ section.settings.button_margin_bottom }}px !important;
+      font-size: {{ section.settings.button_font_size_mobile }}px;
+    }
+
+    .ai-hero-review-text-{{ ai_gen_id }} {
+      font-size: {{ section.settings.review_font_size_mobile }}px;
+    }
+
+    .ai-hero-stars-{{ ai_gen_id }} svg {
+      width: {{ section.settings.star_size_mobile }}px;
+      height: {{ section.settings.star_size_mobile }}px;
+    }
+
+    .ai-hero-callout-text-{{ ai_gen_id }} {
+      font-size: {{ section.settings.callout_font_size_mobile }}px;
+    }
+
+    .ai-hero-trust-badge-icon-{{ ai_gen_id }} {
+      width: {{ section.settings.trust_badge_icon_size_mobile }}px;
+      height: {{ section.settings.trust_badge_icon_size_mobile }}px;
+    }
+
+    .ai-hero-trust-badge-text-{{ ai_gen_id }} {
+      font-size: {{ section.settings.trust_badge_font_size_mobile }}px;
+    }
+
+    .ai-hero-headline-{{ ai_gen_id }} {
+      font-size: {{ section.settings.headline_font_size_mobile }}px;
+    }
+
+    .ai-hero-subheadline-{{ ai_gen_id }} {
+      font-size: {{ section.settings.subheadline_font_size_mobile }}px;
+    }
+
+    .ai-hero-review-{{ ai_gen_id }},
+    .ai-hero-callouts-{{ ai_gen_id }},
+    .ai-hero-trust-badges-{{ ai_gen_id }} {
+      justify-content: center;
+    }
+
+    .ai-hero-callouts-{{ ai_gen_id }} {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ai-hero-callout-{{ ai_gen_id }} {
+      justify-content: center;
+    }
+
+    .ai-hero-trust-badges-{{ ai_gen_id }} {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .ai-hero-trust-badge-{{ ai_gen_id }} {
+      justify-content: center;
+      flex: 1 1 auto;
+      gap: 4px;
+    }
+  }
+
+  @media (min-width: 750px) {
+    .ai-hero-content-column-{{ ai_gen_id }} {
+      padding-bottom: 20px !important;
+    }
+  }
+
+  @media (min-width: 990px) {
+    .ai-hero-callouts-{{ ai_gen_id }} {
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 8px;
+      row-gap: 10px;
+    }
+    .ai-hero-callout-{{ ai_gen_id }} {
+      flex: 1 1 48%;
+      max-width: 48%;
+    }
+  }
+{% endstyle %}
+
+<div class="shopify-section"{% if section.settings.transparent_header %} allow-transparent-header{% endif %}>
+  <div class="ai-hero-section-{{ ai_gen_id }}" {{ section.shopify_attributes }}>
+  <div class="ai-hero-container-{{ ai_gen_id }}">
+    <div class="ai-hero-video-column-{{ ai_gen_id }}">
+      <div class="ai-hero-video-wrapper-{{ ai_gen_id }}">
+        {% if section.settings.hero_video_desktop != blank or section.settings.hero_video_mobile != blank %}
+          {% if section.settings.hero_video_desktop != blank %}
+            <video class="ai-hero-video-{{ ai_gen_id }} ai-hero-video-desktop-{{ ai_gen_id }}"
+              {% if section.settings.video_autoplay %}autoplay{% endif %}
+              {% if section.settings.video_loop %}loop{% endif %} muted playsinline>
+              <source src="{{ section.settings.hero_video_desktop.sources[1].url }}" type="{{ section.settings.hero_video_desktop.sources[1].mime_type }}">
+            </video>
+          {% endif %}
+          {% if section.settings.hero_video_mobile != blank %}
+            <video class="ai-hero-video-{{ ai_gen_id }} ai-hero-video-mobile-{{ ai_gen_id }}"
+              {% if section.settings.video_autoplay %}autoplay{% endif %}
+              {% if section.settings.video_loop %}loop{% endif %} muted playsinline>
+              <source src="{{ section.settings.hero_video_mobile.sources[1].url }}" type="{{ section.settings.hero_video_mobile.sources[1].mime_type }}">
+            </video>
+          {% elsif section.settings.hero_video_desktop != blank %}
+            <video class="ai-hero-video-{{ ai_gen_id }} ai-hero-video-mobile-{{ ai_gen_id }}"
+              {% if section.settings.video_autoplay %}autoplay{% endif %}
+              {% if section.settings.video_loop %}loop{% endif %} muted playsinline>
+              <source src="{{ section.settings.hero_video_desktop.sources[1].url }}" type="{{ section.settings.hero_video_desktop.sources[1].mime_type }}">
+            </video>
+          {% endif %}
+        {% else %}
+          <div class="ai-hero-video-placeholder-{{ ai_gen_id }}">
+            {{ 'hero-apparel-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ai-hero-content-column-{{ ai_gen_id }}">
+      <div class="ai-hero-content-wrapper-{{ ai_gen_id }}">
+        {% if section.settings.badge_text != blank %}
+          <div class="ai-hero-badge-{{ ai_gen_id }}">{{ section.settings.badge_text }}</div>
+          <div class="ai-hero-badge-desktop-{{ ai_gen_id }}">{{ section.settings.badge_text }}</div>
+        {% endif %}
+
+        {% if section.settings.show_review %}
+          <div class="ai-hero-review-{{ ai_gen_id }}">
+            <div class="ai-hero-stars-{{ ai_gen_id }}">
+              {% for i in (1..5) %}
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z"/>
+                </svg>
+              {% endfor %}
+            </div>
+            {% if section.settings.review_text != blank %}
+              <span class="ai-hero-review-text-{{ ai_gen_id }}">{{ section.settings.review_text }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.headline != blank %}
+          <div class="ai-hero-headline-{{ ai_gen_id }} {{ section.settings.headline_tag }}">
+            {{ section.settings.headline }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.subheadline != blank %}
+          <div class="ai-hero-subheadline-{{ ai_gen_id }}">{{ section.settings.subheadline }}</div>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" class="ai-hero-button-{{ ai_gen_id }}">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.callout_1_text != blank or section.settings.callout_2_text != blank or section.settings.callout_3_text != blank %}
+          <div class="ai-hero-callouts-{{ ai_gen_id }}">
+            {% if section.settings.callout_1_text != blank %}
+              <div class="ai-hero-callout-{{ ai_gen_id }}">
+                <svg class="ai-hero-callout-icon-{{ ai_gen_id }}" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="ai-hero-callout-text-{{ ai_gen_id }}">{{ section.settings.callout_1_text }}</span>
+              </div>
+            {% endif %}
+            {% if section.settings.callout_2_text != blank %}
+              <div class="ai-hero-callout-{{ ai_gen_id }}">
+                <svg class="ai-hero-callout-icon-{{ ai_gen_id }}" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="ai-hero-callout-text-{{ ai_gen_id }}">{{ section.settings.callout_2_text }}</span>
+              </div>
+            {% endif %}
+            {% if section.settings.callout_3_text != blank %}
+              <div class="ai-hero-callout-{{ ai_gen_id }}">
+                <svg class="ai-hero-callout-icon-{{ ai_gen_id }}" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="ai-hero-callout-text-{{ ai_gen_id }}">{{ section.settings.callout_3_text }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_trust_badges %}
+          <div class="ai-hero-trust-badges-{{ ai_gen_id }}">
+            <div class="ai-hero-trust-badge-{{ ai_gen_id }}">
+              <div class="ai-hero-trust-badge-icon-{{ ai_gen_id }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="ai-hero-trust-badge-text-{{ ai_gen_id }}">{{ section.settings.trust_badge_1_text }}</div>
+            </div>
+            <div class="ai-hero-trust-badge-{{ ai_gen_id }}">
+              <div class="ai-hero-trust-badge-icon-{{ ai_gen_id }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3L22 4"></path>
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                </svg>
+              </div>
+              <div class="ai-hero-trust-badge-text-{{ ai_gen_id }}">{{ section.settings.trust_badge_2_text }}</div>
+            </div>
+            <div class="ai-hero-trust-badge-{{ ai_gen_id }}">
+              <div class="ai-hero-trust-badge-icon-{{ ai_gen_id }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="ai-hero-trust-badge-text-{{ ai_gen_id }}">{{ section.settings.trust_badge_3_text }}</div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Video Section New",
+  "settings": [
+    {"type": "header", "content": "Layout"},
+    {"type": "checkbox", "id": "transparent_header", "label": "Transparent header", "default": false, "info": "Header must be first section on page. Glass effect styling controlled in header section."},
+    {"type": "checkbox", "id": "hide_header_menu", "label": "Hide header menu navigation", "default": false, "info": "Hides the desktop navigation menu in the header"},
+    {"type": "range", "id": "element_spacing_desktop", "min": 10, "max": 60, "step": 5, "unit": "px", "label": "Element spacing (desktop)", "default": 30},
+    {"type": "range", "id": "element_spacing_mobile", "min": 10, "max": 60, "step": 5, "unit": "px", "label": "Element spacing (mobile)", "default": 25},
+    {"type": "range", "id": "section_padding_bottom", "min": 20, "max": 100, "step": 5, "unit": "px", "label": "Section padding bottom (desktop)", "default": 60},
+    {"type": "range", "id": "section_padding_bottom_mobile", "min": 20, "max": 100, "step": 5, "unit": "px", "label": "Section padding bottom (mobile)", "default": 20},
+    {"type": "header", "content": "Desktop Video"},
+    {"type": "video", "id": "hero_video_desktop", "label": "Desktop video"},
+    {"type": "select", "id": "section_height", "label": "Desktop height", "options": [{"value": "adapt", "label": "Adapt"}, {"value": "fullscreen", "label": "Fullscreen"}, {"value": "custom", "label": "Custom"}], "default": "custom"},
+    {"type": "range", "id": "section_height_custom", "min": 400, "max": 1000, "step": 50, "unit": "px", "label": "Custom height", "default": 700},
+    {"type": "header", "content": "Mobile Video"},
+    {"type": "video", "id": "hero_video_mobile", "label": "Mobile video"},
+    {"type": "select", "id": "section_height_mobile", "label": "Mobile height", "options": [{"value": "adapt", "label": "Adapt"}, {"value": "fullscreen", "label": "Fullscreen"}, {"value": "custom", "label": "Custom"}], "default": "custom"},
+    {"type": "range", "id": "section_height_mobile_custom", "min": 300, "max": 800, "step": 50, "unit": "px", "label": "Custom height", "default": 500},
+    {"type": "select", "id": "video_crop_position_mobile", "label": "Mobile crop position", "options": [{"value": "top", "label": "Top"}, {"value": "center", "label": "Center"}, {"value": "bottom", "label": "Bottom"}], "default": "center"},
+    {"type": "header", "content": "Video Settings"},
+    {"type": "checkbox", "id": "video_autoplay", "label": "Autoplay", "default": true},
+    {"type": "checkbox", "id": "video_loop", "label": "Loop", "default": true},
+    {"type": "select", "id": "video_crop_position", "label": "Desktop crop position", "options": [{"value": "top", "label": "Top"}, {"value": "center", "label": "Center"}, {"value": "bottom", "label": "Bottom"}], "default": "center"},
+    {"type": "color", "id": "video_background_color", "label": "Background", "default": "#000000"},
+    {"type": "header", "content": "Badge"},
+    {"type": "text", "id": "badge_text", "label": "Text", "default": "5000+ Welcome Packs Shipped"},
+    {"type": "range", "id": "badge_width", "min": 20, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100},
+    {"type": "range", "id": "badge_font_size_desktop", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Font size (desktop)", "default": 14},
+    {"type": "range", "id": "badge_font_size_mobile", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Font size (mobile)", "default": 12},
+    {"type": "color", "id": "badge_background_color", "label": "Background", "default": "#f78273"},
+    {"type": "color", "id": "badge_text_color", "label": "Text color", "default": "#ffffff"},
+    {"type": "range", "id": "badge_border_radius", "min": 0, "max": 50, "step": 5, "unit": "px", "label": "Border radius", "default": 25},
+    {"type": "header", "content": "Review"},
+    {"type": "checkbox", "id": "show_review", "label": "Show review", "default": true},
+    {"type": "text", "id": "review_text", "label": "Text", "default": "4.9/5 from 1,200+ reviews"},
+    {"type": "range", "id": "review_font_size_desktop", "min": 12, "max": 32, "step": 1, "unit": "px", "label": "Font size (desktop)", "default": 14},
+    {"type": "range", "id": "review_font_size_mobile", "min": 12, "max": 32, "step": 1, "unit": "px", "label": "Font size (mobile)", "default": 12},
+    {"type": "range", "id": "star_size_desktop", "min": 16, "max": 40, "step": 2, "unit": "px", "label": "Star size (desktop)", "default": 26},
+    {"type": "range", "id": "star_size_mobile", "min": 16, "max": 40, "step": 2, "unit": "px", "label": "Star size (mobile)", "default": 22},
+    {"type": "color", "id": "star_color", "label": "Star color", "default": "#f78273"},
+    {"type": "color", "id": "review_text_color", "label": "Text color", "default": "#062f3d"},
+    {"type": "header", "content": "Headline"},
+    {"type": "richtext", "id": "headline", "label": "Headline", "default": "<p>Welcome to Coastline Longevity</p>"},
+    {"type": "select", "id": "headline_tag", "label": "Tag", "options": [{"value": "h1", "label": "h1"}, {"value": "h2", "label": "h2"}, {"value": "h3", "label": "h3"}, {"value": "h4", "label": "h4"}], "default": "h3"},
+    {"type": "range", "id": "headline_font_size_desktop", "min": 24, "max": 96, "step": 2, "unit": "px", "label": "Font size (desktop)", "default": 48},
+    {"type": "range", "id": "headline_font_size_mobile", "min": 20, "max": 72, "step": 2, "unit": "px", "label": "Font size (mobile)", "default": 34},
+    {"type": "range", "id": "headline_line_height", "min": 0.8, "max": 2, "step": 0.1, "label": "Line height", "default": 1.2},
+    {"type": "range", "id": "headline_margin_bottom", "min": 0, "max": 60, "step": 5, "unit": "px", "label": "Margin bottom", "default": 15},
+    {"type": "color", "id": "headline_color", "label": "Color", "default": "#062f3d"},
+    {"type": "header", "content": "Subheadline"},
+    {"type": "textarea", "id": "subheadline", "label": "Text", "default": "Discover premium longevity solutions"},
+    {"type": "range", "id": "subheadline_font_size_desktop", "min": 14, "max": 40, "step": 1, "unit": "px", "label": "Font size (desktop)", "default": 18},
+    {"type": "range", "id": "subheadline_font_size_mobile", "min": 14, "max": 32, "step": 1, "unit": "px", "label": "Font size (mobile)", "default": 16},
+    {"type": "color", "id": "subheadline_color", "label": "Color", "default": "#062f3d"},
+    {"type": "header", "content": "Button"},
+    {"type": "text", "id": "button_text", "label": "Text", "default": "Shop Now"},
+    {"type": "url", "id": "button_link", "label": "Link"},
+    {"type": "range", "id": "button_width", "min": 20, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100},
+    {"type": "range", "id": "button_font_size_desktop", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Font size (desktop)", "default": 18},
+    {"type": "range", "id": "button_font_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Font size (mobile)", "default": 16},
+    {"type": "color", "id": "button_background_color", "label": "Background", "default": "#062f3d"},
+    {"type": "color", "id": "button_text_color", "label": "Text color", "default": "#ffffff"},
+    {"type": "color", "id": "button_hover_background_color", "label": "Hover background", "default": "#1294ad"},
+    {"type": "color", "id": "button_hover_text_color", "label": "Hover text", "default": "#ffffff"},
+    {"type": "range", "id": "button_border_radius", "min": 0, "max": 50, "step": 5, "unit": "px", "label": "Border radius", "default": 25},
+    {"type": "range", "id": "button_margin_bottom", "min": 0, "max": 60, "step": 5, "unit": "px", "label": "Margin bottom", "default": 20},
+    {"type": "header", "content": "Callouts"},
+    {"type": "text", "id": "callout_1_text", "label": "Callout 1", "default": "Free Shipping"},
+    {"type": "text", "id": "callout_2_text", "label": "Callout 2", "default": "30-Day Guarantee"},
+    {"type": "text", "id": "callout_3_text", "label": "Callout 3", "default": "Expert Support"},
+    {"type": "range", "id": "callout_font_size_desktop", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Font size (desktop)", "default": 14},
+    {"type": "range", "id": "callout_font_size_mobile", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Font size (mobile)", "default": 13},
+    {"type": "range", "id": "callout_gap", "min": 5, "max": 30, "step": 1, "unit": "px", "label": "Gap between callouts", "default": 10},
+    {"type": "color", "id": "callout_icon_color", "label": "Icon color", "default": "#1294ad"},
+    {"type": "color", "id": "callout_text_color", "label": "Text color", "default": "#062f3d"},
+    {"type": "header", "content": "Trust Badges"},
+    {"type": "checkbox", "id": "show_trust_badges", "label": "Show badges", "default": true},
+    {"type": "text", "id": "trust_badge_1_text", "label": "Badge 1", "default": "3rd Party Tested"},
+    {"type": "text", "id": "trust_badge_2_text", "label": "Badge 2", "default": "Optimal Doses"},
+    {"type": "text", "id": "trust_badge_3_text", "label": "Badge 3", "default": "Clinically Proven"},
+    {"type": "range", "id": "trust_badge_icon_size_desktop", "min": 15, "max": 100, "step": 5, "unit": "px", "label": "Icon size (desktop)", "default": 50},
+    {"type": "range", "id": "trust_badge_icon_size_mobile", "min": 15, "max": 100, "step": 5, "unit": "px", "label": "Icon size (mobile)", "default": 40},
+    {"type": "range", "id": "trust_badge_font_size_desktop", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Text size (desktop)", "default": 14},
+    {"type": "range", "id": "trust_badge_font_size_mobile", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Text size (mobile)", "default": 12},
+    {"type": "select", "id": "trust_badge_font_weight", "label": "Text weight", "options": [{"value": "400", "label": "Normal"}, {"value": "600", "label": "Semi-bold"}, {"value": "700", "label": "Bold"}], "default": "600"},
+    {"type": "color", "id": "trust_badge_icon_color", "label": "Icon color", "default": "#1294ad"},
+    {"type": "color", "id": "trust_badge_text_color", "label": "Text color", "default": "#062f3d"},
+    {"type": "range", "id": "trust_badges_spacing_top", "min": 0, "max": 60, "step": 5, "unit": "px", "label": "Spacing above", "default": 15},
+    {"type": "range", "id": "trust_badges_padding_top", "min": 10, "max": 40, "step": 5, "unit": "px", "label": "Padding top", "default": 20},
+    {"type": "range", "id": "trust_badges_border_width", "min": 0, "max": 5, "step": 1, "unit": "px", "label": "Border width", "default": 0},
+    {"type": "color", "id": "trust_badges_border_color", "label": "Border color", "default": "#e5e5e5"},
+    {"type": "header", "content": "Colors"},
+    {"type": "color", "id": "background_color", "label": "Background", "default": "#f7f7f7"}
+  ],
+  "presets": [{"name": "Hero video section"}]
+}
+{% endschema %}

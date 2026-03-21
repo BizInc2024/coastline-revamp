@@ -1,0 +1,943 @@
+{% comment %}
+  Save as: sections/customer-reviews.liquid
+  Usage: Add to any page via the theme editor
+  Enhanced version with full customization options
+{% endcomment %}
+
+<style>
+
+  
+
+  
+  /* Hide review blocks beyond the first 5 */
+  .review-block:nth-child(n+6) {
+    display: none;
+  }
+</style>
+
+<section class="w-full" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: {{ section.settings.background_color }};">
+  <div style="max-width: {{ section.settings.container_max_width }}px; margin-left: auto; margin-right: auto; padding-left: {{ section.settings.container_padding_x }}px; padding-right: {{ section.settings.container_padding_x }}px;">
+    
+    {%- comment -%} Header {%- endcomment -%}
+    <div style="margin-bottom: {{ section.settings.header_spacing }}px;">
+      <h2 class="customer-reviews-heading" style="font-size: {{ section.settings.heading_size }}px; font-weight: {{ section.settings.heading_weight }}; margin-bottom: {{ section.settings.heading_margin_bottom }}px; color: {{ section.settings.heading_color }};">
+        {{ section.settings.heading }}
+      </h2>
+      <div class="flex items-center gap-2" style="margin-bottom: {{ section.settings.rating_margin_bottom }}px;">
+        {%- comment -%} Star Rating {%- endcomment -%}
+        <div class="flex" style="gap: {{ section.settings.star_gap }}px;">
+          {%- for i in (1..5) -%}
+            <svg width="{{ section.settings.star_size }}" height="{{ section.settings.star_size }}" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 0L10.163 5.63L16 6.51L12 10.41L12.926 16L8 13.63L3.074 16L4 10.41L0 6.51L5.837 5.63L8 0Z" fill="{% if i <= section.settings.average_rating %}{{ section.settings.star_filled_color }}{% else %}{{ section.settings.star_empty_color }}{% endif %}"/>
+            </svg>
+          {%- endfor -%}
+        </div>
+        <span style="font-size: {{ section.settings.review_count_size }}px; font-weight: {{ section.settings.review_count_weight }}; color: {{ section.settings.review_count_color }};">{{ section.settings.total_reviews }} reviews</span>
+      </div>
+    </div>
+
+    {%- comment -%} Reviews Grid {%- endcomment -%}
+    <div>
+      <div class="reviews-grid-container grid grid-cols-1 md:grid-cols-2" style="gap: {{ section.settings.grid_gap }}px;">
+        {%- for block in section.blocks -%}
+          
+          {%- if block.type == 'image' -%}
+            {%- comment -%} Image Block {%- endcomment -%}
+            <div class="review-block overflow-hidden rounded-lg" style="aspect-ratio: {{ block.settings.aspect_ratio }}; border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }}; border-radius: {{ section.settings.card_border_radius }}px; box-shadow: {{ section.settings.card_shadow }};">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: class: 'w-full h-full object-cover', alt: block.settings.alt_text }}
+              {%- else -%}
+                <div class="w-full h-full flex items-center justify-center" style="background-color: {{ section.settings.placeholder_bg_color }}; color: {{ section.settings.placeholder_text_color }};">
+                  Image placeholder
+                </div>
+              {%- endif -%}
+            </div>
+          
+          {%- elsif block.type == 'review' -%}
+            {%- comment -%} Review Card {%- endcomment -%}
+            <div class="review-block rounded-lg transition-colors duration-200" style="border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }}; background-color: {{ section.settings.card_bg_color }}; color: {{ section.settings.card_text_color }}; box-shadow: {{ section.settings.card_shadow }}; padding: {{ section.settings.card_padding }}px; border-radius: {{ section.settings.card_border_radius }}px;" onmouseover="this.style.backgroundColor='{{ section.settings.card_hover_bg_color }}'" onmouseout="this.style.backgroundColor='{{ section.settings.card_bg_color }}'">
+              <div class="flex flex-col" style="gap: {{ section.settings.card_content_gap }}px;">
+                <div class="flex items-start justify-between" style="gap: {{ section.settings.card_content_gap }}px;">
+                  <div class="flex-1">
+                    
+                    {%- comment -%} Rating and Date {%- endcomment -%}
+                    <div class="flex items-center" style="gap: {{ section.settings.rating_date_gap }}px; margin-bottom: {{ section.settings.rating_margin_bottom_card }}px;">
+                      <div class="flex" style="gap: {{ section.settings.star_gap }}px;">
+                        {%- for i in (1..5) -%}
+                          <svg width="{{ section.settings.star_size_card }}" height="{{ section.settings.star_size_card }}" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0L10.163 5.63L16 6.51L12 10.41L12.926 16L8 13.63L3.074 16L4 10.41L0 6.51L5.837 5.63L8 0Z" fill="{% if i <= block.settings.rating %}{{ section.settings.star_filled_color }}{% else %}{{ section.settings.star_empty_color }}{% endif %}"/>
+                          </svg>
+                        {%- endfor -%}
+                      </div>
+                      <span style="font-size: {{ section.settings.date_size }}px; color: {{ section.settings.date_color }};">{{ block.settings.date }}</span>
+                    </div>
+                    
+                    {%- comment -%} Name and Badge {%- endcomment -%}
+                    <div class="flex items-center" style="gap: {{ section.settings.name_badge_gap }}px; margin-bottom: {{ section.settings.name_margin_bottom }}px;">
+                      <span style="font-weight: {{ section.settings.name_weight }}; font-size: {{ section.settings.name_size }}px; color: {{ section.settings.name_color }};">{{ block.settings.name }}</span>
+                      {%- if block.settings.verified -%}
+                        <div class="inline-flex items-center rounded-full" style="background-color: {{ section.settings.badge_bg_color }}; color: {{ section.settings.badge_text_color }}; padding: {{ section.settings.badge_padding_y }}px {{ section.settings.badge_padding_x }}px; font-size: {{ section.settings.badge_size }}px; font-weight: {{ section.settings.badge_weight }}; border: 1px solid {{ section.settings.badge_border_color }};">
+                          Verified buyer
+                        </div>
+                      {%- endif -%}
+                    </div>
+                    
+                    <p style="font-size: {{ section.settings.location_size }}px; color: {{ section.settings.location_color }}; margin-bottom: {{ section.settings.location_margin_bottom }}px;">{{ block.settings.location }}</p>
+                  </div>
+                </div>
+                
+                {%- comment -%} Review Text {%- endcomment -%}
+                <p style="font-size: {{ section.settings.review_text_size }}px; color: {{ section.settings.review_text_color }}; line-height: {{ section.settings.review_line_height }};">{{ block.settings.text }}</p>
+              </div>
+            </div>
+          {%- endif -%}
+          
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Show More Button {%- endcomment -%}
+    {%- if section.settings.show_more_button -%}
+      <div class="text-center" id="show-more-container" style="margin-top: {{ section.settings.button_margin_top }}px;">
+        <button id="show-more-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2" style="font-size: {{ section.settings.button_text_size }}px; font-weight: {{ section.settings.button_font_weight }}; border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }}; background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }}; height: {{ section.settings.button_height }}px; padding-left: {{ section.settings.button_padding_x }}px; padding-right: {{ section.settings.button_padding_x }}px; border-radius: {{ section.settings.button_border_radius }}px;" onmouseover="this.style.backgroundColor='{{ section.settings.button_hover_bg_color }}'; this.style.color='{{ section.settings.button_hover_text_color }}'" onmouseout="this.style.backgroundColor='{{ section.settings.button_bg_color }}'; this.style.color='{{ section.settings.button_text_color }}'">
+          {{ section.settings.show_more_text }}
+        </button>
+        <button id="show-less-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2" style="display: none; font-size: {{ section.settings.button_text_size }}px; font-weight: {{ section.settings.button_font_weight }}; border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }}; background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }}; height: {{ section.settings.button_height }}px; padding-left: {{ section.settings.button_padding_x }}px; padding-right: {{ section.settings.button_padding_x }}px; border-radius: {{ section.settings.button_border_radius }}px; margin-left: 12px;" onmouseover="this.style.backgroundColor='{{ section.settings.button_hover_bg_color }}'; this.style.color='{{ section.settings.button_hover_text_color }}'" onmouseout="this.style.backgroundColor='{{ section.settings.button_bg_color }}'; this.style.color='{{ section.settings.button_text_color }}'">
+          Show less
+        </button>
+      </div>
+    {%- endif -%}
+    
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const reviewsGrid = document.querySelector('.reviews-grid-container');
+    if (!reviewsGrid) return;
+    
+    const reviewBlocks = Array.from(reviewsGrid.children);
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const showLessBtn = document.getElementById('show-less-btn');
+    const showMoreContainer = document.getElementById('show-more-container');
+    const itemsPerLoad = 5;
+    let currentlyShowing = itemsPerLoad;
+
+    console.log('Total review blocks:', reviewBlocks.length);
+
+    // Hide button container if 5 or fewer reviews total
+    if (reviewBlocks.length <= itemsPerLoad && showMoreContainer) {
+      showMoreContainer.style.display = 'none';
+    }
+
+    // Show more on click
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Show more clicked. Currently showing:', currentlyShowing);
+        
+        // Show the next 5 hidden blocks
+        for (let i = currentlyShowing; i < currentlyShowing + itemsPerLoad && i < reviewBlocks.length; i++) {
+          reviewBlocks[i].style.display = 'block';
+          console.log('Showing block', i);
+        }
+
+        currentlyShowing += itemsPerLoad;
+
+        // Show the "Show less" button once expanded
+        if (showLessBtn && currentlyShowing > itemsPerLoad) {
+          showLessBtn.style.display = 'inline-flex';
+        }
+
+        // Hide "Show more" button if all reviews are now shown
+        if (currentlyShowing >= reviewBlocks.length) {
+          showMoreBtn.style.display = 'none';
+          console.log('All reviews shown, hiding Show more button');
+        }
+      });
+    }
+
+    // Show less on click
+    if (showLessBtn) {
+      showLessBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Show less clicked');
+        
+        // Hide all blocks after the first 5
+        for (let i = itemsPerLoad; i < reviewBlocks.length; i++) {
+          reviewBlocks[i].style.display = 'none';
+        }
+
+        // Reset counter
+        currentlyShowing = itemsPerLoad;
+
+        // Hide "Show less" button
+        showLessBtn.style.display = 'none';
+
+        // Show "Show more" button again
+        if (showMoreBtn && reviewBlocks.length > itemsPerLoad) {
+          showMoreBtn.style.display = 'inline-flex';
+        }
+
+        // Scroll to top of reviews section
+        reviewsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer reviews"
+    },
+    {
+      "type": "range",
+      "id": "average_rating",
+      "label": "Average Rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "number",
+      "id": "total_reviews",
+      "label": "Total Reviews",
+      "default": 826
+    },
+    {
+      "type": "header",
+      "content": "Layout & Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "container_padding_x",
+      "label": "Container Horizontal Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Maximum Container Width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid Gap Between Items",
+      "min": 4,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Heading Styles"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "text",
+      "id": "heading_font",
+      "label": "Heading Font Family",
+      "default": "inherit",
+      "info": "e.g., 'Arial', 'Georgia'"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Bottom Margin",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Header Section Bottom Spacing",
+      "min": 16,
+      "max": 128,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Star Rating Styles"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Header Star Size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "star_size_card",
+      "label": "Review Card Star Size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "star_gap",
+      "label": "Gap Between Stars",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "star_filled_color",
+      "label": "Filled Star Color",
+      "default": "#fbbf24"
+    },
+    {
+      "type": "color",
+      "id": "star_empty_color",
+      "label": "Empty Star Color",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "range",
+      "id": "rating_margin_bottom",
+      "label": "Rating Section Bottom Margin",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Review Count Styles"
+    },
+    {
+      "type": "range",
+      "id": "review_count_size",
+      "label": "Review Count Font Size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "review_count_weight",
+      "label": "Review Count Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "color",
+      "id": "review_count_color",
+      "label": "Review Count Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Review Card Styles"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card Padding",
+      "min": 8,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card Border Radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Card Border Width",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_hover_bg_color",
+      "label": "Card Hover Background Color",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "card_shadow",
+      "label": "Card Shadow",
+      "default": "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+      "info": "CSS box-shadow value"
+    },
+    {
+      "type": "range",
+      "id": "card_content_gap",
+      "label": "Card Content Gap",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Review Card - Rating & Date"
+    },
+    {
+      "type": "range",
+      "id": "rating_date_gap",
+      "label": "Gap Between Rating and Date",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "rating_margin_bottom_card",
+      "label": "Rating Bottom Margin",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "date_size",
+      "label": "Date Font Size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "date_color",
+      "label": "Date Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Review Card - Name"
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "label": "Name Font Size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "name_weight",
+      "label": "Name Font Weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Name Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "name_badge_gap",
+      "label": "Gap Between Name and Badge",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "name_margin_bottom",
+      "label": "Name Bottom Margin",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Verified Badge Styles"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#10b981"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_border_color",
+      "label": "Badge Border Color",
+      "default": "transparent"
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_x",
+      "label": "Badge Horizontal Padding",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_y",
+      "label": "Badge Vertical Padding",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "label": "Badge Font Size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "badge_weight",
+      "label": "Badge Font Weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Location Styles"
+    },
+    {
+      "type": "range",
+      "id": "location_size",
+      "label": "Location Font Size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "location_color",
+      "label": "Location Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "range",
+      "id": "location_margin_bottom",
+      "label": "Location Bottom Margin",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Review Text Styles"
+    },
+    {
+      "type": "range",
+      "id": "review_text_size",
+      "label": "Review Text Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "review_text_color",
+      "label": "Review Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "review_line_height",
+      "label": "Review Text Line Height",
+      "default": "1.6",
+      "info": "e.g., 1.5, 1.6, 1.75"
+    },
+    {
+      "type": "header",
+      "content": "Image Block Styles"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg_color",
+      "label": "Image Placeholder Background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_text_color",
+      "label": "Image Placeholder Text",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "header",
+      "content": "Show More Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_more_button",
+      "label": "Show 'More' Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "show_more_text",
+      "label": "Button Text",
+      "default": "Show more"
+    },
+    {
+      "type": "url",
+      "id": "show_more_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Button Top Margin",
+      "min": 16,
+      "max": 128,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Button Height",
+      "min": 32,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "label": "Button Horizontal Padding",
+      "min": 16,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Button Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Button Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "label": "Button Border Width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Button Hover Background Color",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "John D."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "New York, NY"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "Oct 18, 2025"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "Great product! Highly recommend."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified Buyer",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Product image"
+        },
+        {
+          "type": "select",
+          "id": "aspect_ratio",
+          "label": "Aspect Ratio",
+          "options": [
+            { "value": "1/1", "label": "Square (1:1)" },
+            { "value": "4/3", "label": "Standard (4:3)" },
+            { "value": "16/9", "label": "Wide (16:9)" },
+            { "value": "3/4", "label": "Portrait (3:4)" }
+          ],
+          "default": "4/3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

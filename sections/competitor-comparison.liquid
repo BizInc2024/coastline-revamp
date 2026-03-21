@@ -1,0 +1,903 @@
+{% comment %}
+  Competitor Comparison Section - Table Format
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .competitor-comparison {
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: {{ section.settings.section_background }};
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .competitor-comparison {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .main-heading {
+    font-size: {{ section.settings.heading_font_size_mobile }}px;
+    font-weight: {{ section.settings.heading_font_weight }};
+    margin-top: {{ section.settings.heading_margin_top }}px;
+    margin-bottom: {{ section.settings.heading_margin_bottom }}px;
+    line-height: 1.2;
+    color: {{ section.settings.heading_color }};
+    text-align: {{ section.settings.heading_alignment }};
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .main-heading {
+      font-size: {{ section.settings.heading_font_size_tablet }}px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .main-heading {
+      font-size: {{ section.settings.heading_font_size_desktop }}px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .subtitle {
+    font-size: {{ section.settings.subtitle_font_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    margin-bottom: 40px;
+    text-align: {{ section.settings.heading_alignment }};
+  }
+
+  @media (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .subtitle::after {
+      content: '← Swipe to compare →';
+      display: block;
+      font-size: 14px;
+      margin-top: 12px;
+      color: {{ section.settings.check_color }};
+      font-weight: 600;
+    }
+  }
+
+  /* Table Container */
+  #shopify-section-{{ section.id }} .comparison-table-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-table-wrapper.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .comparison-table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -20px;
+      padding: 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-table-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-table-wrapper::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-table-wrapper::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+  }
+
+  /* Table Grid */
+  #shopify-section-{{ section.id }} .comparison-table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    background: transparent;
+    padding-bottom: 20px;
+  }
+
+  @media (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .comparison-table {
+      grid-template-columns: repeat(5, 260px);
+      width: max-content;
+    }
+  }
+
+  /* Header Row */
+  #shopify-section-{{ section.id }} .table-header {
+    background: #FFFFFF;
+    border-radius: {{ section.settings.card_border_radius }}px {{ section.settings.card_border_radius }}px 0 0;
+    padding: {{ section.settings.card_padding }}px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    border-bottom: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    box-shadow: {{ section.settings.card_shadow }};
+  }
+
+  #shopify-section-{{ section.id }} .table-header.primary {
+    background: #B6D3D6;
+    border: 3px solid #B6D3D6;
+  }
+
+  #shopify-section-{{ section.id }} .brand-name {
+    font-size: {{ section.settings.logo_font_size }}px;
+    font-weight: {{ section.settings.logo_font_weight }};
+    color: {{ section.settings.logo_color }};
+    line-height: 1.1;
+  }
+
+  /* Content Rows */
+  #shopify-section-{{ section.id }} .table-cell {
+    background: #FFFFFF;
+    padding: {{ section.settings.card_padding }}px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;
+    border-left: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    border-right: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    border-bottom: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    box-shadow: {{ section.settings.card_shadow }};
+  }
+
+  #shopify-section-{{ section.id }} .table-cell.primary {
+    border-left: 3px solid #B6D3D6;
+    border-right: 3px solid #B6D3D6;
+    border-bottom: 3px solid #B6D3D6;
+  }
+
+  #shopify-section-{{ section.id }} .table-cell:nth-last-child(-n+5) {
+    border-radius: 0 0 {{ section.settings.card_border_radius }}px {{ section.settings.card_border_radius }}px;
+  }
+
+  /* Row Labels (for mobile, show on first column) */
+  @media (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .data-label {
+      font-size: 11px;
+      color: {{ section.settings.label_color }};
+      font-weight: {{ section.settings.label_font_weight }};
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .data-label {
+      font-size: {{ section.settings.label_font_size }}px;
+      color: {{ section.settings.label_color }};
+      font-weight: {{ section.settings.label_font_weight }};
+      margin-bottom: 8px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .data-value {
+    font-size: {{ section.settings.value_font_size }}px;
+    font-weight: {{ section.settings.value_font_weight }};
+    color: {{ section.settings.value_color }};
+    line-height: 1.3;
+  }
+
+  #shopify-section-{{ section.id }} .data-value-large {
+    font-size: {{ section.settings.value_large_font_size }}px;
+    font-weight: {{ section.settings.value_large_font_weight }};
+  }
+
+  #shopify-section-{{ section.id }} .check-icon {
+    color: {{ section.settings.check_color }};
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .x-icon {
+    color: {{ section.settings.x_color }};
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+    opacity: 0.3;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .value-with-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .value-with-check .check-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+</style>
+
+<div class="competitor-comparison">
+  <div style="max-width: 1400px; margin: 0 auto;">
+    {%- if section.settings.heading != blank -%}
+      {%- case section.settings.heading_tag -%}
+        {%- when 'h1' -%}
+          <h1 class="main-heading">{{ section.settings.heading }}</h1>
+        {%- when 'h2' -%}
+          <h2 class="main-heading">{{ section.settings.heading }}</h2>
+        {%- when 'h3' -%}
+          <h3 class="main-heading">{{ section.settings.heading }}</h3>
+        {%- when 'h4' -%}
+          <h4 class="main-heading">{{ section.settings.heading }}</h4>
+        {%- when 'div' -%}
+          <div class="main-heading">{{ section.settings.heading }}</div>
+        {%- else -%}
+          <h2 class="main-heading">{{ section.settings.heading }}</h2>
+      {%- endcase -%}
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    <div class="comparison-table-wrapper">
+      <div class="comparison-table">
+        
+        {%- comment -%} Header Row - Brand Names {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="table-header {% if block.settings.is_primary %}primary{% endif %}" {{ block.shopify_attributes }}>
+            <div class="brand-name">{{ block.settings.brand_name }}</div>
+          </div>
+        {%- endfor -%}
+
+        {%- comment -%} Row 1: Clinically Proven Doses {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="table-cell {% if block.settings.is_primary %}primary{% endif %}">
+            <div class="data-label">{{ section.settings.label_clinically_proven }}</div>
+            <div>
+              {%- if block.settings.clinically_proven -%}
+                <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+              {%- else -%}
+                <svg class="x-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+
+        {%- comment -%} Row 2: Monthly Cost {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="table-cell {% if block.settings.is_primary %}primary{% endif %}">
+            <div class="data-label">{{ section.settings.label_monthly_cost }}</div>
+            <div class="data-value data-value-large">{{ block.settings.monthly_cost }}</div>
+          </div>
+        {%- endfor -%}
+
+        {%- comment -%} Row 3: Body Systems {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="table-cell {% if block.settings.is_primary %}primary{% endif %}">
+            <div class="data-label">{{ section.settings.label_body_systems }}</div>
+            {%- if block.settings.body_systems_has_check -%}
+              <div class="value-with-check">
+                <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div class="data-value">{{ block.settings.body_systems }}</div>
+              </div>
+            {%- else -%}
+              <div class="data-value">{{ block.settings.body_systems }}</div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        {%- comment -%} Row 4: Hallmarks {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="table-cell {% if block.settings.is_primary %}primary{% endif %}">
+            <div class="data-label">{{ section.settings.label_hallmarks }}</div>
+            {%- if block.settings.hallmarks_has_check -%}
+              <div class="value-with-check">
+                <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <div class="data-value">{{ block.settings.hallmarks }}</div>
+              </div>
+            {%- else -%}
+              <div class="data-value">{{ block.settings.hallmarks }}</div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        {%- comment -%} Row 5: Ingredient Form {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="table-cell {% if block.settings.is_primary %}primary{% endif %}">
+            <div class="data-label">{{ section.settings.label_ingredient_form }}</div>
+            <div class="data-value" style="font-size: {{ section.settings.ingredient_form_font_size }}px; line-height: 1.4; font-weight: {{ section.settings.ingredient_form_font_weight }};">{{ block.settings.ingredient_form }}</div>
+          </div>
+        {%- endfor -%}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const section = document.querySelector('#shopify-section-{{ section.id }}');
+  if (!section) return;
+  
+  const tableWrapper = section.querySelector('.comparison-table-wrapper');
+  
+  // Intersection Observer for scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tableWrapper.classList.add('animated');
+      } else {
+        tableWrapper.classList.remove('animated');
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  observer.observe(section);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Competitor Comparison",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Coastline?"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading HTML Tag",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "div", "label": "DIV" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "label": "Heading Font Weight",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading Top Margin",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading Bottom Margin",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#062F3D"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#6B7280"
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Border Width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Padding",
+      "default": 32
+    },
+    {
+      "type": "text",
+      "id": "card_shadow",
+      "label": "Card Shadow",
+      "default": "0 4px 12px rgba(0, 0, 0, 0.08)",
+      "info": "CSS box-shadow value"
+    },
+    {
+      "type": "header",
+      "content": "Logo Typography"
+    },
+    {
+      "type": "range",
+      "id": "logo_font_size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Logo Font Size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "logo_font_weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "label": "Logo Font Weight",
+      "default": 900
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo Color",
+      "default": "#062F3D"
+    },
+    {
+      "type": "header",
+      "content": "Label Typography"
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Label Font Size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "label_font_weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "label": "Label Font Weight",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#6B7280"
+    },
+    {
+      "type": "header",
+      "content": "Value Typography"
+    },
+    {
+      "type": "range",
+      "id": "value_font_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Value Font Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "value_font_weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "label": "Value Font Weight",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "value_large_font_size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Large Value Font Size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "value_large_font_weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "label": "Large Value Font Weight",
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "value_color",
+      "label": "Value Color",
+      "default": "#062F3D"
+    },
+    {
+      "type": "range",
+      "id": "ingredient_form_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Ingredient Form Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "ingredient_form_font_weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "label": "Ingredient Form Weight",
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon Size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Check Mark Color",
+      "default": "#10B981"
+    },
+    {
+      "type": "color",
+      "id": "x_color",
+      "label": "X Mark Color",
+      "default": "#EF4444"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size Mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_tablet",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size Tablet",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "min": 24,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size Desktop",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Data Labels"
+    },
+    {
+      "type": "text",
+      "id": "label_clinically_proven",
+      "label": "Clinically Proven Label",
+      "default": "Clinically Proven Doses"
+    },
+    {
+      "type": "text",
+      "id": "label_monthly_cost",
+      "label": "Monthly Cost Label",
+      "default": "Monthly Cost (USD)"
+    },
+    {
+      "type": "text",
+      "id": "label_body_systems",
+      "label": "Body Systems Label",
+      "default": "Body Systems Supported"
+    },
+    {
+      "type": "text",
+      "id": "label_hallmarks",
+      "label": "Hallmarks Label",
+      "default": "Hallmarks Targeted"
+    },
+    {
+      "type": "text",
+      "id": "label_ingredient_form",
+      "label": "Ingredient Form Label",
+      "default": "Ingredient Form"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "competitor",
+      "name": "Competitor",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "is_primary",
+          "label": "Primary Card (Yellow Highlight)",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "text",
+          "id": "brand_subtitle",
+          "label": "Brand Subtitle",
+          "info": "Optional subtitle below brand name"
+        },
+        {
+          "type": "checkbox",
+          "id": "clinically_proven",
+          "label": "Clinically Proven Doses",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "monthly_cost",
+          "label": "Monthly Cost",
+          "default": "$120"
+        },
+        {
+          "type": "text",
+          "id": "body_systems",
+          "label": "Body Systems Supported",
+          "default": "All 11"
+        },
+        {
+          "type": "checkbox",
+          "id": "body_systems_has_check",
+          "label": "Show checkmark before Body Systems",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "hallmarks",
+          "label": "Hallmarks Targeted",
+          "default": "All 12"
+        },
+        {
+          "type": "checkbox",
+          "id": "hallmarks_has_check",
+          "label": "Show checkmark before Hallmarks",
+          "default": false
+        },
+        {
+          "type": "textarea",
+          "id": "ingredient_form",
+          "label": "Ingredient Form",
+          "default": "Best-in-Class AM/PM System"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_transparency",
+          "label": "Show Transparency Text",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "transparency_text",
+          "label": "Transparency Text",
+          "default": "Full Transparency"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Competitor Comparison",
+      "blocks": [
+        {
+          "type": "competitor",
+          "settings": {
+            "is_primary": true,
+            "brand_name": "COASTLINE",
+            "brand_subtitle": "",
+            "clinically_proven": true,
+            "monthly_cost": "$120",
+            "body_systems": "All 11",
+            "body_systems_has_check": true,
+            "hallmarks": "All 12",
+            "hallmarks_has_check": true,
+            "ingredient_form": "Best-in-Class AM/PM System"
+          }
+        },
+        {
+          "type": "competitor",
+          "settings": {
+            "is_primary": false,
+            "brand_name": "Blueprint",
+            "clinically_proven": false,
+            "monthly_cost": "$179",
+            "body_systems": "4+",
+            "body_systems_has_check": false,
+            "hallmarks": "—",
+            "hallmarks_has_check": false,
+            "ingredient_form": "Multi-dose"
+          }
+        },
+        {
+          "type": "competitor",
+          "settings": {
+            "is_primary": false,
+            "brand_name": "IM8",
+            "clinically_proven": false,
+            "monthly_cost": "$154",
+            "body_systems": "7",
+            "body_systems_has_check": false,
+            "hallmarks": "3",
+            "hallmarks_has_check": false,
+            "ingredient_form": "1x scoop + 1x capsule"
+          }
+        },
+        {
+          "type": "competitor",
+          "settings": {
+            "is_primary": false,
+            "brand_name": "NOVOS",
+            "clinically_proven": false,
+            "monthly_cost": "$98",
+            "body_systems": "6",
+            "body_systems_has_check": false,
+            "hallmarks": "12",
+            "hallmarks_has_check": false,
+            "ingredient_form": "1x sachet"
+          }
+        },
+        {
+          "type": "competitor",
+          "settings": {
+            "is_primary": false,
+            "brand_name": "AG1",
+            "clinically_proven": false,
+            "monthly_cost": "$79",
+            "body_systems": "6",
+            "body_systems_has_check": false,
+            "hallmarks": "—",
+            "hallmarks_has_check": false,
+            "ingredient_form": "1x scoop"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

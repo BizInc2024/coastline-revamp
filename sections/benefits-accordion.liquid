@@ -1,0 +1,308 @@
+{% comment %}
+  Benefits Accordion (Simple)
+  - Clean padding control
+  - Simple 2-column layout (stacked on mobile)
+  - Minimal settings
+{% endcomment %}
+
+<section class="benefits-simple benefits-simple--{{ section.id }}">
+  <div class="benefits-simple__inner">
+    <div class="benefits-simple__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="benefits-simple__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="benefits-simple__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+
+      <div class="benefits-simple__accordion">
+        {% for block in section.blocks %}
+          <div class="benefits-simple__item" {{ block.shopify_attributes }}>
+            <button class="benefits-simple__trigger" type="button">
+              <span class="benefits-simple__title">
+                {{ block.settings.title }}
+              </span>
+              <span class="benefits-simple__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="benefits-simple__panel">
+              <div class="benefits-simple__panel-inner">
+                {{ block.settings.description }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if section.settings.image != blank %}
+      <div class="benefits-simple__media">
+        {{ section.settings.image
+          | image_url: width: 1400
+          | image_tag: loading: 'lazy', class: 'benefits-simple__image', alt: section.settings.image_alt_text }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  /* Kill extra wrapper spacing from the theme for this section only */
+  #shopify-section-{{ section.id }} {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .benefits-simple--{{ section.id }} {
+    padding: {{ section.settings.padding_vertical }}px 1.5rem;
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr);
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .benefits-simple--{{ section.id }} .benefits-simple__inner {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__heading {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin: 0 0 0.75rem;
+  }
+
+  @media (min-width: 900px) {
+    .benefits-simple--{{ section.id }} .benefits-simple__heading {
+      font-size: 2.6rem;
+    }
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__subheading {
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__accordion {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__trigger {
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__icon {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 250ms ease;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__panel-inner {
+    padding-bottom: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.95;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__item.is-open .benefits-simple__panel {
+    max-height: 600px;
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__item.is-open .benefits-simple__icon {
+    transform: rotate(45deg);
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__media {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .benefits-simple--{{ section.id }} .benefits-simple__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  (function() {
+    const section = document.querySelector('.benefits-simple--{{ section.id }}');
+    if (!section) return;
+
+    const items = section.querySelectorAll('.benefits-simple__item');
+
+
+
+    items.forEach((item) => {
+      const trigger = item.querySelector('.benefits-simple__trigger');
+      const panel = item.querySelector('.benefits-simple__panel');
+
+      trigger.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+
+        // close all
+        items.forEach((other) => {
+          other.classList.remove('is-open');
+          const otherPanel = other.querySelector('.benefits-simple__panel');
+          if (otherPanel) {
+            otherPanel.style.maxHeight = null;
+          }
+        });
+
+        // open clicked one if it was closed
+        if (!isOpen) {
+          item.classList.add('is-open');
+          if (panel) {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        }
+      });
+
+      // set initial height for the one we opened by default
+      if (item.classList.contains('is-open') && panel) {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Benefits Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Power for the day. Protection for the decades."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Subhead goes here"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#E7FF56"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1A1F2C"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (optional)"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image alt text",
+      "default": "Lifestyle image"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Top & bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "More daily energy"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A morning stack that supports natural energy, without caffeine crashes or stimulant spikes."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Accordion",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "More daily energy",
+            "description": "Creatine, magnesium and taurine support natural cellular energy so you can feel more capable from morning to night."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Better brain function",
+            "description": "Ingredients that support memory, clarity and mental resilience — so you stay sharp when life gets busy."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Stronger muscles & joints",
+            "description": "Support for strength, bone loading and joint integrity to keep you moving well as the years go by."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

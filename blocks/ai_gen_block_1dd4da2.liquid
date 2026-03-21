@@ -1,0 +1,821 @@
+{% doc %}
+  @prompt
+    Create a full-width section with a large centered heading, then a 3-column stats row underneath. Each stat block must include:
+    • a small pill-style label above (editable text + background color control)
+    • a large bold numeric stat (editable)
+    • a short subline under it (editable, multi-line allowed)
+    • a micro “source” line below in small text (editable)
+    
+    Desktop: 3 stats side-by-side with even spacing, vertically centered.
+    Tablet: same row layout if space allows, otherwise stack to 2+1.
+    Mobile: fully stacked with tight vertical spacing. No carousel.
+    
+    Add full controls in Customizer for:
+    • Section top/bottom padding
+    • Column spacing (desktop + mobile separately)
+    • Alignment controls (center/left mobile toggle)
+    • Font size controls for header/stat/subtext/source individually
+    • Background color for section
+    • Optional divider line toggle above and/or below section
+    
+    Header text must be editable as a rich text block., make the numbers a lot big chunker  and use this yellow for the badge color behind: E7FF56, left justified on mobile, needs to have full image behind the whole section with different upload for mobile and desktop, and how it crops, and what height each image is on each respective ratio, twice as big and chunky for the stats, i also want to manually adjust the heading size, and be able to add 2 more stats if i want, but also leave them blank if i don't want to use them , vertical image size should have an adapt to image, full screen, or custom drop down, image should also have the option of having an adjustable opacity layer
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-stats-section-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-stats-bg-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .ai-stats-bg-desktop-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    {% if block.settings.desktop_image_height_type == 'adapt' %}
+      height: auto;
+    {% elsif block.settings.desktop_image_height_type == 'fullscreen' %}
+      height: 100vh;
+    {% else %}
+      height: {{ block.settings.desktop_image_height }}px;
+    {% endif %}
+    object-fit: {{ block.settings.desktop_image_fit }};
+    object-position: center;
+  }
+
+  .ai-stats-bg-mobile-{{ ai_gen_id }} {
+    display: none;
+    width: 100%;
+    {% if block.settings.mobile_image_height_type == 'adapt' %}
+      height: auto;
+    {% elsif block.settings.mobile_image_height_type == 'fullscreen' %}
+      height: 100vh;
+    {% else %}
+      height: {{ block.settings.mobile_image_height }}px;
+    {% endif %}
+    object-fit: {{ block.settings.mobile_image_fit }};
+    object-position: center;
+  }
+
+  .ai-stats-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.overlay_color }};
+    opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+    z-index: 1;
+  }
+
+  .ai-stats-divider-top-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 1px;
+    background-color: {{ block.settings.divider_color }};
+    margin-bottom: {{ block.settings.padding_top }}px;
+  }
+
+  .ai-stats-divider-bottom-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 1px;
+    background-color: {{ block.settings.divider_color }};
+    margin-top: {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-stats-container-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-stats-heading-{{ ai_gen_id }} {
+    text-align: center;
+    font-size: {{ block.settings.heading_font_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.heading_spacing }}px 0;
+  }
+
+  .ai-stats-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: {{ block.settings.column_gap_desktop }}px;
+    align-items: center;
+  }
+
+  .ai-stats-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ai-stats-pill-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: {{ block.settings.pill_font_size }}px;
+    margin-bottom: 12px;
+  }
+
+  .ai-stats-number-{{ ai_gen_id }} {
+    font-size: {{ block.settings.stat_font_size }}px;
+    font-weight: 900;
+    color: {{ block.settings.stat_color }};
+    margin: 0 0 8px 0;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+
+  .ai-stats-subtext-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtext_font_size }}px;
+    color: {{ block.settings.subtext_color }};
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+  }
+
+  .ai-stats-source-{{ ai_gen_id }} {
+    font-size: {{ block.settings.source_font_size }}px;
+    color: {{ block.settings.source_color }};
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-stats-grid-{{ ai_gen_id }} {
+      gap: {{ block.settings.column_gap_tablet }}px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-stats-section-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top | times: 0.7 }}px;
+      padding-bottom: {{ block.settings.padding_bottom | times: 0.7 }}px;
+    }
+
+    .ai-stats-bg-desktop-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-stats-bg-mobile-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-stats-grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.column_gap_mobile }}px;
+    }
+
+    .ai-stats-item-{{ ai_gen_id }} {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .ai-stats-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_font_size_mobile }}px;
+      text-align: left;
+    }
+
+    .ai-stats-number-{{ ai_gen_id }} {
+      font-size: {{ block.settings.stat_font_size | times: 0.65 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-stats-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-stats-bg-{{ ai_gen_id }}">
+    {% if block.settings.desktop_bg_image %}
+      <img
+        src="{{ block.settings.desktop_bg_image | image_url: width: 2400 }}"
+        alt="{{ block.settings.desktop_bg_image.alt | escape }}"
+        loading="lazy"
+        width="{{ block.settings.desktop_bg_image.width }}"
+        height="{{ block.settings.desktop_bg_image.height }}"
+        class="ai-stats-bg-desktop-{{ ai_gen_id }}"
+      >
+    {% endif %}
+
+    {% if block.settings.mobile_bg_image %}
+      <img
+        src="{{ block.settings.mobile_bg_image | image_url: width: 1200 }}"
+        alt="{{ block.settings.mobile_bg_image.alt | escape }}"
+        loading="lazy"
+        width="{{ block.settings.mobile_bg_image.width }}"
+        height="{{ block.settings.mobile_bg_image.height }}"
+        class="ai-stats-bg-mobile-{{ ai_gen_id }}"
+      >
+    {% elsif block.settings.desktop_bg_image %}
+      <img
+        src="{{ block.settings.desktop_bg_image | image_url: width: 1200 }}"
+        alt="{{ block.settings.desktop_bg_image.alt | escape }}"
+        loading="lazy"
+        width="{{ block.settings.desktop_bg_image.width }}"
+        height="{{ block.settings.desktop_bg_image.height }}"
+        class="ai-stats-bg-mobile-{{ ai_gen_id }}"
+      >
+    {% endif %}
+
+    <div class="ai-stats-overlay-{{ ai_gen_id }}"></div>
+  </div>
+
+  {% if block.settings.show_divider_top %}
+    <div class="ai-stats-divider-top-{{ ai_gen_id }}"></div>
+  {% endif %}
+
+  <div class="ai-stats-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <div class="ai-stats-heading-{{ ai_gen_id }}">
+        {{ block.settings.heading }}
+      </div>
+    {% endif %}
+
+    <div class="ai-stats-grid-{{ ai_gen_id }}">
+      {% for i in (1..5) %}
+        {% liquid
+          assign pill_text_key = 'stat_' | append: i | append: '_pill_text'
+          assign pill_bg_key = 'stat_' | append: i | append: '_pill_bg'
+          assign pill_text_color_key = 'stat_' | append: i | append: '_pill_text_color'
+          assign number_key = 'stat_' | append: i | append: '_number'
+          assign subtext_key = 'stat_' | append: i | append: '_subtext'
+          assign source_key = 'stat_' | append: i | append: '_source'
+
+          assign pill_text = block.settings[pill_text_key]
+          assign pill_bg = block.settings[pill_bg_key]
+          assign pill_text_color = block.settings[pill_text_color_key]
+          assign number = block.settings[number_key]
+          assign subtext = block.settings[subtext_key]
+          assign source = block.settings[source_key]
+        %}
+
+        {% if pill_text != blank or number != blank or subtext != blank or source != blank %}
+          <div class="ai-stats-item-{{ ai_gen_id }}">
+            {% if pill_text != blank %}
+              <span
+                class="ai-stats-pill-{{ ai_gen_id }}"
+                style="background-color: {{ pill_bg }}; color: {{ pill_text_color }};"
+              >
+                {{ pill_text }}
+              </span>
+            {% endif %}
+
+            {% if number != blank %}
+              <div class="ai-stats-number-{{ ai_gen_id }}">{{ number }}</div>
+            {% endif %}
+
+            {% if subtext != blank %}
+              <div class="ai-stats-subtext-{{ ai_gen_id }}">{{ subtext }}</div>
+            {% endif %}
+
+            {% if source != blank %}
+              <div class="ai-stats-source-{{ ai_gen_id }}">{{ source }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if block.settings.show_divider_bottom %}
+    <div class="ai-stats-divider-bottom-{{ ai_gen_id }}"></div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Stats section",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Our Impact in Numbers</p>"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading bottom spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Background images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_bg_image",
+      "label": "Desktop background image"
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_height_type",
+      "label": "Desktop image height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "fullscreen",
+          "label": "Full screen"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "range",
+      "id": "desktop_image_height",
+      "min": 300,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop custom height",
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_fit",
+      "label": "Desktop image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_height_type",
+      "label": "Mobile image height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "fullscreen",
+          "label": "Full screen"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "custom"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile custom height",
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_fit",
+      "label": "Mobile image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "header",
+      "content": "Image overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "column_gap_tablet",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap (tablet)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap (mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Dividers"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider_top",
+      "label": "Show top divider",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider_bottom",
+      "label": "Show bottom divider",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "pill_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Pill text size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "stat_font_size",
+      "min": 80,
+      "max": 300,
+      "step": 4,
+      "unit": "px",
+      "label": "Stat number size",
+      "default": 192
+    },
+    {
+      "type": "color",
+      "id": "stat_color",
+      "label": "Stat number color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtext size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "range",
+      "id": "source_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Source text size",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "source_color",
+      "label": "Source text color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "header",
+      "content": "Stat 1"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_pill_text",
+      "label": "Pill label",
+      "default": "Growth"
+    },
+    {
+      "type": "color",
+      "id": "stat_1_pill_bg",
+      "label": "Pill background",
+      "default": "#E7FF56"
+    },
+    {
+      "type": "color",
+      "id": "stat_1_pill_text_color",
+      "label": "Pill text color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat number",
+      "default": "10,000+"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_1_subtext",
+      "label": "Subtext",
+      "default": "Happy customers worldwide"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_source",
+      "label": "Source",
+      "default": "Source: Internal data 2024"
+    },
+    {
+      "type": "header",
+      "content": "Stat 2"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_pill_text",
+      "label": "Pill label",
+      "default": "Quality"
+    },
+    {
+      "type": "color",
+      "id": "stat_2_pill_bg",
+      "label": "Pill background",
+      "default": "#E7FF56"
+    },
+    {
+      "type": "color",
+      "id": "stat_2_pill_text_color",
+      "label": "Pill text color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat number",
+      "default": "98%"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_2_subtext",
+      "label": "Subtext",
+      "default": "Customer satisfaction rate"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_source",
+      "label": "Source",
+      "default": "Source: Customer surveys 2024"
+    },
+    {
+      "type": "header",
+      "content": "Stat 3"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_pill_text",
+      "label": "Pill label",
+      "default": "Impact"
+    },
+    {
+      "type": "color",
+      "id": "stat_3_pill_bg",
+      "label": "Pill background",
+      "default": "#E7FF56"
+    },
+    {
+      "type": "color",
+      "id": "stat_3_pill_text_color",
+      "label": "Pill text color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat number",
+      "default": "50+"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_3_subtext",
+      "label": "Subtext",
+      "default": "Countries served globally"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_source",
+      "label": "Source",
+      "default": "Source: Shipping data 2024"
+    },
+    {
+      "type": "header",
+      "content": "Stat 4 (optional)"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_pill_text",
+      "label": "Pill label"
+    },
+    {
+      "type": "color",
+      "id": "stat_4_pill_bg",
+      "label": "Pill background",
+      "default": "#E7FF56"
+    },
+    {
+      "type": "color",
+      "id": "stat_4_pill_text_color",
+      "label": "Pill text color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_number",
+      "label": "Stat number"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_4_subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_source",
+      "label": "Source"
+    },
+    {
+      "type": "header",
+      "content": "Stat 5 (optional)"
+    },
+    {
+      "type": "text",
+      "id": "stat_5_pill_text",
+      "label": "Pill label"
+    },
+    {
+      "type": "color",
+      "id": "stat_5_pill_bg",
+      "label": "Pill background",
+      "default": "#E7FF56"
+    },
+    {
+      "type": "color",
+      "id": "stat_5_pill_text_color",
+      "label": "Pill text color",
+      "default": "#062f3d"
+    },
+    {
+      "type": "text",
+      "id": "stat_5_number",
+      "label": "Stat number"
+    },
+    {
+      "type": "textarea",
+      "id": "stat_5_subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "stat_5_source",
+      "label": "Source"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats section"
+    }
+  ]
+}
+{% endschema %}

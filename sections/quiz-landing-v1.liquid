@@ -1,0 +1,1500 @@
+{% comment %}
+  COASTLINE HEALTH ASSESSMENT QUIZ LANDING PAGE - MODERN EDITION
+
+  Purpose: Interactive quiz that assesses user's current health habits
+  and shows how Coastline can help, leading directly to purchase.
+
+  Quiz Focus: The 2026 Longevity Audit - 5 Areas of Health
+  Questions: 5 educational health assessment questions
+  1. Cognition & Clarity (Brain)
+  2. Skin Health (Appearance)
+  3. Physical Recovery (Body)
+  4. Gut Health (Digestion)
+  5. Baseline Capacity (Energy)
+  
+  End Goal: Personalized score with direct purchase CTA
+
+  Updated with premium modern design and new color palette
+
+  Sections included:
+  1. Hero Section (Quiz Introduction)
+  2. Trust Bar
+  3. Interactive Quiz Component
+  4. Results Section (dynamically shown)
+  5. Product Recommendation
+  6. Final CTA
+{% endcomment %}
+
+{%- comment -%}==============================================
+  GLOBAL STYLES & CSS VARIABLES
+================================================{%- endcomment -%}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    /* Legacy Colors */
+    --coastline-indigo: #062F3D;
+    --coastline-beige: #FFFBED;
+    --coastline-light-blue: #129AD6;
+    --coastline-orange: #FC621C;
+    
+    /* New Premium Color Palette */
+    --pale-blue: #CCD7DA;
+    --medium-blue: #A3C7D0;
+    --dark-gray: #586670;
+    --light-gray: #D4E2E5;
+    --off-white: #F7F7F7;
+    --teal: #61A9B8;
+    --lime: #E7FF56;
+    --dark-teal: #062F3D;
+    --charcoal: #021922;
+    
+    /* Functional Colors */
+    --success: #61A9B8;
+    --warning: #E7FF56;
+    --danger: #586670;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .quiz-page {
+    font-family: 'Lato', 'Lato';
+    background: var(--off-white);
+  }
+</style>
+
+{%- comment -%}==============================================
+  SECTION 1: HERO (QUIZ INTRODUCTION)
+================================================{%- endcomment -%}
+
+<style>
+  .quiz-hero {
+    background: linear-gradient(135deg, var(--off-white) 0%, var(--pale-blue) 100%);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quiz-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: var(--light-gray);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  .quiz-hero__container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quiz-hero__eyebrow {
+    font-family: 'Lato';
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    display: inline-block;
+    padding: 8px 20px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .quiz-hero__headline {
+    font-family: 'Lato';
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin: 0 0 28px 0;
+    letter-spacing: -1px;
+  }
+
+  .quiz-hero__subheadline {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.7;
+    color: var(--dark-gray);
+    margin: 0 0 48px 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quiz-hero__features {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .quiz-hero__feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-gray);
+  }
+
+  .quiz-hero__feature-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--lime);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--charcoal);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .quiz-hero__start-btn {
+    display: block;        /* Changes from inline-block to a full-width block */
+  margin-left: auto;     /* Pushes button from the left */
+  margin-right: auto;    /* Pushes button from the right */
+    font-family: 'Lato';
+    font-weight: 600;
+    font-size: 17px;
+    color: white;
+    background: var(--dark-teal);
+    padding: 20px 52px;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.3px;
+  }
+
+  .quiz-hero__start-btn:hover {
+    background: var(--teal);
+    transform: translateY(-3px);
+  }
+
+  .quiz-hero__time {
+    margin-top: 24px;
+    font-family: 'Lato';
+    font-size: 14px;
+    color: var(--dark-gray);
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    .quiz-hero {
+      padding: 60px 20px;
+    }
+
+    .quiz-hero__headline {
+      font-size: 36px;
+    }
+
+    .quiz-hero__subheadline {
+      font-size: 18px;
+    }
+
+    .quiz-hero__features {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .quiz-hero__start-btn {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+</style>
+
+<div class="quiz-page">
+  <section class="quiz-hero" id="quiz-hero">
+    <div class="quiz-hero__container">
+      <p class="quiz-hero__eyebrow">Personal Health Quiz</p>
+      <h1 class="quiz-hero__headline">
+        Rate Your Overall Health and Performance
+      </h1>
+      <p class="quiz-hero__subheadline">
+        Biological decline is inevitable, but its pace is not. Take 2 minutes to reflect on these 5 areas of health and see how your current baseline compares to your long-term goals.
+      </p>
+
+      <div class="quiz-hero__features">
+        <div class="quiz-hero__feature">
+          <span class="quiz-hero__feature-icon">✓</span>
+          <span>5 Quick Questions</span>
+        </div>
+        <div class="quiz-hero__feature">
+          <span class="quiz-hero__feature-icon">✓</span>
+          <span>Personalized Score</span>
+        </div>
+        <div class="quiz-hero__feature">
+          <span class="quiz-hero__feature-icon">✓</span>
+          <span>Science-Backed Insights</span>
+        </div>
+      </div>
+
+      <button class="quiz-hero__start-btn" onclick="startQuiz()">
+        Get Your Score
+      </button>
+
+      <p class="quiz-hero__time">Takes less than 2 minutes</p>
+    </div>
+  </section>
+
+  {%- comment -%}==============================================
+    SECTION 2: TRUST BAR
+  ================================================{%- endcomment -%}
+
+  <style>
+    .quiz-trust-bar {
+      background: var(--charcoal);
+      padding: 28px 20px;
+    }
+
+    .quiz-trust-bar__container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-trust-bar__item {
+      font-family: 'Lato';
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.9;
+    }
+
+    .quiz-trust-bar__stars {
+      color: var(--lime);
+    }
+
+    @media (max-width: 768px) {
+      .quiz-trust-bar__container {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <section class="quiz-trust-bar">
+    <div class="quiz-trust-bar__container">
+      <span class="quiz-trust-bar__item">2,000+ Optimization Profiles Completed</span>
+      <span class="quiz-trust-bar__item">Science-First Formulation</span>
+      <span class="quiz-trust-bar__item">60-Day Money-Back Guarantee</span>
+    </div>
+  </section>
+
+  {%- comment -%}==============================================
+    SECTION 3: INTERACTIVE QUIZ COMPONENT
+  ================================================{%- endcomment -%}
+
+  <style>
+    .quiz-container {
+      background: var(--off-white);
+      padding: 80px 20px 100px;
+      display: none;
+      min-height: 80vh;
+    }
+
+    .quiz-container.active {
+      display: block;
+    }
+
+    .quiz-container__inner {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .quiz-progress {
+      margin-bottom: 50px;
+      background: white;
+      padding: 24px 32px;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .quiz-progress__bar-container {
+      width: 100%;
+      height: 14px;
+      background: #E0E0E0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      transform: translateZ(0);
+    }
+
+  .quiz-progress__bar-fill {
+    height: 14px !important; /* CHANGED: Fixed height matches container */
+  display: block !important; /* Added to force visibility */
+  border-radius: 10px;
+  background: #FF6B00 !important; /* Your chosen orange */
+  transition: width 0.4s ease;
+    }
+
+    .quiz-progress__text {
+      font-family: 'Lato';
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .quiz-question {
+      display: none;
+      background: white;
+      padding: 48px;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .quiz-question.active {
+      display: block;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .quiz-question__number {
+      font-family: 'Lato';
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-question__text {
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.4;
+      color: var(--charcoal);
+      margin: 0 0 40px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .quiz-option {
+      font-family: 'Lato';
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--dark-gray);
+      background: var(--off-white);
+      padding: 22px 28px;
+      border: 2px solid var(--light-gray);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: left;
+      position: relative;
+    }
+
+    .quiz-option::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--light-gray);
+      border-radius: 50%;
+      margin-right: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .quiz-option span {
+      margin-left: 36px;
+      display: block;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--teal);
+      background: white;
+      transform: translateX(4px);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--teal);
+      background: var(--pale-blue);
+      color: var(--charcoal);
+    }
+
+    .quiz-option.selected::before {
+      border-color: var(--teal);
+      background: var(--teal);
+      box-shadow: inset 0 0 0 4px white;
+    }
+
+    .quiz-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .quiz-nav-btn {
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 16px;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-nav-btn--back {
+      background: transparent;
+      color: var(--dark-gray);
+      visibility: hidden;
+    }
+
+    .quiz-nav-btn--back:hover {
+      background: var(--light-gray);
+    }
+
+    .quiz-nav-btn--next {
+      background: var(--dark-teal);
+      color: white;
+      flex: 1;
+      max-width: 300px;
+      margin-left: auto;
+    }
+
+    .quiz-nav-btn--next:hover:not(:disabled) {
+      background: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .quiz-nav-btn--next:disabled {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .quiz-question {
+        padding: 32px 24px;
+      }
+
+      .quiz-question__text {
+        font-size: 22px;
+      }
+
+      .quiz-option {
+        font-size: 16px;
+        padding: 18px 24px;
+      }
+
+      .quiz-nav-btn {
+        font-size: 14px;
+        padding: 14px 24px;
+      }
+
+      .quiz-progress {
+        padding: 20px 24px;
+      }
+    }
+  </style>
+
+  <section class="quiz-container" id="quiz-container">
+    <div class="quiz-container__inner">
+      
+      <div class="quiz-progress">
+        <div class="quiz-progress__bar-container">
+          <div class="quiz-progress__bar-fill" id="progress-fill"></div>
+        </div>
+        <div class="quiz-progress__text">
+          Question <span id="current-question">1</span> of <span id="total-questions">5</span>
+        </div>
+      </div>
+
+      {%- comment -%} Question 1: Cognition & Clarity {%- endcomment -%}
+      <div class="quiz-question active" data-question="1">
+        <div class="quiz-question__number">Question 1 of 5</div>
+        <h2 class="quiz-question__text">Cognition & Clarity: How consistently "dialed-in" is your focus in the morning?</h2>
+        <p style="font-family: 'Lato'; font-size: 15px; color: var(--dark-gray); margin: -20px 0 30px 0; line-height: 1.6;">As we age, neuro-efficiency naturally dips. It often takes longer for the "mental engine" to find its rhythm in the morning, and sustained focus becomes more fragile.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)" data-value="4">
+            <span>[Sustained] I wake up sharp and stay focused without a mid-morning fade.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="3">
+            <span>[Inconsistent] I have good mornings, but my focus feels more fragile lately.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="2">
+            <span>[Strained] I struggle to find clarity and often feel "scattered" by noon.</span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Question 2: Skin Health {%- endcomment -%}
+      <div class="quiz-question" data-question="2">
+        <div class="quiz-question__number">Question 2 of 5</div>
+        <h2 class="quiz-question__text">Skin Health: How well does your appearance "bounce back" after a late night?</h2>
+        <p style="font-family: 'Lato'; font-size: 15px; color: var(--dark-gray); margin: -20px 0 30px 0; line-height: 1.6;">After age 30, skin cell renewal slows down. This makes it harder for your body to "hide" the visible effects of stress, travel, or a lack of sleep.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)" data-value="4">
+            <span>[Resilient] I still wake up looking refreshed and my eyes stay bright.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="3">
+            <span>[Visible Toll] I look noticeably tired after pushing my limits.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="2">
+            <span>[Vulnerable] The stress shows on my face for the entire next day.</span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Question 3: Physical Recovery {%- endcomment -%}
+      <div class="quiz-question" data-question="3">
+        <div class="quiz-question__number">Question 3 of 5</div>
+        <h2 class="quiz-question__text">Physical Recovery: Have you noticed your "bounce back" time slowing down lately?</h2>
+        <p style="font-family: 'Lato'; font-size: 15px; color: var(--dark-gray); margin: -20px 0 30px 0; line-height: 1.6;">Muscle protein synthesis and joint fluid density decrease over time. This physically extends your "recovery window"—the time it takes to go from effort back to 100% readiness.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)" data-value="4">
+            <span>[Fast] I still bounce back quickly with zero lingering stiffness.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="3">
+            <span>[Slowing] I notice soreness and "physical drag" lasting longer than it used to.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="2">
+            <span>[Delayed] A heavy day now leaves me feeling the toll for 2-3 days afterward.</span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Question 4: Gut Health {%- endcomment -%}
+      <div class="quiz-question" data-question="4">
+        <div class="quiz-question__number">Question 4 of 5</div>
+        <h2 class="quiz-question__text">Gut Health: How efficient and balanced is your digestive system on a daily basis?</h2>
+        <p style="font-family: 'Lato'; font-size: 15px; color: var(--dark-gray); margin: -20px 0 30px 0; line-height: 1.6;">Enzyme production and microbiome diversity naturally decline with age. If your system is inefficient at processing fuel, it drains energy instead of creating it.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)" data-value="4">
+            <span>[Balanced] My digestion is consistent and never drains my daily energy.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="3">
+            <span>[Unpredictable] I notice my system feels "heavier" or less consistent than it used to.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="2">
+            <span>[Inefficient] My digestion feels sluggish and is a noticeable drain on my focus.</span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Question 5: Baseline Capacity {%- endcomment -%}
+      <div class="quiz-question" data-question="5">
+        <div class="quiz-question__number">Question 5 of 5</div>
+        <h2 class="quiz-question__text">Baseline Capacity: Does your daily energy still match your ambitions?</h2>
+        <p style="font-family: 'Lato'; font-size: 15px; color: var(--dark-gray); margin: -20px 0 30px 0; line-height: 1.6;">Your cells' "power plants" (mitochondria) naturally lose efficiency over time. This erodes your energy ceiling, making the "finish line" of the day feel further away.</p>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)" data-value="4">
+            <span>[Sustained] I have the natural "gas" to outlast the day (and the kids).</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="3">
+            <span>[Noticeable Fade] I'm starting to feel the "wear and tear" well before dinner.</span>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this)" data-value="2">
+            <span>[Running on Fumes] I'm empty long before the day is done and rely on caffeine to finish.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-navigation">
+        <button class="quiz-nav-btn quiz-nav-btn--back" id="back-btn" onclick="prevQuestion()">
+          ← Back
+        </button>
+        <button class="quiz-nav-btn quiz-nav-btn--next" id="next-btn" onclick="nextQuestion()" disabled>
+          Next Question
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%}==============================================
+    SECTION 4: RESULTS SECTION
+  ================================================{%- endcomment -%}
+
+  <style>
+    .quiz-results {
+      background: linear-gradient(180deg, var(--pale-blue) 0%, var(--off-white) 100%);
+      padding: 100px 20px;
+      display: none;
+    }
+
+    .quiz-results.active {
+      display: block;
+    }
+
+    .quiz-results__container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .quiz-results__header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .quiz-results__eyebrow {
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-results__headline {
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin: 0 0 20px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .quiz-results__score-card {
+      background: white;
+      padding: 50px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-results__score-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--teal) 0%, var(--lime) 100%);
+    }
+
+    .quiz-results__score {
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 96px;
+      line-height: 1;
+      color: var(--dark-teal);
+      margin-bottom: 12px;
+    }
+
+    .quiz-results__score-suffix {
+      font-size: 48px;
+      color: var(--teal);
+    }
+
+    .quiz-results__score-label {
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--teal);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .quiz-results__score-desc {
+      font-family: 'Lato';
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quiz-results__breakdown {
+      background: white;
+      padding: 48px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .quiz-results__breakdown-title {
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--charcoal);
+      margin: 0 0 36px 0;
+      letter-spacing: -0.3px;
+    }
+
+    .quiz-results__breakdown-item {
+      margin-bottom: 28px;
+    }
+
+    .quiz-results__breakdown-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .quiz-results__breakdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .quiz-results__breakdown-label {
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--charcoal);
+    }
+
+    .quiz-results__breakdown-status {
+      font-family: 'Lato';
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--dark-gray);
+      padding: 4px 12px;
+      background: var(--light-gray);
+      border-radius: 20px;
+    }
+
+    .quiz-results__breakdown-bar {
+      width: 100%;
+      height: 10px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+   .quiz-results__breakdown-fill {
+ height: 10px !important; /* CHANGED: Fixed height matches container */
+  display: block !important; /* Added to force visibility */
+  background-color: #586670; /* Fallback gray */
+  border-radius: 10px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+   .quiz-results__breakdown-fill--excellent {
+  background: #4CAF50 !important;  /* Bright green */
+}
+
+.quiz-results__breakdown-fill--strong {
+  background: #2196F3 !important;  /* Bright blue */
+}
+
+.quiz-results__breakdown-fill--good {
+  background: #FF9800 !important;  /* Bright orange */
+}
+
+.quiz-results__breakdown-fill--fair {
+  background: #FFC107 !important;  /* Bright yellow */
+}
+
+.quiz-results__breakdown-fill--needs-support {
+  background: #F44336 !important;  /* Bright red */
+}
+
+    .quiz-results__recommendation {
+      background: var(--pale-blue);
+      padding: 42px;
+      border-radius: 20px;
+      border-left: 5px solid var(--teal);
+    }
+
+    .quiz-results__recommendation-title {
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--charcoal);
+      margin: 0 0 18px 0;
+    }
+
+    .quiz-results__recommendation-text {
+      font-family: 'Lato';
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--dark-gray);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .quiz-results {
+        padding: 60px 20px;
+      }
+
+      .quiz-results__headline {
+        font-size: 32px;
+      }
+
+      .quiz-results__score-card {
+        padding: 36px 24px;
+      }
+
+      .quiz-results__score {
+        font-size: 72px;
+      }
+
+      .quiz-results__breakdown {
+        padding: 32px 24px;
+      }
+
+      .quiz-results__recommendation {
+        padding: 32px 14px;
+      }
+    }
+  </style>
+
+  <section class="quiz-results" id="quiz-results">
+    <div class="quiz-results__container">
+      
+      <div class="quiz-results__header">
+        <p class="quiz-results__eyebrow">Your Results</p>
+        <h2 class="quiz-results__headline">Your Longevity Readiness Score</h2>
+      </div>
+
+      <div class="quiz-results__score-card">
+        <div class="quiz-results__score">
+          <span id="final-score">0</span><span class="quiz-results__score-suffix">%</span>
+        </div>
+        <h3 class="quiz-results__score-label" id="score-label">Calculating...</h3>
+        <p class="quiz-results__score-desc" id="score-desc">Please wait while we analyze your responses...</p>
+      </div>
+
+      <div class="quiz-results__breakdown">
+        <h3 class="quiz-results__breakdown-title">Your Health Profile Breakdown</h3>
+        
+        <div class="quiz-results__breakdown-item">
+          <div class="quiz-results__breakdown-header">
+            <span class="quiz-results__breakdown-label">Cognition & Clarity</span>
+            <span class="quiz-results__breakdown-status" id="cognitive-status">—</span>
+          </div>
+          <div class="quiz-results__breakdown-bar">
+            <div class="quiz-results__breakdown-fill" id="cognitive-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="quiz-results__breakdown-item">
+          <div class="quiz-results__breakdown-header">
+            <span class="quiz-results__breakdown-label">Skin Health</span>
+            <span class="quiz-results__breakdown-status" id="visual-status">—</span>
+          </div>
+          <div class="quiz-results__breakdown-bar">
+            <div class="quiz-results__breakdown-fill" id="visual-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="quiz-results__breakdown-item">
+          <div class="quiz-results__breakdown-header">
+            <span class="quiz-results__breakdown-label">Physical Recovery</span>
+            <span class="quiz-results__breakdown-status" id="recovery-status">—</span>
+          </div>
+          <div class="quiz-results__breakdown-bar">
+            <div class="quiz-results__breakdown-fill" id="recovery-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="quiz-results__breakdown-item">
+          <div class="quiz-results__breakdown-header">
+            <span class="quiz-results__breakdown-label">Gut Health</span>
+            <span class="quiz-results__breakdown-status" id="metabolic-status">—</span>
+          </div>
+          <div class="quiz-results__breakdown-bar">
+            <div class="quiz-results__breakdown-fill" id="metabolic-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="quiz-results__breakdown-item">
+          <div class="quiz-results__breakdown-header">
+            <span class="quiz-results__breakdown-label">Baseline Capacity</span>
+            <span class="quiz-results__breakdown-status" id="capacity-status">—</span>
+          </div>
+          <div class="quiz-results__breakdown-bar">
+            <div class="quiz-results__breakdown-fill" id="capacity-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="quiz-results__recommendation">
+        <h3 class="quiz-results__recommendation-title">What This Means For You</h3>
+        <p class="quiz-results__recommendation-text" id="recommendation-text">
+          Based on your responses, we're calculating personalized recommendations...
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%}==============================================
+    SECTION 5: PRODUCT RECOMMENDATION
+  ================================================{%- endcomment -%}
+
+  <style>
+    .quiz-product {
+      background: white;
+      padding: 20px 20px;
+      display: none;
+    }
+
+    .quiz-product.active {
+      display: block;
+    }
+
+    .quiz-product__container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .quiz-product__image-wrapper {
+      position: relative;
+    }
+
+    .quiz-product__image {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    .quiz-product__badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--lime);
+      color: var(--charcoal);
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .quiz-product__content {
+      padding: 20px;
+    }
+
+    .quiz-product__eyebrow {
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-product__headline {
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin: 0 0 20px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .quiz-product__description {
+      font-family: 'Lato';
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--dark-gray);
+      margin: 0 0 32px 0;
+    }
+
+    .quiz-product__benefits {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 36px 0;
+    }
+
+    .quiz-product__benefit {
+      font-family: 'Lato';
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark-gray);
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .quiz-product__benefit:last-child {
+      border-bottom: none;
+    }
+
+    .quiz-product__benefit-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--pale-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .quiz-product__pricing {
+      background: var(--pale-blue);
+      padding: 28px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+
+    .quiz-product__price-label {
+      font-family: 'Lato';
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+   .quiz-product__price {
+      font-family: 'Lato';
+      font-weight: 700;
+      font-size: 42px;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .quiz-product__price-month {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--dark-gray);
+    }
+
+    .quiz-product__price-note {
+      font-family: 'Lato';
+      font-size: 15px;
+      color: var(--dark-gray);
+      margin: 0;
+    }
+
+    .quiz-product__cta {
+      display: block;
+      width: 100%;
+      font-family: 'Lato';
+      font-weight: 600;
+      font-size: 18px;
+      color: white;
+      background: var(--dark-teal);
+      padding: 20px 36px;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-product__cta:hover {
+      background: var(--teal);
+      transform: translateY(-3px);
+    }
+
+    .quiz-product__guarantee {
+      margin-top: 20px;
+      text-align: center;
+      font-family: 'Lato';
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+
+    @media (max-width: 968px) {
+      .quiz-product__container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .quiz-product {
+        padding: 60px 20px;
+      }
+
+      .quiz-product__headline {
+        font-size: 32px;
+      }
+    }
+  </style>
+
+  <section class="quiz-product" id="quiz-product">
+    <div class="quiz-product__container">
+      
+      <div class="quiz-product__image-wrapper">
+        <span class="quiz-product__badge">Recommended For You</span>
+        {% if section.settings.product_image %}
+          <img
+            src="{{ section.settings.product_image | img_url: '800x' }}"
+            alt="{{ section.settings.product_image.alt | default: 'Coastline System' }}"
+            class="quiz-product__image"
+            loading="lazy"
+          >
+        {% else %}
+          <img
+            src="https://via.placeholder.com/600x600/CCD7DA/062F3D?text=Coastline+System"
+            alt="Coastline System Product"
+            class="quiz-product__image"
+          >
+        {% endif %}
+      </div>
+
+      <div class="quiz-product__content">
+        <p class="quiz-product__eyebrow">Personalized Recommendation</p>
+        <h2 class="quiz-product__headline">
+          Take Your Health to the Next Level
+        </h2>
+        <p class="quiz-product__description">
+          You've built the foundation. Coastline is the upgrade. We've integrated 13 elite ingredients to address the 5 pillars of decline simultaneously.
+        </p>
+
+        <ul class="quiz-product__benefits">
+          <li class="quiz-product__benefit">
+            <span class="quiz-product__benefit-icon">✓</span>
+            <span><strong>Brain & Energy:</strong> L-Theanine, Lithium Orotate, CoQ10, Taurine, and Magnesium Citrate to stabilize focus and fuel mitochondria</span>
+          </li>
+          <li class="quiz-product__benefit">
+            <span class="quiz-product__benefit-icon">✓</span>
+            <span><strong>Recovery & Resilience:</strong> Creatine Monohydrate, Glucosamine HCl, Glycine, and Ergothioneine to shorten the repair window</span>
+          </li>
+          <li class="quiz-product__benefit">
+            <span class="quiz-product__benefit-icon">✓</span>
+            <span><strong>Skin & Eyes:</strong> Astaxanthin, Lutein, and Zeaxanthin to provide high-level antioxidant defense</span>
+          </li>
+          <li class="quiz-product__benefit">
+            <span class="quiz-product__benefit-icon">✓</span>
+            <span><strong>Gut & Absorption:</strong> Inulin (prebiotic fiber) to maximize metabolic efficiency</span>
+          </li>
+        </ul>
+
+       <div class="quiz-product__pricing">
+          <div class="quiz-product__price-label">New Year Special</div>
+          <div class="quiz-product__price">$99<span class="quiz-product__price-month">/month</span></div>
+          <p class="quiz-product__price-note">Save 34% with subscription</p>
+        </div>
+
+        <a href="#shopify-section-template--19380156825669__main-product" class="quiz-product__cta">
+          CLAIM YOUR 2026 UPGRADE — SAVE 34%
+        </a>
+
+        <p class="quiz-product__guarantee">
+          <strong>60-Day Money-Back Guarantee.</strong> If you don't feel a difference in your daily baseline, it's on us.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</div>
+  
+
+{%- comment -%}==============================================
+  QUIZ JAVASCRIPT
+================================================{%- endcomment -%}
+
+<script>
+  // Quiz state
+  let currentQuestion = 1;
+  const totalQuestions = 5;
+  const answers = {};
+
+  // Category mapping for results
+  const categoryMap = {
+    1: 'cognitive',
+    2: 'visual',
+    3: 'recovery',
+    4: 'metabolic',
+    5: 'capacity'
+  };
+
+  // Start the quiz
+  function startQuiz() {
+    document.getElementById('quiz-hero').style.display = 'none';
+    document.querySelector('.quiz-trust-bar').style.display = 'none';
+    document.getElementById('quiz-container').classList.add('active');
+    updateProgress(); // Add this line here
+  }
+
+  // Select an option
+  function selectOption(element) {
+    const question = element.closest('.quiz-question');
+    const options = question.querySelectorAll('.quiz-option');
+
+    // Remove selected from all options
+    options.forEach(opt => opt.classList.remove('selected'));
+
+    // Add selected to clicked option
+    element.classList.add('selected');
+
+    // Store answer
+    const questionNum = parseInt(question.dataset.question);
+    answers[questionNum] = parseInt(element.dataset.value);
+
+    // Enable next button
+    document.getElementById('next-btn').disabled = false;
+  }
+
+  // Go to next question
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      // Hide current question
+      document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`).classList.remove('active');
+
+      // Show next question
+      currentQuestion++;
+      document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`).classList.add('active');
+
+      // Update progress
+      updateProgress();
+
+      // Show/hide back button
+      document.getElementById('back-btn').style.visibility = currentQuestion > 1 ? 'visible' : 'hidden';
+
+      // Update next button text
+      if (currentQuestion === totalQuestions) {
+        document.getElementById('next-btn').textContent = 'See My Results';
+      }
+
+      // Disable next button until answer selected
+      if (!answers[currentQuestion]) {
+        document.getElementById('next-btn').disabled = true;
+      }
+
+      // Scroll to top
+    } else {
+      // Show results
+      showResults();
+    }
+  }
+
+  // Go to previous question
+  function prevQuestion() {
+    if (currentQuestion > 1) {
+      // Hide current question
+      document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`).classList.remove('active');
+
+      // Show previous question
+      currentQuestion--;
+      document.querySelector(`.quiz-question[data-question="${currentQuestion}"]`).classList.add('active');
+
+      // Update progress
+      updateProgress();
+
+      // Show/hide back button
+      document.getElementById('back-btn').style.visibility = currentQuestion > 1 ? 'visible' : 'hidden';
+
+      // Reset next button text
+      document.getElementById('next-btn').textContent = 'Next Question';
+
+      // Enable next button (previous answer exists)
+      document.getElementById('next-btn').disabled = false;
+
+      // Scroll to top
+    }
+  }
+// Update progress bar
+  function updateProgress() {
+    const progress = (currentQuestion / totalQuestions) * 100;
+    const progressBar = document.getElementById('progress-fill');
+    const questionNum = document.getElementById('current-question');
+    
+    console.log('=== UPDATE PROGRESS ===');
+    console.log('Current Question:', currentQuestion);
+    console.log('Total Questions:', totalQuestions);
+    console.log('Progress Percentage:', progress + '%');
+    console.log('Progress Bar Element:', progressBar);
+    console.log('Setting width to:', progress + '%');
+    
+    if (progressBar) {
+      progressBar.style.width = `${progress}%`;
+      console.log('Width after setting:', progressBar.style.width);
+      console.log('Computed style:', window.getComputedStyle(progressBar).width);
+    } else {
+      console.error('PROGRESS BAR ELEMENT NOT FOUND!');
+    }
+    
+    if (questionNum) {
+      questionNum.textContent = currentQuestion;
+    }
+    
+    console.log('======================');
+  }
+
+  // Show results
+  function showResults() {
+    // Hide quiz container
+    document.getElementById('quiz-container').classList.remove('active');
+
+    // Calculate total score (out of 28 possible, display as percentage)
+    const totalScore = Object.values(answers).reduce((sum, val) => sum + val, 0);
+    const maxScore = totalQuestions * 4;
+    const percentage = Math.round((totalScore / maxScore) * 100);
+
+    // Determine score label and description
+    let scoreLabel, scoreDesc, recommendationText; // Add this line
+   if (percentage >= 85) {
+      scoreLabel = 'Sustaining Excellence';
+      scoreDesc = 'Your audit confirms an elite baseline. You are currently aging better than average, likely due to a combination of genetics and proactive habits.';
+      recommendationText = 'At this stage, your goal is maintenance. Biological decline is compounding; the work you do now is about protecting these margins so you can stay at this peak through the next decade.';
+    } else if (percentage >= 75) {
+      scoreLabel = 'The Optimization Path';
+      scoreDesc = 'You have a solid foundation, but you are likely starting to feel the "friction" of natural biological shifts.';
+      recommendationText = 'Your results suggest you are in the "transition zone"—where small changes in clarity or recovery time are becoming noticeable. This is the ideal time to refine your routine to ensure your daily performance keeps pace with your demands.';
+    } else {
+      scoreLabel = 'Baseline Restoration';
+      scoreDesc = 'Your audit indicates that certain natural declines are currently outpacing your body\'s ability to recover.';
+      recommendationText = 'It\'s common to feel "hit" by these shifts all at once. This score is a signal that your body is "borrowing" energy from tomorrow to pay for today. The focus here is on a baseline reset—giving your system the raw materials it needs to reclaim its rhythm.';
+    }
+
+    // Update results UI
+    document.getElementById('final-score').textContent = percentage;
+    document.getElementById('score-label').textContent = scoreLabel;
+    document.getElementById('score-desc').textContent = scoreDesc;
+    document.getElementById('recommendation-text').textContent = recommendationText;
+
+   // Update breakdown bars
+    const categories = ['cognitive', 'visual', 'recovery', 'metabolic', 'capacity'];
+    categories.forEach((cat, index) => {
+      const score = answers[index + 1] || 0;
+      const catPercentage = (score / 4) * 100;
+      const bar = document.getElementById(`${cat}-bar`);
+      const status = document.getElementById(`${cat}-status`);
+
+      if (bar && status) {
+        // RESET: Remove old color classes first
+        bar.className = 'quiz-results__breakdown-fill'; 
+        
+        // Set width
+        bar.style.width = `${catPercentage}%`;
+        
+        if (catPercentage >= 90) {
+          bar.classList.add('quiz-results__breakdown-fill--excellent');
+          status.textContent = 'Excellent';
+        } else if (catPercentage >= 75) {
+          bar.classList.add('quiz-results__breakdown-fill--strong');
+          status.textContent = 'Strong';
+        } else if (catPercentage >= 60) {
+          bar.classList.add('quiz-results__breakdown-fill--good');
+          status.textContent = 'Good';
+        } else if (catPercentage >= 40) {
+          bar.classList.add('quiz-results__breakdown-fill--fair');
+          status.textContent = 'Fair';
+        } else {
+          bar.classList.add('quiz-results__breakdown-fill--needs-support');
+          status.textContent = 'Needs Support';
+        }
+      }
+    });
+
+    // Show results sections
+    document.getElementById('quiz-results').classList.add('active');
+    document.getElementById('quiz-product').classList.add('active');
+    document.getElementById('quiz-final-cta').classList.add('active');
+
+    // Scroll to results
+
+    // Animate score number
+    animateScore(percentage);
+  }
+
+  // Animate score counting up
+  function animateScore(target) {
+    const element = document.getElementById('final-score');
+    let current = 0;
+    const increment = target / 30;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      element.textContent = Math.round(current);
+    }, 30);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Quiz Landing Page v1",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coastline Health Quiz",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}
