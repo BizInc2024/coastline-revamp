@@ -1,0 +1,3222 @@
+{% render 'cc-deps' %}
+{% comment %}
+  CC-HOMEPAGE: Monolithic homepage section
+  Contains all 13 homepage sections inline, following the v4/v5 landing page pattern.
+  Layout: theme.liquid (deps loaded via cc-deps snippet)
+{% endcomment %}
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'parchment': '#FAF9F6',
+                    'deep-ink': '#0A0A0A',
+                    'warm-gray': '#6B6B6B',
+                    'light-gray': '#E8E8E8',
+                    'forest': '#1A3A2F',
+                    'forest-light': '#2D5A47',
+                    'ocean': '#062F3D',
+                    'brand-navy': '#1E2D4D',
+                },
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'system-ui', 'sans-serif'],
+                    'inter': ['Inter', 'system-ui', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    /* ================================================
+       COASTLINE DESIGN SYSTEM OVERRIDES
+       Scoped to .cc-home and .cc-product to avoid
+       breaking theme header/footer styles
+       ================================================ */
+
+    :root {
+      --parchment: #FAF9F6;
+      --deep-ink: #0A0A0A;
+      --warm-gray: #6B6B6B;
+      --light-gray: #E8E8E8;
+      --forest: #1A3A2F;
+      --forest-light: #2D5A47;
+    }
+
+    /* Override theme.css p max-width inside our sections */
+    .cc-home p,
+    .cc-product p {
+      max-width: none !important;
+    }
+
+    /* Typography overrides */
+    .cc-home h1, .cc-home h2, .cc-home h3,
+    .cc-product h1, .cc-product h2, .cc-product h3 {
+      font-family: 'Space Grotesk', system-ui, sans-serif !important;
+      color: var(--deep-ink) !important;
+      font-weight: 500 !important;
+    }
+
+    .cc-home h1, .cc-product h1 {
+      font-size: clamp(32px, 6vw, 64px) !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1.1 !important;
+    }
+
+    .cc-home h2, .cc-product h2 {
+      font-size: clamp(28px, 5vw, 48px) !important;
+      letter-spacing: -0.02em !important;
+      line-height: 1.15 !important;
+    }
+
+    .cc-home h3, .cc-product h3 {
+      font-size: clamp(20px, 3vw, 24px) !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.3 !important;
+    }
+
+    .cc-home p, .cc-home li,
+    .cc-product p, .cc-product li {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      color: var(--warm-gray) !important;
+      font-size: 17px !important;
+      line-height: 1.7 !important;
+    }
+
+    /* Badge / label */
+    .cc-home .badge-minimal,
+    .cc-product .badge-minimal {
+      font-size: 11px !important;
+      letter-spacing: 0.15em !important;
+      text-transform: uppercase !important;
+      color: var(--warm-gray) !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    /* Editorial divider */
+    .cc-home .editorial-divider,
+    .cc-product .editorial-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--deep-ink);
+    }
+
+    /* Hairline */
+    .cc-home .hairline,
+    .cc-product .hairline {
+      height: 1px;
+      background-color: var(--light-gray);
+    }
+
+    /* Primary button */
+    .cc-home .btn-primary,
+    .cc-product .btn-primary {
+      display: inline-block !important;
+      background-color: var(--deep-ink) !important;
+      color: var(--parchment) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: opacity 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-home .btn-primary:hover,
+    .cc-product .btn-primary:hover {
+      opacity: 0.8 !important;
+    }
+
+    /* Secondary button */
+    .cc-home .btn-secondary,
+    .cc-product .btn-secondary {
+      display: inline-block !important;
+      background-color: transparent !important;
+      color: var(--deep-ink) !important;
+      border: 1px solid var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: background-color 0.3s ease, color 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-home .btn-secondary:hover,
+    .cc-product .btn-secondary:hover {
+      background-color: var(--deep-ink) !important;
+      color: var(--parchment) !important;
+    }
+
+    /* Primary button on dark */
+    .cc-home .btn-primary-dark,
+    .cc-product .btn-primary-dark {
+      display: inline-block !important;
+      background: var(--parchment) !important;
+      color: var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: opacity 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-home .btn-primary-dark:hover,
+    .cc-product .btn-primary-dark:hover {
+      opacity: 0.8 !important;
+    }
+
+    /* Link underline */
+    .cc-home .link-underline,
+    .cc-product .link-underline {
+      position: relative !important;
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      color: var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    .cc-home .link-underline::after,
+    .cc-product .link-underline::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -2px !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 1px !important;
+      background-color: currentColor !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    .cc-home .link-underline:hover::after,
+    .cc-product .link-underline:hover::after {
+      transform: scaleX(0) !important;
+    }
+
+    /* Quote editorial */
+    .cc-home .quote-editorial,
+    .cc-product .quote-editorial {
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 400 !important;
+      line-height: 1.4 !important;
+      letter-spacing: -0.01em !important;
+      color: var(--deep-ink) !important;
+    }
+
+    /* Stars */
+    .cc-home .stars-minimal,
+    .cc-product .stars-minimal {
+      letter-spacing: 4px !important;
+      color: var(--deep-ink) !important;
+      font-size: 14px !important;
+    }
+
+    /* Editorial image filter */
+    .cc-home .img-editorial,
+    .cc-product .img-editorial {
+      filter: contrast(1.05) brightness(0.98) !important;
+    }
+
+    /* Section editorial spacing */
+    .cc-home .section-editorial,
+    .cc-product .section-editorial {
+      padding: 80px 16px;
+    }
+
+    @media (min-width: 768px) {
+      .cc-home .section-editorial,
+      .cc-product .section-editorial {
+        padding: 120px 32px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cc-home .section-editorial,
+      .cc-product .section-editorial {
+        padding: 160px 64px;
+      }
+    }
+
+    /* Scroll reveal */
+    .cc-home .reveal,
+    .cc-product .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cc-home .reveal.visible,
+    .cc-product .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .cc-home .reveal-stagger > *,
+    .cc-product .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .cc-home .reveal-stagger.visible > *:nth-child(1),
+    .cc-product .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(2),
+    .cc-product .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(3),
+    .cc-product .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(4),
+    .cc-product .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(5),
+    .cc-product .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(6),
+    .cc-product .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .cc-home .reveal,
+      .cc-product .reveal {
+        opacity: 1;
+        transform: none;
+      }
+      .cc-home .reveal-stagger > *,
+      .cc-product .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Filter tab */
+    .cc-home .filter-tab,
+    .cc-product .filter-tab {
+      padding: 8px 16px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .cc-home .filter-tab.active,
+    .cc-product .filter-tab.active {
+      color: var(--deep-ink);
+      border-bottom-color: var(--deep-ink);
+    }
+
+    /* Accordion */
+    .cc-home .accordion-content,
+    .cc-product .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cc-home .accordion-content.open,
+    .cc-product .accordion-content.open {
+      max-height: 1000px;
+    }
+
+    /* Section counter */
+    .cc-home .section-counter,
+    .cc-product .section-counter {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+</style>
+
+{%- comment -%} === NOSCRIPT FALLBACK === {%- endcomment -%}
+<noscript>
+  <style>
+    .cc-homepage .reveal,
+    .cc-homepage .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+{%- comment -%} === SVG ICON CAPTURES (Benefits section) === {%- endcomment -%}
+{%- capture icon_energy -%}
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+{%- endcapture -%}
+{%- capture icon_focus -%}
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+{%- endcapture -%}
+{%- capture icon_recovery -%}
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M2.5 16a10 10 0 0 1 16.6-5.7L21.5 8"/><path d="M21.5 8a10 10 0 0 1-16.6 5.7L2.5 16"/></svg>
+{%- endcapture -%}
+{%- capture icon_sleep -%}
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+{%- endcapture -%}
+
+<div class="cc-homepage">
+
+  {%- comment -%} ============================================================
+     SECTION 1: HERO (cc-home-02)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-home-hero" class="relative min-h-screen flex items-end md:items-center bg-deep-ink overflow-hidden">
+
+    {%- comment -%} Desktop hero image {%- endcomment -%}
+    {%- if section.settings.hero_image != blank -%}
+      <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="Coastline hero" class="hidden md:block absolute inset-0 w-full h-full object-cover" loading="eager">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-newhero-jan23.png?v=1769187732" alt="Coastline hero" class="hidden md:block absolute inset-0 w-full h-full object-cover" loading="eager">
+    {%- endif -%}
+    {%- comment -%} Mobile hero image {%- endcomment -%}
+    {%- if section.settings.hero_image_mobile != blank -%}
+      <img src="{{ section.settings.hero_image_mobile | image_url: width: 800 }}" alt="Coastline hero" class="block md:hidden absolute inset-0 w-full h-full object-cover cc-hero-mobile-img" loading="eager">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/cl-newhero-jan23-vert_07def72b-63dc-4597-8162-d117dcc483a7.png?v=1769187984" alt="Coastline hero" class="block md:hidden absolute inset-0 w-full h-full object-cover cc-hero-mobile-img" loading="eager">
+    {%- endif -%}
+
+    <div class="cc-hero-gradient absolute inset-0"></div>
+
+    <div class="relative z-10 w-full px-6 lg:px-16 pb-12 md:pb-0">
+      <div class="max-w-7xl mx-auto flex justify-center md:justify-start">
+        <div class="cc-hero-content text-center md:text-left max-w-lg">
+          <p class="font-inter text-[10px] md:text-xs tracking-[0.2em] uppercase font-medium mb-3 md:mb-5" style="color:#062F3D;">{{ section.settings.hero_label | default: "THE ULTIMATE LONGEVITY SYSTEM" }}</p>
+          <div class="w-10 h-px bg-white/40 mb-5 md:mb-8 mx-auto md:mx-0"></div>
+          <h1 class="cc-hero-headline text-white mb-3 md:mb-4">
+            {{ section.settings.hero_headline | default: "Stay sharp, strong, and energized at every age" }}
+          </h1>
+          <p class="cc-hero-subheadline leading-relaxed mb-5 md:mb-6" style="color:#1E2D4D;">
+            {{ section.settings.hero_subheadline | default: "13 science-backed ingredients. One simple system. From $3.30/day." }}
+          </p>
+          <a href="#cc-reviews-anchor" class="flex items-center gap-2 mb-5 md:mb-8 justify-center md:justify-start" style="cursor:pointer;text-decoration:none;">
+            <span class="text-white text-sm tracking-widest">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="font-inter text-[11px] text-white/60" style="text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
+          </a>
+          <div class="flex flex-col gap-3 items-center md:items-start">
+            <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
+              {{ section.settings.hero_cta_text | default: "START MY LONGEVITY SYSTEM" }}
+            </a>
+            <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#062F3D;font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
+              {{ section.settings.hero_secondary_text | default: "SKIP TO PRICING" }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 2: PRESS LOGOS (cc-home-03)
+  ============================================================ {%- endcomment -%}
+  <section class="bg-parchment border-b border-light-gray reveal" style="padding-top:{{ section.settings.section2_padding_top | default: 48 }}px;padding-bottom:{{ section.settings.section2_padding_bottom | default: 48 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <p class="font-inter text-[10px] tracking-[0.2em] uppercase text-warm-gray font-medium mb-8">{{ section.settings.press_label | default: "AS FEATURED IN" }}</p>
+      <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;align-items:center;justify-items:center;opacity:0.4;filter:grayscale(100%);" class="md:!flex md:!flex-nowrap md:!justify-center md:!items-center md:!gap-16">
+        {%- assign logo_defaults = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109,,' | split: ',' -%}
+        {%- assign logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly,Press logo 5,Press logo 6' | split: ',' -%}
+        {%- for i in (1..6) -%}
+          {%- assign logo_key = 'logo_' | append: i -%}
+          {%- assign url_key = 'logo_' | append: i | append: '_url' -%}
+          {%- assign height_key = 'logo_' | append: i | append: '_height' -%}
+          {%- assign logo_img = section.settings[logo_key] -%}
+          {%- assign logo_url = section.settings[url_key] | default: '#' -%}
+          {%- assign logo_height = section.settings[height_key] | default: 40 -%}
+          {%- assign default_index = i | minus: 1 -%}
+          {%- assign fallback = logo_defaults[default_index] -%}
+          {%- if logo_img != blank or fallback != blank -%}
+            <a href="{{ logo_url }}" style="text-decoration:none;{% if logo_url == '#' %}pointer-events:none;{% endif %}">
+              {%- if logo_img != blank -%}
+                <img src="{{ logo_img | image_url: width: 320 }}" alt="{{ logo_alts[default_index] }}" style="height:{{ logo_height }}px;width:auto;" loading="lazy">
+              {%- elsif fallback != blank -%}
+                <img src="{{ fallback }}" alt="{{ logo_alts[default_index] }}" style="height:{{ logo_height }}px;width:auto;" loading="lazy">
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} SECTION 3: PROBLEM — REMOVED (content preserved in schema settings) {%- endcomment -%}
+
+  {%- comment -%} ============================================================
+     SECTION 4: SYSTEM / 3 STEPS (cc-home-05)
+  ============================================================ {%- endcomment -%}
+  <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section4_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section4_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
+      {%- if section.settings.system_label != blank -%}
+        <span class="badge-minimal font-inter text-xs font-semibold tracking-widest uppercase text-warm-gray inline-block mb-5">
+          {{ section.settings.system_label }}
+        </span>
+      {%- endif -%}
+      {%- if section.settings.system_headline != blank -%}
+        <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-4" style="font-size: clamp(1.75rem, 4vw, 2.75rem);">
+          {{ section.settings.system_headline }}
+        </h2>
+      {%- endif -%}
+      <div class="editorial-divider hairline w-12 h-px bg-light-gray mx-auto mt-8 mb-12"></div>
+
+      {%- assign step_blocks = section.blocks | where: "type", "step" -%}
+      {%- if step_blocks.size > 0 -%}
+        <div x-data="{ openStep: null }" class="grid md:grid-cols-3 gap-10 text-center">
+          {%- assign step_counter = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'step' -%}
+              {%- assign step_counter = step_counter | plus: 1 -%}
+              <div {{ block.shopify_attributes }} class="flex flex-col items-center">
+                <div class="border-t border-light-gray w-full pt-6 mb-5">
+                  {%- if block.settings.image != blank -%}
+                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="600" height="600" class="max-w-[280px] w-full h-auto mx-auto block">
+                  {%- else -%}
+                    <img src="{{ block.settings.fallback_image_url | default: 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194' }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="600" height="600" class="max-w-[280px] w-full h-auto mx-auto block">
+                  {%- endif -%}
+                </div>
+                <span class="badge-minimal font-inter text-[0.65rem] font-semibold tracking-widest uppercase text-warm-gray inline-block mb-2">
+                  STEP {{ step_counter }}
+                </span>
+                {%- if block.settings.title != blank -%}
+                  <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-2">
+                    {{ block.settings.title }}
+                  </h3>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="font-inter text-[0.95rem] leading-relaxed text-warm-gray max-w-xs mx-auto">
+                    {{ block.settings.description }}
+                  </p>
+                {%- endif -%}
+
+                <!-- Expandable details toggle -->
+                <button type="button" @click="openStep === {{ step_counter }} ? openStep = null : openStep = {{ step_counter }}" style="display:inline-flex !important;align-items:center !important;gap:6px !important;margin-top:28px !important;background:none !important;border:none !important;border-bottom:1px solid transparent !important;cursor:pointer !important;font-family:'Inter',sans-serif !important;font-size:13px !important;font-weight:400 !important;letter-spacing:0.02em !important;text-transform:none !important;color:var(--warm-gray) !important;transition:all 0.2s ease !important;padding:0 0 2px !important;line-height:1 !important;white-space:nowrap !important;" :style="openStep === {{ step_counter }} ? 'color:var(--deep-ink) !important;border-bottom-color:var(--deep-ink) !important' : ''">
+                  <span style="font-size:13px !important;font-weight:400 !important;text-transform:none !important;letter-spacing:0.02em !important;" x-text="openStep === {{ step_counter }} ? 'Hide details' : 'View details'"></span>
+                  <span :style="openStep === {{ step_counter }} ? 'transform:rotate(180deg)' : ''" style="font-size:10px !important;line-height:1 !important;display:inline-block !important;transition:transform 0.3s ease !important;vertical-align:middle !important;">&#9662;</span>
+                </button>
+                <div x-show="openStep === {{ step_counter }}" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak style="text-align:left;width:100%;margin-top:12px;">
+                  <div style="border-top:1px solid var(--light-gray);padding:20px 16px 16px;background:#FAFAF8;margin:0 -8px;">
+                    {%- if block.settings.ingredients_text != blank -%}
+                      <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:10px;font-weight:600;">Ingredients</p>
+                      <ul style="list-style:none;padding:0;margin:0 0 16px;">
+                        {%- assign ing_lines = block.settings.ingredients_text | newline_to_br | split: "<br />" -%}
+                        {%- for line in ing_lines -%}
+                          {%- assign trimmed_line = line | strip -%}
+                          {%- if trimmed_line != blank -%}
+                            {%- assign parts = trimmed_line | split: "|" -%}
+                            <li style="font-size:14px;color:var(--deep-ink);padding:4px 0;{%- unless forloop.last -%}border-bottom:1px solid #f0f0f0;{%- endunless -%}">{{ parts[0] | strip }} <span style="color:var(--warm-gray);float:right;">{{ parts[1] | strip }}</span></li>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                    {%- if block.settings.directions != blank -%}
+                      <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:6px;font-weight:600;">Directions</p>
+                      <p style="font-size:14px;color:var(--deep-ink);line-height:1.6;margin-bottom:16px;">{{ block.settings.directions }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.benefits_text != blank -%}
+                      <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:6px;font-weight:600;">Key benefits</p>
+                      <ul style="list-style:none;padding:0;margin:0;">
+                        {%- assign ben_lines = block.settings.benefits_text | newline_to_br | split: "<br />" -%}
+                        {%- for line in ben_lines -%}
+                          {%- assign trimmed_line = line | strip -%}
+                          {%- if trimmed_line != blank -%}
+                            <li style="font-size:14px;color:var(--deep-ink);padding:3px 0;">{{ trimmed_line }}</li>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="mt-12" style="text-align:center;">
+        <a href="{{ section.settings.system_cta_url | default: '#cc-home-pricing' }}" style="display:inline-block;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;">
+          {{ section.settings.system_cta_text | default: "GET 34% OFF YOUR FIRST ORDER" }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Divider image between System and Benefits -->
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+    {%- if section.settings.divider_problem_system != blank -%}
+      <img src="{{ section.settings.divider_problem_system | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/canon-beach-haystack_1.png?v=1764011837" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 5: BENEFITS / 5 PILLARS (cc-home-07)
+  ============================================================ {%- endcomment -%}
+  <section class="bg-parchment" style="padding-top:{{ section.settings.section5_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section5_padding_bottom | default: 80 }}px;">
+    <div class="max-w-7xl mx-auto px-8 lg:px-16">
+      <div class="reveal text-center mb-14" x-intersect.once="$el.classList.add('visible')">
+        <span class="badge-minimal font-inter text-xs font-semibold tracking-wider uppercase text-warm-gray inline-block mb-5">
+          {{ section.settings.benefits_label | default: "THE BENEFITS" }}
+        </span>
+        <h2 class="font-grotesk font-medium text-deep-ink leading-tight" style="font-size: clamp(28px, 4vw, 44px);">
+          {{ section.settings.benefits_headline | default: "What Coastline does for you" }}
+        </h2>
+      </div>
+      <div class="reveal-stagger cc-benefits-grid" style="display:grid;grid-template-columns:1fr;gap:24px;" x-intersect.once="$el.classList.add('visible')">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'pillar' -%}
+            <div {{ block.shopify_attributes }} class="cc-pillar-card" style="border-top:1px solid var(--light-gray);padding-top:24px;">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="cc-pillar-img" style="width:100%;object-fit:cover;margin-bottom:16px;">
+              {%- elsif block.settings.fallback_image_url != blank -%}
+                <img src="{{ block.settings.fallback_image_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="cc-pillar-img" style="width:100%;object-fit:cover;margin-bottom:16px;">
+              {%- else -%}
+                <div class="text-forest mb-4">
+                  {%- case block.settings.icon -%}
+                    {%- when 'energy' -%}{{ icon_energy }}
+                    {%- when 'focus' -%}{{ icon_focus }}
+                    {%- when 'recovery' -%}{{ icon_recovery }}
+                    {%- when 'sleep' -%}{{ icon_sleep }}
+                    {%- when 'gut' -%}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2 1-3 2-3s2 1 2 3-1 3-2 3-2-1-2-3"/><path d="M14 10c1 0 2 1 2 2s-1 2-2 2"/></svg>
+                    {%- when 'body' -%}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M12 8v4m-4 2l4-2 4 2m-8 0v4m8-4v4"/></svg>
+                  {%- endcase -%}
+                </div>
+              {%- endif -%}
+              <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:500;color:var(--deep-ink);margin-bottom:8px;line-height:1.3;">
+                {{ block.settings.title }}
+              </h3>
+              <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.65;">
+                {{ block.settings.description }}
+              </p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Benefits page CTA -->
+      <div class="reveal" style="text-align:center;margin-top:48px;" x-intersect.once="$el.classList.add('visible')">
+        <a href="{{ section.settings.benefits_link_url | default: '/pages/benefits' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+          {{ section.settings.benefits_link_text | default: "EXPLORE ALL THE BENEFITS" }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 6: REVIEWS (cc-home-09)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-reviews-anchor" class="bg-parchment" style="padding-top:{{ section.settings.section6_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section6_padding_bottom | default: 80 }}px;">
+    <div class="max-w-7xl mx-auto px-8 lg:px-16">
+      <p class="badge-minimal text-center mb-3 tracking-widest text-xs reveal" x-intersect.once="$el.classList.add('visible')">
+        {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
+      </p>
+      <h2 class="reveal text-center text-deep-ink mb-10 font-grotesk font-medium leading-tight" style="font-size:clamp(1.75rem,4vw,2.75rem);" x-intersect.once="$el.classList.add('visible')">
+        {{ section.settings.reviews_headline | default: "2,000+ five-star reviews" }}
+      </h2>
+
+      {%- comment -%} Count reviews per category for Alpine {%- endcomment -%}
+      {%- assign count_all = 0 -%}
+      {%- assign count_energy = 0 -%}
+      {%- assign count_focus = 0 -%}
+      {%- assign count_trust = 0 -%}
+      {%- assign count_convenience = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          {%- assign count_all = count_all | plus: 1 -%}
+          {%- case block.settings.category -%}
+            {%- when 'energy' -%}{%- assign count_energy = count_energy | plus: 1 -%}
+            {%- when 'focus' -%}{%- assign count_focus = count_focus | plus: 1 -%}
+            {%- when 'trust' -%}{%- assign count_trust = count_trust | plus: 1 -%}
+            {%- when 'convenience' -%}{%- assign count_convenience = count_convenience | plus: 1 -%}
+          {%- endcase -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div x-data="{
+        reviewFilter: 'all',
+        shown: { all: 6, energy: 6, focus: 6, trust: 6, convenience: 6 },
+        totals: { all: {{ count_all }}, energy: {{ count_energy }}, focus: {{ count_focus }}, trust: {{ count_trust }}, convenience: {{ count_convenience }} },
+        counters: { all: 0, energy: 0, focus: 0, trust: 0, convenience: 0 },
+        resetCounters() { this.counters = { all: 0, energy: 0, focus: 0, trust: 0, convenience: 0 }; }
+      }">
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:40px;">
+          {%- assign tab_cats = 'all,energy,focus,trust,convenience' | split: ',' -%}
+          {%- assign tab_labels = 'ALL,ENERGY,FOCUS,TRUST,CONVENIENCE' | split: ',' -%}
+          {%- for tab_cat in tab_cats -%}
+            <button @click="reviewFilter = '{{ tab_cat }}'; resetCounters()" class="cc-review-tab" :class="reviewFilter === '{{ tab_cat }}' ? 'cc-review-tab-active' : 'cc-review-tab-idle'">{{ tab_labels[forloop.index0] }}</button>
+          {%- endfor -%}
+        </div>
+
+        <div style="display:grid;gap:24px;" class="md:!grid-cols-2 lg:!grid-cols-3" x-ref="reviewGrid" x-effect="resetCounters()">
+          {%- assign energy_idx = 0 -%}
+          {%- assign focus_idx = 0 -%}
+          {%- assign trust_idx = 0 -%}
+          {%- assign convenience_idx = 0 -%}
+          {%- assign all_idx = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'testimonial' -%}
+              {%- assign cat = block.settings.category | default: 'energy' -%}
+              {%- assign all_idx = all_idx | plus: 1 -%}
+              {%- case cat -%}
+                {%- when 'energy' -%}{%- assign energy_idx = energy_idx | plus: 1 -%}{%- assign cat_idx = energy_idx -%}
+                {%- when 'focus' -%}{%- assign focus_idx = focus_idx | plus: 1 -%}{%- assign cat_idx = focus_idx -%}
+                {%- when 'trust' -%}{%- assign trust_idx = trust_idx | plus: 1 -%}{%- assign cat_idx = trust_idx -%}
+                {%- when 'convenience' -%}{%- assign convenience_idx = convenience_idx | plus: 1 -%}{%- assign cat_idx = convenience_idx -%}
+              {%- endcase -%}
+              <div {{ block.shopify_attributes }}
+                x-show="(reviewFilter === 'all' && {{ all_idx }} <= shown.all) || (reviewFilter === '{{ cat }}' && {{ cat_idx }} <= shown['{{ cat }}'])"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                style="border-top:1px solid var(--light-gray);padding-top:24px;"
+              >
+                <p style="letter-spacing:4px;color:var(--deep-ink);font-size:14px;margin-bottom:12px;">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.65;margin-bottom:16px;">
+                  "{{ block.settings.quote }}"
+                </p>
+                <p style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);">
+                  {{ block.settings.name }}{% if block.settings.detail != blank %}, {{ block.settings.detail }}{% endif %}
+                </p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div style="text-align:center;margin-top:40px;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+          <button
+            x-show="shown[reviewFilter] < totals[reviewFilter]"
+            @click="shown[reviewFilter] += 6"
+            style="padding:12px 32px;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;cursor:pointer;border:1px solid var(--light-gray);background:transparent;color:var(--warm-gray);transition:all 0.2s ease;"
+            x-transition
+          >SHOW MORE REVIEWS</button>
+          <button
+            x-show="shown[reviewFilter] > 6"
+            @click="shown[reviewFilter] = 6; $nextTick(() => { document.getElementById('cc-reviews-anchor').scrollIntoView({ behavior: 'smooth' }) })"
+            style="padding:12px 32px;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;cursor:pointer;border:1px solid var(--light-gray);background:transparent;color:var(--warm-gray);transition:all 0.2s ease;"
+            x-transition
+          >SHOW LESS</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} === DIVIDER IMAGE 1: Between Reviews & Ingredients === {%- endcomment -%}
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')">
+    {%- if section.settings.divider_image_1 != blank -%}
+      <img src="{{ section.settings.divider_image_1 | image_url: width: 1920 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785" alt="Coastline bottle on the coast" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 7: INGREDIENTS ACCORDION (cc-home-10)
+  ============================================================ {%- endcomment -%}
+  <section class="bg-parchment" style="padding-top:{{ section.settings.section7_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section7_padding_bottom | default: 80 }}px;">
+    <div class="max-w-3xl mx-auto px-8 lg:px-16">
+
+      <div class="reveal mb-16" x-intersect.once="$el.classList.add('visible')">
+        <p class="badge-minimal mb-5">{{ section.settings.ingredients_label | default: "THE INGREDIENTS" }}</p>
+        <div class="editorial-divider mb-8"></div>
+        <h2 style="font-family:'Space Grotesk',sans-serif !important;font-weight:500 !important;color:var(--deep-ink) !important;line-height:1.15 !important;letter-spacing:-0.02em !important;font-size:clamp(1.75rem,4vw,2.75rem) !important;margin-bottom:24px;">{{ section.settings.ingredients_headline | default: "13 science-backed ingredients, zero filler" }}</h2>
+        <p class="text-warm-gray font-inter text-[17px] leading-relaxed max-w-xl">
+          {{ section.settings.ingredients_subheadline | default: "Every ingredient is clinically validated, transparently dosed, and chosen for a reason." }}
+        </p>
+      </div>
+
+      <div x-data="{ open: null }" class="reveal mb-16" x-intersect.once="$el.classList.add('visible')">
+
+        <!-- UNIFIED INGREDIENT LIST -->
+        {%- capture badge_morning -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">MORNING BLEND</span>{%- endcapture -%}
+        {%- capture badge_softgel -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">MORNING SOFTGELS</span>{%- endcapture -%}
+        {%- capture badge_evening -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">EVENING CAPSULES</span>{%- endcapture -%}
+        {%- capture badge_split -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">MORNING + EVENING</span>{%- endcapture -%}
+
+        {%- capture chevron_svg -%}<svg width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>{%- endcapture -%}
+
+        <!-- 1. Creatine Monohydrate -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'creatine' ? open = null : open = 'creatine'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945" alt="Creatine Monohydrate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Creatine Monohydrate</span>
+                  <span class="font-inter text-sm text-warm-gray">5.25 g</span>
+                </div>
+                {{ badge_morning }}
+              </div>
+            </div>
+            <svg :style="open === 'creatine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'creatine'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Supports muscle strength, bone density, and cognitive function under stress. One of the most studied supplements with an excellent safety profile.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Taurine -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'taurine' ? open = null : open = 'taurine'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425" alt="Taurine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span class="font-grotesk font-medium text-deep-ink text-base">Taurine</span>
+                <span class="font-inter text-sm text-warm-gray">3.05 g</span>
+                 <br>{{ badge_morning }}
+              </div>
+            </div>
+            <svg :style="open === 'taurine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'taurine'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Supports cardiovascular health, reduces blood pressure and inflammation, and improves metabolic markers including blood sugar and cholesterol.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Glycine -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'glycine' ? open = null : open = 'glycine'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227" alt="Glycine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Glycine</span>
+                  <span class="font-inter text-sm text-warm-gray">5 g</span>
+                </div>
+                {{ badge_morning }}
+              </div>
+            </div>
+            <svg :style="open === 'glycine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'glycine'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Improves sleep quality and reduces daytime sleepiness. A precursor to glutathione, your body's master antioxidant, and supports blood sugar control.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Ergothioneine -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'ergo' ? open = null : open = 'ergo'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277" alt="Ergothioneine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Ergothioneine</span>
+                  <span class="font-inter text-sm text-warm-gray">5 mg</span>
+                </div>
+                {{ badge_morning }}
+              </div>
+            </div>
+            <svg :style="open === 'ergo' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'ergo'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              A powerful cellular antioxidant that crosses the blood-brain barrier. Clinically shown to improve cognitive function and increase NAD+ levels.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Coenzyme Q10 -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'coq10' ? open = null : open = 'coq10'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360" alt="Coenzyme Q10" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Coenzyme Q10</span>
+                  <span class="font-inter text-sm text-warm-gray">200 mg</span>
+                </div>
+                {{ badge_softgel }}
+              </div>
+            </div>
+            <svg :style="open === 'coq10' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'coq10'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Astaxanthin -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'astax' ? open = null : open = 'astax'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Astaxanthin</span>
+                  <span class="font-inter text-sm text-warm-gray">6 mg</span>
+                </div>
+                {{ badge_softgel }}
+              </div>
+            </div>
+            <svg :style="open === 'astax' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'astax'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.
+            </p>
+          </div>
+        </div>
+
+        <!-- 7. Magnesium Citrate -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'mag' ? open = null : open = 'mag'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678" alt="Magnesium Citrate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Magnesium Citrate</span>
+                  <span class="font-inter text-sm text-warm-gray">150 mg</span>
+                </div>
+                {{ badge_morning }}
+              </div>
+            </div>
+            <svg :style="open === 'mag' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'mag'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Essential mineral for 300+ enzymatic reactions. Supports blood pressure, sleep onset, muscle recovery, and stress reduction.
+            </p>
+          </div>
+        </div>
+
+        <!-- 8. L-Theanine -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'theanine' ? open = null : open = 'theanine'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312" alt="L-Theanine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">L-Theanine</span>
+                  <span class="font-inter text-sm text-warm-gray">200 mg</span>
+                </div>
+                {{ badge_evening }}
+              </div>
+            </div>
+            <svg :style="open === 'theanine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'theanine'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.
+            </p>
+          </div>
+        </div>
+
+        <!-- 9. Glucosamine Sulfate -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'gluc' ? open = null : open = 'gluc'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Glucosamine Sulfate</span>
+                  <span class="font-inter text-sm text-warm-gray">1,500 mg</span>
+                </div>
+                {{ badge_split }}
+              </div>
+            </div>
+            <svg :style="open === 'gluc' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'gluc'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Supports joint health, reduces joint space narrowing, and is associated with reduced all-cause mortality in population studies. Split-dosed AM/PM.
+            </p>
+          </div>
+        </div>
+
+        <!-- 10. Lutein -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'lutein' ? open = null : open = 'lutein'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Lutein" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Lutein</span>
+                  <span class="font-inter text-sm text-warm-gray">10 mg</span>
+                </div>
+                {{ badge_softgel }}
+              </div>
+            </div>
+            <svg :style="open === 'lutein' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'lutein'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.
+            </p>
+          </div>
+        </div>
+
+        <!-- 11. Zeaxanthin -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'zeax' ? open = null : open = 'zeax'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Zeaxanthin" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Zeaxanthin</span>
+                  <span class="font-inter text-sm text-warm-gray">2 mg</span>
+                </div>
+                {{ badge_softgel }}
+              </div>
+            </div>
+            <svg :style="open === 'zeax' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'zeax'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.
+            </p>
+          </div>
+        </div>
+
+        <!-- 12. Inulin -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'inulin' ? open = null : open = 'inulin'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618" alt="Inulin" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Inulin</span>
+                  <span class="font-inter text-sm text-warm-gray">4 g</span>
+                </div>
+                {{ badge_morning }}
+              </div>
+            </div>
+            <svg :style="open === 'inulin' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'inulin'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              Prebiotic fiber that feeds beneficial gut bacteria, enhances mineral absorption, supports cognition, and improves bowel regularity.
+            </p>
+          </div>
+        </div>
+
+        <!-- 13. Lithium Orotate -->
+        <div class="hairline"></div>
+        <div class="py-5 cursor-pointer" @click="open === 'lithium' ? open = null : open = 'lithium'">
+          <div class="flex justify-between items-center">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <span class="font-grotesk font-medium text-deep-ink text-base">Lithium Orotate</span>
+                  <span class="font-inter text-sm text-warm-gray">400 mcg</span>
+                </div>
+                {{ badge_evening }}
+              </div>
+            </div>
+            <svg :style="open === 'lithium' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
+          </div>
+          <div x-show="open === 'lithium'" x-collapse x-cloak>
+            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
+              At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.
+            </p>
+          </div>
+        </div>
+        <div class="hairline"></div>
+      </div>
+
+      <div class="reveal text-center" x-intersect.once="$el.classList.add('visible')">
+        <a href="{{ section.settings.ingredients_link_url | default: '/pages/ingredients' }}" style="font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none;border-bottom:1px solid var(--deep-ink);padding-bottom:2px;">{{ section.settings.ingredients_link_text | default: "LEARN MORE ABOUT EACH INGREDIENT" }}</a>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} SAND TEXTURE BREAKER {%- endcomment -%}
+  <div style="width:100%;overflow:hidden;">
+    {%- if section.settings.sand_breaker_image != blank -%}
+      <img src="{{ section.settings.sand_breaker_image | image_url: width: 1920 }}" alt="" style="width:100%;height:240px;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png?v=1742830305" alt="" style="width:100%;height:240px;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 8: VIDEO (cc-home-11)
+  ============================================================ {%- endcomment -%}
+  {%- assign video_url = section.settings.video_url -%}
+  {%- if section.settings.section8_visible -%}
+  <section class="bg-parchment" style="padding-top:{{ section.settings.section8_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section8_padding_bottom | default: 80 }}px;">
+    <div class="max-w-6xl mx-auto px-8 lg:px-16">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+        <div class="lg:col-span-7 reveal" x-intersect.once="$el.classList.add('visible')" x-data="{ playing: false, embedUrl: '' }" x-init="
+          {% if video_url != blank %}
+            var raw = '{{ video_url }}';
+            if (raw.indexOf('youtube.com') > -1 || raw.indexOf('youtu.be') > -1) {
+              var id = '';
+              if (raw.indexOf('youtu.be/') > -1) { id = raw.split('youtu.be/')[1].split(/[?&#]/)[0]; }
+              else { var match = raw.match(/[?&]v=([^&#]+)/); if (match) id = match[1]; }
+              if (id) embedUrl = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+            } else if (raw.indexOf('vimeo.com') > -1) {
+              var vid = raw.split('vimeo.com/')[1].split(/[?&#]/)[0];
+              if (vid) embedUrl = 'https://player.vimeo.com/video/' + vid + '?autoplay=1';
+            }
+          {% endif %}
+        ">
+          <div class="cc-video-wrap">
+            <template x-if="!playing">
+              <div @click="if(embedUrl) playing = true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
+                {% if section.settings.video_thumbnail != blank %}
+                  <img src="{{ section.settings.video_thumbnail | image_url: width: 1200 }}" alt="{{ section.settings.video_headline | default: 'Watch how Coastline works' }}" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--deep-ink); display: flex; align-items: center; justify-content: center;">
+                    <p class="text-warm-gray font-inter text-sm tracking-widest uppercase">Video</p>
+                  </div>
+                {% endif %}
+                <svg style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; cursor: pointer; z-index: 2; transition: opacity 0.3s ease;" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="36" cy="36" r="35" fill="rgba(10,10,10,0.6)" stroke="#FAF9F6" stroke-width="1.5"/>
+                  <polygon points="29,22 29,50 52,36" fill="#FAF9F6"/>
+                </svg>
+              </div>
+            </template>
+            <template x-if="playing">
+              <iframe :src="embedUrl" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+            </template>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 reveal" x-intersect.once="$el.classList.add('visible')">
+          <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:12px;">{{ section.settings.video_label | default: "SEE THE SCIENCE" }}</p>
+          <div style="width:40px;height:1px;background:var(--light-gray);margin-bottom:24px;"></div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(24px,3vw,36px);color:var(--deep-ink);letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;">{{ section.settings.video_headline | default: "Watch how Coastline works" }}</h2>
+          <p style="font-family:'Inter',sans-serif;font-size:17px;color:var(--warm-gray);line-height:1.7;margin-bottom:32px;">
+            {{ section.settings.video_body | default: "Our team of researchers breaks down the science behind each ingredient and why timing matters for longevity." }}
+          </p>
+          <a href="{{ section.settings.video_link_url | default: '#' }}" style="font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none;border-bottom:1px solid var(--deep-ink);padding-bottom:2px;">{{ section.settings.video_link_text | default: "WATCH NOW" }}</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+
+  {%- comment -%} ============================================================
+     SECTION 9: COMPARISON TABLE (cc-home-12)
+  ============================================================ {%- endcomment -%}
+  <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section9_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section9_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
+
+      {%- if section.settings.comparison_label != blank -%}
+        <span class="badge-minimal">{{ section.settings.comparison_label }}</span>
+      {%- endif -%}
+      {%- if section.settings.comparison_headline != blank -%}
+        <h2 class="text-deep-ink max-w-2xl mx-auto mt-4 mb-12 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);">
+          {{ section.settings.comparison_headline }}
+        </h2>
+      {%- endif -%}
+
+      {%- comment -%} SVG icon captures for comparison table {%- endcomment -%}
+      {%- capture svg_check -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="12" fill="#1A3A2F"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+      {%- capture svg_empty -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="11" stroke="#E8E8E8" stroke-width="2" fill="none"/></svg>{%- endcapture -%}
+
+      <p class="text-center mb-4 md:hidden" style="font-size:11px;color:var(--warm-gray);letter-spacing:0.1em;">SCROLL RIGHT TO COMPARE &rarr;</p>
+      <div class="overflow-x-auto" style="-webkit-overflow-scrolling:touch;">
+        <table style="min-width:520px;width:100%;border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="padding:20px 12px;text-align:left;min-width:140px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;"></th>
+              <th style="padding:20px 12px;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.05em;min-width:90px;text-align:center;">COASTLINE</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">NOVOS</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">BLUEPRINT</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">AG1</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">TIMELINE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Active ingredients</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;">13</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">12</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">40+</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">75</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">1</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Clinical dosing</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Full transparency</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 12 hallmarks</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">AM/PM system</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 11 body systems</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);border-bottom:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Price/month</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);">$99</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$109</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$179+</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$79</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$125</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center;max-width:520px;margin:24px auto 0;font-size:15px;color:var(--deep-ink);line-height:1.6;">
+        {{ section.settings.comparison_footnote | default: "More ingredients doesn't mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label." }}
+      </p>
+      <p style="text-align:center;margin-top:16px;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">
+        Comparison based on publicly available product information. Prices reflect monthly subscription rates.
+      </p>
+    </div>
+  </section>
+
+
+  {%- comment -%} === DIVIDER IMAGE 2: Between Comparison & Pricing (separate mobile/desktop) === {%- endcomment -%}
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')">
+    {%- comment -%} Mobile image (shown below 768px) {%- endcomment -%}
+    {%- if section.settings.divider_image_2_mobile != blank -%}
+      <img src="{{ section.settings.divider_image_2_mobile | image_url: width: 800 }}" alt="Coastline" class="cc-divider2-mobile" style="width:100%;height:auto;display:block;" loading="lazy">
+    {%- elsif section.settings.divider_image_2 != blank -%}
+      <img src="{{ section.settings.divider_image_2 | image_url: width: 800 }}" alt="Coastline" class="cc-divider2-mobile" style="width:100%;height:auto;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline product family" class="cc-divider2-mobile" style="width:100%;height:320px;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+    {%- comment -%} Desktop image (shown at 768px+) {%- endcomment -%}
+    {%- if section.settings.divider_image_2_desktop != blank -%}
+      <img src="{{ section.settings.divider_image_2_desktop | image_url: width: 1920 }}" alt="Coastline" class="cc-divider2-desktop" style="width:100%;height:auto;display:none;" loading="lazy">
+    {%- elsif section.settings.divider_image_2 != blank -%}
+      <img src="{{ section.settings.divider_image_2 | image_url: width: 1920 }}" alt="Coastline" class="cc-divider2-desktop" style="width:100%;height:auto;display:none;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline product family" class="cc-divider2-desktop" style="width:100%;height:320px;object-fit:cover;display:none;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} FREE GIFT callout (between image and pricing) {%- endcomment -%}
+  <div style="background:#F0EFEC;padding:20px 24px;text-align:center;">
+    <p style="font-family:'Inter',sans-serif !important;font-size:11px !important;letter-spacing:0.12em !important;text-transform:uppercase !important;font-weight:600 !important;color:#1A3A2F !important;margin:0 0 4px !important;">{{ section.settings.free_gift_label | default: "Free gift with your first order of the complete system" }}</p>
+    <p style="font-family:'Inter',sans-serif !important;font-size:15px !important;color:#0A0A0A !important;margin:0 !important;font-weight:400 !important;">{{ section.settings.free_gift_description | default: "Premium Glass Shaker Bottle ($15 value)" }}</p>
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 10: PRICING CTA (cc-home-13)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-home-pricing" class="bg-parchment" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;padding-top:{{ section.settings.section10_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section10_padding_bottom | default: 80 }}px;">
+    <div
+      x-data="{
+        flavor: 'unflavored',
+        plan: 'monthly',
+        variants: { unflavored: 42179764453445, lemonade: 42179764486213 },
+        plans: {
+          monthly:   { id: 1862631493, price: '$99/mo',  label: 'Monthly',  save: 'Save 34%' },
+          bimonthly: { id: 1892712517, price: '$120/mo', label: '2-Month',  save: 'Save 20%' },
+          onetime:   { id: null,       price: '$150',    label: 'One-time', save: '' }
+        },
+        loading: false,
+        get buttonText() { return 'ADD TO CART - ' + this.plans[this.plan].price; },
+        addToCart() {
+          this.loading = true;
+          var self = this;
+          var body = { id: this.variants[this.flavor], quantity: 1 };
+          if (this.plans[this.plan].id) { body.selling_plan = this.plans[this.plan].id; }
+          fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+          .then(function(r) { return r.json(); })
+          .then(function(cartData) { document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: cartData } })); })
+          .catch(function(err) { console.error('Cart error:', err); })
+          .finally(function() { self.loading = false; });
+        }
+      }"
+      class="max-w-xl mx-auto px-8 lg:px-16 text-center"
+    >
+
+      {%- if section.settings.pricing_label != blank -%}
+        <span class="badge-minimal reveal" x-intersect.once="$el.classList.add('visible')">{{ section.settings.pricing_label }}</span>
+      {%- endif -%}
+      {%- if section.settings.pricing_headline != blank -%}
+        <h2 class="reveal text-deep-ink mt-4 mb-6 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);" x-intersect.once="$el.classList.add('visible')">
+          {{ section.settings.pricing_headline }}
+        </h2>
+      {%- endif -%}
+
+      <!-- Limited time offer callout -->
+      <div class="reveal" style="margin-bottom:32px;" x-intersect.once="$el.classList.add('visible')">
+        <p style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A2F;font-weight:600;margin:0;">
+          {{ section.settings.pricing_urgency | default: "Introductory pricing -- limited time offer" }}
+        </p>
+      </div>
+
+      <!-- Flavor selector -->
+      <div class="reveal" style="margin-bottom:40px;" x-intersect.once="$el.classList.add('visible')">
+        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Choose your flavor</p>
+        <div style="display:inline-flex;gap:10px;">
+          <button type="button" @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'cc-flavor-unflavored-active' : 'cc-flavor-unflavored-idle'" class="cc-flavor-btn">Unflavored Blend</button>
+          <button type="button" @click="flavor = 'lemonade'" :class="flavor === 'lemonade' ? 'cc-flavor-lemonade-active' : 'cc-flavor-lemonade-idle'" class="cc-flavor-btn">Coastal Lemonade</button>
+        </div>
+      </div>
+
+      <!-- Plan selector -->
+      <div class="reveal" style="margin-bottom:32px;text-align:left;" x-intersect.once="$el.classList.add('visible')">
+        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;text-align:center;">Select your plan</p>
+
+        <!-- Monthly -->
+        <div @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+            <div>
+              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Monthly subscription</span>
+              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 34% - just $3.30/day</span>
+            </div>
+            <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$99</span>
+              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Month -->
+        <div @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+            <div>
+              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Every 2 months</span>
+              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 20%</span>
+            </div>
+            <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$120</span>
+              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- One-time -->
+        <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+            <div>
+              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">One-time purchase</span>
+              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:3px;">No subscription</span>
+            </div>
+            <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$150</span>
+              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">one-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add to cart button -->
+      <div class="reveal" style="margin-bottom:20px;" x-intersect.once="$el.classList.add('visible')">
+        <button type="button" @click="addToCart()" :disabled="loading" style="display:block;width:100%;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;cursor:pointer;transition:opacity 0.3s ease;">
+          <span x-show="!loading" x-text="buttonText"></span>
+          <span x-show="loading" x-cloak>Adding...</span>
+        </button>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="reveal" style="margin-bottom:28px;text-align:center;" x-intersect.once="$el.classList.add('visible')">
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0 0 4px;">{{ section.settings.pricing_trust_1 | default: "Free shipping. Cancel anytime." }}</p>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0;">{{ section.settings.pricing_trust_2 | default: "60-day money-back guarantee." }}</p>
+      </div>
+
+      <div class="reveal" style="text-align:center;" x-intersect.once="$el.classList.add('visible')">
+        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin:0;opacity:0.7;">VEGAN, SUGAR-FREE, CAFFEINE-FREE, GMP CERTIFIED, NSF CERTIFIED</p>
+      </div>
+
+      <!-- Trust badge images -->
+      <div class="reveal" style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:32px;" x-intersect.once="$el.classList.add('visible')">
+        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+        <img src="{{ 'cc-nsf-certified.png' | asset_url }}" alt="NSF Certified" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Money-Back Guarantee" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} === WELCOME PACK IMAGE: Between Pricing & Founder (mobile/desktop) === {%- endcomment -%}
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+    {%- comment -%} Mobile image (shown below 768px) {%- endcomment -%}
+    {%- if section.settings.welcome_pack_image_mobile != blank -%}
+      <img src="{{ section.settings.welcome_pack_image_mobile | image_url: width: 800 }}" alt="Coastline Welcome Pack" class="cc-divider2-mobile" style="width:100%;max-height:60vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg?v=1759112312" alt="Coastline Welcome Pack" class="cc-divider2-mobile" style="width:100%;max-height:60vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+    {%- comment -%} Desktop image (shown at 768px+) {%- endcomment -%}
+    {%- if section.settings.welcome_pack_image_desktop != blank -%}
+      <img src="{{ section.settings.welcome_pack_image_desktop | image_url: width: 1920 }}" alt="Coastline Welcome Pack" class="cc-divider2-desktop" style="width:100%;max-height:60vh;object-fit:cover;display:none;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg?v=1759112312" alt="Coastline Welcome Pack" class="cc-divider2-desktop" style="width:100%;max-height:60vh;object-fit:cover;display:none;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 11: FOUNDER NARRATIVE (cc-home-14)
+  ============================================================ {%- endcomment -%}
+  <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+      <span class="badge-minimal inline-block mb-6 tracking-wider text-xs text-warm-gray uppercase">
+        {{ section.settings.founder_label | default: "OUR APPROACH" }}
+      </span>
+      <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-10" style="font-size: clamp(28px, 4vw, 44px);">
+        {{ section.settings.founder_headline | default: "Built by researchers, not marketers" }}
+      </h2>
+      <div class="editorial-divider hairline w-12 h-px bg-light-gray mx-auto mb-10"></div>
+      <div class="text-warm-gray leading-relaxed max-w-2xl mx-auto mb-12" style="font-size: clamp(16px, 2vw, 18px); line-height: 1.75;">
+        {{ section.settings.founder_body | default: "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers." | newline_to_br }}
+      </div>
+
+      <!-- Expert portraits -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:640px;margin:0 auto 48px;" class="cc-expert-grid">
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_1 != blank -%}
+            <img src="{{ section.settings.expert_image_1 | image_url: width: 200 }}" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Greg Potter, PhD</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Sleep & Circadian Health</p>
+        </div>
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_2 != blank -%}
+            <img src="{{ section.settings.expert_image_2 | image_url: width: 200 }}" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Dr. Jacqueline Jacques, ND</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Clinical Naturopathy</p>
+        </div>
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_3 != blank -%}
+            <img src="{{ section.settings.expert_image_3 | image_url: width: 200 }}" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Dr. Nicolas Verhoeven, PhD</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Molecular Medicine</p>
+        </div>
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_4 != blank -%}
+            <img src="{{ section.settings.expert_image_4 | image_url: width: 200 }}" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Chris Pollock, MD</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Clinical Medicine</p>
+        </div>
+      </div>
+
+      {%- if section.settings.founder_link_text != blank and section.settings.founder_link_url != blank -%}
+        {%- assign _furl = section.settings.founder_link_url -%}
+        {%- assign _furl_start = _furl | slice: 0 -%}
+        {%- assign _furl_proto = _furl | slice: 0, 4 -%}
+        {%- if _furl_start != '/' and _furl_start != '#' and _furl_proto != 'http' -%}
+          {%- assign _furl = 'https://' | append: _furl -%}
+        {%- endif -%}
+        <a href="{{ _furl }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+          {{ section.settings.founder_link_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </section>
+
+
+  {%- comment -%} === DIVIDER IMAGE 3: Between Founder/Experts & FAQ === {%- endcomment -%}
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')">
+    {%- if section.settings.divider_image_3 != blank -%}
+      <img src="{{ section.settings.divider_image_3 | image_url: width: 1920 }}" alt="Coastline" style="width:100%;height:auto;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-11_2_1.png?v=1769557907" alt="Coastline beach waves" style="width:100%;height:320px;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 12: FAQ (cc-home-16)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-home-faq" class="bg-parchment" style="padding-top:{{ section.settings.section12_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section12_padding_bottom | default: 80 }}px;">
+    <div class="max-w-3xl mx-auto px-8 lg:px-16">
+
+      {%- if section.settings.faq_label != blank -%}
+        <p class="badge-minimal reveal text-center tracking-widest text-xs text-warm-gray mb-4" x-intersect.once="$el.classList.add('visible')">
+          {{ section.settings.faq_label }}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.faq_headline != blank -%}
+        <h2 class="reveal text-center font-grotesk font-medium text-deep-ink mb-12" style="font-size:clamp(28px,4vw,40px);" x-intersect.once="$el.classList.add('visible')">
+          {{ section.settings.faq_headline }}
+        </h2>
+      {%- endif -%}
+
+      <div x-data="{ faqOpen: null }" class="reveal w-full" x-intersect.once="$el.classList.add('visible')">
+        {%- assign faq_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            {%- assign faq_index = faq_index | plus: 1 -%}
+            <div {{ block.shopify_attributes }} class="hairline border-b border-light-gray">
+              <button type="button" @click="faqOpen === {{ faq_index }} ? faqOpen = null : faqOpen = {{ faq_index }}" class="w-full flex items-center justify-between gap-4 py-5 bg-transparent border-0 cursor-pointer font-grotesk font-medium text-deep-ink text-left leading-snug" style="font-size:clamp(16px,1.8vw,18px);" :aria-expanded="faqOpen === {{ faq_index }}">
+                <span>{{ block.settings.question }}</span>
+                <span class="flex-shrink-0 text-2xl font-light leading-none text-warm-gray transition-transform duration-300" :style="faqOpen === {{ faq_index }} ? 'transform:rotate(45deg)' : ''">+</span>
+              </button>
+              <div x-show="faqOpen === {{ faq_index }}" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak class="pb-5 text-[15px] leading-relaxed text-warm-gray">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Link to full FAQ page -->
+      <div class="reveal" style="text-align:center;margin-top:40px;" x-intersect.once="$el.classList.add('visible')">
+        <a href="{{ section.settings.faq_page_link | default: '/pages/faq' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+          {{ section.settings.faq_button_text | default: "VIEW ALL FAQS" }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 12B: EMAIL CAPTURE
+  ============================================================ {%- endcomment -%}
+  <section class="reveal" style="background:#F0EFEC;padding-top:80px;padding-bottom:80px;" x-intersect.once="$el.classList.add('visible')">
+    <div style="max-width:560px;margin:0 auto;padding:0 32px;text-align:center;">
+      <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);display:block;margin-bottom:20px;">
+        {{ section.settings.email_label | default: "STAY IN THE KNOW" }}
+      </span>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:500;color:var(--deep-ink);line-height:1.2;margin:0 0 16px;">
+        {{ section.settings.email_headline | default: "Get longevity insights delivered weekly" }}
+      </h2>
+      <div style="width:48px;height:1px;background:var(--light-gray);margin:24px auto;"></div>
+      <p style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;color:var(--warm-gray);margin:0 0 32px;max-width:480px;display:inline-block;">
+        {{ section.settings.email_body | default: "Join thousands of health-focused readers. Science-backed insights on aging, performance, and vitality -- no spam, no hype." }}
+      </p>
+
+      {% form 'customer', id: 'cc-homepage-email-form' %}
+        <input type="hidden" name="contact[tags]" value="homepage-signup">
+        <div style="display:flex;gap:0;max-width:460px;margin:0 auto;border:2px solid var(--deep-ink);overflow:hidden;">
+          <input
+            type="email"
+            name="contact[email]"
+            placeholder="Enter your email"
+            required
+            autocomplete="email"
+            style="flex:1;padding:16px 20px;border:none;background:#fff;font-family:'Inter',sans-serif;font-size:14px;color:var(--deep-ink);outline:none;min-width:0;"
+          >
+          <button
+            type="submit"
+            style="padding:16px 32px;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;transition:opacity 0.3s ease;flex-shrink:0;"
+          >
+            {{ section.settings.email_button_text | default: "SUBSCRIBE" }}
+          </button>
+        </div>
+        {% if form.posted_successfully? %}
+          <p style="margin-top:16px;font-size:14px;color:var(--forest);font-weight:500;">Thank you for subscribing.</p>
+        {% endif %}
+        {% if form.errors %}
+          <p style="margin-top:16px;font-size:14px;color:#c00;">{{ form.errors | default_errors }}</p>
+        {% endif %}
+      {% endform %}
+
+      <p style="margin-top:16px;font-size:11px;color:var(--warm-gray);letter-spacing:0.03em;">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 13: FINAL CTA (cc-home-18)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-home-final-cta" class="reveal" style="background:#062F3D;padding-top:{{ section.settings.section13_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section13_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+
+      {%- if section.settings.final_headline != blank -%}
+        <h2 style="font-family:'Space Grotesk',sans-serif !important;font-weight:500 !important;color:#FAF9F6 !important;line-height:1.15 !important;margin-bottom:20px !important;font-size:clamp(28px,5vw,44px) !important;max-width:560px !important;margin-left:auto !important;margin-right:auto !important;">
+          {{ section.settings.final_headline }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.final_subheadline != blank -%}
+        <p style="font-family:'Inter',sans-serif;font-size:17px;line-height:1.7;color:#9A9A9A;margin:0 auto 40px;max-width:440px;">
+          {{ section.settings.final_subheadline }}
+        </p>
+      {%- endif -%}
+
+      <div>
+        <a href="{{ section.settings.final_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;padding:20px 48px;background:var(--parchment);color:var(--deep-ink);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s ease;">
+          {{ section.settings.final_cta_text | default: "START MY LONGEVITY SYSTEM" }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{%- comment -%} === SINGLE STYLE BLOCK (outside all HTML) === {%- endcomment -%}
+<style>
+  /* Hamburger menu icon: visible on mobile, hidden on desktop only */
+  @media (min-width: 1024px) {
+    .header__icons--start .menu-drawer-button {
+      display: none !important;
+    }
+  }
+
+  /* Paragraph max-width override (same fix as landing pages) */
+  .cc-homepage p {
+    max-width: none !important;
+  }
+
+  /* Divider image 2: mobile/desktop swap */
+  .cc-divider2-mobile { display: block !important; }
+  .cc-divider2-desktop { display: none !important; }
+  @media (min-width: 768px) {
+    .cc-divider2-mobile { display: none !important; }
+    .cc-divider2-desktop { display: block !important; }
+  }
+
+  /* Benefits grid responsive: 1-col mobile, 2-col tablet, 5-col desktop */
+  /* Mobile: 1-column, compact image */
+  .cc-homepage .cc-pillar-img {
+    height: 160px !important;
+    aspect-ratio: auto !important;
+  }
+  @media (min-width: 640px) {
+    .cc-homepage .cc-benefits-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .cc-homepage .cc-pillar-img {
+      height: 180px !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .cc-homepage .cc-benefits-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .cc-homepage .cc-benefits-grid {
+      grid-template-columns: repeat(5, 1fr) !important;
+    }
+    .cc-homepage .cc-pillar-img {
+      height: 200px !important;
+    }
+  }
+
+  /* Hero gradient - heavy on mobile for text readability over light product images */
+  .cc-homepage .cc-hero-gradient {
+    pointer-events: none;
+    background: linear-gradient(to top,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.65) 35%,
+      rgba(0,0,0,0.25) 60%,
+      rgba(0,0,0,0.05) 80%,
+      transparent 100%
+    );
+  }
+  @media (min-width: 768px) {
+    .cc-homepage .cc-hero-gradient {
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.7) 0%,
+        rgba(0,0,0,0.4) 30%,
+        rgba(0,0,0,0.1) 55%,
+        transparent 100%
+      );
+    }
+  }
+
+  /* Mobile hero image: push product up so text doesn't overlap it */
+  .cc-homepage .cc-hero-mobile-img {
+    object-position: center 30%;
+  }
+
+  /* Hero responsive typography */
+  .cc-homepage .cc-hero-headline {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: clamp(28px, 6.5vw, 40px);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #FFFFFF;
+    max-width: 100%;
+  }
+  .cc-homepage .cc-hero-subheadline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(14px, 3vw, 16px);
+    color: #1E2D4D !important;
+    max-width: 380px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+    .cc-homepage .cc-hero-headline {
+      font-size: clamp(36px, 3.5vw, 52px);
+      max-width: 500px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .cc-homepage .cc-hero-subheadline {
+      font-size: 16px;
+      color: #1E2D4D !important;
+      max-width: 440px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+
+  /* Video player aspect ratio */
+  .cc-homepage .cc-video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--deep-ink);
+    overflow: hidden;
+  }
+  .cc-homepage .cc-video-wrap > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Filter tab styling */
+  /* Expert grid: 2-col on mobile, 4-col on desktop */
+  @media (max-width: 639px) {
+    .cc-homepage .cc-expert-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+    }
+  }
+
+  .cc-homepage .filter-tab {
+    padding: 8px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    background: transparent;
+    border: 1px solid var(--light-gray);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .cc-homepage .filter-tab:hover {
+    border-color: var(--deep-ink);
+    color: var(--deep-ink);
+  }
+  .cc-homepage .filter-tab.active {
+    background: var(--deep-ink);
+    color: var(--parchment);
+    border-color: var(--deep-ink);
+  }
+
+  /* === Flavor button classes (Alpine :class toggle) === */
+  .cc-homepage .cc-flavor-btn {
+    padding: 14px 28px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+    min-width: 140px !important;
+  }
+  /* Unflavored: warm beige */
+  .cc-homepage .cc-flavor-unflavored-active {
+    background: #EDE8DF !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-homepage .cc-flavor-unflavored-idle {
+    background: #EDE8DF !important;
+    color: #6B6B6B !important;
+    border: 1px solid #D5D0C8 !important;
+  }
+  /* Coastal Lemonade: pale pink */
+  .cc-homepage .cc-flavor-lemonade-active {
+    background: #F5E0E4 !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-homepage .cc-flavor-lemonade-idle {
+    background: #F5E0E4 !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E0CDD1 !important;
+  }
+
+  /* === Plan card classes (Alpine :class toggle) === */
+  .cc-homepage .cc-plan-card {
+    border: 2px solid !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .cc-homepage .cc-plan-active {
+    border-color: #1A3A2F !important;
+    background: #F4F7F6 !important;
+  }
+  .cc-homepage .cc-plan-idle {
+    border-color: #CCCCCC !important;
+    background: #FFFFFF !important;
+  }
+
+  /* === Radio dot classes (Alpine :class toggle) === */
+  .cc-homepage .cc-radio-outer {
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 50% !important;
+    border: 2px solid !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .cc-homepage .cc-radio-active {
+    border-color: #1A3A2F !important;
+  }
+  .cc-homepage .cc-radio-idle {
+    border-color: #CCCCCC !important;
+  }
+  .cc-homepage .cc-radio-dot {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    background: #1A3A2F !important;
+  }
+
+  /* === Review tab classes (Alpine :class toggle) === */
+  .cc-homepage .cc-review-tab {
+    padding: 8px 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    border-radius: 40px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+  .cc-homepage .cc-review-tab-active {
+    background: #0A0A0A !important;
+    color: #FAF9F6 !important;
+    border: 1px solid #0A0A0A !important;
+  }
+  .cc-homepage .cc-review-tab-idle {
+    background: transparent !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E8E8E8 !important;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.cc-homepage a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href');
+      if (targetId && targetId.length > 1) {
+        var target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          // Force ALL lazy images to eager so page height settles
+          document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+            img.loading = 'eager';
+          });
+
+          function doScroll() {
+            var headerEl = document.querySelector('header, .header, .shopify-section-header-sticky');
+            var offset = (headerEl ? headerEl.getBoundingClientRect().height : 0) + 40;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+
+          // Scroll immediately, then correct after images load
+          setTimeout(doScroll, 100);
+          setTimeout(doScroll, 800);
+          setTimeout(doScroll, 1500);
+        }
+      }
+    });
+  });
+});
+</script>
+
+<script>
+    // Scroll reveal for cc-home and cc-product sections
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.cc-home .reveal, .cc-home .reveal-stagger, .cc-product .reveal, .cc-product .reveal-stagger');
+      if (!reveals.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "CC Homepage",
+  "tag": "section",
+  "class": "cc-homepage-section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "header",
+      "content": "1. Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Hero background image (mobile)"
+    },
+    {
+      "type": "text",
+      "id": "hero_label",
+      "label": "Hero top label",
+      "default": "THE ULTIMATE LONGEVITY SYSTEM"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_headline",
+      "label": "Hero headline",
+      "default": "Stay sharp, strong, and energized at every age"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subheadline",
+      "label": "Hero subheadline",
+      "default": "13 science-backed ingredients. One simple system. From $3.30/day."
+    },
+    {
+      "type": "text",
+      "id": "hero_reviews",
+      "label": "Hero reviews text",
+      "default": "2,000+ five-star reviews"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Hero primary CTA text",
+      "default": "START MY LONGEVITY SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_link",
+      "label": "Hero primary CTA link",
+      "info": "Use #cc-home-pricing to scroll to pricing, or a Shopify path",
+      "default": "#cc-home-pricing"
+    },
+    {
+      "type": "text",
+      "id": "hero_secondary_text",
+      "label": "Hero secondary link text",
+      "default": "SKIP TO PRICING"
+    },
+    {
+      "type": "text",
+      "id": "hero_secondary_link",
+      "label": "Hero secondary link URL",
+      "info": "Use #cc-home-pricing to scroll to pricing, or a Shopify path",
+      "default": "#cc-home-pricing"
+    },
+    {
+      "type": "header",
+      "content": "2. Press Logos"
+    },
+    {
+      "type": "range",
+      "id": "section2_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section2_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "press_label",
+      "label": "Press section label",
+      "default": "AS FEATURED IN"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo 1"
+    },
+    {
+      "type": "text",
+      "id": "logo_1_url",
+      "label": "Logo 1 link URL",
+      "info": "Leave blank to disable link"
+    },
+    {
+      "type": "range",
+      "id": "logo_1_height",
+      "label": "Logo 1 height (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "Logo 2"
+    },
+    {
+      "type": "text",
+      "id": "logo_2_url",
+      "label": "Logo 2 link URL",
+      "info": "Leave blank to disable link"
+    },
+    {
+      "type": "range",
+      "id": "logo_2_height",
+      "label": "Logo 2 height (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_3",
+      "label": "Logo 3"
+    },
+    {
+      "type": "text",
+      "id": "logo_3_url",
+      "label": "Logo 3 link URL",
+      "info": "Leave blank to disable link"
+    },
+    {
+      "type": "range",
+      "id": "logo_3_height",
+      "label": "Logo 3 height (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_4",
+      "label": "Logo 4"
+    },
+    {
+      "type": "text",
+      "id": "logo_4_url",
+      "label": "Logo 4 link URL",
+      "info": "Leave blank to disable link"
+    },
+    {
+      "type": "range",
+      "id": "logo_4_height",
+      "label": "Logo 4 height (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_5",
+      "label": "Logo 5"
+    },
+    {
+      "type": "text",
+      "id": "logo_5_url",
+      "label": "Logo 5 link URL",
+      "info": "Leave blank to disable link"
+    },
+    {
+      "type": "range",
+      "id": "logo_5_height",
+      "label": "Logo 5 height (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_6",
+      "label": "Logo 6"
+    },
+    {
+      "type": "text",
+      "id": "logo_6_url",
+      "label": "Logo 6 link URL",
+      "info": "Leave blank to disable link"
+    },
+    {
+      "type": "range",
+      "id": "logo_6_height",
+      "label": "Logo 6 height (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "3. Problem"
+    },
+    {
+      "type": "checkbox",
+      "id": "section3_visible",
+      "label": "Show problem section",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "section3_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section3_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "problem_label",
+      "label": "Problem section label",
+      "default": "THE PROBLEM"
+    },
+    {
+      "type": "text",
+      "id": "problem_headline",
+      "label": "Problem headline",
+      "default": "You are doing everything right. So why does it feel so complicated?"
+    },
+    {
+      "type": "textarea",
+      "id": "problem_body",
+      "label": "Problem body text",
+      "default": "You have read the articles, listened to the podcasts, and filled your cabinet with bottles you half remember buying. Fifteen supplements, four routines, and you still are not sure any of it is working.The wellness industry profits from confusion -- contradictory advice, proprietary blends that hide behind labels, and an endless cycle of the next miracle ingredient. It is not your fault the system is broken.What if it did not have to be this way? What if everything you needed fit into one honest, transparent system -- designed to actually work together?"
+    },
+    {
+      "type": "text",
+      "id": "problem_link_text",
+      "label": "Problem link text",
+      "default": "SEE WHAT MAKES OUR APPROACH DIFFERENT"
+    },
+    {
+      "type": "text",
+      "id": "problem_link_url",
+      "label": "Problem link URL",
+      "default": "/pages/approach-to-formulation"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_problem_system",
+      "label": "Divider image (between problem and system)"
+    },
+    {
+      "type": "header",
+      "content": "4. System (3 Steps)"
+    },
+    {
+      "type": "range",
+      "id": "section4_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section4_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "system_label",
+      "label": "System section label",
+      "default": "THE SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "system_headline",
+      "label": "System headline",
+      "default": "One system. Three steps. Every day."
+    },
+    {
+      "type": "text",
+      "id": "system_cta_text",
+      "label": "System CTA text",
+      "default": "GET 34% OFF YOUR FIRST ORDER"
+    },
+    {
+      "type": "text",
+      "id": "system_cta_url",
+      "label": "System CTA URL",
+      "default": "#cc-home-pricing"
+    },
+    {
+      "type": "header",
+      "content": "5. Benefits (4 Pillars)"
+    },
+    {
+      "type": "range",
+      "id": "section5_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section5_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "benefits_label",
+      "label": "Benefits section label",
+      "default": "THE BENEFITS"
+    },
+    {
+      "type": "text",
+      "id": "benefits_headline",
+      "label": "Benefits headline",
+      "default": "What Coastline does for you"
+    },
+    {
+      "type": "text",
+      "id": "benefits_link_text",
+      "label": "Benefits link text",
+      "default": "EXPLORE ALL THE BENEFITS"
+    },
+    {
+      "type": "text",
+      "id": "benefits_link_url",
+      "label": "Benefits link URL",
+      "info": "Paste full URL or Shopify path (e.g. /pages/coastline-benefits)",
+      "default": "/pages/coastline-benefits"
+    },
+    {
+      "type": "header",
+      "content": "6. Reviews"
+    },
+    {
+      "type": "range",
+      "id": "section6_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section6_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "reviews_label",
+      "label": "Reviews section label",
+      "default": "WHAT MEMBERS ARE SAYING"
+    },
+    {
+      "type": "text",
+      "id": "reviews_headline",
+      "label": "Reviews headline",
+      "default": "2,000+ five-star reviews"
+    },
+    {
+      "type": "header",
+      "content": "7. Ingredients"
+    },
+    {
+      "type": "range",
+      "id": "section7_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section7_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_label",
+      "label": "Ingredients section label",
+      "default": "THE INGREDIENTS"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_headline",
+      "label": "Ingredients headline",
+      "default": "13 science-backed ingredients, zero filler"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients_subheadline",
+      "label": "Ingredients subheadline",
+      "default": "Every ingredient is clinically validated, transparently dosed, and chosen for a reason."
+    },
+    {
+      "type": "text",
+      "id": "ingredients_link_text",
+      "label": "Ingredients link text",
+      "default": "LEARN MORE ABOUT EACH INGREDIENT"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_link_url",
+      "label": "Ingredients link URL",
+      "info": "Paste full URL or Shopify path",
+      "default": "/pages/ingredients"
+    },
+    {
+      "type": "header",
+      "content": "Sand Breaker Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sand_breaker_image",
+      "label": "Sand texture breaker image"
+    },
+    {
+      "type": "header",
+      "content": "8. Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "section8_visible",
+      "label": "Show video section",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "section8_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section8_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video URL",
+      "info": "Paste a YouTube or Vimeo URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_thumbnail",
+      "label": "Video thumbnail image"
+    },
+    {
+      "type": "text",
+      "id": "video_label",
+      "label": "Video section label",
+      "default": "SEE THE SCIENCE"
+    },
+    {
+      "type": "text",
+      "id": "video_headline",
+      "label": "Video headline",
+      "default": "Watch how Coastline works"
+    },
+    {
+      "type": "textarea",
+      "id": "video_body",
+      "label": "Video body text",
+      "default": "Our team of researchers breaks down the science behind each ingredient and why timing matters for longevity."
+    },
+    {
+      "type": "text",
+      "id": "video_link_text",
+      "label": "Video link text",
+      "default": "WATCH NOW"
+    },
+    {
+      "type": "text",
+      "id": "video_link_url",
+      "label": "Video link URL",
+      "info": "Paste full URL including https://",
+      "default": "#"
+    },
+    {
+      "type": "header",
+      "content": "9. Comparison"
+    },
+    {
+      "type": "range",
+      "id": "section9_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section9_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "comparison_label",
+      "label": "Comparison section label",
+      "default": "HOW COASTLINE COMPARES"
+    },
+    {
+      "type": "text",
+      "id": "comparison_headline",
+      "label": "Comparison headline",
+      "default": "More targeted than greens. Simpler than protocols."
+    },
+    {
+      "type": "header",
+      "content": "10. Pricing CTA"
+    },
+    {
+      "type": "range",
+      "id": "section10_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section10_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "pricing_label",
+      "label": "Pricing section label",
+      "default": "START YOUR SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "pricing_headline",
+      "label": "Pricing headline",
+      "default": "Complete longevity support from $3.30/day"
+    },
+    {
+      "type": "text",
+      "id": "pricing_urgency",
+      "label": "Pricing urgency text",
+      "default": "Introductory pricing -- limited time offer"
+    },
+    {
+      "type": "text",
+      "id": "pricing_trust_1",
+      "label": "Pricing trust line 1",
+      "default": "Free shipping. Cancel anytime."
+    },
+    {
+      "type": "text",
+      "id": "pricing_trust_2",
+      "label": "Pricing trust line 2",
+      "default": "60-day money-back guarantee."
+    },
+    {
+      "type": "header",
+      "content": "10B. Welcome Pack Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "welcome_pack_image_mobile",
+      "label": "Welcome pack image (mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "welcome_pack_image_desktop",
+      "label": "Welcome pack image (desktop)"
+    },
+    {
+      "type": "header",
+      "content": "11. Founder"
+    },
+    {
+      "type": "range",
+      "id": "section11_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section11_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "founder_label",
+      "label": "Founder section label",
+      "default": "OUR APPROACH"
+    },
+    {
+      "type": "text",
+      "id": "founder_headline",
+      "label": "Founder headline",
+      "default": "Built by researchers, not marketers"
+    },
+    {
+      "type": "textarea",
+      "id": "founder_body",
+      "label": "Founder body text",
+      "default": "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers.\n\nAt Coastline, we cut through the noise. Our team of clinical researchers has spent years reviewing thousands of studies to identify what actually works.\n\nThe result? A foundational stack of 13 ingredients. Nothing speculative. No fads. No fluff. No filler. Just the most scientifically supported compounds for longevity -- dosed correctly, timed optimally, and delivered in a system you will actually stick with."
+    },
+    {
+      "type": "text",
+      "id": "founder_link_text",
+      "label": "Founder link text",
+      "default": "MEET THE COASTLINE RESEARCH TEAM"
+    },
+    {
+      "type": "text",
+      "id": "founder_link_url",
+      "label": "Founder link URL",
+      "info": "Paste a Shopify path, e.g. /pages/approach-to-formulation",
+      "default": "/pages/approach-to-formulation"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_image_1",
+      "label": "Expert 1 portrait (Greg Potter)"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_image_2",
+      "label": "Expert 2 portrait (Dr. Jacques)"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_image_3",
+      "label": "Expert 3 portrait (Dr. Verhoeven)"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_image_4",
+      "label": "Expert 4 portrait (Chris Pollock)"
+    },
+    {
+      "type": "header",
+      "content": "12. FAQ"
+    },
+    {
+      "type": "range",
+      "id": "section12_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section12_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "faq_label",
+      "label": "FAQ section label",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "faq_headline",
+      "label": "FAQ headline",
+      "default": "Questions we hear most"
+    },
+    {
+      "type": "text",
+      "id": "faq_button_text",
+      "label": "FAQ button text",
+      "default": "VIEW ALL FAQS"
+    },
+    {
+      "type": "text",
+      "id": "faq_page_link",
+      "label": "FAQ page link",
+      "info": "Paste full URL or Shopify path (e.g. /pages/faq)",
+      "default": "/pages/faq"
+    },
+    {
+      "type": "header",
+      "content": "13. Final CTA"
+    },
+    {
+      "type": "range",
+      "id": "section13_padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section13_padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "final_headline",
+      "label": "Final CTA headline",
+      "default": "Your longevity system is waiting"
+    },
+    {
+      "type": "text",
+      "id": "final_subheadline",
+      "label": "Final CTA subheadline",
+      "default": "13 science-backed ingredients in one simple system -- from just $3.30 a day."
+    },
+    {
+      "type": "text",
+      "id": "final_cta_text",
+      "label": "Final CTA button text",
+      "default": "START MY LONGEVITY SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "final_cta_link",
+      "label": "Final CTA button link",
+      "info": "Use #cc-home-pricing to scroll to pricing, or a Shopify path",
+      "default": "#cc-home-pricing"
+    },
+    {
+      "type": "text",
+      "id": "final_trust_text",
+      "label": "Final CTA trust badges text",
+      "default": "VEGAN, SUGAR-FREE, CAFFEINE-FREE, GMP CERTIFIED, NSF CERTIFIED"
+    },
+    {
+      "type": "textarea",
+      "id": "final_disclaimer",
+      "label": "FDA disclaimer",
+      "default": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    {
+      "type": "header",
+      "content": "14. Divider Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_1",
+      "label": "Divider image 1 (after reviews)"
+    },
+    {
+      "type": "header",
+      "content": "9B. Product Image + Free Gift (before pricing)"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_2",
+      "label": "Product image (fallback)"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_2_mobile",
+      "label": "Product image (mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_2_desktop",
+      "label": "Product image (desktop)"
+    },
+    {
+      "type": "text",
+      "id": "free_gift_label",
+      "label": "Free gift label",
+      "default": "Free gift with your first order of the complete system"
+    },
+    {
+      "type": "text",
+      "id": "free_gift_description",
+      "label": "Free gift description",
+      "default": "Premium Glass Shaker Bottle ($15 value)"
+    },
+    {
+      "type": "header",
+      "content": "15. Email Capture"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email section label",
+      "default": "STAY IN THE KNOW"
+    },
+    {
+      "type": "text",
+      "id": "email_headline",
+      "label": "Email headline",
+      "default": "Get longevity insights delivered weekly"
+    },
+    {
+      "type": "textarea",
+      "id": "email_body",
+      "label": "Email body text",
+      "default": "Join thousands of health-focused readers. Science-backed insights on aging, performance, and vitality -- no spam, no hype."
+    },
+    {
+      "type": "text",
+      "id": "email_button_text",
+      "label": "Email button text",
+      "default": "SUBSCRIBE"
+    },
+    {
+      "type": "header",
+      "content": "16. Site Navigation"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_1_text",
+      "label": "Nav link 1 text",
+      "default": "THE SCIENCE"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_1_url",
+      "label": "Nav link 1 URL",
+      "default": "/pages/ingredients"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_2_text",
+      "label": "Nav link 2 text",
+      "default": "OUR APPROACH"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_2_url",
+      "label": "Nav link 2 URL",
+      "default": "/pages/approach-to-formulation"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_3_text",
+      "label": "Nav link 3 text",
+      "default": "ABOUT US"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_3_url",
+      "label": "Nav link 3 URL",
+      "default": "/pages/about"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_4_text",
+      "label": "Nav link 4 text",
+      "default": "CONTACT"
+    },
+    {
+      "type": "text",
+      "id": "nav_link_4_url",
+      "label": "Nav link 4 URL",
+      "default": "/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "---"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "System Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Fallback image URL (Shopify Files)",
+          "info": "Used when no image is selected above."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Step description"
+        },
+        {
+          "type": "header",
+          "content": "Expandable details"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredients_text",
+          "label": "Ingredients (one per line: Name | Dose)",
+          "info": "Format: Ingredient Name | Dose. One ingredient per line."
+        },
+        {
+          "type": "textarea",
+          "id": "directions",
+          "label": "Directions"
+        },
+        {
+          "type": "textarea",
+          "id": "benefits_text",
+          "label": "Key benefits (one per line)",
+          "info": "One benefit per line."
+        }
+      ]
+    },
+    {
+      "type": "pillar",
+      "name": "Benefit Pillar",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Benefit image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Fallback image URL",
+          "info": "Used when no image is selected above."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon (fallback if no image)",
+          "options": [
+            { "value": "energy", "label": "Lightning bolt (Energy)" },
+            { "value": "focus", "label": "Target (Focus)" },
+            { "value": "recovery", "label": "Cycle arrows (Recovery)" },
+            { "value": "sleep", "label": "Moon (Sleep)" },
+            { "value": "gut", "label": "Gut (Digestion)" },
+            { "value": "body", "label": "Body (Physical)" }
+          ],
+          "default": "energy"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Pillar title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Pillar description"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail (title, age, location)",
+          "info": "Example: Physician 62"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "default": "energy",
+          "options": [
+            { "value": "energy", "label": "Energy" },
+            { "value": "focus", "label": "Focus" },
+            { "value": "trust", "label": "Trust" },
+            { "value": "convenience", "label": "Convenience" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CC Homepage",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194",
+            "title": "Morning Blend",
+            "description": "Mix one scoop with water. Start your day optimized."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188",
+            "title": "Daily Softgels",
+            "description": "One softgel with your first meal."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766",
+            "title": "Evening Capsules",
+            "description": "Two capsules before bed. Wake refreshed."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "energy",
+            "title": "Energy",
+            "description": "Sustained, natural energy without stimulants or crashes"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "focus",
+            "title": "Focus",
+            "description": "Sharper mental clarity and cognitive performance all day"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "recovery",
+            "title": "Recovery",
+            "description": "Faster muscle recovery and reduced soreness after activity"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "icon": "sleep",
+            "title": "Sleep",
+            "description": "Deeper, more restorative sleep for full-body repair"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder New York",
+            "category": "focus"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It has changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte 51",
+            "category": "energy"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I am skeptical of most supplements. But the science behind Coastline convinced me. My biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the convenience of having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I am still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs 72",
+            "category": "energy"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I used to spend over $200 a month on five different supplements. Coastline replaced all of them. One system, done.",
+            "name": "Lisa T.",
+            "detail": "Austin 52",
+            "category": "convenience"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is Coastline?",
+            "answer": "Coastline is a complete longevity system with 13 science-backed ingredients delivered in three daily steps: a morning blend, daily softgels, and evening capsules."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "Morning: mix one scoop of the Morning Blend with 8-12 oz of water. Take 1 softgel with your first meal. Evening: take 2 capsules 30-60 minutes before bed."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "When will I feel a difference?",
+            "answer": "Most members notice improved energy and focus within the first 2-3 weeks. Sleep improvements often come sooner. Full benefits build over 60-90 days of consistent use."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe to take with other supplements?",
+            "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. However, we recommend consulting your healthcare provider if you take prescription medications."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel my subscription?",
+            "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees, no questions asked."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Coastline vegan?",
+            "answer": "Yes. All ingredients are vegan-friendly, including our glucosamine which is derived from a non-shellfish source."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer a guarantee?",
+            "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How is Coastline different from AG1 or other greens?",
+            "answer": "Unlike greens powders that include 75+ ingredients at trace amounts, Coastline focuses on 13 clinically dosed ingredients that target all 12 hallmarks of aging."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

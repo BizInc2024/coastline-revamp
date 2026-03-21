@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-lp-v8",
+      "settings": {
+        "hero_eyebrow": "The Ultimate Longevity System",
+        "hero_headline": "Total-body upgrade.<br><span class=\"text-white/60\">1 Easy System.</span>",
+        "hero_subheadline": "13 science-backed supplements, at clinically-validated doses. Supports brain, energy, strength, gut, skin, sleep, and more – for the long run.",
+        "hero_cta_text": "Start My Longevity System",
+        "problem_quote": "",
+        "solution_eyebrow": "The Coastline System",
+        "solution_headline": "Complete Upgrade.<br><span class=\"text-warm-gray\">Day and Night.</span>",
+        "solution_subheadline": "13 science-backed ingredients, dosed at clinical levels, timed to your biology. Two touchpoints per day -- that's it.",
+        "expert_cta_text": "Start My System",
+        "founder_quote": "",
+        "founder_name": "Chris Booth",
+        "founder_title": "Co-Founder, Coastline Longevity",
+        "cta_headline": "One system. Built for longevity.<br><span class=\"text-warm-gray\">Backed by science.</span>",
+        "cta_subheadline": "Join thousands who've simplified their health routine with Coastline.",
+        "guarantee_headline": "Try it risk-free for 60 days.",
+        "final_cta_headline": "Start your longevity journey today.",
+        "final_cta_text": "Start My System -- $99/mo"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

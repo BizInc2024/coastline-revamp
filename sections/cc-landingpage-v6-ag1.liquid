@@ -1,0 +1,1319 @@
+{% render 'cc-deps' %}
+{% comment %}
+  Coastline vs AG1 Comparison Page (v6)
+  Comparison page targeting AG1-aware traffic
+
+  Variant IDs:
+  - Unflavored Blend: 42179764453445
+  - Coastal Lemonade: 42179764486213
+
+  ReCharge Selling Plan IDs:
+  - Monthly (34% off): 1862631493
+  - 2-Month (20% off): 1892712517
+  - One-time: no selling_plan
+{% endcomment %}
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'parchment': '#FAF9F6',
+                    'deep-ink': '#0A0A0A',
+                    'warm-gray': '#6B6B6B',
+                    'light-gray': '#E8E8E8',
+                    'forest': '#062F3D',
+                    'forest-light': '#2D5A47',
+                    'ocean': '#062F3D',
+                    'brand-navy': '#1E2D4D',
+                },
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'system-ui', 'sans-serif'],
+                    'inter': ['Inter', 'system-ui', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    html { scroll-behavior: smooth; }
+    .cc-landing-v6 p { max-width: none !important; }
+    .cc-landing-v6 h1, .cc-landing-v6 h2 { text-wrap: balance; }
+
+    .editorial-divider { width: 60px; height: 1px; background: #0A0A0A; }
+    .section-counter { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; }
+
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .accordion-content.open { max-height: 2000px; }
+
+    .cc-landing-v6 footer .cc-v6-footer-cta {
+        display: inline-block !important; width: auto !important; min-width: 0 !important; min-height: 0 !important;
+        padding: 20px 48px !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; border: none !important; box-sizing: border-box !important;
+    }
+
+    .v6-blockquote { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; color: #FAF9F6; }
+    .v6-study-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 32px; margin-top: 40px; }
+    .v6-study-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: #9A9A9A; }
+
+    .v6-comparison-table { width: 100%; border-collapse: collapse; }
+    .v6-comparison-table th, .v6-comparison-table td { padding: 16px 12px; text-align: left; border-bottom: 1px solid #E8E8E8; font-size: 14px; }
+    .v6-comparison-table th { font-weight: 500; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .v6-comparison-table td:first-child { color: #6B6B6B; min-width: 140px; }
+    .v6-comparison-table .v6-check { color: #2D5A47; font-weight: 600; }
+    .v6-comparison-table .v6-x { color: #C0392B; font-weight: 600; }
+
+    .v6-star-table { width: 100%; border-collapse: collapse; }
+    .v6-star-table th, .v6-star-table td { padding: 16px 12px; text-align: center; border-bottom: 1px solid #E8E8E8; }
+    .v6-star-table th { font-weight: 500; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; }
+    .v6-star-table td:first-child { text-align: left; color: #6B6B6B; font-size: 14px; }
+    .v6-star-table .v6-stars { letter-spacing: 2px; font-size: 16px; color: #0A0A0A; }
+    .v6-star-table-dark th, .v6-star-table-dark td { border-bottom-color: rgba(250,249,246,0.1); }
+    .v6-star-table-dark th { color: rgba(250,249,246,0.5); }
+    .v6-star-table-dark td:first-child { color: rgba(250,249,246,0.6); }
+    .v6-star-table-dark .v6-stars { color: #FAF9F6; }
+
+    .v6-ingredient-card { border: 1px solid #E8E8E8; padding: 20px; text-align: center; }
+    .v6-ingredient-card p:first-of-type { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #0A0A0A; margin-bottom: 4px; }
+    .v6-ingredient-card p:last-of-type { font-size: 12px; color: #6B6B6B; }
+
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
+
+<div class="cc-landing-v6" x-data="{ visibleReviews: 3 }">
+
+    <!-- SECTION 1: EDITORIAL HERO -->
+    <section id="hero" class="pt-20 pb-12 lg:pt-32 lg:pb-16 bg-parchment">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED JANUARY 2026' }}</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
+                    {{ section.settings.hero_headline | default: 'Coastline vs AG1: Which Longevity Supplement Is Actually Worth It?' }}
+                </h1>
+                <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
+                    {{ section.settings.hero_subheadline | default: 'Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback.' }}
+                </p>
+                <div class="inline-flex items-center gap-3 mb-10">
+                    <div class="w-10 h-10 rounded-full bg-deep-ink flex items-center justify-center">
+                        <span class="text-parchment text-sm font-grotesk font-medium">JC</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-sm text-deep-ink font-medium leading-tight">{{ section.settings.hero_author | default: 'Dr. James Chen' }}</p>
+                        <p class="text-xs text-warm-gray leading-tight">{{ section.settings.hero_author_title | default: 'Clinical Nutrition Researcher' }}</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
+                    <a href="#v6-takeaways" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO THE KEY TAKEAWAYS</a>
+                </div>
+
+                <!-- Side-by-side product images -->
+                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end">
+                    <div>
+                        <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113{% endif %}" alt="Coastline" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                        <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
+                        <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
+                    </div>
+                    <div>
+                        <img src="{% if section.settings.hero_ag1_image != blank %}{{ section.settings.hero_ag1_image | image_url: width: 600 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="AG1" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">AG1</p>
+                        <p class="text-xs text-warm-gray mt-1">75 ingredients, doses undisclosed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: NEUTRAL INTRO -->
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="text-warm-gray text-lg leading-relaxed">
+                    {{ section.settings.intro_body_1 | default: "A recent clinical trial on AG1 -- funded by AG1 themselves -- found no significant health benefits compared to placebo. In light of that study, we decided to compare AG1 side by side with Coastline, a science-first longevity supplement built on a fundamentally different approach. We looked at ingredients, clinical doses, pricing, and real customer feedback." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge: Intro → AG1 Clinical Evidence -->
+    <section class="py-12 lg:py-16 bg-white">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The study AG1 probably wishes you had not seen" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_1_p1 | default: "For years, AG1 has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_1_p2 | default: "Then AG1 published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." }}
+                </p>
+                <p class="text-deep-ink text-lg leading-relaxed font-medium">
+                    {{ section.settings.bridge_1_p3 | default: "Here is what the study actually found -- and why it matters for anyone paying $79 a month." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider Image -->
+    <div class="w-full">
+        <img src="{% if section.settings.breaker_image_pre_bj != blank %}{{ section.settings.breaker_image_pre_bj | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/canon-beach-haystack_1.png?v=1764011837{% endif %}" alt="" class="w-full" style="max-height: 40vh; object-fit: cover;" loading="lazy">
+    </div>
+
+    <!-- SECTION 3: AG1 CLINICAL EVIDENCE -->
+    <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.4);">The Clinical Evidence</p>
+                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
+
+                <!-- Study findings first -->
+                <div class="v6-study-card mb-12">
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "AG1's Own Clinical Trial Found:" }}</p>
+                    <ul>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'No significant changes in blood biomarkers vs placebo' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: 'No statistically significant gut health improvement (p = 0.058)' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No metabolic or inflammatory benefits detected' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Microbiome changes were clinically irrelevant' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: 'Placebo showed similar or larger shifts' }}</li>
+                    </ul>
+                </div>
+
+                <!-- Bryan Johnson quote as supporting evidence -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 mb-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
+                    <div class="flex-shrink-0">
+                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}{% endif %}" alt="Bryan Johnson" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
+                    </div>
+                    <div>
+                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
+                            {{ section.settings.bj_quote | default: "&ldquo;I'd cancel your AG1 subscription.&rdquo;" }}
+                        </blockquote>
+                        <p class="text-sm" style="color: rgba(250,249,246,0.5);">
+                            {{ section.settings.bj_attribution | default: '-- Bryan Johnson, tech entrepreneur and longevity advocate' }}
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
+                    <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
+                        {{ section.settings.pixie_dust_body | default: "AG1 contains 75 ingredients in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 75 ingredients into one serving -- most are present in trace amounts far below what clinical trials use." }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge: Bryan Johnson → Comparison -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both AG1 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
+                </p>
+                <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
+                    {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
+                </p>
+                <div class="text-center">
+                    <a href="#v6-offer-anchor" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP AHEAD TO PRICING</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: COMPARISON BREAKDOWN -->
+    <section id="v6-comparison" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+
+            <!-- 5A: PRICE COMPARISON -->
+            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">Price Comparison</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.price_headline | default: "What you're actually paying for" }}</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <!-- AG1 Card -->
+                <div class="border border-light-gray p-8">
+                    <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 400 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="AG1" class="mx-auto mb-6" style="max-height: 120px; object-fit: contain;" loading="lazy">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">AG1</p>
+                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$79<span class="text-lg text-warm-gray">/month</span></p>
+                    <div class="border-t border-light-gray pt-4 space-y-3 text-sm text-warm-gray">
+                        <p>75 ingredients at trace amounts</p>
+                        <p>~$1.05 per ingredient per month</p>
+                        <p>$2.63/day</p>
+                        <p>$948/year</p>
+                        <p class="text-xs pt-2" style="color: #C0392B;">Proprietary blends -- doses undisclosed</p>
+                    </div>
+                </div>
+                <!-- Coastline Card -->
+                <div class="border-2 border-deep-ink p-8 relative">
+                    <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
+                    <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 400 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113{% endif %}" alt="Coastline" class="mx-auto mb-6" style="max-height: 120px; object-fit: contain;" loading="lazy">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
+                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
+                    <div class="border-t border-light-gray pt-4 space-y-3 text-sm text-warm-gray">
+                        <p>13 ingredients at clinical doses</p>
+                        <p>~$7.62 per ingredient per month</p>
+                        <p>$3.30/day</p>
+                        <p>$1,188/year</p>
+                        <p class="text-xs pt-2" style="color: #2D5A47;">Full transparency -- every dose disclosed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-20">
+                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
+                    {{ section.settings.price_framing | default: "$0.67/day more for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
+                </p>
+            </div>
+
+            <!-- 5B: INGREDIENT COMPARISON GRID -->
+            <div class="mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="text-center mb-12">
+                    <p class="section-counter mb-6">Ingredient Comparison</p>
+                    <div class="editorial-divider mx-auto mb-10"></div>
+                    <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.ingredient_comparison_headline | default: 'Side by side' }}</h2>
+                </div>
+
+                <div class="overflow-x-auto" style="-webkit-overflow-scrolling: touch;">
+                    <table class="v6-comparison-table" style="min-width: 520px;">
+                        <thead>
+                            <tr>
+                                <th style="min-width:160px;"></th>
+                                <th style="text-align:center;">Coastline</th>
+                                <th style="text-align:center;">AG1</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Clinical dosing</td><td class="v6-check" style="text-align:center;">&#10003; Full transparency</td><td class="v6-x" style="text-align:center;">&#10007; Proprietary blends</td></tr>
+                            <tr><td>Ingredient count</td><td style="text-align:center; color:#0A0A0A;">13 (precision)</td><td style="text-align:center; color:#6B6B6B;">75 (pixie dusting)</td></tr>
+                            <tr><td>Inulin dose</td><td class="v6-check" style="text-align:center;">4g (clinical dose)</td><td class="v6-x" style="text-align:center;">Undisclosed</td></tr>
+                            <tr><td>Creatine</td><td class="v6-check" style="text-align:center;">5.25g</td><td class="v6-x" style="text-align:center;">None</td></tr>
+                            <tr><td>CoQ10</td><td class="v6-check" style="text-align:center;">200mg</td><td class="v6-x" style="text-align:center;">None</td></tr>
+                            <tr><td>Taurine</td><td class="v6-check" style="text-align:center;">3.05g</td><td class="v6-x" style="text-align:center;">None</td></tr>
+                            <tr><td>AM/PM timing</td><td class="v6-check" style="text-align:center;">&#10003; Yes</td><td class="v6-x" style="text-align:center;">&#10007; No</td></tr>
+                            <tr><td>Hallmarks of aging</td><td style="text-align:center; color:#0A0A0A;">All 12</td><td style="text-align:center; color:#6B6B6B;">~3-4</td></tr>
+                            <tr><td>Body systems</td><td style="text-align:center; color:#0A0A0A;">11</td><td style="text-align:center; color:#6B6B6B;">6</td></tr>
+                            <tr><td>Caffeine-free</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
+                            <tr><td>Vegan</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
+                            <tr><td>Clinical trial</td><td style="text-align:center; color:#6B6B6B;">Individual ingredients proven</td><td class="v6-x" style="text-align:center;">No significant benefit</td></tr>
+                            <tr><td>Dose transparency</td><td class="v6-check" style="text-align:center;">Full disclosure</td><td class="v6-x" style="text-align:center;">Proprietary blends</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 5C: EFFECTIVENESS -->
+            <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="border border-light-gray p-8">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">AG1 Claims</p>
+                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: '"Supports energy, focus, gut health." Vague language with no specific doses, no specific studies cited, and no measurable outcomes defined.' }}</p>
+                </div>
+                <div class="p-8" style="background-color: #062F3D;">
+                    <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">Coastline Delivers</p>
+                    <ul class="space-y-3 leading-relaxed" style="color: #FAF9F6;">
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Taurine at 3.05g</strong> -- supports cardiovascular health and extends lifespan in animal models</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Creatine at 5.25g</strong> -- increases muscle strength and sharpens cognition</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Inulin at 4g</strong> -- feeds beneficial gut bacteria and supports digestion</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>CoQ10 at 200mg</strong> -- supports cellular energy and mitochondrial function</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Glycine at 5g</strong> -- improves sleep quality and reduces inflammation</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Astaxanthin at 6mg</strong> -- one of the most potent antioxidants known to science</span></li>
+                        <li class="text-sm mt-2 ml-6" style="color: rgba(250,249,246,0.4);">...and 7 more clinically dosed ingredients. Every dose backed by specific trials.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge: Comparison → Ingredients -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_3_headline | default: "What is actually inside each product" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_3_p1 | default: "The comparison table tells one story. But numbers on a page do not show you what is actually going into your body every morning and every evening." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_3_p2 | default: "Coastline is built around 13 specific compounds -- each selected because the clinical evidence was too strong to ignore. Not 75 ingredients sprinkled in at trace amounts. Thirteen. Every single one at the dose used in the studies that proved it works." }}
+                </p>
+                <p class="text-deep-ink text-lg leading-relaxed font-medium">
+                    {{ section.settings.bridge_3_p3 | default: "Here is exactly what is in the formula, how it is organized, and why each ingredient made the cut." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: INGREDIENT DEEP DIVE -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">The Coastline Formula</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.ingredients_headline | default: '13 ingredients. Every dose disclosed.' }}</h2>
+                <p class="text-warm-gray text-lg max-w-xl mx-auto">{{ section.settings.ingredients_subheadline | default: 'Three products. One system. Optimized for your circadian rhythm.' }}</p>
+            </div>
+
+            <!-- Morning Powder -->
+            <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
+                    <p class="font-grotesk text-lg text-deep-ink font-medium">Powder Blend - 7 Ingredients</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277" alt="Ergothioneine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Ergothioneine</p><p>5 mg -- crosses blood-brain barrier</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425" alt="Taurine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Taurine</p><p>3.05 g -- cardiovascular and lifespan support</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945" alt="Creatine Monohydrate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Creatine Monohydrate</p><p>5.25 g -- muscle strength and cognition</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227" alt="Glycine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Glycine</p><p>5 g -- sleep quality and blood sugar</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618" alt="Inulin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Inulin</p><p>4 g -- prebiotic gut health</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678" alt="Magnesium Citrate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Magnesium (Citrate)</p><p>150 mg -- 300+ enzyme cofactor</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Glucosamine Sulfate</p><p>750 mg -- joint health (AM dose)</p></div>
+                </div>
+            </div>
+
+            <!-- Softgels -->
+            <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
+                    <p class="font-grotesk text-lg text-deep-ink font-medium">Softgels - 4 Ingredients</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Astaxanthin</p><p>6 mg -- potent antioxidant</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Lutein" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Lutein</p><p>10 mg -- eye and brain health</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Zeaxanthin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Zeaxanthin</p><p>2 mg -- macular protection</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360" alt="Coenzyme Q10" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Coenzyme Q10</p><p>200 mg -- cellular energy</p></div>
+                </div>
+            </div>
+
+            <!-- Evening Capsules -->
+            <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Evening</p>
+                    <p class="font-grotesk text-lg text-deep-ink font-medium">Capsules - 3 Ingredients</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Lithium (as Orotate)</p><p>400 mcg -- neuroprotection</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312" alt="L-Theanine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>L-Theanine</p><p>200 mg -- calm without grogginess</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Glucosamine Sulfate</p><p>750 mg -- joint health (PM dose)</p></div>
+                </div>
+            </div>
+
+            <!-- Bryan Johnson Inulin Callout -->
+            <div class="border-l-2 p-6 mt-8" style="border-color: #2D5A47; background: #F5F4F0;">
+                <p class="text-deep-ink leading-relaxed">
+                    {{ section.settings.bj_inulin_callout | default: "Coastline includes clinical-dose inulin at 4g -- the very prebiotic Bryan Johnson recommends -- as just one of 13 ingredients." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider Image -->
+    <div class="w-full">
+        <img src="{% if section.settings.breaker_image_pre_experts != blank %}{{ section.settings.breaker_image_pre_experts | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png?v=1742830305{% endif %}" alt="" class="w-full" style="max-height: 40vh; object-fit: cover;" loading="lazy">
+    </div>
+
+    <!-- Bridge: Ingredients → Experts -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_4_headline | default: "Built by researchers, not marketers" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_4_p1 | default: "We did not design this formulation in isolation. Coastline was built alongside a team of researchers and clinicians with decades of combined experience in circadian biology, molecular medicine, and human performance." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed">
+                    {{ section.settings.bridge_4_p2 | default: "Their job was simple: review thousands of studies and identify the compounds with the strongest evidence for human longevity. Not trends. Not marketing-friendly superfoods. Just what actually works, at doses that actually matter. Here is what they have to say about the result." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: EXPERT QUOTES -->
+    <section class="py-20 lg:py-32" style="background-color: #062F3D;">
+        <div class="max-w-6xl mx-auto px-8 lg:px-16">
+            <p class="text-xs tracking-widest uppercase mb-12 text-center" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_label | default: 'What Researchers Say About Coastline' }}</p>
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Expert 1 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_1_name | default: '- Greg Potter, PhD, MSc' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_1_credential | default: 'Sleep & Circadian Health Expert' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_1_quote | default: '&ldquo;The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.&rdquo;' }}</p>
+                </div>
+                <!-- Expert 2 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')" >
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_2_name | default: '- Dr. Jacqueline Jacques, ND' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_2_credential | default: 'Naturopathic Doctor' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_2_quote | default: '&ldquo;Coastline is what happens when you combine scientific rigor with real-world clinical understanding.&rdquo;' }}</p>
+                </div>
+                <!-- Expert 3 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_3_name | default: '- Dr. Nicolas Verhoeven' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_3_credential | default: 'Ph.D. in Molecular Medicine' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_3_quote | default: '&ldquo;I value Coastline&rsquo;s quality. It means less hassle with the greatest certainty of results.&rdquo;' }}</p>
+                </div>
+                <!-- Expert 4 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_4_name | default: '- Chris Pollock, MD' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_4_credential | default: 'Physician & Coastline Co-Founder' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_4_quote | default: '&ldquo;We reviewed thousands of studies to identify 13 ingredients with the strongest evidence for human longevity. Nothing speculative. No fads. Just science.&rdquo;' }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge: Experts → Testimonials -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_5_headline | default: "What real customers are saying" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_5_p1 | default: "Expert validation matters. But at the end of the day, what matters most is whether real people notice a real difference. Not in a lab. In their actual lives -- their mornings, their workouts, their energy at 3 PM, their sleep." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed">
+                    {{ section.settings.bridge_5_p2 | default: "We asked Coastline customers to share their experience. Many of them came from AG1 or other supplements. Some are physicians. Some are athletes. Some are parents who just wanted to stop feeling exhausted. Here is what they said." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: SWITCHER TESTIMONIALS -->
+    <section class="py-20 lg:py-28" style="background-color: #F5F4F0;" x-data="{ visibleBatches: 1 }">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <p class="section-counter mb-6">{{ section.settings.reviews_counter | default: 'What People Are Saying' }}</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.reviews_headline | default: 'Real reviews from real customers.' }}</h2>
+            </div>
+
+            <!-- Batch 1: Reviews 1-3 (always visible) -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_1_quote | default: "&ldquo;As a physician, I&rsquo;m skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_1_name | default: 'Michael R., 62' }}</p>
+                    <p class="text-xs text-warm-gray">Physician</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_2_quote | default: "&ldquo;Quality you can feel. You can tell this wasn&rsquo;t made by a marketing team, but by scientists.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_2_name | default: 'Edward Q., 49' }}</p>
+                    <p class="text-xs text-warm-gray">Richmond, VA</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_3_quote | default: "&ldquo;I used to spend over $200 a month on five different supplements and still wasn&rsquo;t sure I was covering everything. Coastline replaced all of them. One system, done.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_3_name | default: 'Lisa T., 52' }}</p>
+                    <p class="text-xs text-warm-gray">Austin, TX</p>
+                </div>
+            </div>
+
+            <!-- Batch 2: Reviews 4-6 -->
+            <div x-show="visibleBatches >= 2" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_4_quote | default: "&ldquo;I&rsquo;m extremely careful about what I put in my body. Coastline checked every box for purity and data.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_4_name | default: 'Rachel G., 48' }}</p>
+                    <p class="text-xs text-warm-gray">Boulder, CO</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_5_quote | default: "&ldquo;I love the convenience of having everything I need in one simple system. No more pill organizers.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_5_name | default: 'James U., 44' }}</p>
+                    <p class="text-xs text-warm-gray">Tampa, FL</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_6_quote | default: "&ldquo;Finally, a longevity stack that doesn&rsquo;t require 15 different bottles. My morning brain fog is gone.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_6_name | default: 'Robert K., 45' }}</p>
+                    <p class="text-xs text-warm-gray">Chicago, IL</p>
+                </div>
+            </div>
+
+            <!-- Batch 3: Reviews 7-9 -->
+            <div x-show="visibleBatches >= 3" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_7_quote | default: "&ldquo;Three weeks in and the mental sharpness is unmistakable. I&rsquo;m writing better code, retaining more from meetings, and my afternoon crash is just gone.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_7_name | default: 'Thomas H., 43' }}</p>
+                    <p class="text-xs text-warm-gray">Atlanta, GA</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_8_quote | default: "&ldquo;I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash. Just consistent output from 6 AM to 10 PM.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_8_name | default: 'Derek W., 47' }}</p>
+                    <p class="text-xs text-warm-gray">Scottsdale, AZ</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_9_quote | default: "&ldquo;As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the afternoon fog that I thought was just a permanent part of my life.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_9_name | default: 'Sophia R.' }}</p>
+                    <p class="text-xs text-warm-gray">Founder, New York</p>
+                </div>
+            </div>
+
+            <!-- Batch 4: Reviews 10-12 -->
+            <div x-show="visibleBatches >= 4" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_10_quote | default: "&ldquo;I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_10_name | default: 'Andrew P., 55' }}</p>
+                    <p class="text-xs text-warm-gray">Boston, MA</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_11_quote | default: "&ldquo;I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I&rsquo;m bouncing back faster and my endurance has noticeably improved.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_11_name | default: 'Marcus D., 39' }}</p>
+                    <p class="text-xs text-warm-gray">Denver, CO</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_12_quote | default: "&ldquo;My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_12_name | default: 'Catherine W., 58' }}</p>
+                    <p class="text-xs text-warm-gray">Seattle, WA</p>
+                </div>
+            </div>
+
+            <!-- Batch 5: Reviews 13-15 -->
+            <div x-show="visibleBatches >= 5" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_13_quote | default: "&ldquo;My husband and I both switched to Coastline. We cancelled six separate subscriptions between us. Simpler, cheaper, and we actually feel the difference.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_13_name | default: 'Christine A., 49' }}</p>
+                    <p class="text-xs text-warm-gray">Denver, CO</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_14_quote | default: "&ldquo;At 72, I&rsquo;m still active and working. Coastline helps me keep pace with people half my age.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_14_name | default: 'Arthur B., 72' }}</p>
+                    <p class="text-xs text-warm-gray">Palm Springs, CA</p>
+                </div>
+                <div class="bg-white border border-light-gray p-8">
+                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_15_quote | default: "&ldquo;Morning scoop, one softgel, two capsules before bed. That&rsquo;s it. I replaced an entire shelf of bottles with one system.&rdquo;" }}</p>
+                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_15_name | default: 'Kevin M., 40' }}</p>
+                    <p class="text-xs text-warm-gray">Nashville, TN</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12" x-show="visibleBatches < 5">
+                <button @click="visibleBatches++" class="font-grotesk text-xs tracking-widest uppercase text-deep-ink border border-deep-ink px-12 py-4 hover:bg-deep-ink hover:text-parchment transition-all duration-300">
+                    Show More Reviews
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breaker Image -->
+    <div class="w-full">
+        <img src="{% if section.settings.breaker_image_1 != blank %}{{ section.settings.breaker_image_1 | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785{% endif %}" alt="" class="w-full" style="max-height: 50vh; object-fit: cover;" loading="lazy">
+    </div>
+
+    <!-- Bridge: Testimonials → Star Rating -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_6_headline | default: "The final scorecard" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_6_p1 | default: "The customer reviews paint a consistent picture. But we wanted to go one step further and give you a clear, side-by-side rating across every dimension that actually matters when choosing a longevity supplement." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed">
+                    {{ section.settings.bridge_6_p2 | default: "We evaluated both products on ingredient quality, clinical evidence, dose transparency, value per ingredient, and overall convenience. Here is the final scorecard." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: SUMMARY STAR RATING TABLE -->
+    <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.4);">Summary</p>
+                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin: 0 auto 40px;"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium" style="color: #FAF9F6;">{{ section.settings.summary_headline | default: 'The final comparison' }}</h2>
+            </div>
+
+            <div class="overflow-x-auto reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <table class="v6-star-table v6-star-table-dark" style="min-width: 400px;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left; min-width:160px;"></th>
+                            <th>Coastline</th>
+                            <th>AG1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ingredient quality</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
+                        <tr><td>Clinical evidence</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9734;&#9734;&#9734;&#9734;</td></tr>
+                        <tr><td>Dose transparency</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9734;&#9734;&#9734;&#9734;</td></tr>
+                        <tr><td>Value per ingredient</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
+                        <tr><td>Convenience</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</td></tr>
+                        <tr style="font-weight:500;"><td style="color:#FAF9F6; font-weight:500;">Overall</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY TAKEAWAYS -->
+    <section id="v6-takeaways" class="py-16 lg:py-20 bg-white">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="text-xs tracking-widest uppercase text-warm-gray mb-6">{{ section.settings.takeaways_label | default: 'Key Takeaways' }}</p>
+                <div style="width:40px; height:1px; background:var(--light-gray); margin-bottom:24px;"></div>
+                <ul class="space-y-4">
+                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
+                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
+                        <span>{{ section.settings.takeaway_1 | default: "AG1's own clinical trial found no significant benefits over placebo across blood biomarkers, gut health, and metabolic markers." }}</span>
+                    </li>
+                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
+                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
+                        <span>{{ section.settings.takeaway_2 | default: "AG1 uses 75 ingredients in proprietary blends with undisclosed doses. Coastline uses 13 ingredients at full clinical doses with complete transparency." }}</span>
+                    </li>
+                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
+                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
+                        <span>{{ section.settings.takeaway_3 | default: "Coastline costs $0.67/day more ($3.30 vs $2.63) but delivers clinically validated doses of every ingredient." }}</span>
+                    </li>
+                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
+                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
+                        <span>{{ section.settings.takeaway_4 | default: "Coastline uses an AM/PM system timed to your circadian biology. AG1 is a single scoop with no timing optimization." }}</span>
+                    </li>
+                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
+                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
+                        <span>{{ section.settings.takeaway_5 | default: "Coastline targets all 12 hallmarks of aging across 11 body systems. AG1 addresses roughly 3-4 hallmarks." }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: SOFT CTA -->
+    <section id="v6-offer-section" class="pt-10 pb-20 lg:pt-16 lg:pb-32 bg-white">
+        <div id="v6-offer-anchor" style="display:block; position:relative; top:-80px; visibility:hidden; pointer-events:none;"></div>
+        <div class="max-w-4xl mx-auto px-8 lg:px-16 text-center">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-8">{{ section.settings.cta_counter | default: 'Make The Switch' }}</p>
+                <div class="editorial-divider mx-auto mb-12"></div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-grotesk font-medium mb-8 leading-tight">
+                    {{ section.settings.cta_headline | default: 'Ready to make the switch?' }}
+                </h2>
+                <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-xl mx-auto leading-relaxed">
+                    {{ section.settings.cta_body | default: "If you have been paying $79/month for AG1 and want ingredients that actually work at doses that actually matter, Coastline might be worth trying." }}
+                </p>
+                <div class="flex justify-center items-center gap-2 mb-12">
+                    <span class="text-deep-ink">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    <span class="text-warm-gray">{{ section.settings.cta_reviews_text | default: '2,000+ Five-Star Reviews' }}</span>
+                </div>
+
+                <!-- Product Image -->
+                <div class="mb-10">
+                    <img src="{% if section.settings.cta_product_image != blank %}{{ section.settings.cta_product_image | image_url: width: 800 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-newhero-v2-mobile_2.png?v=1769556602{% endif %}" alt="Coastline Complete System" class="mx-auto" style="max-height: 280px; object-fit: contain;" loading="lazy">
+                </div>
+
+                <!-- Pricing Box -->
+                <div class="bg-white border border-light-gray p-8 lg:p-12 max-w-xl mx-auto mb-10"
+                     x-data="{
+                         loading: false,
+                         flavor: 'unflavored',
+                         plan: 'monthly',
+                         variants: { unflavored: 42179764453445, lemonade: 42179764486213 },
+                         sellingPlans: { monthly: 1862631493, twomonth: 1892712517, onetime: null },
+                         prices: { monthly: 99, twomonth: 120, onetime: 150 },
+                         savings: { monthly: 34, twomonth: 20, onetime: 0 },
+                         get currentPrice() { return this.prices[this.plan]; },
+                         get currentSavings() { return this.savings[this.plan]; },
+                         get isSubscription() { return this.plan !== 'onetime'; },
+                         addToCart() {
+                             this.loading = true;
+                             const payload = { id: this.variants[this.flavor], quantity: 1 };
+                             if (this.sellingPlans[this.plan]) { payload.selling_plan = this.sellingPlans[this.plan]; }
+                             fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+                             .then(response => response.json())
+                             .then(cartData => {
+                                 this.loading = false;
+                                 if (window.theme && window.theme.pubsub) { theme.pubsub.publish(theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', cart: cartData }); }
+                                 document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: cartData } }));
+                             })
+                             .catch(error => { this.loading = false; console.error('Error adding to cart:', error); });
+                         }
+                     }">
+
+                    <!-- Flavor Selector -->
+                    <div class="mb-8">
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Select Flavor</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'border-deep-ink ring-2 ring-deep-ink ring-offset-2' : 'border-light-gray'" class="p-4 border text-center transition-all" style="background-color: #F5EFE6;">
+                                <span class="font-grotesk text-sm text-deep-ink">Unflavored</span>
+                            </button>
+                            <button @click="flavor = 'lemonade'" :class="flavor === 'lemonade' ? 'border-deep-ink ring-2 ring-deep-ink ring-offset-2' : 'border-light-gray'" class="p-4 border text-center transition-all" style="background-color: #FDF2F8;">
+                                <span class="font-grotesk text-sm text-deep-ink">Coastal Lemonade</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Plan Selector -->
+                    <div class="mb-8">
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Select Plan</p>
+                        <div class="space-y-3">
+                            <button @click="plan = 'monthly'" :class="plan === 'monthly' ? 'border-deep-ink border-2' : 'border-light-gray border'" class="w-full text-left transition-colors relative" style="padding: 16px; background-color: #F5F4F0;">
+                                <span style="position: absolute; top: -10px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BEST VALUE</span>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" style="flex-shrink: 0;"><circle cx="10" cy="10" r="8" fill="none" stroke="#0A0A0A" stroke-width="1.5"/><circle cx="10" cy="10" :r="plan === 'monthly' ? 5 : 0" fill="#0A0A0A" style="transition: r 0.15s ease;"/></svg>
+                                    <div style="flex: 1;"><span class="font-grotesk text-deep-ink" style="font-size: 15px;">Monthly Subscription</span><span style="display: block; font-size: 12px; color: var(--forest-light); margin-top: 2px;">Save 34% - Cancel anytime</span></div>
+                                    <div style="text-align: right;"><span class="font-grotesk text-deep-ink" style="font-size: 18px; font-weight: 500;">$99</span><span class="text-warm-gray" style="font-size: 13px;">/mo</span></div>
+                                </div>
+                            </button>
+                            <button @click="plan = 'twomonth'" :class="plan === 'twomonth' ? 'border-deep-ink border-2' : 'border-light-gray border'" class="w-full text-left transition-colors" style="padding: 16px; background-color: #FAFAFA;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" style="flex-shrink: 0;"><circle cx="10" cy="10" r="8" fill="none" stroke="#0A0A0A" stroke-width="1.5"/><circle cx="10" cy="10" :r="plan === 'twomonth' ? 5 : 0" fill="#0A0A0A" style="transition: r 0.15s ease;"/></svg>
+                                    <div style="flex: 1;"><span class="font-grotesk text-deep-ink" style="font-size: 15px;">Every 2 Months</span><span style="display: block; font-size: 12px; color: var(--forest-light); margin-top: 2px;">Save 20%</span></div>
+                                    <div style="text-align: right;"><span class="font-grotesk text-deep-ink" style="font-size: 18px; font-weight: 500;">$120</span><span class="text-warm-gray" style="font-size: 13px;">/mo</span></div>
+                                </div>
+                            </button>
+                            <button @click="plan = 'onetime'" :class="plan === 'onetime' ? 'border-deep-ink border-2' : 'border-light-gray border'" class="w-full text-left transition-colors" style="padding: 16px; background-color: #FAFAFA;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" style="flex-shrink: 0;"><circle cx="10" cy="10" r="8" fill="none" stroke="#0A0A0A" stroke-width="1.5"/><circle cx="10" cy="10" :r="plan === 'onetime' ? 5 : 0" fill="#0A0A0A" style="transition: r 0.15s ease;"/></svg>
+                                    <div style="flex: 1;"><span class="font-grotesk text-deep-ink" style="font-size: 15px;">One-Time Purchase</span><span style="display: block; font-size: 12px; color: var(--warm-gray); margin-top: 2px;">Try before you subscribe</span></div>
+                                    <div style="text-align: right;"><span class="font-grotesk text-deep-ink" style="font-size: 18px; font-weight: 500;">$150</span></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Price Display -->
+                    <div class="border-t border-light-gray pt-6 mb-6">
+                        <div class="flex items-baseline justify-center gap-2 mb-2">
+                            <span class="text-5xl font-grotesk font-medium text-deep-ink" x-text="'$' + currentPrice"></span>
+                            <span class="text-warm-gray" x-show="isSubscription">/month</span>
+                        </div>
+                        <p class="text-sm text-warm-gray" x-show="plan === 'monthly'">Just $3.30/day - less than your daily coffee</p>
+                        <p class="text-sm text-warm-gray" x-show="plan === 'twomonth'">$4/day - ships every 2 months</p>
+                        <p class="text-sm text-warm-gray" x-show="plan === 'onetime'">Try it first. Subscribe later.</p>
+                    </div>
+
+                    <!-- Add to Cart Button -->
+                    <button @click="addToCart()" :disabled="loading" class="btn-primary w-full block text-center" :class="{ 'opacity-70 cursor-wait': loading }">
+                        <span x-show="!loading">Add to Cart</span>
+                        <span x-show="loading">Adding to Cart...</span>
+                    </button>
+
+                    <!-- Free Gift -->
+                    <div class="mt-6 mb-4 py-3 px-4 text-center">
+                        <p class="text-sm font-grotesk font-medium text-forest" style="letter-spacing: 0.05em;">FREE GIFT WITH YOUR FIRST ORDER</p>
+                        <p class="text-xs text-warm-gray mt-1">Premium Glass Shaker Bottle ($15 value)</p>
+                    </div>
+                    <p class="text-xs text-warm-gray text-center">{{ section.settings.cta_micro_copy | default: 'Free shipping - Cancel anytime - 60-day money-back guarantee' }}</p>
+
+                    <!-- Trust Badges -->
+                    <div class="flex justify-center items-center gap-6 mt-8">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" class="h-16 lg:h-20 object-contain opacity-80">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" class="h-16 lg:h-20 object-contain opacity-80">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Money-Back Guarantee" class="h-16 lg:h-20 object-contain opacity-80 scale-110">
+                    </div>
+                    <p class="text-xs uppercase tracking-widest text-warm-gray mt-6 text-center">{{ section.settings.trust_badges_text | default: 'Vegan , Sugar-Free , Caffeine-Free , GMP Certified , 60-Day Guarantee' }}</p>
+                </div>
+
+                <!-- Risk Reversal -->
+                <div class="max-w-xl mx-auto mt-10 border-l-2 p-6 text-left" style="border-color: #2D5A47; background: #F5F4F0;">
+                    <p class="text-xs tracking-widest uppercase mb-4" style="color: #2D5A47;">Risk-Free Guarantee</p>
+                    <ul class="space-y-2 text-sm text-warm-gray">
+                        <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span> 60-day money-back guarantee (no questions asked)</li>
+                        <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span> Free shipping on every order</li>
+                        <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span> Cancel anytime with one click</li>
+                    </ul>
+                    <p class="text-sm text-deep-ink mt-4 font-medium">{{ section.settings.risk_reversal_text | default: "Worst case: you get a full refund. Best case: you get better science for $0.67/day more." }}</p>
+                </div>
+
+                <!-- What's Included -->
+                <div class="max-w-5xl mx-auto mt-16" x-data="{ openProduct: null }">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-8 text-center">What's Included</p>
+                    <div class="border border-light-gray mb-4">
+                        <button @click="openProduct = openProduct === 'powder' ? null : 'powder'" class="w-full p-6 flex items-center gap-6 text-left hover:bg-parchment transition-colors">
+                            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194" alt="Morning Powder Blend" class="h-20 w-20 object-contain">
+                            <div class="flex-1"><p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p><p class="font-grotesk text-lg text-deep-ink">Powder Blend</p><p class="text-sm text-warm-gray">7 ingredients</p></div>
+                            <svg class="w-5 h-5 text-warm-gray transition-transform" :class="openProduct === 'powder' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="accordion-content" :class="{ 'open': openProduct === 'powder' }">
+                            <div class="px-6 pb-6 border-t border-light-gray pt-6">
+                                <ul class="divide-y divide-light-gray text-sm">
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Ergothioneine</span><span class="text-warm-gray">5 mg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Taurine</span><span class="text-warm-gray">3.05 g</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Creatine Monohydrate</span><span class="text-warm-gray">5.25 g</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Glycine</span><span class="text-warm-gray">5 g</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Inulin</span><span class="text-warm-gray">4 g</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Magnesium (as Citrate)</span><span class="text-warm-gray">150 mg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Glucosamine Sulfate</span><span class="text-warm-gray">750 mg</span></li>
+                                </ul>
+                                <div class="bg-parchment border-l-2 p-4 mt-4" style="border-color: #2D5A47;"><p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Directions</p><p class="text-sm text-deep-ink leading-relaxed">Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-light-gray mb-4">
+                        <button @click="openProduct = openProduct === 'softgels' ? null : 'softgels'" class="w-full p-6 flex items-center gap-6 text-left hover:bg-parchment transition-colors">
+                            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" alt="Morning Softgels" class="h-20 w-20 object-contain">
+                            <div class="flex-1"><p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p><p class="font-grotesk text-lg text-deep-ink">Softgels</p><p class="text-sm text-warm-gray">4 ingredients</p></div>
+                            <svg class="w-5 h-5 text-warm-gray transition-transform" :class="openProduct === 'softgels' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="accordion-content" :class="{ 'open': openProduct === 'softgels' }">
+                            <div class="px-6 pb-6 border-t border-light-gray pt-6">
+                                <ul class="divide-y divide-light-gray text-sm">
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Astaxanthin</span><span class="text-warm-gray">6 mg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Lutein</span><span class="text-warm-gray">10 mg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Zeaxanthin</span><span class="text-warm-gray">2 mg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Coenzyme Q10</span><span class="text-warm-gray">200 mg</span></li>
+                                </ul>
+                                <div class="bg-parchment border-l-2 p-4 mt-4" style="border-color: #2D5A47;"><p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Directions</p><p class="text-sm text-deep-ink leading-relaxed">Take 1 softgel with your first meal of the day, alongside your Morning Blend.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-light-gray mb-4">
+                        <button @click="openProduct = openProduct === 'capsules' ? null : 'capsules'" class="w-full p-6 flex items-center gap-6 text-left hover:bg-parchment transition-colors">
+                            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766" alt="Evening Capsules" class="h-20 w-20 object-contain">
+                            <div class="flex-1"><p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Evening</p><p class="font-grotesk text-lg text-deep-ink">Capsules</p><p class="text-sm text-warm-gray">3 ingredients</p></div>
+                            <svg class="w-5 h-5 text-warm-gray transition-transform" :class="openProduct === 'capsules' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="accordion-content" :class="{ 'open': openProduct === 'capsules' }">
+                            <div class="px-6 pb-6 border-t border-light-gray pt-6">
+                                <ul class="divide-y divide-light-gray text-sm">
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Lithium (as Orotate)</span><span class="text-warm-gray">400 mcg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">L-Theanine</span><span class="text-warm-gray">200 mg</span></li>
+                                    <li class="flex justify-between py-3"><span class="text-deep-ink font-medium">Glucosamine Sulfate</span><span class="text-warm-gray">750 mg</span></li>
+                                </ul>
+                                <div class="bg-parchment border-l-2 p-4 mt-4" style="border-color: #2D5A47;"><p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Directions</p><p class="text-sm text-deep-ink leading-relaxed">Take 2 capsules 30-60 minutes before bed with water.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-light-gray">
+                        <button @click="openProduct = openProduct === 'shaker' ? null : 'shaker'" class="w-full p-6 flex items-center gap-6 text-left hover:bg-parchment transition-colors">
+                            <div class="h-20 w-20 flex items-center justify-center bg-parchment"><img src="{{ 'cc-v3-shaker.jpg' | asset_url }}" alt="Glass Shaker Bottle" class="h-full w-full object-contain" loading="lazy"></div>
+                            <div class="flex-1"><p class="text-xs tracking-widest uppercase mb-1" style="color: #2D5A47;">Free Gift</p><p class="font-grotesk text-lg text-deep-ink">Premium Glass Shaker Bottle</p><p class="text-sm text-warm-gray">Included free with your first order ($15 value)</p></div>
+                            <svg class="w-5 h-5 text-warm-gray transition-transform" :class="openProduct === 'shaker' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div class="accordion-content" :class="{ 'open': openProduct === 'shaker' }">
+                            <div class="px-6 pb-6 border-t border-light-gray pt-6">
+                                <ul class="space-y-3 text-sm">
+                                    <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span><span class="text-warm-gray">Premium borosilicate glass construction</span></li>
+                                    <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span><span class="text-warm-gray">Designed for mixing your Morning Blend</span></li>
+                                    <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span><span class="text-warm-gray">Included free with your first order</span></li>
+                                    <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span><span class="text-warm-gray">Dishwasher safe</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: AG1-SPECIFIC FAQ -->
+    <section class="py-20 lg:py-28 bg-parchment">
+        <div class="max-w-3xl mx-auto px-8 lg:px-16">
+            <div class="text-center mb-16">
+                <p class="section-counter mb-6">{{ section.settings.faq_counter | default: 'Questions & Answers' }}</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.faq_headline | default: 'Frequently asked questions.' }}</h2>
+            </div>
+            <div class="space-y-4" x-data="{ openFaq: null }">
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 1 ? null : 1">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_1_question | default: 'How is Coastline different from AG1?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 1 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_1_answer | default: '<p>Coastline uses 13 clinically dosed ingredients with full transparency. AG1 uses 75 ingredients in proprietary blends, meaning you cannot verify what dose of each ingredient you are actually getting. Coastline also includes an AM/PM system optimized for your circadian rhythm.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_2_question | default: 'AG1 is $79/month. Why does Coastline cost $20 more?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 2 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_2_answer | default: '<p>AG1 spreads $79 across 75 ingredients at trace amounts (~$1.05 per ingredient per month). Coastline invests $99 in 13 ingredients at clinical doses (~$7.62 per ingredient per month). You are paying for doses that match actual clinical trials, not a long ingredient list.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 3 ? null : 3">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_3_question | default: 'Does Coastline include a greens blend?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 3 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_3_answer | default: '<p>No. Coastline is not a greens powder. It is a precision longevity system with 13 ingredients selected for their clinical evidence in addressing the hallmarks of aging. Every ingredient is dosed to match published clinical trials.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 4 ? null : 4">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_4_question | default: 'I just cancelled AG1. Can I start Coastline right away?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 4 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_4_answer | default: '<p>Yes. There is no waiting period. Order today and your Coastline system ships right away. Most customers notice a difference within the first few weeks.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 5 ? null : 5">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_5_question | default: 'How do I take Coastline?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 5 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 5 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_5_answer | default: '<p class="mb-4"><strong class="text-deep-ink">Morning Step:</strong> Mix the powder blend with water or your favorite beverage and take with your first meal.</p><p class="mb-4"><strong class="text-deep-ink">Softgels:</strong> Take with your first meal, alongside the Morning Blend.</p><p><strong class="text-deep-ink">Evening Step:</strong> Take the capsules before bed to support sleep and recovery.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 6 ? null : 6">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_6_question | default: 'Can I cancel anytime?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 6 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 6 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_6_answer | default: '<p>Yes. Cancel anytime with one click from your account dashboard. No phone calls, no penalties, no fees. You can also pause or skip shipments if you need a break.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 7 ? null : 7">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_7_question | default: 'How long until I notice a difference?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 7 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 7 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_7_answer | default: '<p>Many customers notice improvements in energy and mental clarity within the first few weeks. The full benefits of longevity-focused ingredients build over time. We recommend committing to at least 60 days, which is why we offer our money-back guarantee for that period.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 8 ? null : 8">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_8_question | default: "What is your money-back guarantee?" }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 8 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 8 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_8_answer | default: '<p>Try Coastline risk-free for 60 days. If you are not satisfied for any reason, contact us for a full refund. No questions asked.</p>' }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breaker Image -->
+    <div class="w-full">
+        <img src="{% if section.settings.breaker_image_2 != blank %}{{ section.settings.breaker_image_2 | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-11_2_1.png?v=1769557907{% endif %}" alt="" class="w-full" style="max-height: 50vh; object-fit: cover;" loading="lazy">
+    </div>
+
+    <!-- SECTION 12: EMAIL CAPTURE -->
+    <section class="py-20 lg:py-28 reveal" style="background-color: #062F3D;" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8 text-center">
+            <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">{{ section.settings.email_capture_label | default: 'Not Ready Yet?' }}</p>
+            <h3 class="font-grotesk font-medium mb-4 leading-tight" style="color: #FAF9F6; font-size: clamp(24px, 4vw, 36px);">
+                {{ section.settings.email_capture_headline | default: "We will send you the research." }}
+            </h3>
+            <p class="mb-10 mx-auto" style="color: rgba(250,249,246,0.6); font-size: 15px; max-width: 460px; line-height: 1.7;">
+                {{ section.settings.email_capture_body | default: "No pressure. We will send you the science behind our 13 ingredients so you can decide on your own time." }}
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" @submit.prevent="
+                var email = $event.target.querySelector('input[type=email]').value;
+                if (email) {
+                    $event.target.querySelector('button').textContent = 'SENDING...';
+                    fetch('/contact', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'form_type=customer&utf8=%E2%9C%93&contact%5Bemail%5D=' + encodeURIComponent(email) + '&contact%5Btags%5D=newsletter%2Cnurture-ag1-comparison' })
+                    .then(function(response) { if (response.ok || response.redirected) { $event.target.innerHTML = '<p style=&quot;color: #FAF9F6; font-size: 17px; font-weight: 500;&quot;>You are in. Check your inbox.</p>'; } else { $event.target.querySelector('button').textContent = 'TRY AGAIN'; } })
+                    .catch(function() { $event.target.querySelector('button').textContent = 'SOMETHING WENT WRONG'; });
+                }
+            ">
+                <input type="email" placeholder="Your email address" required class="flex-1 px-6 py-5 text-base" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(250,249,246,0.2); color: #FAF9F6; font-family: 'Inter', sans-serif; outline: none; min-width: 0;">
+                <button type="submit" class="whitespace-nowrap" style="background-color: #FAF9F6; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 40px; border: none; cursor: pointer; transition: opacity 0.3s ease;">
+                    {{ section.settings.email_capture_cta | default: 'Send Me The Research' }}
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SECTION 13: FOOTER -->
+    <footer class="py-32 lg:py-40 bg-deep-ink">
+        <div class="max-w-4xl mx-auto px-8 lg:px-16 text-center">
+            <img src="{% if section.settings.footer_logo != blank %}{{ section.settings.footer_logo | image_url: width: 800 }}{% else %}{{ 'cc-v3-logo-white.png' | asset_url }}{% endif %}" alt="Coastline Longevity" class="h-48 lg:h-60 mx-auto mb-12">
+            <p class="text-lg lg:text-xl text-gray-400 max-w-xl mx-auto leading-relaxed mb-16">{{ section.settings.footer_tagline | default: 'Science-backed longevity, simplified. 13 ingredients optimized for morning, day, and night.' }}</p>
+            <a href="#v6-offer-anchor" class="cc-v6-footer-cta" style="display: inline-block !important; width: auto !important; background-color: var(--parchment) !important; color: var(--deep-ink) !important; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px !important; text-decoration: none; transition: opacity 0.3s ease; line-height: 1; border: none; border-radius: 0;">
+                {{ section.settings.footer_cta_text | default: 'Switch from AG1 - $99/mo' }}
+            </a>
+            <div style="padding-top: 80px;"><div style="height: 1px; background-color: #333; max-width: 400px; margin: 0 auto;"></div></div>
+            <div style="height: 40px;"></div>
+            <p style="font-size: 11px; color: #666; line-height: 1.8; max-width: 500px; margin: 0 auto;">{{ section.settings.footer_disclaimer | default: 'These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.' }}</p>
+            <p style="font-size: 10px; color: #444; line-height: 1.6; margin-top: 16px;">Individual testimonials are not representative of typical outcomes.</p>
+            <p style="font-size: 10px; color: #444; line-height: 1.6; margin-top: 8px;">{{ section.settings.ag1_disclaimer | default: 'AG1 is a registered trademark of Athletic Greens. Coastline is not affiliated with AG1 or Athletic Greens.' }}</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA (Mobile) -->
+    <div id="v6-sticky-bar" class="md:hidden" style="position:fixed; bottom:0; left:0; right:0; background:#FAF9F6; border-top:1px solid #E8E8E8; padding:16px 24px; padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px)); z-index:9999; transform:translateY(100%); transition:transform 0.3s ease;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+            <div>
+                <p style="font-family:'Space Grotesk',sans-serif; color:#0A0A0A; font-weight:500; font-size:16px; margin:0; max-width:none;">{{ section.settings.sticky_price | default: '$99/month' }}</p>
+                <p style="font-size:11px; color:#6B6B6B; letter-spacing:0.05em; margin:2px 0 0 0; max-width:none;">{{ section.settings.sticky_subtitle | default: 'Switch from AG1' }}</p>
+            </div>
+            <a href="#v6-offer-anchor" class="btn-primary" style="padding:16px 24px; font-size:11px; white-space:nowrap;">{{ section.settings.sticky_cta_text | default: 'MAKE THE SWITCH' }}</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Sticky bar controller -->
+<script>
+(function() {
+    var bar = document.getElementById('v6-sticky-bar');
+    if (!bar) return;
+    function showBar() { bar.style.transform = 'translateY(0)'; }
+    function hideBar() { bar.style.transform = 'translateY(100%)'; }
+    var heroSection = document.getElementById('hero');
+    var offerSection = document.getElementById('v6-offer-section');
+    if (heroSection) { new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (!entry.isIntersecting) showBar(); else hideBar(); }); }, { threshold: 0.1 }).observe(heroSection); }
+    if (offerSection) { new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) hideBar(); }); }, { threshold: 0.1 }).observe(offerSection); }
+})();
+</script>
+
+<!-- Anchor scrolling -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cc-landing-v6 a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        var target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          var wrapper = document.querySelector('.cc-landing-v6');
+          if (wrapper) { wrapper.querySelectorAll('img[loading="lazy"]').forEach(function(img) { if (img.getBoundingClientRect().top < target.getBoundingClientRect().top) { img.loading = 'eager'; } }); }
+          var reveals = []; var el = target;
+          while (el && !el.classList.contains('cc-landing-v6')) { if (el.classList.contains('reveal')) reveals.push(el); el = el.parentElement; }
+          if (target.classList.contains('reveal')) reveals.push(target);
+          reveals.forEach(function(r) { r.style.transition = 'none'; r.classList.add('visible'); r.style.opacity = '1'; r.style.transform = 'none'; });
+          void target.offsetHeight;
+          var rect = target.getBoundingClientRect();
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          var dest = scrollTop + rect.top; var start = scrollTop; var distance = dest - start; var duration = 600; var startTime = null;
+          function smoothStep(time) {
+            if (!startTime) startTime = time;
+            var progress = Math.min((time - startTime) / duration, 1);
+            var ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+            window.scrollTo(0, start + distance * ease);
+            if (progress < 1) { requestAnimationFrame(smoothStep); }
+            else { reveals.forEach(function(r) { r.style.transition = ''; }); setTimeout(function() { var finalRect = target.getBoundingClientRect(); if (Math.abs(finalRect.top) > 5) { window.scrollTo(0, window.pageYOffset + finalRect.top); } }, 100); }
+          }
+          requestAnimationFrame(smoothStep);
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Coastline vs AG1 (v6)",
+  "tag": "section",
+  "class": "cc-landingpage-v6",
+  "settings": [
+    { "type": "header", "content": "1. Hero Section" },
+    { "type": "image_picker", "id": "hero_coastline_image", "label": "Hero - Coastline product image" },
+    { "type": "image_picker", "id": "hero_ag1_image", "label": "Hero - AG1 product image" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "SUPPLEMENT COMPARISON - UPDATED JANUARY 2026" },
+    { "type": "textarea", "id": "hero_headline", "label": "Headline", "default": "Coastline vs AG1: Which Longevity Supplement Is Actually Worth It?" },
+    { "type": "textarea", "id": "hero_subheadline", "label": "Subheadline", "default": "Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback." },
+    { "type": "text", "id": "hero_author", "label": "Author name", "default": "Dr. James Chen" },
+    { "type": "text", "id": "hero_author_title", "label": "Author title", "default": "Clinical Nutrition Researcher" },
+    { "type": "text", "id": "hero_cta_text", "label": "Hero CTA text", "default": "See the Full Comparison" },
+
+    { "type": "header", "content": "2. Neutral Intro" },
+    { "type": "textarea", "id": "intro_body_1", "label": "Intro paragraph", "default": "A recent clinical trial on AG1 -- funded by AG1 themselves -- found no significant health benefits compared to placebo. In light of that study, we decided to compare AG1 side by side with Coastline, a science-first longevity supplement built on a fundamentally different approach. We looked at ingredients, clinical doses, pricing, and real customer feedback." },
+
+    { "type": "header", "content": "-- Bridge: Intro to Clinical Evidence" },
+    { "type": "text", "id": "bridge_1_headline", "label": "Bridge 1 headline", "default": "The study AG1 probably wishes you had not seen" },
+    { "type": "textarea", "id": "bridge_1_p1", "label": "Bridge 1 paragraph 1", "default": "For years, AG1 has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." },
+    { "type": "textarea", "id": "bridge_1_p2", "label": "Bridge 1 paragraph 2", "default": "Then AG1 published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." },
+    { "type": "text", "id": "bridge_1_p3", "label": "Bridge 1 closing line", "default": "Here is what the study actually found -- and why it matters for anyone paying $79 a month." },
+    { "type": "image_picker", "id": "breaker_image_pre_bj", "label": "Divider image (before Bryan Johnson)" },
+
+    { "type": "header", "content": "3. Bryan Johnson Section" },
+    { "type": "image_picker", "id": "bj_portrait", "label": "Bryan Johnson portrait" },
+    { "type": "textarea", "id": "bj_quote", "label": "Bryan Johnson quote", "default": "&ldquo;I'd cancel your AG1 subscription.&rdquo;" },
+    { "type": "text", "id": "bj_attribution", "label": "Quote attribution", "default": "-- Bryan Johnson, tech entrepreneur and longevity advocate" },
+    { "type": "text", "id": "study_label", "label": "Study card label", "default": "AG1's Own Clinical Trial Found:" },
+    { "type": "text", "id": "study_1", "label": "Study finding 1", "default": "No significant changes in blood biomarkers vs placebo" },
+    { "type": "text", "id": "study_2", "label": "Study finding 2", "default": "No statistically significant gut health improvement (p = 0.058)" },
+    { "type": "text", "id": "study_3", "label": "Study finding 3", "default": "No metabolic or inflammatory benefits detected" },
+    { "type": "text", "id": "study_4", "label": "Study finding 4", "default": "Microbiome changes were clinically irrelevant" },
+    { "type": "text", "id": "study_5", "label": "Study finding 5", "default": "Placebo showed similar or larger shifts" },
+    { "type": "text", "id": "pixie_dust_headline", "label": "Pixie dusting headline", "default": "The pixie dusting problem" },
+    { "type": "textarea", "id": "pixie_dust_body", "label": "Pixie dusting body", "default": "AG1 contains 75 ingredients in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 75 ingredients into one serving -- most are present in trace amounts far below what clinical trials use." },
+
+    { "type": "header", "content": "-- Bridge: Bryan Johnson to Comparison" },
+    { "type": "text", "id": "bridge_2_headline", "label": "Bridge 2 headline", "default": "So we pulled the data" },
+    { "type": "textarea", "id": "bridge_2_p1", "label": "Bridge 2 paragraph 1", "default": "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." },
+    { "type": "textarea", "id": "bridge_2_p2", "label": "Bridge 2 paragraph 2", "default": "So we did what any rational person would do. We pulled the publicly available data on both AG1 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." },
+    { "type": "text", "id": "bridge_2_p3", "label": "Bridge 2 closing line", "default": "Here is exactly what we found when we compared them head to head." },
+
+    { "type": "header", "content": "4. Comparison Breakdown" },
+    { "type": "image_picker", "id": "ag1_product_image", "label": "AG1 product image (price card)" },
+    { "type": "image_picker", "id": "coastline_product_image", "label": "Coastline product image (price card)" },
+    { "type": "textarea", "id": "price_headline", "label": "Price section headline", "default": "What you're actually paying for" },
+    { "type": "textarea", "id": "price_framing", "label": "Price framing text", "default": "$0.67/day more for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." },
+    { "type": "text", "id": "ingredient_comparison_headline", "label": "Ingredient comparison headline", "default": "Side by side" },
+    { "type": "textarea", "id": "ag1_claims", "label": "AG1 claims text", "default": "\"Supports energy, focus, gut health.\" Vague language with no specific doses, no specific studies cited, and no measurable outcomes defined." },
+
+    { "type": "header", "content": "-- Bridge: Comparison to Ingredients" },
+    { "type": "text", "id": "bridge_3_headline", "label": "Bridge 3 headline", "default": "What is actually inside each product" },
+    { "type": "textarea", "id": "bridge_3_p1", "label": "Bridge 3 paragraph 1", "default": "The comparison table tells one story. But numbers on a page do not show you what is actually going into your body every morning and every evening." },
+    { "type": "textarea", "id": "bridge_3_p2", "label": "Bridge 3 paragraph 2", "default": "Coastline is built around 13 specific compounds -- each selected because the clinical evidence was too strong to ignore. Not 75 ingredients sprinkled in at trace amounts. Thirteen. Every single one at the dose used in the studies that proved it works." },
+    { "type": "text", "id": "bridge_3_p3", "label": "Bridge 3 closing line", "default": "Here is exactly what is in the formula, how it is organized, and why each ingredient made the cut." },
+
+    { "type": "header", "content": "5. Ingredient Deep Dive" },
+    { "type": "text", "id": "ingredients_headline", "label": "Ingredients headline", "default": "13 ingredients. Every dose disclosed." },
+    { "type": "text", "id": "ingredients_subheadline", "label": "Ingredients subheadline", "default": "Three products. One system. Optimized for your circadian rhythm." },
+    { "type": "textarea", "id": "bj_inulin_callout", "label": "Bryan Johnson inulin callout", "default": "Coastline includes clinical-dose inulin at 4g -- the very prebiotic Bryan Johnson recommends -- as just one of 13 ingredients." },
+    { "type": "header", "content": "-- Bridge: Ingredients to Experts" },
+    { "type": "text", "id": "bridge_4_headline", "label": "Bridge 4 headline", "default": "Built by researchers, not marketers" },
+    { "type": "image_picker", "id": "breaker_image_pre_experts", "label": "Divider image (before experts)" },
+    { "type": "textarea", "id": "bridge_4_p1", "label": "Bridge 4 paragraph 1", "default": "We did not design this formulation in isolation. Coastline was built alongside a team of researchers and clinicians with decades of combined experience in circadian biology, molecular medicine, and human performance." },
+    { "type": "textarea", "id": "bridge_4_p2", "label": "Bridge 4 paragraph 2", "default": "Their job was simple: review thousands of studies and identify the compounds with the strongest evidence for human longevity. Not trends. Not marketing-friendly superfoods. Just what actually works, at doses that actually matter. Here is what they have to say about the result." },
+
+    { "type": "header", "content": "6. Expert Quotes" },
+    { "type": "text", "id": "expert_label", "label": "Expert section label", "default": "WHAT RESEARCHERS SAY" },
+    { "type": "textarea", "id": "expert_1_quote", "label": "Expert 1 quote", "default": "The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered." },
+    { "type": "text", "id": "expert_1_name", "label": "Expert 1 name", "default": "Greg Potter, PhD, MSc" },
+    { "type": "text", "id": "expert_1_credential", "label": "Expert 1 credential", "default": "Sleep & Circadian Health" },
+    { "type": "textarea", "id": "expert_2_quote", "label": "Expert 2 quote", "default": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding." },
+    { "type": "text", "id": "expert_2_name", "label": "Expert 2 name", "default": "Dr. Jacqueline Jacques, ND" },
+    { "type": "text", "id": "expert_2_credential", "label": "Expert 2 credential", "default": "Naturopathic Medicine" },
+    { "type": "textarea", "id": "expert_3_quote", "label": "Expert 3 quote", "default": "I value Coastline's quality. It means less hassle with the greatest certainty." },
+    { "type": "text", "id": "expert_3_name", "label": "Expert 3 name", "default": "Dr. Nicolas Verhoeven, PhD" },
+    { "type": "text", "id": "expert_3_credential", "label": "Expert 3 credential", "default": "Molecular Medicine" },
+    { "type": "textarea", "id": "expert_4_quote", "label": "Expert 4 quote", "default": "A comprehensive, evidence-based approach to longevity that I recommend to my patients." },
+    { "type": "text", "id": "expert_4_name", "label": "Expert 4 name", "default": "Chris Pollock, MD" },
+    { "type": "text", "id": "expert_4_credential", "label": "Expert 4 credential", "default": "Internal Medicine" },
+
+    { "type": "image_picker", "id": "breaker_image_1", "label": "Breaker image (after testimonials)" },
+
+    { "type": "header", "content": "-- Bridge: Experts to Testimonials" },
+    { "type": "text", "id": "bridge_5_headline", "label": "Bridge 5 headline", "default": "What real customers are saying" },
+    { "type": "textarea", "id": "bridge_5_p1", "label": "Bridge 5 paragraph 1", "default": "Expert validation matters. But at the end of the day, what matters most is whether real people notice a real difference. Not in a lab. In their actual lives -- their mornings, their workouts, their energy at 3 PM, their sleep." },
+    { "type": "textarea", "id": "bridge_5_p2", "label": "Bridge 5 paragraph 2", "default": "We asked Coastline customers to share their experience. Many of them came from AG1 or other supplements. Some are physicians. Some are athletes. Some are parents who just wanted to stop feeling exhausted. Here is what they said." },
+
+    { "type": "header", "content": "7. Switcher Testimonials" },
+    { "type": "text", "id": "reviews_counter", "label": "Reviews counter text", "default": "REAL REVIEWS" },
+    { "type": "text", "id": "reviews_headline", "label": "Reviews headline", "default": "People who made the switch" },
+    { "type": "textarea", "id": "review_1_quote", "label": "Review 1 quote", "default": "As a physician, I'm skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better." },
+    { "type": "text", "id": "review_1_name", "label": "Review 1 name", "default": "Michael R., 62 - Physician" },
+    { "type": "textarea", "id": "review_2_quote", "label": "Review 2 quote", "default": "Quality you can feel. You can tell this was made by scientists, not a marketing team." },
+    { "type": "text", "id": "review_2_name", "label": "Review 2 name", "default": "Edward Q., 49" },
+    { "type": "textarea", "id": "review_3_quote", "label": "Review 3 quote", "default": "I used to spend over $200 a month on five different supplements and still was not sure I was covering everything. Coastline replaced all of them. One system, done." },
+    { "type": "text", "id": "review_3_name", "label": "Review 3 name", "default": "Lisa T., 52" },
+    { "type": "textarea", "id": "review_4_quote", "label": "Review 4 quote", "default": "I'm extremely careful about what I put in my body. Coastline checked every box for purity and data." },
+    { "type": "text", "id": "review_4_name", "label": "Review 4 name", "default": "Rachel G., 48" },
+    { "type": "textarea", "id": "review_5_quote", "label": "Review 5 quote", "default": "I love the convenience of having everything I need in one simple system. No more pill organizers." },
+    { "type": "text", "id": "review_5_name", "label": "Review 5 name", "default": "James U., 44" },
+    { "type": "textarea", "id": "review_6_quote", "label": "Review 6 quote", "default": "Finally, a longevity stack that does not require 15 different bottles. My morning brain fog is gone." },
+    { "type": "text", "id": "review_6_name", "label": "Review 6 name", "default": "Robert K., 45" },
+    { "type": "textarea", "id": "review_7_quote", "label": "Review 7 quote", "default": "Three weeks in and the mental sharpness is unmistakable. I'm writing better code, retaining more from meetings, and my afternoon crash is just gone." },
+    { "type": "text", "id": "review_7_name", "label": "Review 7 name", "default": "Thomas H., 43" },
+    { "type": "textarea", "id": "review_8_quote", "label": "Review 8 quote", "default": "I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash. Just consistent output from 6 AM to 10 PM." },
+    { "type": "text", "id": "review_8_name", "label": "Review 8 name", "default": "Derek W., 47" },
+    { "type": "textarea", "id": "review_9_quote", "label": "Review 9 quote", "default": "As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the afternoon fog that I thought was just a permanent part of my life." },
+    { "type": "text", "id": "review_9_name", "label": "Review 9 name", "default": "Sophia R., Founder" },
+    { "type": "textarea", "id": "review_10_quote", "label": "Review 10 quote", "default": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies." },
+    { "type": "text", "id": "review_10_name", "label": "Review 10 name", "default": "Andrew P., 55" },
+    { "type": "textarea", "id": "review_11_quote", "label": "Review 11 quote", "default": "I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I'm bouncing back faster and my endurance has noticeably improved." },
+    { "type": "text", "id": "review_11_name", "label": "Review 11 name", "default": "Marcus D., 39" },
+    { "type": "textarea", "id": "review_12_quote", "label": "Review 12 quote", "default": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me." },
+    { "type": "text", "id": "review_12_name", "label": "Review 12 name", "default": "Catherine W., 58" },
+    { "type": "textarea", "id": "review_13_quote", "label": "Review 13 quote", "default": "My husband and I both switched to Coastline. We cancelled six separate subscriptions between us. Simpler, cheaper, and we actually feel the difference." },
+    { "type": "text", "id": "review_13_name", "label": "Review 13 name", "default": "Christine A., 49" },
+    { "type": "textarea", "id": "review_14_quote", "label": "Review 14 quote", "default": "At 72, I'm still active and working. Coastline helps me keep pace with people half my age." },
+    { "type": "text", "id": "review_14_name", "label": "Review 14 name", "default": "Arthur B., 72" },
+    { "type": "textarea", "id": "review_15_quote", "label": "Review 15 quote", "default": "Morning scoop, one softgel, two capsules before bed. That's it. I replaced an entire shelf of bottles with one system." },
+    { "type": "text", "id": "review_15_name", "label": "Review 15 name", "default": "Kevin M., 40" },
+
+    { "type": "header", "content": "-- Bridge: Testimonials to Star Rating" },
+    { "type": "text", "id": "bridge_6_headline", "label": "Bridge 6 headline", "default": "The final scorecard" },
+    { "type": "textarea", "id": "bridge_6_p1", "label": "Bridge 6 paragraph 1", "default": "The customer reviews paint a consistent picture. But we wanted to go one step further and give you a clear, side-by-side rating across every dimension that actually matters when choosing a longevity supplement." },
+    { "type": "textarea", "id": "bridge_6_p2", "label": "Bridge 6 paragraph 2", "default": "We evaluated both products on ingredient quality, clinical evidence, dose transparency, value per ingredient, and overall convenience. Here is the final scorecard." },
+
+    { "type": "header", "content": "8. Summary Star Rating" },
+    { "type": "text", "id": "summary_headline", "label": "Summary headline", "default": "The verdict" },
+    { "type": "header", "content": "-- Key Takeaways (above CTA)" },
+    { "type": "text", "id": "takeaways_label", "label": "Takeaways label", "default": "Key Takeaways" },
+    { "type": "textarea", "id": "takeaway_1", "label": "Takeaway 1", "default": "AG1's own clinical trial found no significant benefits over placebo across blood biomarkers, gut health, and metabolic markers." },
+    { "type": "textarea", "id": "takeaway_2", "label": "Takeaway 2", "default": "AG1 uses 75 ingredients in proprietary blends with undisclosed doses. Coastline uses 13 ingredients at full clinical doses with complete transparency." },
+    { "type": "textarea", "id": "takeaway_3", "label": "Takeaway 3", "default": "Coastline costs $0.67/day more ($3.30 vs $2.63) but delivers clinically validated doses of every ingredient." },
+    { "type": "textarea", "id": "takeaway_4", "label": "Takeaway 4", "default": "Coastline uses an AM/PM system timed to your circadian biology. AG1 is a single scoop with no timing optimization." },
+    { "type": "textarea", "id": "takeaway_5", "label": "Takeaway 5", "default": "Coastline targets all 12 hallmarks of aging across 11 body systems. AG1 addresses roughly 3-4 hallmarks." },
+
+    { "type": "header", "content": "9. CTA / Pricing" },
+    { "type": "image_picker", "id": "cta_product_image", "label": "CTA product image" },
+    { "type": "text", "id": "cta_counter", "label": "CTA counter text", "default": "READY TO SWITCH?" },
+    { "type": "text", "id": "cta_headline", "label": "CTA headline", "default": "Ready to make the switch?" },
+    { "type": "textarea", "id": "cta_body", "label": "CTA body text", "default": "If you have been paying $79/month for AG1 and want ingredients that actually work at doses that actually matter, Coastline might be worth trying." },
+    { "type": "text", "id": "cta_reviews_text", "label": "CTA reviews text", "default": "4.8 stars from 2,000+ reviews" },
+    { "type": "text", "id": "cta_micro_copy", "label": "CTA micro copy", "default": "Cancel anytime. No questions asked." },
+    { "type": "textarea", "id": "trust_badges_text", "label": "Trust badges text", "default": "VEGAN , SUGAR-FREE , CAFFEINE-FREE , GMP CERTIFIED" },
+    { "type": "textarea", "id": "risk_reversal_text", "label": "Risk reversal text", "default": "Worst case: you get a full refund. Best case: you get better science for $0.67/day more." },
+
+    { "type": "header", "content": "10. FAQ" },
+    { "type": "text", "id": "faq_counter", "label": "FAQ counter text", "default": "FAQ" },
+    { "type": "text", "id": "faq_headline", "label": "FAQ headline", "default": "Common questions from AG1 switchers" },
+    { "type": "text", "id": "faq_1_question", "label": "FAQ 1 question", "default": "How is Coastline different from AG1?" },
+    { "type": "textarea", "id": "faq_1_answer", "label": "FAQ 1 answer", "default": "AG1 uses 75 ingredients in proprietary blends, meaning you do not know how much of each ingredient you are getting. Coastline uses 13 ingredients at full clinical doses with complete transparency. Every milligram is disclosed." },
+    { "type": "text", "id": "faq_2_question", "label": "FAQ 2 question", "default": "AG1 is $79/month. Why does Coastline cost $20 more?" },
+    { "type": "textarea", "id": "faq_2_answer", "label": "FAQ 2 answer", "default": "Clinical-dose ingredients cost more than trace amounts. Coastline spends more per ingredient because each one is dosed at the level proven effective in clinical trials. You are paying $0.67/day more for ingredients that actually work." },
+    { "type": "text", "id": "faq_3_question", "label": "FAQ 3 question", "default": "Does Coastline include a greens blend?" },
+    { "type": "textarea", "id": "faq_3_answer", "label": "FAQ 3 answer", "default": "No. Greens blends look impressive on a label but most ingredients are present in negligible amounts. Coastline focuses on 13 compounds with the strongest clinical evidence for longevity, each at doses proven to work." },
+    { "type": "text", "id": "faq_4_question", "label": "FAQ 4 question", "default": "I just cancelled AG1. Can I start Coastline right away?" },
+    { "type": "textarea", "id": "faq_4_answer", "label": "FAQ 4 answer", "default": "Yes. There is no waiting period needed. Coastline ships fast and free. Most customers notice a difference within the first two to three weeks." },
+    { "type": "text", "id": "faq_5_question", "label": "FAQ 5 question", "default": "How do I take Coastline?" },
+    { "type": "textarea", "id": "faq_5_answer", "label": "FAQ 5 answer", "default": "Morning: Mix one scoop of powder with water and take one softgel with your first meal. Evening: Take two capsules 30-60 minutes before bed. That is the entire system." },
+    { "type": "text", "id": "faq_6_question", "label": "FAQ 6 question", "default": "Can I cancel anytime?" },
+    { "type": "textarea", "id": "faq_6_answer", "label": "FAQ 6 answer", "default": "Yes. Cancel with one click from your account dashboard. No phone calls, no hoops, no penalties. We make it easy because we believe the product speaks for itself." },
+    { "type": "text", "id": "faq_7_question", "label": "FAQ 7 question", "default": "How long until I notice a difference?" },
+    { "type": "textarea", "id": "faq_7_answer", "label": "FAQ 7 answer", "default": "Most customers report improved energy and mental clarity within 2-3 weeks. Some benefits like creatine and taurine build over time, with full effects typically noticed within 4-8 weeks of consistent use." },
+    { "type": "text", "id": "faq_8_question", "label": "FAQ 8 question", "default": "What is your money-back guarantee?" },
+    { "type": "textarea", "id": "faq_8_answer", "label": "FAQ 8 answer", "default": "We offer a 60-day money-back guarantee, no questions asked. If Coastline is not right for you, contact us for a full refund. We stand behind the science." },
+
+    { "type": "image_picker", "id": "breaker_image_2", "label": "Breaker image (after FAQ)" },
+
+    { "type": "header", "content": "11. Email Capture" },
+    { "type": "text", "id": "email_capture_label", "label": "Email label", "default": "NOT READY YET?" },
+    { "type": "text", "id": "email_capture_headline", "label": "Email headline", "default": "We will send you the research." },
+    { "type": "textarea", "id": "email_capture_body", "label": "Email body", "default": "Get the clinical studies, ingredient breakdowns, and AG1 comparison data delivered to your inbox." },
+    { "type": "text", "id": "email_capture_cta", "label": "Email CTA text", "default": "SEND ME THE RESEARCH" },
+
+    { "type": "header", "content": "12. Footer & Sticky Bar" },
+    { "type": "image_picker", "id": "footer_logo", "label": "Footer logo" },
+    { "type": "text", "id": "footer_tagline", "label": "Footer tagline", "default": "The Ultimate Longevity System" },
+    { "type": "text", "id": "footer_cta_text", "label": "Footer CTA text", "default": "START MY LONGEVITY SYSTEM" },
+    { "type": "textarea", "id": "footer_disclaimer", "label": "Footer disclaimer", "default": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." },
+    { "type": "textarea", "id": "ag1_disclaimer", "label": "AG1 disclaimer", "default": "AG1 is a registered trademark of Athletic Greens. Coastline is not affiliated with, endorsed by, or connected to AG1 or Athletic Greens. All comparisons are based on publicly available information." },
+    { "type": "text", "id": "sticky_price", "label": "Sticky bar price", "default": "$99/month" },
+    { "type": "text", "id": "sticky_subtitle", "label": "Sticky bar subtitle", "default": "Switch from AG1" },
+    { "type": "text", "id": "sticky_cta_text", "label": "Sticky bar CTA", "default": "SWITCH NOW" }
+  ],
+  "presets": [
+    {
+      "name": "Coastline vs AG1 (v6)",
+      "category": "Landing Pages"
+    }
+  ]
+}
+{% endschema %}
