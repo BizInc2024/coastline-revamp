@@ -20,6 +20,15 @@
     tailwind.config.corePlugins.preflight = false;
   </script>
 
+  <!-- Prevent Tailwind from overriding theme header styles -->
+  <style>
+    @media (min-width: 1024px) {
+      .header__icons--start .menu-drawer-button {
+        display: none !important;
+      }
+    }
+  </style>
+
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
