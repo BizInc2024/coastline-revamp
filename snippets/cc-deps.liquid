@@ -15,6 +15,18 @@
   <!-- Tailwind CSS (compiled, only classes used in cc-* sections) -->
   {{ 'cc-tailwind.css' | asset_url | stylesheet_tag }}
 
+  <!-- Prevent compiled Tailwind from overriding theme header styles -->
+  <style>
+    @media screen and (min-width: 1024px) {
+      .menu-drawer-button {
+        display: none !important;
+      }
+      .header--left-drawer .menu-drawer-button {
+        display: flex !important;
+      }
+    }
+  </style>
+
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
