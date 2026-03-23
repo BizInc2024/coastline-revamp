@@ -40,13 +40,16 @@
   {%- endif -%}
 
   <span class="price__regular whitespace-nowrap">
+  {%- if product.handle == 'coastline-welcome-pack' -%}
+    <span style="text-decoration: line-through; opacity: 0.5; margin-right: 8px; font-size: 0.9em;">$150</span>
+    <span style="color: #4F7942; font-weight: bold; font-size: 1.1em;">Starting at $99</span>
+  {%- else -%}
     {%- liquid
       if product.quantity_price_breaks_configured? != true or skip_to_price
         if target == product and product.price_varies
+          assign price_min = product.price_min | money
           if settings.currency_code_enabled
             assign price_min = product.price_min | money_with_currency
-          else
-            assign price_min = product.price_min | money
           endif
           echo 'products.price.from_price_html' | t: price: price_min
         else
@@ -57,15 +60,15 @@
           endif
         endif
       else
+        assign price_min = product.price_min | money
         if settings.currency_code_enabled
           assign price_min = product.price_min | money_with_currency
-        else
-          assign price_min = product.price_min | money
         endif
         echo 'products.price.from_price_html' | t: price: price_min
       endif
     -%}
-  </span>
+  {%- endif -%}
+</span>
 
   {%- if on_sale -%}
     <span class="sr-only">{{ 'products.price.regular_price' | t }}</span>
