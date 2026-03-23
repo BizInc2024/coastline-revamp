@@ -965,29 +965,6 @@
     </div>
   </section>
 
-
-  {%- comment -%} ============================================================
-     SECTION 11: STICKY BUY BAR (mobile)
-  ============================================================ {%- endcomment -%}
-  <div
-    id="cc-mb-sticky-bar"
-    style="position:fixed;bottom:0;left:0;right:0;z-index:50;background:#ffffff;border-top:1px solid var(--light-gray);padding:12px 16px;transform:translateY(100%);transition:transform 0.3s ease;"
-    class="lg:hidden"
-  >
-    <div style="display:flex;align-items:center;gap:12px;max-width:480px;margin:0 auto;">
-      <p style="flex-shrink:0;margin:0;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.875rem;font-weight:500;color:var(--deep-ink);white-space:nowrap;">
-        {{ section.settings.sticky_price_text | default: "$55.20/mo -- Save 20%" }}
-      </p>
-      <button
-        type="submit"
-        form="cc-pdp-mb-cart-form"
-        style="flex:1;padding:14px 16px;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:var(--deep-ink);color:var(--parchment);border:none;cursor:pointer;text-align:center;white-space:nowrap;"
-      >
-        {{ section.settings.sticky_button_text | default: "ADD TO CART" }}
-      </button>
-    </div>
-  </div>
-
 </div>{%- comment -%} END .cc-productpage-mb wrapper {%- endcomment -%}
 
 
@@ -1147,28 +1124,6 @@
       }
     };
   }
-
-  /* Sticky Bar: IntersectionObserver */
-  document.addEventListener('DOMContentLoaded', function() {
-    var heroSection = document.getElementById('cc-mb-product-hero');
-    var stickyBar = document.getElementById('cc-mb-sticky-bar');
-    if (!heroSection || !stickyBar) return;
-
-    stickyBar.style.transform = 'translateY(100%)';
-    stickyBar.style.transition = 'transform 0.3s ease';
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          stickyBar.style.transform = 'translateY(100%)';
-        } else {
-          stickyBar.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0 });
-
-    observer.observe(heroSection);
-  });
 
 </script>
 

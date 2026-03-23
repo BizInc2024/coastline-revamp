@@ -1054,32 +1054,8 @@
         </div>
     </footer>
 
-    <!-- STICKY CTA (Mobile) -->
-    <div id="v6-sticky-bar" class="md:hidden" style="position:fixed; bottom:0; left:0; right:0; background:#FAF9F6; border-top:1px solid #E8E8E8; padding:16px 24px; padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px)); z-index:9999; transform:translateY(100%); transition:transform 0.3s ease;">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
-            <div>
-                <p style="font-family:'Space Grotesk',sans-serif; color:#0A0A0A; font-weight:500; font-size:16px; margin:0; max-width:none;">{{ section.settings.sticky_price | default: '$99/month' }}</p>
-                <p style="font-size:11px; color:#6B6B6B; letter-spacing:0.05em; margin:2px 0 0 0; max-width:none;">{{ section.settings.sticky_subtitle | default: 'Switch from AG1' }}</p>
-            </div>
-            <a href="#v6-offer-anchor" class="btn-primary" style="padding:16px 24px; font-size:11px; white-space:nowrap;">{{ section.settings.sticky_cta_text | default: 'MAKE THE SWITCH' }}</a>
-        </div>
-    </div>
 
 </div>
-
-<!-- Sticky bar controller -->
-<script>
-(function() {
-    var bar = document.getElementById('v6-sticky-bar');
-    if (!bar) return;
-    function showBar() { bar.style.transform = 'translateY(0)'; }
-    function hideBar() { bar.style.transform = 'translateY(100%)'; }
-    var heroSection = document.getElementById('hero');
-    var offerSection = document.getElementById('v6-offer-section');
-    if (heroSection) { new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (!entry.isIntersecting) showBar(); else hideBar(); }); }, { threshold: 0.1 }).observe(heroSection); }
-    if (offerSection) { new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) hideBar(); }); }, { threshold: 0.1 }).observe(offerSection); }
-})();
-</script>
 
 <!-- Anchor scrolling -->
 <script>
