@@ -407,15 +407,21 @@
             </div>
           </div>
 
-          <!-- Add to Cart Button -->
-          <button
-            @click="addToCart()"
-            :disabled="loading"
-            style="width:100%;padding:22px 48px;font-size:14px;margin-bottom:20px;background:#0A0A0A !important;color:#FAF9F6 !important;border:none !important;font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s ease;"
-          >
-            <span x-show="!loading">ADD TO CART - <span x-text="buttonPrice"></span></span>
-            <span x-show="loading">ADDING...</span>
-          </button>
+          <!-- Add to Cart Form -->
+          <form id="cc-pdp-mb-cart-form" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
+            <input type="hidden" name="id" :value="variantId" />
+            <template x-if="sellingPlanId">
+              <input type="hidden" name="selling_plan" :value="sellingPlanId" />
+            </template>
+            <button
+              type="submit"
+              :disabled="loading"
+              style="width:100%;padding:22px 48px;font-size:14px;margin-bottom:20px;background:#0A0A0A !important;color:#FAF9F6 !important;border:none !important;font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s ease;"
+            >
+              <span class="btn-text"><span x-show="!loading">ADD TO CART - <span x-text="buttonPrice"></span></span>
+              <span x-show="loading">ADDING...</span></span>
+            </button>
+          </form>
 
           <!-- Micro-copy -->
           <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
@@ -973,7 +979,8 @@
         {{ section.settings.sticky_price_text | default: "$55.20/mo -- Save 20%" }}
       </p>
       <button
-        onclick="stickyMBAddToCart(this)"
+        type="submit"
+        form="cc-pdp-mb-cart-form"
         style="flex:1;padding:14px 16px;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:var(--deep-ink);color:var(--parchment);border:none;cursor:pointer;text-align:center;white-space:nowrap;"
       >
         {{ section.settings.sticky_button_text | default: "ADD TO CART" }}
@@ -1135,22 +1142,8 @@
         if (this.plan === 'bimonthly') return '$62.10/MO';
         return '$69';
       },
-      addToCart() {
-        this.loading = true;
-        var body = { id: this.variantId, quantity: 1 };
-        if (this.sellingPlan) body.selling_plan = this.sellingPlan;
-        var self = this;
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
-        })
-        .catch(function(e) { console.error('Cart error:', e); })
-        .finally(function() { self.loading = false; });
+      get sellingPlanId() {
+        return this.sellingPlan;
       }
     };
   }
@@ -1177,22 +1170,6 @@
     observer.observe(heroSection);
   });
 
-  /* Sticky Bar: Add to Cart (hardcoded unflavored monthly) */
-  function stickyMBAddToCart(btn) {
-    btn.disabled = true;
-    btn.textContent = 'ADDING...';
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: 43926823141445, quantity: 1, selling_plan: 1840349253 })
-    })
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
-    })
-    .catch(function(e) { console.error('Cart error:', e); })
-    .finally(function() { btn.disabled = false; btn.textContent = 'ADD TO CART'; });
-  }
 </script>
 
 

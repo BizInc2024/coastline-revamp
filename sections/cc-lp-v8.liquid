@@ -1447,33 +1447,8 @@
                          get currentPrice() { return this.prices[this.plan]; },
                          get currentSavings() { return this.savings[this.plan]; },
                          get isSubscription() { return this.plan !== 'onetime'; },
-                         addToCart() {
-                             this.loading = true;
-                             const payload = {
-                                 id: this.variants[this.flavor],
-                                 quantity: 1
-                             };
-                             if (this.sellingPlans[this.plan]) {
-                                 payload.selling_plan = this.sellingPlans[this.plan];
-                             }
-                             fetch('/cart/add.js', {
-                                 method: 'POST',
-                                 headers: { 'Content-Type': 'application/json' },
-                                 body: JSON.stringify(payload)
-                             })
-                             .then(response => response.json())
-                             .then(cartData => {
-                                 this.loading = false;
-                                 if (window.theme && window.theme.pubsub) {
-                                     theme.pubsub.publish(theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', cart: cartData });
-                                 }
-                                 document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: cartData } }));
-                             })
-                             .catch(error => {
-                                 this.loading = false;
-                                 console.error('Error adding to cart:', error);
-                             });
-                         }
+                         get variantId() { return this.variants[this.flavor]; },
+                         get sellingPlanId() { return this.sellingPlans[this.plan]; }
                      }">
 
                     <!-- Flavor Selector -->
@@ -1554,15 +1529,21 @@
                         <p class="text-sm text-warm-gray" x-show="plan === 'onetime'">Try it first, no commitment</p>
                     </div>
 
-                    <!-- Add to Cart Button -->
-                    <button
-                        @click="addToCart()"
-                        :disabled="loading"
-                        class="btn-primary w-full block text-center"
-                        :class="{ 'opacity-70 cursor-wait': loading }">
-                        <span x-show="!loading">Add to Cart</span>
-                        <span x-show="loading">Adding to Cart...</span>
-                    </button>
+                    <!-- Add to Cart Form -->
+                    <form id="cc-lp-v8-cart-form" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
+                        <input type="hidden" name="id" :value="variantId" />
+                        <template x-if="sellingPlanId">
+                            <input type="hidden" name="selling_plan" :value="sellingPlanId" />
+                        </template>
+                        <button
+                            type="submit"
+                            :disabled="loading"
+                            class="btn-primary w-full block text-center"
+                            :class="{ 'opacity-70 cursor-wait': loading }">
+                            <span class="btn-text"><span x-show="!loading">Add to Cart</span>
+                            <span x-show="loading">Adding to Cart...</span></span>
+                        </button>
+                    </form>
 
                     <p class="text-xs text-warm-gray mt-6 text-center">Free shipping &middot; Cancel anytime &middot; 60-day money-back guarantee</p>
 
