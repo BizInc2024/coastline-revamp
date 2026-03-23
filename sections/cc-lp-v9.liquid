@@ -504,8 +504,7 @@
             var isDesktop = window.matchMedia('(min-width: 768px)');
             var showing = false;
 
-            var layoutCart = document.getElementById('landing-cart-icon');
-            var layoutSvg = layoutCart ? layoutCart.querySelector('svg') : null;
+            // Theme header handles its own cart icon — no custom cart icon to manage
 
             function isDarkAt(y) {
                 var els = document.elementsFromPoint(window.innerWidth / 2, y);
@@ -534,19 +533,7 @@
                 }
 
                 var onDark = isDarkAt(36);
-                var badge = document.getElementById('landing-cart-count');
-
-                if (layoutCart && layoutSvg) {
-                    if (onDark) {
-                        layoutSvg.setAttribute('stroke', '#ffffff');
-                        layoutCart.style.opacity = '1';
-                        if (badge) { badge.style.background = '#ffffff'; badge.style.color = '#0A0A0A'; }
-                    } else {
-                        layoutSvg.setAttribute('stroke', '#0A0A0A');
-                        layoutCart.style.opacity = '0.9';
-                        if (badge) { badge.style.background = '#0A0A0A'; badge.style.color = '#FAF9F6'; }
-                    }
-                }
+                // Switch Buy Now button colors based on background
                 if (onDark) {
                     buyBtn.style.background = '#FAF9F6';
                     buyBtn.style.color = '#0A0A0A';
