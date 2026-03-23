@@ -12,25 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS (preflight disabled to avoid conflicting with theme styles) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = tailwind.config || {};
-    tailwind.config.corePlugins = tailwind.config.corePlugins || {};
-    tailwind.config.corePlugins.preflight = false;
-  </script>
-
-  <!-- Prevent Tailwind from overriding theme header styles -->
-  <style>
-    @media screen and (min-width: 1024px) {
-      .menu-drawer-button {
-        display: none !important;
-      }
-      .header--left-drawer .menu-drawer-button {
-        display: flex !important;
-      }
-    }
-  </style>
+  <!-- Tailwind CSS (compiled, only classes used in cc-* sections) -->
+  {{ 'cc-tailwind.css' | asset_url | stylesheet_tag }}
 
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
