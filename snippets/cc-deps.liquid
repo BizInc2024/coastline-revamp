@@ -22,9 +22,12 @@
 
   <!-- Prevent Tailwind from overriding theme header styles -->
   <style>
-    @media (min-width: 1024px) {
-      .header__icons--start .menu-drawer-button {
+    @media screen and (min-width: 1024px) {
+      .menu-drawer-button {
         display: none !important;
+      }
+      .header--left-drawer .menu-drawer-button {
+        display: flex !important;
       }
     }
   </style>
