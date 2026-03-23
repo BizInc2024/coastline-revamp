@@ -1284,18 +1284,9 @@
           onetime:   { id: null,       price: '$150',    label: 'One-time', save: '' }
         },
         loading: false,
-        get buttonText() { return 'ADD TO CART - ' + this.plans[this.plan].price; },
-        addToCart() {
-          this.loading = true;
-          var self = this;
-          var body = { id: this.variants[this.flavor], quantity: 1 };
-          if (this.plans[this.plan].id) { body.selling_plan = this.plans[this.plan].id; }
-          fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
-          .then(function(r) { return r.json(); })
-          .then(function(cartData) { document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: cartData } })); })
-          .catch(function(err) { console.error('Cart error:', err); })
-          .finally(function() { self.loading = false; });
-        }
+        get variantId() { return this.variants[this.flavor]; },
+        get sellingPlanId() { return this.plans[this.plan].id; },
+        get buttonText() { return 'ADD TO CART - ' + this.plans[this.plan].price; }
       }"
       class="max-w-xl mx-auto px-8 lg:px-16 text-center"
     >
@@ -1372,12 +1363,17 @@
         </div>
       </div>
 
-      <!-- Add to cart button -->
+      <!-- Add to cart — native product-form (theme.js handles cart drawer + updates) -->
       <div class="reveal" style="margin-bottom:20px;" x-intersect.once="$el.classList.add('visible')">
-        <button type="button" @click="addToCart()" :disabled="loading" style="display:block;width:100%;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;cursor:pointer;transition:opacity 0.3s ease;">
-          <span x-show="!loading" x-text="buttonText"></span>
-          <span x-show="loading" x-cloak>Adding...</span>
-        </button>
+        <form id="cc-home-cart-form" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
+          <input type="hidden" name="id" :value="variantId" />
+          <template x-if="sellingPlanId">
+            <input type="hidden" name="selling_plan" :value="sellingPlanId" />
+          </template>
+          <button type="submit" style="display:block;width:100%;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;cursor:pointer;transition:opacity 0.3s ease;">
+            <span class="btn-text"><span x-text="buttonText"></span></span>
+          </button>
+        </form>
       </div>
 
       <!-- Trust signals -->
