@@ -1,0 +1,2478 @@
+{% render 'cc-deps' %}
+{% comment %}
+  CC-PRODUCTPAGE: Monolithic product page section
+  Contains all 8 product page sections inline.
+  Layout: theme.liquid (deps loaded via cc-deps snippet)
+{% endcomment %}
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'parchment': '#FAF9F6',
+                    'deep-ink': '#0A0A0A',
+                    'warm-gray': '#6B6B6B',
+                    'light-gray': '#E8E8E8',
+                    'forest': '#1A3A2F',
+                    'forest-light': '#2D5A47',
+                    'ocean': '#062F3D',
+                    'brand-navy': '#1E2D4D',
+                },
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'system-ui', 'sans-serif'],
+                    'inter': ['Inter', 'system-ui', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    /* ================================================
+       COASTLINE DESIGN SYSTEM OVERRIDES
+       Scoped to .cc-home, .cc-product, and .cc-productpage
+       to avoid breaking theme header/footer styles
+       ================================================ */
+
+    :root {
+      --parchment: #FAF9F6;
+      --deep-ink: #0A0A0A;
+      --warm-gray: #6B6B6B;
+      --light-gray: #E8E8E8;
+      --forest: #1A3A2F;
+      --forest-light: #2D5A47;
+    }
+
+    /* Override theme.css p max-width inside our sections */
+    .cc-home p,
+    .cc-product p,
+    .cc-productpage p {
+      max-width: none !important;
+    }
+
+    /* Typography overrides */
+    .cc-home h1, .cc-home h2, .cc-home h3,
+    .cc-product h1, .cc-product h2, .cc-product h3,
+    .cc-productpage h1, .cc-productpage h2, .cc-productpage h3 {
+      font-family: 'Space Grotesk', system-ui, sans-serif !important;
+      color: var(--deep-ink) !important;
+      font-weight: 500 !important;
+    }
+
+    .cc-home h1, .cc-product h1, .cc-productpage h1 {
+      font-size: clamp(32px, 6vw, 64px) !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1.1 !important;
+    }
+
+    .cc-home h2, .cc-product h2, .cc-productpage h2 {
+      font-size: clamp(28px, 5vw, 48px) !important;
+      letter-spacing: -0.02em !important;
+      line-height: 1.15 !important;
+    }
+
+    .cc-home h3, .cc-product h3, .cc-productpage h3 {
+      font-size: clamp(20px, 3vw, 24px) !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.3 !important;
+    }
+
+    .cc-home p, .cc-home li,
+    .cc-product p, .cc-product li,
+    .cc-productpage p, .cc-productpage li {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      color: var(--warm-gray) !important;
+      font-size: 17px !important;
+      line-height: 1.7 !important;
+    }
+
+    /* Badge / label */
+    .cc-home .badge-minimal,
+    .cc-product .badge-minimal,
+    .cc-productpage .badge-minimal {
+      font-size: 11px !important;
+      letter-spacing: 0.15em !important;
+      text-transform: uppercase !important;
+      color: var(--warm-gray) !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    /* Editorial divider */
+    .cc-home .editorial-divider,
+    .cc-product .editorial-divider,
+    .cc-productpage .editorial-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--deep-ink);
+    }
+
+    /* Hairline */
+    .cc-home .hairline,
+    .cc-product .hairline,
+    .cc-productpage .hairline {
+      height: 1px;
+      background-color: var(--light-gray);
+    }
+
+    /* Primary button */
+    .cc-home .btn-primary,
+    .cc-product .btn-primary,
+    .cc-productpage .btn-primary {
+      display: inline-block !important;
+      background-color: var(--deep-ink) !important;
+      color: var(--parchment) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: opacity 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-home .btn-primary:hover,
+    .cc-product .btn-primary:hover,
+    .cc-productpage .btn-primary:hover {
+      opacity: 0.8 !important;
+    }
+
+    /* Secondary button */
+    .cc-home .btn-secondary,
+    .cc-product .btn-secondary,
+    .cc-productpage .btn-secondary {
+      display: inline-block !important;
+      background-color: transparent !important;
+      color: var(--deep-ink) !important;
+      border: 1px solid var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: background-color 0.3s ease, color 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-home .btn-secondary:hover,
+    .cc-product .btn-secondary:hover,
+    .cc-productpage .btn-secondary:hover {
+      background-color: var(--deep-ink) !important;
+      color: var(--parchment) !important;
+    }
+
+    /* Primary button on dark */
+    .cc-home .btn-primary-dark,
+    .cc-product .btn-primary-dark,
+    .cc-productpage .btn-primary-dark {
+      display: inline-block !important;
+      background: var(--parchment) !important;
+      color: var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: opacity 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-home .btn-primary-dark:hover,
+    .cc-product .btn-primary-dark:hover,
+    .cc-productpage .btn-primary-dark:hover {
+      opacity: 0.8 !important;
+    }
+
+    /* Link underline */
+    .cc-home .link-underline,
+    .cc-product .link-underline,
+    .cc-productpage .link-underline {
+      position: relative !important;
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      color: var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    .cc-home .link-underline::after,
+    .cc-product .link-underline::after,
+    .cc-productpage .link-underline::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -2px !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 1px !important;
+      background-color: currentColor !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    .cc-home .link-underline:hover::after,
+    .cc-product .link-underline:hover::after,
+    .cc-productpage .link-underline:hover::after {
+      transform: scaleX(0) !important;
+    }
+
+    /* Quote editorial */
+    .cc-home .quote-editorial,
+    .cc-product .quote-editorial,
+    .cc-productpage .quote-editorial {
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 400 !important;
+      line-height: 1.4 !important;
+      letter-spacing: -0.01em !important;
+      color: var(--deep-ink) !important;
+    }
+
+    /* Stars */
+    .cc-home .stars-minimal,
+    .cc-product .stars-minimal,
+    .cc-productpage .stars-minimal {
+      letter-spacing: 4px !important;
+      color: var(--deep-ink) !important;
+      font-size: 14px !important;
+    }
+
+    /* Editorial image filter */
+    .cc-home .img-editorial,
+    .cc-product .img-editorial,
+    .cc-productpage .img-editorial {
+      filter: contrast(1.05) brightness(0.98) !important;
+    }
+
+    /* Section editorial spacing */
+    .cc-home .section-editorial,
+    .cc-product .section-editorial,
+    .cc-productpage .section-editorial {
+      padding: 80px 16px;
+    }
+
+    @media (min-width: 768px) {
+      .cc-home .section-editorial,
+      .cc-product .section-editorial,
+      .cc-productpage .section-editorial {
+        padding: 120px 32px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cc-home .section-editorial,
+      .cc-product .section-editorial,
+      .cc-productpage .section-editorial {
+        padding: 160px 64px;
+      }
+    }
+
+    /* Scroll reveal */
+    .cc-home .reveal,
+    .cc-product .reveal,
+    .cc-productpage .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cc-home .reveal.visible,
+    .cc-product .reveal.visible,
+    .cc-productpage .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger children */
+    .cc-home .reveal-stagger > *,
+    .cc-product .reveal-stagger > *,
+    .cc-productpage .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .cc-home .reveal-stagger.visible > *:nth-child(1),
+    .cc-product .reveal-stagger.visible > *:nth-child(1),
+    .cc-productpage .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(2),
+    .cc-product .reveal-stagger.visible > *:nth-child(2),
+    .cc-productpage .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(3),
+    .cc-product .reveal-stagger.visible > *:nth-child(3),
+    .cc-productpage .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(4),
+    .cc-product .reveal-stagger.visible > *:nth-child(4),
+    .cc-productpage .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(5),
+    .cc-product .reveal-stagger.visible > *:nth-child(5),
+    .cc-productpage .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .cc-home .reveal-stagger.visible > *:nth-child(6),
+    .cc-product .reveal-stagger.visible > *:nth-child(6),
+    .cc-productpage .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .cc-home .reveal,
+      .cc-product .reveal,
+      .cc-productpage .reveal {
+        opacity: 1;
+        transform: none;
+      }
+      .cc-home .reveal-stagger > *,
+      .cc-product .reveal-stagger > *,
+      .cc-productpage .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Filter tab */
+    .cc-home .filter-tab,
+    .cc-product .filter-tab,
+    .cc-productpage .filter-tab {
+      padding: 8px 16px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .cc-home .filter-tab.active,
+    .cc-product .filter-tab.active,
+    .cc-productpage .filter-tab.active {
+      color: var(--deep-ink);
+      border-bottom-color: var(--deep-ink);
+    }
+
+    /* Accordion */
+    .cc-home .accordion-content,
+    .cc-product .accordion-content,
+    .cc-productpage .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cc-home .accordion-content.open,
+    .cc-product .accordion-content.open,
+    .cc-productpage .accordion-content.open {
+      max-height: 1000px;
+    }
+
+    /* Section counter */
+    .cc-home .section-counter,
+    .cc-product .section-counter,
+    .cc-productpage .section-counter {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+</style>
+
+{%- comment -%} === NOSCRIPT FALLBACK === {%- endcomment -%}
+<noscript>
+  <style>
+    .cc-productpage .reveal,
+    .cc-productpage .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+{%- comment -%} === ASSIGN HERO VARIABLES === {%- endcomment -%}
+{%- assign hero_title = section.settings.hero_title | default: "Coastline Complete System" -%}
+{%- assign hero_review_text = section.settings.hero_review_text | default: "2,000+ reviews" -%}
+{%- assign hero_trust_badges = section.settings.hero_trust_badges | default: "VEGAN, SUGAR-FREE, CAFFEINE-FREE, GMP CERTIFIED" -%}
+{%- if section.settings.hero_gallery_image_1 != blank -%}
+  {%- assign gallery_img_1 = section.settings.hero_gallery_image_1 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign gallery_img_1 = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" -%}
+{%- endif -%}
+{%- if section.settings.hero_gallery_image_2 != blank -%}
+  {%- assign gallery_img_2 = section.settings.hero_gallery_image_2 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign gallery_img_2 = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194" -%}
+{%- endif -%}
+{%- if section.settings.hero_gallery_image_3 != blank -%}
+  {%- assign gallery_img_3 = section.settings.hero_gallery_image_3 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign gallery_img_3 = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" -%}
+{%- endif -%}
+{%- if section.settings.hero_gallery_image_4 != blank -%}
+  {%- assign gallery_img_4 = section.settings.hero_gallery_image_4 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign gallery_img_4 = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766" -%}
+{%- endif -%}
+{%- if section.settings.hero_gallery_image_5 != blank -%}
+  {%- assign gallery_img_5 = section.settings.hero_gallery_image_5 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign gallery_img_5 = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg?v=1759112312" -%}
+{%- endif -%}
+
+<div class="cc-productpage" data-product-id="{{ product.id }}">
+
+  {%- comment -%} Hidden product form + JSON for ReCharge widget detection {%- endcomment -%}
+  {%- form 'product', product, id: 'cc-product-form-hidden', style: 'display:none', data-productid: product.id -%}
+    <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
+  {%- endform -%}
+  <script type="application/json" id="ProductJSON-{{ product.id }}">
+    {{ product | json }}
+  </script>
+
+  {%- comment -%} ============================================================
+     SECTION 1: PRODUCT HERO (cc-product-02)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-product-hero" class="section-editorial" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: var(--parchment);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+
+      <div class="cc-product-hero-grid">
+
+        <!-- LEFT SIDE: Gallery (60%) -->
+        <div
+          x-data="ccProductGallery()"
+          class="reveal"
+          style="position: relative;"
+        >
+          <!-- Main Image -->
+          <div style="background: #fff; border: 1px solid var(--light-gray); margin-bottom: 12px; overflow: hidden;">
+            <img
+              :src="images[activeImage]"
+              alt="{{ hero_title | escape }}"
+              width="800"
+              height="800"
+              style="width: 100%; height: auto; display: block; object-fit: contain; max-height: 600px;"
+              class="img-editorial"
+            >
+          </div>
+
+          <!-- Thumbnail Strip -->
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;">
+            <template x-for="(img, index) in images" :key="index">
+              <div
+                @click="activeImage = index"
+                :style="activeImage === index ? 'border: 2px solid var(--forest); cursor: pointer; overflow: hidden;' : 'border: 2px solid var(--light-gray); cursor: pointer; overflow: hidden;'"
+                style="background: #fff; transition: border-color 0.2s ease;"
+              >
+                <img
+                  :src="img"
+                  :alt="'Product image ' + (index + 1)"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  style="width: 100%; height: auto; display: block; object-fit: contain; aspect-ratio: 1/1;"
+                >
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: Buy Panel (40%) -->
+        <div
+          x-data="ccProductBuy()"
+          class="reveal"
+          style="padding-top: 8px;"
+        >
+          <!-- Product Title -->
+          <h1 style="font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px;">
+            {{ hero_title }}
+          </h1>
+
+          <!-- Stars + Review Count -->
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <span class="stars-minimal">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray);">{{ hero_review_text }}</span>
+          </div>
+
+          <!-- Trust Badges -->
+          <p style="margin: 0 0 24px 0; font-family: 'Inter', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); line-height: 1.4;">
+            {%- assign badge_list = hero_trust_badges | split: ',' -%}
+            {%- for badge in badge_list -%}{{ badge | strip }}{%- unless forloop.last %} &middot; {% endunless -%}{%- endfor -%}
+          </p>
+
+          <!-- Editorial Divider -->
+          <div class="editorial-divider" style="margin-bottom: 28px;"></div>
+
+          <!-- Flavor Selector -->
+          <div style="margin-bottom: 28px;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--deep-ink); margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.1em;">Select your flavor</p>
+            <div style="display: flex; gap: 10px;">
+              <button @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'cc-flavor-unflavored-active' : 'cc-flavor-unflavored-idle'" class="cc-flavor-btn">Unflavored Blend</button>
+              <button @click="flavor = 'lemonade'" :class="flavor === 'lemonade' ? 'cc-flavor-lemonade-active' : 'cc-flavor-lemonade-idle'" class="cc-flavor-btn">Coastal Lemonade</button>
+            </div>
+          </div>
+
+          <!-- Subscription Selector -->
+          <div style="margin-bottom: 28px;">
+            <p style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A2F;font-weight:600;margin:0 0 16px;">
+              Introductory pricing -- limited time offer
+            </p>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Select your plan</p>
+
+            <!-- Monthly -->
+            <div @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Monthly subscription</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 34% - just $3.30/day</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$99</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2-Month -->
+            <div @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Every 2 months</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 20%</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$120</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- One-time -->
+            <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">One-time purchase</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:3px;">No subscription</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$150</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">one-time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart Button -->
+          <button
+            @click="addToCart()"
+            :disabled="loading"
+            type="submit"
+            name="add"
+            data-product-id="{{ product.id }}"
+            :data-variant-id="variantId"
+            class="btn-primary"
+            style="width:100%;padding:22px 48px;font-size:14px;margin-bottom:20px;background:#0A0A0A !important;color:#FAF9F6 !important;border:none !important;font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s ease;"
+          >
+            <span x-show="!loading">ADD TO CART - <span x-text="buttonPrice"></span></span>
+            <span x-show="loading">ADDING...</span>
+          </button>
+
+          <!-- Micro-copy -->
+          <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Free shipping
+            </span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+              Cancel anytime
+            </span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              60-day guarantee
+            </span>
+          </div>
+
+          <!-- Trust badge images -->
+          <div style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:24px;">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:52px;object-fit:contain;opacity:0.8;" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:52px;object-fit:contain;opacity:0.8;" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Money-Back Guarantee" style="height:52px;object-fit:contain;opacity:0.8;" loading="lazy">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} === DIVIDER IMAGE: Between Hero & System Overview === {%- endcomment -%}
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;position:relative;overflow:hidden;">
+    {%- if section.settings.divider_image_1 != blank -%}
+      <img src="{{ section.settings.divider_image_1 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+    <!-- Free gift overlay -->
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 1.5rem;">
+      <div style="max-width:440px;margin-left:6%;">
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin:0 0 12px;font-weight:500;">FREE GIFT WITH YOUR ORDER</p>
+        <h3 style="font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(24px,4vw,36px);font-weight:500;color:#FFFFFF;margin:0 0 12px;line-height:1.2;letter-spacing:-0.02em;text-shadow:0 1px 40px rgba(0,0,0,0.3);">Premium Glass Shaker Bottle</h3>
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:clamp(14px,2vw,16px);color:rgba(255,255,255,0.85);margin:0;line-height:1.5;text-shadow:0 1px 20px rgba(0,0,0,0.3);">Included free with every subscription. Mix your Morning Blend in style.</p>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} === PRESS LOGO BAR === {%- endcomment -%}
+  <section class="reveal" x-intersect.once="$el.classList.add('visible')" style="padding:40px 1.5rem;background:var(--parchment);border-bottom:1px solid var(--light-gray);">
+    <div style="max-width:64rem;margin:0 auto;text-align:center;">
+      <p style="font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin:0 0 24px;">
+        {{ section.settings.press_label | default: "AS FEATURED IN" }}
+      </p>
+      <div class="cc-press-logos" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px;opacity:0.4;filter:grayscale(100%);">
+        {%- assign pp_logo_defaults = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109' | split: ',' -%}
+        {%- assign pp_logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly' | split: ',' -%}
+        {%- for i in (0..3) -%}
+          {%- assign logo_src = pp_logo_defaults[i] -%}
+          {%- if logo_src != blank -%}
+            <img src="{{ logo_src }}" alt="{{ pp_logo_alts[i] }}" style="height:36px;width:auto;" loading="lazy">
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ============================================================
+     SECTION 2: SYSTEM OVERVIEW (cc-product-03)
+  ============================================================ {%- endcomment -%}
+  <section
+    class="section-editorial reveal"
+    style="padding-top: {{ section.settings.system_padding_top | default: 80 }}px; padding-bottom: {{ section.settings.system_padding_bottom | default: 80 }}px; background-color: var(--parchment);"
+  >
+    <div style="max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; text-align: center;">
+
+      {%- if section.settings.system_label != blank -%}
+        <span
+          class="badge-minimal"
+          style="display: inline-block; margin-bottom: 1.25rem; letter-spacing: 0.15em; font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--warm-gray); text-transform: uppercase;"
+        >
+          {{ section.settings.system_label }}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.system_headline != blank -%}
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 500; line-height: 1.2; color: var(--deep-ink); margin: 0 0 1rem;">
+          {{ section.settings.system_headline }}
+        </h2>
+      {%- endif -%}
+
+      <div class="editorial-divider hairline" style="width: 3rem; height: 1px; background-color: var(--light-gray); margin: 2rem auto 3rem;"></div>
+
+      {%- assign step_blocks = section.blocks | where: 'type', 'product_step' -%}
+      {%- if step_blocks.size > 0 -%}
+        <div class="cc-product-steps-grid">
+          {%- for block in step_blocks -%}
+            <div {{ block.shopify_attributes }} x-data="{ detailOpen: false }" style="display: flex; flex-direction: column; align-items: center;">
+
+              <!-- Image with hairline top border -->
+              <div style="border-top: 1px solid var(--light-gray); width: 100%; padding-top: 1.5rem; margin-bottom: 1.25rem;">
+                {%- if block.settings.image != blank -%}
+                  {%- assign step_img_src = block.settings.image | image_url: width: 600 -%}
+                {%- elsif forloop.index == 1 -%}
+                  {%- assign step_img_src = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194" -%}
+                {%- elsif forloop.index == 2 -%}
+                  {%- assign step_img_src = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" -%}
+                {%- else -%}
+                  {%- assign step_img_src = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766" -%}
+                {%- endif -%}
+                <img
+                  src="{{ step_img_src }}"
+                  alt="{{ block.settings.title | escape }}"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                  style="max-width: 280px; width: 100%; height: auto; margin: 0 auto; display: block;"
+                  class="img-editorial"
+                >
+              </div>
+
+              <!-- Step label -->
+              {%- if block.settings.step_label != blank -%}
+                <span
+                  class="badge-minimal"
+                  style="display: inline-block; margin-bottom: 0.5rem; letter-spacing: 0.15em; font-family: 'Inter', sans-serif; font-size: 0.65rem; font-weight: 600; color: var(--forest); text-transform: uppercase;"
+                >
+                  {{ block.settings.step_label }}
+                </span>
+              {%- endif -%}
+
+              <!-- Title -->
+              {%- if block.settings.title != blank -%}
+                <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 500; color: var(--deep-ink); margin: 0 0 0.5rem;">
+                  {{ block.settings.title }}
+                </h3>
+              {%- endif -%}
+
+              <!-- Description -->
+              {%- if block.settings.description != blank -%}
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.6; color: var(--warm-gray); max-width: 20rem; margin: 0 auto 1rem;">
+                  {{ block.settings.description }}
+                </p>
+              {%- endif -%}
+
+              <!-- Details Toggle -->
+              <button @click="detailOpen = !detailOpen" style="background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--forest);font-weight:500;display:inline-flex;align-items:center;gap:6px;padding:4px 0;margin-bottom:8px;">
+                <span x-text="detailOpen ? 'HIDE DETAILS' : 'VIEW DETAILS'"></span>
+                <svg :style="detailOpen ? 'transform:rotate(180deg)' : ''" style="width:12px;height:12px;transition:transform 0.3s ease;" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,4 6,8 10,4"></polyline></svg>
+              </button>
+
+              <!-- Expandable Details -->
+              <div x-show="detailOpen" x-collapse x-cloak style="width:100%;text-align:left;padding:16px 0;">
+                {%- assign step_lower = block.settings.step_label | downcase -%}
+
+                {%- if step_lower contains "morning" -%}
+                  <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--warm-gray);">
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Ingredients</p>
+                    <p style="margin:0 0 4px;">Ergothioneine - 5 mg</p>
+                    <p style="margin:0 0 4px;">Taurine - 3.05 g</p>
+                    <p style="margin:0 0 4px;">Creatine Monohydrate - 5.25 g</p>
+                    <p style="margin:0 0 4px;">Glycine - 5 g</p>
+                    <p style="margin:0 0 4px;">Inulin - 4 g</p>
+                    <p style="margin:0 0 4px;">Magnesium Citrate - 150 mg</p>
+                    <p style="margin:0 0 16px;">Glucosamine Sulfate - 750 mg</p>
+
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Directions</p>
+                    <p style="margin:0 0 16px;">Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day.</p>
+
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Benefits</p>
+                    <p style="margin:0 0 4px;">Sustained natural energy</p>
+                    <p style="margin:0 0 4px;">Sharper mental clarity</p>
+                    <p style="margin:0 0 4px;">Stronger muscles and bones</p>
+                    <p style="margin:0;">Optimized metabolic health</p>
+                  </div>
+
+                {%- elsif step_lower contains "daily" -%}
+                  <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--warm-gray);">
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Ingredients</p>
+                    <p style="margin:0 0 4px;">Astaxanthin - 6 mg</p>
+                    <p style="margin:0 0 4px;">Lutein - 10 mg</p>
+                    <p style="margin:0 0 4px;">Zeaxanthin - 2 mg</p>
+                    <p style="margin:0 0 16px;">Coenzyme Q10 - 200 mg</p>
+
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Directions</p>
+                    <p style="margin:0 0 16px;">Take 1 softgel with your first meal of the day.</p>
+
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Benefits</p>
+                    <p style="margin:0 0 4px;">Powerful cellular protection</p>
+                    <p style="margin:0 0 4px;">Enhanced eye and brain health</p>
+                    <p style="margin:0 0 4px;">Heart and mitochondrial support</p>
+                    <p style="margin:0;">Skin protection from UV</p>
+                  </div>
+
+                {%- elsif step_lower contains "evening" -%}
+                  <div style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--warm-gray);">
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Ingredients</p>
+                    <p style="margin:0 0 4px;">Lithium Orotate - 400 mcg</p>
+                    <p style="margin:0 0 4px;">L-Theanine - 200 mg</p>
+                    <p style="margin:0 0 16px;">Glucosamine Sulfate - 750 mg</p>
+
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Directions</p>
+                    <p style="margin:0 0 16px;">Take 2 capsules 30-60 minutes before bed with water.</p>
+
+                    <p style="font-weight:600;color:var(--deep-ink);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 10px;">Benefits</p>
+                    <p style="margin:0 0 4px;">Deeper, restorative sleep</p>
+                    <p style="margin:0 0 4px;">Reduced stress and anxiety</p>
+                    <p style="margin:0 0 4px;">Joint health and cellular repair</p>
+                    <p style="margin:0;">Neuroprotection and mood support</p>
+                  </div>
+                {%- endif -%}
+              </div>
+
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </section>
+
+
+  <!-- Section divider -->
+  <div style="max-width:800px;margin:0 auto;padding:0 1.5rem;">
+    <div style="height:1px;background-color:var(--light-gray);"></div>
+  </div>
+
+
+  {%- comment -%} ============================================================
+     COST COMPARISON / VALUE STACK (from LP v4)
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial reveal" style="background-color: #062F3D; padding-top: 100px; padding-bottom: 100px;">
+    <div style="max-width: 64rem; margin: 0 auto; padding: 0 1.5rem;" x-data="{ mathOpen: false }">
+
+      <!-- Value Stack -->
+      <div style="text-align: center;">
+        <p class="badge-minimal" style="margin-bottom: 24px; color: rgba(255,255,255,0.5);">THE REAL COST</p>
+        <h2 style="font-size: clamp(28px, 5vw, 42px); margin-bottom: 24px; color: #FFFFFF;">
+          What it would cost to buy these 13 ingredients separately
+        </h2>
+        <p style="max-width: 560px; margin: 0 auto 48px; font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.7;">
+          Ergothioneine alone costs $40 a month. Add clinical-dose Creatine, CoQ10, Astaxanthin, and the rest -- you're looking at $250 or more per month from 8 to 10 different brands. Coastline consolidates all 13 into one system for $99 a month. That's $3.30 a day.
+        </p>
+
+        <!-- Price comparison visual — hero moment -->
+        <div style="margin-bottom: 48px;">
+          <div style="display: inline-flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 500; color: rgba(255,255,255,0.35); text-decoration: line-through; text-decoration-thickness: 2px;">$251</span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 20px; color: rgba(255,255,255,0.4);">&rarr;</span>
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(48px, 8vw, 72px); font-weight: 500; color: #FFFFFF;">$99</span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 16px; color: rgba(255,255,255,0.5); align-self: center;">/mo</span>
+          </div>
+          <p style="margin: 0; font-family: 'Inter', sans-serif; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45);">
+            Save over $150/month &middot; That's $3.30 a day
+          </p>
+        </div>
+
+        <!-- See the math accordion -->
+        <div style="max-width: 520px; margin: 0 auto;">
+          <button
+            @click="mathOpen = !mathOpen"
+            class="flex items-center justify-center gap-2 mx-auto"
+            style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.8); padding: 14px 32px; transition: background 0.3s ease;"
+            onmouseover="this.style.background='rgba(255,255,255,0.12)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.08)'">
+            <span x-text="mathOpen ? 'HIDE THE MATH' : 'SEE THE MATH'">SEE THE MATH</span>
+            <svg :class="mathOpen && 'rotate-180'" style="transition: transform 0.3s ease;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+
+          <div
+            class="cc-math-accordion"
+            :class="mathOpen && 'open'"
+            style="text-align: left; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-top: none; border-radius: 0 0 4px 4px;">
+            <div style="padding: 28px 28px 24px;">
+              <p style="margin: 0 0 20px; text-align: center; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4);">APPROXIMATE MONTHLY COST IF PURCHASED INDIVIDUALLY</p>
+
+              <!-- Morning Blend -->
+              <p style="margin: 0 0 10px; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); font-weight: 600;">MORNING BLEND</p>
+              <div style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 2.0;">
+                <div class="flex justify-between"><span>Ergothioneine (5 mg)</span><span style="color: #FFFFFF;">$40</span></div>
+                <div class="flex justify-between"><span>Taurine (3.05 g)</span><span style="color: #FFFFFF;">$15</span></div>
+                <div class="flex justify-between"><span>Creatine Monohydrate (5.25 g)</span><span style="color: #FFFFFF;">$15</span></div>
+                <div class="flex justify-between"><span>Glycine (5 g)</span><span style="color: #FFFFFF;">$15</span></div>
+                <div class="flex justify-between"><span>Inulin (4 g)</span><span style="color: #FFFFFF;">$12</span></div>
+                <div class="flex justify-between"><span>Magnesium Citrate (150 mg)</span><span style="color: #FFFFFF;">$12</span></div>
+                <div class="flex justify-between"><span>Glucosamine Sulfate (750 mg AM)</span><span style="color: #FFFFFF;">$11</span></div>
+              </div>
+
+              <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0;"></div>
+
+              <!-- Softgels -->
+              <p style="margin: 0 0 10px; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); font-weight: 600;">DAILY SOFTGEL</p>
+              <div style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 2.0;">
+                <div class="flex justify-between"><span>Astaxanthin (6 mg)</span><span style="color: #FFFFFF;">$28</span></div>
+                <div class="flex justify-between"><span>Lutein (10 mg)</span><span style="color: #FFFFFF;">$18</span></div>
+                <div class="flex justify-between"><span>Zeaxanthin (2 mg)</span><span style="color: #FFFFFF;">$15</span></div>
+                <div class="flex justify-between"><span>CoQ10 Ubiquinone (200 mg)</span><span style="color: #FFFFFF;">$32</span></div>
+              </div>
+
+              <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 16px 0;"></div>
+
+              <!-- Evening Capsules -->
+              <p style="margin: 0 0 10px; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); font-weight: 600;">EVENING CAPSULES</p>
+              <div style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 2.0;">
+                <div class="flex justify-between"><span>Lithium Orotate (400 mcg)</span><span style="color: #FFFFFF;">$15</span></div>
+                <div class="flex justify-between"><span>L-Theanine (200 mg)</span><span style="color: #FFFFFF;">$12</span></div>
+                <div class="flex justify-between"><span>Glucosamine Sulfate (750 mg PM)</span><span style="color: #FFFFFF;">$11</span></div>
+              </div>
+
+              <div style="margin-top: 20px; padding-top: 16px; border-top: 2px solid rgba(255,255,255,0.3);">
+                <div class="flex justify-between" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; color: #FFFFFF;">
+                  <span>TOTAL (13 bottles, 8-10 brands)</span>
+                  <span>$251/mo</span>
+                </div>
+              </div>
+
+              <p style="font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 12px; text-align: center; letter-spacing: 0.02em;">
+                Estimates based on clinical-dose, quality supplements from reputable brands (30-day supply).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 3: INGREDIENT DEEP DIVE (cc-product-04) - HARDCODED
+  ============================================================ {%- endcomment -%}
+  {%- assign ingredients_label = section.settings.ingredients_label | default: "THE INGREDIENTS" -%}
+  {%- assign ingredients_headline = section.settings.ingredients_headline | default: "Every ingredient, every dose, every reason" -%}
+  {%- assign ingredients_subheadline = section.settings.ingredients_subheadline | default: "13 clinically validated ingredients. Transparently dosed. Chosen for a reason." -%}
+
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background-color: var(--parchment); padding-left: 1.5rem; padding-right: 1.5rem;">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- Header -->
+      <div class="reveal" style="margin-bottom: 64px;">
+        <p class="badge-minimal" style="margin-bottom: 20px;">{{ ingredients_label }}</p>
+        <div class="editorial-divider" style="margin-bottom: 32px;"></div>
+        <h2 style="margin-bottom: 24px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; line-height: 1.15;">{{ ingredients_headline }}</h2>
+        <p style="color: var(--warm-gray); font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.7; max-width: 600px;">
+          {{ ingredients_subheadline }}
+        </p>
+      </div>
+
+      <!-- Accordion -->
+      <div x-data="{ open: null }" class="reveal" style="margin-bottom: 64px;">
+
+        <!-- GROUP 1: MORNING BLEND -->
+        <div style="margin-bottom: 48px;">
+          <p class="badge-minimal" style="margin-bottom: 24px; color: var(--forest);">MORNING BLEND</p>
+
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'ergo' ? open = null : open = 'ergo'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277" alt="Ergothioneine" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Ergothioneine</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">5 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'ergo' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'ergo'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Crosses the blood-brain barrier and increases NAD+ levels in cells. A powerful cellular antioxidant that accumulates in the brain and mitochondria.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Clinical trial: Improved cognition and reduced neurodegeneration markers at 5 mg/day.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'taurine' ? open = null : open = 'taurine'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425" alt="Taurine" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Taurine</span>
+                  <span style="font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--warm-gray);margin-left:8px;">2 g</span>
+                </div>
+              </div>
+              <span :style="open === 'taurine' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'taurine'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Supports cardiovascular health, reduces blood pressure and inflammation, and improves metabolic markers including blood sugar and cholesterol.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Targets nearly all hallmarks of aging including epigenetic alterations, inflammation, and mitochondrial dysfunction.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'creatine' ? open = null : open = 'creatine'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945" alt="Creatine Monohydrate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Creatine Monohydrate</span>
+                  <span style="font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--warm-gray);margin-left:8px;">5 g</span>
+                </div>
+              </div>
+              <span :style="open === 'creatine' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'creatine'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Supports muscle strength, bone density, and cognitive function under stress. One of the most studied supplements with an excellent safety profile.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Buffers ATP levels as a temporal and spatial energy source. Reduces cellular waste accumulation.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'glycine' ? open = null : open = 'glycine'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227" alt="Glycine" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Glycine</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">5 g</span>
+                </div>
+              </div>
+              <span :style="open === 'glycine' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'glycine'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Improves sleep quality and reduces daytime sleepiness. A precursor to glutathione, your body’s master antioxidant, and supports blood sugar control.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Reduces blood sugar swings when taken with meals. May mimic methionine restriction.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'inulin' ? open = null : open = 'inulin'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618" alt="Inulin" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Inulin</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">4 g</span>
+                </div>
+              </div>
+              <span :style="open === 'inulin' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'inulin'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Prebiotic fiber that feeds beneficial gut bacteria, enhances mineral absorption, supports cognition, and improves bowel regularity.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Fermented into short-chain fatty acids (butyrate). Improves cognition in adults over 60 in a 12-week study.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'mag' ? open = null : open = 'mag'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678" alt="Magnesium Citrate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Magnesium Citrate</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">150 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'mag' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'mag'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Essential mineral for 300+ enzymatic reactions. Supports blood pressure, sleep onset, muscle recovery, and stress reduction.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">50% of adults fail to meet the RDA. Citrate form chosen for superior bioavailability over oxide.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'gluc-am' ? open = null : open = 'gluc-am'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Glucosamine Sulfate</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">750 mg (AM)</span>
+                </div>
+              </div>
+              <span :style="open === 'gluc-am' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'gluc-am'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Supports joint health, reduces joint space narrowing, and is associated with reduced all-cause mortality in population studies. Split-dosed AM/PM.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Mimics calorie restriction at the cellular level. Activates AMP kinase and autophagy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+        </div>
+
+        <!-- GROUP 2: DAILY SOFTGELS -->
+        <div style="margin-bottom: 48px;">
+          <p class="badge-minimal" style="margin-bottom: 24px; color: var(--forest);">DAILY SOFTGELS</p>
+
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'astax' ? open = null : open = 'astax'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Astaxanthin</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">6 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'astax' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'astax'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Activates NRF2 and FOXO3 pathways. Sourced from Haematococcus pluvialis microalgae.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'lutein' ? open = null : open = 'lutein'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Lutein" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Lutein</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">10 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'lutein' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'lutein'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Accumulates in hippocampus and frontal cortex. Increases BDNF. AREDS2 study dose.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'zeax' ? open = null : open = 'zeax'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Zeaxanthin" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Zeaxanthin</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">2 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'zeax' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'zeax'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Together they filter short-wavelength blue light, reducing damage by up to 100x at critical wavelengths.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'coq10' ? open = null : open = 'coq10'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360" alt="Coenzyme Q10" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Coenzyme Q10</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">200 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'coq10' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'coq10'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Ubiquinone form (trans-isomer). Offsets statin-induced CoQ10 depletion.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+        </div>
+
+        <!-- GROUP 3: EVENING CAPSULES -->
+        <div style="margin-bottom: 48px;">
+          <p class="badge-minimal" style="margin-bottom: 24px; color: var(--forest);">EVENING CAPSULES</p>
+
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'lithium' ? open = null : open = 'lithium'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Lithium Orotate</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">400 mcg</span>
+                </div>
+              </div>
+              <span :style="open === 'lithium' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'lithium'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">15-month trial: maintained cognitive function at 300 mcg/day. Increases BDNF transcription. Far below prescription levels.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'theanine' ? open = null : open = 'theanine'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312" alt="L-Theanine" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">L-Theanine</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">200 mg</span>
+                </div>
+              </div>
+              <span :style="open === 'theanine' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'theanine'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Acts on suprachiasmatic nucleus, promoting natural sleep onset via peripheral vasodilation and core temperature lowering.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+          <div style="padding:20px 0;cursor:pointer;" @click="open === 'gluc-pm' ? open = null : open = 'gluc-pm'">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+                <div>
+                  <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Glucosamine Sulfate</span>
+              <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">750 mg (PM)</span>
+                </div>
+              </div>
+              <span :style="open === 'gluc-pm' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+            </div>
+            <div x-show="open === 'gluc-pm'" x-collapse x-cloak>
+              <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+                <p style="margin:0 0 8px;">Completing the 1,500 mg daily dose for optimal joint support. Split dosing (AM/PM) supports better absorption throughout the day.</p>
+                <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Vegan-sourced sulfate form. Reduces joint space narrowing and pain in osteoarthritis.</p>
+              </div>
+            </div>
+          </div>
+          <div class="hairline"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Divider image between Ingredients and Experts -->
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+    {%- if section.settings.divider_image_3 != blank -%}
+      <img src="{{ section.settings.divider_image_3 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/canon-beach-haystack_1.png?v=1764011837" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 4: EXPERT ENDORSEMENTS (cc-product-05)
+  ============================================================ {%- endcomment -%}
+  <section
+    class="section-editorial"
+    style="padding-top: 80px; padding-bottom: 80px; background: var(--parchment); padding-left:0;padding-right:0;"
+  >
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 24px;">
+
+      <!-- Header -->
+      <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+        <span
+          class="badge-minimal"
+          style="
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            margin-bottom: 20px;
+          "
+        >
+          {{ section.settings.experts_label | default: "EXPERT VALIDATION" }}
+        </span>
+        <h2 style="font-family:'Space Grotesk',system-ui,sans-serif; font-size:clamp(32px,5vw,48px); font-weight:500; letter-spacing:-0.02em; line-height:1.15; color:var(--deep-ink); margin:0;">
+          {{ section.settings.experts_headline | default: "Trusted by leading health researchers" }}
+        </h2>
+      </div>
+
+      <!-- 2-column Expert Grid -->
+      <div
+        class="reveal-stagger cc-product-experts-grid"
+        style="
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 32px;
+        "
+      >
+        {%- assign expert_blocks = section.blocks | where: 'type', 'expert' -%}
+        {%- for block in expert_blocks -%}
+          <div
+            {{ block.shopify_attributes }}
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+              padding: 32px;
+              border: 1px solid var(--light-gray);
+              background: #fff;
+              transition: box-shadow 0.3s ease;
+            "
+            class="cc-product-expert-card"
+          >
+            <!-- Expert info -->
+            <div style="display: flex; align-items: center; gap: 16px;">
+              {%- if block.settings.portrait != blank -%}
+                <img
+                  class="img-editorial"
+                  src="{{ block.settings.portrait | image_url: width: 112 }}"
+                  alt="{{ block.settings.name }}"
+                  width="56"
+                  height="56"
+                  loading="lazy"
+                  style="
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 9999px;
+                    object-fit: cover;
+                    flex-shrink: 0;
+                  "
+                >
+              {%- else -%}
+                {%- assign fallback_portraits = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015' | split: ',' -%}
+                {%- assign fb_idx = forloop.index0 | modulo: 4 -%}
+                <img
+                  class="img-editorial"
+                  src="{{ fallback_portraits[fb_idx] }}"
+                  alt="{{ block.settings.name }}"
+                  width="56"
+                  height="56"
+                  loading="lazy"
+                  style="
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 9999px;
+                    object-fit: cover;
+                    flex-shrink: 0;
+                  "
+                >
+              {%- endif -%}
+              <div>
+                <p style="
+                  font-family: 'Space Grotesk', sans-serif;
+                  font-weight: 600;
+                  font-size: 16px;
+                  color: var(--deep-ink);
+                  margin: 0 0 2px 0;
+                  line-height: 1.3;
+                ">
+                  {{ block.settings.name }}
+                </p>
+                <p style="
+                  font-family: 'Inter', sans-serif;
+                  font-size: 13px;
+                  color: var(--warm-gray);
+                  margin: 0;
+                  line-height: 1.4;
+                ">
+                  {{ block.settings.credential }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Quote -->
+            <p style="
+              font-family: 'Inter', sans-serif;
+              font-size: clamp(16px, 2vw, 20px);
+              font-weight: 400;
+              color: var(--deep-ink);
+              line-height: 1.55;
+              margin: 0;
+              font-style: italic;
+            ">
+              "{{ block.settings.quote }}"
+            </p>
+          </div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 5: REVIEWS (cc-product-06)
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div id="cc-reviews-anchor" style="position:relative;top:-100px;visibility:hidden;pointer-events:none;"></div>
+      <p class="badge-minimal" style="text-align:center;margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
+      </p>
+
+      <h2 class="reveal" style="text-align:center;color:var(--deep-ink);font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0 0 2rem;">
+        {{ section.settings.reviews_headline | default: "Real reviews from real members" }}
+      </h2>
+
+      <div x-data="{ reviewFilter: 'all', reviewsShown: 6 }">
+
+        <!-- Filter tabs -->
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;margin-bottom:2rem;">
+          <button class="cc-review-tab" :class="reviewFilter === 'all' ? 'cc-review-tab-active' : 'cc-review-tab-idle'" @click="reviewFilter = 'all'; reviewsShown = 6">All</button>
+          <button class="cc-review-tab" :class="reviewFilter === 'energy' ? 'cc-review-tab-active' : 'cc-review-tab-idle'" @click="reviewFilter = 'energy'; reviewsShown = 6">Energy</button>
+          <button class="cc-review-tab" :class="reviewFilter === 'focus' ? 'cc-review-tab-active' : 'cc-review-tab-idle'" @click="reviewFilter = 'focus'; reviewsShown = 6">Focus</button>
+          <button class="cc-review-tab" :class="reviewFilter === 'trust' ? 'cc-review-tab-active' : 'cc-review-tab-idle'" @click="reviewFilter = 'trust'; reviewsShown = 6">Trust</button>
+          <button class="cc-review-tab" :class="reviewFilter === 'convenience' ? 'cc-review-tab-active' : 'cc-review-tab-idle'" @click="reviewFilter = 'convenience'; reviewsShown = 6">Convenience</button>
+        </div>
+
+        <!-- Reviews grid -->
+        {%- assign total_all = 0 -%}
+        {%- assign total_energy = 0 -%}
+        {%- assign total_focus = 0 -%}
+        {%- assign total_trust = 0 -%}
+        {%- assign total_convenience = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'testimonial' -%}
+            {%- assign total_all = total_all | plus: 1 -%}
+            {%- assign tcat = block.settings.category | default: 'energy' -%}
+            {%- if tcat == 'energy' -%}{%- assign total_energy = total_energy | plus: 1 -%}
+            {%- elsif tcat == 'focus' -%}{%- assign total_focus = total_focus | plus: 1 -%}
+            {%- elsif tcat == 'trust' -%}{%- assign total_trust = total_trust | plus: 1 -%}
+            {%- elsif tcat == 'convenience' -%}{%- assign total_convenience = total_convenience | plus: 1 -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <div style="display:grid;gap:1.25rem;" class="md:grid-cols-2 lg:grid-cols-3">
+
+          {%- assign all_idx = 0 -%}
+          {%- assign energy_idx = 0 -%}
+          {%- assign focus_idx = 0 -%}
+          {%- assign trust_idx = 0 -%}
+          {%- assign convenience_idx = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'testimonial' -%}
+              {%- assign all_idx = all_idx | plus: 1 -%}
+              {%- assign cat = block.settings.category | default: 'energy' -%}
+              {%- if cat == 'energy' -%}{%- assign energy_idx = energy_idx | plus: 1 -%}{%- assign cat_idx = energy_idx -%}
+              {%- elsif cat == 'focus' -%}{%- assign focus_idx = focus_idx | plus: 1 -%}{%- assign cat_idx = focus_idx -%}
+              {%- elsif cat == 'trust' -%}{%- assign trust_idx = trust_idx | plus: 1 -%}{%- assign cat_idx = trust_idx -%}
+              {%- elsif cat == 'convenience' -%}{%- assign convenience_idx = convenience_idx | plus: 1 -%}{%- assign cat_idx = convenience_idx -%}
+              {%- endif -%}
+
+              <div
+                {{ block.shopify_attributes }}
+                x-show="(reviewFilter === 'all' && {{ all_idx }} <= reviewsShown) || (reviewFilter === '{{ cat }}' && {{ cat_idx }} <= reviewsShown)"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                style="padding:1.25rem 0 0;border-top:1px solid var(--light-gray);"
+                class="hairline"
+              >
+                <p class="stars-minimal" style="color:var(--deep-ink);font-size:0.875rem;margin:0 0 0.5rem;letter-spacing:0.1em;">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                <p style="color:var(--deep-ink);font-size:0.9375rem;line-height:1.6;margin:0 0 0.75rem;">
+                  "{{ block.settings.quote }}"
+                </p>
+                <p class="badge-minimal" style="color:var(--warm-gray);font-size:0.75rem;margin:0;letter-spacing:0.08em;">
+                  {{ block.settings.name }}{% if block.settings.detail != blank %}, {{ block.settings.detail }}{% endif %}
+                </p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+        </div>
+
+        <!-- Show more / show less buttons -->
+        <div style="text-align:center;margin-top:2rem;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+          <button
+            class="cc-review-tab cc-review-tab-idle"
+            x-show="(reviewFilter === 'all' && reviewsShown < {{ total_all }}) || (reviewFilter === 'energy' && reviewsShown < {{ total_energy }}) || (reviewFilter === 'focus' && reviewsShown < {{ total_focus }}) || (reviewFilter === 'trust' && reviewsShown < {{ total_trust }}) || (reviewFilter === 'convenience' && reviewsShown < {{ total_convenience }})"
+            @click="reviewsShown = reviewsShown + 6"
+            x-transition
+            style="cursor:pointer;"
+          >SHOW MORE REVIEWS</button>
+          <button
+            class="cc-review-tab cc-review-tab-idle"
+            x-show="reviewsShown > 6"
+            @click="reviewsShown = 6; $nextTick(() => { document.getElementById('cc-reviews-anchor').scrollIntoView({ behavior: 'smooth' }) })"
+            x-transition
+            style="cursor:pointer;"
+          >SHOW LESS</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Divider image between Reviews and Comparison -->
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+    {%- if section.settings.divider_image_2 != blank -%}
+      <img src="{{ section.settings.divider_image_2 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 6: COMPARISON TABLE (cc-product-07)
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:1100px;margin:0 auto;text-align:center;">
+
+      <p class="badge-minimal reveal" style="margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.comparison_label | default: "HOW WE COMPARE" }}
+      </p>
+
+      <h2 class="reveal" style="font-size:clamp(1.5rem,3.5vw,2.25rem);color:var(--deep-ink);margin:0 auto 2.5rem;max-width:600px;line-height:1.25;">
+        {{ section.settings.comparison_headline | default: "Coastline vs. the alternatives" }}
+      </h2>
+
+      {%- capture svg_check -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="12" fill="#1A3A2F"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+      {%- capture svg_empty -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="11" stroke="#E8E8E8" stroke-width="2" fill="none"/></svg>{%- endcapture -%}
+
+      <p class="reveal" style="text-align:center;margin-bottom:16px;display:none;font-size:11px;color:var(--warm-gray);letter-spacing:0.1em;" x-data x-init="if(window.innerWidth < 768) $el.style.display='block'">SCROLL RIGHT TO COMPARE &rarr;</p>
+      <div class="reveal" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+        <table style="min-width:520px;width:100%;border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="padding:20px 12px;text-align:left;min-width:140px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;"></th>
+              <th style="padding:20px 12px;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.05em;min-width:90px;text-align:center;">COASTLINE</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">NOVOS</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">BLUEPRINT</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">AG1</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">TIMELINE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Active ingredients</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;">13</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">12</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">40+</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">75</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">1</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Clinical dosing</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Full transparency</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 12 hallmarks</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">AM/PM system</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 11 body systems</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);border-bottom:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Price/month</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);">$99</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$109</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$179+</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$79</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$125</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center;max-width:520px;margin:24px auto 0;font-size:15px;color:var(--deep-ink);line-height:1.6;">
+        {{ section.settings.comparison_footnote | default: "More ingredients doesn't mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label." }}
+      </p>
+      <p style="text-align:center;margin-top:16px;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">
+        Comparison based on publicly available product information. Prices reflect monthly subscription rates.
+      </p>
+
+    </div>
+  </section>
+
+  {%- comment -%} ============================================================
+     SECTION 7: FAQ (cc-product-08) - uses faqOpen
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:48rem;margin:0 auto;">
+
+      <p class="badge-minimal" style="text-align:center;margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.faq_label | default: "PRODUCT FAQ" }}
+      </p>
+
+      <h2 class="reveal" style="text-align:center;color:var(--deep-ink);font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0 0 2.5rem;">
+        {{ section.settings.faq_headline | default: "Common questions about Coastline" }}
+      </h2>
+
+      <div x-data="{ faqOpen: null }">
+
+        {%- assign faq_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            {%- assign faq_index = faq_index | plus: 1 -%}
+            <div {{ block.shopify_attributes }} class="accordion-content" style="border-top:1px solid var(--light-gray);">
+
+              <button
+                @click="faqOpen === {{ faq_index }} ? faqOpen = null : faqOpen = {{ faq_index }}"
+                style="
+                  width:100%;
+                  display:flex;
+                  justify-content:space-between;
+                  align-items:center;
+                  padding:1.25rem 0;
+                  background:none;
+                  border:none;
+                  cursor:pointer;
+                  text-align:left;
+                  font-family:'Space Grotesk', system-ui, sans-serif;
+                  font-size:1rem;
+                  font-weight:500;
+                  color:var(--deep-ink);
+                  line-height:1.4;
+                "
+              >
+                <span style="padding-right:1rem;">{{ block.settings.question }}</span>
+                <span
+                  style="flex-shrink:0;font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;"
+                  :style="faqOpen === {{ faq_index }} ? 'transform:rotate(45deg)' : ''"
+                >+</span>
+              </button>
+
+              <div
+                x-show="faqOpen === {{ faq_index }}"
+                x-collapse
+                x-cloak
+              >
+                <div style="padding:0 0 1.25rem;color:var(--warm-gray);font-size:0.9375rem;line-height:1.7;">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="hairline" style="height:1px;background:var(--light-gray);"></div>
+
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 8: STICKY BUY BAR (cc-product-09)
+  ============================================================ {%- endcomment -%}
+  <div
+    id="cc-product-sticky-bar"
+    style="
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      z-index:50;
+      background:#ffffff;
+      border-top:1px solid var(--light-gray);
+      padding:12px 16px;
+      transform:translateY(100%);
+      transition:transform 0.3s ease;
+    "
+    class="lg:hidden"
+  >
+    <div style="display:flex;align-items:center;gap:12px;max-width:480px;margin:0 auto;">
+      <p style="
+        flex-shrink:0;
+        margin:0;
+        font-family:'Space Grotesk', system-ui, sans-serif;
+        font-size:0.875rem;
+        font-weight:500;
+        color:var(--deep-ink);
+        white-space:nowrap;
+      ">
+        {{ section.settings.sticky_price_text | default: "$99/mo - Save 34%" }}
+      </p>
+      <button
+        onclick="stickyAddToCart(this)"
+        class="btn-primary"
+        style="
+          flex:1;
+          padding:14px 16px;
+          font-family:'Space Grotesk', system-ui, sans-serif;
+          font-size:0.75rem;
+          font-weight:500;
+          letter-spacing:0.18em;
+          text-transform:uppercase;
+          background:var(--deep-ink);
+          color:var(--parchment);
+          border:none;
+          cursor:pointer;
+          text-align:center;
+          white-space:nowrap;
+        "
+      >
+        {{ section.settings.sticky_button_text | default: "ADD TO CART" }}
+      </button>
+    </div>
+  </div>
+
+</div>{%- comment -%} END .cc-productpage wrapper {%- endcomment -%}
+
+
+{%- comment -%} ============================================================
+   SINGLE STYLE BLOCK
+============================================================ {%- endcomment -%}
+<style>
+  /* Hamburger menu icon: visible on mobile, hidden on desktop only */
+  @media (min-width: 1024px) {
+    .header__icons--start .menu-drawer-button {
+      display: none !important;
+    }
+  }
+
+  .cc-productpage p {
+    max-width: none !important;
+  }
+  .cc-productpage h1,
+  .cc-productpage h2 {
+    text-wrap: balance;
+  }
+  .cc-product-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .cc-product-hero-grid {
+      grid-template-columns: 60fr 40fr;
+      gap: 48px;
+    }
+  }
+  .cc-product-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .cc-product-steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .cc-product-experts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .cc-product-experts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  /* Flavor buttons */
+  .cc-productpage .cc-flavor-btn {
+    padding: 14px 28px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+    min-width: 140px !important;
+  }
+  .cc-productpage .cc-flavor-unflavored-active {
+    background: #EDE8DF !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-productpage .cc-flavor-unflavored-idle {
+    background: #EDE8DF !important;
+    color: #6B6B6B !important;
+    border: 1px solid #D5D0C8 !important;
+  }
+  .cc-productpage .cc-flavor-lemonade-active {
+    background: #F5E0E4 !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-productpage .cc-flavor-lemonade-idle {
+    background: #F5E0E4 !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E0CDD1 !important;
+  }
+  /* Plan cards */
+  .cc-productpage .cc-plan-card {
+    border: 2px solid !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .cc-productpage .cc-plan-active {
+    border-color: #1A3A2F !important;
+    background: #F4F7F6 !important;
+  }
+  .cc-productpage .cc-plan-idle {
+    border-color: #CCCCCC !important;
+    background: #FFFFFF !important;
+  }
+  /* Review tabs */
+  .cc-productpage .cc-review-tab {
+    padding: 8px 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    border-radius: 100px !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    background: none !important;
+  }
+  .cc-productpage .cc-review-tab-active {
+    background: #0A0A0A !important;
+    color: #FAF9F6 !important;
+  }
+  .cc-productpage .cc-review-tab-idle {
+    background: transparent !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E8E8E8 !important;
+  }
+  /* Cost comparison accordion */
+  .cc-math-accordion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .cc-math-accordion.open {
+    max-height: 2000px;
+  }
+</style>
+
+
+{%- comment -%} ============================================================
+   SINGLE SCRIPT BLOCK
+============================================================ {%- endcomment -%}
+<script>
+  /* Alpine: Product Gallery */
+  function ccProductGallery() {
+    return {
+      activeImage: 0,
+      images: [
+        '{{ gallery_img_5 }}',
+        '{{ gallery_img_1 }}',
+        '{{ gallery_img_2 }}',
+        '{{ gallery_img_3 }}',
+        '{{ gallery_img_4 }}'
+      ]
+    };
+  }
+
+  /* Alpine: Buy Panel */
+  function ccProductBuy() {
+    return {
+      flavor: 'unflavored',
+      plan: 'monthly',
+      loading: false,
+      get variantId() {
+        return this.flavor === 'lemonade' ? 42179764486213 : 42179764453445;
+      },
+      get sellingPlan() {
+        if (this.plan === 'monthly') return 1862631493;
+        if (this.plan === 'bimonthly') return 1892712517;
+        return null;
+      },
+      get buttonPrice() {
+        if (this.plan === 'monthly') return '$99/MO';
+        if (this.plan === 'bimonthly') return '$120/MO';
+        return '$150';
+      },
+      addToCart() {
+        this.loading = true;
+        var body = { id: this.variantId, quantity: 1 };
+        if (this.sellingPlan) body.selling_plan = this.sellingPlan;
+        var self = this;
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
+        })
+        .catch(function(e) { console.error('Cart error:', e); })
+        .finally(function() { self.loading = false; });
+      }
+    };
+  }
+
+  /* Sticky Bar: IntersectionObserver */
+  document.addEventListener('DOMContentLoaded', function() {
+    var heroSection = document.getElementById('cc-product-hero');
+    var stickyBar = document.getElementById('cc-product-sticky-bar');
+    if (!heroSection || !stickyBar) return;
+
+    stickyBar.style.transform = 'translateY(100%)';
+    stickyBar.style.transition = 'transform 0.3s ease';
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          stickyBar.style.transform = 'translateY(100%)';
+        } else {
+          stickyBar.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(heroSection);
+  });
+
+  /* Sticky Bar: Add to Cart (hardcoded unflavored monthly) */
+  function stickyAddToCart(btn) {
+    btn.disabled = true;
+    btn.textContent = 'ADDING...';
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 42179764453445, quantity: 1, selling_plan: 1862631493 })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
+    })
+    .catch(function(e) { console.error('Cart error:', e); })
+    .finally(function() { btn.disabled = false; btn.textContent = 'ADD TO CART'; });
+  }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.cc-productpage .reveal, .cc-productpage .reveal-stagger, .cc-product .reveal, .cc-product .reveal-stagger');
+      if (!reveals.length) return;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "CC Product Page",
+  "tag": "section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "header",
+      "content": "1. Product Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Product title",
+      "default": "Coastline Complete System"
+    },
+    {
+      "type": "text",
+      "id": "hero_review_text",
+      "label": "Review count text",
+      "default": "2,000+ reviews"
+    },
+    {
+      "type": "text",
+      "id": "hero_trust_badges",
+      "label": "Trust badges (comma-separated)",
+      "default": "VEGAN, SUGAR-FREE, CAFFEINE-FREE, GMP CERTIFIED"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_1",
+      "label": "Gallery image 1 (main)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_2",
+      "label": "Gallery image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_3",
+      "label": "Gallery image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_4",
+      "label": "Gallery image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_5",
+      "label": "Gallery image 5 (Welcome Box)"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_1",
+      "label": "Divider image (between hero and system overview)"
+    },
+    {
+      "type": "header",
+      "content": "1b. Press Logo Bar"
+    },
+    {
+      "type": "text",
+      "id": "press_label",
+      "label": "Press bar label",
+      "default": "AS FEATURED IN"
+    },
+    {
+      "type": "header",
+      "content": "2. System Overview"
+    },
+    {
+      "type": "text",
+      "id": "system_label",
+      "label": "Section label",
+      "default": "WHAT'S INSIDE"
+    },
+    {
+      "type": "text",
+      "id": "system_headline",
+      "label": "Headline",
+      "default": "Three products. One complete system."
+    },
+    {
+      "type": "range",
+      "id": "system_padding_top",
+      "label": "Padding top (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "system_padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "3. Ingredient Deep Dive"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_label",
+      "label": "Section label",
+      "default": "THE INGREDIENTS"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_headline",
+      "label": "Headline",
+      "default": "Every ingredient, every dose, every reason"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients_subheadline",
+      "label": "Subheadline",
+      "default": "13 clinically validated ingredients. Transparently dosed. Chosen for a reason."
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_3",
+      "label": "Divider image (between ingredients and experts)"
+    },
+    {
+      "type": "header",
+      "content": "4. Expert Endorsements"
+    },
+    {
+      "type": "text",
+      "id": "experts_label",
+      "label": "Section label",
+      "default": "EXPERT VALIDATION"
+    },
+    {
+      "type": "text",
+      "id": "experts_headline",
+      "label": "Headline",
+      "default": "Trusted by leading health researchers"
+    },
+    {
+      "type": "header",
+      "content": "5. Reviews"
+    },
+    {
+      "type": "text",
+      "id": "reviews_label",
+      "label": "Section label",
+      "default": "WHAT MEMBERS ARE SAYING"
+    },
+    {
+      "type": "text",
+      "id": "reviews_headline",
+      "label": "Headline",
+      "default": "Real reviews from real members"
+    },
+    {
+      "type": "header",
+      "content": "6. Comparison Table"
+    },
+    {
+      "type": "text",
+      "id": "comparison_label",
+      "label": "Section label",
+      "default": "HOW WE COMPARE"
+    },
+    {
+      "type": "text",
+      "id": "comparison_headline",
+      "label": "Headline",
+      "default": "Coastline vs. the alternatives"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_footnote",
+      "label": "Footnote text",
+      "default": "More ingredients doesn't mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label."
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_2",
+      "label": "Divider image (between reviews and comparison)"
+    },
+    {
+      "type": "header",
+      "content": "7. FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_label",
+      "label": "Section label",
+      "default": "PRODUCT FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_headline",
+      "label": "Headline",
+      "default": "Common questions about Coastline"
+    },
+    {
+      "type": "header",
+      "content": "8. Sticky Buy Bar"
+    },
+    {
+      "type": "text",
+      "id": "sticky_button_text",
+      "label": "Button text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "sticky_price_text",
+      "label": "Price text",
+      "default": "$99/mo - Save 34%"
+    },
+    {
+      "type": "header",
+      "content": "9. Global"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_step",
+      "name": "Product Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product image"
+        },
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "Step label (e.g. STEP 1: MORNING)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "expert",
+      "name": "Expert",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "portrait",
+          "label": "Portrait image"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "credential",
+          "label": "Credential"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail (title, age, location)",
+          "info": "Example: Physician 62"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "default": "energy",
+          "options": [
+            {
+              "value": "energy",
+              "label": "Energy"
+            },
+            {
+              "value": "focus",
+              "label": "Focus"
+            },
+            {
+              "value": "trust",
+              "label": "Trust"
+            },
+            {
+              "value": "convenience",
+              "label": "Convenience"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CC Product Page",
+      "blocks": [
+        {
+          "type": "product_step",
+          "settings": {
+            "step_label": "STEP 1: MORNING",
+            "title": "Morning Blend",
+            "description": "7 active ingredients for energy, focus, and metabolic support. Mix one scoop with water."
+          }
+        },
+        {
+          "type": "product_step",
+          "settings": {
+            "step_label": "STEP 2: DAILY",
+            "title": "Daily Softgels",
+            "description": "4 fat-soluble compounds for cellular protection and eye health. One softgel with your first meal."
+          }
+        },
+        {
+          "type": "product_step",
+          "settings": {
+            "step_label": "STEP 3: EVENING",
+            "title": "Evening Capsules",
+            "description": "3 ingredients for sleep, recovery, and neuroprotection. Two capsules before bed."
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder New York",
+            "category": "focus"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It has changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte 51",
+            "category": "energy"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I am skeptical of most supplements. But the science behind Coastline convinced me. My biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the convenience of having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I am still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs 72",
+            "category": "energy"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I used to spend over $200 a month on five different supplements. Coastline replaced all of them. One system, done.",
+            "name": "Lisa T.",
+            "detail": "Austin 52",
+            "category": "convenience"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take Coastline?",
+            "answer": "Morning: mix one scoop with 8-12 oz water. Take 1 softgel with your first meal. Evening: take 2 capsules 30-60 minutes before bed with water."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "Orders placed before 2 PM ET ship the same business day. Standard delivery takes 3-5 business days. All orders ship free."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How does the subscription work?",
+            "answer": "Choose monthly delivery and save 34%. Your supply ships automatically each month. Change, pause, or cancel anytime from your account -- no fees or penalties."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee. If you are not satisfied, contact us for a full refund -- no questions asked."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is Coastline safe with my medications?",
+            "answer": "Coastline contains well-studied ingredients at safe doses. We recommend consulting your healthcare provider if you take prescription medications."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What flavors are available?",
+            "answer": "Coastline is available in Unflavored Blend and Coastal Lemonade. Both contain the same 13 active ingredients."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

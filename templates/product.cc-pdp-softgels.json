@@ -1,0 +1,271 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-pdp-softgels",
+      "blocks": {
+        "expert_greg": {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "expert_jacqueline": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "expert_nic": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "expert_chris": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        },
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The softgels are so easy to take. One capsule with breakfast and I know my eyes and cells are covered. No taste, no hassle.",
+            "name": "Michael R.",
+            "detail": "Physician, 62",
+            "category": "convenience"
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I was spending over $90 a month on four separate bottles for these exact ingredients. Coastline consolidated them into one softgel for $35. Easy decision.",
+            "name": "Lisa T.",
+            "detail": "Austin, 52",
+            "category": "trust"
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As someone who stares at screens 12 hours a day, the lutein and zeaxanthin alone are worth it. My eyes feel less strained by end of day.",
+            "name": "Thomas H.",
+            "detail": "Atlanta, 43",
+            "category": "focus"
+          }
+        },
+        "review_4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.",
+            "name": "Andrew P.",
+            "detail": "Boston, 55",
+            "category": "trust"
+          }
+        },
+        "review_5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I started taking CoQ10 for heart health on my doctor's recommendation. Getting it bundled with astaxanthin and eye support at this price is a no-brainer.",
+            "name": "Sarah M.",
+            "detail": "San Diego, 54",
+            "category": "energy"
+          }
+        },
+        "review_6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. The CoQ10 dose in these softgels has made a real difference in how I feel by mid-afternoon.",
+            "name": "Scott L.",
+            "detail": "Charlotte, 51",
+            "category": "energy"
+          }
+        },
+        "review_7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.",
+            "name": "Catherine W.",
+            "detail": "Seattle, 58",
+            "category": "trust"
+          }
+        },
+        "review_8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I am still active and working. The astaxanthin and CoQ10 in these softgels help me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs, 72",
+            "category": "energy"
+          }
+        },
+        "review_9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the convenience of having all four fat-soluble ingredients in one capsule. No more juggling multiple bottles every morning.",
+            "name": "James U.",
+            "detail": "Tampa, 44",
+            "category": "convenience"
+          }
+        },
+        "review_10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. Full dose CoQ10, clinical-dose astaxanthin -- you can tell this was not made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond, 49",
+            "category": "trust"
+          }
+        },
+        "review_11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. The lutein and astaxanthin combination has made a noticeable difference in my afternoon focus.",
+            "name": "Sophia R.",
+            "detail": "Founder, New York",
+            "category": "focus"
+          }
+        },
+        "review_12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I travel three weeks a month for work. Having all four ingredients in one softgel means I just toss the bottle in my bag. Simple.",
+            "name": "Brian T.",
+            "detail": "San Francisco, 38",
+            "category": "convenience"
+          }
+        },
+        "review_13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. These softgels are the simplest part of my daily routine and I have not missed a day in three months.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans, 57",
+            "category": "convenience"
+          }
+        },
+        "review_14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The AREDS2-dose lutein and zeaxanthin sold me. I was already paying $33 just for those two. Getting CoQ10 and astaxanthin on top for $35 total is incredible value.",
+            "name": "David N.",
+            "detail": "Washington DC, 48",
+            "category": "trust"
+          }
+        },
+        "review_15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I stopped needing my second coffee by week two. The CoQ10 gives me steady mitochondrial energy without any jitters or crash.",
+            "name": "Derek W.",
+            "detail": "Scottsdale, 47",
+            "category": "energy"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take the SoftGels?",
+            "answer": "Take 1 softgel with your first meal of the day."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why are these fat-soluble ingredients in a softgel?",
+            "answer": "Astaxanthin, Lutein, Zeaxanthin, and CoQ10 are fat-soluble, meaning they absorb best when taken with dietary fat. The softgel format ensures optimal delivery."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take these with the Morning Blend?",
+            "answer": "Yes. The SoftGels are designed to be taken alongside the Morning Blend with your first meal. Together they form the AM portion of the Complete System."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "Orders placed before 2 PM ET ship the same business day. Standard delivery takes 3-5 business days. All orders ship free."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee. If you are not satisfied, contact us for a full refund -- no questions asked."
+          }
+        }
+      },
+      "block_order": [
+        "expert_greg",
+        "expert_jacqueline",
+        "expert_nic",
+        "expert_chris",
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12",
+        "review_13",
+        "review_14",
+        "review_15",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "hero_title": "Coastline AM SoftGels",
+        "hero_review_text": "2,000+ reviews",
+        "hero_trust_badges": "VEGAN, SUGAR-FREE, CAFFEINE-FREE",
+        "hero_description": "4 fat-soluble ingredients for cellular protection, eye health, and mitochondrial energy. Take 1 softgel with your first meal.",
+        "press_label": "AS FEATURED IN",
+        "upsell_headline": "Get all 13 ingredients in one system",
+        "upsell_subheadline": "The SoftGels are one part of the Coastline system. Add the Morning Blend and Evening Capsules to cover all 13 clinically dosed ingredients.",
+        "ingredients_label": "THE INGREDIENTS",
+        "ingredients_headline": "Every ingredient, every dose, every reason",
+        "ingredients_subheadline": "4 clinically validated, fat-soluble ingredients. Transparently dosed. Chosen for a reason.",
+        "experts_label": "EXPERT VALIDATION",
+        "experts_headline": "Trusted by leading health researchers",
+        "reviews_label": "WHAT MEMBERS ARE SAYING",
+        "reviews_headline": "Real reviews from real members",
+        "faq_label": "PRODUCT FAQ",
+        "faq_headline": "Common questions about the SoftGels",
+        "sticky_button_text": "ADD TO CART",
+        "sticky_price_text": "$28/mo - Save 20%",
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

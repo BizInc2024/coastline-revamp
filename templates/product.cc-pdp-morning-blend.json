@@ -1,0 +1,220 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-pdp-morning-blend",
+      "blocks": {
+        "expert_greg": {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "expert_jacqueline": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "expert_nic": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "expert_chris": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        },
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I stopped needing my second coffee within a week. The creatine and taurine give me steady energy all morning without any crash.",
+            "name": "James R.",
+            "detail": "San Diego, 47",
+            "category": "energy"
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I was spending over $120 a month on seven separate bottles. Coastline Morning Blend replaced all of them for $55. The math was easy.",
+            "name": "David L.",
+            "detail": "Austin, 52",
+            "category": "trust"
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My focus has improved noticeably. I can power through deep work sessions without my mind wandering like it used to.",
+            "name": "Michael T.",
+            "detail": "Boston, 44",
+            "category": "focus"
+          }
+        },
+        "review_4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.",
+            "name": "Andrew P.",
+            "detail": "Denver, 55",
+            "category": "trust"
+          }
+        },
+        "review_5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "One scoop, one glass of water, done. No pills to count, no timing to worry about. Simplest part of my morning.",
+            "name": "Robert K.",
+            "detail": "Portland, 41",
+            "category": "convenience"
+          }
+        },
+        "review_6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The joint stiffness I used to feel every morning has basically disappeared. The glucosamine dose in this is legit.",
+            "name": "Thomas H.",
+            "detail": "Phoenix, 58",
+            "category": "energy"
+          }
+        },
+        "review_7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.",
+            "name": "Catherine W.",
+            "detail": "Seattle, 53",
+            "category": "trust"
+          }
+        },
+        "review_8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. The ergothioneine has made a noticeable difference in my afternoon focus and recall.",
+            "name": "Sophia R.",
+            "detail": "New York, 39",
+            "category": "focus"
+          }
+        },
+        "review_9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I travel three weeks a month. Having all seven ingredients in one powder means I just toss the pouch in my bag. Simple.",
+            "name": "Brian T.",
+            "detail": "San Francisco, 38",
+            "category": "convenience"
+          }
+        },
+        "review_10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can verify. Full dose creatine, clinical-dose ergothioneine -- you can tell this was made by scientists, not marketers.",
+            "name": "Edward Q.",
+            "detail": "Richmond, 49",
+            "category": "trust"
+          }
+        },
+        "review_11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My gut health has improved since starting Morning Blend. The inulin makes a real difference and I feel less bloated overall.",
+            "name": "Lisa M.",
+            "detail": "Nashville, 46",
+            "category": "energy"
+          }
+        },
+        "review_12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. Morning Blend is the simplest part of my daily routine and I have not missed a day in three months.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans, 57",
+            "category": "convenience"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take Morning Blend?",
+            "answer": "Mix one scoop with 8-12 oz of cold water and take with your first meal of the day."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "The unflavored version has a mild, neutral taste that mixes easily with water. Coastal Lemonade has a light citrus flavor."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take this with the SoftGels?",
+            "answer": "Yes. Morning Blend and SoftGels are designed to be taken together with your first meal. They form the AM portion of the Complete System."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "Orders placed before 2 PM ET ship the same business day. Standard delivery takes 3-5 business days. All orders ship free."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee. If you are not satisfied, contact us for a full refund -- no questions asked."
+          }
+        }
+      },
+      "block_order": [
+        "expert_greg",
+        "expert_jacqueline",
+        "expert_nic",
+        "expert_chris",
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

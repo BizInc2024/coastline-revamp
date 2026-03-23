@@ -1,0 +1,1556 @@
+{% render 'cc-deps' %}
+{% comment %}
+  CC-PRODUCTPAGE-SOFTGELS: Product page for Coastline Daily Softgels
+  Variant ID: 42607325446213
+  Selling Plans: Monthly 1580007493 ($28/mo), 2-Month 1927282757 ($31.50/mo), One-time $35
+  Layout: theme.liquid (deps loaded via cc-deps snippet)
+{% endcomment %}
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'parchment': '#FAF9F6',
+                    'deep-ink': '#0A0A0A',
+                    'warm-gray': '#6B6B6B',
+                    'light-gray': '#E8E8E8',
+                    'forest': '#1A3A2F',
+                    'forest-light': '#2D5A47',
+                    'ocean': '#062F3D',
+                    'brand-navy': '#1E2D4D',
+                },
+                fontFamily: {
+                    'grotesk': ['Space Grotesk', 'system-ui', 'sans-serif'],
+                    'inter': ['Inter', 'system-ui', 'sans-serif'],
+                }
+            }
+        }
+    }
+</script>
+
+<style>
+    :root {
+      --parchment: #FAF9F6;
+      --deep-ink: #0A0A0A;
+      --warm-gray: #6B6B6B;
+      --light-gray: #E8E8E8;
+      --forest: #1A3A2F;
+      --forest-light: #2D5A47;
+    }
+
+    .cc-productpage-sg p,
+    .cc-product p {
+      max-width: none !important;
+    }
+
+    .cc-productpage-sg h1, .cc-productpage-sg h2, .cc-productpage-sg h3,
+    .cc-product h1, .cc-product h2, .cc-product h3 {
+      font-family: 'Space Grotesk', system-ui, sans-serif !important;
+      color: var(--deep-ink) !important;
+      font-weight: 500 !important;
+    }
+
+    .cc-productpage-sg h1, .cc-product h1 {
+      font-size: clamp(32px, 6vw, 64px) !important;
+      letter-spacing: -0.03em !important;
+      line-height: 1.1 !important;
+    }
+
+    .cc-productpage-sg h2, .cc-product h2 {
+      font-size: clamp(28px, 5vw, 48px) !important;
+      letter-spacing: -0.02em !important;
+      line-height: 1.15 !important;
+    }
+
+    .cc-productpage-sg h3, .cc-product h3 {
+      font-size: clamp(20px, 3vw, 24px) !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.3 !important;
+    }
+
+    .cc-productpage-sg p, .cc-productpage-sg li,
+    .cc-product p, .cc-product li {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      color: var(--warm-gray) !important;
+      font-size: 17px !important;
+      line-height: 1.7 !important;
+    }
+
+    .cc-productpage-sg .badge-minimal,
+    .cc-product .badge-minimal {
+      font-size: 11px !important;
+      letter-spacing: 0.15em !important;
+      text-transform: uppercase !important;
+      color: var(--warm-gray) !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    .cc-productpage-sg .editorial-divider,
+    .cc-product .editorial-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--deep-ink);
+    }
+
+    .cc-productpage-sg .hairline,
+    .cc-product .hairline {
+      height: 1px;
+      background-color: var(--light-gray);
+    }
+
+    .cc-productpage-sg .btn-primary,
+    .cc-product .btn-primary {
+      display: inline-block !important;
+      background-color: var(--deep-ink) !important;
+      color: var(--parchment) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: opacity 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-productpage-sg .btn-primary:hover,
+    .cc-product .btn-primary:hover {
+      opacity: 0.8 !important;
+    }
+
+    .cc-productpage-sg .btn-secondary,
+    .cc-product .btn-secondary {
+      display: inline-block !important;
+      background-color: transparent !important;
+      color: var(--deep-ink) !important;
+      border: 1px solid var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: background-color 0.3s ease, color 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-productpage-sg .btn-secondary:hover,
+    .cc-product .btn-secondary:hover {
+      background-color: var(--deep-ink) !important;
+      color: var(--parchment) !important;
+    }
+
+    .cc-productpage-sg .btn-primary-dark,
+    .cc-product .btn-primary-dark {
+      display: inline-block !important;
+      background: var(--parchment) !important;
+      color: var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      padding: 20px 48px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      cursor: pointer !important;
+      transition: opacity 0.3s ease !important;
+      text-decoration: none !important;
+      text-align: center !important;
+      line-height: 1 !important;
+    }
+
+    .cc-productpage-sg .btn-primary-dark:hover,
+    .cc-product .btn-primary-dark:hover {
+      opacity: 0.8 !important;
+    }
+
+    .cc-productpage-sg .link-underline,
+    .cc-product .link-underline {
+      position: relative !important;
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      color: var(--deep-ink) !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+    }
+
+    .cc-productpage-sg .link-underline::after,
+    .cc-product .link-underline::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -2px !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 1px !important;
+      background-color: currentColor !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    .cc-productpage-sg .link-underline:hover::after,
+    .cc-product .link-underline:hover::after {
+      transform: scaleX(0) !important;
+    }
+
+    .cc-productpage-sg .quote-editorial,
+    .cc-product .quote-editorial {
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-weight: 400 !important;
+      line-height: 1.4 !important;
+      letter-spacing: -0.01em !important;
+      color: var(--deep-ink) !important;
+    }
+
+    .cc-productpage-sg .stars-minimal,
+    .cc-product .stars-minimal {
+      letter-spacing: 4px !important;
+      color: var(--deep-ink) !important;
+      font-size: 14px !important;
+    }
+
+    .cc-productpage-sg .img-editorial,
+    .cc-product .img-editorial {
+      filter: contrast(1.05) brightness(0.98) !important;
+    }
+
+    .cc-productpage-sg .section-editorial,
+    .cc-product .section-editorial {
+      padding: 80px 16px;
+    }
+
+    @media (min-width: 768px) {
+      .cc-productpage-sg .section-editorial,
+      .cc-product .section-editorial {
+        padding: 120px 32px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cc-productpage-sg .section-editorial,
+      .cc-product .section-editorial {
+        padding: 160px 64px;
+      }
+    }
+
+    .cc-productpage-sg .reveal,
+    .cc-product .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .cc-productpage-sg .reveal.visible,
+    .cc-product .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cc-productpage-sg .reveal-stagger > *,
+    .cc-product .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .cc-productpage-sg .reveal-stagger.visible > *:nth-child(1),
+    .cc-product .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+    .cc-productpage-sg .reveal-stagger.visible > *:nth-child(2),
+    .cc-product .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+    .cc-productpage-sg .reveal-stagger.visible > *:nth-child(3),
+    .cc-product .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+    .cc-productpage-sg .reveal-stagger.visible > *:nth-child(4),
+    .cc-product .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+    .cc-productpage-sg .reveal-stagger.visible > *:nth-child(5),
+    .cc-product .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+    .cc-productpage-sg .reveal-stagger.visible > *:nth-child(6),
+    .cc-product .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cc-productpage-sg .reveal,
+      .cc-product .reveal {
+        opacity: 1;
+        transform: none;
+      }
+      .cc-productpage-sg .reveal-stagger > *,
+      .cc-product .reveal-stagger > * {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .cc-productpage-sg .filter-tab,
+    .cc-product .filter-tab {
+      padding: 8px 16px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .cc-productpage-sg .filter-tab.active,
+    .cc-product .filter-tab.active {
+      color: var(--deep-ink);
+      border-bottom-color: var(--deep-ink);
+    }
+
+    .cc-productpage-sg .accordion-content,
+    .cc-product .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cc-productpage-sg .accordion-content.open,
+    .cc-product .accordion-content.open {
+      max-height: 1000px;
+    }
+
+    .cc-productpage-sg .section-counter,
+    .cc-product .section-counter {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+</style>
+
+{%- comment -%} === NOSCRIPT FALLBACK === {%- endcomment -%}
+<noscript>
+  <style>
+    .cc-productpage-sg .reveal,
+    .cc-productpage-sg .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+{%- comment -%} === ASSIGN HERO VARIABLES === {%- endcomment -%}
+{%- assign hero_title = section.settings.hero_title | default: "Coastline AM SoftGels" -%}
+{%- assign hero_review_text = section.settings.hero_review_text | default: "2,000+ reviews" -%}
+{%- assign hero_trust_badges = section.settings.hero_trust_badges | default: "VEGAN, SUGAR-FREE, CAFFEINE-FREE" -%}
+{%- if section.settings.hero_gallery_image_1 != blank -%}
+  {%- assign sg_hero_img = section.settings.hero_gallery_image_1 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign sg_hero_img = "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" -%}
+{%- endif -%}
+
+<div class="cc-productpage-sg">
+
+  {%- comment -%} ============================================================
+     SECTION 1: PRODUCT HERO (60/40 grid)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-sg-product-hero" class="section-editorial" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: var(--parchment);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+
+      <div class="cc-sg-hero-grid">
+
+        <!-- LEFT SIDE: Product Image (60%) -->
+        <div class="reveal" style="position: relative;">
+          <div style="background: #fff; border: 1px solid var(--light-gray); overflow: hidden;">
+            <img
+              src="{{ sg_hero_img }}"
+              alt="{{ hero_title | escape }}"
+              width="800"
+              height="800"
+              style="width: 100%; height: auto; display: block; object-fit: contain; max-height: 600px;"
+              class="img-editorial"
+            >
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: Buy Panel (40%) -->
+        <div
+          x-data="ccSGBuy()"
+          class="reveal"
+          style="padding-top: 8px;"
+        >
+          <!-- Product Title -->
+          <h1 style="font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px;">
+            {{ hero_title }}
+          </h1>
+
+          <!-- Stars + Review Count -->
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <span class="stars-minimal">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray);">{{ hero_review_text }}</span>
+          </div>
+
+          <!-- Trust Badges -->
+          <p style="margin: 0 0 24px 0; font-family: 'Inter', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); line-height: 1.4;">
+            {%- assign badge_list = hero_trust_badges | split: ',' -%}
+            {%- for badge in badge_list -%}{{ badge | strip }}{%- unless forloop.last %} &middot; {% endunless -%}{%- endfor -%}
+          </p>
+
+          <!-- Editorial Divider -->
+          <div class="editorial-divider" style="margin-bottom: 28px;"></div>
+
+          <!-- Product Description -->
+          <div style="margin-bottom: 28px;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; color: var(--warm-gray); margin: 0 0 12px;">
+              {{ section.settings.hero_description | default: "4 fat-soluble ingredients for cellular protection, eye health, and mitochondrial energy. Take 1 softgel with your first meal." }}
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--forest); font-weight: 500; margin: 0;">
+              Astaxanthin 6 mg &middot; Lutein 10 mg &middot; Zeaxanthin 2 mg &middot; CoQ10 200 mg
+            </p>
+          </div>
+
+          <!-- Subscription Selector -->
+          <div style="margin-bottom: 28px;">
+            <p style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A2F;font-weight:600;margin:0 0 16px;">
+              Subscribe and save
+            </p>
+            <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Select your plan</p>
+
+            <!-- Monthly -->
+            <div @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-sg-active' : 'cc-plan-sg-idle'" class="cc-plan-sg-card" style="margin-bottom:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Monthly subscription</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 20%</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$28</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2-Month -->
+            <div @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-sg-active' : 'cc-plan-sg-idle'" class="cc-plan-sg-card" style="margin-bottom:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Every 2 months</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 10%</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$31.50</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- One-time -->
+            <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-sg-active' : 'cc-plan-sg-idle'" class="cc-plan-sg-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">One-time purchase</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:3px;">No subscription</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$35</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">one-time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart Button -->
+          <button
+            @click="addToCart()"
+            :disabled="loading"
+            class="btn-primary"
+            style="width:100%;padding:22px 48px;font-size:14px;margin-bottom:20px;background:#0A0A0A !important;color:#FAF9F6 !important;border:none !important;font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s ease;"
+          >
+            <span x-show="!loading">ADD TO CART - <span x-text="buttonPrice"></span></span>
+            <span x-show="loading">ADDING...</span>
+          </button>
+
+          <!-- Micro-copy -->
+          <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Free shipping
+            </span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              60-day guarantee
+            </span>
+          </div>
+
+          <!-- Trust badge images -->
+          <div style="display:flex;justify-content:center;align-items:center;gap:20px;margin-top:24px;">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+            <img src="{{ 'cc-nsf-certified.png' | asset_url }}" alt="NSF Certified" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Guarantee" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} === PRESS LOGO BAR + DIVIDER IMAGE === {%- endcomment -%}
+  <section class="reveal" x-intersect.once="$el.classList.add('visible')" style="padding:40px 1.5rem;background:var(--parchment);border-bottom:1px solid var(--light-gray);">
+    <div style="max-width:64rem;margin:0 auto;text-align:center;">
+      <p style="font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin:0 0 24px;">
+        {{ section.settings.press_label | default: "AS FEATURED IN" }}
+      </p>
+      <div class="cc-sg-press-logos" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px;opacity:0.4;filter:grayscale(100%);">
+        {%- assign sg_logo_defaults = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109' | split: ',' -%}
+        {%- assign sg_logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly' | split: ',' -%}
+        {%- for i in (0..3) -%}
+          {%- assign logo_src = sg_logo_defaults[i] -%}
+          {%- if logo_src != blank -%}
+            <img src="{{ logo_src }}" alt="{{ sg_logo_alts[i] }}" class="cc-sg-press-logo" style="height:52px;width:auto;" loading="lazy">
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;position:relative;overflow:hidden;">
+    {%- if section.settings.divider_image_1 != blank -%}
+      <img src="{{ section.settings.divider_image_1 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png?v=1742830305" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+
+  {%- comment -%} ============================================================
+     SECTION 3: KEY BENEFITS
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial reveal" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div style="max-width:800px;margin:0 auto;padding:0 1.5rem;">
+
+      <div style="text-align:center;margin-bottom:48px;">
+        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:20px;">WHY AM SOFTGELS</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:var(--deep-ink);letter-spacing:-0.02em;line-height:1.2;margin:0;">4 fat-soluble ingredients in one morning capsule</h2>
+      </div>
+
+      <div x-data="{ openBenefit: null }">
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'cell' ? openBenefit = null : openBenefit = 'cell'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Cellular protection</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'cell' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">Astaxanthin is one of the most powerful antioxidants in nature, protecting cells from oxidative stress.</p>
+          <div x-show="openBenefit === 'cell'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">At 6mg clinical dose, astaxanthin is 6,000x more potent than vitamin C as an antioxidant. It embeds in cell membranes to neutralize free radicals and protect mitochondrial DNA from oxidative damage.</p>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'eye' ? openBenefit = null : openBenefit = 'eye'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Eye and brain health</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'eye' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">AREDS2-dose lutein and zeaxanthin support macular health and reduce eye strain from screens.</p>
+          <div x-show="openBenefit === 'eye'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">10mg lutein and 2mg zeaxanthin match the AREDS2 clinical trial doses shown to reduce risk of age-related macular degeneration. These carotenoids filter blue light and accumulate in the macula to protect retinal cells.</p>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'heart' ? openBenefit = null : openBenefit = 'heart'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Heart and mitochondria</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'heart' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">200 mg CoQ10 fuels mitochondrial energy production and supports cardiovascular function.</p>
+          <div x-show="openBenefit === 'heart'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">CoQ10 (ubiquinone) is essential for the electron transport chain in every cell. At 200mg, it supports ATP production, reduces oxidative stress in cardiac tissue, and may help maintain healthy blood pressure already within normal range.</p>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'skin' ? openBenefit = null : openBenefit = 'skin'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Skin protection</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'skin' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">Astaxanthin supports skin elasticity and provides internal UV protection from the inside out.</p>
+          <div x-show="openBenefit === 'skin'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">Clinical studies show 6mg daily astaxanthin improves skin moisture, elasticity, and wrinkle depth. It provides internal photoprotection by quenching singlet oxygen generated by UV exposure.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} ============================================================
+     HOW TO TAKE
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="cc-sg-how-grid">
+        <div style="overflow:hidden;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" alt="SoftGels" style="width:100%;height:auto;display:block;object-fit:cover;max-height:500px;" loading="lazy">
+        </div>
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:20px;">HOW TO TAKE</p>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:500;color:var(--deep-ink);letter-spacing:-0.02em;line-height:1.2;margin:0 0 24px;">One capsule. One meal. Done.</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;color:var(--forest);min-width:24px;">01</span>
+              <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.6;margin:0;">Take 1 softgel with your first meal of the day</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;color:var(--forest);min-width:24px;">02</span>
+              <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.6;margin:0;">Take alongside your Morning Blend for best absorption</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;color:var(--forest);min-width:24px;">03</span>
+              <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.6;margin:0;">Fat-soluble ingredients absorb best with dietary fat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 5: INGREDIENT DEEP DIVE (4 softgel ingredients)
+  ============================================================ {%- endcomment -%}
+  {%- assign sg_ingredients_label = section.settings.ingredients_label | default: "THE INGREDIENTS" -%}
+  {%- assign sg_ingredients_headline = section.settings.ingredients_headline | default: "Every ingredient, every dose, every reason" -%}
+  {%- assign sg_ingredients_subheadline = section.settings.ingredients_subheadline | default: "4 clinically validated, fat-soluble ingredients. Transparently dosed. Chosen for a reason." -%}
+
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background-color: var(--parchment); padding-left: 1.5rem; padding-right: 1.5rem;">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- Header -->
+      <div class="reveal" style="margin-bottom: 64px;">
+        <p class="badge-minimal" style="margin-bottom: 20px;">{{ sg_ingredients_label }}</p>
+        <div class="editorial-divider" style="margin-bottom: 32px;"></div>
+        <h2 style="margin-bottom: 24px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; line-height: 1.15;">{{ sg_ingredients_headline }}</h2>
+        <p style="color: var(--warm-gray); font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.7; max-width: 600px;">
+          {{ sg_ingredients_subheadline }}
+        </p>
+      </div>
+
+      <!-- Accordion -->
+      <div x-data="{ sgOpen: null }" class="reveal" style="margin-bottom: 64px;">
+
+        <p class="badge-minimal" style="margin-bottom: 24px; color: var(--forest);">MORNING SOFTGELS</p>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0 0 24px;line-height:1.6;">Take 1 softgel with your first meal of the day. These fat-soluble ingredients absorb best when taken with dietary fat.</p>
+
+        <!-- Astaxanthin -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="sgOpen === 'astax' ? sgOpen = null : sgOpen = 'astax'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Astaxanthin</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">6 mg</span>
+              </div>
+            </div>
+            <span :style="sgOpen === 'astax' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="sgOpen === 'astax'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Activates NRF2 and FOXO3 pathways. Sourced from Haematococcus pluvialis microalgae.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lutein -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="sgOpen === 'lutein' ? sgOpen = null : sgOpen = 'lutein'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Lutein" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Lutein</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">10 mg</span>
+              </div>
+            </div>
+            <span :style="sgOpen === 'lutein' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="sgOpen === 'lutein'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Accumulates in hippocampus and frontal cortex. Increases BDNF. AREDS2 study dose.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zeaxanthin -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="sgOpen === 'zeax' ? sgOpen = null : sgOpen = 'zeax'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Zeaxanthin" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Zeaxanthin</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">2 mg</span>
+              </div>
+            </div>
+            <span :style="sgOpen === 'zeax' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="sgOpen === 'zeax'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Together they filter short-wavelength blue light, reducing damage by up to 100x at critical wavelengths.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CoQ10 -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="sgOpen === 'coq10' ? sgOpen = null : sgOpen = 'coq10'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360" alt="Coenzyme Q10" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Coenzyme Q10 (Ubiquinone)</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">200 mg</span>
+              </div>
+            </div>
+            <span :style="sgOpen === 'coq10' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="sgOpen === 'coq10'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Ubiquinone form (trans-isomer). Offsets statin-induced CoQ10 depletion.</p>
+            </div>
+          </div>
+        </div>
+        <div class="hairline"></div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Divider image between Ingredients and Experts -->
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+    {%- if section.settings.divider_image_2 != blank -%}
+      <img src="{{ section.settings.divider_image_2 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-11_2_1.png?v=1769557907" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+
+  {%- comment -%} ============================================================
+     SECTION 6: EXPERT ENDORSEMENTS
+  ============================================================ {%- endcomment -%}
+  <section
+    class="section-editorial"
+    style="padding-top: 80px; padding-bottom: 80px; background: var(--parchment); padding-left:0;padding-right:0;"
+  >
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 24px;">
+
+      <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+        <span
+          class="badge-minimal"
+          style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 20px;"
+        >
+          {{ section.settings.experts_label | default: "EXPERT VALIDATION" }}
+        </span>
+        <h2 style="font-family:'Space Grotesk',system-ui,sans-serif; font-size:clamp(32px,5vw,48px); font-weight:500; letter-spacing:-0.02em; line-height:1.15; color:var(--deep-ink); margin:0;">
+          {{ section.settings.experts_headline | default: "Trusted by leading health researchers" }}
+        </h2>
+      </div>
+
+      <div class="reveal-stagger cc-sg-experts-grid" style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+        {%- assign sg_expert_blocks = section.blocks | where: 'type', 'expert' -%}
+        {%- for block in sg_expert_blocks -%}
+          <div {{ block.shopify_attributes }} style="padding: 40px; border: 1px solid var(--light-gray); background: #fff;" class="cc-sg-expert-card">
+            <span style="font-family: Georgia, serif; font-size: 48px; line-height: 1; color: var(--light-gray); display: block; margin-bottom: 16px;">&ldquo;</span>
+            <p style="font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 400; color: var(--deep-ink); line-height: 1.65; margin: 0 0 24px; font-style: italic;">{{ block.settings.quote }}</p>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              {%- if block.settings.portrait != blank -%}
+                <img class="img-editorial" src="{{ block.settings.portrait | image_url: width: 144 }}" alt="{{ block.settings.name }}" width="72" height="72" loading="lazy" style="width: 72px; height: 72px; border-radius: 9999px; object-fit: cover; flex-shrink: 0;">
+              {%- else -%}
+                {%- assign sg_fallback_portraits = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015' | split: ',' -%}
+                {%- assign sg_fb_idx = forloop.index0 | modulo: 4 -%}
+                <img class="img-editorial" src="{{ sg_fallback_portraits[sg_fb_idx] }}" alt="{{ block.settings.name }}" width="72" height="72" loading="lazy" style="width: 72px; height: 72px; border-radius: 9999px; object-fit: cover; flex-shrink: 0;">
+              {%- endif -%}
+              <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: var(--deep-ink); margin: 0 0 2px 0; line-height: 1.3;">{{ block.settings.name }}</p>
+                <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--warm-gray); margin: 0; line-height: 1.4;">{{ block.settings.credential }}</p>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 7: REVIEWS
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div id="cc-sg-reviews-anchor" style="position:relative;top:-100px;visibility:hidden;pointer-events:none;"></div>
+      <p class="badge-minimal" style="text-align:center;margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
+      </p>
+
+      <h2 class="reveal" style="text-align:center;color:var(--deep-ink);font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0 0 2rem;">
+        {{ section.settings.reviews_headline | default: "Real reviews from real members" }}
+      </h2>
+
+      {%- assign sg_total_reviews = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          {%- assign sg_total_reviews = sg_total_reviews | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div x-data="{ sgReviewsShown: 6 }">
+        <div class="cc-sg-reviews-grid" style="display:grid;grid-template-columns:1fr;gap:20px;">
+          {%- assign sg_review_idx = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'testimonial' -%}
+              {%- assign sg_review_idx = sg_review_idx | plus: 1 -%}
+              <div
+                {{ block.shopify_attributes }}
+                x-show="{{ sg_review_idx }} <= sgReviewsShown"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                style="padding:28px 32px;border:1px solid var(--light-gray);background:#fff;"
+              >
+                <p style="color:var(--deep-ink);font-size:14px;margin:0 0 8px;letter-spacing:0.1em;">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                <p style="color:var(--deep-ink);font-size:16px;line-height:1.65;margin:0 0 16px;font-family:'Inter',sans-serif;">"{{ block.settings.quote }}"</p>
+                <p style="font-family:'Inter',sans-serif;color:var(--warm-gray);font-size:13px;margin:0;letter-spacing:0.05em;font-weight:500;">
+                  {{ block.settings.name }}{% if block.settings.detail != blank %} &middot; {{ block.settings.detail }}{% endif %}
+                </p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div style="text-align:center;margin-top:2rem;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+          <button
+            class="cc-sg-review-tab cc-sg-review-tab-idle"
+            x-show="sgReviewsShown < {{ sg_total_reviews }}"
+            @click="sgReviewsShown = sgReviewsShown + 6"
+            x-transition
+            style="cursor:pointer;"
+          >SHOW MORE REVIEWS</button>
+          <button
+            class="cc-sg-review-tab cc-sg-review-tab-idle"
+            x-show="sgReviewsShown > 6"
+            @click="sgReviewsShown = 6; $nextTick(() => { document.getElementById('cc-sg-reviews-anchor').scrollIntoView({ behavior: 'smooth' }) })"
+            x-transition
+            style="cursor:pointer;"
+          >SHOW LESS</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  {%- comment -%} ============================================================
+     UPSELL: COMPLETE YOUR SYSTEM
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial reveal" style="padding-top:80px;padding-bottom:80px;background:#062F3D;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="cc-sg-upsell-grid">
+        <div style="text-align:center;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline Complete System" style="max-height:320px;width:auto;margin:0 auto;display:block;object-fit:contain;" loading="lazy">
+        </div>
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px;">
+            COMPLETE YOUR SYSTEM
+          </p>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:#FFFFFF;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;">
+            {{ section.settings.upsell_headline | default: "Get all 13 ingredients in one system" }}
+          </h2>
+          <p style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin:0 0 24px;">
+            {{ section.settings.upsell_subheadline | default: "The SoftGels are one part of the Coastline system. Add the Morning Blend and Evening Capsules to cover all 13 clinically dosed ingredients." }}
+          </p>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FFFFFF;letter-spacing:0.05em;margin:0 0 32px;">
+            FREE GIFT: Glass shaker bottle included with your first order ($15 value)
+          </p>
+          <a href="/products/coastline-welcome-pack" style="display:inline-block;padding:18px 48px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:#FFFFFF;color:#062F3D;text-decoration:none;transition:opacity 0.3s ease;">
+            GET THE COMPLETE SYSTEM -- $99/MO
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 9: FAQ
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:48rem;margin:0 auto;">
+
+      <p class="badge-minimal" style="text-align:center;margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.faq_label | default: "PRODUCT FAQ" }}
+      </p>
+
+      <h2 class="reveal" style="text-align:center;color:var(--deep-ink);font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0 0 2.5rem;">
+        {{ section.settings.faq_headline | default: "Common questions about the SoftGels" }}
+      </h2>
+
+      <div x-data="{ sgFaqOpen: null }">
+
+        {%- assign sg_faq_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            {%- assign sg_faq_index = sg_faq_index | plus: 1 -%}
+            <div {{ block.shopify_attributes }} class="accordion-content" style="border-top:1px solid var(--light-gray);">
+
+              <button
+                @click="sgFaqOpen === {{ sg_faq_index }} ? sgFaqOpen = null : sgFaqOpen = {{ sg_faq_index }}"
+                style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;background:none;border:none;cursor:pointer;text-align:left;font-family:'Space Grotesk', system-ui, sans-serif;font-size:1rem;font-weight:500;color:var(--deep-ink);line-height:1.4;"
+              >
+                <span style="padding-right:1rem;">{{ block.settings.question }}</span>
+                <span
+                  style="flex-shrink:0;font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;"
+                  :style="sgFaqOpen === {{ sg_faq_index }} ? 'transform:rotate(45deg)' : ''"
+                >+</span>
+              </button>
+
+              <div
+                x-show="sgFaqOpen === {{ sg_faq_index }}"
+                x-collapse
+                x-cloak
+              >
+                <div style="padding:0 0 1.25rem;color:var(--warm-gray);font-size:0.9375rem;line-height:1.7;">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="hairline" style="height:1px;background:var(--light-gray);"></div>
+
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 10: STICKY BUY BAR (mobile)
+  ============================================================ {%- endcomment -%}
+  <div
+    id="cc-sg-sticky-bar"
+    style="position:fixed;bottom:0;left:0;right:0;z-index:50;background:#ffffff;border-top:1px solid var(--light-gray);padding:12px 16px;transform:translateY(100%);transition:transform 0.3s ease;"
+    class="lg:hidden"
+  >
+    <div style="display:flex;align-items:center;gap:12px;max-width:480px;margin:0 auto;">
+      <p style="flex-shrink:0;margin:0;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.875rem;font-weight:500;color:var(--deep-ink);white-space:nowrap;">
+        {{ section.settings.sticky_price_text | default: "$28/mo - Save 20%" }}
+      </p>
+      <button
+        onclick="stickySGAddToCart(this)"
+        class="btn-primary"
+        style="flex:1;padding:14px 16px;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:var(--deep-ink);color:var(--parchment);border:none;cursor:pointer;text-align:center;white-space:nowrap;"
+      >
+        {{ section.settings.sticky_button_text | default: "ADD TO CART" }}
+      </button>
+    </div>
+  </div>
+
+</div>{%- comment -%} END .cc-productpage-sg wrapper {%- endcomment -%}
+
+
+{%- comment -%} ============================================================
+   SINGLE STYLE BLOCK
+============================================================ {%- endcomment -%}
+<style>
+  @media (min-width: 1024px) {
+    .header__icons--start .menu-drawer-button {
+      display: none !important;
+    }
+  }
+  .cc-productpage-sg p {
+    max-width: none !important;
+  }
+  .cc-productpage-sg h1,
+  .cc-productpage-sg h2 {
+    text-wrap: balance;
+  }
+  .cc-sg-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .cc-sg-hero-grid {
+      grid-template-columns: 60fr 40fr;
+      gap: 48px;
+    }
+  }
+  .cc-sg-experts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .cc-sg-experts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .cc-sg-reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  /* Review buttons */
+  .cc-productpage-sg .cc-sg-review-tab {
+    padding: 8px 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    border-radius: 100px !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    background: none !important;
+  }
+  .cc-productpage-sg .cc-sg-review-tab-idle {
+    background: transparent !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E8E8E8 !important;
+  }
+  /* Plan cards -- namespaced with -sg */
+  .cc-productpage-sg .cc-plan-sg-card {
+    border: 2px solid !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .cc-productpage-sg .cc-plan-sg-active {
+    border-color: #1A3A2F !important;
+    background: #F4F7F6 !important;
+  }
+  .cc-productpage-sg .cc-plan-sg-idle {
+    border-color: #CCCCCC !important;
+    background: #FFFFFF !important;
+  }
+  @media (max-width: 767px) {
+    .cc-sg-benefits-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+    .cc-sg-how-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+    .cc-sg-upsell-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+      text-align: center !important;
+    }
+    .cc-sg-press-logo {
+      height: 32px !important;
+    }
+  }
+</style>
+
+
+{%- comment -%} ============================================================
+   SINGLE SCRIPT BLOCK
+============================================================ {%- endcomment -%}
+<script>
+  /* Alpine: SoftGels Buy Panel (with subscription plans) */
+  function ccSGBuy() {
+    return {
+      plan: 'monthly',
+      loading: false,
+      get sellingPlan() {
+        if (this.plan === 'monthly') return 1580007493;
+        if (this.plan === 'bimonthly') return 1927282757;
+        return null;
+      },
+      get buttonPrice() {
+        if (this.plan === 'monthly') return '$28/MO';
+        if (this.plan === 'bimonthly') return '$31.50/MO';
+        return '$35';
+      },
+      addToCart() {
+        this.loading = true;
+        var body = { id: 42607325446213, quantity: 1 };
+        if (this.sellingPlan) body.selling_plan = this.sellingPlan;
+        var self = this;
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
+        })
+        .catch(function(e) { console.error('Cart error:', e); })
+        .finally(function() { self.loading = false; });
+      }
+    };
+  }
+
+  /* Sticky Bar: IntersectionObserver */
+  document.addEventListener('DOMContentLoaded', function() {
+    var sgHero = document.getElementById('cc-sg-product-hero');
+    var sgStickyBar = document.getElementById('cc-sg-sticky-bar');
+    if (!sgHero || !sgStickyBar) return;
+
+    sgStickyBar.style.transform = 'translateY(100%)';
+    sgStickyBar.style.transition = 'transform 0.3s ease';
+
+    var sgObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          sgStickyBar.style.transform = 'translateY(100%)';
+        } else {
+          sgStickyBar.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0 });
+
+    sgObserver.observe(sgHero);
+  });
+
+  /* Sticky Bar: Add to Cart (hardcoded monthly subscription) */
+  function stickySGAddToCart(btn) {
+    btn.disabled = true;
+    btn.textContent = 'ADDING...';
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 42607325446213, quantity: 1, selling_plan: 1580007493 })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
+    })
+    .catch(function(e) { console.error('Cart error:', e); })
+    .finally(function() { btn.disabled = false; btn.textContent = 'ADD TO CART'; });
+  }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.cc-productpage-sg .reveal, .cc-productpage-sg .reveal-stagger, .cc-product .reveal, .cc-product .reveal-stagger');
+      if (!reveals.length) return;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) {
+        observer.observe(el);
+      });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "CC SoftGels Product Page",
+  "tag": "section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "header",
+      "content": "1. Product Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Product title",
+      "default": "Coastline AM SoftGels"
+    },
+    {
+      "type": "text",
+      "id": "hero_review_text",
+      "label": "Review count text",
+      "default": "2,000+ reviews"
+    },
+    {
+      "type": "text",
+      "id": "hero_trust_badges",
+      "label": "Trust badges (comma-separated)",
+      "default": "VEGAN, SUGAR-FREE, CAFFEINE-FREE"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Product description",
+      "default": "4 fat-soluble ingredients for cellular protection, eye health, and mitochondrial energy. Take 1 softgel with your first meal."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_1",
+      "label": "Gallery image 1 (main product)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_2",
+      "label": "Gallery image 2 (lifestyle)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_3",
+      "label": "Gallery image 3 (welcome box)"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_1",
+      "label": "Divider image (between hero and upsell)"
+    },
+    {
+      "type": "header",
+      "content": "1b. Press Logo Bar"
+    },
+    {
+      "type": "text",
+      "id": "press_label",
+      "label": "Press bar label",
+      "default": "AS FEATURED IN"
+    },
+    {
+      "type": "header",
+      "content": "3. Complete Your System Upsell"
+    },
+    {
+      "type": "text",
+      "id": "upsell_headline",
+      "label": "Upsell headline",
+      "default": "Get all 13 ingredients in one system"
+    },
+    {
+      "type": "textarea",
+      "id": "upsell_subheadline",
+      "label": "Upsell subheadline",
+      "default": "The SoftGels are one part of the Coastline system. Add the Morning Blend and Evening Capsules to cover all 13 clinically dosed ingredients."
+    },
+    {
+      "type": "header",
+      "content": "5. Ingredient Deep Dive"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_label",
+      "label": "Section label",
+      "default": "THE INGREDIENTS"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_headline",
+      "label": "Headline",
+      "default": "Every ingredient, every dose, every reason"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients_subheadline",
+      "label": "Subheadline",
+      "default": "4 clinically validated, fat-soluble ingredients. Transparently dosed. Chosen for a reason."
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_2",
+      "label": "Divider image (between ingredients and experts)"
+    },
+    {
+      "type": "header",
+      "content": "6. Expert Endorsements"
+    },
+    {
+      "type": "text",
+      "id": "experts_label",
+      "label": "Section label",
+      "default": "EXPERT VALIDATION"
+    },
+    {
+      "type": "text",
+      "id": "experts_headline",
+      "label": "Headline",
+      "default": "Trusted by leading health researchers"
+    },
+    {
+      "type": "header",
+      "content": "7. Reviews"
+    },
+    {
+      "type": "text",
+      "id": "reviews_label",
+      "label": "Section label",
+      "default": "WHAT MEMBERS ARE SAYING"
+    },
+    {
+      "type": "text",
+      "id": "reviews_headline",
+      "label": "Headline",
+      "default": "Real reviews from real members"
+    },
+    {
+      "type": "header",
+      "content": "8. Comparison Table"
+    },
+    {
+      "type": "text",
+      "id": "comparison_label",
+      "label": "Section label",
+      "default": "HOW WE COMPARE"
+    },
+    {
+      "type": "text",
+      "id": "comparison_headline",
+      "label": "Headline",
+      "default": "Coastline vs. the alternatives"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_footnote",
+      "label": "Footnote text",
+      "default": "More ingredients does not mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label."
+    },
+    {
+      "type": "header",
+      "content": "9. FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_label",
+      "label": "Section label",
+      "default": "PRODUCT FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_headline",
+      "label": "Headline",
+      "default": "Common questions about the SoftGels"
+    },
+    {
+      "type": "header",
+      "content": "10. Sticky Buy Bar"
+    },
+    {
+      "type": "text",
+      "id": "sticky_button_text",
+      "label": "Button text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "sticky_price_text",
+      "label": "Price text",
+      "default": "$28/mo - Save 20%"
+    },
+    {
+      "type": "header",
+      "content": "Global"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "portrait",
+          "label": "Portrait image"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "credential",
+          "label": "Credential"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail (title, age, location)",
+          "info": "Example: Physician 62"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "default": "energy",
+          "options": [
+            {
+              "value": "energy",
+              "label": "Energy"
+            },
+            {
+              "value": "focus",
+              "label": "Focus"
+            },
+            {
+              "value": "trust",
+              "label": "Trust"
+            },
+            {
+              "value": "convenience",
+              "label": "Convenience"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CC SoftGels Product Page",
+      "blocks": [
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take the SoftGels?",
+            "answer": "Take 1 softgel with your first meal of the day."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Why are these fat-soluble ingredients in a softgel?",
+            "answer": "Astaxanthin, Lutein, Zeaxanthin, and CoQ10 are fat-soluble, meaning they absorb best when taken with dietary fat. The softgel format ensures optimal delivery."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take these with the Morning Blend?",
+            "answer": "Yes. The SoftGels are designed to be taken alongside the Morning Blend with your first meal. Together they form the AM portion of the Complete System."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "Orders placed before 2 PM ET ship the same business day. Standard delivery takes 3-5 business days. All orders ship free."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee. If you are not satisfied, contact us for a full refund -- no questions asked."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

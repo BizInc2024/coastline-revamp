@@ -1,0 +1,462 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-productpage",
+      "blocks": {
+        "step_morning": {
+          "type": "product_step",
+          "settings": {
+            "step_label": "STEP 1: MORNING",
+            "title": "Morning Blend",
+            "description": "7 active ingredients for energy, focus, and metabolic support. Mix one scoop with water."
+          }
+        },
+        "step_daily": {
+          "type": "product_step",
+          "settings": {
+            "step_label": "STEP 2: DAILY",
+            "title": "Daily Softgels",
+            "description": "4 fat-soluble compounds for cellular protection and eye health. One softgel with your first meal."
+          }
+        },
+        "step_evening": {
+          "type": "product_step",
+          "settings": {
+            "step_label": "STEP 3: EVENING",
+            "title": "Evening Capsules",
+            "description": "3 ingredients for sleep, recovery, and neuroprotection. Two capsules before bed."
+          }
+        },
+        "expert_greg": {
+          "type": "expert",
+          "settings": {
+            "quote": "The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "expert_jacqueline": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "expert_nic": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "expert_chris": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        },
+        "review_10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I am skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician, 62",
+            "category": "trust"
+          }
+        },
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was just a permanent part of my life.",
+            "name": "Sophia R.",
+            "detail": "Founder, New York",
+            "category": "focus"
+          }
+        },
+        "review_17": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I used to spend over $200 a month on five different supplements and still was not sure I was covering everything. Coastline replaced all of them. One system, done.",
+            "name": "Lisa T.",
+            "detail": "Austin, 52",
+            "category": "convenience"
+          }
+        },
+        "review_19": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Three weeks in and the mental sharpness is unmistakable. I am writing better code, retaining more from meetings, and my afternoon crash is just gone.",
+            "name": "Thomas H.",
+            "detail": "Atlanta, 43",
+            "category": "focus"
+          }
+        },
+        "review_11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I am extremely careful about what I put in my body. Coastline checked every box for purity and data.",
+            "name": "Rachel G.",
+            "detail": "Boulder, 48",
+            "category": "trust"
+          }
+        },
+        "review_15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have spent a decade chasing biohacks, but this is the first time I have felt a sustained difference. It has simplified my entire morning.",
+            "name": "Daniel S.",
+            "detail": "Health Coach",
+            "category": "convenience"
+          }
+        },
+        "review_5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have tried every supplement out there. My energy levels have transformed, and I actually look forward to my morning runs again.",
+            "name": "Sarah M.",
+            "detail": "San Diego, 54",
+            "category": "energy"
+          }
+        },
+        "review_6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It has changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte, 51",
+            "category": "energy"
+          }
+        },
+        "review_7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have shared this with my entire cycling club. We are all seeing better recovery times.",
+            "name": "Patrick J.",
+            "detail": "Portland, 53",
+            "category": "energy"
+          }
+        },
+        "review_8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I am still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs, 72",
+            "category": "energy"
+          }
+        },
+        "review_9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I am bouncing back faster and my endurance has noticeably improved.",
+            "name": "Marcus D.",
+            "detail": "Denver, 39",
+            "category": "energy"
+          }
+        },
+        "review_20": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash. Just consistent output from 6 AM to 10 PM.",
+            "name": "Derek W.",
+            "detail": "Scottsdale, 47",
+            "category": "energy"
+          }
+        },
+        "review_25": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The sustained energy throughout the day has been the biggest change. No more 3 PM crash reaching for another coffee.",
+            "name": "Ryan F.",
+            "detail": "Austin, 44",
+            "category": "energy"
+          }
+        },
+        "review_26": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Started Coastline before marathon training season. My endurance and recovery are noticeably better at 56 than they were at 50.",
+            "name": "Greg L.",
+            "detail": "Seattle, 56",
+            "category": "energy"
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a longevity stack that does not require 15 different bottles. My morning brain fog is gone.",
+            "name": "Robert K.",
+            "detail": "Chicago, 45",
+            "category": "focus"
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is the biggest win for me. The brain fog of my 40s has lifted completely.",
+            "name": "Megan S.",
+            "detail": "Columbus, 46",
+            "category": "focus"
+          }
+        },
+        "review_4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel more locked in during my workday. It has significantly improved my productivity.",
+            "name": "Michelle P.",
+            "detail": "Indianapolis, 41",
+            "category": "focus"
+          }
+        },
+        "review_18": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It is the first thing I take every morning. My morning brain fog is gone, and my focus is immediate and lasts all day.",
+            "name": "William Z.",
+            "detail": "Salt Lake City, 36",
+            "category": "focus"
+          }
+        },
+        "review_27": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a lawyer, I need to be sharp all day long. Coastline has made a real difference in my ability to stay focused through long depositions and late prep sessions.",
+            "name": "David N.",
+            "detail": "Washington DC, 48",
+            "category": "focus"
+          }
+        },
+        "review_12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. You can tell this was not made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond, 49",
+            "category": "trust"
+          }
+        },
+        "review_13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans, 57",
+            "category": "trust"
+          }
+        },
+        "review_14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.",
+            "name": "Catherine W.",
+            "detail": "Seattle, 58",
+            "category": "trust"
+          }
+        },
+        "review_21": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.",
+            "name": "Andrew P.",
+            "detail": "Boston, 55",
+            "category": "trust"
+          }
+        },
+        "review_28": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I spent weeks researching before committing. Full transparency on every ingredient and dose is what sold me. No proprietary blends, no mystery formulas.",
+            "name": "Steven H.",
+            "detail": "Minneapolis, 51",
+            "category": "trust"
+          }
+        },
+        "review_16": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the convenience of having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa, 44",
+            "category": "convenience"
+          }
+        },
+        "review_22": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Morning scoop, one softgel, two capsules before bed. That is it. I replaced an entire shelf of bottles with one system.",
+            "name": "Kevin M.",
+            "detail": "Nashville, 40",
+            "category": "convenience"
+          }
+        },
+        "review_23": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My wife and I both switched to Coastline. We cancelled six separate subscriptions between us. Simpler, cheaper, and we actually feel the difference.",
+            "name": "Christine A.",
+            "detail": "Denver, 49",
+            "category": "convenience"
+          }
+        },
+        "review_24": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I travel three weeks a month for work. Having everything in one system means I just toss the pouches in my bag. No more forgetting half my stack at home.",
+            "name": "Brian T.",
+            "detail": "San Francisco, 38",
+            "category": "convenience"
+          }
+        },
+        "review_29": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Between work and three kids, I have zero bandwidth for complicated supplement routines. One scoop, one softgel, two capsules. Done. I have not missed a day in four months.",
+            "name": "Jason W.",
+            "detail": "Phoenix, 42",
+            "category": "convenience"
+          }
+        },
+        "review_30": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I recommended Coastline to my entire team at work. Four of us are on it now. The simplicity is what keeps us all consistent.",
+            "name": "Amanda K.",
+            "detail": "Chicago, 37",
+            "category": "convenience"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take Coastline?",
+            "answer": "Morning: mix one scoop with 8-12 oz water. Take 1 softgel with your first meal. Evening: take 2 capsules 30-60 minutes before bed with water."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "Orders placed before 2 PM ET ship the same business day. Standard delivery takes 3-5 business days. All orders ship free."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How does the subscription work?",
+            "answer": "Choose monthly delivery and save 34%. Your supply ships automatically each month. Change, pause, or cancel anytime from your account -- no fees or penalties."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 60-day money-back guarantee. If you are not satisfied, contact us for a full refund -- no questions asked."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Coastline safe with my medications?",
+            "answer": "Coastline contains well-studied ingredients at safe doses. We recommend consulting your healthcare provider if you take prescription medications."
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "What flavors are available?",
+            "answer": "Coastline is available in Unflavored Blend and Coastal Lemonade. Both contain the same 13 active ingredients."
+          }
+        }
+      },
+      "block_order": [
+        "step_morning",
+        "step_daily",
+        "step_evening",
+        "expert_greg",
+        "expert_jacqueline",
+        "expert_nic",
+        "expert_chris",
+        "review_10",
+        "review_1",
+        "review_17",
+        "review_19",
+        "review_11",
+        "review_15",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_20",
+        "review_25",
+        "review_26",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_18",
+        "review_27",
+        "review_12",
+        "review_13",
+        "review_14",
+        "review_21",
+        "review_28",
+        "review_16",
+        "review_22",
+        "review_23",
+        "review_24",
+        "review_29",
+        "review_30",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ],
+      "settings": {
+        "hero_title": "The Complete Coastline System",
+        "hero_review_text": "2,000+ reviews",
+        "hero_trust_badges": "VEGAN, SUGAR-FREE, CAFFEINE-FREE",
+        "hero_gallery_image_5": "shopify://shop_images/Artboard_2_2.png",
+        "press_label": "AS FEATURED IN",
+        "system_label": "WHAT'S INSIDE",
+        "system_headline": "Three products. One complete system.",
+        "system_padding_top": 80,
+        "system_padding_bottom": 80,
+        "ingredients_label": "THE FORMULA",
+        "ingredients_headline": "Every ingredient, every dose, every reason",
+        "ingredients_subheadline": "13 clinically validated ingredients. Transparently dosed. Chosen for a reason.",
+        "experts_label": "EXPERT VALIDATION",
+        "experts_headline": "Trusted by leading health researchers",
+        "reviews_label": "WHAT MEMBERS ARE SAYING",
+        "reviews_headline": "Real reviews from real members",
+        "comparison_label": "HOW WE COMPARE",
+        "comparison_headline": "Coastline vs. the alternatives",
+        "comparison_footnote": "More ingredients doesn't mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label.",
+        "divider_image_2": "shopify://shop_images/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png",
+        "faq_label": "PRODUCT FAQ",
+        "faq_headline": "Common questions about Coastline",
+        "sticky_button_text": "ADD TO CART",
+        "sticky_price_text": "$99/mo - Save 34%",
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

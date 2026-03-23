@@ -1,0 +1,1187 @@
+{% render 'cc-deps' %}
+{% comment %}
+  CC-PRODUCTPAGE-EVENING-CAPSULES: Product page for Evening Capsules (standalone)
+  No subscription plans, single variant, one-time purchase only.
+  Layout: theme.liquid (deps loaded via cc-deps snippet)
+{% endcomment %}
+
+{%- comment -%} === NOSCRIPT FALLBACK === {%- endcomment -%}
+<noscript>
+  <style>
+    .cc-productpage-ec .reveal,
+    .cc-productpage-ec .reveal-stagger > * {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+{%- comment -%} === ASSIGN HERO VARIABLES === {%- endcomment -%}
+{%- assign hero_title = section.settings.hero_title | default: "Coastline PM Capsules" -%}
+{%- assign hero_review_text = section.settings.hero_review_text | default: "2,000+ reviews" -%}
+{%- assign hero_trust_badges = section.settings.hero_trust_badges | default: "VEGAN, SUGAR-FREE, CAFFEINE-FREE" -%}
+{%- if section.settings.hero_gallery_image_1 != blank -%}
+  {%- assign ec_hero_img = section.settings.hero_gallery_image_1 | image_url: width: 800 -%}
+{%- else -%}
+  {%- assign ec_hero_img = "cc-bedside-evening.png" | asset_url -%}
+{%- endif -%}
+
+<div class="cc-productpage-ec">
+
+  {%- comment -%} ============================================================
+     SECTION 1: PRODUCT HERO (60/40 grid)
+  ============================================================ {%- endcomment -%}
+  <section id="cc-ec-product-hero" class="section-editorial" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: var(--parchment);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+
+      <div class="cc-ec-hero-grid">
+
+        <!-- LEFT SIDE: Product Image (60%) -->
+        <div class="reveal" style="position: relative;">
+          <div style="overflow: hidden;">
+            <img
+              src="{{ ec_hero_img }}"
+              alt="{{ hero_title | escape }}"
+              width="800"
+              height="800"
+              style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 600px; object-position: center 70%;"
+              class="img-editorial"
+            >
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: Buy Panel (40%) -- SIMPLIFIED, no flavor/subscription -->
+        <div
+          x-data="ccECBuy()"
+          class="reveal"
+          style="padding-top: 8px;"
+        >
+          <!-- Product Title -->
+          <h1 style="font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px;">
+            {{ hero_title }}
+          </h1>
+
+          <!-- Stars + Review Count -->
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <span class="stars-minimal">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray);">{{ hero_review_text }}</span>
+          </div>
+
+          <!-- Trust Badges -->
+          <p style="margin: 0 0 24px 0; font-family: 'Inter', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); line-height: 1.4;">
+            {%- assign badge_list = hero_trust_badges | split: ',' -%}
+            {%- for badge in badge_list -%}{{ badge | strip }}{%- unless forloop.last %} &middot; {% endunless -%}{%- endfor -%}
+          </p>
+
+          <!-- Editorial Divider -->
+          <div class="editorial-divider" style="margin-bottom: 28px;"></div>
+
+          <!-- Product Description -->
+          <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--warm-gray); line-height: 1.6; margin: 0 0 24px;">
+            {{ section.settings.hero_description | default: "3 targeted compounds timed for your body's overnight repair cycle. Take 2 capsules before bed to support deep sleep, calm the nervous system, and maintain joint health." }}
+          </p>
+
+          <!-- Supply Info -->
+          <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray); margin: 0 0 24px; line-height: 1.6;">30-day supply. Fully dosed.</p>
+
+          <!-- Subscription Selector -->
+          <div style="margin-bottom: 28px;">
+            <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Select your plan</p>
+
+            <!-- Monthly -->
+            <div @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-ec-active' : 'cc-plan-ec-idle'" class="cc-plan-ec-card" style="margin-bottom:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Monthly subscription</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 20%</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$24</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2-Month -->
+            <div @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-ec-active' : 'cc-plan-ec-idle'" class="cc-plan-ec-card" style="margin-bottom:10px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Every 2 months</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 10%</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$27</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- One-time -->
+            <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-ec-active' : 'cc-plan-ec-idle'" class="cc-plan-ec-card">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
+                <div>
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">One-time purchase</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:3px;">No subscription</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0;margin-left:16px;">
+                  <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$30</span>
+                  <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">one-time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart Button -->
+          <button
+            @click="addToCart()"
+            :disabled="loading"
+            class="btn-primary"
+            style="width:100%;padding:22px 48px;font-size:14px;margin-bottom:20px;background:#0A0A0A !important;color:#FAF9F6 !important;border:none !important;font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:opacity 0.3s ease;"
+          >
+            <span x-show="!loading">ADD TO CART - <span x-text="buttonPrice"></span></span>
+            <span x-show="loading">ADDING...</span>
+          </button>
+
+          <!-- Micro-copy -->
+          <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Free shipping
+            </span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 12px; color: var(--warm-gray); display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              60-day guarantee
+            </span>
+          </div>
+
+          <!-- Trust badge images -->
+          <div style="display:flex;justify-content:center;align-items:center;gap:20px;margin-top:24px;">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+            <img src="{{ 'cc-nsf-certified.png' | asset_url }}" alt="NSF Certified" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Guarantee" style="height:48px;object-fit:contain;opacity:0.7;" loading="lazy">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} === SECTION 2: PRESS LOGO BAR + DIVIDER IMAGE === {%- endcomment -%}
+  <section class="reveal" x-intersect.once="$el.classList.add('visible')" style="padding:40px 1.5rem;background:var(--parchment);border-bottom:1px solid var(--light-gray);">
+    <div style="max-width:64rem;margin:0 auto;text-align:center;">
+      <p style="font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin:0 0 24px;">
+        {{ section.settings.press_label | default: "AS FEATURED IN" }}
+      </p>
+      <div class="cc-ec-press-logos" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px;opacity:0.4;filter:grayscale(100%);">
+        {%- assign pp_logo_defaults = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109' | split: ',' -%}
+        {%- assign pp_logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly' | split: ',' -%}
+        {%- for i in (0..3) -%}
+          {%- assign logo_src = pp_logo_defaults[i] -%}
+          {%- if logo_src != blank -%}
+            <img src="{{ logo_src }}" alt="{{ pp_logo_alts[i] }}" class="cc-ec-press-logo" style="height:52px;width:auto;" loading="lazy">
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;position:relative;overflow:hidden;">
+    {%- if section.settings.divider_image_1 != blank -%}
+      <img src="{{ section.settings.divider_image_1 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="{{ 'cc-night-beach-bioluminescent.jpg' | asset_url }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ============================================================
+     SECTION 3: KEY BENEFITS
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial reveal" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div style="max-width:800px;margin:0 auto;padding:0 1.5rem;">
+
+      <div style="text-align:center;margin-bottom:48px;">
+        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:20px;">WHY PM CAPSULES</p>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:var(--deep-ink);letter-spacing:-0.02em;line-height:1.2;margin:0;">3 ingredients that support better sleep and overnight recovery</h2>
+      </div>
+
+      <div x-data="{ openBenefit: null }">
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'sleep' ? openBenefit = null : openBenefit = 'sleep'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Deeper sleep</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'sleep' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">L-Theanine promotes relaxation and natural sleep onset without drowsiness or grogginess.</p>
+          <div x-show="openBenefit === 'sleep'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">200mg L-Theanine increases alpha brain wave activity, promoting a calm-but-alert state that transitions naturally into restful sleep. Unlike sedatives, it supports your natural sleep architecture without morning grogginess.</p>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'calm' ? openBenefit = null : openBenefit = 'calm'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Calmer evenings</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'calm' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">Trace-dose lithium orotate supports mood stability and reduces racing thoughts before bed.</p>
+          <div x-show="openBenefit === 'calm'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">At 400mcg, lithium orotate is a trace dose -- roughly 1/100th of prescription levels. Population studies show regions with naturally higher lithium in tap water have lower rates of mood disorders and neurodegenerative disease.</p>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'joints' ? openBenefit = null : openBenefit = 'joints'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Joint recovery</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'joints' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">The PM dose of glucosamine sulfate supports overnight joint repair and reduces morning stiffness.</p>
+          <div x-show="openBenefit === 'joints'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">750mg glucosamine sulfate completes the 1,500mg daily clinical dose (split AM/PM for steady levels). Overnight, the body prioritizes repair -- glucosamine supports cartilage regeneration and reduces inflammatory markers in joint tissue.</p>
+          </div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--light-gray);padding:20px 0;cursor:pointer;" @click="openBenefit === 'neuro' ? openBenefit = null : openBenefit = 'neuro'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <p style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;color:var(--deep-ink);margin:0;">Neuroprotection</p>
+            <span style="font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="openBenefit === 'neuro' ? 'transform:rotate(45deg)' : ''">+</span>
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.6;margin:8px 0 0;">Lithium orotate increases BDNF and supports brain autophagy at safe, trace-level doses.</p>
+          <div x-show="openBenefit === 'neuro'" x-collapse x-cloak>
+            <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.7;margin:12px 0 0;opacity:0.85;">Trace lithium upregulates BDNF (brain-derived neurotrophic factor), promotes neuronal autophagy, and inhibits GSK-3 beta -- a key enzyme linked to neurodegeneration. These neuroprotective effects occur at doses far below therapeutic psychiatric use.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} ============================================================
+     HOW TO TAKE
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="cc-ec-how-grid">
+        <div style="overflow:hidden;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-15_1.png" alt="Restful sleep" style="width:100%;height:auto;display:block;object-fit:cover;max-height:500px;" loading="lazy">
+        </div>
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:20px;">HOW TO TAKE</p>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:500;color:var(--deep-ink);letter-spacing:-0.02em;line-height:1.2;margin:0 0 24px;">Two capsules. Before bed. That simple.</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;color:var(--forest);min-width:24px;">01</span>
+              <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.6;margin:0;">Take 2 capsules 30-60 minutes before bed</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;color:var(--forest);min-width:24px;">02</span>
+              <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.6;margin:0;">Take with a glass of water</p>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;color:var(--forest);min-width:24px;">03</span>
+              <p style="font-family:'Inter',sans-serif;font-size:16px;color:var(--deep-ink);line-height:1.6;margin:0;">Completes the PM half of the Coastline system</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ============================================================
+     SECTION 5: INGREDIENT DEEP DIVE (3 evening capsule ingredients only)
+  ============================================================ {%- endcomment -%}
+  {%- assign ingredients_label = section.settings.ingredients_label | default: "THE INGREDIENTS" -%}
+  {%- assign ingredients_headline = section.settings.ingredients_headline | default: "Every ingredient, every dose, every reason" -%}
+  {%- assign ingredients_subheadline = section.settings.ingredients_subheadline | default: "3 clinically validated ingredients. Transparently dosed. Chosen for a reason." -%}
+
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background-color: var(--parchment); padding-left: 1.5rem; padding-right: 1.5rem;">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <div class="reveal" style="margin-bottom: 48px;">
+        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766" alt="Evening Capsules" style="width:100%;max-height:500px;object-fit:cover;object-position:center 23%;display:block;" loading="lazy">
+      </div>
+
+      <div class="reveal" style="margin-bottom: 64px;">
+        <p class="badge-minimal" style="margin-bottom: 20px;">{{ ingredients_label }}</p>
+        <div class="editorial-divider" style="margin-bottom: 32px;"></div>
+        <h2 style="margin-bottom: 24px; font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.02em; line-height: 1.15;">{{ ingredients_headline }}</h2>
+        <p style="color: var(--warm-gray); font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.7; max-width: 600px;">
+          {{ ingredients_subheadline }}
+        </p>
+      </div>
+
+      <div x-data="{ open: null }" class="reveal" style="margin-bottom: 64px;">
+
+        <p class="badge-minimal" style="margin-bottom: 24px; color: var(--forest);">EVENING CAPSULES</p>
+
+        <!-- Lithium Orotate -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="open === 'lithium' ? open = null : open = 'lithium'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Lithium Orotate</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">400 mcg</span>
+              </div>
+            </div>
+            <span :style="open === 'lithium' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="open === 'lithium'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">15-month trial: maintained cognitive function at 300 mcg/day. Increases BDNF transcription. Far below prescription levels.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L-Theanine -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="open === 'theanine' ? open = null : open = 'theanine'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312" alt="L-Theanine" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">L-Theanine</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">200 mg</span>
+              </div>
+            </div>
+            <span :style="open === 'theanine' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="open === 'theanine'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Acts on suprachiasmatic nucleus, promoting natural sleep onset via peripheral vasodilation and core temperature lowering.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glucosamine Sulfate -->
+        <div class="hairline"></div>
+        <div style="padding:20px 0;cursor:pointer;" @click="open === 'gluc-pm' ? open = null : open = 'gluc-pm'">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" style="width:48px!important;height:48px!important;min-width:48px;min-height:48px;max-width:48px;max-height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
+              <div>
+                <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:500;color:var(--deep-ink);font-size:16px;">Glucosamine Sulfate</span>
+                <span style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:var(--warm-gray);margin-left:8px;">750 mg (PM dose)</span>
+              </div>
+            </div>
+            <span :style="open === 'gluc-pm' ? 'transform:rotate(180deg)' : ''" style="font-size:18px;color:var(--warm-gray);transition:transform 0.3s ease;flex-shrink:0;display:inline-block;width:20px;text-align:center;">&#9662;</span>
+          </div>
+          <div x-show="open === 'gluc-pm'" x-collapse x-cloak>
+            <div style="color:var(--warm-gray);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.7;margin-top:12px;padding-left:60px;padding-right:32px;">
+              <p style="margin:0 0 8px;">The PM portion of a 1,500 mg daily dose for optimal joint support. Split dosing (AM/PM) supports better absorption throughout the day.</p>
+              <p style="margin:0;font-size:13px;color:var(--warm-gray);opacity:0.8;">Vegan-sourced sulfate form. Reduces joint space narrowing and pain in osteoarthritis. Also activates autophagy pathways for cellular repair.</p>
+            </div>
+          </div>
+        </div>
+        <div class="hairline"></div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Divider image between Ingredients and Experts -->
+  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+    {%- if section.settings.divider_image_2 != blank -%}
+      <img src="{{ section.settings.divider_image_2 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- else -%}
+      <img src="{{ 'cc-night-beach-pier-lights.jpg' | asset_url }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
+    {%- endif -%}
+  </div>
+
+
+  {%- comment -%} ============================================================
+     SECTION 6: EXPERT ENDORSEMENTS
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background: var(--parchment); padding-left:0;padding-right:0;">
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 24px;">
+
+      <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+        <span class="badge-minimal" style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 20px;">
+          {{ section.settings.experts_label | default: "EXPERT VALIDATION" }}
+        </span>
+        <h2 style="font-family:'Space Grotesk',system-ui,sans-serif; font-size:clamp(32px,5vw,48px); font-weight:500; letter-spacing:-0.02em; line-height:1.15; color:var(--deep-ink); margin:0;">
+          {{ section.settings.experts_headline | default: "Trusted by leading health researchers" }}
+        </h2>
+      </div>
+
+      <div class="reveal-stagger cc-ec-experts-grid" style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+        {%- assign expert_blocks = section.blocks | where: 'type', 'expert' -%}
+        {%- for block in expert_blocks -%}
+          <div {{ block.shopify_attributes }} style="padding: 40px; border: 1px solid var(--light-gray); background: #fff;" class="cc-ec-expert-card">
+            <span style="font-family: Georgia, serif; font-size: 48px; line-height: 1; color: var(--light-gray); display: block; margin-bottom: 16px;">&ldquo;</span>
+            <p style="font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 400; color: var(--deep-ink); line-height: 1.65; margin: 0 0 24px; font-style: italic;">{{ block.settings.quote }}</p>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              {%- if block.settings.portrait != blank -%}
+                <img class="img-editorial" src="{{ block.settings.portrait | image_url: width: 144 }}" alt="{{ block.settings.name }}" width="72" height="72" loading="lazy" style="width: 72px; height: 72px; border-radius: 9999px; object-fit: cover; flex-shrink: 0;">
+              {%- else -%}
+                {%- assign fallback_portraits = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015' | split: ',' -%}
+                {%- assign fb_idx = forloop.index0 | modulo: 4 -%}
+                <img class="img-editorial" src="{{ fallback_portraits[fb_idx] }}" alt="{{ block.settings.name }}" width="72" height="72" loading="lazy" style="width: 72px; height: 72px; border-radius: 9999px; object-fit: cover; flex-shrink: 0;">
+              {%- endif -%}
+              <div>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; color: var(--deep-ink); margin: 0 0 2px 0; line-height: 1.3;">{{ block.settings.name }}</p>
+                <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--warm-gray); margin: 0; line-height: 1.4;">{{ block.settings.credential }}</p>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 7: REVIEWS
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div id="cc-ec-reviews-anchor" style="position:relative;top:-100px;visibility:hidden;pointer-events:none;"></div>
+      <p class="badge-minimal" style="text-align:center;margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
+      </p>
+
+      <h2 class="reveal" style="text-align:center;color:var(--deep-ink);font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0 0 2rem;">
+        {{ section.settings.reviews_headline | default: "Real reviews from real members" }}
+      </h2>
+
+      {%- assign ec_total_reviews = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'testimonial' -%}
+          {%- assign ec_total_reviews = ec_total_reviews | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div x-data="{ reviewsShown: 6 }">
+        <div class="cc-ec-reviews-grid" style="display:grid;grid-template-columns:1fr;gap:20px;">
+          {%- assign ec_review_idx = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'testimonial' -%}
+              {%- assign ec_review_idx = ec_review_idx | plus: 1 -%}
+              <div
+                {{ block.shopify_attributes }}
+                x-show="{{ ec_review_idx }} <= reviewsShown"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                style="padding:28px 32px;border:1px solid var(--light-gray);background:#fff;"
+              >
+                <p style="color:var(--deep-ink);font-size:14px;margin:0 0 8px;letter-spacing:0.1em;">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                <p style="color:var(--deep-ink);font-size:16px;line-height:1.65;margin:0 0 16px;font-family:'Inter',sans-serif;">"{{ block.settings.quote }}"</p>
+                <p style="font-family:'Inter',sans-serif;color:var(--warm-gray);font-size:13px;margin:0;letter-spacing:0.05em;font-weight:500;">
+                  {{ block.settings.name }}{% if block.settings.detail != blank %} &middot; {{ block.settings.detail }}{% endif %}
+                </p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div style="text-align:center;margin-top:2rem;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+          <button
+            class="cc-ec-review-tab cc-ec-review-tab-idle"
+            x-show="reviewsShown < {{ ec_total_reviews }}"
+            @click="reviewsShown = reviewsShown + 6"
+            x-transition
+            style="cursor:pointer;"
+          >SHOW MORE REVIEWS</button>
+          <button
+            class="cc-ec-review-tab cc-ec-review-tab-idle"
+            x-show="reviewsShown > 6"
+            @click="reviewsShown = 6; $nextTick(() => { document.getElementById('cc-ec-reviews-anchor').scrollIntoView({ behavior: 'smooth' }) })"
+            x-transition
+            style="cursor:pointer;"
+          >SHOW LESS</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  {%- comment -%} ============================================================
+     UPSELL: COMPLETE YOUR SYSTEM
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial reveal" style="padding-top:80px;padding-bottom:80px;background:#062F3D;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;" class="cc-ec-upsell-grid">
+        <div style="text-align:center;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline Complete System" style="max-height:320px;width:auto;margin:0 auto;display:block;object-fit:contain;" loading="lazy">
+        </div>
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px;">
+            COMPLETE YOUR SYSTEM
+          </p>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:#FFFFFF;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;">
+            {{ section.settings.upsell_headline | default: "Get all 13 ingredients in one system" }}
+          </h2>
+          <p style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin:0 0 24px;">
+            {{ section.settings.upsell_subheadline | default: "Evening Capsules are the PM half of the Coastline Complete System. Add the Morning Blend and SoftGels to cover all 13 science-backed ingredients across every body system." }}
+          </p>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FFFFFF;letter-spacing:0.05em;margin:0 0 32px;">
+            FREE GIFT: Glass shaker bottle included with your first order ($15 value)
+          </p>
+          <a href="/products/coastline-welcome-pack" style="display:inline-block;padding:18px 48px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:#FFFFFF;color:#062F3D;text-decoration:none;transition:opacity 0.3s ease;">
+            {{ section.settings.upsell_cta | default: "GET THE COMPLETE SYSTEM -- $99/MO" }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 9: FAQ
+  ============================================================ {%- endcomment -%}
+  <section class="section-editorial" style="padding-top: 80px; padding-bottom: 80px; background:var(--parchment);padding-left:1.5rem;padding-right:1.5rem;">
+    <div style="max-width:48rem;margin:0 auto;">
+
+      <p class="badge-minimal" style="text-align:center;margin-bottom:0.75rem;letter-spacing:0.15em;font-size:0.75rem;">
+        {{ section.settings.faq_label | default: "PRODUCT FAQ" }}
+      </p>
+
+      <h2 class="reveal" style="text-align:center;color:var(--deep-ink);font-size:clamp(1.5rem,3.5vw,2.25rem);margin:0 0 2.5rem;">
+        {{ section.settings.faq_headline | default: "Common questions about Evening Capsules" }}
+      </h2>
+
+      <div x-data="{ faqOpen: null }">
+
+        {%- assign faq_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            {%- assign faq_index = faq_index | plus: 1 -%}
+            <div {{ block.shopify_attributes }} class="accordion-content" style="border-top:1px solid var(--light-gray);">
+              <button
+                @click="faqOpen === {{ faq_index }} ? faqOpen = null : faqOpen = {{ faq_index }}"
+                style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;background:none;border:none;cursor:pointer;text-align:left;font-family:'Space Grotesk', system-ui, sans-serif;font-size:1rem;font-weight:500;color:var(--deep-ink);line-height:1.4;"
+              >
+                <span style="padding-right:1rem;">{{ block.settings.question }}</span>
+                <span style="flex-shrink:0;font-size:1.25rem;color:var(--warm-gray);transition:transform 0.3s ease;" :style="faqOpen === {{ faq_index }} ? 'transform:rotate(45deg)' : ''">+</span>
+              </button>
+              <div x-show="faqOpen === {{ faq_index }}" x-collapse x-cloak>
+                <div style="padding:0 0 1.25rem;color:var(--warm-gray);font-size:0.9375rem;line-height:1.7;">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="hairline" style="height:1px;background:var(--light-gray);"></div>
+
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 10: STICKY BUY BAR (mobile)
+  ============================================================ {%- endcomment -%}
+  <div
+    id="cc-ec-sticky-bar"
+    style="position:fixed;bottom:0;left:0;right:0;z-index:50;background:#ffffff;border-top:1px solid var(--light-gray);padding:12px 16px;transform:translateY(100%);transition:transform 0.3s ease;"
+    class="lg:hidden"
+  >
+    <div style="display:flex;align-items:center;gap:12px;max-width:480px;margin:0 auto;">
+      <p style="flex-shrink:0;margin:0;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.875rem;font-weight:500;color:var(--deep-ink);white-space:nowrap;">
+        {{ section.settings.sticky_price_text | default: "$24/mo - Save 20%" }}
+      </p>
+      <button
+        onclick="stickyECAddToCart(this)"
+        class="btn-primary"
+        style="flex:1;padding:14px 16px;font-family:'Space Grotesk', system-ui, sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:var(--deep-ink);color:var(--parchment);border:none;cursor:pointer;text-align:center;white-space:nowrap;"
+      >
+        {{ section.settings.sticky_button_text | default: "ADD TO CART" }}
+      </button>
+    </div>
+  </div>
+
+</div>{%- comment -%} END .cc-productpage-ec wrapper {%- endcomment -%}
+
+
+{%- comment -%} ============================================================
+   SINGLE STYLE BLOCK
+============================================================ {%- endcomment -%}
+<style>
+  @media (min-width: 1024px) {
+    .header__icons--start .menu-drawer-button {
+      display: none !important;
+    }
+  }
+  .cc-productpage-ec p {
+    max-width: none !important;
+  }
+  .cc-productpage-ec h1,
+  .cc-productpage-ec h2 {
+    text-wrap: balance;
+  }
+  .cc-ec-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 768px) {
+    .cc-ec-hero-grid {
+      grid-template-columns: 60fr 40fr;
+      gap: 48px;
+    }
+  }
+  .cc-ec-experts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .cc-ec-experts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .cc-ec-reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .cc-productpage-ec .cc-ec-review-tab {
+    padding: 8px 20px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 12px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    border-radius: 100px !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    background: none !important;
+  }
+  .cc-productpage-ec .cc-ec-review-tab-idle {
+    background: transparent !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E8E8E8 !important;
+  }
+  /* Plan cards */
+  .cc-productpage-ec .cc-plan-ec-card {
+    border: 2px solid !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .cc-productpage-ec .cc-plan-ec-active {
+    border-color: #1A3A2F !important;
+    background: #F4F7F6 !important;
+  }
+  .cc-productpage-ec .cc-plan-ec-idle {
+    border-color: #CCCCCC !important;
+    background: #FFFFFF !important;
+  }
+
+  @media (max-width: 767px) {
+    .cc-ec-benefits-grid {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+    .cc-ec-how-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+    .cc-ec-upsell-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+      text-align: center !important;
+    }
+    .cc-ec-press-logo {
+      height: 32px !important;
+    }
+  }
+
+</style>
+
+
+{%- comment -%} ============================================================
+   SINGLE SCRIPT BLOCK
+============================================================ {%- endcomment -%}
+<script>
+  /* Alpine: EC Buy Panel */
+  function ccECBuy() {
+    return {
+      plan: 'monthly',
+      loading: false,
+      get sellingPlan() {
+        if (this.plan === 'monthly') return 1580073029;
+        if (this.plan === 'bimonthly') return 1927315525;
+        return null;
+      },
+      get buttonPrice() {
+        if (this.plan === 'monthly') return '$24/MO';
+        if (this.plan === 'bimonthly') return '$27/MO';
+        return '$30';
+      },
+      addToCart() {
+        this.loading = true;
+        var body = { id: 42607341207621, quantity: 1 };
+        if (this.sellingPlan) body.selling_plan = this.sellingPlan;
+        var self = this;
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
+        })
+        .catch(function(e) { console.error('Cart error:', e); })
+        .finally(function() { self.loading = false; });
+      }
+    };
+  }
+
+  /* Sticky Bar: IntersectionObserver */
+  document.addEventListener('DOMContentLoaded', function() {
+    var heroSection = document.getElementById('cc-ec-product-hero');
+    var stickyBar = document.getElementById('cc-ec-sticky-bar');
+    if (!heroSection || !stickyBar) return;
+
+    stickyBar.style.transform = 'translateY(100%)';
+    stickyBar.style.transition = 'transform 0.3s ease';
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          stickyBar.style.transform = 'translateY(100%)';
+        } else {
+          stickyBar.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(heroSection);
+  });
+
+  /* Sticky Bar: Add to Cart (hardcoded evening capsules variant) */
+  function stickyECAddToCart(btn) {
+    btn.disabled = true;
+    btn.textContent = 'ADDING...';
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 42607341207621, quantity: 1, selling_plan: 1580073029 })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: data } }));
+    })
+    .catch(function(e) { console.error('Cart error:', e); })
+    .finally(function() { btn.disabled = false; btn.textContent = 'ADD TO CART'; });
+  }
+</script>
+
+
+{% schema %}
+{
+  "name": "CC Evening Capsules PDP",
+  "tag": "section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "header",
+      "content": "1. Product Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Product title",
+      "default": "Coastline PM Capsules"
+    },
+    {
+      "type": "text",
+      "id": "hero_review_text",
+      "label": "Review count text",
+      "default": "2,000+ reviews"
+    },
+    {
+      "type": "text",
+      "id": "hero_trust_badges",
+      "label": "Trust badges (comma-separated)",
+      "default": "VEGAN, SUGAR-FREE, CAFFEINE-FREE"
+    },
+    {
+      "type": "text",
+      "id": "directions",
+      "label": "Directions text",
+      "default": "Take 2 capsules 30-60 minutes before bed with water."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_1",
+      "label": "Gallery image 1 (main product)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_2",
+      "label": "Gallery image 2 (lifestyle)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_gallery_image_3",
+      "label": "Gallery image 3 (welcome box)"
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_1",
+      "label": "Divider image (between hero and press bar)"
+    },
+    {
+      "type": "header",
+      "content": "1b. Press Logo Bar"
+    },
+    {
+      "type": "text",
+      "id": "press_label",
+      "label": "Press bar label",
+      "default": "AS FEATURED IN"
+    },
+    {
+      "type": "header",
+      "content": "3. Complete Your System Upsell"
+    },
+    {
+      "type": "text",
+      "id": "upsell_headline",
+      "label": "Headline",
+      "default": "Get all 13 ingredients in one system"
+    },
+    {
+      "type": "textarea",
+      "id": "upsell_subheadline",
+      "label": "Subheadline",
+      "default": "Evening Capsules are the PM half of the Coastline Complete System. Add the Morning Blend and SoftGels to cover all 13 science-backed ingredients across every body system."
+    },
+    {
+      "type": "text",
+      "id": "upsell_cta",
+      "label": "CTA button text",
+      "default": "GET THE COMPLETE SYSTEM - $99/MO"
+    },
+    {
+      "type": "header",
+      "content": "5. Ingredient Deep Dive"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_label",
+      "label": "Section label",
+      "default": "THE INGREDIENTS"
+    },
+    {
+      "type": "text",
+      "id": "ingredients_headline",
+      "label": "Headline",
+      "default": "Every ingredient, every dose, every reason"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients_subheadline",
+      "label": "Subheadline",
+      "default": "3 clinically validated ingredients. Transparently dosed. Chosen for a reason."
+    },
+    {
+      "type": "image_picker",
+      "id": "divider_image_2",
+      "label": "Divider image (between ingredients and experts)"
+    },
+    {
+      "type": "header",
+      "content": "6. Expert Endorsements"
+    },
+    {
+      "type": "text",
+      "id": "experts_label",
+      "label": "Section label",
+      "default": "EXPERT VALIDATION"
+    },
+    {
+      "type": "text",
+      "id": "experts_headline",
+      "label": "Headline",
+      "default": "Trusted by leading health researchers"
+    },
+    {
+      "type": "header",
+      "content": "7. Reviews"
+    },
+    {
+      "type": "text",
+      "id": "reviews_label",
+      "label": "Section label",
+      "default": "WHAT MEMBERS ARE SAYING"
+    },
+    {
+      "type": "text",
+      "id": "reviews_headline",
+      "label": "Headline",
+      "default": "Real reviews from real members"
+    },
+    {
+      "type": "header",
+      "content": "8. Comparison Table"
+    },
+    {
+      "type": "text",
+      "id": "comparison_label",
+      "label": "Section label",
+      "default": "HOW WE COMPARE"
+    },
+    {
+      "type": "text",
+      "id": "comparison_headline",
+      "label": "Headline",
+      "default": "Coastline vs. the alternatives"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_footnote",
+      "label": "Footnote text",
+      "default": "More ingredients does not mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label."
+    },
+    {
+      "type": "header",
+      "content": "9. FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_label",
+      "label": "Section label",
+      "default": "PRODUCT FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_headline",
+      "label": "Headline",
+      "default": "Common questions about Evening Capsules"
+    },
+    {
+      "type": "header",
+      "content": "10. Sticky Buy Bar"
+    },
+    {
+      "type": "text",
+      "id": "sticky_button_text",
+      "label": "Button text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "text",
+      "id": "sticky_price_text",
+      "label": "Price text",
+      "default": "$24/mo - Save 20%"
+    },
+    {
+      "type": "header",
+      "content": "Global"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "portrait",
+          "label": "Portrait image"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "credential",
+          "label": "Credential"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail (title, age, location)",
+          "info": "Example: Physician 62"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "default": "sleep",
+          "options": [
+            {
+              "value": "sleep",
+              "label": "Sleep"
+            },
+            {
+              "value": "mood",
+              "label": "Mood"
+            },
+            {
+              "value": "recovery",
+              "label": "Recovery"
+            },
+            {
+              "value": "trust",
+              "label": "Trust"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CC Evening Capsules PDP",
+      "blocks": [
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I fall asleep faster and wake up feeling actually rested. No grogginess, no weird dreams.",
+            "name": "David M.",
+            "detail": "Austin, 47",
+            "category": "sleep"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The evening capsules are the part of the system I notice most. My sleep quality is night and day.",
+            "name": "Mark T.",
+            "detail": "Denver, 52",
+            "category": "sleep"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel calmer in the evenings now. Less racing thoughts before bed.",
+            "name": "Sarah K.",
+            "detail": "Portland, 39",
+            "category": "mood"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take the Evening Capsules?",
+            "answer": "Take 2 capsules 30-60 minutes before bed with water."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Will these make me drowsy?",
+            "answer": "L-Theanine promotes relaxation without drowsiness. It supports natural sleep onset, not sedation."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is the lithium dose safe?",
+            "answer": "Yes. At 400 mcg, this is a trace dose -- roughly 1/100th of prescription lithium for bipolar disorder. It matches levels found naturally in tap water in some regions."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
