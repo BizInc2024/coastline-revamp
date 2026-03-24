@@ -6,6 +6,8 @@
 {% endcomment %}
 
 <style>
+    [x-cloak] { display: none !important; }
+
     /* ================================================
        COASTLINE DESIGN SYSTEM OVERRIDES
        Scoped to .cc-home, .cc-product, and .cc-productpage
@@ -509,7 +511,7 @@
           <!-- Subscription Selector -->
           <div style="margin-bottom: 28px;">
             <p style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A2F;font-weight:600;margin:0 0 16px;">
-              Introductory pricing -- limited time offer
+              Limited time
             </p>
             <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Select your plan</p>
 
@@ -614,14 +616,12 @@
     {%- else -%}
       <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
     {%- endif -%}
-    <!-- Dark gradient overlay for text readability -->
-    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.05) 100%);"></div>
     <!-- Free gift overlay -->
     <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 1.5rem;">
       <div style="max-width:440px;margin-left:6%;">
-        <p style="font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin:0 0 12px;font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,0.5);">FREE GIFT WITH YOUR ORDER</p>
-        <h3 style="font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(24px,4vw,36px);font-weight:500;color:#FFFFFF !important;margin:0 0 12px;line-height:1.2;letter-spacing:-0.02em;text-shadow:0 2px 12px rgba(0,0,0,0.5);">Premium Glass Shaker Bottle</h3>
-        <p style="font-family:'Inter',system-ui,sans-serif;font-size:clamp(14px,2vw,16px);color:rgba(255,255,255,0.9);margin:0;line-height:1.5;text-shadow:0 1px 8px rgba(0,0,0,0.5);">Included free with every subscription. Mix your Morning Blend in style.</p>
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF !important;margin:0 0 12px;font-weight:500;">FREE GIFT WITH YOUR ORDER</p>
+        <h3 style="font-family:'Space Grotesk',system-ui,sans-serif;font-size:clamp(24px,4vw,36px);font-weight:500;color:#FFFFFF !important;margin:0 0 12px;line-height:1.2;letter-spacing:-0.02em;">Premium Glass Shaker Bottle</h3>
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:clamp(14px,2vw,16px);color:#FFFFFF !important;margin:0;line-height:1.5;">Included free with every subscription. Mix your Morning Blend in style.</p>
       </div>
     </div>
   </div>
@@ -1428,6 +1428,7 @@
               <div
                 {{ block.shopify_attributes }}
                 x-show="(reviewFilter === 'all' && {{ all_idx }} <= reviewsShown) || (reviewFilter === '{{ cat }}' && {{ cat_idx }} <= reviewsShown)"
+                x-cloak
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform translate-y-4"
                 x-transition:enter-end="opacity-100 transform translate-y-0"
