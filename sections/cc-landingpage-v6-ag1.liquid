@@ -33,6 +33,7 @@
     .v6-study-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 32px; margin-top: 40px; }
     .v6-study-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: #9A9A9A; }
 
+    .v6-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; display: block; }
     .v6-comparison-table { width: 100%; border-collapse: collapse; }
     .v6-comparison-table th, .v6-comparison-table td { padding: 16px 12px; text-align: left; border-bottom: 1px solid #E8E8E8; font-size: 14px; }
     .v6-comparison-table th { font-weight: 500; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -54,6 +55,31 @@
     .v6-ingredient-card p:first-of-type { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #0A0A0A; margin-bottom: 4px; }
     .v6-ingredient-card p:last-of-type { font-size: 12px; color: #6B6B6B; }
 
+    .cc-landing-v6 .btn-primary {
+        display: inline-block;
+        background-color: #0A0A0A;
+        color: #FAF9F6;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 20px 48px;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+        border: none;
+    }
+    .cc-landing-v6 .btn-primary:hover { opacity: 0.8; }
+
+    /* Flavor selector active state */
+    .cc-landing-v6 .v6-flavor-btn { border: 1px solid #E8E8E8; padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
+    .cc-landing-v6 .v6-flavor-btn.active { border-color: #0A0A0A; box-shadow: 0 0 0 2px #0A0A0A; }
+
+    /* Plan selector active state */
+    .cc-landing-v6 .v6-plan-btn { width: 100%; text-align: left; cursor: pointer; transition: all 0.2s ease; border: 1px solid #E8E8E8; padding: 16px; }
+    .cc-landing-v6 .v6-plan-btn.active { border: 2px solid #0A0A0A; }
+
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 </style>
 
@@ -63,7 +89,7 @@
     <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
         <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED JANUARY 2026' }}</p>
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED MARCH 2026' }}</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
                     {{ section.settings.hero_headline | default: 'Coastline vs AG1: Which Longevity Supplement Is Actually Worth It?' }}
@@ -266,7 +292,7 @@
                     <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.ingredient_comparison_headline | default: 'Side by side' }}</h2>
                 </div>
 
-                <div class="overflow-x-auto" style="-webkit-overflow-scrolling: touch;">
+                <div class="v6-table-scroll">
                     <table class="v6-comparison-table" style="min-width: 520px;">
                         <thead>
                             <tr>
@@ -651,7 +677,7 @@
                 <h2 class="text-3xl lg:text-4xl font-grotesk font-medium" style="color: #FAF9F6;">{{ section.settings.summary_headline | default: 'The final comparison' }}</h2>
             </div>
 
-            <div class="overflow-x-auto reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+            <div class="v6-table-scroll reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <table class="v6-star-table v6-star-table-dark" style="min-width: 400px;">
                     <thead>
                         <tr>
@@ -752,12 +778,12 @@
 
                     <!-- Flavor Selector -->
                     <div class="mb-8">
-                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Select Flavor</p>
+                        <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 16px;">Select Flavor</p>
                         <div class="grid grid-cols-2 gap-3">
-                            <button @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'border-deep-ink ring-2 ring-deep-ink ring-offset-2' : 'border-light-gray'" class="p-4 border text-center transition-all" style="background-color: #F5EFE6;">
+                            <button @click="flavor = 'unflavored'" class="v6-flavor-btn" :class="{ 'active': flavor === 'unflavored' }" style="background-color: #F5EFE6;">
                                 <span class="font-grotesk text-sm text-deep-ink">Unflavored</span>
                             </button>
-                            <button @click="flavor = 'lemonade'" :class="flavor === 'lemonade' ? 'border-deep-ink ring-2 ring-deep-ink ring-offset-2' : 'border-light-gray'" class="p-4 border text-center transition-all" style="background-color: #FDF2F8;">
+                            <button @click="flavor = 'lemonade'" class="v6-flavor-btn" :class="{ 'active': flavor === 'lemonade' }" style="background-color: #FDF2F8;">
                                 <span class="font-grotesk text-sm text-deep-ink">Coastal Lemonade</span>
                             </button>
                         </div>
@@ -765,28 +791,28 @@
 
                     <!-- Plan Selector -->
                     <div id="v6-plan-selector" class="mb-8">
-                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Select Plan</p>
+                        <p style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 16px;">Select Plan</p>
                         <div class="space-y-3">
-                            <button @click="plan = 'monthly'" :class="plan === 'monthly' ? 'border-deep-ink border-2' : 'border-light-gray border'" class="w-full text-left transition-colors relative" style="padding: 16px; background-color: #F5F4F0;">
-                                <span style="position: absolute; top: -10px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BEST VALUE</span>
+                            <button @click="plan = 'monthly'" class="v6-plan-btn" :class="{ 'active': plan === 'monthly' }" style="background-color: #F5F4F0; position: relative;">
+                                <span style="position: absolute; top: -10px; left: 16px; background: #2D5A47; color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BEST VALUE</span>
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <svg width="20" height="20" viewBox="0 0 20 20" style="flex-shrink: 0;"><circle cx="10" cy="10" r="8" fill="none" stroke="#0A0A0A" stroke-width="1.5"/><circle cx="10" cy="10" :r="plan === 'monthly' ? 5 : 0" fill="#0A0A0A" style="transition: r 0.15s ease;"/></svg>
-                                    <div style="flex: 1;"><span class="font-grotesk text-deep-ink" style="font-size: 15px;">Monthly Subscription</span><span style="display: block; font-size: 12px; color: var(--forest-light); margin-top: 2px;">Save 34% - Cancel anytime</span></div>
-                                    <div style="text-align: right;"><span class="font-grotesk text-deep-ink" style="font-size: 18px; font-weight: 500;">$99</span><span class="text-warm-gray" style="font-size: 13px;">/mo</span></div>
+                                    <div style="flex: 1;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #0A0A0A;">Monthly Subscription</span><span style="display: block; font-size: 12px; color: #2D5A47; margin-top: 2px;">Save 34% - Cancel anytime</span></div>
+                                    <div style="text-align: right;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; color: #0A0A0A;">$99</span><span style="font-size: 13px; color: #6B6B6B;">/mo</span></div>
                                 </div>
                             </button>
-                            <button @click="plan = 'twomonth'" :class="plan === 'twomonth' ? 'border-deep-ink border-2' : 'border-light-gray border'" class="w-full text-left transition-colors" style="padding: 16px; background-color: #FAFAFA;">
+                            <button @click="plan = 'twomonth'" class="v6-plan-btn" :class="{ 'active': plan === 'twomonth' }" style="background-color: #FAFAFA;">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <svg width="20" height="20" viewBox="0 0 20 20" style="flex-shrink: 0;"><circle cx="10" cy="10" r="8" fill="none" stroke="#0A0A0A" stroke-width="1.5"/><circle cx="10" cy="10" :r="plan === 'twomonth' ? 5 : 0" fill="#0A0A0A" style="transition: r 0.15s ease;"/></svg>
-                                    <div style="flex: 1;"><span class="font-grotesk text-deep-ink" style="font-size: 15px;">Every 2 Months</span><span style="display: block; font-size: 12px; color: var(--forest-light); margin-top: 2px;">Save 20%</span></div>
-                                    <div style="text-align: right;"><span class="font-grotesk text-deep-ink" style="font-size: 18px; font-weight: 500;">$120</span><span class="text-warm-gray" style="font-size: 13px;">/mo</span></div>
+                                    <div style="flex: 1;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #0A0A0A;">Every 2 Months</span><span style="display: block; font-size: 12px; color: #2D5A47; margin-top: 2px;">Save 20%</span></div>
+                                    <div style="text-align: right;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; color: #0A0A0A;">$120</span><span style="font-size: 13px; color: #6B6B6B;">/mo</span></div>
                                 </div>
                             </button>
-                            <button @click="plan = 'onetime'" :class="plan === 'onetime' ? 'border-deep-ink border-2' : 'border-light-gray border'" class="w-full text-left transition-colors" style="padding: 16px; background-color: #FAFAFA;">
+                            <button @click="plan = 'onetime'" class="v6-plan-btn" :class="{ 'active': plan === 'onetime' }" style="background-color: #FAFAFA;">
                                 <div style="display: flex; align-items: center; gap: 12px;">
                                     <svg width="20" height="20" viewBox="0 0 20 20" style="flex-shrink: 0;"><circle cx="10" cy="10" r="8" fill="none" stroke="#0A0A0A" stroke-width="1.5"/><circle cx="10" cy="10" :r="plan === 'onetime' ? 5 : 0" fill="#0A0A0A" style="transition: r 0.15s ease;"/></svg>
-                                    <div style="flex: 1;"><span class="font-grotesk text-deep-ink" style="font-size: 15px;">One-Time Purchase</span><span style="display: block; font-size: 12px; color: var(--warm-gray); margin-top: 2px;">Try before you subscribe</span></div>
-                                    <div style="text-align: right;"><span class="font-grotesk text-deep-ink" style="font-size: 18px; font-weight: 500;">$150</span></div>
+                                    <div style="flex: 1;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; color: #0A0A0A;">One-Time Purchase</span><span style="display: block; font-size: 12px; color: #6B6B6B; margin-top: 2px;">Try before you subscribe</span></div>
+                                    <div style="text-align: right;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; color: #0A0A0A;">$150</span></div>
                                 </div>
                             </button>
                         </div>
@@ -1103,7 +1129,7 @@
     { "type": "header", "content": "1. Hero Section" },
     { "type": "image_picker", "id": "hero_coastline_image", "label": "Hero - Coastline product image" },
     { "type": "image_picker", "id": "hero_ag1_image", "label": "Hero - AG1 product image" },
-    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "SUPPLEMENT COMPARISON - UPDATED JANUARY 2026" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "SUPPLEMENT COMPARISON - UPDATED MARCH 2026" },
     { "type": "textarea", "id": "hero_headline", "label": "Headline", "default": "Coastline vs AG1: Which Longevity Supplement Is Actually Worth It?" },
     { "type": "textarea", "id": "hero_subheadline", "label": "Subheadline", "default": "Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback." },
     { "type": "text", "id": "hero_author", "label": "Author name", "default": "Dr. James Chen" },

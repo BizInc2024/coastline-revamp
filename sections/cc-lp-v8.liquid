@@ -78,6 +78,21 @@
     .cc-landing-v8 .ingredient-tag[aria-expanded="true"] svg {
         transform: rotate(180deg);
     }
+    .cc-landing-v8 .ingredient-tag.system-row {
+        display: flex;
+        border: none;
+        margin: 0;
+        padding: 12px 0;
+        background: transparent;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .cc-landing-v8 .ingredient-tag.system-row:hover {
+        background: transparent;
+        border: none;
+        color: #0A0A0A;
+        opacity: 0.6;
+    }
 
     [x-cloak] { display: none !important; }
 
@@ -530,23 +545,123 @@
 
                     <p class="font-grotesk text-xs uppercase tracking-widest text-deep-ink mb-3" style="letter-spacing: 0.15em;">Morning Blend</p>
                     <p class="text-sm text-warm-gray leading-relaxed mb-4">A precision-dosed powder with the building blocks your cells need most. <strong class="text-deep-ink">Mix with water at breakfast</strong> for sustained energy, sharper focus, and metabolic support throughout the day.</p>
-                    <ul class="mb-8" style="border-top: 1px solid #E8E8E8;">
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Creatine</span><span class="text-sm text-warm-gray font-grotesk">5.25g</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Glycine</span><span class="text-sm text-warm-gray font-grotesk">5g</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Inulin</span><span class="text-sm text-warm-gray font-grotesk">4g</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Taurine</span><span class="text-sm text-warm-gray font-grotesk">3.05g</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Magnesium</span><span class="text-sm text-warm-gray font-grotesk">150mg</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Ergothioneine</span><span class="text-sm text-warm-gray font-grotesk">5mg</span></li>
-                    </ul>
+                    <div class="space-y-0 mb-8" x-data="{ open: null }" style="border-top: 1px solid #E8E8E8;">
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'creatine' ? null : 'creatine'" :aria-expanded="open === 'creatine'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Creatine</span><span class="text-sm text-warm-gray font-grotesk">5.25g</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'creatine'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">The most studied performance compound in sports science. Creatine buffers ATP levels in your muscles and brain, acting as a cellular energy reserve. Supports cognitive function under stress and helps maintain muscle strength as you age.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'glycine' ? null : 'glycine'" :aria-expanded="open === 'glycine'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Glycine</span><span class="text-sm text-warm-gray font-grotesk">5g</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'glycine'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">A key amino acid your body uses to build collagen, produce glutathione (your master antioxidant), and support healthy sleep cycles. Research shows glycine helps maintain cellular repair processes and may promote healthy aging at the metabolic level.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'inulin' ? null : 'inulin'" :aria-expanded="open === 'inulin'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Inulin</span><span class="text-sm text-warm-gray font-grotesk">4g</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'inulin'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">A prebiotic fiber that feeds the beneficial bacteria in your gut. At the clinical dose of 4g, inulin supports digestive regularity, nutrient absorption, and a healthy gut microbiome &mdash; the foundation of immune function and overall wellbeing.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'taurine' ? null : 'taurine'" :aria-expanded="open === 'taurine'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Taurine</span><span class="text-sm text-warm-gray font-grotesk">3.05g</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'taurine'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">The most abundant amino acid in your cells &mdash; and levels drop significantly with age. Taurine supports mitochondrial function, cardiovascular health, and endurance. A landmark 2023 study in Science linked taurine supplementation to healthier aging across multiple body systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'magnesium' ? null : 'magnesium'" :aria-expanded="open === 'magnesium'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Magnesium</span><span class="text-sm text-warm-gray font-grotesk">150mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'magnesium'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">Involved in over 300 enzymatic reactions in your body, yet most adults are deficient. Magnesium supports muscle and nerve function, energy production, and cardiovascular health. It also plays a critical role in sleep quality and stress regulation.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'ergo' ? null : 'ergo'" :aria-expanded="open === 'ergo'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Ergothioneine</span><span class="text-sm text-warm-gray font-grotesk">5mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'ergo'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">A powerful antioxidant your body actively transports to the cells that need it most &mdash; brain, liver, kidneys, and eyes. Often called the "longevity vitamin," ergothioneine protects against oxidative damage and supports cognitive health as you age.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <p class="font-grotesk text-xs uppercase tracking-widest text-deep-ink mb-3" style="letter-spacing: 0.15em;">Softgels</p>
                     <p class="text-sm text-warm-gray leading-relaxed mb-4">Four fat-soluble antioxidants <strong class="text-deep-ink">taken with breakfast</strong> for optimal absorption. They support your mitochondria, protect your vision, and defend against oxidative stress at the cellular level.</p>
-                    <ul style="border-top: 1px solid #E8E8E8;">
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">CoQ10</span><span class="text-sm text-warm-gray font-grotesk">200mg</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Lutein</span><span class="text-sm text-warm-gray font-grotesk">10mg</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Astaxanthin</span><span class="text-sm text-warm-gray font-grotesk">6mg</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Zeaxanthin</span><span class="text-sm text-warm-gray font-grotesk">2mg</span></li>
-                    </ul>
+                    <div class="space-y-0" x-data="{ open: null }" style="border-top: 1px solid #E8E8E8;">
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'coq10' ? null : 'coq10'" :aria-expanded="open === 'coq10'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">CoQ10</span><span class="text-sm text-warm-gray font-grotesk">200mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'coq10'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">Essential for mitochondrial ATP production &mdash; the energy currency of every cell. Your body makes less CoQ10 after age 30. Supports heart function, reduces fatigue, and protects cells from oxidative stress.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'lutein' ? null : 'lutein'" :aria-expanded="open === 'lutein'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Lutein</span><span class="text-sm text-warm-gray font-grotesk">10mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'lutein'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">A carotenoid that concentrates in your retina and brain. Lutein filters harmful blue light, protects your vision from age-related decline, and supports cognitive processing speed. Your body can't produce it &mdash; it must come from your diet.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'astax' ? null : 'astax'" :aria-expanded="open === 'astax'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Astaxanthin</span><span class="text-sm text-warm-gray font-grotesk">6mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'astax'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">One of nature's most powerful antioxidants &mdash; up to 6,000 times stronger than vitamin C. Derived from microalgae, astaxanthin crosses the blood-brain barrier to protect your brain and eyes. Also supports skin elasticity and exercise recovery.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'zeax' ? null : 'zeax'" :aria-expanded="open === 'zeax'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Zeaxanthin</span><span class="text-sm text-warm-gray font-grotesk">2mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'zeax'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">Works alongside lutein to form your eye's natural UV shield. Zeaxanthin concentrates in the center of your retina (the macula), where it protects against blue light damage and supports sharp central vision as you age.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- PM STEP -->
@@ -561,11 +676,41 @@
 
                     <p class="font-grotesk text-xs uppercase tracking-widest text-deep-ink mb-3" style="letter-spacing: 0.15em;">Capsules</p>
                     <p class="text-sm text-warm-gray leading-relaxed mb-4">Three targeted compounds timed for your body's overnight repair cycle. They <strong class="text-deep-ink">support deep sleep, calm the nervous system, and maintain joint health</strong> while you rest.</p>
-                    <ul style="border-top: 1px solid #E8E8E8;">
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Glucosamine</span><span class="text-sm text-warm-gray font-grotesk">750mg</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">L-theanine</span><span class="text-sm text-warm-gray font-grotesk">200mg</span></li>
-                        <li class="flex justify-between py-2.5" style="border-bottom: 1px solid #E8E8E8;"><span class="text-sm text-deep-ink">Lithium</span><span class="text-sm text-warm-gray font-grotesk">400mcg</span></li>
-                    </ul>
+                    <div class="space-y-0" x-data="{ open: null }" style="border-top: 1px solid #E8E8E8;">
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'glucosamine' ? null : 'glucosamine'" :aria-expanded="open === 'glucosamine'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Glucosamine</span><span class="text-sm text-warm-gray font-grotesk">750mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'glucosamine'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">A natural compound your body uses to build and repair cartilage. Glucosamine supports joint cushioning, flexibility, and comfort &mdash; especially important as cartilage production slows with age. Timed for evening when your body's repair processes are most active.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'ltheanine' ? null : 'ltheanine'" :aria-expanded="open === 'ltheanine'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">L-theanine</span><span class="text-sm text-warm-gray font-grotesk">200mg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'ltheanine'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">An amino acid found naturally in green tea that promotes calm without drowsiness. L-theanine increases alpha brain wave activity, helping you unwind and transition into restful sleep. Also supports focus and stress resilience during the day.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid #E8E8E8;">
+                            <button class="ingredient-tag system-row" @click="open = open === 'lithium' ? null : 'lithium'" :aria-expanded="open === 'lithium'">
+                                <span class="flex justify-between w-full"><span class="text-sm text-deep-ink">Lithium</span><span class="text-sm text-warm-gray font-grotesk">400mcg</span></span>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div x-show="open === 'lithium'" x-collapse x-cloak>
+                                <div class="ingredient-detail mt-0 mb-2" style="padding:16px 20px;">
+                                    <p class="text-sm text-warm-gray">At micro-dose levels (400mcg &mdash; far below therapeutic doses), lithium orotate supports neuroprotection and mood stability. Research links trace lithium intake to brain health and emotional resilience. A subtle but powerful addition to your evening routine.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
