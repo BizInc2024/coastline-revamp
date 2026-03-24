@@ -15,6 +15,9 @@
   <!-- Tailwind CSS (compiled, only classes used in cc-* sections) -->
   {{ 'cc-tailwind.css' | asset_url | stylesheet_tag }}
 
+  <!-- Alpine x-cloak: hide elements until Alpine initializes -->
+  <style>[x-cloak] { display: none !important; }</style>
+
   <!-- Loading state for add-to-cart buttons -->
   <style>
     [is="product-form"] button[type="submit"][aria-busy="true"] .btn-text {
