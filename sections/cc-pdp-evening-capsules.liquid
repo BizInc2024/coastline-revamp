@@ -564,7 +564,7 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'faq' -%}
             {%- assign faq_index = faq_index | plus: 1 -%}
-            <div {{ block.shopify_attributes }} class="accordion-content" style="border-top:1px solid var(--light-gray);">
+            <div {{ block.shopify_attributes }} style="border-top:1px solid var(--light-gray);">
               <button
                 @click="faqOpen === {{ faq_index }} ? faqOpen = null : faqOpen = {{ faq_index }}"
                 style="width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;background:none;border:none;cursor:pointer;text-align:left;font-family:'Space Grotesk', system-ui, sans-serif;font-size:1rem;font-weight:500;color:var(--deep-ink);line-height:1.4;"

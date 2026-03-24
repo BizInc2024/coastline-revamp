@@ -863,16 +863,16 @@
           <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline Complete System" style="max-height:320px;width:auto;margin:0 auto;display:block;object-fit:contain;" loading="lazy">
         </div>
         <div>
-          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px;">
+          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5) !important;margin-bottom:20px;">
             COMPLETE YOUR SYSTEM
           </p>
-          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:#FFFFFF;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:#FAF9F6 !important;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;">
             {{ section.settings.upsell_headline | default: "Get all 13 ingredients in one system" }}
           </h2>
-          <p style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;margin:0 0 24px;">
+          <p style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,0.65) !important;line-height:1.7;margin:0 0 24px;">
             {{ section.settings.upsell_subheadline | default: "The SoftGels are one part of the Coastline system. Add the Morning Blend and Evening Capsules to cover all 13 clinically dosed ingredients." }}
           </p>
-          <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FFFFFF;letter-spacing:0.05em;margin:0 0 32px;">
+          <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FFFFFF !important;letter-spacing:0.05em;margin:0 0 32px;">
             FREE GIFT: Glass shaker bottle included with your first order ($15 value)
           </p>
           <a href="/products/coastline-welcome-pack" style="display:inline-block;padding:18px 48px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:#FFFFFF;color:#062F3D;text-decoration:none;transition:opacity 0.3s ease;">
@@ -904,7 +904,7 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'faq' -%}
             {%- assign sg_faq_index = sg_faq_index | plus: 1 -%}
-            <div {{ block.shopify_attributes }} class="accordion-content" style="border-top:1px solid var(--light-gray);">
+            <div {{ block.shopify_attributes }} style="border-top:1px solid var(--light-gray);">
 
               <button
                 @click="sgFaqOpen === {{ sg_faq_index }} ? sgFaqOpen = null : sgFaqOpen = {{ sg_faq_index }}"
