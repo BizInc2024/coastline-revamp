@@ -433,7 +433,7 @@
           {%- assign default_index = i | minus: 1 -%}
           {%- assign fallback = logo_defaults[default_index] -%}
           {%- if logo_img != blank or fallback != blank -%}
-            <a href="{{ logo_url }}" style="text-decoration:none;{% if logo_url == '#' %}pointer-events:none;{% endif %}">
+            <a href="{{ logo_url }}" style="text-decoration:none;{% if logo_url == '#' %}pointer-events:none;{% endif %}" {% if i == 5 %}class="cc-logo-5th"{% endif %}>
               {%- if logo_img != blank -%}
                 <img src="{{ logo_img | image_url: width: 320 }}" alt="{{ logo_alts[default_index] }}" style="height:{{ logo_height }}px;width:auto;" loading="lazy">
               {%- elsif fallback != blank -%}
@@ -1477,6 +1477,11 @@
     color: var(--warm-gray);
     line-height: 1.6;
     font-family: 'Inter', sans-serif;
+  }
+
+  /* 5th press logo: center on own row on mobile */
+  @media (max-width: 767px) {
+    .cc-homepage .cc-logo-5th { grid-column: 1 / -1; justify-self: center; }
   }
 
   /* Divider image 2: mobile/desktop swap */
