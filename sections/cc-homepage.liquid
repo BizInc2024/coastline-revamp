@@ -448,125 +448,177 @@
   {%- comment -%} SECTION 3: PROBLEM — REMOVED (content preserved in schema settings) {%- endcomment -%}
 
   {%- comment -%} ============================================================
-     SECTION 4: SYSTEM / 3 STEPS (cc-home-05)
+     SECTION 4: SYSTEM / AM+PM (cc-home-05)
   ============================================================ {%- endcomment -%}
   <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section4_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section4_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
-    <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
-      {%- if section.settings.system_label != blank -%}
-        <span class="badge-minimal font-inter text-xs font-semibold tracking-widest uppercase text-warm-gray inline-block mb-5">
-          {{ section.settings.system_label }}
-        </span>
-      {%- endif -%}
-      {%- if section.settings.system_headline != blank -%}
-        <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-4" style="font-size: clamp(1.75rem, 4vw, 2.75rem);">
-          {{ section.settings.system_headline }}
-        </h2>
-      {%- endif -%}
-      <div class="editorial-divider hairline w-12 h-px bg-light-gray mx-auto mt-8 mb-12"></div>
+    <div class="max-w-5xl mx-auto px-8 lg:px-16">
+      <div class="text-center mb-12">
+        {%- if section.settings.system_label != blank -%}
+          <span class="badge-minimal font-inter text-xs font-semibold tracking-widest uppercase text-warm-gray inline-block mb-5">
+            {{ section.settings.system_label }}
+          </span>
+        {%- endif -%}
+        <div style="width:60px;height:1px;background:#0A0A0A;margin:0 auto 40px;"></div>
+        {%- if section.settings.system_headline != blank -%}
+          <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-4" style="font-size: clamp(1.75rem, 4vw, 2.75rem);">
+            {{ section.settings.system_headline }}
+          </h2>
+        {%- endif -%}
+        <p style="font-family:'Inter',sans-serif;font-size:1.05rem;color:var(--warm-gray);max-width:36rem;margin:0 auto;line-height:1.6;">Comprehensive support that's easy to stick with.</p>
+      </div>
 
-      {%- assign step_blocks = section.blocks | where: "type", "step" -%}
-      {%- if step_blocks.size > 0 -%}
-        <div x-data="{ openStep: null }" class="grid md:grid-cols-3 gap-10 text-center">
-          {%- assign step_counter = 0 -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'step' -%}
-              {%- assign step_counter = step_counter | plus: 1 -%}
-              <div {{ block.shopify_attributes }} class="flex flex-col items-center">
-                <div class="border-t border-light-gray w-full pt-6 mb-5">
-                  {%- if block.settings.image != blank -%}
-                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="600" height="600" class="max-w-[280px] w-full h-auto mx-auto block">
-                  {%- else -%}
-                    <img src="{{ block.settings.fallback_image_url | default: 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194' }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="600" height="600" class="max-w-[280px] w-full h-auto mx-auto block">
-                  {%- endif -%}
-                </div>
-                <span class="badge-minimal font-inter text-[0.65rem] font-semibold tracking-widest uppercase text-warm-gray inline-block mb-2">
-                  STEP {{ step_counter }}
-                </span>
-                {%- if block.settings.title != blank -%}
-                  <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-2">
-                    {{ block.settings.title }}
-                  </h3>
-                {%- endif -%}
-                {%- if block.settings.description != blank -%}
-                  <p class="font-inter text-[0.95rem] leading-relaxed text-warm-gray max-w-xs mx-auto">
-                    {{ block.settings.description }}
-                  </p>
-                {%- endif -%}
+      <!-- AM / PM two-column layout -->
+      <div class="cc-home-system-grid">
+        <!-- AM STEP -->
+        <div class="cc-home-system-am">
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--warm-gray);margin-bottom:16px;">Step 01 &mdash; Morning</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:500;color:var(--deep-ink);letter-spacing:-0.01em;margin-bottom:8px;">Morning Blend + Softgels</h3>
+          <p style="font-size:14px;color:var(--warm-gray);margin-bottom:32px;">With breakfast &middot; 10 ingredients</p>
 
-                <!-- Expandable details toggle -->
-                <button type="button" @click="openStep === {{ step_counter }} ? openStep = null : openStep = {{ step_counter }}" style="display:inline-flex !important;align-items:center !important;gap:6px !important;margin-top:28px !important;background:none !important;border:none !important;border-bottom:1px solid transparent !important;cursor:pointer !important;font-family:'Inter',sans-serif !important;font-size:13px !important;font-weight:400 !important;letter-spacing:0.02em !important;text-transform:none !important;color:var(--warm-gray) !important;transition:all 0.2s ease !important;padding:0 0 2px !important;line-height:1 !important;white-space:nowrap !important;" :style="openStep === {{ step_counter }} ? 'color:var(--deep-ink) !important;border-bottom-color:var(--deep-ink) !important' : ''">
-                  <span style="font-size:13px !important;font-weight:400 !important;text-transform:none !important;letter-spacing:0.02em !important;" x-text="openStep === {{ step_counter }} ? 'Hide details' : 'View details'"></span>
-                  <span :style="openStep === {{ step_counter }} ? 'transform:rotate(180deg)' : ''" style="font-size:10px !important;line-height:1 !important;display:inline-block !important;transition:transform 0.3s ease !important;vertical-align:middle !important;">&#9662;</span>
-                </button>
-                <div x-show="openStep === {{ step_counter }}" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak style="text-align:left;width:100%;margin-top:12px;">
-                  <div x-data="{ openIng: null, showDirections: false }" style="border-top:1px solid var(--light-gray);padding:20px 16px 16px;background:#FAFAF8;margin:0 -8px;">
-                    {%- if block.settings.ingredients_text != blank -%}
-                      <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin-bottom:10px;font-weight:600;">Ingredients</p>
-                      <div style="border-top:1px solid #f0f0f0;margin-bottom:16px;">
-                        {%- assign ing_lines = block.settings.ingredients_text | newline_to_br | split: "<br />" -%}
-                        {%- assign ing_index = 0 -%}
-                        {%- for line in ing_lines -%}
-                          {%- assign trimmed_line = line | strip -%}
-                          {%- if trimmed_line != blank -%}
-                            {%- assign parts = trimmed_line | split: "|" -%}
-                            {%- assign ing_name = parts[0] | strip -%}
-                            {%- assign ing_dose = parts[1] | strip -%}
-                            {%- assign ing_key = ing_name | downcase | replace: ' ', '-' | replace: '(', '' | replace: ')', '' -%}
-                            {%- capture ing_desc -%}
-                              {%- case ing_key -%}
-                                {%- when 'creatine-monohydrate' or 'creatine' -%}The most studied performance compound in sports science. Creatine buffers ATP levels in your muscles and brain, acting as a cellular energy reserve. Supports cognitive function under stress and helps maintain muscle strength as you age.
-                                {%- when 'glycine' -%}A key amino acid your body uses to build collagen, produce glutathione (your master antioxidant), and support healthy sleep cycles. Research shows glycine helps maintain cellular repair processes and may promote healthy aging at the metabolic level.
-                                {%- when 'inulin' -%}A prebiotic fiber that feeds the beneficial bacteria in your gut. At the clinical dose of 4g, inulin supports digestive regularity, nutrient absorption, and a healthy gut microbiome &mdash; the foundation of immune function and overall wellbeing.
-                                {%- when 'taurine' -%}The most abundant amino acid in your cells &mdash; and levels drop significantly with age. Taurine supports mitochondrial function, cardiovascular health, and endurance. A landmark 2023 study in Science linked taurine supplementation to healthier aging across multiple body systems.
-                                {%- when 'magnesium-as-citrate' or 'magnesium-citrate' or 'magnesium' -%}Involved in over 300 enzymatic reactions in your body, yet most adults are deficient. Magnesium supports muscle and nerve function, energy production, and cardiovascular health. It also plays a critical role in sleep quality and stress regulation.
-                                {%- when 'ergothioneine' -%}A powerful antioxidant your body actively transports to the cells that need it most &mdash; brain, liver, kidneys, and eyes. Often called the "longevity vitamin," ergothioneine protects against oxidative damage and supports cognitive health as you age.
-                                {%- when 'coenzyme-q10' or 'coq10' -%}Essential for mitochondrial ATP production &mdash; the energy currency of every cell. Your body makes less CoQ10 after age 30. Supports heart function, reduces fatigue, and protects cells from oxidative stress.
-                                {%- when 'lutein' -%}A carotenoid that concentrates in your retina and brain. Lutein filters harmful blue light, protects your vision from age-related decline, and supports cognitive processing speed. Your body can't produce it &mdash; it must come from your diet.
-                                {%- when 'astaxanthin' -%}One of nature's most powerful antioxidants &mdash; up to 6,000 times stronger than vitamin C. Derived from microalgae, astaxanthin crosses the blood-brain barrier to protect your brain and eyes. Also supports skin elasticity and exercise recovery.
-                                {%- when 'zeaxanthin' -%}Works alongside lutein to form your eye's natural UV shield. Zeaxanthin concentrates in the center of your retina (the macula), where it protects against blue light damage and supports sharp central vision as you age.
-                                {%- when 'glucosamine-sulfate' or 'glucosamine' -%}A natural compound your body uses to build and repair cartilage. Glucosamine supports joint cushioning, flexibility, and comfort &mdash; especially important as cartilage production slows with age.
-                                {%- when 'l-theanine' -%}An amino acid found naturally in green tea that promotes calm without drowsiness. L-theanine increases alpha brain wave activity, helping you unwind and transition into restful sleep. Also supports focus and stress resilience during the day.
-                                {%- when 'lithium-orotate' or 'lithium' -%}At micro-dose levels (400mcg &mdash; far below therapeutic doses), lithium orotate supports neuroprotection and mood stability. Research links trace lithium intake to brain health and emotional resilience.
-                              {%- endcase -%}
-                            {%- endcapture -%}
-                            {%- assign ing_desc_stripped = ing_desc | strip -%}
-                            <div style="border-bottom:1px solid #f0f0f0;">
-                              <button type="button" @click="openIng = openIng === '{{ ing_key }}-{{ step_counter }}' ? null : '{{ ing_key }}-{{ step_counter }}'" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:8px 0;font-family:'Inter',sans-serif;transition:opacity 0.2s ease;" :style="openIng === '{{ ing_key }}-{{ step_counter }}' ? '' : ''">
-                                <span style="font-size:14px;color:var(--deep-ink);">{{ ing_name }}</span>
-                                <span style="display:flex;align-items:center;gap:8px;">
-                                  <span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">{{ ing_dose }}</span>
-                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="openIng === '{{ ing_key }}-{{ step_counter }}' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-                                </span>
-                              </button>
-                              {%- if ing_desc_stripped != blank -%}
-                                <div x-show="openIng === '{{ ing_key }}-{{ step_counter }}'" x-collapse x-cloak>
-                                  <div style="padding:8px 0 12px;font-size:13px;color:var(--warm-gray);line-height:1.6;">{{ ing_desc_stripped }}</div>
-                                </div>
-                              {%- endif -%}
-                            </div>
-                            {%- assign ing_index = ing_index | plus: 1 -%}
-                          {%- endif -%}
-                        {%- endfor -%}
-                      </div>
-                    {%- endif -%}
-                    {%- if block.settings.directions != blank -%}
-                      <div style="border-top:1px solid #f0f0f0;">
-                        <button type="button" @click="showDirections = !showDirections" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;padding:10px 0;font-family:'Inter',sans-serif;">
-                          <span style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);font-weight:600;">Directions</span>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="showDirections ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                        <div x-show="showDirections" x-collapse x-cloak>
-                          <p style="font-size:14px;color:var(--deep-ink);line-height:1.6;padding-bottom:12px;">{{ block.settings.directions }}</p>
-                        </div>
-                      </div>
-                    {%- endif -%}
-                  </div>
-                </div>
-              </div>
+          <div style="overflow:hidden;margin-bottom:40px;aspect-ratio:1/1;">
+            {%- assign step_am_blend = section.blocks | where: "type", "step" | first -%}
+            {%- if step_am_blend.settings.image != blank -%}
+              <img src="{{ step_am_blend.settings.image | image_url: width: 600 }}" alt="Morning Blend" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            {%- else -%}
+              <img src="{{ step_am_blend.settings.fallback_image_url | default: 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194' }}" alt="Morning Blend" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
             {%- endif -%}
-          {%- endfor -%}
+          </div>
+
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--deep-ink);margin-bottom:12px;">Morning Blend</p>
+          <p style="font-size:14px;color:var(--warm-gray);line-height:1.6;margin-bottom:16px;">A precision-dosed powder with the building blocks your cells need most. <strong style="color:var(--deep-ink);">Mix with water at breakfast</strong> for sustained energy, sharper focus, and metabolic support throughout the day.</p>
+          <div x-data="{ open: null }" style="border-top:1px solid #E8E8E8;margin-bottom:32px;">
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'creatine' ? null : 'creatine'" :aria-expanded="open === 'creatine'">
+                <span style="font-size:14px;color:var(--deep-ink);">Creatine</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">5.25g</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'creatine' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'creatine'" x-collapse x-cloak><div class="cc-home-ing-detail">The most studied performance compound in sports science. Creatine buffers ATP levels in your muscles and brain, acting as a cellular energy reserve. Supports cognitive function under stress and helps maintain muscle strength as you age.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'glycine' ? null : 'glycine'" :aria-expanded="open === 'glycine'">
+                <span style="font-size:14px;color:var(--deep-ink);">Glycine</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">5g</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'glycine' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'glycine'" x-collapse x-cloak><div class="cc-home-ing-detail">A key amino acid your body uses to build collagen, produce glutathione (your master antioxidant), and support healthy sleep cycles. Research shows glycine helps maintain cellular repair processes and may promote healthy aging at the metabolic level.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'inulin' ? null : 'inulin'" :aria-expanded="open === 'inulin'">
+                <span style="font-size:14px;color:var(--deep-ink);">Inulin</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">4g</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'inulin' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'inulin'" x-collapse x-cloak><div class="cc-home-ing-detail">A prebiotic fiber that feeds the beneficial bacteria in your gut. At the clinical dose of 4g, inulin supports digestive regularity, nutrient absorption, and a healthy gut microbiome &mdash; the foundation of immune function and overall wellbeing.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'taurine' ? null : 'taurine'" :aria-expanded="open === 'taurine'">
+                <span style="font-size:14px;color:var(--deep-ink);">Taurine</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">3.05g</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'taurine' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'taurine'" x-collapse x-cloak><div class="cc-home-ing-detail">The most abundant amino acid in your cells &mdash; and levels drop significantly with age. Taurine supports mitochondrial function, cardiovascular health, and endurance. A landmark 2023 study in Science linked taurine supplementation to healthier aging across multiple body systems.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'magnesium' ? null : 'magnesium'" :aria-expanded="open === 'magnesium'">
+                <span style="font-size:14px;color:var(--deep-ink);">Magnesium</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">150mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'magnesium' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'magnesium'" x-collapse x-cloak><div class="cc-home-ing-detail">Involved in over 300 enzymatic reactions in your body, yet most adults are deficient. Magnesium supports muscle and nerve function, energy production, and cardiovascular health. It also plays a critical role in sleep quality and stress regulation.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'ergo' ? null : 'ergo'" :aria-expanded="open === 'ergo'">
+                <span style="font-size:14px;color:var(--deep-ink);">Ergothioneine</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">5mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'ergo' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'ergo'" x-collapse x-cloak><div class="cc-home-ing-detail">A powerful antioxidant your body actively transports to the cells that need it most &mdash; brain, liver, kidneys, and eyes. Often called the "longevity vitamin," ergothioneine protects against oxidative damage and supports cognitive health as you age.</div></div>
+            </div>
+          </div>
+
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--deep-ink);margin-bottom:12px;">Softgels</p>
+          <p style="font-size:14px;color:var(--warm-gray);line-height:1.6;margin-bottom:16px;">Four fat-soluble antioxidants <strong style="color:var(--deep-ink);">taken with breakfast</strong> for optimal absorption. They support your mitochondria, protect your vision, and defend against oxidative stress at the cellular level.</p>
+          <div x-data="{ open: null }" style="border-top:1px solid #E8E8E8;">
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'coq10' ? null : 'coq10'" :aria-expanded="open === 'coq10'">
+                <span style="font-size:14px;color:var(--deep-ink);">CoQ10</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">200mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'coq10' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'coq10'" x-collapse x-cloak><div class="cc-home-ing-detail">Essential for mitochondrial ATP production &mdash; the energy currency of every cell. Your body makes less CoQ10 after age 30. Supports heart function, reduces fatigue, and protects cells from oxidative stress.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'lutein' ? null : 'lutein'" :aria-expanded="open === 'lutein'">
+                <span style="font-size:14px;color:var(--deep-ink);">Lutein</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">10mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'lutein' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'lutein'" x-collapse x-cloak><div class="cc-home-ing-detail">A carotenoid that concentrates in your retina and brain. Lutein filters harmful blue light, protects your vision from age-related decline, and supports cognitive processing speed. Your body can't produce it &mdash; it must come from your diet.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'astax' ? null : 'astax'" :aria-expanded="open === 'astax'">
+                <span style="font-size:14px;color:var(--deep-ink);">Astaxanthin</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">6mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'astax' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'astax'" x-collapse x-cloak><div class="cc-home-ing-detail">One of nature's most powerful antioxidants &mdash; up to 6,000 times stronger than vitamin C. Derived from microalgae, astaxanthin crosses the blood-brain barrier to protect your brain and eyes. Also supports skin elasticity and exercise recovery.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'zeax' ? null : 'zeax'" :aria-expanded="open === 'zeax'">
+                <span style="font-size:14px;color:var(--deep-ink);">Zeaxanthin</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">2mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'zeax' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'zeax'" x-collapse x-cloak><div class="cc-home-ing-detail">Works alongside lutein to form your eye's natural UV shield. Zeaxanthin concentrates in the center of your retina (the macula), where it protects against blue light damage and supports sharp central vision as you age.</div></div>
+            </div>
+          </div>
         </div>
-      {%- endif -%}
+
+        <!-- PM STEP -->
+        <div class="cc-home-system-pm">
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--warm-gray);margin-bottom:16px;">Step 02 &mdash; Evening</p>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:500;color:var(--deep-ink);letter-spacing:-0.01em;margin-bottom:8px;">Evening Capsules</h3>
+          <p style="font-size:14px;color:var(--warm-gray);margin-bottom:32px;">Before bed &middot; 3 ingredients</p>
+
+          <div style="overflow:hidden;margin-bottom:40px;aspect-ratio:1/1;">
+            {%- assign step_blocks_all = section.blocks | where: "type", "step" -%}
+            {%- assign step_pm = step_blocks_all | last -%}
+            {%- if step_pm.settings.image != blank -%}
+              <img src="{{ step_pm.settings.image | image_url: width: 600 }}" alt="Evening Capsules" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            {%- else -%}
+              <img src="{{ step_pm.settings.fallback_image_url | default: 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766' }}" alt="Evening Capsules" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+            {%- endif -%}
+          </div>
+
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--deep-ink);margin-bottom:12px;">Capsules</p>
+          <p style="font-size:14px;color:var(--warm-gray);line-height:1.6;margin-bottom:16px;">Three targeted compounds timed for your body's overnight repair cycle. They <strong style="color:var(--deep-ink);">support deep sleep, calm the nervous system, and maintain joint health</strong> while you rest.</p>
+          <div x-data="{ open: null }" style="border-top:1px solid #E8E8E8;">
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'glucosamine' ? null : 'glucosamine'" :aria-expanded="open === 'glucosamine'">
+                <span style="font-size:14px;color:var(--deep-ink);">Glucosamine</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">750mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'glucosamine' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'glucosamine'" x-collapse x-cloak><div class="cc-home-ing-detail">A natural compound your body uses to build and repair cartilage. Glucosamine supports joint cushioning, flexibility, and comfort &mdash; especially important as cartilage production slows with age. Timed for evening when your body's repair processes are most active.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'ltheanine' ? null : 'ltheanine'" :aria-expanded="open === 'ltheanine'">
+                <span style="font-size:14px;color:var(--deep-ink);">L-theanine</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">200mg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'ltheanine' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'ltheanine'" x-collapse x-cloak><div class="cc-home-ing-detail">An amino acid found naturally in green tea that promotes calm without drowsiness. L-theanine increases alpha brain wave activity, helping you unwind and transition into restful sleep. Also supports focus and stress resilience during the day.</div></div>
+            </div>
+            <div style="border-bottom:1px solid #E8E8E8;">
+              <button type="button" class="cc-home-ing-btn" @click="open = open === 'lithium' ? null : 'lithium'" :aria-expanded="open === 'lithium'">
+                <span style="font-size:14px;color:var(--deep-ink);">Lithium</span>
+                <span style="display:flex;align-items:center;gap:8px;"><span style="font-size:14px;color:var(--warm-gray);font-family:'Space Grotesk',sans-serif;">400mcg</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--warm-gray);transition:transform 0.3s ease;" :style="open === 'lithium' ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></span>
+              </button>
+              <div x-show="open === 'lithium'" x-collapse x-cloak><div class="cc-home-ing-detail">At micro-dose levels (400mcg &mdash; far below therapeutic doses), lithium orotate supports neuroprotection and mood stability. Research links trace lithium intake to brain health and emotional resilience. A subtle but powerful addition to your evening routine.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge Row -->
+      <div style="text-align:center;margin-top:48px;">
+        <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--warm-gray);margin-bottom:24px;">Vegan &middot; Sugar-Free &middot; Caffeine-Free</p>
+        <div style="display:flex;justify-content:center;align-items:center;gap:24px;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+          <img src="{{ 'cc-nsf-certified.png' | asset_url }}" alt="NSF Certified" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Money-Back Guarantee" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
+        </div>
+      </div>
 
       <div class="mt-12" style="text-align:center;">
         <a href="{{ section.settings.system_cta_url | default: '#cc-home-pricing' }}" style="display:inline-block;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;">
@@ -1654,6 +1706,47 @@
   /* Paragraph max-width override (same fix as landing pages) */
   .cc-homepage p {
     max-width: none !important;
+  }
+
+  /* System section AM/PM grid */
+  .cc-homepage .cc-home-system-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cc-homepage .cc-home-system-pm { padding-top: 1rem; }
+  @media (min-width: 768px) {
+    .cc-homepage .cc-home-system-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .cc-homepage .cc-home-system-am {
+      border-right: 1px solid #E8E8E8;
+      padding-right: 3rem;
+    }
+    .cc-homepage .cc-home-system-pm { padding-top: 0; padding-left: 3rem; }
+  }
+
+  /* System ingredient button & detail */
+  .cc-homepage .cc-home-ing-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 0;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.2s ease;
+  }
+  .cc-homepage .cc-home-ing-btn:hover { opacity: 0.6; }
+  .cc-homepage .cc-home-ing-detail {
+    padding: 8px 0 14px;
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
   }
 
   /* Divider image 2: mobile/desktop swap */
