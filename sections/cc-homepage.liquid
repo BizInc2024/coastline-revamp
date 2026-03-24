@@ -419,8 +419,10 @@
     <div class="max-w-5xl mx-auto px-6 text-center">
       <p class="font-inter text-[10px] tracking-[0.2em] uppercase text-warm-gray font-medium mb-8">{{ section.settings.press_label | default: "AS FEATURED IN" }}</p>
       <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;align-items:center;justify-items:center;opacity:0.4;filter:grayscale(100%);" class="md:!flex md:!flex-nowrap md:!justify-center md:!items-center md:!gap-16">
-        {%- assign logo_defaults = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109,,' | split: ',' -%}
-        {%- assign logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly,Press logo 5,Press logo 6' | split: ',' -%}
+        {%- capture man_of_many_url %}{{ 'cc-v8-logo-man-of-many.png' | asset_url }}{% endcapture -%}
+        {%- assign logo_defaults_str = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109,' | append: man_of_many_url | append: ',' -%}
+        {%- assign logo_defaults = logo_defaults_str | split: ',' -%}
+        {%- assign logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly,Man of Many,Press logo 6' | split: ',' -%}
         {%- for i in (1..6) -%}
           {%- assign logo_key = 'logo_' | append: i -%}
           {%- assign url_key = 'logo_' | append: i | append: '_url' -%}
@@ -618,6 +620,91 @@
   </section>
 
 
+
+  {%- comment -%} ============================================================
+     DO THE MATH: Cost comparison
+  ============================================================ {%- endcomment -%}
+  <section class="reveal" style="background-color:#0A0A0A;padding-top:80px;padding-bottom:80px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+      <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555555;display:block;margin-bottom:20px;">THE VALUE</span>
+      <div style="width:60px;height:1px;background:#333333;margin:0 auto 40px;"></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:500;color:#FAF9F6;line-height:1.15;letter-spacing:-0.02em;font-size:clamp(28px,4vw,44px);margin-bottom:16px;">Do the math.</h2>
+      <p style="font-family:'Inter',sans-serif;font-size:17px;color:#9A9A9A;line-height:1.7;max-width:32rem;margin:0 auto 48px;">What it would cost to buy everything separately.</p>
+
+      <div style="max-width:480px;margin:0 auto;text-align:left;">
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Creatine Monohydrate <span style="color:#555555;font-size:12px;">5.25g/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$25</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Glycine <span style="color:#555555;font-size:12px;">5g/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$15</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Inulin <span style="color:#555555;font-size:12px;">4g/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$12</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Taurine <span style="color:#555555;font-size:12px;">3.05g/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$18</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Magnesium Citrate <span style="color:#555555;font-size:12px;">150mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$10</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Ergothioneine <span style="color:#555555;font-size:12px;">5mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$35</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">CoQ10 <span style="color:#555555;font-size:12px;">200mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$30</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Lutein <span style="color:#555555;font-size:12px;">10mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$15</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Astaxanthin <span style="color:#555555;font-size:12px;">6mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$20</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Zeaxanthin <span style="color:#555555;font-size:12px;">2mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$12</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Glucosamine <span style="color:#555555;font-size:12px;">750mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$15</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #222222;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">L-Theanine <span style="color:#555555;font-size:12px;">200mg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$12</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #333333;">
+          <span style="font-family:'Inter',sans-serif;font-size:14px;color:#9A9A9A;">Lithium Orotate <span style="color:#555555;font-size:12px;">400mcg/day</span></span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:14px;color:#FAF9F6;">$10</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;padding:20px 0;border-bottom:2px solid #333333;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:500;color:#FAF9F6;">Bought separately</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;color:#FAF9F6;text-decoration:line-through;text-decoration-color:#555555;">$229/mo</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:20px 0;">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;color:#FAF9F6;">Coastline</span>
+          <div style="text-align:right;">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:#FAF9F6;">$99/mo</span>
+            <span style="display:block;font-family:'Inter',sans-serif;font-size:13px;color:#1A3A2F;font-weight:600;margin-top:4px;">Save $130+/month</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;">
+        <a href="#cc-home-pricing" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#FAF9F6;border:1px solid #FAF9F6;text-decoration:none;transition:all 0.3s ease;background:transparent;">SEE PRICING</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Divider image between System and Benefits -->
   <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
     {%- if section.settings.divider_problem_system != blank -%}
@@ -699,6 +786,77 @@
           {{ section.settings.benefits_link_text | default: "EXPLORE ALL THE BENEFITS" }}
         </a>
       </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 11: FOUNDER NARRATIVE (cc-home-14)
+  ============================================================ {%- endcomment -%}
+  <section class="reveal" style="background-color:#0A0A0A;padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+      <span class="badge-minimal inline-block mb-6 tracking-wider text-xs uppercase" style="color:#555555 !important;">
+        {{ section.settings.founder_label | default: "OUR APPROACH" }}
+      </span>
+      <h2 class="font-grotesk font-medium leading-tight mb-10" style="font-size: clamp(28px, 4vw, 44px);color:#FAF9F6 !important;">
+        {{ section.settings.founder_headline | default: "Built by researchers, not marketers" }}
+      </h2>
+      <div class="editorial-divider hairline w-12 h-px mx-auto mb-10" style="background:#333333;"></div>
+      <div class="leading-relaxed max-w-2xl mx-auto mb-12" style="font-size: clamp(16px, 2vw, 18px); line-height: 1.75; color:#9A9A9A !important;">
+        {{ section.settings.founder_body | default: "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers." | newline_to_br }}
+      </div>
+
+      <!-- Expert portraits -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:640px;margin:0 auto 48px;" class="cc-expert-grid">
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_1 != blank -%}
+            <img src="{{ section.settings.expert_image_1 | image_url: width: 200 }}" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Greg Potter, PhD</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:#9A9A9A;letter-spacing:0.05em;">Sleep & Circadian Health</p>
+        </div>
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_2 != blank -%}
+            <img src="{{ section.settings.expert_image_2 | image_url: width: 200 }}" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Dr. Jacqueline Jacques, ND</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:#9A9A9A;letter-spacing:0.05em;">Clinical Naturopathy</p>
+        </div>
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_3 != blank -%}
+            <img src="{{ section.settings.expert_image_3 | image_url: width: 200 }}" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Dr. Nicolas Verhoeven, PhD</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:#9A9A9A;letter-spacing:0.05em;">Molecular Medicine</p>
+        </div>
+        <div style="text-align:center;">
+          {%- if section.settings.expert_image_4 != blank -%}
+            <img src="{{ section.settings.expert_image_4 | image_url: width: 200 }}" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+          {%- endif -%}
+          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Chris Pollock, MD</p>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;color:#9A9A9A;letter-spacing:0.05em;">Clinical Medicine</p>
+        </div>
+      </div>
+
+      {%- if section.settings.founder_link_text != blank and section.settings.founder_link_url != blank -%}
+        {%- assign _furl = section.settings.founder_link_url -%}
+        {%- assign _furl_start = _furl | slice: 0 -%}
+        {%- assign _furl_proto = _furl | slice: 0, 4 -%}
+        {%- if _furl_start != '/' and _furl_start != '#' and _furl_proto != 'http' -%}
+          {%- assign _furl = 'https://' | append: _furl -%}
+        {%- endif -%}
+        <a href="{{ _furl }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#FAF9F6;border:1px solid #FAF9F6;text-decoration:none;transition:all 0.3s ease;background:transparent;">
+          {{ section.settings.founder_link_text }}
+        </a>
+      {%- endif -%}
     </div>
   </section>
 
@@ -802,354 +960,6 @@
   </section>
 
 
-  {%- comment -%} === DIVIDER IMAGE 1: Between Reviews & Ingredients === {%- endcomment -%}
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')">
-    {%- if section.settings.divider_image_1 != blank -%}
-      <img src="{{ section.settings.divider_image_1 | image_url: width: 1920 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
-    {%- else -%}
-      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785" alt="Coastline bottle on the coast" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
-    {%- endif -%}
-  </div>
-
-  {%- comment -%} ============================================================
-     SECTION 7: INGREDIENTS ACCORDION (cc-home-10)
-  ============================================================ {%- endcomment -%}
-  <section class="bg-parchment" style="padding-top:{{ section.settings.section7_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section7_padding_bottom | default: 80 }}px;">
-    <div class="max-w-3xl mx-auto px-8 lg:px-16">
-
-      <div class="reveal mb-16" x-intersect.once="$el.classList.add('visible')">
-        <p class="badge-minimal mb-5">{{ section.settings.ingredients_label | default: "THE INGREDIENTS" }}</p>
-        <div class="editorial-divider mb-8"></div>
-        <h2 style="font-family:'Space Grotesk',sans-serif !important;font-weight:500 !important;color:var(--deep-ink) !important;line-height:1.15 !important;letter-spacing:-0.02em !important;font-size:clamp(1.75rem,4vw,2.75rem) !important;margin-bottom:24px;">{{ section.settings.ingredients_headline | default: "13 science-backed ingredients, zero filler" }}</h2>
-        <p class="text-warm-gray font-inter text-[17px] leading-relaxed max-w-xl">
-          {{ section.settings.ingredients_subheadline | default: "Every ingredient is clinically validated, transparently dosed, and chosen for a reason." }}
-        </p>
-      </div>
-
-      <div x-data="{ open: null }" class="reveal mb-16" x-intersect.once="$el.classList.add('visible')">
-
-        <!-- UNIFIED INGREDIENT LIST -->
-        {%- capture badge_morning -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">MORNING BLEND</span>{%- endcapture -%}
-        {%- capture badge_softgel -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">MORNING SOFTGELS</span>{%- endcapture -%}
-        {%- capture badge_evening -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">EVENING CAPSULES</span>{%- endcapture -%}
-        {%- capture badge_split -%}<span style="display:inline-block;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warm-gray);background:#F0EFEC;padding:2px 8px;margin-top:4px;">MORNING + EVENING</span>{%- endcapture -%}
-
-        {%- capture chevron_svg -%}<svg width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>{%- endcapture -%}
-
-        <!-- 1. Creatine Monohydrate -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'creatine' ? open = null : open = 'creatine'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945" alt="Creatine Monohydrate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Creatine Monohydrate</span>
-                  <span class="font-inter text-sm text-warm-gray">5.25 g</span>
-                </div>
-                {{ badge_morning }}
-              </div>
-            </div>
-            <svg :style="open === 'creatine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'creatine'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Supports muscle strength, bone density, and cognitive function under stress. One of the most studied supplements with an excellent safety profile.
-            </p>
-          </div>
-        </div>
-
-        <!-- 2. Taurine -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'taurine' ? open = null : open = 'taurine'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425" alt="Taurine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <span class="font-grotesk font-medium text-deep-ink text-base">Taurine</span>
-                <span class="font-inter text-sm text-warm-gray">3.05 g</span>
-                 <br>{{ badge_morning }}
-              </div>
-            </div>
-            <svg :style="open === 'taurine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'taurine'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Supports cardiovascular health, reduces blood pressure and inflammation, and improves metabolic markers including blood sugar and cholesterol.
-            </p>
-          </div>
-        </div>
-
-        <!-- 3. Glycine -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'glycine' ? open = null : open = 'glycine'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227" alt="Glycine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Glycine</span>
-                  <span class="font-inter text-sm text-warm-gray">5 g</span>
-                </div>
-                {{ badge_morning }}
-              </div>
-            </div>
-            <svg :style="open === 'glycine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'glycine'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Improves sleep quality and reduces daytime sleepiness. A precursor to glutathione, your body's master antioxidant, and supports blood sugar control.
-            </p>
-          </div>
-        </div>
-
-        <!-- 4. Ergothioneine -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'ergo' ? open = null : open = 'ergo'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277" alt="Ergothioneine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Ergothioneine</span>
-                  <span class="font-inter text-sm text-warm-gray">5 mg</span>
-                </div>
-                {{ badge_morning }}
-              </div>
-            </div>
-            <svg :style="open === 'ergo' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'ergo'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              A powerful cellular antioxidant that crosses the blood-brain barrier. Clinically shown to improve cognitive function and increase NAD+ levels.
-            </p>
-          </div>
-        </div>
-
-        <!-- 5. Coenzyme Q10 -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'coq10' ? open = null : open = 'coq10'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360" alt="Coenzyme Q10" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Coenzyme Q10</span>
-                  <span class="font-inter text-sm text-warm-gray">200 mg</span>
-                </div>
-                {{ badge_softgel }}
-              </div>
-            </div>
-            <svg :style="open === 'coq10' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'coq10'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.
-            </p>
-          </div>
-        </div>
-
-        <!-- 6. Astaxanthin -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'astax' ? open = null : open = 'astax'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Astaxanthin</span>
-                  <span class="font-inter text-sm text-warm-gray">6 mg</span>
-                </div>
-                {{ badge_softgel }}
-              </div>
-            </div>
-            <svg :style="open === 'astax' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'astax'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.
-            </p>
-          </div>
-        </div>
-
-        <!-- 7. Magnesium Citrate -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'mag' ? open = null : open = 'mag'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678" alt="Magnesium Citrate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Magnesium Citrate</span>
-                  <span class="font-inter text-sm text-warm-gray">150 mg</span>
-                </div>
-                {{ badge_morning }}
-              </div>
-            </div>
-            <svg :style="open === 'mag' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'mag'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Essential mineral for 300+ enzymatic reactions. Supports blood pressure, sleep onset, muscle recovery, and stress reduction.
-            </p>
-          </div>
-        </div>
-
-        <!-- 8. L-Theanine -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'theanine' ? open = null : open = 'theanine'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312" alt="L-Theanine" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">L-Theanine</span>
-                  <span class="font-inter text-sm text-warm-gray">200 mg</span>
-                </div>
-                {{ badge_evening }}
-              </div>
-            </div>
-            <svg :style="open === 'theanine' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'theanine'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.
-            </p>
-          </div>
-        </div>
-
-        <!-- 9. Glucosamine Sulfate -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'gluc' ? open = null : open = 'gluc'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Glucosamine Sulfate</span>
-                  <span class="font-inter text-sm text-warm-gray">1,500 mg</span>
-                </div>
-                {{ badge_split }}
-              </div>
-            </div>
-            <svg :style="open === 'gluc' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'gluc'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Supports joint health, reduces joint space narrowing, and is associated with reduced all-cause mortality in population studies. Split-dosed AM/PM.
-            </p>
-          </div>
-        </div>
-
-        <!-- 10. Lutein -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'lutein' ? open = null : open = 'lutein'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Lutein" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Lutein</span>
-                  <span class="font-inter text-sm text-warm-gray">10 mg</span>
-                </div>
-                {{ badge_softgel }}
-              </div>
-            </div>
-            <svg :style="open === 'lutein' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'lutein'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.
-            </p>
-          </div>
-        </div>
-
-        <!-- 11. Zeaxanthin -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'zeax' ? open = null : open = 'zeax'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Zeaxanthin" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Zeaxanthin</span>
-                  <span class="font-inter text-sm text-warm-gray">2 mg</span>
-                </div>
-                {{ badge_softgel }}
-              </div>
-            </div>
-            <svg :style="open === 'zeax' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'zeax'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.
-            </p>
-          </div>
-        </div>
-
-        <!-- 12. Inulin -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'inulin' ? open = null : open = 'inulin'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618" alt="Inulin" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Inulin</span>
-                  <span class="font-inter text-sm text-warm-gray">4 g</span>
-                </div>
-                {{ badge_morning }}
-              </div>
-            </div>
-            <svg :style="open === 'inulin' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'inulin'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              Prebiotic fiber that feeds beneficial gut bacteria, enhances mineral absorption, supports cognition, and improves bowel regularity.
-            </p>
-          </div>
-        </div>
-
-        <!-- 13. Lithium Orotate -->
-        <div class="hairline"></div>
-        <div class="py-5 cursor-pointer" @click="open === 'lithium' ? open = null : open = 'lithium'">
-          <div class="flex justify-between items-center">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" style="width:48px;height:48px;object-fit:cover;border-radius:0;flex-shrink:0;" loading="lazy">
-              <div>
-                <div class="flex items-baseline gap-2">
-                  <span class="font-grotesk font-medium text-deep-ink text-base">Lithium Orotate</span>
-                  <span class="font-inter text-sm text-warm-gray">400 mcg</span>
-                </div>
-                {{ badge_evening }}
-              </div>
-            </div>
-            <svg :style="open === 'lithium' ? 'transform: rotate(45deg)' : ''" width="16" height="16" class="flex-shrink-0 transition-transform duration-300" style="width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="2" x2="8" y2="14"></line><line x1="2" y1="8" x2="14" y2="8"></line></svg>
-          </div>
-          <div x-show="open === 'lithium'" x-collapse x-cloak>
-            <p class="text-warm-gray font-inter text-[15px] leading-relaxed mt-3 pr-8">
-              At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.
-            </p>
-          </div>
-        </div>
-        <div class="hairline"></div>
-      </div>
-
-      <div class="reveal text-center" x-intersect.once="$el.classList.add('visible')">
-        <a href="{{ section.settings.ingredients_link_url | default: '/pages/ingredients' }}" style="font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none;border-bottom:1px solid var(--deep-ink);padding-bottom:2px;">{{ section.settings.ingredients_link_text | default: "LEARN MORE ABOUT EACH INGREDIENT" }}</a>
-      </div>
-    </div>
-  </section>
-
-
-  {%- comment -%} SAND TEXTURE BREAKER {%- endcomment -%}
-  <div style="width:100%;overflow:hidden;">
-    {%- if section.settings.sand_breaker_image != blank -%}
-      <img src="{{ section.settings.sand_breaker_image | image_url: width: 1920 }}" alt="" style="width:100%;height:240px;object-fit:cover;display:block;" loading="lazy">
-    {%- else -%}
-      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png?v=1742830305" alt="" style="width:100%;height:240px;object-fit:cover;display:block;" loading="lazy">
-    {%- endif -%}
-  </div>
 
   {%- comment -%} ============================================================
      SECTION 8: VIDEO (cc-home-11)
@@ -1210,108 +1020,6 @@
     </div>
   </section>
   {%- endif -%}
-
-
-  {%- comment -%} ============================================================
-     SECTION 9: COMPARISON TABLE (cc-home-12)
-  ============================================================ {%- endcomment -%}
-  <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section9_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section9_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
-    <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
-
-      {%- if section.settings.comparison_label != blank -%}
-        <span class="badge-minimal">{{ section.settings.comparison_label }}</span>
-      {%- endif -%}
-      {%- if section.settings.comparison_headline != blank -%}
-        <h2 class="text-deep-ink max-w-2xl mx-auto mt-4 mb-12 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);">
-          {{ section.settings.comparison_headline }}
-        </h2>
-      {%- endif -%}
-
-      {%- comment -%} SVG icon captures for comparison table {%- endcomment -%}
-      {%- capture svg_check -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="12" fill="#1A3A2F"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
-      {%- capture svg_empty -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="11" stroke="#E8E8E8" stroke-width="2" fill="none"/></svg>{%- endcapture -%}
-
-      <p class="text-center mb-4 md:hidden" style="font-size:11px;color:var(--warm-gray);letter-spacing:0.1em;">SCROLL RIGHT TO COMPARE &rarr;</p>
-      <div class="overflow-x-auto" style="-webkit-overflow-scrolling:touch;">
-        <table style="min-width:520px;width:100%;border-collapse:collapse;">
-          <thead>
-            <tr>
-              <th style="padding:20px 12px;text-align:left;min-width:140px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;"></th>
-              <th style="padding:20px 12px;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.05em;min-width:90px;text-align:center;">COASTLINE</th>
-              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">NOVOS</th>
-              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">BLUEPRINT</th>
-              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">AG1</th>
-              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">TIMELINE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-top:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Active ingredients</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;">13</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">12</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">40+</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">75</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">1</td>
-            </tr>
-            <tr style="border-top:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Clinical dosing</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-            </tr>
-            <tr style="border-top:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Full transparency</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-            </tr>
-            <tr style="border-top:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 12 hallmarks</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-            </tr>
-            <tr style="border-top:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">AM/PM system</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-            </tr>
-            <tr style="border-top:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 11 body systems</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
-            </tr>
-            <tr style="border-top:1px solid var(--light-gray);border-bottom:1px solid var(--light-gray);">
-              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Price/month</td>
-              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);">$99</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$109</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$179+</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$79</td>
-              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$125</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="text-align:center;max-width:520px;margin:24px auto 0;font-size:15px;color:var(--deep-ink);line-height:1.6;">
-        {{ section.settings.comparison_footnote | default: "More ingredients doesn't mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label." }}
-      </p>
-      <p style="text-align:center;margin-top:16px;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">
-        Comparison based on publicly available product information. Prices reflect monthly subscription rates.
-      </p>
-    </div>
-  </section>
 
 
   {%- comment -%} === DIVIDER IMAGE 2: Between Comparison & Pricing (separate mobile/desktop) === {%- endcomment -%}
@@ -1485,74 +1193,106 @@
   </div>
 
   {%- comment -%} ============================================================
-     SECTION 11: FOUNDER NARRATIVE (cc-home-14)
+     SECTION 9: COMPARISON TABLE (cc-home-12)
   ============================================================ {%- endcomment -%}
-  <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
-    <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
-      <span class="badge-minimal inline-block mb-6 tracking-wider text-xs text-warm-gray uppercase">
-        {{ section.settings.founder_label | default: "OUR APPROACH" }}
-      </span>
-      <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-10" style="font-size: clamp(28px, 4vw, 44px);">
-        {{ section.settings.founder_headline | default: "Built by researchers, not marketers" }}
-      </h2>
-      <div class="editorial-divider hairline w-12 h-px bg-light-gray mx-auto mb-10"></div>
-      <div class="text-warm-gray leading-relaxed max-w-2xl mx-auto mb-12" style="font-size: clamp(16px, 2vw, 18px); line-height: 1.75;">
-        {{ section.settings.founder_body | default: "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers." | newline_to_br }}
-      </div>
+  <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section9_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section9_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
 
-      <!-- Expert portraits -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:640px;margin:0 auto 48px;" class="cc-expert-grid">
-        <div style="text-align:center;">
-          {%- if section.settings.expert_image_1 != blank -%}
-            <img src="{{ section.settings.expert_image_1 | image_url: width: 200 }}" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- else -%}
-            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- endif -%}
-          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Greg Potter, PhD</p>
-          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Sleep & Circadian Health</p>
-        </div>
-        <div style="text-align:center;">
-          {%- if section.settings.expert_image_2 != blank -%}
-            <img src="{{ section.settings.expert_image_2 | image_url: width: 200 }}" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- else -%}
-            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- endif -%}
-          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Dr. Jacqueline Jacques, ND</p>
-          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Clinical Naturopathy</p>
-        </div>
-        <div style="text-align:center;">
-          {%- if section.settings.expert_image_3 != blank -%}
-            <img src="{{ section.settings.expert_image_3 | image_url: width: 200 }}" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- else -%}
-            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- endif -%}
-          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Dr. Nicolas Verhoeven, PhD</p>
-          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Molecular Medicine</p>
-        </div>
-        <div style="text-align:center;">
-          {%- if section.settings.expert_image_4 != blank -%}
-            <img src="{{ section.settings.expert_image_4 | image_url: width: 200 }}" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- else -%}
-            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
-          {%- endif -%}
-          <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin-bottom:2px;">Chris Pollock, MD</p>
-          <p style="font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">Clinical Medicine</p>
-        </div>
-      </div>
-
-      {%- if section.settings.founder_link_text != blank and section.settings.founder_link_url != blank -%}
-        {%- assign _furl = section.settings.founder_link_url -%}
-        {%- assign _furl_start = _furl | slice: 0 -%}
-        {%- assign _furl_proto = _furl | slice: 0, 4 -%}
-        {%- if _furl_start != '/' and _furl_start != '#' and _furl_proto != 'http' -%}
-          {%- assign _furl = 'https://' | append: _furl -%}
-        {%- endif -%}
-        <a href="{{ _furl }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
-          {{ section.settings.founder_link_text }}
-        </a>
+      {%- if section.settings.comparison_label != blank -%}
+        <span class="badge-minimal">{{ section.settings.comparison_label }}</span>
       {%- endif -%}
+      {%- if section.settings.comparison_headline != blank -%}
+        <h2 class="text-deep-ink max-w-2xl mx-auto mt-4 mb-12 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);">
+          {{ section.settings.comparison_headline }}
+        </h2>
+      {%- endif -%}
+
+      {%- comment -%} SVG icon captures for comparison table {%- endcomment -%}
+      {%- capture svg_check -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="12" fill="#1A3A2F"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+      {%- capture svg_empty -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="11" stroke="#E8E8E8" stroke-width="2" fill="none"/></svg>{%- endcapture -%}
+
+      <p class="text-center mb-4 md:hidden" style="font-size:11px;color:var(--warm-gray);letter-spacing:0.1em;">SCROLL RIGHT TO COMPARE &rarr;</p>
+      <div class="overflow-x-auto" style="-webkit-overflow-scrolling:touch;">
+        <table style="min-width:520px;width:100%;border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="padding:20px 12px;text-align:left;min-width:140px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;"></th>
+              <th style="padding:20px 12px;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.05em;min-width:90px;text-align:center;">COASTLINE</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">NOVOS</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">BLUEPRINT</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">AG1</th>
+              <th style="padding:20px 12px;font-weight:400;color:var(--warm-gray);font-size:12px;letter-spacing:0.03em;min-width:80px;text-align:center;">TIMELINE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Active ingredients</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;">13</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">12</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">40+</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">75</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">1</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Clinical dosing</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Full transparency</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 12 hallmarks</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">AM/PM system</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 11 body systems</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+              <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
+            </tr>
+            <tr style="border-top:1px solid var(--light-gray);border-bottom:1px solid var(--light-gray);">
+              <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Price/month</td>
+              <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);">$99</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$109</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$179+</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$79</td>
+              <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$125</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align:center;max-width:520px;margin:24px auto 0;font-size:15px;color:var(--deep-ink);line-height:1.6;">
+        {{ section.settings.comparison_footnote | default: "More ingredients doesn't mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label." }}
+      </p>
+      <p style="text-align:center;margin-top:16px;font-size:11px;color:var(--warm-gray);letter-spacing:0.05em;">
+        Comparison based on publicly available product information. Prices reflect monthly subscription rates.
+      </p>
     </div>
   </section>
+
 
 
   {%- comment -%} === DIVIDER IMAGE 3: Between Founder/Experts & FAQ === {%- endcomment -%}
@@ -1682,6 +1422,7 @@
   </section>
 
 </div>
+
 
 {%- comment -%} === SINGLE STYLE BLOCK (outside all HTML) === {%- endcomment -%}
 <style>

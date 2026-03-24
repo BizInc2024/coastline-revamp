@@ -52,10 +52,10 @@
                   <ul class="drawer__empty-collections grid gap-3">
                     {%- if section.settings.empty_cart_collections == blank -%}
                       <li>
-                        <a class="flex items-center justify-between" href="{{ routes.all_products_collection_url }}">
+                        <button class="flex items-center justify-between w-full" type="button" aria-controls="CartDrawer" aria-expanded="false">
                           <span class="flex items-center">{{ 'cart.general.continue_shopping' | t }}</span>
                           {%- render 'icon', icon: 'arrow-right', size: 'sm', class: 'transform' -%}
-                        </a>
+                        </button>
                       </li>
                     {%- else -%}
                       {%- for item in section.settings.empty_cart_collections -%}
