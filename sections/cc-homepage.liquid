@@ -632,9 +632,9 @@
       <p style="font-family:'Inter',sans-serif;font-size:17px;color:#9A9A9A;line-height:1.7;max-width:32rem;margin:0 auto 48px;">What would it actually cost to buy all 13 clinical-dose ingredients individually?</p>
 
       <div x-data="{ showBreakdown: false }" style="max-width:480px;margin:0 auto;">
-        <button type="button" @click="showBreakdown = !showBreakdown" style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;background:none;border:1px solid #444444;cursor:pointer;padding:20px 24px;font-family:'Space Grotesk',sans-serif;transition:all 0.3s ease;" :style="showBreakdown ? 'border-color:#FAF9F6;background:rgba(255,255,255,0.05)' : ''">
-          <span style="font-size:16px;font-weight:500;color:#FAF9F6;">See the full breakdown</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FAF9F6" stroke-width="2" style="transition:transform 0.3s ease;" :style="showBreakdown ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        <button type="button" @click="showBreakdown = !showBreakdown" style="display:block;width:100%;background:none;border:1px solid #444444;cursor:pointer;padding:24px;font-family:'Space Grotesk',sans-serif;transition:all 0.3s ease;text-align:center;" :style="showBreakdown ? 'border-color:#FAF9F6;background:rgba(255,255,255,0.05)' : ''">
+          <span style="display:block;font-size:16px;font-weight:500;color:#FAF9F6;margin-bottom:12px;">See the full breakdown</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FAF9F6" stroke-width="2.5" style="display:block;margin:0 auto;transition:transform 0.3s ease;" :style="showBreakdown ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </button>
 
         <div x-show="showBreakdown" x-collapse x-cloak>
