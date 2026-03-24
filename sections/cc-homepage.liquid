@@ -1017,7 +1017,18 @@
      SECTION 10: PRICING CTA (cc-home-13)
   ============================================================ {%- endcomment -%}
   <section id="cc-home-pricing" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#E7FF56;padding-top:{{ section.settings.section10_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section10_padding_bottom | default: 80 }}px;">
-    <div
+    <div class="cc-pricing-layout" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+      <!-- Product image column (desktop: left, mobile: hidden) -->
+      <div class="cc-pricing-image">
+        {%- if section.settings.welcome_pack_image_desktop != blank -%}
+          <img src="{{ section.settings.welcome_pack_image_desktop | image_url: width: 800 }}" alt="Coastline Welcome Pack" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        {%- else -%}
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg?v=1759112312" alt="Coastline Welcome Pack" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+        {%- endif -%}
+      </div>
+
+      <!-- Form column -->
+      <div
       x-data="{
         flavor: 'unflavored',
         plan: 'monthly',
@@ -1032,7 +1043,7 @@
         get sellingPlanId() { return this.plans[this.plan].id; },
         get buttonText() { return 'ADD TO CART - ' + this.plans[this.plan].price; }
       }"
-      class="max-w-xl mx-auto px-8 lg:px-16 text-center"
+      class="cc-pricing-form" style="text-align:center;"
     >
 
       {%- if section.settings.pricing_label != blank -%}
@@ -1043,13 +1054,6 @@
           {{ section.settings.pricing_headline }}
         </h2>
       {%- endif -%}
-
-      <!-- Limited time offer callout -->
-      <div class="reveal" style="margin-bottom:32px;" x-intersect.once="$el.classList.add('visible')">
-        <span style="display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#0A0A0A;font-weight:500;padding:14px 32px;border:2px solid #0A0A0A;">
-          {{ section.settings.pricing_urgency | default: "Introductory pricing -- limited time offer" }}
-        </span>
-      </div>
 
       <!-- Flavor selector -->
       <div class="reveal" style="margin-bottom:40px;" x-intersect.once="$el.classList.add('visible')">
@@ -1138,25 +1142,8 @@
         <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:52px;object-fit:contain;" loading="lazy"></div>
         <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/60-days-money-back-guarantee-icon-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-vector_1.png?v=1767983637" alt="60-Day Money-Back Guarantee" style="height:52px;object-fit:contain;" loading="lazy"></div>
       </div>
-    </div>
+    </div><!-- /cc-pricing-layout -->
   </section>
-
-
-  {%- comment -%} === WELCOME PACK IMAGE: Between Pricing & Founder (mobile/desktop) === {%- endcomment -%}
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
-    {%- comment -%} Mobile image (shown below 768px) {%- endcomment -%}
-    {%- if section.settings.welcome_pack_image_mobile != blank -%}
-      <img src="{{ section.settings.welcome_pack_image_mobile | image_url: width: 800 }}" alt="Coastline Welcome Pack" class="cc-divider2-mobile" style="width:100%;max-height:60vh;object-fit:cover;display:block;" loading="lazy">
-    {%- else -%}
-      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg?v=1759112312" alt="Coastline Welcome Pack" class="cc-divider2-mobile" style="width:100%;max-height:60vh;object-fit:cover;display:block;" loading="lazy">
-    {%- endif -%}
-    {%- comment -%} Desktop image (shown at 768px+) {%- endcomment -%}
-    {%- if section.settings.welcome_pack_image_desktop != blank -%}
-      <img src="{{ section.settings.welcome_pack_image_desktop | image_url: width: 1920 }}" alt="Coastline Welcome Pack" class="cc-divider2-desktop" style="width:100%;max-height:60vh;object-fit:cover;display:none;" loading="lazy">
-    {%- else -%}
-      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/WELCOME_OPEN_LIGHT_BLUE.jpg?v=1759112312" alt="Coastline Welcome Pack" class="cc-divider2-desktop" style="width:100%;max-height:60vh;object-fit:cover;display:none;" loading="lazy">
-    {%- endif -%}
-  </div>
 
   {%- comment -%} ============================================================
      SECTION 9: COMPARISON TABLE (cc-home-12)
@@ -1448,6 +1435,30 @@
   /* 5th press logo: center on own row on mobile */
   @media (max-width: 767px) {
     .cc-homepage .cc-logo-5th { grid-column: 1 / -1; justify-self: center; }
+  }
+
+  /* Pricing section: two-column layout */
+  .cc-homepage .cc-pricing-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cc-homepage .cc-pricing-image {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .cc-homepage .cc-pricing-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .cc-homepage .cc-pricing-image {
+      display: block;
+      overflow: hidden;
+    }
+    .cc-homepage .cc-pricing-image img {
+      border-radius: 0;
+    }
   }
 
   /* Divider image 2: mobile/desktop swap */
