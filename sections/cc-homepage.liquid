@@ -1016,7 +1016,7 @@
   {%- comment -%} ============================================================
      SECTION 10: PRICING CTA (cc-home-13)
   ============================================================ {%- endcomment -%}
-  <section id="cc-home-pricing" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#F5E642;padding-top:{{ section.settings.section10_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section10_padding_bottom | default: 80 }}px;">
+  <section id="cc-home-pricing" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#E7FF56;padding-top:{{ section.settings.section10_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section10_padding_bottom | default: 80 }}px;">
     <div
       x-data="{
         flavor: 'unflavored',
@@ -1046,9 +1046,9 @@
 
       <!-- Limited time offer callout -->
       <div class="reveal" style="margin-bottom:32px;" x-intersect.once="$el.classList.add('visible')">
-        <p style="font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#1A3A2F;font-weight:600;margin:0;">
+        <span style="display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#0A0A0A;font-weight:500;padding:14px 32px;border:2px solid #0A0A0A;">
           {{ section.settings.pricing_urgency | default: "Introductory pricing -- limited time offer" }}
-        </p>
+        </span>
       </div>
 
       <!-- Flavor selector -->
