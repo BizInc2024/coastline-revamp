@@ -1007,11 +1007,7 @@
     {%- endif -%}
   </div>
 
-  {%- comment -%} FREE GIFT callout (between image and pricing) {%- endcomment -%}
-  <div style="background:#F0EFEC;padding:20px 24px;text-align:center;">
-    <p style="font-family:'Inter',sans-serif !important;font-size:11px !important;letter-spacing:0.12em !important;text-transform:uppercase !important;font-weight:600 !important;color:#1A3A2F !important;margin:0 0 4px !important;">{{ section.settings.free_gift_label | default: "Free gift with your first order of the complete system" }}</p>
-    <p style="font-family:'Inter',sans-serif !important;font-size:15px !important;color:#0A0A0A !important;margin:0 !important;font-weight:400 !important;">{{ section.settings.free_gift_description | default: "Premium Glass Shaker Bottle ($15 value)" }}</p>
-  </div>
+  {%- comment -%} FREE GIFT callout removed — info now under pricing headline {%- endcomment -%}
 
   {%- comment -%} ============================================================
      SECTION 10: PRICING CTA (cc-home-13)
@@ -1046,10 +1042,11 @@
         <span class="badge-minimal reveal" x-intersect.once="$el.classList.add('visible')">{{ section.settings.pricing_label }}</span>
       {%- endif -%}
       {%- if section.settings.pricing_headline != blank -%}
-        <h2 class="reveal text-deep-ink mt-4 mb-6 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);" x-intersect.once="$el.classList.add('visible')">
+        <h2 class="reveal text-deep-ink mt-4 mb-4 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);" x-intersect.once="$el.classList.add('visible')">
           {{ section.settings.pricing_headline }}
         </h2>
       {%- endif -%}
+      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#4A4A4A;line-height:1.6;margin:0 auto 28px;max-width:380px;">30-day supply of Morning Blend, Softgels, and Evening Capsules + Glass Shaker <strong style="color:#0A0A0A;">WELCOME GIFT</strong></p>
 
       <!-- Flavor selector -->
       <div class="reveal" style="margin-bottom:40px;" x-intersect.once="$el.classList.add('visible')">
