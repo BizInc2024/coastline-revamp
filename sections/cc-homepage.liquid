@@ -475,13 +475,8 @@
           <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:500;color:var(--deep-ink);letter-spacing:-0.01em;margin-bottom:8px;">Morning Blend + Softgels</h3>
           <p style="font-size:14px;color:var(--warm-gray);margin-bottom:32px;">With breakfast &middot; 10 ingredients</p>
 
-          <div style="overflow:hidden;margin-bottom:40px;aspect-ratio:1/1;">
-            {%- assign step_am_blend = section.blocks | where: "type", "step" | first -%}
-            {%- if step_am_blend.settings.image != blank -%}
-              <img src="{{ step_am_blend.settings.image | image_url: width: 600 }}" alt="Morning Blend" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
-            {%- else -%}
-              <img src="{{ step_am_blend.settings.fallback_image_url | default: 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194' }}" alt="Morning Blend" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
-            {%- endif -%}
+          <div style="overflow:hidden;margin-bottom:40px;aspect-ratio:3/2;">
+            <img src="{{ 'cc-v8-morning-scene.png' | asset_url }}" alt="Morning Blend shaker and softgels on counter" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
           </div>
 
           <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--deep-ink);margin-bottom:12px;">Morning Blend</p>
@@ -571,14 +566,8 @@
           <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:500;color:var(--deep-ink);letter-spacing:-0.01em;margin-bottom:8px;">Evening Capsules</h3>
           <p style="font-size:14px;color:var(--warm-gray);margin-bottom:32px;">Before bed &middot; 3 ingredients</p>
 
-          <div style="overflow:hidden;margin-bottom:40px;aspect-ratio:1/1;">
-            {%- assign step_blocks_all = section.blocks | where: "type", "step" -%}
-            {%- assign step_pm = step_blocks_all | last -%}
-            {%- if step_pm.settings.image != blank -%}
-              <img src="{{ step_pm.settings.image | image_url: width: 600 }}" alt="Evening Capsules" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
-            {%- else -%}
-              <img src="{{ step_pm.settings.fallback_image_url | default: 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766' }}" alt="Evening Capsules" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
-            {%- endif -%}
+          <div style="overflow:hidden;margin-bottom:40px;aspect-ratio:3/2;">
+            <img src="{{ 'cc-v8-evening-concept.png' | asset_url }}" alt="Evening capsules on bedside table" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;">
           </div>
 
           <p style="font-family:'Space Grotesk',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--deep-ink);margin-bottom:12px;">Capsules</p>
