@@ -15,7 +15,7 @@
         "step_morning": {
           "type": "product_step",
           "settings": {
-            "step_label": "STEP 1: MORNING",
+            "step_label": "Morning: One Scoop",
             "title": "Morning Blend",
             "description": "7 active ingredients for energy, focus, and metabolic support. Mix one scoop with water."
           }
@@ -23,7 +23,7 @@
         "step_daily": {
           "type": "product_step",
           "settings": {
-            "step_label": "STEP 2: DAILY",
+            "step_label": "Morning: 1 SoftGel",
             "title": "Daily Softgels",
             "description": "4 fat-soluble compounds for cellular protection and eye health. One softgel with your first meal."
           }
@@ -31,7 +31,7 @@
         "step_evening": {
           "type": "product_step",
           "settings": {
-            "step_label": "STEP 3: EVENING",
+            "step_label": "Evening: 2 Capsules",
             "title": "Evening Capsules",
             "description": "3 ingredients for sleep, recovery, and neuroprotection. Two capsules before bed."
           }
