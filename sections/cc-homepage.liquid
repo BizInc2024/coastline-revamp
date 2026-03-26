@@ -624,7 +624,7 @@
   {%- comment -%} ============================================================
      DO THE MATH: Cost comparison
   ============================================================ {%- endcomment -%}
-  <section class="reveal" style="background-color:#0A0A0A;padding-top:80px;padding-bottom:80px;" x-intersect.once="$el.classList.add('visible')">
+  <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background-color:#0A0A0A;padding-top:80px;padding-bottom:80px;" x-intersect.once="$el.classList.add('visible')">
     <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
       <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#555555;display:block;margin-bottom:20px;">THE VALUE</span>
       <div style="width:60px;height:1px;background:#333333;margin:0 auto 40px;"></div>
@@ -671,7 +671,7 @@
   </section>
 
   <!-- Divider image between System and Benefits -->
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+  <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
     {%- if section.settings.divider_problem_system != blank -%}
       <img src="{{ section.settings.divider_problem_system | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
     {%- else -%}
@@ -746,7 +746,7 @@
       </div>
 
       <!-- Benefits page CTA -->
-      <div class="reveal" style="text-align:center;margin-top:48px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;margin-top:48px;" x-intersect.once="$el.classList.add('visible')">
         <a href="{{ section.settings.benefits_link_url | default: '/pages/benefits' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
           {{ section.settings.benefits_link_text | default: "EXPLORE ALL THE BENEFITS" }}
         </a>
@@ -758,7 +758,7 @@
   {%- comment -%} ============================================================
      SECTION 11: FOUNDER NARRATIVE (cc-home-14)
   ============================================================ {%- endcomment -%}
-  <section class="reveal" style="background-color:#0A0A0A;padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+  <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background-color:#0A0A0A;padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
     <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
       <span class="badge-minimal inline-block mb-6 tracking-wider text-xs uppercase" style="color:#555555 !important;">
         {{ section.settings.founder_label | default: "OUR APPROACH" }}
@@ -984,7 +984,7 @@
 
 
   {%- comment -%} === DIVIDER IMAGE 2: Between Comparison & Pricing (separate mobile/desktop) === {%- endcomment -%}
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')">
+  <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
     {%- comment -%} Mobile image (shown below 768px) {%- endcomment -%}
     {%- if section.settings.divider_image_2_mobile != blank -%}
       <img src="{{ section.settings.divider_image_2_mobile | image_url: width: 800 }}" alt="Coastline" class="cc-divider2-mobile" style="width:100%;height:auto;display:block;" loading="lazy">
@@ -1046,7 +1046,7 @@
       <p style="font-family:'Inter',sans-serif;font-size:14px;color:#0A0A0A;font-weight:700;line-height:1.6;margin:0 auto 28px;max-width:380px;">+ Glass Shaker WELCOME GIFT</p>
 
       <!-- Flavor selector -->
-      <div class="reveal" style="margin-bottom:40px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:40px;" x-intersect.once="$el.classList.add('visible')">
         <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Choose your flavor</p>
         <div style="display:inline-flex;gap:10px;">
           <button type="button" @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'cc-flavor-unflavored-active' : 'cc-flavor-unflavored-idle'" class="cc-flavor-btn">Unflavored Blend</button>
@@ -1055,7 +1055,7 @@
       </div>
 
       <!-- Plan selector -->
-      <div class="reveal" style="margin-bottom:32px;text-align:left;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:32px;text-align:left;" x-intersect.once="$el.classList.add('visible')">
         <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;text-align:center;">Select your plan</p>
 
         <!-- Monthly -->
@@ -1103,7 +1103,7 @@
       </div>
 
       <!-- Add to cart — native product-form (theme.js handles cart drawer + updates) -->
-      <div class="reveal" style="margin-bottom:20px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:20px;" x-intersect.once="$el.classList.add('visible')">
         <form id="cc-home-cart-form" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
           <input type="hidden" name="id" :value="variantId" />
           <template x-if="sellingPlanId">
@@ -1116,17 +1116,17 @@
       </div>
 
       <!-- Trust signals -->
-      <div class="reveal" style="margin-bottom:28px;text-align:center;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:28px;text-align:center;" x-intersect.once="$el.classList.add('visible')">
         <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0 0 4px;">{{ section.settings.pricing_trust_1 | default: "Free shipping. Cancel anytime." }}</p>
         <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0;">{{ section.settings.pricing_trust_2 | default: "60-day money-back guarantee." }}</p>
       </div>
 
-      <div class="reveal" style="text-align:center;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;" x-intersect.once="$el.classList.add('visible')">
         <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin:0;opacity:0.7;">VEGAN, SUGAR-FREE, CAFFEINE-FREE</p>
       </div>
 
       <!-- Trust badge images -->
-      <div class="reveal" style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:32px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:32px;" x-intersect.once="$el.classList.add('visible')">
         <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:52px;object-fit:contain;" loading="lazy"></div>
         <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="{{ 'cc-nsf-certified.png' | asset_url }}" alt="NSF Certified" style="height:52px;object-fit:contain;" loading="lazy"></div>
         <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:52px;object-fit:contain;" loading="lazy"></div>
@@ -1259,7 +1259,7 @@
   </section>
 
   {%- comment -%} === DIVIDER IMAGE 3: Between Founder/Experts & FAQ === {%- endcomment -%}
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')">
+  <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
     {%- if section.settings.divider_image_3 != blank -%}
       <img src="{{ section.settings.divider_image_3 | image_url: width: 1920 }}" alt="Coastline" style="width:100%;height:auto;display:block;" loading="lazy">
     {%- else -%}
@@ -1303,7 +1303,7 @@
       </div>
 
       <!-- Link to full FAQ page -->
-      <div class="reveal" style="text-align:center;margin-top:40px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;margin-top:40px;" x-intersect.once="$el.classList.add('visible')">
         <a href="{{ section.settings.faq_page_link | default: '/pages/faq' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
           {{ section.settings.faq_button_text | default: "VIEW ALL FAQS" }}
         </a>
@@ -1315,7 +1315,7 @@
   {%- comment -%} ============================================================
      SECTION 12B: EMAIL CAPTURE
   ============================================================ {%- endcomment -%}
-  <section class="reveal" style="background:#F0EFEC;padding-top:80px;padding-bottom:80px;" x-intersect.once="$el.classList.add('visible')">
+  <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background:#F0EFEC;padding-top:80px;padding-bottom:80px;" x-intersect.once="$el.classList.add('visible')">
     <div style="max-width:560px;margin:0 auto;padding:0 32px;text-align:center;">
       <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);display:block;margin-bottom:20px;">
         {{ section.settings.email_label | default: "STAY IN THE KNOW" }}
@@ -1362,7 +1362,7 @@
   {%- comment -%} ============================================================
      SECTION 13: FINAL CTA (cc-home-18)
   ============================================================ {%- endcomment -%}
-  <section id="cc-home-final-cta" class="reveal" style="background:#062F3D;padding-top:{{ section.settings.section13_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section13_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+  <section id="cc-home-final-cta" class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background:#062F3D;padding-top:{{ section.settings.section13_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section13_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
     <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
 
       {%- if section.settings.final_headline != blank -%}

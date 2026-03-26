@@ -612,7 +612,7 @@
   </section>
 
   {%- comment -%} === DIVIDER IMAGE: Between Hero & System Overview === {%- endcomment -%}
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;position:relative;overflow:hidden;">
+  <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;position:relative;overflow:hidden;">
     {%- if section.settings.divider_image_1 != blank -%}
       <img src="{{ section.settings.divider_image_1 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
     {%- else -%}
@@ -629,7 +629,7 @@
   </div>
 
   {%- comment -%} === PRESS LOGO BAR === {%- endcomment -%}
-  <section class="reveal" x-intersect.once="$el.classList.add('visible')" style="padding:40px 1.5rem;background:var(--parchment);border-bottom:1px solid var(--light-gray);">
+  <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')" style="padding:40px 1.5rem;background:var(--parchment);border-bottom:1px solid var(--light-gray);">
     <div style="max-width:64rem;margin:0 auto;text-align:center;">
       <p style="font-family:'Inter',system-ui,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin:0 0 24px;">
         {{ section.settings.press_label | default: "AS FEATURED IN" }}
@@ -1224,7 +1224,7 @@
   </section>
 
   <!-- Divider image between Ingredients and Experts -->
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+  <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
     {%- if section.settings.divider_image_3 != blank -%}
       <img src="{{ section.settings.divider_image_3 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
     {%- else -%}
@@ -1473,7 +1473,7 @@
 
 
   <!-- Divider image between Reviews and Comparison -->
-  <div class="reveal" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
+  <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')" style="margin:0;padding:0;">
     {%- if section.settings.divider_image_2 != blank -%}
       <img src="{{ section.settings.divider_image_2 | image_url: width: 1600 }}" alt="Coastline" style="width:100%;max-height:50vh;object-fit:cover;display:block;" loading="lazy">
     {%- else -%}
