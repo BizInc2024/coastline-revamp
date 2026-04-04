@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "cc-collection-alt": {
+      "type": "cc-collection-alt",
+      "settings": {}
+    }
+  },
+  "order": [
+    "cc-collection-alt"
+  ]
+}

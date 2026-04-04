@@ -1,0 +1,236 @@
+{% comment %}
+  CC Collection Alt — Clean collection page with product info + subscription pricing
+  No filtering, no sorting. Just products with details.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+  :where(.cc-coll) {
+    --cc-bg: #FAF9F6;
+    --cc-dark: #1a1a1a;
+    --cc-muted: #6b7280;
+    --cc-green: #4F7942;
+    --cc-border: #e5e5e5;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--cc-dark);
+  }
+  :where(.cc-coll) .cc-coll__hero {
+    text-align: center;
+    padding: 64px 24px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  :where(.cc-coll) .cc-coll__hero h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+  :where(.cc-coll) .cc-coll__hero .cc-coll__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--cc-muted);
+    margin: 0;
+  }
+  :where(.cc-coll) .cc-coll__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  :where(.cc-coll) .cc-coll__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--cc-border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  :where(.cc-coll) .cc-coll__img-wrap {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--cc-bg);
+  }
+  :where(.cc-coll) .cc-coll__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  :where(.cc-coll) .cc-coll__info {
+    padding: 32px 32px 32px 0;
+  }
+  :where(.cc-coll) .cc-coll__info h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+  :where(.cc-coll) .cc-coll__info .cc-coll__tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--cc-muted);
+    margin: 0 0 20px;
+  }
+  :where(.cc-coll) .cc-coll__pricing {
+    margin: 0 0 20px;
+  }
+  :where(.cc-coll) .cc-coll__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  :where(.cc-coll) .cc-coll__price-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cc-muted);
+    min-width: 90px;
+  }
+  :where(.cc-coll) .cc-coll__price-val {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  :where(.cc-coll) .cc-coll__price-val--sub {
+    color: var(--cc-green);
+  }
+  :where(.cc-coll) .cc-coll__price-save {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--cc-green);
+    font-weight: 500;
+  }
+  :where(.cc-coll) .cc-coll__cta {
+    display: inline-block;
+    background: var(--cc-dark);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s;
+  }
+  :where(.cc-coll) .cc-coll__cta:hover {
+    opacity: 0.85;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    :where(.cc-coll) .cc-coll__hero {
+      padding: 48px 20px 32px;
+    }
+    :where(.cc-coll) .cc-coll__hero h1 {
+      font-size: 1.75rem;
+    }
+    :where(.cc-coll) .cc-coll__grid {
+      gap: 32px;
+      padding: 0 16px 60px;
+    }
+    :where(.cc-coll) .cc-coll__item {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    :where(.cc-coll) .cc-coll__info {
+      padding: 24px;
+    }
+  }
+</style>
+
+<div class="cc-coll">
+  {%- comment -%} Collection Header {%- endcomment -%}
+  <div class="cc-coll__hero">
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <p class="cc-coll__desc">{{ collection.description | strip_html }}</p>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Product List {%- endcomment -%}
+  <div class="cc-coll__grid">
+    {%- for product in collection.products -%}
+      {%- liquid
+        assign featured = product.featured_image
+        assign first_variant = product.selected_or_first_available_variant
+        assign one_time_price = first_variant.price
+        assign has_sub = false
+        assign sub_price = nil
+        assign sub_save_pct = 0
+
+        for group in product.selling_plan_groups
+          assign plan = group.selling_plans | first
+          if plan
+            assign has_sub = true
+            assign plan_alloc = first_variant.selling_plan_allocations | where: "selling_plan_id", plan.id | first
+            if plan_alloc
+              assign sub_price = plan_alloc.price
+              assign saved = one_time_price | minus: sub_price
+              assign sub_save_pct = saved | times: 100 | divided_by: one_time_price
+            endif
+            break
+          endif
+        endfor
+      -%}
+
+      <div class="cc-coll__item">
+        <div class="cc-coll__img-wrap">
+          {%- if featured -%}
+            <img
+              src="{{ featured | image_url: width: 800 }}"
+              alt="{{ product.title | escape }}"
+              width="{{ featured.width }}"
+              height="{{ featured.height }}"
+              loading="{% if forloop.index <= 2 %}eager{% else %}lazy{% endif %}"
+            />
+          {%- endif -%}
+        </div>
+
+        <div class="cc-coll__info">
+          <h2>{{ product.title }}</h2>
+
+          {%- if product.description != blank -%}
+            <p class="cc-coll__tagline">{{ product.description | strip_html | truncate: 160 }}</p>
+          {%- endif -%}
+
+          <div class="cc-coll__pricing">
+            <div class="cc-coll__price-row">
+              <span class="cc-coll__price-label">One-time</span>
+              <span class="cc-coll__price-val">{{ one_time_price | money }}</span>
+            </div>
+            {%- if has_sub and sub_price -%}
+              <div class="cc-coll__price-row">
+                <span class="cc-coll__price-label">Subscribe</span>
+                <span class="cc-coll__price-val cc-coll__price-val--sub">{{ sub_price | money }}/mo</span>
+                {%- if sub_save_pct > 0 -%}
+                  <span class="cc-coll__price-save">Save {{ sub_save_pct }}%</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+
+          <a href="{{ product.url }}" class="cc-coll__cta">View Details</a>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "CC Collection Alt",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}
