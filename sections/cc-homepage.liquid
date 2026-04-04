@@ -383,31 +383,57 @@
 
     <div class="cc-hero-gradient absolute inset-0"></div>
 
-    <div class="relative z-10 w-full px-6 lg:px-16 pb-12 md:pb-0">
-      <div class="max-w-7xl mx-auto flex justify-center md:justify-start">
-        <div class="cc-hero-content text-center md:text-left max-w-lg">
+    {%- comment -%} Mobile: split layout — headline top, copy bottom. Desktop: unchanged (left-aligned block). {%- endcomment -%}
+    <div class="relative z-10 w-full px-6 lg:px-16 pb-12 md:pb-0 flex flex-col justify-between md:block min-h-screen md:min-h-0 pt-24 md:pt-0">
+
+      {%- comment -%} Top group (mobile: sits at top above the box) {%- endcomment -%}
+      <div class="text-center md:text-left md:max-w-7xl md:mx-auto md:flex md:justify-start">
+        <div class="max-w-lg">
           <p class="font-inter text-[10px] md:text-xs tracking-[0.2em] uppercase font-medium mb-3 md:mb-5" style="color:#062F3D;">{{ section.settings.hero_label | default: "THE ULTIMATE LONGEVITY SYSTEM" }}</p>
           <div class="w-10 h-px bg-white/40 mb-5 md:mb-8 mx-auto md:mx-0"></div>
           <h1 class="cc-hero-headline text-white mb-3 md:mb-4">
             {{ section.settings.hero_headline | default: "Stay sharp, strong, and energized at every age" }}
           </h1>
-          <p class="cc-hero-subheadline leading-relaxed mb-5 md:mb-6" style="color:#1E2D4D;">
-            {{ section.settings.hero_subheadline | default: "13 science-backed ingredients. One simple system. From $3.30/day." }}
-          </p>
-          <a href="#cc-reviews-anchor" class="flex items-center gap-2 mb-5 md:mb-8 justify-center md:justify-start" style="cursor:pointer;text-decoration:none;">
-            <span class="text-white text-sm tracking-widest">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="font-inter text-[11px] text-white/60" style="text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
-          </a>
-          <div class="flex flex-col gap-3 items-center md:items-start">
-            <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
-              {{ section.settings.hero_cta_text | default: "START MY LONGEVITY SYSTEM" }}
+          {%- comment -%} Desktop: subheadline + CTAs stay with headline {%- endcomment -%}
+          <div class="hidden md:block">
+            <p class="cc-hero-subheadline leading-relaxed mb-5 md:mb-6" style="color:#1E2D4D;">
+              {{ section.settings.hero_subheadline | default: "13 science-backed ingredients. One simple system. From $3.30/day." }}
+            </p>
+            <a href="#cc-reviews-anchor" class="flex items-center gap-2 mb-8 justify-start" style="cursor:pointer;text-decoration:none;">
+              <span class="text-white text-sm tracking-widest">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="font-inter text-[11px] text-white/60" style="text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
             </a>
-            <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#062F3D;font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
-              {{ section.settings.hero_secondary_text | default: "SKIP TO PRICING" }}
-            </a>
+            <div class="flex flex-col gap-3 items-start">
+              <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
+                {{ section.settings.hero_cta_text | default: "START MY LONGEVITY SYSTEM" }}
+              </a>
+              <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#062F3D;font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
+                {{ section.settings.hero_secondary_text | default: "SKIP TO PRICING" }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
+      {%- comment -%} Bottom group (mobile only: sits below the box) {%- endcomment -%}
+      <div class="md:hidden text-center">
+        <p class="cc-hero-subheadline leading-relaxed mb-5" style="color:#1E2D4D;">
+          {{ section.settings.hero_subheadline | default: "13 science-backed ingredients. One simple system. From $3.30/day." }}
+        </p>
+        <a href="#cc-reviews-anchor" class="flex items-center gap-2 mb-5 justify-center" style="cursor:pointer;text-decoration:none;">
+          <span class="text-white text-sm tracking-widest">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="font-inter text-[11px] text-white/60" style="text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
+        </a>
+        <div class="flex flex-col gap-3 items-center">
+          <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
+            {{ section.settings.hero_cta_text | default: "START MY LONGEVITY SYSTEM" }}
+          </a>
+          <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#062F3D;font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
+            {{ section.settings.hero_secondary_text | default: "SKIP TO PRICING" }}
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
