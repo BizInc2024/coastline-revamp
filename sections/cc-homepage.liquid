@@ -372,13 +372,13 @@
     {%- if section.settings.hero_image != blank -%}
       <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="Coastline hero" class="hidden md:block absolute inset-0 w-full h-full object-cover" loading="eager">
     {%- else -%}
-      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-newhero-jan23.png?v=1769187732" alt="Coastline hero" class="hidden md:block absolute inset-0 w-full h-full object-cover" loading="eager">
+      <img src="{{ 'cc-hero-desktop-apr.jpg' | asset_url }}" alt="Coastline hero" class="hidden md:block absolute inset-0 w-full h-full object-cover" loading="eager">
     {%- endif -%}
     {%- comment -%} Mobile hero image {%- endcomment -%}
     {%- if section.settings.hero_image_mobile != blank -%}
       <img src="{{ section.settings.hero_image_mobile | image_url: width: 800 }}" alt="Coastline hero" class="block md:hidden absolute inset-0 w-full h-full object-cover cc-hero-mobile-img" loading="eager">
     {%- else -%}
-      <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/cl-newhero-jan23-vert_07def72b-63dc-4597-8162-d117dcc483a7.png?v=1769187984" alt="Coastline hero" class="block md:hidden absolute inset-0 w-full h-full object-cover cc-hero-mobile-img" loading="eager">
+      <img src="{{ 'cc-hero-mobile-apr.jpg' | asset_url }}" alt="Coastline hero" class="block md:hidden absolute inset-0 w-full h-full object-cover cc-hero-mobile-img" loading="eager">
     {%- endif -%}
 
     <div class="cc-hero-gradient absolute inset-0"></div>
