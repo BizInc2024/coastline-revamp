@@ -384,57 +384,28 @@
     {%- comment -%} Gradient overlays — inline styles to bypass Tailwind :where() scoping {%- endcomment -%}
     <div class="cc-hero-gradient" style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;pointer-events:none;"></div>
 
-    {%- comment -%} DESKTOP content — single block, vertically centered by parent flex {%- endcomment -%}
-    <div class="hidden md:block" style="position:relative;z-index:2;width:100%;padding:0 64px;">
-      <div style="max-width:1280px;margin:0 auto;">
-        <div style="max-width:480px;text-align:left;">
-          <p class="font-inter" style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;margin-bottom:20px;color:#062F3D;">{{ section.settings.hero_label | default: "THE ULTIMATE LONGEVITY SYSTEM" }}</p>
-          <div style="width:40px;height:1px;background:rgba(255,255,255,0.4);margin-bottom:32px;"></div>
-          <h1 class="cc-hero-headline" style="margin-bottom:16px;">
-            {{ section.settings.hero_headline | default: "Stay sharp, strong, and energized at every age" }}
-          </h1>
-          <p class="cc-hero-subheadline" style="line-height:1.6;margin-bottom:24px;color:#1E2D4D;">
-            {{ section.settings.hero_subheadline | default: "13 science-backed ingredients. One simple system. From $3.30/day." }}
-          </p>
-          <a href="#cc-reviews-anchor" style="display:flex;align-items:center;gap:8px;margin-bottom:32px;cursor:pointer;text-decoration:none;">
-            <span style="color:#fff;font-size:14px;letter-spacing:4px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="font-inter" style="font-size:11px;color:rgba(255,255,255,0.6);text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
-          </a>
-          <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
-            <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
-              {{ section.settings.hero_cta_text | default: "START MY LONGEVITY SYSTEM" }}
-            </a>
-            <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#062F3D;font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
-              {{ section.settings.hero_secondary_text | default: "SKIP TO PRICING" }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {%- comment -%} MOBILE content — headline top, copy bottom, flex column justify-between {%- endcomment -%}
-    <div class="md:hidden" style="position:relative;z-index:2;width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:100px 24px 48px;">
-      {%- comment -%} Top: headline above the box {%- endcomment -%}
-      <div style="text-align:center;">
-        <p class="font-inter" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;margin-bottom:12px;color:rgba(255,255,255,0.7);">{{ section.settings.hero_label | default: "THE ULTIMATE LONGEVITY SYSTEM" }}</p>
-        <h1 class="cc-hero-headline" style="margin-bottom:0;">
+    {%- comment -%} Single content block — CSS handles mobile vs desktop layout {%- endcomment -%}
+    <div class="cc-hero-content-wrap" style="position:relative;z-index:2;width:100%;">
+      <div class="cc-hero-top">
+        <p class="font-inter cc-hero-label" style="letter-spacing:0.2em;text-transform:uppercase;font-weight:500;">{{ section.settings.hero_label | default: "THE ULTIMATE LONGEVITY SYSTEM" }}</p>
+        <div class="cc-hero-divider" style="width:40px;height:1px;background:rgba(255,255,255,0.4);"></div>
+        <h1 class="cc-hero-headline">
           {{ section.settings.hero_headline | default: "Stay sharp, strong, and energized at every age" }}
         </h1>
       </div>
-      {%- comment -%} Bottom: subheadline + CTAs below the box {%- endcomment -%}
-      <div style="text-align:center;">
-        <p class="cc-hero-subheadline" style="line-height:1.6;margin-bottom:20px;color:rgba(255,255,255,0.75);">
+      <div class="cc-hero-bottom">
+        <p class="cc-hero-subheadline" style="line-height:1.6;">
           {{ section.settings.hero_subheadline | default: "13 science-backed ingredients. One simple system. From $3.30/day." }}
         </p>
-        <a href="#cc-reviews-anchor" style="display:flex;align-items:center;gap:8px;margin-bottom:20px;justify-content:center;cursor:pointer;text-decoration:none;">
+        <a href="#cc-reviews-anchor" class="cc-hero-stars" style="display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;">
           <span style="color:#fff;font-size:14px;letter-spacing:4px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span class="font-inter" style="font-size:11px;color:rgba(255,255,255,0.6);text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
         </a>
-        <div style="display:flex;flex-direction:column;gap:12px;align-items:center;">
+        <div class="cc-hero-ctas">
           <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
             {{ section.settings.hero_cta_text | default: "START MY LONGEVITY SYSTEM" }}
           </a>
-          <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:rgba(255,255,255,0.6);font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
+          <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" class="cc-hero-secondary-link" style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;font-family:'Space Grotesk',sans-serif;padding:4px 0;transition:opacity 0.3s ease;">
             {{ section.settings.hero_secondary_text | default: "SKIP TO PRICING" }}
           </a>
         </div>
@@ -1569,6 +1540,52 @@
           transparent 100%
         ) !important;
     }
+  }
+
+  /* Hero content layout — MOBILE: flex column, headline top, copy bottom */
+  .cc-homepage .cc-hero-content-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 24px 48px;
+    text-align: center;
+  }
+  .cc-homepage .cc-hero-label {
+    font-size: 10px;
+    margin-bottom: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+  .cc-homepage .cc-hero-divider { display: none; }
+  .cc-homepage .cc-hero-subheadline { margin-bottom: 20px; color: rgba(255,255,255,0.75) !important; }
+  .cc-homepage .cc-hero-stars { justify-content: center; margin-bottom: 20px; }
+  .cc-homepage .cc-hero-ctas { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .cc-homepage .cc-hero-secondary-link { color: rgba(255,255,255,0.6); }
+
+  /* Hero content layout — DESKTOP: single block, left-aligned, vertically centered */
+  @media (min-width: 768px) {
+    .cc-homepage .cc-hero-content-wrap {
+      min-height: auto;
+      display: block;
+      padding: 0 64px;
+      text-align: left;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .cc-homepage .cc-hero-top,
+    .cc-homepage .cc-hero-bottom {
+      max-width: 480px;
+    }
+    .cc-homepage .cc-hero-label {
+      font-size: 12px;
+      margin-bottom: 20px;
+      color: #062F3D;
+    }
+    .cc-homepage .cc-hero-divider { display: block; margin-bottom: 32px; }
+    .cc-homepage .cc-hero-subheadline { margin-bottom: 24px; color: #1E2D4D !important; }
+    .cc-homepage .cc-hero-stars { justify-content: flex-start; margin-bottom: 32px; }
+    .cc-homepage .cc-hero-ctas { align-items: flex-start; }
+    .cc-homepage .cc-hero-secondary-link { color: #062F3D; }
   }
 
   /* Mobile hero image: push product up so text doesn't overlap it */
