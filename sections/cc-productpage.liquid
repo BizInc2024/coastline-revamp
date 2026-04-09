@@ -39,7 +39,7 @@
       font-weight: 500 !important;
     }
 
-    .cc-home h1, .cc-product h1, .cc-productpage h1 {
+    .cc-home h1:not(.cc-hero-buy-panel h1), .cc-product h1:not(.cc-hero-buy-panel h1), .cc-productpage h1:not(.cc-hero-buy-panel h1) {
       font-size: clamp(32px, 6vw, 64px) !important;
       letter-spacing: -0.03em !important;
       line-height: 1.1 !important;
@@ -57,13 +57,17 @@
       line-height: 1.3 !important;
     }
 
-    .cc-home p, .cc-home li,
-    .cc-product p, .cc-product li,
-    .cc-productpage p, .cc-productpage li {
+    .cc-home p:not(.cc-hero-buy-panel p), .cc-home li:not(.cc-hero-buy-panel li),
+    .cc-product p:not(.cc-hero-buy-panel p), .cc-product li:not(.cc-hero-buy-panel li),
+    .cc-productpage p:not(.cc-hero-buy-panel p), .cc-productpage li:not(.cc-hero-buy-panel li) {
       font-family: 'Inter', system-ui, sans-serif !important;
       color: var(--warm-gray) !important;
       font-size: 17px !important;
       line-height: 1.7 !important;
+    }
+    .cc-productpage .cc-hero-buy-panel p,
+    .cc-productpage .cc-hero-buy-panel li {
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     /* Badge / label */
@@ -262,30 +266,18 @@
       }
     }
 
-    /* Hero buy panel overrides — match individual PDP styling */
-    .cc-productpage .cc-hero-buy-panel h1 {
-      font-size: clamp(28px, 4vw, 40px) !important;
-      letter-spacing: normal !important;
-      line-height: 1.2 !important;
-      margin: 0 0 16px !important;
-    }
-    .cc-productpage .cc-hero-buy-panel p,
-    .cc-productpage .cc-hero-buy-panel li {
-      font-size: unset !important;
-      line-height: unset !important;
-      color: unset !important;
-    }
+    /* Hero section uses its own padding via inline styles */
     #cc-product-hero.section-editorial {
-      padding: 40px 16px !important;
+      padding: 0 16px !important;
     }
     @media (min-width: 768px) {
       #cc-product-hero.section-editorial {
-        padding: 48px 32px !important;
+        padding: 0 32px !important;
       }
     }
     @media (min-width: 1024px) {
       #cc-product-hero.section-editorial {
-        padding: 48px 64px !important;
+        padding: 0 64px !important;
       }
     }
 

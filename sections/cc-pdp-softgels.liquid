@@ -28,16 +28,10 @@
       font-weight: 500 !important;
     }
 
-    .cc-productpage-sg h1, .cc-product h1 {
+    .cc-productpage-sg h1:not(.cc-hero-buy-panel h1), .cc-product h1:not(.cc-hero-buy-panel h1) {
       font-size: clamp(32px, 6vw, 64px) !important;
       letter-spacing: -0.03em !important;
       line-height: 1.1 !important;
-    }
-    .cc-productpage-sg .cc-hero-buy-panel h1 {
-      font-size: clamp(28px, 4vw, 40px) !important;
-      letter-spacing: normal !important;
-      line-height: 1.2 !important;
-      margin: 0 0 16px !important;
     }
 
     .cc-productpage-sg h2, .cc-product h2 {
@@ -52,8 +46,8 @@
       line-height: 1.3 !important;
     }
 
-    .cc-productpage-sg p, .cc-productpage-sg li,
-    .cc-product p, .cc-product li {
+    .cc-productpage-sg p:not(.cc-hero-buy-panel p), .cc-productpage-sg li:not(.cc-hero-buy-panel li),
+    .cc-product p:not(.cc-hero-buy-panel p), .cc-product li:not(.cc-hero-buy-panel li) {
       font-family: 'Inter', system-ui, sans-serif !important;
       color: var(--warm-gray) !important;
       font-size: 17px !important;
@@ -61,22 +55,7 @@
     }
     .cc-productpage-sg .cc-hero-buy-panel p,
     .cc-productpage-sg .cc-hero-buy-panel li {
-      font-size: unset !important;
-      line-height: unset !important;
-      color: unset !important;
-    }
-    #cc-sg-product-hero.section-editorial {
-      padding: 40px 16px !important;
-    }
-    @media (min-width: 768px) {
-      #cc-sg-product-hero.section-editorial {
-        padding: 48px 32px !important;
-      }
-    }
-    @media (min-width: 1024px) {
-      #cc-sg-product-hero.section-editorial {
-        padding: 48px 64px !important;
-      }
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     .cc-productpage-sg .badge-minimal,
@@ -246,6 +225,21 @@
       }
     }
 
+    /* Hero section uses its own padding via inline styles */
+    #cc-sg-product-hero.section-editorial {
+      padding: 0 16px !important;
+    }
+    @media (min-width: 768px) {
+      #cc-sg-product-hero.section-editorial {
+        padding: 0 32px !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      #cc-sg-product-hero.section-editorial {
+        padding: 0 64px !important;
+      }
+    }
+
     .cc-productpage-sg .reveal,
     .cc-product .reveal {
       opacity: 0;
@@ -349,7 +343,7 @@
 </noscript>
 
 {%- comment -%} === ASSIGN HERO VARIABLES === {%- endcomment -%}
-{%- assign hero_title = section.settings.hero_title | default: "Coastline AM SoftGels" -%}
+{%- assign hero_title = section.settings.hero_title | default: "Daily Softgels" -%}
 {%- assign hero_review_text = section.settings.hero_review_text | default: "2,000+ reviews" -%}
 {%- assign hero_trust_badges = section.settings.hero_trust_badges | default: "VEGAN, SUGAR-FREE, CAFFEINE-FREE" -%}
 {%- if section.settings.hero_gallery_image_1 != blank -%}
@@ -370,13 +364,13 @@
 
         <!-- LEFT SIDE: Product Image (60%) -->
         <div class="reveal" style="position: relative;">
-          <div style="background: #fff; border: 1px solid var(--light-gray); overflow: hidden;">
+          <div style="overflow: hidden;">
             <img
               src="{{ sg_hero_img }}"
               alt="{{ hero_title | escape }}"
               width="800"
               height="800"
-              style="width: 100%; height: auto; display: block; object-fit: contain; max-height: 600px;"
+              style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 600px; object-position: center 70%;"
               class="img-editorial"
             >
           </div>
@@ -389,7 +383,7 @@
           style="padding-top: 8px;"
         >
           <!-- Product Title -->
-          <h1 style="font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px;">
+          <h1 style="font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; color: #0A0A0A;">
             {{ hero_title }}
           </h1>
 
