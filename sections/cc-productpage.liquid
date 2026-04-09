@@ -262,6 +262,33 @@
       }
     }
 
+    /* Hero buy panel overrides — match individual PDP styling */
+    .cc-productpage .cc-hero-buy-panel h1 {
+      font-size: clamp(28px, 4vw, 40px) !important;
+      letter-spacing: normal !important;
+      line-height: 1.2 !important;
+      margin: 0 0 16px !important;
+    }
+    .cc-productpage .cc-hero-buy-panel p,
+    .cc-productpage .cc-hero-buy-panel li {
+      font-size: unset !important;
+      line-height: unset !important;
+      color: unset !important;
+    }
+    #cc-product-hero.section-editorial {
+      padding: 40px 16px !important;
+    }
+    @media (min-width: 768px) {
+      #cc-product-hero.section-editorial {
+        padding: 48px 32px !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      #cc-product-hero.section-editorial {
+        padding: 48px 64px !important;
+      }
+    }
+
     /* Scroll reveal */
     .cc-home .reveal,
     .cc-product .reveal,
@@ -476,32 +503,39 @@
         <!-- RIGHT SIDE: Buy Panel (40%) -->
         <div
           x-data="ccProductBuy()"
-          class="reveal"
+          class="reveal cc-hero-buy-panel"
           style="padding-top: 8px;"
         >
           <!-- Product Title -->
-          <h1 style="font-size: clamp(18px, 2.8vw, 26px) !important; margin: 0 0 10px;">
+          <h1 style="font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; color: #0A0A0A;">
             {{ hero_title }}
           </h1>
 
           <!-- Stars + Review Count -->
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
             <span class="stars-minimal">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--warm-gray);">{{ hero_review_text }}</span>
+            <span style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray);">{{ hero_review_text }}</span>
           </div>
 
-          <!-- Product Description -->
-          <p style="font-family:'Inter',sans-serif;font-size:14px;color:#4A4A4A;line-height:1.6;margin:0 0 4px;">30-day supply of Morning Blend, Softgels, and Evening Capsules</p>
-          <p style="font-family:'Inter',sans-serif;font-size:14px;color:#0A0A0A;font-weight:700;line-height:1.6;margin:0 0 16px;">+ Glass Shaker WELCOME GIFT</p>
-
           <!-- Trust Badges -->
-          <p style="margin: 0 0 20px 0; font-family: 'Inter', system-ui, sans-serif; font-size: 9px !important; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-gray); line-height: 1.4;">
+          <p style="margin: 0 0 24px 0; font-family: 'Inter', system-ui, sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); line-height: 1.4;">
             {%- assign badge_list = hero_trust_badges | split: ',' -%}
             {%- for badge in badge_list -%}{{ badge | strip }}{%- unless forloop.last %} &middot; {% endunless -%}{%- endfor -%}
           </p>
 
           <!-- Editorial Divider -->
           <div class="editorial-divider" style="margin-bottom: 28px;"></div>
+
+          <!-- Product Description -->
+          <div style="margin-bottom: 28px;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--warm-gray); line-height: 1.6; margin: 0 0 12px;">
+              {{ section.settings.hero_description | default: "All 13 clinically dosed ingredients across 3 products. Morning Blend, Softgels, and Evening Capsules — taken at the right time for optimal absorption." }}
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--forest); font-weight: 500; margin: 0 0 12px;">
+              13 ingredients &middot; 3 products &middot; 2 daily touchpoints
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray); margin: 0; line-height: 1.6;">30-day supply. Fully dosed. + Glass Shaker WELCOME GIFT</p>
+          </div>
 
           <!-- Flavor Selector -->
           <div style="margin-bottom: 28px;">
