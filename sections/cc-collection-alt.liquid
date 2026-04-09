@@ -46,14 +46,13 @@
   :where(.cc-coll) .cc-coll__item {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+    gap: 0;
+    align-items: stretch;
     background: #fff;
     border: 1px solid var(--cc-border);
     overflow: hidden;
   }
   :where(.cc-coll) .cc-coll__img-wrap {
-    aspect-ratio: 1;
     overflow: hidden;
     background: var(--cc-bg);
   }
@@ -64,76 +63,90 @@
     display: block;
   }
   :where(.cc-coll) .cc-coll__info {
-    padding: 32px 32px 32px 0;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   :where(.cc-coll) .cc-coll__info h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin: 0 0 10px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
     line-height: 1.2;
   }
   :where(.cc-coll) .cc-coll__tagline {
     font-family: 'Inter', sans-serif;
-    font-size: 1.08rem;
-    line-height: 1.6;
+    font-size: 0.88rem;
+    line-height: 1.65;
     color: var(--cc-muted);
-    margin: 0 0 18px;
+    margin: 0 0 20px;
+    font-weight: 400;
+  }
+  :where(.cc-coll) .cc-coll__divider {
+    width: 40px;
+    height: 1px;
+    background: var(--cc-border);
+    margin: 0 0 20px;
   }
   :where(.cc-coll) .cc-coll__ingredients {
     font-family: 'Inter', sans-serif;
-    font-size: 0.96rem;
+    font-size: 0.78rem;
     color: var(--cc-green);
     font-weight: 500;
-    line-height: 1.5;
-    margin: 0 0 22px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    margin: 0 0 24px;
   }
   :where(.cc-coll) .cc-coll__pricing {
-    margin: 0 0 22px;
+    margin: 0 0 28px;
   }
   :where(.cc-coll) .cc-coll__price-row {
     display: flex;
     align-items: baseline;
     gap: 10px;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   :where(.cc-coll) .cc-coll__price-label {
     font-family: 'Inter', sans-serif;
-    font-size: 0.96rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
     color: var(--cc-muted);
-    min-width: 155px;
+    min-width: 140px;
+    font-weight: 400;
   }
   :where(.cc-coll) .cc-coll__price-label--sub {
     color: var(--cc-green);
     font-weight: 600;
   }
   :where(.cc-coll) .cc-coll__price-val {
-    font-size: 1.32rem;
+    font-size: 1.15rem;
     font-weight: 600;
   }
   :where(.cc-coll) .cc-coll__price-val--sub {
     color: var(--cc-green);
-    font-weight: 700;
+    font-weight: 600;
   }
   :where(.cc-coll) .cc-coll__price-save {
     font-family: 'Inter', sans-serif;
-    font-size: 0.94rem;
+    font-size: 0.72rem;
     color: var(--cc-green);
     font-weight: 500;
+    letter-spacing: 0.02em;
   }
   :where(.cc-coll) .cc-coll__cta {
     display: inline-block;
     background: var(--cc-dark);
     color: #fff;
-    padding: 16px 36px;
+    padding: 14px 32px;
     text-decoration: none;
-    font-size: 1.02rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     transition: opacity 0.2s;
+    align-self: flex-start;
   }
   :where(.cc-coll) .cc-coll__cta:hover {
     opacity: 0.85;
@@ -153,10 +166,12 @@
     }
     :where(.cc-coll) .cc-coll__item {
       grid-template-columns: 1fr;
-      gap: 0;
     }
     :where(.cc-coll) .cc-coll__info {
-      padding: 24px;
+      padding: 28px 24px;
+    }
+    :where(.cc-coll) .cc-coll__info h2 {
+      font-size: 1.4rem;
     }
   }
 </style>
@@ -230,6 +245,8 @@
           {%- if romance_text != blank -%}
             <p class="cc-coll__tagline">{{ romance_text }}</p>
           {%- endif -%}
+
+          <div class="cc-coll__divider"></div>
 
           {%- if ing_text != blank -%}
             <p class="cc-coll__ingredients">{{ ing_text }}</p>
