@@ -171,49 +171,45 @@
   {%- comment -%} Product List {%- endcomment -%}
   <div class="cc-coll__grid">
     {%- for product in collection.products -%}
-      {%- liquid
-        assign featured = product.featured_image
-        assign first_variant = product.selected_or_first_available_variant
-        assign one_time_price = first_variant.price
-        assign has_sub = false
-        assign sub_price = nil
-        assign sub_save_pct = 0
-        assign best_sub_price = nil
+      {%- assign featured = product.featured_image -%}
+      {%- assign first_variant = product.selected_or_first_available_variant -%}
+      {%- assign one_time_price = first_variant.price -%}
+      {%- assign has_sub = false -%}
+      {%- assign sub_price = 0 -%}
+      {%- assign sub_save_pct = 0 -%}
 
-        for alloc in first_variant.selling_plan_allocations
-          assign this_price = alloc.price
-          if best_sub_price == nil or this_price < best_sub_price
-            assign best_sub_price = this_price
-            assign has_sub = true
-          endif
-        endfor
+      {%- for alloc in first_variant.selling_plan_allocations -%}
+        {%- if has_sub == false or alloc.price < sub_price -%}
+          {%- assign sub_price = alloc.price -%}
+          {%- assign has_sub = true -%}
+        {%- endif -%}
+      {%- endfor -%}
 
-        if has_sub and best_sub_price
-          assign sub_price = best_sub_price
-          assign saved = one_time_price | minus: sub_price
-          if one_time_price > 0
-            assign sub_save_pct = saved | times: 100 | divided_by: one_time_price
-          endif
-        endif
+      {%- if has_sub and sub_price > 0 -%}
+        {%- assign saved = one_time_price | minus: sub_price -%}
+        {%- if one_time_price > 0 -%}
+          {%- assign sub_save_pct = saved | times: 100 | divided_by: one_time_price -%}
+        {%- endif -%}
+      {%- endif -%}
 
-        assign p_title = product.title | downcase
-        assign p_handle = product.handle | downcase
-        assign ing_text = ''
-        assign romance_text = ''
-        if p_title contains 'blend' or p_handle contains 'blend'
-          assign romance_text = '7 science-backed ingredients in one easy-scoop powder. Take with your first meal to support energy, focus, and recovery.'
-          assign ing_text = 'Ergothioneine 5 mg · Taurine 3.05 g · Creatine 5.25 g · Glycine 5 g · Inulin 4 g · Magnesium Citrate 150 mg · Glucosamine Sulfate 750 mg'
-        elsif p_title contains 'softgel' or p_handle contains 'softgel'
-          assign romance_text = '4 fat-soluble ingredients for cellular protection, eye health, and mitochondrial energy. One softgel with your first meal.'
-          assign ing_text = 'Astaxanthin 6 mg · Lutein 10 mg · Zeaxanthin 2 mg · CoQ10 200 mg'
-        elsif p_title contains 'capsule' or p_title contains 'evening' or p_handle contains 'evening' or p_handle contains 'capsule'
-          assign romance_text = '3 targeted compounds timed for your body''s overnight repair cycle. Take before bed to support deep sleep and calm the nervous system.'
-          assign ing_text = 'Lithium Orotate 400 mcg · L-Theanine 200 mg · Glucosamine Sulfate 750 mg'
-        elsif p_title contains 'complete' or p_title contains 'welcome' or p_title contains 'system' or p_handle contains 'complete' or p_handle contains 'welcome' or p_handle contains 'system'
-          assign romance_text = 'All 13 clinically dosed ingredients across 3 products. Morning and evening — timed for how your body actually works.'
-          assign ing_text = 'Ergothioneine · Taurine · Creatine · Glycine · Inulin · Magnesium · Glucosamine · Astaxanthin · Lutein · Zeaxanthin · CoQ10 · L-Theanine · Lithium Orotate'
-        endif
-      -%}
+      {%- assign p_title = product.title | downcase -%}
+      {%- assign p_handle = product.handle | downcase -%}
+      {%- assign ing_text = '' -%}
+      {%- assign romance_text = '' -%}
+
+      {%- if p_title contains 'blend' or p_handle contains 'blend' -%}
+        {%- assign romance_text = '7 science-backed ingredients in one easy-scoop powder. Take with your first meal to support energy, focus, and recovery.' -%}
+        {%- assign ing_text = 'Ergothioneine 5 mg · Taurine 3.05 g · Creatine 5.25 g · Glycine 5 g · Inulin 4 g · Magnesium Citrate 150 mg · Glucosamine Sulfate 750 mg' -%}
+      {%- elsif p_title contains 'softgel' or p_handle contains 'softgel' -%}
+        {%- assign romance_text = '4 fat-soluble ingredients for cellular protection, eye health, and mitochondrial energy. One softgel with your first meal.' -%}
+        {%- assign ing_text = 'Astaxanthin 6 mg · Lutein 10 mg · Zeaxanthin 2 mg · CoQ10 200 mg' -%}
+      {%- elsif p_title contains 'capsule' or p_title contains 'evening' or p_handle contains 'evening' or p_handle contains 'capsule' -%}
+        {%- assign romance_text = "3 targeted compounds timed for your body's overnight repair cycle. Take before bed to support deep sleep and calm the nervous system." -%}
+        {%- assign ing_text = 'Lithium Orotate 400 mcg · L-Theanine 200 mg · Glucosamine Sulfate 750 mg' -%}
+      {%- elsif p_title contains 'complete' or p_title contains 'welcome' or p_title contains 'system' or p_handle contains 'complete' or p_handle contains 'welcome' or p_handle contains 'system' or p_handle contains 'pack' -%}
+        {%- assign romance_text = 'All 13 clinically dosed ingredients across 3 products. Morning and evening — timed for how your body actually works.' -%}
+        {%- assign ing_text = 'Ergothioneine · Taurine · Creatine · Glycine · Inulin · Magnesium · Glucosamine · Astaxanthin · Lutein · Zeaxanthin · CoQ10 · L-Theanine · Lithium Orotate' -%}
+      {%- endif -%}
 
       <div class="cc-coll__item">
         <div class="cc-coll__img-wrap">
