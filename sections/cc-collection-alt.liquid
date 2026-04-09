@@ -73,6 +73,13 @@
     margin: 0 0 8px;
     line-height: 1.2;
   }
+  :where(.cc-coll) .cc-coll__tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--cc-muted);
+    margin: 0 0 16px;
+  }
   :where(.cc-coll) .cc-coll__ingredients {
     font-family: 'Inter', sans-serif;
     font-size: 0.8rem;
@@ -192,14 +199,19 @@
         assign p_title = product.title | downcase
         assign p_handle = product.handle | downcase
         assign ing_text = ''
+        assign romance_text = ''
         if p_title contains 'blend' or p_handle contains 'blend'
+          assign romance_text = '7 science-backed ingredients in one easy-scoop powder. Take with your first meal to support energy, focus, and recovery.'
           assign ing_text = 'Ergothioneine 5 mg · Taurine 3.05 g · Creatine 5.25 g · Glycine 5 g · Inulin 4 g · Magnesium Citrate 150 mg · Glucosamine Sulfate 750 mg'
         elsif p_title contains 'softgel' or p_handle contains 'softgel'
+          assign romance_text = '4 fat-soluble ingredients for cellular protection, eye health, and mitochondrial energy. One softgel with your first meal.'
           assign ing_text = 'Astaxanthin 6 mg · Lutein 10 mg · Zeaxanthin 2 mg · CoQ10 200 mg'
         elsif p_title contains 'capsule' or p_title contains 'evening' or p_handle contains 'evening' or p_handle contains 'capsule'
+          assign romance_text = '3 targeted compounds timed for your body''s overnight repair cycle. Take before bed to support deep sleep and calm the nervous system.'
           assign ing_text = 'Lithium Orotate 400 mcg · L-Theanine 200 mg · Glucosamine Sulfate 750 mg'
         elsif p_title contains 'complete' or p_title contains 'welcome' or p_title contains 'system' or p_handle contains 'complete' or p_handle contains 'welcome' or p_handle contains 'system'
-          assign ing_text = '13 ingredients · 3 products · 2 daily touchpoints'
+          assign romance_text = 'All 13 clinically dosed ingredients across 3 products. Morning and evening — timed for how your body actually works.'
+          assign ing_text = 'Ergothioneine · Taurine · Creatine · Glycine · Inulin · Magnesium · Glucosamine · Astaxanthin · Lutein · Zeaxanthin · CoQ10 · L-Theanine · Lithium Orotate'
         endif
       -%}
 
@@ -218,6 +230,10 @@
 
         <div class="cc-coll__info">
           <h2>{{ product.title }}</h2>
+
+          {%- if romance_text != blank -%}
+            <p class="cc-coll__tagline">{{ romance_text }}</p>
+          {%- endif -%}
 
           {%- if ing_text != blank -%}
             <p class="cc-coll__ingredients">{{ ing_text }}</p>
