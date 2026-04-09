@@ -77,12 +77,15 @@
           <div class="editorial-divider" style="margin-bottom: 28px;"></div>
 
           <!-- Product Description -->
-          <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--warm-gray); line-height: 1.6; margin: 0 0 24px;">
-            {{ section.settings.hero_description | default: "3 targeted compounds timed for your body's overnight repair cycle. Take 2 capsules before bed to support deep sleep, calm the nervous system, and maintain joint health." }}
-          </p>
-
-          <!-- Supply Info -->
-          <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray); margin: 0 0 24px; line-height: 1.6;">30-day supply. Fully dosed.</p>
+          <div style="margin-bottom: 28px;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 15px; color: var(--warm-gray); line-height: 1.6; margin: 0 0 12px;">
+              {{ section.settings.hero_description | default: "3 targeted compounds timed for your body's overnight repair cycle. Take 2 capsules before bed to support deep sleep, calm the nervous system, and maintain joint health." }}
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--forest); font-weight: 500; margin: 0 0 12px;">
+              Lithium Orotate 400 mcg &middot; L-Theanine 200 mg &middot; Glucosamine Sulfate 750 mg
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray); margin: 0; line-height: 1.6;">30-day supply. Fully dosed.</p>
+          </div>
 
           <!-- Subscription Selector -->
           <div style="margin-bottom: 28px;">
