@@ -10,7 +10,7 @@
     --cc-bg: #FAF9F6;
     --cc-dark: #1a1a1a;
     --cc-muted: #6b7280;
-    --cc-green: #4F7942;
+    --cc-green: #1A3A2F;
     --cc-border: #e5e5e5;
     font-family: 'Space Grotesk', sans-serif;
     color: var(--cc-dark);
@@ -26,12 +26,12 @@
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.15;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
   }
   :where(.cc-coll) .cc-coll__hero .cc-coll__desc {
     font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.65;
+    font-size: 0.95rem;
+    line-height: 1.55;
     color: var(--cc-muted);
     margin: 0;
   }
@@ -50,7 +50,6 @@
     align-items: center;
     background: #fff;
     border: 1px solid var(--cc-border);
-    border-radius: 16px;
     overflow: hidden;
   }
   :where(.cc-coll) .cc-coll__img-wrap {
@@ -74,11 +73,12 @@
     margin: 0 0 8px;
     line-height: 1.2;
   }
-  :where(.cc-coll) .cc-coll__info .cc-coll__tagline {
+  :where(.cc-coll) .cc-coll__ingredients {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--cc-muted);
+    font-size: 0.8rem;
+    color: var(--cc-green);
+    font-weight: 500;
+    line-height: 1.5;
     margin: 0 0 20px;
   }
   :where(.cc-coll) .cc-coll__pricing {
@@ -96,7 +96,11 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--cc-muted);
-    min-width: 90px;
+    min-width: 130px;
+  }
+  :where(.cc-coll) .cc-coll__price-label--sub {
+    color: var(--cc-green);
+    font-weight: 600;
   }
   :where(.cc-coll) .cc-coll__price-val {
     font-size: 1.1rem;
@@ -104,6 +108,7 @@
   }
   :where(.cc-coll) .cc-coll__price-val--sub {
     color: var(--cc-green);
+    font-weight: 700;
   }
   :where(.cc-coll) .cc-coll__price-save {
     font-family: 'Inter', sans-serif;
@@ -115,12 +120,12 @@
     display: inline-block;
     background: var(--cc-dark);
     color: #fff;
-    padding: 12px 28px;
-    border-radius: 8px;
+    padding: 14px 32px;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     transition: opacity 0.2s;
   }
   :where(.cc-coll) .cc-coll__cta:hover {
@@ -153,9 +158,7 @@
   {%- comment -%} Collection Header {%- endcomment -%}
   <div class="cc-coll__hero">
     <h1>{{ collection.title }}</h1>
-    {%- if collection.description != blank -%}
-      <p class="cc-coll__desc">{{ collection.description | strip_html }}</p>
-    {%- endif -%}
+    <p class="cc-coll__desc">13 clinically dosed ingredients. 3 products. Transparently dosed, third-party tested.</p>
   </div>
 
   {%- comment -%} Product List {%- endcomment -%}
@@ -182,6 +185,18 @@
             break
           endif
         endfor
+
+        assign p_handle = product.handle
+        assign ing_text = ''
+        if p_handle == 'coastline-morning-blend' or p_handle contains 'morning-blend'
+          assign ing_text = 'Ergothioneine 5 mg · Taurine 3.05 g · Creatine 5.25 g · Glycine 5 g · Inulin 4 g · Magnesium Citrate 150 mg · Glucosamine Sulfate 750 mg'
+        elsif p_handle == 'coastline-daily-softgels' or p_handle contains 'softgel'
+          assign ing_text = 'Astaxanthin 6 mg · Lutein 10 mg · Zeaxanthin 2 mg · CoQ10 200 mg'
+        elsif p_handle == 'coastline-evening-capsules' or p_handle contains 'evening'
+          assign ing_text = 'Lithium Orotate 400 mcg · L-Theanine 200 mg · Glucosamine Sulfate 750 mg'
+        elsif p_handle contains 'complete' or p_handle contains 'welcome' or p_handle contains 'system'
+          assign ing_text = '13 ingredients · 3 products · 2 daily touchpoints'
+        endif
       -%}
 
       <div class="cc-coll__item">
@@ -200,24 +215,24 @@
         <div class="cc-coll__info">
           <h2>{{ product.title }}</h2>
 
-          {%- if product.description != blank -%}
-            <p class="cc-coll__tagline">{{ product.description | strip_html | truncate: 160 }}</p>
+          {%- if ing_text != blank -%}
+            <p class="cc-coll__ingredients">{{ ing_text }}</p>
           {%- endif -%}
 
           <div class="cc-coll__pricing">
-            <div class="cc-coll__price-row">
-              <span class="cc-coll__price-label">One-time</span>
-              <span class="cc-coll__price-val">{{ one_time_price | money }}</span>
-            </div>
             {%- if has_sub and sub_price -%}
               <div class="cc-coll__price-row">
-                <span class="cc-coll__price-label">Subscribe</span>
+                <span class="cc-coll__price-label cc-coll__price-label--sub">Subscribe & save</span>
                 <span class="cc-coll__price-val cc-coll__price-val--sub">{{ sub_price | money }}/mo</span>
                 {%- if sub_save_pct > 0 -%}
                   <span class="cc-coll__price-save">Save {{ sub_save_pct }}%</span>
                 {%- endif -%}
               </div>
             {%- endif -%}
+            <div class="cc-coll__price-row">
+              <span class="cc-coll__price-label">One-time</span>
+              <span class="cc-coll__price-val">{{ one_time_price | money }}</span>
+            </div>
           </div>
 
           <a href="{{ product.url }}" class="cc-coll__cta">View Details</a>
