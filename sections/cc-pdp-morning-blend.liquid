@@ -31,6 +31,12 @@
       letter-spacing: -0.03em !important;
       line-height: 1.1 !important;
     }
+    .cc-productpage-mb .cc-hero-buy-panel h1 {
+      font-size: clamp(28px, 4vw, 40px) !important;
+      letter-spacing: normal !important;
+      line-height: 1.2 !important;
+      margin: 0 0 16px !important;
+    }
 
     .cc-productpage-mb h2, .cc-product h2 {
       font-size: clamp(28px, 5vw, 48px) !important;
@@ -50,6 +56,12 @@
       color: var(--warm-gray) !important;
       font-size: 17px !important;
       line-height: 1.7 !important;
+    }
+    .cc-productpage-mb .cc-hero-buy-panel p,
+    .cc-productpage-mb .cc-hero-buy-panel li {
+      font-size: inherit !important;
+      line-height: inherit !important;
+      color: inherit !important;
     }
 
     .cc-productpage-mb .badge-minimal,
@@ -301,6 +313,7 @@
         <!-- RIGHT SIDE: Buy Panel (40%) -->
         <div
           x-data="ccMBBuy()"
+          class="cc-hero-buy-panel"
           style="padding-top: 8px;"
         >
           <!-- Product Title -->
