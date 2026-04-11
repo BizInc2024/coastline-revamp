@@ -235,7 +235,10 @@
   /* ---------- HOW IT WORKS ---------- */
   .cc-v10 .v10-steps { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
   @media (min-width: 800px) { .cc-v10 .v10-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
-  .cc-v10 .v10-step { text-align: left; padding: 32px; background: #fff; border: 1px solid #E8E8E8; }
+  .cc-v10 .v10-step { text-align: left; background: #fff; border: 1px solid #E8E8E8; overflow: hidden; display: flex; flex-direction: column; }
+  .cc-v10 .v10-step-img { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #F3F2EE; }
+  .cc-v10 .v10-step-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-v10 .v10-step-body { padding: 32px; }
   .cc-v10 .v10-step .num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 18px; }
   .cc-v10 .v10-step h3 { font-size: 22px; font-weight: 500; margin-bottom: 12px; }
   .cc-v10 .v10-step p { font-size: 15px; line-height: 1.55; color: #6B6B6B; }
@@ -455,7 +458,7 @@
           <h3>Morning Blend + Softgels</h3>
           <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
           <div class="v10-system-img">
-            <img src="{{ 'cc-v8-morning-scene.png' | asset_url }}" alt="Morning shaker and softgels on a kitchen counter">
+            <img src="{{ 'cc-v10-morning.jpg' | asset_url }}" alt="Morning shaker and softgels on a kitchen counter">
           </div>
           <div class="ing-list">
             <p class="ing-head">Easy-Scoop Powder Sachet</p>
@@ -681,19 +684,34 @@
 
       <div class="v10-steps reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <div class="v10-step">
-          <p class="num">Step 01</p>
-          <h3>Morning scoop + softgel</h3>
-          <p>One easy-scoop powder sachet in your free glass shaker with the softgel, taken together with breakfast. 10 ingredients. 45 seconds.</p>
+          <div class="v10-step-img">
+            <img src="{{ 'cc-v10-flatlay.jpg' | asset_url }}" alt="Coastline morning system laid out on a counter">
+          </div>
+          <div class="v10-step-body">
+            <p class="num">Step 01</p>
+            <h3>Morning scoop + softgel</h3>
+            <p>One easy-scoop powder sachet in your free glass shaker with the softgel, taken together with breakfast. 10 ingredients. 45 seconds.</p>
+          </div>
         </div>
         <div class="v10-step">
-          <p class="num">Step 02</p>
-          <h3>Evening capsules</h3>
-          <p>Two evening capsules 30-60 minutes before bed. L-theanine and glycine help you wind down while glucosamine and lithium orotate go to work overnight.</p>
+          <div class="v10-step-img">
+            <img src="{{ 'cc-v10-portrait.jpg' | asset_url }}" alt="A calm, focused evening routine">
+          </div>
+          <div class="v10-step-body">
+            <p class="num">Step 02</p>
+            <h3>Evening capsules</h3>
+            <p>Two evening capsules 30-60 minutes before bed. L-theanine and glycine help you wind down while glucosamine and lithium orotate go to work overnight.</p>
+          </div>
         </div>
         <div class="v10-step">
-          <p class="num">Step 03</p>
-          <h3>Feel the shift</h3>
-          <p>Most customers notice sharper mornings and steadier energy in 2-4 weeks. Deep-structural benefits &mdash; sleep, joints, biomarkers &mdash; build through weeks 4-8.</p>
+          <div class="v10-step-img">
+            <img src="{{ 'cc-v10-active.jpg' | asset_url }}" alt="Active lifestyle &mdash; the result of a consistent longevity routine">
+          </div>
+          <div class="v10-step-body">
+            <p class="num">Step 03</p>
+            <h3>Feel the shift</h3>
+            <p>Most customers notice sharper mornings and steadier energy in 2-4 weeks. Deep-structural benefits &mdash; sleep, joints, biomarkers &mdash; build through weeks 4-8.</p>
+          </div>
         </div>
       </div>
     </div>
