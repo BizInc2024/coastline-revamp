@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "cc-landing-v10",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

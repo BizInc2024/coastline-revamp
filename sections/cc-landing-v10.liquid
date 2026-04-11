@@ -1,0 +1,1014 @@
+{% render 'cc-deps' %}
+{% comment %}
+  Coastline Landing Page V10
+  Product journey landing page — desktop-first, gender-neutral, CRO-optimized.
+
+  Variant IDs (DO NOT CHANGE):
+  - Unflavored Blend: 42179764453445
+  - Coastal Lemonade: 42179764486213
+  ReCharge Selling Plans:
+  - Monthly (34% off):   1892712517
+  - Every 2 months (20% off): 1862631493
+  - One-time: no selling_plan
+{% endcomment %}
+
+<style>
+  .cc-v10 { font-family: 'Inter', system-ui, sans-serif; background: #FAF9F6; color: #6B6B6B; -webkit-font-smoothing: antialiased; }
+  .cc-v10 * { box-sizing: border-box; }
+  .cc-v10 h1, .cc-v10 h2, .cc-v10 h3, .cc-v10 h4 { font-family: 'Space Grotesk', system-ui, sans-serif; color: #0A0A0A; letter-spacing: -0.02em; margin: 0; }
+  .cc-v10 p { margin: 0; }
+  .cc-v10 a { color: inherit; text-decoration: none; }
+  .cc-v10 img { max-width: 100%; display: block; }
+  .cc-v10 button { font-family: inherit; }
+
+  .cc-v10 .v10-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .cc-v10 .v10-wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .cc-v10 .v10-wrap-wide { max-width: 1360px; margin: 0 auto; padding: 0 24px; }
+
+  .cc-v10 .v10-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; }
+  .cc-v10 .v10-divider { width: 60px; height: 1px; background: #0A0A0A; }
+
+  .cc-v10 .v10-btn {
+    display: inline-block;
+    background: #0A0A0A;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 20px 44px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .cc-v10 .v10-btn:hover { opacity: 0.85; }
+  .cc-v10 .v10-btn.v10-btn-light { background: #FAF9F6; color: #0A0A0A; }
+  .cc-v10 .v10-btn.v10-btn-lime { background: #E7FF56; color: #0A0A0A; }
+  .cc-v10 .v10-btn-outline { background: transparent; color: #0A0A0A; border: 1.5px solid #0A0A0A; }
+  .cc-v10 .v10-btn-outline:hover { background: #0A0A0A; color: #FAF9F6; opacity: 1; }
+
+  .cc-v10 .v10-urgency {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    background: #E7FF56;
+    color: #062F3D;
+  }
+
+  .cc-v10 .v10-stars { letter-spacing: 2px; color: #0A0A0A; }
+  .cc-v10 .v10-stars-white { color: #FAF9F6; }
+
+  .cc-v10 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .cc-v10 .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .cc-v10 .reveal { opacity: 1; transform: none; } }
+
+  /* ---------- HERO ---------- */
+  .cc-v10 .v10-hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; background: #0A0A0A; }
+  .cc-v10 .v10-hero-bg { position: absolute; inset: 0; }
+  .cc-v10 .v10-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .cc-v10 .v10-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.20) 60%, rgba(0,0,0,0.60) 100%); }
+  .cc-v10 .v10-hero-inner { position: relative; z-index: 2; width: 100%; padding: 120px 24px 80px; }
+  .cc-v10 .v10-hero-grid { max-width: 1200px; margin: 0 auto; }
+  .cc-v10 .v10-hero-copy { max-width: 640px; color: #FAF9F6; }
+  .cc-v10 .v10-hero-eyebrow { color: rgba(255,255,255,0.75); font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: block; }
+  .cc-v10 .v10-hero-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.35); margin-bottom: 28px; }
+  .cc-v10 .v10-hero h1 { color: #FAF9F6; font-size: clamp(34px, 6vw, 68px); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 22px; }
+  .cc-v10 .v10-hero h1 .soft { color: rgba(250,249,246,0.62); }
+  .cc-v10 .v10-hero .v10-hero-sub { color: rgba(250,249,246,0.82); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; max-width: 560px; margin-bottom: 26px; }
+  .cc-v10 .v10-hero-stars { display: flex; align-items: center; gap: 10px; color: #FAF9F6; font-size: 13px; margin-bottom: 24px; }
+  .cc-v10 .v10-hero-stars .v10-stars { font-size: 14px; color: #FAF9F6; }
+  .cc-v10 .v10-hero-stars span:last-child { color: rgba(250,249,246,0.75); }
+  .cc-v10 .v10-hero-urgency-row { margin-bottom: 18px; }
+  .cc-v10 .v10-hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .cc-v10 .v10-hero-microcopy { margin-top: 18px; font-size: 12px; letter-spacing: 0.04em; color: rgba(250,249,246,0.65); }
+  .cc-v10 .v10-hero-microcopy strong { color: #FAF9F6; font-weight: 500; }
+
+  /* ---------- PRESS ---------- */
+  .cc-v10 .v10-press { padding: 40px 0; background: #fff; border-bottom: 1px solid #E8E8E8; text-align: center; }
+  .cc-v10 .v10-press-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 28px; }
+  .cc-v10 .v10-press-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 48px; }
+  .cc-v10 .v10-press-row img { height: 80px; width: auto; opacity: 0.6; transition: opacity 0.3s ease; filter: grayscale(100%); }
+  .cc-v10 .v10-press-row img:hover { opacity: 1; filter: none; }
+  .cc-v10 .v10-press-row img.small { height: 28px; }
+  @media (max-width: 768px) { .cc-v10 .v10-press-row { gap: 28px; } .cc-v10 .v10-press-row img { height: 48px; } .cc-v10 .v10-press-row img.small { height: 22px; } }
+
+  /* ---------- SECTION HEAD ---------- */
+  .cc-v10 .v10-section { padding: 96px 0; }
+  .cc-v10 .v10-section.tight { padding: 72px 0; }
+  .cc-v10 .v10-section.dark { background: #0A0A0A; color: #9A9A9A; }
+  .cc-v10 .v10-section.dark h2, .cc-v10 .v10-section.dark h3 { color: #FAF9F6; }
+  .cc-v10 .v10-section.dark .v10-eyebrow { color: #9A9A9A; }
+  .cc-v10 .v10-section.dark .v10-divider { background: #333; }
+  .cc-v10 .v10-section.parchment { background: #FAF9F6; }
+  .cc-v10 .v10-section.white { background: #fff; }
+  .cc-v10 .v10-section-head { text-align: center; margin-bottom: 56px; }
+  .cc-v10 .v10-section-head .v10-eyebrow { display: block; margin-bottom: 20px; }
+  .cc-v10 .v10-section-head .v10-divider { margin: 0 auto 28px; }
+  .cc-v10 .v10-section-head h2 { font-size: clamp(30px, 4.5vw, 56px); font-weight: 500; line-height: 1.1; margin-bottom: 20px; }
+  .cc-v10 .v10-section-head h2 .soft { color: #6B6B6B; }
+  .cc-v10 .v10-section.dark .v10-section-head h2 .soft { color: #6B6B6B; }
+  .cc-v10 .v10-section-head p { max-width: 640px; margin: 0 auto; font-size: 17px; line-height: 1.55; color: #6B6B6B; }
+  .cc-v10 .v10-section.dark .v10-section-head p { color: #9A9A9A; }
+  @media (max-width: 768px) { .cc-v10 .v10-section { padding: 64px 0; } }
+
+  /* ---------- SYSTEM (AM/PM) ---------- */
+  .cc-v10 .v10-system-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 900px) { .cc-v10 .v10-system-grid { grid-template-columns: 1fr 1fr; gap: 0; } }
+  .cc-v10 .v10-system-col { padding: 0 0 32px; border-bottom: 1px solid #E8E8E8; text-align: center; }
+  @media (min-width: 900px) {
+    .cc-v10 .v10-system-col { padding: 0 48px; border-bottom: none; }
+    .cc-v10 .v10-system-col.am { border-right: 1px solid #E8E8E8; }
+  }
+  .cc-v10 .v10-system-col .step-label { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 14px; }
+  .cc-v10 .v10-system-col h3 { font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+  .cc-v10 .v10-system-col .sub { font-size: 13px; color: #6B6B6B; margin-bottom: 24px; }
+  .cc-v10 .v10-system-col .v10-system-img { max-width: 340px; margin: 0 auto 24px; aspect-ratio: 4/3; overflow: hidden; background: #F5F5F2; }
+  .cc-v10 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-v10 .v10-system-col .ing-list { max-width: 260px; margin: 0 auto; text-align: left; }
+  .cc-v10 .v10-system-col .ing-list .ing-head { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 16px 0 8px; }
+  .cc-v10 .v10-system-col .ing-list ul { list-style: none; padding: 0; margin: 0; }
+  .cc-v10 .v10-system-col .ing-list li { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; }
+  .cc-v10 .v10-system-col .ing-list li .name { color: #0A0A0A; }
+  .cc-v10 .v10-system-col .ing-list li .dose { color: #6B6B6B; }
+  .cc-v10 .v10-two-moments-note { text-align: center; margin-top: 48px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B; }
+
+  /* ---------- SYSTEM BADGE ROW ---------- */
+  .cc-v10 .v10-badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 40px; }
+  .cc-v10 .v10-badge-row .badge { border: 1px solid #E8E8E8; padding: 10px 18px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; background: #fff; }
+
+  /* ---------- REVIEWS ---------- */
+  .cc-v10 .v10-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 800px) { .cc-v10 .v10-reviews-grid.three { grid-template-columns: repeat(3, 1fr); } .cc-v10 .v10-reviews-grid.two { grid-template-columns: repeat(2, 1fr); } }
+  .cc-v10 .v10-review-card { border-top: 1px solid #E8E8E8; padding-top: 28px; }
+  .cc-v10 .v10-section.dark .v10-review-card { border-top-color: #222; }
+  .cc-v10 .v10-review-card .v10-stars { display: block; margin-bottom: 12px; font-size: 13px; }
+  .cc-v10 .v10-review-card p.quote { font-size: 17px; line-height: 1.5; color: #0A0A0A; margin-bottom: 20px; }
+  .cc-v10 .v10-section.dark .v10-review-card p.quote { color: #FAF9F6; }
+  .cc-v10 .v10-review-card .who { display: flex; align-items: center; gap: 12px; }
+  .cc-v10 .v10-review-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: #0A0A0A; color: #FAF9F6;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500;
+    flex-shrink: 0;
+  }
+  .cc-v10 .v10-review-card .name { font-size: 13px; color: #6B6B6B; }
+  .cc-v10 .v10-review-card .name strong { display: block; color: #0A0A0A; font-weight: 500; }
+  .cc-v10 .v10-section.dark .v10-review-card .name strong { color: #FAF9F6; }
+  .cc-v10 .v10-review-card .verified { font-size: 11px; color: #2D5A47; letter-spacing: 0.04em; margin-top: 2px; }
+  .cc-v10 .v10-reviews-header { text-align: center; margin-bottom: 48px; }
+  .cc-v10 .v10-reviews-header .v10-stars { display: block; font-size: 18px; margin-bottom: 8px; }
+
+  /* ---------- UGC GALLERY ---------- */
+  .cc-v10 .v10-ugc-rail {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 8px 24px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .cc-v10 .v10-ugc-rail::-webkit-scrollbar { display: none; }
+  .cc-v10 .v10-ugc-item {
+    flex: 0 0 auto;
+    width: 280px;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: #F5F5F2;
+  }
+  .cc-v10 .v10-ugc-item img { width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 1100px) {
+    .cc-v10 .v10-ugc-rail { justify-content: center; overflow-x: visible; }
+    .cc-v10 .v10-ugc-item { width: 220px; }
+  }
+
+  /* ---------- MICRO-REVIEW STRIP ---------- */
+  .cc-v10 .v10-micro-strip {
+    background: #0A0A0A;
+    padding: 20px 24px;
+    color: #FAF9F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  .cc-v10 .v10-micro-strip .sep { width: 1px; height: 20px; background: rgba(255,255,255,0.2); }
+  .cc-v10 .v10-micro-strip .v10-stars { color: #FAF9F6; font-size: 14px; }
+  .cc-v10 .v10-micro-strip strong { color: #FAF9F6; font-weight: 500; }
+  .cc-v10 .v10-micro-strip em { font-style: normal; color: #9A9A9A; }
+
+  /* ---------- INGREDIENT TABLE ---------- */
+  .cc-v10 .v10-ing-table { max-width: 960px; margin: 0 auto; border-top: 1px solid #E8E8E8; }
+  .cc-v10 .v10-section.dark .v10-ing-table { border-top-color: #222; }
+  .cc-v10 .v10-ing-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 90px;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid #E8E8E8;
+    align-items: baseline;
+  }
+  .cc-v10 .v10-section.dark .v10-ing-row { border-bottom-color: #222; }
+  .cc-v10 .v10-ing-row .ing-name { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; color: #0A0A0A; }
+  .cc-v10 .v10-section.dark .v10-ing-row .ing-name { color: #FAF9F6; }
+  .cc-v10 .v10-ing-row .ing-why { font-size: 14px; line-height: 1.5; color: #6B6B6B; }
+  .cc-v10 .v10-section.dark .v10-ing-row .ing-why { color: #9A9A9A; }
+  .cc-v10 .v10-ing-row .ing-dose { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; color: #2D5A47; text-align: right; }
+  .cc-v10 .v10-section.dark .v10-ing-row .ing-dose { color: #E7FF56; }
+  @media (max-width: 700px) {
+    .cc-v10 .v10-ing-row { grid-template-columns: 1fr 80px; }
+    .cc-v10 .v10-ing-row .ing-why { grid-column: 1 / -1; }
+  }
+  .cc-v10 .v10-ing-footnote { text-align: center; margin-top: 32px; font-size: 13px; color: #6B6B6B; }
+  .cc-v10 .v10-section.dark .v10-ing-footnote { color: #9A9A9A; }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .cc-v10 .v10-steps { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 800px) { .cc-v10 .v10-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+  .cc-v10 .v10-step { text-align: left; padding: 32px; background: #fff; border: 1px solid #E8E8E8; }
+  .cc-v10 .v10-step .num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 18px; }
+  .cc-v10 .v10-step h3 { font-size: 22px; font-weight: 500; margin-bottom: 12px; }
+  .cc-v10 .v10-step p { font-size: 15px; line-height: 1.55; color: #6B6B6B; }
+
+  /* ---------- EXPERT QUOTE ---------- */
+  .cc-v10 .v10-expert { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 900px) { .cc-v10 .v10-expert { grid-template-columns: 340px 1fr; gap: 72px; } }
+  .cc-v10 .v10-expert-img { aspect-ratio: 4/5; overflow: hidden; background: #F5F5F2; }
+  .cc-v10 .v10-expert-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-v10 .v10-expert .v10-eyebrow { display: block; margin-bottom: 18px; color: #9A9A9A; }
+  .cc-v10 .v10-expert blockquote { font-family: 'Space Grotesk', sans-serif; font-size: clamp(22px, 2.6vw, 32px); line-height: 1.3; color: #FAF9F6; font-weight: 400; margin: 0 0 28px; letter-spacing: -0.015em; }
+  .cc-v10 .v10-expert .attribution { font-size: 14px; line-height: 1.5; color: #9A9A9A; }
+  .cc-v10 .v10-expert .attribution strong { display: block; color: #FAF9F6; font-weight: 500; font-family: 'Space Grotesk', sans-serif; font-size: 15px; }
+
+  /* ---------- COMPARISON ---------- */
+  .cc-v10 .v10-compare-wrap { overflow-x: auto; max-width: 880px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .cc-v10 .v10-compare { width: 100%; border-collapse: collapse; min-width: 560px; }
+  .cc-v10 .v10-compare th, .cc-v10 .v10-compare td { padding: 18px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid #E8E8E8; }
+  .cc-v10 .v10-compare thead th { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B; font-weight: 500; padding-bottom: 20px; }
+  .cc-v10 .v10-compare thead th.coastline { background: #0A0A0A; color: #FAF9F6; text-align: center; }
+  .cc-v10 .v10-compare td.coastline { background: #F5F5F2; text-align: center; color: #0A0A0A; font-weight: 500; }
+  .cc-v10 .v10-compare td.typical { color: #6B6B6B; text-align: center; }
+  .cc-v10 .v10-compare td.attr { color: #0A0A0A; font-weight: 500; }
+  .cc-v10 .v10-compare .check { color: #2D5A47; font-weight: 600; }
+  .cc-v10 .v10-compare .miss { color: #C0392B; font-weight: 600; }
+
+  /* ---------- CTA (pricing box) ---------- */
+  /* uses v8 scoped styles */
+
+  /* ---------- FAQ ---------- */
+  .cc-v10 .v10-faq { max-width: 780px; margin: 0 auto; }
+  .cc-v10 .v10-faq-item { border-top: 1px solid #E8E8E8; }
+  .cc-v10 .v10-faq-item:last-child { border-bottom: 1px solid #E8E8E8; }
+  .cc-v10 .v10-faq-q { width: 100%; text-align: left; padding: 24px 0; background: none; border: none; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; color: #0A0A0A; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .cc-v10 .v10-faq-q .plus { font-size: 22px; line-height: 1; color: #6B6B6B; transition: transform 0.3s ease; flex-shrink: 0; }
+  .cc-v10 .v10-faq-q[aria-expanded="true"] .plus { transform: rotate(45deg); }
+  .cc-v10 .v10-faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+  .cc-v10 .v10-faq-a.open { max-height: 600px; }
+  .cc-v10 .v10-faq-a p { padding: 0 0 24px; font-size: 15px; line-height: 1.6; color: #6B6B6B; max-width: 680px; }
+
+  /* ---------- TRUST FOOTER ---------- */
+  .cc-v10 .v10-trust-footer { background: #FAF9F6; padding: 64px 0 48px; text-align: center; border-top: 1px solid #E8E8E8; }
+  .cc-v10 .v10-trust-footer .row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; margin-bottom: 32px; }
+  .cc-v10 .v10-trust-footer .badge { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; }
+  .cc-v10 .v10-trust-footer .guarantee { font-size: 17px; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; }
+  .cc-v10 .v10-trust-footer .disclaimer { font-size: 11px; color: #9A9A9A; max-width: 640px; margin: 24px auto 0; line-height: 1.5; }
+
+  /* ---------- GUARANTEE BANNER ---------- */
+  .cc-v10 .v10-guarantee-banner {
+    background: #0A0A0A;
+    padding: 36px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+    color: #FAF9F6;
+  }
+  .cc-v10 .v10-guarantee-banner .lead { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 400; }
+  .cc-v10 .v10-guarantee-banner .sub { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .cc-v10 .v10-guarantee-banner .sep { width: 1px; height: 24px; background: rgba(255,255,255,0.2); display: none; }
+  @media (min-width: 900px) { .cc-v10 .v10-guarantee-banner .sep { display: block; } }
+
+  /* ---------- CTA PRICING BOX (verbatim from v8) ---------- */
+  .cc-v10 #cta .btn-primary {
+    display: inline-block; background: #0A0A0A; color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px;
+    text-decoration: none; transition: opacity 0.3s ease; border: none; cursor: pointer;
+  }
+  .cc-v10 #cta .btn-primary:hover { opacity: 0.85; }
+  .cc-v10 #cta { padding: 96px 0; background: #fff; }
+  .cc-v10 #cta .cta-wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; text-align: center; }
+  .cc-v10 #cta h2 { font-size: clamp(30px, 4.5vw, 54px); font-weight: 500; line-height: 1.1; margin-bottom: 20px; }
+  .cc-v10 #cta h2 .soft { color: #6B6B6B; }
+  .cc-v10 #cta .lead { font-size: 17px; color: #6B6B6B; margin: 0 auto 20px; max-width: 560px; line-height: 1.55; }
+  .cc-v10 #cta .stars-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 28px; color: #6B6B6B; }
+  .cc-v10 #cta .stars-row .v10-stars { color: #0A0A0A; }
+  .cc-v10 #cta .price-box {
+    background: #fff; border: 1px solid #E8E8E8; padding: 40px;
+    max-width: 560px; margin: 0 auto;
+  }
+  @media (min-width: 768px) { .cc-v10 #cta .price-box { padding: 48px; } }
+  .cc-v10 #cta .label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 16px; text-align: left; }
+  .cc-v10 #cta .flavor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+  .cc-v10 #cta .flavor-btn {
+    padding: 16px 12px; border: 2px solid #E8E8E8; background: #F5EFE6; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; color: #0A0A0A;
+    transition: all 0.2s ease;
+  }
+  .cc-v10 #cta .flavor-btn.lemonade { background: #FDF2F8; }
+  .cc-v10 #cta .flavor-btn.active { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
+  .cc-v10 #cta .plan-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 32px; }
+  .cc-v10 #cta .plan-btn {
+    padding: 16px 10px; border: 2px solid #E8E8E8; background: #fff; cursor: pointer;
+    text-align: center; transition: all 0.2s ease; position: relative;
+  }
+  .cc-v10 #cta .plan-btn.active { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
+  .cc-v10 #cta .plan-btn .tag { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; font-weight: 500; color: #2D5A47; margin-bottom: 4px; text-transform: uppercase; }
+  .cc-v10 #cta .plan-btn.active .tag { color: #E7FF56; }
+  .cc-v10 #cta .plan-btn .price { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; color: #0A0A0A; }
+  .cc-v10 #cta .plan-btn.active .price { color: #fff; }
+  .cc-v10 #cta .plan-btn .cadence { display: block; font-size: 12px; color: #6B6B6B; }
+  .cc-v10 #cta .plan-btn.active .cadence { color: rgba(255,255,255,0.8); }
+  .cc-v10 #cta .plan-btn .label-cadence { display: block; font-size: 11px; color: #6B6B6B; margin-top: 4px; }
+  .cc-v10 #cta .plan-btn.active .label-cadence { color: rgba(255,255,255,0.8); }
+  .cc-v10 #cta .plan-btn .save { display: block; font-size: 11px; color: #2D5A47; margin-top: 4px; }
+  .cc-v10 #cta .plan-btn.active .save { color: #E7FF56; }
+  .cc-v10 #cta .price-display { border-top: 1px solid #E8E8E8; padding-top: 24px; margin-bottom: 20px; }
+  .cc-v10 #cta .price-display .big {
+    display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-bottom: 6px;
+  }
+  .cc-v10 #cta .price-display .big .dollars { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 500; color: #0A0A0A; }
+  .cc-v10 #cta .price-display .big .per { color: #6B6B6B; font-size: 15px; }
+  .cc-v10 #cta .price-display .line { font-size: 13px; color: #6B6B6B; }
+  .cc-v10 #cta .micro-testimonial { padding: 14px 16px; background: #FAFAF8; border: 1px solid #E8E8E8; margin-bottom: 20px; }
+  .cc-v10 #cta .micro-testimonial .v10-stars { font-size: 12px; margin-bottom: 4px; display: block; }
+  .cc-v10 #cta .micro-testimonial p.quote { font-size: 14px; color: #0A0A0A; line-height: 1.4; margin: 0; }
+  .cc-v10 #cta .micro-testimonial p.who { font-size: 11px; color: #6B6B6B; margin-top: 4px; }
+  .cc-v10 #cta .cta-btn { width: 100%; padding: 22px; display: block; text-align: center; }
+  .cc-v10 #cta .cta-btn:disabled { opacity: 0.7; cursor: wait; }
+  .cc-v10 #cta .micro-below { font-size: 12px; color: #6B6B6B; margin-top: 18px; text-align: center; }
+  .cc-v10 #cta .badges { margin-top: 32px; padding-top: 24px; border-top: 1px solid #E8E8E8; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; text-align: center; }
+  .cc-v10 #cta .urgency-pill {
+    display: inline-block; margin-bottom: 28px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 10px 20px; background: #E7FF56; color: #062F3D;
+  }
+
+  [x-cloak] { display: none !important; }
+</style>
+
+<div class="cc-v10" x-data="{
+    visibleReviews: 3,
+    faq: null,
+    toggleFaq(i) { this.faq = this.faq === i ? null : i; }
+  }">
+
+  <!-- ================================================== -->
+  <!-- 1. HERO                                              -->
+  <!-- ================================================== -->
+  <section class="v10-hero" id="top">
+    <div class="v10-hero-bg">
+      <img src="{{ 'cc-v10-hero.jpg' | asset_url }}" alt="Coastline daily supplement system on a morning counter">
+    </div>
+    <div class="v10-hero-overlay"></div>
+    <div class="v10-hero-inner">
+      <div class="v10-hero-grid">
+        <div class="v10-hero-copy reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+          <span class="v10-hero-eyebrow">The Coastline Longevity System</span>
+          <div class="v10-hero-divider"></div>
+          <h1>
+            13 clinical doses.<br>
+            One daily ritual.<br>
+            <span class="soft">Built to last decades.</span>
+          </h1>
+          <p class="v10-hero-sub">
+            A morning scoop, a softgel, two capsules before bed. 13 science-backed ingredients dosed at the exact levels used in clinical studies &mdash; no mystery ingredients, no hidden doses, no filler.
+          </p>
+          <div class="v10-hero-stars">
+            <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>2,000+ Five-Star Reviews</span>
+          </div>
+          <div class="v10-hero-urgency-row">
+            <span class="v10-urgency">Limited Time &mdash; Save 34%</span>
+          </div>
+          <div class="v10-hero-cta-row">
+            <a href="#cta" class="v10-btn v10-btn-light">Start My System &mdash; $99/mo</a>
+            <a href="#how" style="color: rgba(250,249,246,0.8); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px;">See how it works &darr;</a>
+          </div>
+          <p class="v10-hero-microcopy">
+            <strong>60-day money-back guarantee.</strong> Free shipping. Cancel anytime.<br>
+            Just $3.30/day &mdash; less than your daily coffee.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 2. PRESS LOGOS                                       -->
+  <!-- ================================================== -->
+  <section class="v10-press">
+    <div class="v10-wrap">
+      <p class="v10-press-label">As Featured In</p>
+      <div class="v10-press-row">
+        <img src="{{ 'cc-v8-press-logo-1.png' | asset_url }}" alt="Uncrate">
+        <img src="{{ 'cc-v8-press-logo-2.png' | asset_url }}" alt="Vice">
+        <img src="{{ 'cc-v8-press-logo-3.png' | asset_url }}" alt="Daily Beast">
+        <img src="{{ 'cc-v8-press-logo-4.png' | asset_url }}" alt="Us Weekly">
+        <img class="small" src="{{ 'cc-v8-logo-man-of-many.png' | asset_url }}" alt="Man of Many">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 3. PRODUCT SYSTEM OVERVIEW                           -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment" id="system">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">The System</span>
+        <div class="v10-divider"></div>
+        <h2>
+          Two moments a day.<br>
+          <span class="soft">Timed to your biology.</span>
+        </h2>
+        <p>13 ingredients, split into a morning ritual and an evening wind-down. Each dose matches the level used in the clinical trials that earned it a spot.</p>
+      </div>
+
+      <div class="v10-system-grid reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <!-- AM -->
+        <div class="v10-system-col am">
+          <p class="step-label">Moment One &middot; AM</p>
+          <h3>Morning Blend + Softgels</h3>
+          <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
+          <div class="v10-system-img">
+            <img src="{{ 'cc-v8-morning-scene.png' | asset_url }}" alt="Morning shaker and softgels on a kitchen counter">
+          </div>
+          <div class="ing-list">
+            <p class="ing-head">Easy-Scoop Powder Sachet</p>
+            <ul>
+              <li><span class="name">Creatine</span><span class="dose">5.25g</span></li>
+              <li><span class="name">Glycine</span><span class="dose">5g</span></li>
+              <li><span class="name">Inulin</span><span class="dose">4g</span></li>
+              <li><span class="name">Taurine</span><span class="dose">3.05g</span></li>
+              <li><span class="name">Magnesium</span><span class="dose">150mg</span></li>
+              <li><span class="name">Ergothioneine</span><span class="dose">5mg</span></li>
+            </ul>
+            <p class="ing-head">Morning Softgels</p>
+            <ul>
+              <li><span class="name">CoQ10</span><span class="dose">200mg</span></li>
+              <li><span class="name">Lutein</span><span class="dose">10mg</span></li>
+              <li><span class="name">Astaxanthin</span><span class="dose">6mg</span></li>
+              <li><span class="name">Zeaxanthin</span><span class="dose">2mg</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- PM -->
+        <div class="v10-system-col pm">
+          <p class="step-label">Moment Two &middot; PM</p>
+          <h3>Evening Capsules</h3>
+          <p class="sub">30-60 minutes before bed &middot; 3 ingredients</p>
+          <div class="v10-system-img">
+            <img src="{{ 'cc-bedside-evening.png' | asset_url }}" alt="Evening capsules on a bedside table">
+          </div>
+          <div class="ing-list">
+            <p class="ing-head">Evening Capsules</p>
+            <ul>
+              <li><span class="name">Glucosamine</span><span class="dose">750mg</span></li>
+              <li><span class="name">L-Theanine</span><span class="dose">200mg</span></li>
+              <li><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></li>
+            </ul>
+            <p class="ing-head" style="margin-top: 28px;">Plus In Every Box</p>
+            <ul>
+              <li><span class="name">Free Glass Shaker</span><span class="dose">&#10003;</span></li>
+              <li><span class="name">30-Day Supply</span><span class="dose">&#10003;</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="v10-two-moments-note">Two moments. 13 doses. Zero guesswork.</p>
+
+      <div class="v10-badge-row">
+        <span class="badge">3rd Party Tested</span>
+        <span class="badge">GMP Certified</span>
+        <span class="badge">Made in USA</span>
+        <span class="badge">Vegan</span>
+        <span class="badge">Caffeine-Free</span>
+        <span class="badge">Satisfaction Guaranteed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- GUARANTEE BANNER #1                                  -->
+  <!-- ================================================== -->
+  <section class="v10-guarantee-banner">
+    <p class="lead">60-day money-back guarantee.</p>
+    <span class="sep"></span>
+    <p class="sub">TRY RISK-FREE &middot; NO QUESTIONS ASKED &middot; FULL REFUND</p>
+    <span class="sep"></span>
+    <a href="#ingredients" style="color: #FAF9F6; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(250,249,246,0.4); padding-bottom: 3px;">&darr; See every ingredient</a>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 4. SOCIAL PROOF #1 — 3 REVIEWS                       -->
+  <!-- ================================================== -->
+  <section class="v10-section white">
+    <div class="v10-wrap">
+      <div class="v10-reviews-header reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p style="color:#6B6B6B;">2,000+ Five-Star Reviews &middot; 4.8 average</p>
+      </div>
+
+      <div class="v10-reviews-grid three reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;Finally, a longevity stack that doesn&rsquo;t need 15 bottles. My morning brain fog is gone and I feel sharper by week three.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar">RK</div>
+            <div class="name"><strong>Robert K., 45</strong>Chicago, IL<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;I&rsquo;ve tried every greens powder on the market. This is the first one where I can read the label and actually know what I&rsquo;m getting &mdash; and the doses match the studies.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar" style="background:#2D5A47;">SM</div>
+            <div class="name"><strong>Sarah M., 42</strong>Austin, TX<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;Energy that feels natural, not forced. No jitters, no crash &mdash; just steady output from morning to night.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar">SL</div>
+            <div class="name"><strong>Scott L., 51</strong>Charlotte, NC<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- MICRO SOCIAL PROOF STRIP                             -->
+  <!-- ================================================== -->
+  <div class="v10-micro-strip">
+    <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <strong>2,000+ Five-Star Reviews</strong>
+    <span class="sep"></span>
+    <em>60-Day Guarantee</em>
+    <span class="sep"></span>
+    <em>Free Shipping</em>
+    <span class="sep"></span>
+    <em>Cancel Anytime</em>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- 5. INFLUENCER UGC GALLERY                            -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">Real People &middot; Real Routines</span>
+        <div class="v10-divider"></div>
+        <h2>2,000+ people already<br><span class="soft">made this their morning.</span></h2>
+        <p>No new habit required &mdash; just two moments you already have.</p>
+      </div>
+    </div>
+    <div class="v10-ugc-rail reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 6. INGREDIENT DEEP DIVE                              -->
+  <!-- ================================================== -->
+  <section class="v10-section dark">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">The Formula</span>
+        <div class="v10-divider"></div>
+        <h2>
+          13 ingredients.<br>
+          <span class="soft">Every dose published.</span>
+        </h2>
+        <p>No mystery ingredients. No hidden doses. Every milligram is listed at the clinical level used in the studies that earned it a spot in the formula.</p>
+      </div>
+
+      <div class="v10-ing-table reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-ing-row"><div class="ing-name">Creatine</div><div class="ing-why">Muscle output, strength retention, and cellular energy production.</div><div class="ing-dose">5.25g</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Glycine</div><div class="ing-why">Collagen synthesis, sleep quality, and metabolic regulation.</div><div class="ing-dose">5g</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Inulin</div><div class="ing-why">Prebiotic fiber that feeds beneficial gut bacteria.</div><div class="ing-dose">4g</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Taurine</div><div class="ing-why">Mitochondrial function &mdash; declines sharply after 40.</div><div class="ing-dose">3.05g</div></div>
+        <div class="v10-ing-row"><div class="ing-name">CoQ10</div><div class="ing-why">Powers cellular ATP production; depletes with age and statins.</div><div class="ing-dose">200mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Magnesium</div><div class="ing-why">Supports 300+ enzymatic reactions and nervous system function.</div><div class="ing-dose">150mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Lutein</div><div class="ing-why">Macular pigment density &mdash; protects long-term vision.</div><div class="ing-dose">10mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Astaxanthin</div><div class="ing-why">One of the most potent antioxidants ever measured.</div><div class="ing-dose">6mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Ergothioneine</div><div class="ing-why">Accumulates in tissues under oxidative stress; anti-inflammatory.</div><div class="ing-dose">5mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Zeaxanthin</div><div class="ing-why">Pairs with lutein to filter blue light and defend retinal cells.</div><div class="ing-dose">2mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Glucosamine</div><div class="ing-why">Joint cartilage support; associated with lower all-cause mortality.</div><div class="ing-dose">750mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">L-Theanine</div><div class="ing-why">Calm focus without sedation; improves sleep onset.</div><div class="ing-dose">200mg</div></div>
+        <div class="v10-ing-row"><div class="ing-name">Lithium Orotate</div><div class="ing-why">Microdose for cognitive resilience and long-term brain health.</div><div class="ing-dose">400mcg</div></div>
+      </div>
+
+      <p class="v10-ing-footnote">Supports 11 body systems &mdash; brain, energy, sleep, muscle, gut, vision, joints, cardiovascular, antioxidant defense, skin, and immune. <a href="#cta" style="color:#E7FF56; border-bottom: 1px solid #E7FF56; padding-bottom: 1px;">See the full science &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 7. SOCIAL PROOF #2 — 2 REVIEWS                       -->
+  <!-- ================================================== -->
+  <section class="v10-section white">
+    <div class="v10-wrap">
+      <div class="v10-reviews-grid two reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;As a physician, I&rsquo;m skeptical of most supplements &mdash; but the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar">MR</div>
+            <div class="name"><strong>Michael R., 58</strong>Physician &middot; Seattle, WA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;As a busy mother and founder, mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was just part of getting older.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar" style="background:#2D5A47;">SR</div>
+            <div class="name"><strong>Sophia R., 41</strong>Founder &middot; Brooklyn, NY<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#cta" class="v10-btn">Start My System &mdash; $99/mo</a>
+        <p style="margin-top:14px; font-size:12px; color:#6B6B6B;">Just $3.30/day &middot; 60-day money-back guarantee &middot; Free glass shaker</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 8. HOW IT WORKS — 3 STEPS                            -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment" id="how">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">How It Works</span>
+        <div class="v10-divider"></div>
+        <h2>Three steps.<br><span class="soft">Two moments a day.</span></h2>
+        <p>No app. No tracking. No 15 pill bottles. Just a morning ritual, an evening wind-down, and a noticeable shift within a few weeks.</p>
+      </div>
+
+      <div class="v10-steps reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-step">
+          <p class="num">Step 01</p>
+          <h3>Morning scoop + softgel</h3>
+          <p>One easy-scoop powder sachet in your free glass shaker with the softgel, taken together with breakfast. 10 ingredients. 45 seconds.</p>
+        </div>
+        <div class="v10-step">
+          <p class="num">Step 02</p>
+          <h3>Evening capsules</h3>
+          <p>Two evening capsules 30-60 minutes before bed. L-theanine and glycine help you wind down while glucosamine and lithium orotate go to work overnight.</p>
+        </div>
+        <div class="v10-step">
+          <p class="num">Step 03</p>
+          <h3>Feel the shift</h3>
+          <p>Most customers notice sharper mornings and steadier energy in 2-4 weeks. Deep-structural benefits &mdash; sleep, joints, biomarkers &mdash; build through weeks 4-8.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 9. EXPERT ENDORSEMENT — GREG POTTER                  -->
+  <!-- ================================================== -->
+  <section class="v10-section dark">
+    <div class="v10-wrap">
+      <div class="v10-expert reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-expert-img">
+          <img src="{{ 'cc-v10-greg-potter.png' | asset_url }}" alt="Greg Potter, PhD &mdash; Lead Scientist at Coastline">
+        </div>
+        <div>
+          <span class="v10-eyebrow">Lead Scientist</span>
+          <blockquote>&ldquo;Most longevity supplements give you 40 ingredients at doses too low to matter. We did the opposite &mdash; 13 compounds at the exact levels that moved the needle in the actual studies. Every one of them.&rdquo;</blockquote>
+          <div class="attribution">
+            <strong>Greg Potter, PhD</strong>
+            Lead Scientist &middot; Sleep &amp; Circadian Health researcher<br>
+            Published in Nature, The Lancet, and multiple peer-reviewed journals.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 10. COMPARISON                                       -->
+  <!-- ================================================== -->
+  <section class="v10-section white">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">How We Compare</span>
+        <div class="v10-divider"></div>
+        <h2>Coastline vs typical<br><span class="soft">longevity supplements.</span></h2>
+        <p>Most supplements hide their doses behind mystery ingredients. Here&rsquo;s the honest comparison.</p>
+      </div>
+
+      <div class="v10-compare-wrap reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <table class="v10-compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="coastline">COASTLINE</th>
+              <th style="text-align:center;">Typical Greens</th>
+              <th style="text-align:center;">Multi-Bottle Stack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="attr">Clinical doses</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical">Sometimes</td></tr>
+            <tr><td class="attr">Every dose published</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> Hidden</td><td class="typical"><span class="check">&#10003;</span></td></tr>
+            <tr><td class="attr">Mystery ingredient blends</td><td class="coastline">None</td><td class="typical">50+</td><td class="typical">Varies</td></tr>
+            <tr><td class="attr">AM/PM timing</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical"><span class="miss">&times;</span></td></tr>
+            <tr><td class="attr">All in one routine</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> 5-15 bottles</td></tr>
+            <tr><td class="attr">Cost per day</td><td class="coastline">$3.30</td><td class="typical">$2.60</td><td class="typical">$6-10+</td></tr>
+            <tr><td class="attr">60-day guarantee</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical">30 days</td><td class="typical">Varies</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="text-align:center; margin-top:32px; font-size:14px; color:#6B6B6B;">Less than your daily coffee &mdash; backed by a 60-day guarantee.</p>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 11. SOCIAL PROOF #3 — 2 REVIEWS                      -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap">
+      <div class="v10-reviews-header reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p style="color:#6B6B6B;">2,000+ Five-Star Reviews &middot; Rated 4.8</p>
+      </div>
+
+      <div class="v10-reviews-grid two reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;I used to spend $200+/month on five different supplements and still wasn&rsquo;t sure I had everything covered. Coastline replaced all of them. One routine. Done.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar" style="background:#2D5A47;">LT</div>
+            <div class="name"><strong>Lisa T., 52</strong>Denver, CO<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">&ldquo;I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.&rdquo;</p>
+          <div class="who">
+            <div class="v10-review-avatar">AP</div>
+            <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 12. PRICING / CTA — (copied from v8 verbatim)        -->
+  <!-- ================================================== -->
+  <section id="cta">
+    <div class="cta-wrap reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+      <span class="v10-eyebrow" style="display:block; margin-bottom:20px;">Get Started</span>
+      <div class="v10-divider" style="margin: 0 auto 28px;"></div>
+      <h2>One system. Built for longevity.<br><span class="soft">Backed by science.</span></h2>
+      <p class="lead">Join thousands who&rsquo;ve simplified their routine with Coastline. 2,000+ Five-Star Reviews &middot; 60-Day Guarantee.</p>
+      <div class="stars-row">
+        <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>2,000+ Five-Star Reviews</span>
+      </div>
+      <div class="urgency-pill">Limited Time &mdash; Save 34%</div>
+
+      <div class="price-box" x-data="{
+        loading: false,
+        flavor: 'unflavored',
+        plan: 'monthly',
+        variants: {
+          unflavored: 42179764453445,
+          lemonade: 42179764486213
+        },
+        sellingPlans: {
+          monthly: 1892712517,
+          twomonth: 1862631493,
+          onetime: null
+        },
+        prices: {
+          monthly: 99,
+          twomonth: 120,
+          onetime: 150
+        },
+        savings: {
+          monthly: 34,
+          twomonth: 20,
+          onetime: 0
+        },
+        get currentPrice() { return this.prices[this.plan]; },
+        get isSubscription() { return this.plan !== 'onetime'; },
+        addToCart() {
+          this.loading = true;
+          const payload = { id: this.variants[this.flavor], quantity: 1 };
+          if (this.sellingPlans[this.plan]) {
+            payload.selling_plan = this.sellingPlans[this.plan];
+          }
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(r => r.json())
+          .then(cartData => {
+            this.loading = false;
+            if (window.theme?.pubsub?.publish) {
+              window.theme.pubsub.publish(window.theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', cart: cartData });
+            }
+            document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: cartData } }));
+          })
+          .catch(err => { this.loading = false; console.error('cart add error', err); });
+        }
+      }">
+
+        <!-- Flavor -->
+        <p class="label">Select Flavor</p>
+        <div class="flavor-grid">
+          <button type="button" class="flavor-btn" :class="flavor === 'unflavored' ? 'active' : ''" @click="flavor = 'unflavored'">
+            <span x-show="flavor === 'unflavored'">&#10003; </span>Unflavored
+          </button>
+          <button type="button" class="flavor-btn lemonade" :class="flavor === 'lemonade' ? 'active' : ''" @click="flavor = 'lemonade'">
+            <span x-show="flavor === 'lemonade'">&#10003; </span>Coastal Lemonade
+          </button>
+        </div>
+
+        <!-- Plan -->
+        <p class="label">Select Plan</p>
+        <div class="plan-grid">
+          <button type="button" class="plan-btn" :class="plan === 'monthly' ? 'active' : ''" @click="plan = 'monthly'">
+            <span class="tag">Best Value</span>
+            <span class="price">$99</span>
+            <span class="cadence">/month</span>
+            <span class="label-cadence">Monthly</span>
+            <span class="save">Save 34%</span>
+          </button>
+          <button type="button" class="plan-btn" :class="plan === 'twomonth' ? 'active' : ''" @click="plan = 'twomonth'">
+            <span class="tag">&nbsp;</span>
+            <span class="price">$120</span>
+            <span class="cadence">every 2 mo</span>
+            <span class="label-cadence">Try bi-monthly</span>
+            <span class="save">Save 20%</span>
+          </button>
+          <button type="button" class="plan-btn" :class="plan === 'onetime' ? 'active' : ''" @click="plan = 'onetime'">
+            <span class="tag">&nbsp;</span>
+            <span class="price">$150</span>
+            <span class="cadence">one time</span>
+            <span class="label-cadence">Try it first</span>
+            <span class="save">&nbsp;</span>
+          </button>
+        </div>
+
+        <!-- Price Display -->
+        <div class="price-display">
+          <div class="big">
+            <span class="dollars" x-text="'$' + currentPrice"></span>
+            <span class="per" x-show="isSubscription">/month</span>
+          </div>
+          <p class="line" x-show="plan === 'monthly'">Just $3.30/day &mdash; less than your daily coffee</p>
+          <p class="line" x-show="plan === 'twomonth'">$4/day &mdash; ships every 2 months</p>
+          <p class="line" x-show="plan === 'onetime'">Try it first &mdash; no commitment</p>
+        </div>
+
+        <!-- Micro-testimonial -->
+        <div class="micro-testimonial" x-data="{
+          current: 0,
+          quotes: [
+            { text: 'My morning brain fog is gone.', name: 'Robert K., 45' },
+            { text: 'Energy that feels natural, not forced.', name: 'Scott L., 51' },
+            { text: 'I feel sharper and more resilient than I have in years.', name: 'Michael R., 58' },
+            { text: 'Cleared the afternoon fog I thought was permanent.', name: 'Sophia R., 41' }
+          ],
+          init() { setInterval(() => { this.current = (this.current + 1) % this.quotes.length }, 4500) }
+        }">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote" x-text="'\u201C' + quotes[current].text + '\u201D'">&ldquo;My morning brain fog is gone.&rdquo;</p>
+          <p class="who" x-text="'\u2014 ' + quotes[current].name">&mdash; Robert K., 45</p>
+        </div>
+
+        <button type="button" class="btn-primary cta-btn" :disabled="loading" @click="addToCart()">
+          <span x-show="!loading">Start My System &mdash; $99/mo</span>
+          <span x-show="loading">Adding...</span>
+        </button>
+
+        <p class="micro-below">Free shipping &middot; Cancel anytime &middot; 60-day money-back guarantee</p>
+
+        <div class="badges">Satisfaction Guaranteed &middot; GMP Certified &middot; Made in USA &middot; Vegan</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 13. FAQ                                              -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap-narrow">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">Common Questions</span>
+        <div class="v10-divider"></div>
+        <h2>Before you start.</h2>
+      </div>
+
+      <div class="v10-faq reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 1" @click="toggleFaq(1)">How do I actually take Coastline? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 1 ? 'open' : ''"><p>Morning: scoop the powder into your free glass shaker with water and take one softgel with breakfast. Evening: take two capsules 30-60 minutes before bed. That&rsquo;s the entire system &mdash; two moments, under a minute each.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 2" @click="toggleFaq(2)">When will I notice a difference? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 2 ? 'open' : ''"><p>Most customers report sharper mornings and steadier energy in 2-3 weeks. Deep-structural benefits &mdash; sleep quality, joint comfort, biomarker shifts &mdash; typically build through weeks 4-8 of consistent use.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 3" @click="toggleFaq(3)">Why 13 ingredients instead of 75? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 3 ? 'open' : ''"><p>Because doses matter more than ingredient count. A supplement with 75 ingredients at trace amounts hides behind mystery ingredients. Coastline uses 13 compounds at the exact dose used in the studies that proved they work &mdash; published on the label, every milligram.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 4" @click="toggleFaq(4)">Is there caffeine or sugar? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 4 ? 'open' : ''"><p>No caffeine, no added sugar. Coastline is vegan, GMP-certified, 3rd-party tested, and made in the USA. The Coastal Lemonade flavor is naturally sweetened.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 5" @click="toggleFaq(5)">Can I take it with medication? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 5 ? 'open' : ''"><p>Every ingredient is well-studied and generally recognized as safe at these doses, but we always recommend checking with your doctor if you&rsquo;re on prescription medication &mdash; especially blood thinners or blood pressure medication.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 6" @click="toggleFaq(6)">What if it doesn&rsquo;t work for me? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 6 ? 'open' : ''"><p>You have 60 days to try it risk-free. If it&rsquo;s not right for you, contact us for a full refund &mdash; no questions, no return shipping fees, no hoops. We stand behind the science.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 7" @click="toggleFaq(7)">Can I cancel my subscription? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 7 ? 'open' : ''"><p>Yes &mdash; cancel any time with one click from your account. No phone calls, no penalties, no pressure. We make it easy because we believe the product speaks for itself.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 8" @click="toggleFaq(8)">Do I really need the free glass shaker? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 8 ? 'open' : ''"><p>The free glass shaker makes the morning ritual almost automatic. It&rsquo;s included at no extra cost with your first order &mdash; not a gimmick, just the easiest way to mix the powder cleanly without plastic.</p></div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:56px;">
+        <a href="#cta" class="v10-btn">Start My System &mdash; $99/mo</a>
+        <p style="margin-top:14px; font-size:12px; color:#6B6B6B;">Just $3.30/day &middot; 60-day money-back guarantee &middot; Free glass shaker with first order</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 14. TRUST FOOTER                                     -->
+  <!-- ================================================== -->
+  <section class="v10-trust-footer">
+    <div class="v10-wrap">
+      <p class="guarantee">60-Day Money-Back Guarantee</p>
+      <p style="font-size:13px; color:#6B6B6B; margin-bottom:28px;">Try the full system risk-free. If you&rsquo;re not thrilled, we&rsquo;ll refund every penny.</p>
+      <div class="row">
+        <span class="badge">Satisfaction Guaranteed</span>
+        <span class="badge">GMP Certified</span>
+        <span class="badge">Made in USA</span>
+        <span class="badge">3rd Party Tested</span>
+        <span class="badge">Vegan &middot; Caffeine-Free</span>
+      </div>
+      <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult your healthcare provider before starting a new supplement.</p>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "CC Landing V10",
+  "settings": [],
+  "presets": [
+    { "name": "CC Landing V10", "category": "Landing Pages" }
+  ]
+}
+{% endschema %}
