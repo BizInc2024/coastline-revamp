@@ -70,15 +70,15 @@
   /* ---------- HERO ---------- */
   .cc-v10 .v10-hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; background: #0A0A0A; }
   .cc-v10 .v10-hero-bg { position: absolute; inset: 0; }
-  .cc-v10 .v10-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
-  .cc-v10 .v10-hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.90) 22%, rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.08) 90%, rgba(0,0,0,0.02) 100%); }
-  .cc-v10 .v10-hero-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 72%, rgba(0,0,0,0.50) 100%); pointer-events: none; }
+  .cc-v10 .v10-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+  @media (max-width: 640px) { .cc-v10 .v10-hero-bg img { object-position: center 30%; } }
+  .cc-v10 .v10-hero-overlay { display: none; }
   .cc-v10 .v10-hero-inner { position: relative; z-index: 2; width: 100%; padding: 120px 24px 56px; }
   .cc-v10 .v10-hero-grid { max-width: 1200px; margin: 0 auto; }
   .cc-v10 .v10-hero-copy { max-width: 640px; color: #FAF9F6; }
   .cc-v10 .v10-hero-eyebrow { color: rgba(255,255,255,0.75); font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: block; }
   .cc-v10 .v10-hero-divider { width: 60px; height: 1px; background: rgba(255,255,255,0.35); margin-bottom: 28px; }
-  .cc-v10 .v10-hero h1 { color: #FAF9F6; font-size: clamp(34px, 6vw, 68px); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 22px; }
+  .cc-v10 .v10-hero h1 { color: #FAF9F6; font-size: clamp(34px, 5vw, 56px); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 22px; }
   .cc-v10 .v10-hero h1 .soft { color: rgba(250,249,246,0.62); }
   .cc-v10 .v10-hero .v10-hero-sub { color: rgba(250,249,246,0.82); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; max-width: 560px; margin-bottom: 26px; }
   .cc-v10 .v10-hero-stars { display: flex; align-items: center; gap: 10px; color: #FAF9F6; font-size: 13px; margin-bottom: 24px; }
@@ -736,9 +736,11 @@
   <!-- ================================================== -->
   <section class="v10-hero" id="top">
     <div class="v10-hero-bg">
-      <img src="{{ 'cc-v10-hero-wide.webp' | asset_url }}" alt="A man preparing his Coastline morning system in a sunlit kitchen &mdash; powder bag, softgel bottles, and glass shaker with pink liquid on the counter">
+      <picture>
+        <source media="(max-width: 640px)" srcset="{{ 'cc-v10-hero-mobile-final.webp' | asset_url }}">
+        <img src="{{ 'cc-v10-hero-desktop-baked.webp' | asset_url }}" alt="A man preparing his Coastline morning system in a sunlit kitchen">
+      </picture>
     </div>
-    <div class="v10-hero-overlay"></div>
     <div class="v10-hero-inner">
       <div class="v10-hero-grid">
         <div class="v10-hero-copy reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
