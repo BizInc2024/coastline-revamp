@@ -71,8 +71,8 @@
   .cc-v10 .v10-hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; background: #0A0A0A; }
   .cc-v10 .v10-hero-bg { position: absolute; inset: 0; }
   .cc-v10 .v10-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .cc-v10 .v10-hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.70) 25%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.12) 85%, rgba(0,0,0,0.05) 100%); }
-  .cc-v10 .v10-hero-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.45) 100%); pointer-events: none; }
+  .cc-v10 .v10-hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.90) 22%, rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.08) 90%, rgba(0,0,0,0.02) 100%); }
+  .cc-v10 .v10-hero-overlay::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 72%, rgba(0,0,0,0.50) 100%); pointer-events: none; }
   .cc-v10 .v10-hero-inner { position: relative; z-index: 2; width: 100%; padding: 120px 24px 80px; }
   .cc-v10 .v10-hero-grid { max-width: 1200px; margin: 0 auto; }
   .cc-v10 .v10-hero-copy { max-width: 640px; color: #FAF9F6; }
@@ -90,13 +90,23 @@
   .cc-v10 .v10-hero-microcopy strong { color: #FAF9F6; font-weight: 500; }
 
   /* ---------- PRESS ---------- */
-  .cc-v10 .v10-press { padding: 64px 0; background: #fff; border-bottom: 1px solid #E8E8E8; text-align: center; }
-  .cc-v10 .v10-press-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 40px; }
-  .cc-v10 .v10-press-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 72px; }
-  .cc-v10 .v10-press-row img { height: 160px; width: auto; opacity: 0.7; transition: opacity 0.3s ease; filter: grayscale(100%); }
+  .cc-v10 .v10-press { padding: 56px 0; background: #fff; border-bottom: 1px solid #E8E8E8; text-align: center; }
+  .cc-v10 .v10-press-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 36px; }
+  .cc-v10 .v10-press-row {
+    display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center;
+    gap: 32px; max-width: 1100px; margin: 0 auto;
+  }
+  .cc-v10 .v10-press-row img {
+    height: clamp(40px, 6vw, 88px);
+    width: auto; opacity: 0.7; transition: opacity 0.3s ease; filter: grayscale(100%);
+    flex: 1 1 0; min-width: 0; max-width: 180px; object-fit: contain;
+  }
   .cc-v10 .v10-press-row img:hover { opacity: 1; filter: none; }
-  .cc-v10 .v10-press-row img.small { height: 56px; }
-  @media (max-width: 768px) { .cc-v10 .v10-press { padding: 40px 0; } .cc-v10 .v10-press-row { gap: 32px; } .cc-v10 .v10-press-row img { height: 56px; } .cc-v10 .v10-press-row img.small { height: 26px; } }
+  .cc-v10 .v10-press-row img.small { height: clamp(20px, 3vw, 36px); }
+  @media (max-width: 640px) {
+    .cc-v10 .v10-press { padding: 36px 0; }
+    .cc-v10 .v10-press-row { gap: 16px; padding: 0 12px; }
+  }
 
   /* ---------- SCENE DIVIDERS ---------- */
   .cc-v10 .v10-scene {
@@ -193,6 +203,7 @@
   .cc-v10 .v10-system-col .sub { font-size: 13px; color: #6B6B6B; margin-bottom: 24px; }
   .cc-v10 .v10-system-col .v10-system-img { max-width: 340px; margin: 0 auto 24px; aspect-ratio: 4/3; overflow: hidden; background: #F5F5F2; }
   .cc-v10 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-v10 .v10-system-col.pm .v10-system-img img { object-position: center 20%; }
   .cc-v10 .v10-system-col .ing-list { max-width: 320px; margin: 0 auto; text-align: left; }
   .cc-v10 .v10-system-col .ing-list .ing-head { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 20px 0 10px; }
   .cc-v10 .ing-accordion { border-top: 1px solid #E8E8E8; }
@@ -238,8 +249,9 @@
     background: #0A0A0A; color: #FAF9F6;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500;
-    flex-shrink: 0;
+    flex-shrink: 0; overflow: hidden;
   }
+  .cc-v10 .v10-review-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .cc-v10 .v10-review-card .name { font-size: 13px; color: #6B6B6B; }
   .cc-v10 .v10-review-card .name strong { display: block; color: #0A0A0A; font-weight: 500; }
   .cc-v10 .v10-section.dark .v10-review-card .name strong { color: #FAF9F6; }
@@ -380,12 +392,12 @@
   }
   .cc-v10 .v10-sci-card { text-align: center; }
   .cc-v10 .v10-sci-avatar {
-    width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
+    width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
     margin: 0 auto 18px; background: #1a1a1a;
     border: 2px solid rgba(231,255,86,0.25);
   }
   @media (min-width: 900px) {
-    .cc-v10 .v10-sci-avatar { width: 140px; height: 140px; }
+    .cc-v10 .v10-sci-avatar { width: 105px; height: 105px; }
   }
   .cc-v10 .v10-sci-avatar img { width: 100%; height: 100%; object-fit: cover; }
   .cc-v10 .v10-sci-name {
@@ -404,13 +416,69 @@
   }
   @media (max-width: 640px) {
     .cc-v10 .v10-scientists-grid { gap: 36px 20px; }
-    .cc-v10 .v10-sci-avatar { width: 96px; height: 96px; }
+    .cc-v10 .v10-sci-avatar { width: 72px; height: 72px; }
     .cc-v10 .v10-sci-quote { font-size: 13px; }
   }
 
   /* ---------- OUR STORY ---------- */
   .cc-v10 .v10-story-body p { font-size: 17px; line-height: 1.7; color: #3d3d3d; margin-bottom: 20px; max-width: 720px; margin-left: auto; margin-right: auto; }
   .cc-v10 .v10-story-body p:last-child { margin-bottom: 0; }
+
+  /* ---------- 60-DAY GUARANTEE BLOCK ---------- */
+  .cc-v10 .v10-guarantee-block { background: #0A0A0A; padding: 80px 24px; color: #FAF9F6; }
+  .cc-v10 .v10-guarantee-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+    text-align: center;
+  }
+  @media (min-width: 800px) {
+    .cc-v10 .v10-guarantee-inner { grid-template-columns: 180px 1fr; gap: 56px; text-align: left; }
+  }
+  .cc-v10 .v10-guarantee-badge {
+    width: 180px; height: 180px; border-radius: 50%;
+    border: 2px solid #E7FF56;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto;
+    background: rgba(231,255,86,0.05);
+  }
+  .cc-v10 .v10-guarantee-badge .days {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px; font-weight: 500; line-height: 1;
+    color: #E7FF56; letter-spacing: -0.03em;
+  }
+  .cc-v10 .v10-guarantee-badge .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #FAF9F6; text-align: center; margin-top: 4px; line-height: 1.3;
+  }
+  .cc-v10 .v10-guarantee-copy h3 {
+    color: #FAF9F6;
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  .cc-v10 .v10-guarantee-copy p {
+    font-size: 16px; line-height: 1.6; color: #C5C5C5; max-width: 640px;
+    margin: 0 auto 24px;
+  }
+  @media (min-width: 800px) { .cc-v10 .v10-guarantee-copy p { margin: 0 0 24px; } }
+  .cc-v10 .v10-guarantee-pills {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  }
+  @media (min-width: 800px) { .cc-v10 .v10-guarantee-pills { justify-content: flex-start; } }
+  .cc-v10 .v10-guarantee-pills .pill {
+    display: inline-block; padding: 7px 13px;
+    border: 1px solid #333;
+    background: transparent;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
 
   /* ---------- COMPARISON ---------- */
   .cc-v10 .v10-compare-wrap { overflow-x: auto; max-width: 880px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
@@ -437,52 +505,6 @@
   .cc-v10 .v10-faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
   .cc-v10 .v10-faq-a.open { max-height: 600px; }
   .cc-v10 .v10-faq-a p { padding: 0 0 24px; font-size: 15px; line-height: 1.6; color: #6B6B6B; max-width: 680px; }
-
-  /* ---------- EMAIL CAPTURE ---------- */
-  .cc-v10 .v10-email { background: #0A0A0A; padding: 96px 24px; text-align: center; color: #FAF9F6; }
-  .cc-v10 .v10-email-inner { max-width: 640px; margin: 0 auto; }
-  .cc-v10 .v10-email .v10-eyebrow { color: #E7FF56; display: block; margin-bottom: 24px; }
-  .cc-v10 .v10-email h2 {
-    color: #FAF9F6;
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 18px;
-  }
-  .cc-v10 .v10-email h2 .soft { color: rgba(250,249,246,0.55); }
-  .cc-v10 .v10-email p { color: #9A9A9A; font-size: 16px; line-height: 1.55; margin-bottom: 32px; }
-  .cc-v10 .v10-email form {
-    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-    max-width: 520px; margin: 0 auto;
-  }
-  .cc-v10 .v10-email input[type="email"] {
-    flex: 1 1 260px;
-    padding: 18px 20px;
-    background: transparent;
-    border: 1px solid #333;
-    color: #FAF9F6;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    transition: border-color 0.2s ease;
-  }
-  .cc-v10 .v10-email input[type="email"]::placeholder { color: #6B6B6B; }
-  .cc-v10 .v10-email input[type="email"]:focus { outline: none; border-color: #E7FF56; }
-  .cc-v10 .v10-email button {
-    background: #E7FF56; color: #0A0A0A; border: none; cursor: pointer;
-    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 18px 32px;
-    transition: opacity 0.2s ease;
-  }
-  .cc-v10 .v10-email button:hover { opacity: 0.88; }
-  .cc-v10 .v10-email .micro {
-    font-size: 11px; color: #6B6B6B; margin-top: 20px; letter-spacing: 0.04em;
-  }
-  .cc-v10 .v10-email .success {
-    color: #E7FF56; font-size: 14px; margin-top: 16px;
-    font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.05em;
-  }
 
   /* ---------- TRUST FOOTER ---------- */
   .cc-v10 .v10-trust-footer { background: #FAF9F6; padding: 64px 0 48px; text-align: center; border-top: 1px solid #E8E8E8; }
@@ -556,35 +578,21 @@
   @media (min-width: 960px) {
     .cc-v10 #cta .cta-layout { grid-template-columns: 0.9fr 1fr; gap: 64px; }
   }
-  .cc-v10 #cta .cta-left { text-align: center; }
-  @media (min-width: 960px) { .cc-v10 #cta .cta-left { text-align: left; } }
+  .cc-v10 #cta .cta-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  @media (min-width: 960px) { .cc-v10 #cta .cta-left { align-items: flex-start; text-align: left; } }
   .cc-v10 #cta .cta-product-img {
-    width: 100%; max-width: 460px; margin: 0 auto 32px; display: block;
+    width: 100%; max-width: 480px; margin: 0 auto; display: block;
   }
   @media (min-width: 960px) {
-    .cc-v10 #cta .cta-product-img { margin: 0 0 32px; max-width: 520px; }
+    .cc-v10 #cta .cta-product-img { margin: 0; max-width: 560px; }
   }
   .cc-v10 #cta h2.cta-hero {
-    font-size: clamp(56px, 10vw, 128px);
+    font-size: clamp(72px, 13vw, 180px);
     font-weight: 500;
-    line-height: 0.9;
-    letter-spacing: -0.035em;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
     color: #0A0A0A;
-    margin-bottom: 20px;
-  }
-  .cc-v10 #cta .cta-hero-sub {
-    font-size: 17px; line-height: 1.55; color: #0A0A0A; max-width: 480px;
-    margin: 0 auto 24px;
-  }
-  @media (min-width: 960px) { .cc-v10 #cta .cta-hero-sub { margin: 0 0 24px; } }
-  .cc-v10 #cta .cta-trust-strip {
-    display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px;
-  }
-  @media (min-width: 960px) { .cc-v10 #cta .cta-trust-strip { justify-content: flex-start; } }
-  .cc-v10 #cta .cta-trust-strip .pill {
-    display: inline-block; padding: 8px 14px; background: #0A0A0A; color: #E7FF56;
-    font-family: 'Space Grotesk', sans-serif; font-size: 10px;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 24px;
   }
   .cc-v10 #cta .cta-right { display: flex; justify-content: center; }
   .cc-v10 #cta .cta-wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; text-align: center; }
@@ -660,7 +668,7 @@
   <!-- ================================================== -->
   <section class="v10-hero" id="top">
     <div class="v10-hero-bg">
-      <img src="{{ 'cc-v10-hero.jpg' | asset_url }}" alt="Coastline daily supplement system on a morning counter">
+      <img src="{{ 'cc-v10-hero-v2.png' | asset_url }}" alt="The full Coastline longevity system &mdash; morning blend, softgels, evening capsules, and glass shaker">
     </div>
     <div class="v10-hero-overlay"></div>
     <div class="v10-hero-inner">
@@ -720,7 +728,7 @@
          x-data="{ n: 0, started: false, run() { if (this.started) return; this.started = true; let i = 0; const t = setInterval(() => { i += 1; this.n = i; if (i >= 7) clearInterval(t); }, 140); } }"
          x-intersect="$el.classList.add('visible'); run()"
          x-init="setTimeout(() => { $el.classList.add('visible'); run(); }, 100)">
-      <span class="eyebrow">A Surprising Fact</span>
+      <span class="eyebrow">Most Recent Research</span>
       <span class="stat"><span x-text="n">7</span>%</span>
       <h2>of how long you live is genetic.<br><span class="soft">The other 93% is up to you.</span></h2>
       <p class="body">
@@ -757,7 +765,7 @@
           <h3>Morning Blend + Softgels</h3>
           <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
           <div class="v10-system-img">
-            <img src="{{ 'cc-v10-morning.jpg' | asset_url }}" alt="Morning shaker and softgels on a kitchen counter">
+            <img src="{{ 'cc-v10-am-scene.jpg' | asset_url }}" alt="Morning shaker and softgels on a kitchen counter">
           </div>
           <div class="ing-list">
             <p class="ing-head">Easy-Scoop Powder Sachet</p>
@@ -787,11 +795,6 @@
             <details class="ing-accordion"><summary><span class="name">Glucosamine</span><span class="dose">750mg</span></summary><div class="ing-detail">Associated with ~15% lower all-cause mortality in large observational studies. Supports joint repair, cartilage health, and long-term mobility.</div></details>
             <details class="ing-accordion"><summary><span class="name">L-Theanine</span><span class="dose">200mg</span></summary><div class="ing-detail">Promotes relaxation without sedation by increasing alpha brain waves. Helps you wind down and improves sleep quality without morning grogginess.</div></details>
             <details class="ing-accordion"><summary><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></summary><div class="ing-detail">At microdoses, populations with higher lithium in drinking water show lower rates of dementia, depression, and suicide. Supports mood and cognitive longevity.</div></details>
-            <p class="ing-head" style="margin-top: 28px;">Plus In Every Box</p>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              <li style="display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-top: 1px solid #E8E8E8;"><span style="color: #0A0A0A;">Free Glass Shaker</span><span style="color: #2D5A47;">&#10003;</span></li>
-              <li style="display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-top: 1px solid #E8E8E8; border-bottom: 1px solid #E8E8E8;"><span style="color: #0A0A0A;">30-Day Supply</span><span style="color: #2D5A47;">&#10003;</span></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -835,7 +838,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">&ldquo;Finally, a longevity stack that doesn&rsquo;t need 15 bottles. My morning brain fog is gone and I feel sharper by week three.&rdquo;</p>
           <div class="who">
-            <div class="v10-review-avatar">RK</div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-robert.png' | asset_url }}" alt="Robert K."></div>
             <div class="name"><strong>Robert K., 45</strong>Chicago, IL<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -853,7 +856,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">&ldquo;Energy that feels natural, not forced. No jitters, no crash &mdash; just steady output from morning to night.&rdquo;</p>
           <div class="who">
-            <div class="v10-review-avatar">SL</div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="Scott L."></div>
             <div class="name"><strong>Scott L., 51</strong>Charlotte, NC<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -973,7 +976,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">&ldquo;As a physician, I&rsquo;m skeptical of most supplements &mdash; but the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.&rdquo;</p>
           <div class="who">
-            <div class="v10-review-avatar">MR</div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-michael.png' | asset_url }}" alt="Michael R."></div>
             <div class="name"><strong>Michael R., 58</strong>Physician &middot; Seattle, WA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1083,27 +1086,6 @@
     </div>
   </section>
 
-  <!-- ================================================== -->
-  <!-- 9b. OUR STORY — WE'RE SKEPTICS TOO                   -->
-  <!-- ================================================== -->
-  <section class="v10-section parchment">
-    <div class="v10-wrap-narrow">
-      <div class="v10-story reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <span class="v10-eyebrow" style="display:block; text-align:center; margin-bottom: 20px;">Our Story</span>
-        <div class="v10-divider" style="margin: 0 auto 28px;"></div>
-        <h2 style="text-align: center; font-size: clamp(30px, 4vw, 48px); font-weight: 500; line-height: 1.1; margin-bottom: 28px; color: #0A0A0A;">We&rsquo;re skeptics too.</h2>
-        <div class="v10-story-body">
-          <p>We started Coastline because we were tired of the same con. A shiny bottle, a vague promise, a proprietary blend hiding how little of the good stuff you&rsquo;re actually getting. Then you cross-reference the label against the literature and realize the doses are a fraction of what the studies used.</p>
-          <p>So we built the thing we wanted to take ourselves. We picked 13 compounds with the strongest human data. We dosed every one at the clinical level. We published every amount on the label. We had four scientists argue about every pairing until the formula earned its place.</p>
-          <p>If you&rsquo;re skeptical of longevity supplements, good. So are we. Read the ingredients, check the doses, compare it to anything else on the shelf. Then decide.</p>
-        </div>
-        <div style="text-align:center; margin-top:40px;">
-          <a href="#cta" class="v10-btn">See the full formula &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Scene divider -->
   <div class="v10-scene">
     <img src="{{ 'cc-v10-scene-3.jpg' | asset_url }}" alt="Beach grass in morning light">
@@ -1171,7 +1153,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">&ldquo;I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.&rdquo;</p>
           <div class="who">
-            <div class="v10-review-avatar">AP</div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v8-avatar-arthur-b.png' | asset_url }}" alt="Andrew P."></div>
             <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1211,19 +1193,8 @@
   <section id="cta">
     <div class="cta-layout reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
       <div class="cta-left">
-        <img class="cta-product-img" src="{{ 'cc-v10-welcome-pack.png' | asset_url }}" alt="Coastline Welcome Pack &mdash; the complete longevity system">
         <h2 class="cta-hero">Get Started.</h2>
-        <p class="cta-hero-sub">Everything you see above, in one box. Free glass shaker, free shipping, 60-day money-back guarantee. Cancel anytime.</p>
-        <div class="cta-trust-strip">
-          <span class="pill">60-Day Guarantee</span>
-          <span class="pill">Free Shipping</span>
-          <span class="pill">Cancel Anytime</span>
-          <span class="pill">GMP Certified</span>
-          <span class="pill">Made in USA</span>
-          <span class="pill">3rd Party Tested</span>
-          <span class="pill">Vegan</span>
-          <span class="pill">Caffeine-Free</span>
-        </div>
+        <img class="cta-product-img" src="{{ 'cc-v10-family-vert.png' | asset_url }}" alt="The full Coastline system">
       </div>
 
       <div class="cta-right">
@@ -1353,6 +1324,52 @@
   </section>
 
   <!-- ================================================== -->
+  <!-- 12b. 60-DAY GUARANTEE BLOCK                          -->
+  <!-- ================================================== -->
+  <section class="v10-guarantee-block">
+    <div class="v10-guarantee-inner reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+      <div class="v10-guarantee-badge">
+        <span class="days">60</span>
+        <span class="label">Day<br>Guarantee</span>
+      </div>
+      <div class="v10-guarantee-copy">
+        <h3>Try it risk-free for 60 days.</h3>
+        <p>If you&rsquo;re not thrilled with how you feel, send back what&rsquo;s left of your order and we&rsquo;ll refund every penny &mdash; even if the box is empty. No phone calls, no questions, no pressure.</p>
+        <div class="v10-guarantee-pills">
+          <span class="pill">Free Shipping</span>
+          <span class="pill">Cancel Anytime</span>
+          <span class="pill">GMP Certified</span>
+          <span class="pill">Made in USA</span>
+          <span class="pill">3rd Party Tested</span>
+          <span class="pill">Vegan</span>
+          <span class="pill">Caffeine-Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 12c. OUR STORY — WE'RE SKEPTICS TOO                  -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap-narrow">
+      <div class="v10-story reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow" style="display:block; text-align:center; margin-bottom: 20px;">Our Story</span>
+        <div class="v10-divider" style="margin: 0 auto 28px;"></div>
+        <h2 style="text-align: center; font-size: clamp(30px, 4vw, 48px); font-weight: 500; line-height: 1.1; margin-bottom: 28px; color: #0A0A0A;">We&rsquo;re skeptics too.</h2>
+        <div class="v10-story-body">
+          <p>We started Coastline because we were tired of the same con. A shiny bottle, a vague promise, a proprietary blend hiding how little of the good stuff you&rsquo;re actually getting. Then you cross-reference the label against the literature and realize the doses are a fraction of what the studies used.</p>
+          <p>So we built the thing we wanted to take ourselves. We picked 13 compounds with the strongest human data. We dosed every one at the clinical level. We published every amount on the label. We had four scientists argue about every pairing until the formula earned its place.</p>
+          <p>If you&rsquo;re skeptical of longevity supplements, good. So are we. Read the ingredients, check the doses, compare it to anything else on the shelf. Then decide.</p>
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+          <a href="#cta" class="v10-btn">See the full formula &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
   <!-- 13. FAQ                                              -->
   <!-- ================================================== -->
   <section class="v10-section parchment">
@@ -1406,39 +1423,10 @@
   </section>
 
   <!-- ================================================== -->
-  <!-- 13b. EMAIL CAPTURE                                   -->
-  <!-- ================================================== -->
-  <section class="v10-email">
-    <div class="v10-email-inner reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-      <span class="v10-eyebrow">Not Ready Yet?</span>
-      <h2>One longevity insight<br><span class="soft">every two weeks.</span></h2>
-      <p>The kind your doctor doesn&rsquo;t have time to explain. Written by the Coastline scientists, not a content team. No filler, no hype, no hidden blends.</p>
-      {% form 'customer' %}
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <input type="email" name="contact[email]" placeholder="you@example.com" required aria-label="Email address">
-        <button type="submit">Subscribe</button>
-        {% if form.posted_successfully? %}
-          <p class="success" style="flex-basis: 100%;">Thanks &mdash; check your inbox.</p>
-        {% endif %}
-      {% endform %}
-      <p class="micro">One email every two weeks. Zero spam. Unsubscribe anytime.</p>
-    </div>
-  </section>
-
-  <!-- ================================================== -->
   <!-- 14. TRUST FOOTER                                     -->
   <!-- ================================================== -->
   <section class="v10-trust-footer">
     <div class="v10-wrap">
-      <p class="guarantee">60-Day Money-Back Guarantee</p>
-      <p style="font-size:13px; color:#6B6B6B; margin-bottom:28px;">Try the full system risk-free. If you&rsquo;re not thrilled, we&rsquo;ll refund every penny.</p>
-      <div class="row">
-        <span class="badge">Satisfaction Guaranteed</span>
-        <span class="badge">GMP Certified</span>
-        <span class="badge">Made in USA</span>
-        <span class="badge">3rd Party Tested</span>
-        <span class="badge">Vegan &middot; Caffeine-Free</span>
-      </div>
       <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult your healthcare provider before starting a new supplement.</p>
     </div>
   </section>
