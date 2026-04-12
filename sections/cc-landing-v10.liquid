@@ -237,8 +237,20 @@
   .cc-v10 .v10-badge-row .badge { border: 1px solid #E8E8E8; padding: 10px 18px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; background: #fff; }
 
   /* ---------- REVIEWS (refined) ---------- */
-  .cc-v10 .v10-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1200px; margin: 0 auto; }
-  @media (min-width: 800px) { .cc-v10 .v10-reviews-grid.three { grid-template-columns: repeat(3, 1fr); gap: 28px; } .cc-v10 .v10-reviews-grid.two { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+  .cc-v10 .v10-reviews-grid {
+    display: flex; gap: 24px; max-width: 1200px; margin: 0 auto;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding-bottom: 8px;
+  }
+  .cc-v10 .v10-reviews-grid::-webkit-scrollbar { display: none; }
+  .cc-v10 .v10-reviews-grid > .v10-review-card { flex: 0 0 85%; scroll-snap-align: start; min-width: 280px; }
+  @media (min-width: 800px) {
+    .cc-v10 .v10-reviews-grid { display: grid; overflow: visible; scroll-snap-type: none; padding-bottom: 0; }
+    .cc-v10 .v10-reviews-grid.three { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .cc-v10 .v10-reviews-grid.two { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .cc-v10 .v10-reviews-grid > .v10-review-card { flex: auto; min-width: auto; }
+  }
   .cc-v10 .v10-review-card {
     background: #fff;
     border: 1px solid #E8E8E8;
@@ -657,7 +669,6 @@
   .cc-v10 #cta .price-box {
     background: #fff; border: 1px solid #0A0A0A; padding: 40px;
     max-width: 560px; width: 100%; margin: 0 auto;
-    box-shadow: 8px 8px 0 #0A0A0A;
   }
   @media (min-width: 768px) { .cc-v10 #cta .price-box { padding: 48px; } }
   .cc-v10 #cta .label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 16px; text-align: left; }
@@ -699,6 +710,10 @@
   .cc-v10 #cta .cta-btn { width: 100%; padding: 22px; display: block; text-align: center; }
   .cc-v10 #cta .cta-btn:disabled { opacity: 0.7; cursor: wait; }
   .cc-v10 #cta .micro-below { font-size: 12px; color: #6B6B6B; margin-top: 18px; text-align: center; }
+  .cc-v10 #cta .trust-icons {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 16px;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;
+  }
   .cc-v10 #cta .badges { margin-top: 32px; padding-top: 24px; border-top: 1px solid #E8E8E8; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; text-align: center; }
   .cc-v10 #cta .urgency-pill {
     display: inline-block; margin-bottom: 28px;
@@ -790,11 +805,6 @@
       <p class="source">Ruby et al., Genetics (2018) &middot; Nat. Communications (2018)</p>
     </div>
   </section>
-
-  <!-- Scene divider -->
-  <div class="v10-scene">
-    <img src="{{ 'cc-v10-scene-1.jpg' | asset_url }}" alt="Coastline horizon">
-  </div>
 
   <!-- ================================================== -->
   <!-- 3. PRODUCT SYSTEM OVERVIEW                           -->
@@ -1122,7 +1132,7 @@
 
   <!-- Scene divider -->
   <div class="v10-scene">
-    <img src="{{ 'cc-v10-scene-3.jpg' | asset_url }}" alt="Beach grass in morning light">
+    <img src="{{ 'cc-v10-scene-1.jpg' | asset_url }}" alt="Coastline horizon">
   </div>
 
   <!-- ================================================== -->
@@ -1185,7 +1195,7 @@
     <div class="cta-layout reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
       <div class="cta-left">
         <h2 class="cta-hero">Get Started.</h2>
-        <img class="cta-product-img" src="{{ 'cc-v10-welcome-pack.png' | asset_url }}" alt="Coastline Welcome Pack">
+        <img class="cta-product-img" src="{{ 'cc-welcome-box-vertical.png' | asset_url }}" alt="Coastline Welcome Pack — Long Live Life">
       </div>
 
       <div class="cta-right">
@@ -1307,6 +1317,11 @@
         </button>
 
         <p class="micro-below">Free shipping &middot; Cancel anytime &middot; 60-day money-back guarantee</p>
+        <div class="trust-icons">
+          <span>&#9745; GMP Certified</span>
+          <span>&#9745; Made in USA</span>
+          <span>&#9745; 3rd Party Tested</span>
+        </div>
       </div>
       </div>
     </div>
@@ -1395,6 +1410,45 @@
         <p class="v10-story-signature"><strong>Chris Booth</strong>Co-founder, Coastline</p>
         <div style="text-align:center; margin-top:32px;">
           <a href="#cta" class="v10-btn">See the full formula &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 12d. REVIEWS AGGREGATE                               -->
+  <!-- ================================================== -->
+  <section class="v10-section pale-blue">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">What Our Customers Say</span>
+        <div class="v10-divider"></div>
+        <h2>2,000+ five-star reviews<br><span class="soft">and counting.</span></h2>
+      </div>
+      <div class="v10-reviews-grid three reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I used to spend $200+/month on five different supplements and still wasn&rsquo;t sure I had everything covered. Coastline replaced all of them.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
+            <div class="name"><strong>Lisa T., 52</strong>Denver, CO<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I ran every ingredient through PubMed before buying. Every dose checks out. That&rsquo;s never happened with a supplement before.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Sharper mornings, better sleep, and my joints feel 10 years younger. The evening capsules alone are worth it.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="James W."></div>
+            <div class="name"><strong>James W., 49</strong>Portland, OR<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
         </div>
       </div>
     </div>
