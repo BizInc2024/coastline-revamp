@@ -180,6 +180,7 @@
   .cc-v10 .v10-section.dark .v10-divider { background: #333; }
   .cc-v10 .v10-section.parchment { background: #FAF9F6; }
   .cc-v10 .v10-section.white { background: #fff; }
+  .cc-v10 .v10-section.pale-blue { background: #F0F5F7; }
   .cc-v10 .v10-section-head { text-align: center; margin-bottom: 56px; }
   .cc-v10 .v10-section-head .v10-eyebrow { display: block; margin-bottom: 20px; }
   .cc-v10 .v10-section-head .v10-divider { margin: 0 auto 28px; }
@@ -203,7 +204,7 @@
   .cc-v10 .v10-system-col .sub { font-size: 13px; color: #6B6B6B; margin-bottom: 24px; }
   .cc-v10 .v10-system-col .v10-system-img { max-width: 340px; margin: 0 auto 24px; aspect-ratio: 4/3; overflow: hidden; background: #F5F5F2; }
   .cc-v10 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
-  .cc-v10 .v10-system-col.pm .v10-system-img img { object-position: center 20%; }
+  .cc-v10 .v10-system-col.pm .v10-system-img img { object-position: center top; }
   .cc-v10 .v10-system-col .ing-list { max-width: 320px; margin: 0 auto; text-align: left; }
   .cc-v10 .v10-system-col .ing-list .ing-head { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 20px 0 10px; }
   .cc-v10 .ing-accordion { border-top: 1px solid #E8E8E8; }
@@ -235,27 +236,63 @@
   .cc-v10 .v10-badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 40px; }
   .cc-v10 .v10-badge-row .badge { border: 1px solid #E8E8E8; padding: 10px 18px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; background: #fff; }
 
-  /* ---------- REVIEWS ---------- */
-  .cc-v10 .v10-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
-  @media (min-width: 800px) { .cc-v10 .v10-reviews-grid.three { grid-template-columns: repeat(3, 1fr); } .cc-v10 .v10-reviews-grid.two { grid-template-columns: repeat(2, 1fr); } }
-  .cc-v10 .v10-review-card { border-top: 1px solid #E8E8E8; padding-top: 28px; }
-  .cc-v10 .v10-section.dark .v10-review-card { border-top-color: #222; }
-  .cc-v10 .v10-review-card .v10-stars { display: block; margin-bottom: 12px; font-size: 13px; }
-  .cc-v10 .v10-review-card p.quote { font-size: 17px; line-height: 1.5; color: #0A0A0A; margin-bottom: 20px; }
+  /* ---------- REVIEWS (refined) ---------- */
+  .cc-v10 .v10-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1200px; margin: 0 auto; }
+  @media (min-width: 800px) { .cc-v10 .v10-reviews-grid.three { grid-template-columns: repeat(3, 1fr); gap: 28px; } .cc-v10 .v10-reviews-grid.two { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+  .cc-v10 .v10-review-card {
+    background: #fff;
+    border: 1px solid #E8E8E8;
+    padding: 36px 32px 32px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.25s ease;
+  }
+  .cc-v10 .v10-review-card:hover { border-color: #0A0A0A; }
+  .cc-v10 .v10-section.dark .v10-review-card { background: transparent; border-color: #222; }
+  .cc-v10 .v10-section.dark .v10-review-card:hover { border-color: #E7FF56; }
+  .cc-v10 .v10-review-card .v10-stars { display: block; margin-bottom: 18px; font-size: 14px; letter-spacing: 3px; }
+  .cc-v10 .v10-review-card p.quote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; line-height: 1.45; font-weight: 400;
+    color: #0A0A0A; margin: 0 0 auto 0;
+    letter-spacing: -0.01em;
+  }
+  .cc-v10 .v10-review-card p.quote::before { content: '\201C'; margin-right: -2px; color: #9A9A9A; }
+  .cc-v10 .v10-review-card p.quote::after { content: '\201D'; margin-left: -2px; color: #9A9A9A; }
   .cc-v10 .v10-section.dark .v10-review-card p.quote { color: #FAF9F6; }
-  .cc-v10 .v10-review-card .who { display: flex; align-items: center; gap: 12px; }
+  .cc-v10 .v10-review-card .who {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid #F0F0ED;
+  }
+  .cc-v10 .v10-section.dark .v10-review-card .who { border-top-color: #222; }
   .cc-v10 .v10-review-avatar {
-    width: 48px; height: 48px; border-radius: 50%;
+    width: 52px; height: 52px; border-radius: 50%;
     background: #0A0A0A; color: #FAF9F6;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500;
     flex-shrink: 0; overflow: hidden;
   }
   .cc-v10 .v10-review-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cc-v10 .v10-review-card .name { font-size: 13px; color: #6B6B6B; }
-  .cc-v10 .v10-review-card .name strong { display: block; color: #0A0A0A; font-weight: 500; }
+  .cc-v10 .v10-review-card .name {
+    font-size: 12px; color: #6B6B6B;
+    line-height: 1.5;
+  }
+  .cc-v10 .v10-review-card .name strong {
+    display: block;
+    color: #0A0A0A;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    margin-bottom: 2px;
+  }
   .cc-v10 .v10-section.dark .v10-review-card .name strong { color: #FAF9F6; }
-  .cc-v10 .v10-review-card .verified { font-size: 11px; color: #2D5A47; letter-spacing: 0.04em; margin-top: 2px; }
+  .cc-v10 .v10-review-card .verified {
+    font-size: 10px; color: #2D5A47;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .cc-v10 .v10-section.dark .v10-review-card .verified { color: #9AE5B8; }
   .cc-v10 .v10-reviews-header { text-align: center; margin-bottom: 48px; }
   .cc-v10 .v10-reviews-header .v10-stars { display: block; font-size: 18px; margin-bottom: 8px; }
 
@@ -423,6 +460,20 @@
   /* ---------- OUR STORY ---------- */
   .cc-v10 .v10-story-body p { font-size: 17px; line-height: 1.7; color: #3d3d3d; margin-bottom: 20px; max-width: 720px; margin-left: auto; margin-right: auto; }
   .cc-v10 .v10-story-body p:last-child { margin-bottom: 0; }
+  .cc-v10 .v10-story-founder {
+    width: 120px; height: 120px; border-radius: 50%;
+    overflow: hidden; margin: 0 auto 24px;
+    border: 2px solid #E7FF56;
+    background: #F5F5F2;
+  }
+  .cc-v10 .v10-story-founder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-v10 .v10-story-signature {
+    text-align: center; margin-top: 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; color: #6B6B6B;
+    letter-spacing: 0.02em;
+  }
+  .cc-v10 .v10-story-signature strong { display: block; color: #0A0A0A; font-weight: 500; font-size: 14px; margin-bottom: 2px; }
 
   /* ---------- 60-DAY GUARANTEE BLOCK ---------- */
   .cc-v10 .v10-guarantee-block { background: #0A0A0A; padding: 80px 24px; color: #FAF9F6; }
@@ -580,19 +631,33 @@
   }
   .cc-v10 #cta .cta-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
   @media (min-width: 960px) { .cc-v10 #cta .cta-left { align-items: flex-start; text-align: left; } }
-  .cc-v10 #cta .cta-product-img {
-    width: 100%; max-width: 480px; margin: 0 auto; display: block;
+  .cc-v10 #cta .cta-product-wrap {
+    position: relative;
+    width: 100%; max-width: 460px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #F5F5F2;
+    margin: 0 auto;
   }
-  @media (min-width: 960px) {
-    .cc-v10 #cta .cta-product-img { margin: 0; max-width: 560px; }
+  @media (min-width: 960px) { .cc-v10 #cta .cta-product-wrap { margin: 0; max-width: 520px; } }
+  .cc-v10 #cta .cta-product-wrap img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .cc-v10 #cta h2.cta-hero {
-    font-size: clamp(72px, 13vw, 180px);
+    position: absolute;
+    left: 28px; right: 28px; bottom: 28px;
+    font-size: clamp(56px, 8.5vw, 108px);
     font-weight: 500;
     line-height: 0.88;
-    letter-spacing: -0.04em;
-    color: #0A0A0A;
-    margin-bottom: 24px;
+    letter-spacing: -0.035em;
+    color: #FAF9F6;
+    margin: 0;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.35);
+    mix-blend-mode: normal;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .cc-v10 #cta h2.cta-hero { left: 20px; right: 20px; bottom: 20px; font-size: clamp(48px, 14vw, 80px); }
   }
   .cc-v10 #cta .cta-right { display: flex; justify-content: center; }
   .cc-v10 #cta .cta-wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; text-align: center; }
@@ -693,7 +758,7 @@
           </div>
           <div class="v10-hero-cta-row">
             <a href="#cta" class="v10-btn v10-btn-light">Start My System &mdash; $99/mo</a>
-            <a href="#how" style="color: rgba(250,249,246,0.8); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px;">See how it works &darr;</a>
+            <a href="#cta" style="color: rgba(250,249,246,0.8); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px;">Skip to pricing &darr;</a>
           </div>
           <p class="v10-hero-microcopy">
             <strong>60-day money-back guarantee.</strong> Free shipping. Cancel anytime.<br>
@@ -765,7 +830,7 @@
           <h3>Morning Blend + Softgels</h3>
           <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
           <div class="v10-system-img">
-            <img src="{{ 'cc-v10-am-scene.jpg' | asset_url }}" alt="Morning shaker and softgels on a kitchen counter">
+            <img src="{{ 'cc-v10-am-product.webp' | asset_url }}" alt="Man scooping Coastline morning blend into a glass of pink hydration with softgels and capsules on the counter">
           </div>
           <div class="ing-list">
             <p class="ing-head">Easy-Scoop Powder Sachet</p>
@@ -826,13 +891,8 @@
   <!-- ================================================== -->
   <!-- 4. SOCIAL PROOF #1 — 3 REVIEWS                       -->
   <!-- ================================================== -->
-  <section class="v10-section white">
+  <section class="v10-section pale-blue">
     <div class="v10-wrap">
-      <div class="v10-reviews-header reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <p style="color:#6B6B6B;">2,000+ Five-Star Reviews &middot; 4.8 average</p>
-      </div>
-
       <div class="v10-reviews-grid three reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <div class="v10-review-card">
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -863,20 +923,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ================================================== -->
-  <!-- MICRO SOCIAL PROOF STRIP                             -->
-  <!-- ================================================== -->
-  <div class="v10-micro-strip">
-    <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-    <strong>2,000+ Five-Star Reviews</strong>
-    <span class="sep"></span>
-    <em>60-Day Guarantee</em>
-    <span class="sep"></span>
-    <em>Free Shipping</em>
-    <span class="sep"></span>
-    <em>Cancel Anytime</em>
-  </div>
 
   <!-- ================================================== -->
   <!-- 5. INFLUENCER UGC GALLERY                            -->
@@ -1001,7 +1047,7 @@
   <!-- ================================================== -->
   <!-- 8. HOW IT WORKS — 3 STEPS                            -->
   <!-- ================================================== -->
-  <section class="v10-section parchment" id="how">
+  <section class="v10-section pale-blue" id="how">
     <div class="v10-wrap">
       <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <span class="v10-eyebrow">How It Works</span>
@@ -1032,8 +1078,8 @@
           </div>
         </div>
         <div class="v10-step">
-          <div class="v10-step-img">
-            <img src="{{ 'cc-v10-active.jpg' | asset_url }}" alt="Active lifestyle &mdash; the result of a consistent longevity routine">
+          <div class="v10-step-img v10-step-img-product">
+            <img src="{{ 'cc-v10-pm-capsule.png' | asset_url }}" alt="Coastline evening capsules product">
           </div>
           <div class="v10-step-body">
             <p class="num">Step 03</p>
@@ -1092,53 +1138,10 @@
   </div>
 
   <!-- ================================================== -->
-  <!-- 10. COMPARISON                                       -->
-  <!-- ================================================== -->
-  <section class="v10-section white">
-    <div class="v10-wrap">
-      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <span class="v10-eyebrow">How We Compare</span>
-        <div class="v10-divider"></div>
-        <h2>Coastline vs typical<br><span class="soft">longevity supplements.</span></h2>
-        <p>Most supplements hide their doses behind mystery ingredients. Here&rsquo;s the honest comparison.</p>
-      </div>
-
-      <div class="v10-compare-wrap reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <table class="v10-compare">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="coastline">COASTLINE</th>
-              <th style="text-align:center;">Typical Greens</th>
-              <th style="text-align:center;">Multi-Bottle Stack</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="attr">Clinical doses</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical">Sometimes</td></tr>
-            <tr><td class="attr">Every dose published</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> Hidden</td><td class="typical"><span class="check">&#10003;</span></td></tr>
-            <tr><td class="attr">Mystery ingredient blends</td><td class="coastline">None</td><td class="typical">50+</td><td class="typical">Varies</td></tr>
-            <tr><td class="attr">AM/PM timing</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical"><span class="miss">&times;</span></td></tr>
-            <tr><td class="attr">All in one routine</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> 5-15 bottles</td></tr>
-            <tr><td class="attr">Cost per day</td><td class="coastline">$3.30</td><td class="typical">$2.60</td><td class="typical">$6-10+</td></tr>
-            <tr><td class="attr">60-day guarantee</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical">30 days</td><td class="typical">Varies</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p style="text-align:center; margin-top:32px; font-size:14px; color:#6B6B6B;">Less than your daily coffee &mdash; backed by a 60-day guarantee.</p>
-    </div>
-  </section>
-
-  <!-- ================================================== -->
   <!-- 11. SOCIAL PROOF #3 — 2 REVIEWS                      -->
   <!-- ================================================== -->
   <section class="v10-section parchment">
     <div class="v10-wrap">
-      <div class="v10-reviews-header reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-        <p style="color:#6B6B6B;">2,000+ Five-Star Reviews &middot; Rated 4.8</p>
-      </div>
-
       <div class="v10-reviews-grid two reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <div class="v10-review-card">
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -1181,7 +1184,7 @@
             <li><span class="check">&#10003;</span> Dishwasher safe</li>
             <li><span class="check">&#10003;</span> Free with first complete-system order</li>
           </ul>
-          <a href="#cta" class="v10-btn v10-btn-lime">Claim Yours &mdash; $99/mo</a>
+          <a href="#cta" class="v10-btn v10-btn-lime">Get the complete system</a>
         </div>
       </div>
     </div>
@@ -1193,8 +1196,10 @@
   <section id="cta">
     <div class="cta-layout reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
       <div class="cta-left">
-        <h2 class="cta-hero">Get Started.</h2>
-        <img class="cta-product-img" src="{{ 'cc-v10-family-vert.png' | asset_url }}" alt="The full Coastline system">
+        <div class="cta-product-wrap">
+          <img src="{{ 'cc-v10-family-vert.png' | asset_url }}" alt="The full Coastline system">
+          <h2 class="cta-hero">Get Started.</h2>
+        </div>
       </div>
 
       <div class="cta-right">
@@ -1316,8 +1321,6 @@
         </button>
 
         <p class="micro-below">Free shipping &middot; Cancel anytime &middot; 60-day money-back guarantee</p>
-
-        <div class="badges">Satisfaction Guaranteed &middot; GMP Certified &middot; Made in USA &middot; Vegan</div>
       </div>
       </div>
     </div>
@@ -1349,12 +1352,53 @@
   </section>
 
   <!-- ================================================== -->
+  <!-- 12b2. COMPARISON                                     -->
+  <!-- ================================================== -->
+  <section class="v10-section white">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">How We Compare</span>
+        <div class="v10-divider"></div>
+        <h2>Coastline vs typical<br><span class="soft">longevity supplements.</span></h2>
+        <p>Most supplements hide their doses behind mystery ingredients. Here&rsquo;s the honest comparison.</p>
+      </div>
+
+      <div class="v10-compare-wrap reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <table class="v10-compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="coastline">COASTLINE</th>
+              <th style="text-align:center;">Typical Greens</th>
+              <th style="text-align:center;">Multi-Bottle Stack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="attr">Clinical doses</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical">Sometimes</td></tr>
+            <tr><td class="attr">Every dose published</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> Hidden</td><td class="typical"><span class="check">&#10003;</span></td></tr>
+            <tr><td class="attr">Mystery ingredient blends</td><td class="coastline">None</td><td class="typical">50+</td><td class="typical">Varies</td></tr>
+            <tr><td class="attr">AM/PM timing</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical"><span class="miss">&times;</span></td></tr>
+            <tr><td class="attr">All in one routine</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> 5-15 bottles</td></tr>
+            <tr><td class="attr">Cost per day</td><td class="coastline">$3.30</td><td class="typical">$2.60</td><td class="typical">$6-10+</td></tr>
+            <tr><td class="attr">60-day guarantee</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical">30 days</td><td class="typical">Varies</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="text-align:center; margin-top:32px; font-size:14px; color:#6B6B6B;">Less than your daily coffee &mdash; backed by a 60-day guarantee.</p>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
   <!-- 12c. OUR STORY — WE'RE SKEPTICS TOO                  -->
   <!-- ================================================== -->
   <section class="v10-section parchment">
     <div class="v10-wrap-narrow">
       <div class="v10-story reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <span class="v10-eyebrow" style="display:block; text-align:center; margin-bottom: 20px;">Our Story</span>
+        <div class="v10-story-founder">
+          <img src="{{ 'cc-v8-founder-portrait.png' | asset_url }}" alt="Chris Booth, Coastline co-founder">
+        </div>
+        <span class="v10-eyebrow" style="display:block; text-align:center; margin-bottom: 20px;">A Note From The Founder</span>
         <div class="v10-divider" style="margin: 0 auto 28px;"></div>
         <h2 style="text-align: center; font-size: clamp(30px, 4vw, 48px); font-weight: 500; line-height: 1.1; margin-bottom: 28px; color: #0A0A0A;">We&rsquo;re skeptics too.</h2>
         <div class="v10-story-body">
@@ -1362,7 +1406,8 @@
           <p>So we built the thing we wanted to take ourselves. We picked 13 compounds with the strongest human data. We dosed every one at the clinical level. We published every amount on the label. We had four scientists argue about every pairing until the formula earned its place.</p>
           <p>If you&rsquo;re skeptical of longevity supplements, good. So are we. Read the ingredients, check the doses, compare it to anything else on the shelf. Then decide.</p>
         </div>
-        <div style="text-align:center; margin-top:40px;">
+        <p class="v10-story-signature"><strong>Chris Booth</strong>Co-founder, Coastline</p>
+        <div style="text-align:center; margin-top:32px;">
           <a href="#cta" class="v10-btn">See the full formula &rarr;</a>
         </div>
       </div>
