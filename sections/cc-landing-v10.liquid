@@ -720,13 +720,21 @@
   @media (max-width: 480px) { .cc-v10 #cta .plan-grid { grid-template-columns: 1fr; gap: 8px; } }
   .cc-v10 #cta .plan-btn {
     padding: 16px 10px; border: 2px solid #E8E8E8; background: #fff; cursor: pointer;
-    text-align: center; transition: all 0.2s ease; position: relative;
+    text-align: center; transition: all 0.2s ease; position: relative; overflow: visible;
+  }
+  .cc-v10 #cta .plan-btn .flag {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: #E7FF56; color: #062F3D;
+    font-family: 'Space Grotesk', sans-serif; font-size: 9px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 3px 10px; white-space: nowrap; z-index: 1;
   }
   @media (max-width: 480px) {
     .cc-v10 #cta .plan-btn {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 16px; text-align: left; gap: 8px;
     }
+    .cc-v10 #cta .plan-btn .flag { left: auto; right: -2px; top: -10px; transform: none; }
     .cc-v10 #cta .plan-btn .tag { margin-bottom: 0; font-size: 9px; flex: 0 0 auto; order: -1; }
     .cc-v10 #cta .plan-btn .price { font-size: 22px; flex: 0 0 auto; }
     .cc-v10 #cta .plan-btn .cadence { font-size: 11px; flex: 1; }
@@ -1337,7 +1345,8 @@
         <p class="label">Select Plan</p>
         <div class="plan-grid">
           <button type="button" class="plan-btn" :class="plan === 'monthly' ? 'active' : ''" @click="plan = 'monthly'">
-            <span class="tag">Limited Time</span>
+            <span class="flag">Limited Time</span>
+            <span class="tag">Best Value</span>
             <span class="price">$99</span>
             <span class="cadence">/month</span>
             <span class="label-cadence">&nbsp;</span>
