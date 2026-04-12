@@ -207,6 +207,12 @@
   .cc-v10 .v10-system-col .step-label { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 14px; }
   .cc-v10 .v10-system-col h3 { font-size: 24px; font-weight: 500; margin-bottom: 8px; }
   .cc-v10 .v10-system-col .sub { font-size: 13px; color: #6B6B6B; margin-bottom: 24px; }
+  .cc-v10 .v10-product-circle {
+    width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+    background: #F0F5F7; border: 1px solid #E8E8E8; display: inline-block; margin-right: 8px;
+  }
+  .cc-v10 .v10-product-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-v10 .v10-product-circles { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
   .cc-v10 .v10-system-col .v10-system-img { max-width: 340px; margin: 0 auto 24px; aspect-ratio: 4/3; overflow: hidden; background: #F5F5F2; }
   .cc-v10 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
   .cc-v10 .v10-system-col.pm .v10-system-img img { object-position: center bottom; }
@@ -435,17 +441,23 @@
   .cc-v10 .v10-section.dark .v10-ing-footnote { color: #9A9A9A; }
 
   /* ---------- HOW IT WORKS ---------- */
-  .cc-v10 .v10-steps { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1100px; margin: 0 auto; }
-  @media (min-width: 800px) { .cc-v10 .v10-steps { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
-  .cc-v10 .v10-step { text-align: left; background: #fff; border: 1px solid #E8E8E8; overflow: hidden; display: flex; flex-direction: column; }
-  .cc-v10 .v10-step-img { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #F3F2EE; }
-  .cc-v10 .v10-step-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cc-v10 .v10-step-img.v10-step-img-product { background: linear-gradient(180deg, #F5F5F2 0%, #EAE8E1 100%); display: flex; align-items: center; justify-content: center; padding: 24px; }
-  .cc-v10 .v10-step-img.v10-step-img-product img { width: auto; max-width: 85%; max-height: 90%; height: auto; object-fit: contain; }
-  .cc-v10 .v10-step-body { padding: 32px; }
-  .cc-v10 .v10-step .num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 18px; }
-  .cc-v10 .v10-step h3 { font-size: 22px; font-weight: 500; margin-bottom: 12px; }
-  .cc-v10 .v10-step p { font-size: 15px; line-height: 1.55; color: #6B6B6B; }
+  /* ---------- AM/PM TWO-PANEL ---------- */
+  .cc-v10 .v10-ampm { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 800px) { .cc-v10 .v10-ampm { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .cc-v10 .v10-ampm-card { text-align: center; overflow: hidden; }
+  .cc-v10 .v10-ampm-img {
+    aspect-ratio: 4/5; overflow: hidden; background: #F0F5F7;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 28px;
+  }
+  .cc-v10 .v10-ampm-card.pm .v10-ampm-img { background: #0A0A0A; }
+  .cc-v10 .v10-ampm-img img { width: 70%; height: auto; object-fit: contain; display: block; }
+  .cc-v10 .v10-ampm-label {
+    font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #6B6B6B; margin-bottom: 12px;
+  }
+  .cc-v10 .v10-ampm-card h3 { font-size: 22px; font-weight: 500; margin-bottom: 10px; }
+  .cc-v10 .v10-ampm-card p { font-size: 15px; line-height: 1.55; color: #6B6B6B; max-width: 400px; margin: 0 auto; }
 
   /* ---------- SCIENTISTS ---------- */
   .cc-v10 .v10-scientists-grid {
@@ -844,6 +856,10 @@
           <p class="step-label">Moment One &middot; AM</p>
           <h3>Morning Blend + Softgels</h3>
           <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
+          <div class="v10-product-circles">
+            <div class="v10-product-circle"><img src="{{ 'cc-v10-prod-powder.webp' | asset_url }}" alt="Morning Blend powder sachet"></div>
+            <div class="v10-product-circle"><img src="{{ 'cc-v10-prod-softgel.webp' | asset_url }}" alt="Morning Softgels"></div>
+          </div>
           <div class="v10-system-img">
             <img src="{{ 'cc-v10-am-morning-only.webp' | asset_url }}" alt="Coastline morning softgels and glass shaker with pink liquid">
           </div>
@@ -872,6 +888,9 @@
           <p class="step-label">Moment Two &middot; PM</p>
           <h3>Evening Capsules</h3>
           <p class="sub">30-60 minutes before bed &middot; 3 ingredients</p>
+          <div class="v10-product-circles">
+            <div class="v10-product-circle"><img src="{{ 'cc-v10-prod-capsule.webp' | asset_url }}" alt="Evening Capsules"></div>
+          </div>
           <div class="v10-system-img">
             <img src="{{ 'cc-bedside-evening.png' | asset_url }}" alt="Evening capsules on a bedside table">
           </div>
@@ -1076,36 +1095,22 @@
         <p>Two moments you already have &mdash; morning and evening. Each dose timed to when your body can use it most. No new habits. No 15 pill bottles. Just a ritual that works with the day you&rsquo;re already living.</p>
       </div>
 
-      <div class="v10-steps reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <div class="v10-step">
-          <div class="v10-step-img v10-step-img-product">
-            <img src="{{ 'cc-v10-am-powder.png' | asset_url }}" alt="Coastline morning powder sachet product">
+      <div class="v10-ampm reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-ampm-card am">
+          <div class="v10-ampm-img">
+            <img src="{{ 'cc-v10-how-am.webp' | asset_url }}" alt="Morning softgels and glass shaker with pink liquid">
           </div>
-          <div class="v10-step-body">
-            <p class="num">Step 01</p>
-            <h3>Morning scoop + softgel</h3>
-            <p>One easy-scoop powder sachet in your free glass shaker with the softgel, taken together with breakfast. 10 ingredients. 45 seconds.</p>
-          </div>
+          <p class="v10-ampm-label">Morning &middot; With Breakfast</p>
+          <h3>Scoop + softgel</h3>
+          <p>One easy-scoop powder sachet in your free glass shaker, plus one morning softgel. 10 ingredients. 45 seconds.</p>
         </div>
-        <div class="v10-step">
-          <div class="v10-step-img v10-step-img-product">
-            <img src="{{ 'cc-v10-pm-capsule.png' | asset_url }}" alt="Coastline evening capsule product">
+        <div class="v10-ampm-card pm">
+          <div class="v10-ampm-img">
+            <img src="{{ 'cc-v10-how-pm.webp' | asset_url }}" alt="Evening capsules bottle">
           </div>
-          <div class="v10-step-body">
-            <p class="num">Step 02</p>
-            <h3>Evening capsules</h3>
-            <p>Two evening capsules 30-60 minutes before bed. L-theanine and glycine help you wind down while glucosamine and lithium orotate go to work overnight.</p>
-          </div>
-        </div>
-        <div class="v10-step">
-          <div class="v10-step-img v10-step-img-product">
-            <img src="{{ 'cc-v10-pm-capsule.png' | asset_url }}" alt="Coastline evening capsules product">
-          </div>
-          <div class="v10-step-body">
-            <p class="num">Step 03</p>
-            <h3>Sharper mornings. Steadier energy.</h3>
-            <p>Most customers notice sharper mornings and steadier energy in 2-4 weeks. Deep-structural benefits &mdash; sleep, joints, biomarkers &mdash; build through weeks 4-8.</p>
-          </div>
+          <p class="v10-ampm-label">Evening &middot; Before Bed</p>
+          <h3>Two capsules</h3>
+          <p>L-theanine and glycine help you wind down. Glucosamine and lithium orotate go to work overnight. 3 ingredients.</p>
         </div>
       </div>
     </div>
