@@ -210,6 +210,17 @@
   .cc-v10 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
   .cc-v10 .v10-system-col.pm .v10-system-img img { object-position: center bottom; }
   .cc-v10 .v10-system-col .ing-list { max-width: 320px; margin: 0 auto; text-align: left; }
+  .cc-v10 .ing-toggle {
+    display: none; width: 100%; padding: 14px 0; background: none; border: none; border-top: 1px solid #E8E8E8;
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6B6B6B; cursor: pointer; text-align: center; margin-top: 16px;
+  }
+  .cc-v10 .ing-toggle:hover { color: #0A0A0A; }
+  @media (max-width: 640px) {
+    .cc-v10 .ing-toggle { display: block; }
+    .cc-v10 .ing-list-wrap { display: none; }
+    .cc-v10 .ing-list-wrap.open { display: block; }
+  }
   .cc-v10 .v10-system-col .ing-list .ing-head { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 20px 0 10px; }
   .cc-v10 .ing-accordion { border-top: 1px solid #E8E8E8; }
   .cc-v10 .ing-accordion:last-child { border-bottom: 1px solid #E8E8E8; }
@@ -835,19 +846,24 @@
           <div class="v10-system-img">
             <img src="{{ 'cc-v10-am-product.webp' | asset_url }}" alt="Man scooping Coastline morning blend into a glass of pink hydration with softgels and capsules on the counter">
           </div>
-          <div class="ing-list">
-            <p class="ing-head">Easy-Scoop Powder Sachet</p>
-            <details class="ing-accordion"><summary><span class="name">Creatine</span><span class="dose">5.25g</span></summary><div class="ing-detail">Fuels cellular energy (ATP) in brain and muscle. Shown to improve memory, power output, and lean mass &mdash; especially after 40.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Glycine</span><span class="dose">5g</span></summary><div class="ing-detail">Calming amino acid that supports glutathione production, collagen synthesis, and deeper sleep architecture.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Inulin</span><span class="dose">4g</span></summary><div class="ing-detail">Prebiotic fiber that feeds beneficial gut bacteria and supports short-chain fatty acid production for gut and metabolic health.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Taurine</span><span class="dose">3.05g</span></summary><div class="ing-detail">Declines sharply after 40. Supplementation extended healthy lifespan in animal studies and improves mitochondrial function and insulin sensitivity.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Magnesium</span><span class="dose">150mg</span></summary><div class="ing-detail">Cofactor in 300+ enzymatic reactions. Supports muscle, sleep, cardiovascular, and nervous system health. Most adults are deficient.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Ergothioneine</span><span class="dose">5mg</span></summary><div class="ing-detail">The "longevity vitamin." Accumulates in mitochondria and protects tissues from oxidative damage &mdash; levels strongly correlate with healthy aging.</div></details>
-            <p class="ing-head">Morning Softgels</p>
-            <details class="ing-accordion"><summary><span class="name">CoQ10</span><span class="dose">200mg</span></summary><div class="ing-detail">Essential for mitochondrial ATP production. Levels decline with age; supplementation especially important for statin users and anyone over 40.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Lutein</span><span class="dose">10mg</span></summary><div class="ing-detail">Antioxidant carotenoid concentrated in the macula and brain. Protects against blue light damage and supports cognitive health.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Astaxanthin</span><span class="dose">6mg</span></summary><div class="ing-detail">One of nature's most potent antioxidants. Crosses the blood-brain barrier and supports skin, eye, and cardiovascular health.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Zeaxanthin</span><span class="dose">2mg</span></summary><div class="ing-detail">Works alongside lutein in the macula. Reduces age-related macular degeneration risk and supports visual performance.</div></details>
+          <div x-data="{ showIng: false }">
+            <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
+            <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
+              <div class="ing-list">
+                <p class="ing-head">Easy-Scoop Powder Sachet</p>
+                <details class="ing-accordion"><summary><span class="name">Creatine</span><span class="dose">5.25g</span></summary><div class="ing-detail">Fuels cellular energy (ATP) in brain and muscle. Shown to improve memory, power output, and lean mass &mdash; especially after 40.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Glycine</span><span class="dose">5g</span></summary><div class="ing-detail">Calming amino acid that supports glutathione production, collagen synthesis, and deeper sleep architecture.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Inulin</span><span class="dose">4g</span></summary><div class="ing-detail">Prebiotic fiber that feeds beneficial gut bacteria and supports short-chain fatty acid production for gut and metabolic health.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Taurine</span><span class="dose">3.05g</span></summary><div class="ing-detail">Declines sharply after 40. Supplementation extended healthy lifespan in animal studies and improves mitochondrial function and insulin sensitivity.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Magnesium</span><span class="dose">150mg</span></summary><div class="ing-detail">Cofactor in 300+ enzymatic reactions. Supports muscle, sleep, cardiovascular, and nervous system health. Most adults are deficient.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Ergothioneine</span><span class="dose">5mg</span></summary><div class="ing-detail">The "longevity vitamin." Accumulates in mitochondria and protects tissues from oxidative damage &mdash; levels strongly correlate with healthy aging.</div></details>
+                <p class="ing-head">Morning Softgels</p>
+                <details class="ing-accordion"><summary><span class="name">CoQ10</span><span class="dose">200mg</span></summary><div class="ing-detail">Essential for mitochondrial ATP production. Levels decline with age; supplementation especially important for statin users and anyone over 40.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Lutein</span><span class="dose">10mg</span></summary><div class="ing-detail">Antioxidant carotenoid concentrated in the macula and brain. Protects against blue light damage and supports cognitive health.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Astaxanthin</span><span class="dose">6mg</span></summary><div class="ing-detail">One of nature's most potent antioxidants. Crosses the blood-brain barrier and supports skin, eye, and cardiovascular health.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Zeaxanthin</span><span class="dose">2mg</span></summary><div class="ing-detail">Works alongside lutein in the macula. Reduces age-related macular degeneration risk and supports visual performance.</div></details>
+              </div>
+            </div>
           </div>
         </div>
         <!-- PM -->
@@ -858,11 +874,16 @@
           <div class="v10-system-img">
             <img src="{{ 'cc-bedside-evening.png' | asset_url }}" alt="Evening capsules on a bedside table">
           </div>
-          <div class="ing-list">
-            <p class="ing-head">Evening Capsules</p>
-            <details class="ing-accordion"><summary><span class="name">Glucosamine</span><span class="dose">750mg</span></summary><div class="ing-detail">Associated with ~15% lower all-cause mortality in large observational studies. Supports joint repair, cartilage health, and long-term mobility.</div></details>
-            <details class="ing-accordion"><summary><span class="name">L-Theanine</span><span class="dose">200mg</span></summary><div class="ing-detail">Promotes relaxation without sedation by increasing alpha brain waves. Helps you wind down and improves sleep quality without morning grogginess.</div></details>
-            <details class="ing-accordion"><summary><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></summary><div class="ing-detail">At microdoses, populations with higher lithium in drinking water show lower rates of dementia, depression, and suicide. Supports mood and cognitive longevity.</div></details>
+          <div x-data="{ showIng: false }">
+            <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
+            <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
+              <div class="ing-list">
+                <p class="ing-head">Evening Capsules</p>
+                <details class="ing-accordion"><summary><span class="name">Glucosamine</span><span class="dose">750mg</span></summary><div class="ing-detail">Associated with ~15% lower all-cause mortality in large observational studies. Supports joint repair, cartilage health, and long-term mobility.</div></details>
+                <details class="ing-accordion"><summary><span class="name">L-Theanine</span><span class="dose">200mg</span></summary><div class="ing-detail">Promotes relaxation without sedation by increasing alpha brain waves. Helps you wind down and improves sleep quality without morning grogginess.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></summary><div class="ing-detail">At microdoses, populations with higher lithium in drinking water show lower rates of dementia, depression, and suicide. Supports mood and cognitive longevity.</div></details>
+              </div>
+            </div>
           </div>
         </div>
       </div>
