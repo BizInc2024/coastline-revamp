@@ -717,9 +717,21 @@
   .cc-v10 #cta .flavor-btn.lemonade { background: #FDF2F8; }
   .cc-v10 #cta .flavor-btn.active { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
   .cc-v10 #cta .plan-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 32px; }
+  @media (max-width: 480px) { .cc-v10 #cta .plan-grid { grid-template-columns: 1fr; gap: 8px; } }
   .cc-v10 #cta .plan-btn {
     padding: 16px 10px; border: 2px solid #E8E8E8; background: #fff; cursor: pointer;
     text-align: center; transition: all 0.2s ease; position: relative;
+  }
+  @media (max-width: 480px) {
+    .cc-v10 #cta .plan-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px; text-align: left; gap: 8px;
+    }
+    .cc-v10 #cta .plan-btn .tag { margin-bottom: 0; font-size: 9px; flex: 0 0 auto; order: -1; }
+    .cc-v10 #cta .plan-btn .price { font-size: 22px; flex: 0 0 auto; }
+    .cc-v10 #cta .plan-btn .cadence { font-size: 11px; flex: 1; }
+    .cc-v10 #cta .plan-btn .save { margin-top: 0; flex: 0 0 auto; }
+    .cc-v10 #cta .plan-btn .label-cadence { display: none; }
   }
   .cc-v10 #cta .plan-btn.active { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
   .cc-v10 #cta .plan-btn .tag { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; font-weight: 500; color: #2D5A47; margin-bottom: 4px; text-transform: uppercase; }
