@@ -1329,12 +1329,14 @@
             body: JSON.stringify(payload)
           })
           .then(r => r.json())
-          .then(cartData => {
+          .then(() => {
             this.loading = false;
-            if (window.theme?.pubsub?.publish) {
-              window.theme.pubsub.publish(window.theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', cart: cartData });
-            }
-            document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { product: cartData } }));
+            fetch('/cart.js').then(r => r.json()).then(cart => {
+              if (window.theme?.pubsub?.publish) {
+                window.theme.pubsub.publish(window.theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', cart: cart });
+              }
+              document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { cart: cart } }));
+            });
           })
           .catch(err => { this.loading = false; console.error('cart add error', err); });
         }
