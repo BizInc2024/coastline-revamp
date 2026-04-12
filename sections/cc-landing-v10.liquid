@@ -334,7 +334,8 @@
   /* ---------- UGC GALLERY ---------- */
   .cc-v10 .v10-ugc-rail {
     display: flex;
-    gap: 20px;
+    flex-wrap: nowrap;
+    gap: 16px;
     overflow-x: auto;
     padding: 8px 24px 24px;
     scroll-snap-type: x mandatory;
@@ -345,18 +346,14 @@
   .cc-v10 .v10-ugc-rail::-webkit-scrollbar { display: none; }
   .cc-v10 .v10-ugc-item {
     flex: 0 0 auto;
-    width: 320px;
+    width: 260px;
     overflow: visible;
     scroll-snap-align: start;
     background: transparent;
   }
   .cc-v10 .v10-ugc-item img { width: 100%; height: auto; display: block; }
-  @media (min-width: 1100px) {
-    .cc-v10 .v10-ugc-rail { justify-content: center; flex-wrap: wrap; overflow-x: visible; }
-    .cc-v10 .v10-ugc-item { width: 260px; }
-  }
   @media (max-width: 640px) {
-    .cc-v10 .v10-ugc-item { width: 280px; }
+    .cc-v10 .v10-ugc-item { width: 240px; }
   }
 
   /* ---------- MICRO-REVIEW STRIP ---------- */
