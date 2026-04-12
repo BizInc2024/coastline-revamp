@@ -212,7 +212,8 @@
     background: #F0F5F7; border: 1px solid #E8E8E8; display: inline-block; margin-right: 8px;
   }
   .cc-v10 .v10-product-circle img { width: 100%; height: 100%; object-fit: cover; }
-  .cc-v10 .v10-product-circles { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+  .cc-v10 .v10-product-circles { display: inline-flex; gap: 8px; vertical-align: middle; margin-left: 8px; }
+  .cc-v10 .ing-head-row { display: flex; align-items: center; gap: 6px; margin: 20px 0 10px; }
   .cc-v10 .v10-system-col .v10-system-img { max-width: 340px; margin: 0 auto 24px; aspect-ratio: 4/3; overflow: hidden; background: #F5F5F2; }
   .cc-v10 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
   .cc-v10 .v10-system-col.pm .v10-system-img img { object-position: center bottom; }
@@ -442,22 +443,29 @@
 
   /* ---------- HOW IT WORKS ---------- */
   /* ---------- AM/PM TWO-PANEL ---------- */
-  .cc-v10 .v10-ampm { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
-  @media (min-width: 800px) { .cc-v10 .v10-ampm { grid-template-columns: 1fr 1fr; gap: 32px; } }
-  .cc-v10 .v10-ampm-card { text-align: center; overflow: hidden; }
+  .cc-v10 .v10-ampm { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+  @media (min-width: 800px) { .cc-v10 .v10-ampm { grid-template-columns: 1fr 1fr; } }
+  .cc-v10 .v10-ampm-card { position: relative; overflow: hidden; }
   .cc-v10 .v10-ampm-img {
-    aspect-ratio: 4/5; overflow: hidden; background: #F0F5F7;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 28px;
+    aspect-ratio: 3/4; overflow: hidden;
   }
-  .cc-v10 .v10-ampm-card.pm .v10-ampm-img { background: #0A0A0A; }
-  .cc-v10 .v10-ampm-img img { width: 70%; height: auto; object-fit: contain; display: block; }
+  .cc-v10 .v10-ampm-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-v10 .v10-ampm-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 32px 36px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.65) 100%);
+    color: #FAF9F6;
+  }
   .cc-v10 .v10-ampm-label {
-    font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: #6B6B6B; margin-bottom: 12px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(250,249,246,0.7); margin-bottom: 8px; display: block;
   }
-  .cc-v10 .v10-ampm-card h3 { font-size: 22px; font-weight: 500; margin-bottom: 10px; }
-  .cc-v10 .v10-ampm-card p { font-size: 15px; line-height: 1.55; color: #6B6B6B; max-width: 400px; margin: 0 auto; }
+  .cc-v10 .v10-ampm-card h3 { font-size: 24px; font-weight: 500; margin-bottom: 8px; color: #FAF9F6; }
+  .cc-v10 .v10-ampm-card p { font-size: 14px; line-height: 1.5; color: rgba(250,249,246,0.8); max-width: 380px; }
+  @media (max-width: 799px) {
+    .cc-v10 .v10-ampm-img { aspect-ratio: 4/3; }
+    .cc-v10 .v10-ampm-overlay { padding: 28px 24px 24px; }
+  }
 
   /* ---------- SCIENTISTS ---------- */
   .cc-v10 .v10-scientists-grid {
@@ -856,10 +864,6 @@
           <p class="step-label">Moment One &middot; AM</p>
           <h3>Morning Blend + Softgels</h3>
           <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
-          <div class="v10-product-circles">
-            <div class="v10-product-circle"><img src="{{ 'cc-v10-prod-powder.webp' | asset_url }}" alt="Morning Blend powder sachet"></div>
-            <div class="v10-product-circle"><img src="{{ 'cc-v10-prod-softgel.webp' | asset_url }}" alt="Morning Softgels"></div>
-          </div>
           <div class="v10-system-img">
             <img src="{{ 'cc-v10-am-morning-only.webp' | asset_url }}" alt="Coastline morning softgels and glass shaker with pink liquid">
           </div>
@@ -867,14 +871,14 @@
             <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
             <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
               <div class="ing-list">
-                <p class="ing-head">Easy-Scoop Powder Sachet</p>
+                <div class="ing-head-row"><p class="ing-head" style="margin:0">Easy-Scoop Powder Sachet</p><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-powder.webp' | asset_url }}" alt="Powder sachet"></div></div>
                 <details class="ing-accordion"><summary><span class="name">Creatine</span><span class="dose">5.25g</span></summary><div class="ing-detail">Fuels cellular energy (ATP) in brain and muscle. Shown to improve memory, power output, and lean mass &mdash; especially after 40.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Glycine</span><span class="dose">5g</span></summary><div class="ing-detail">Calming amino acid that supports glutathione production, collagen synthesis, and deeper sleep architecture.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Inulin</span><span class="dose">4g</span></summary><div class="ing-detail">Prebiotic fiber that feeds beneficial gut bacteria and supports short-chain fatty acid production for gut and metabolic health.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Taurine</span><span class="dose">3.05g</span></summary><div class="ing-detail">Declines sharply after 40. Supplementation extended healthy lifespan in animal studies and improves mitochondrial function and insulin sensitivity.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Magnesium</span><span class="dose">150mg</span></summary><div class="ing-detail">Cofactor in 300+ enzymatic reactions. Supports muscle, sleep, cardiovascular, and nervous system health. Most adults are deficient.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Ergothioneine</span><span class="dose">5mg</span></summary><div class="ing-detail">The "longevity vitamin." Accumulates in mitochondria and protects tissues from oxidative damage &mdash; levels strongly correlate with healthy aging.</div></details>
-                <p class="ing-head">Morning Softgels</p>
+                <div class="ing-head-row"><p class="ing-head" style="margin:0">Morning Softgels</p><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-softgel.webp' | asset_url }}" alt="Softgels"></div></div>
                 <details class="ing-accordion"><summary><span class="name">CoQ10</span><span class="dose">200mg</span></summary><div class="ing-detail">Essential for mitochondrial ATP production. Levels decline with age; supplementation especially important for statin users and anyone over 40.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Lutein</span><span class="dose">10mg</span></summary><div class="ing-detail">Antioxidant carotenoid concentrated in the macula and brain. Protects against blue light damage and supports cognitive health.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Astaxanthin</span><span class="dose">6mg</span></summary><div class="ing-detail">One of nature's most potent antioxidants. Crosses the blood-brain barrier and supports skin, eye, and cardiovascular health.</div></details>
@@ -888,9 +892,6 @@
           <p class="step-label">Moment Two &middot; PM</p>
           <h3>Evening Capsules</h3>
           <p class="sub">30-60 minutes before bed &middot; 3 ingredients</p>
-          <div class="v10-product-circles">
-            <div class="v10-product-circle"><img src="{{ 'cc-v10-prod-capsule.webp' | asset_url }}" alt="Evening Capsules"></div>
-          </div>
           <div class="v10-system-img">
             <img src="{{ 'cc-bedside-evening.png' | asset_url }}" alt="Evening capsules on a bedside table">
           </div>
@@ -898,7 +899,7 @@
             <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
             <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
               <div class="ing-list">
-                <p class="ing-head">Evening Capsules</p>
+                <div class="ing-head-row"><p class="ing-head" style="margin:0">Evening Capsules</p><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-capsule.webp' | asset_url }}" alt="Capsules"></div></div>
                 <details class="ing-accordion"><summary><span class="name">Glucosamine</span><span class="dose">750mg</span></summary><div class="ing-detail">Associated with ~15% lower all-cause mortality in large observational studies. Supports joint repair, cartilage health, and long-term mobility.</div></details>
                 <details class="ing-accordion"><summary><span class="name">L-Theanine</span><span class="dose">200mg</span></summary><div class="ing-detail">Promotes relaxation without sedation by increasing alpha brain waves. Helps you wind down and improves sleep quality without morning grogginess.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></summary><div class="ing-detail">At microdoses, populations with higher lithium in drinking water show lower rates of dementia, depression, and suicide. Supports mood and cognitive longevity.</div></details>
@@ -1096,21 +1097,25 @@
       </div>
 
       <div class="v10-ampm reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-        <div class="v10-ampm-card am">
+        <div class="v10-ampm-card">
           <div class="v10-ampm-img">
             <img src="{{ 'cc-v10-how-am.webp' | asset_url }}" alt="Morning softgels and glass shaker with pink liquid">
           </div>
-          <p class="v10-ampm-label">Morning &middot; With Breakfast</p>
-          <h3>Scoop + softgel</h3>
-          <p>One easy-scoop powder sachet in your free glass shaker, plus one morning softgel. 10 ingredients. 45 seconds.</p>
-        </div>
-        <div class="v10-ampm-card pm">
-          <div class="v10-ampm-img">
-            <img src="{{ 'cc-v10-how-pm.webp' | asset_url }}" alt="Evening capsules bottle">
+          <div class="v10-ampm-overlay">
+            <span class="v10-ampm-label">Morning &middot; With Breakfast</span>
+            <h3>Scoop + softgel</h3>
+            <p>10 ingredients. 45 seconds. One powder sachet in your shaker, plus one morning softgel.</p>
           </div>
-          <p class="v10-ampm-label">Evening &middot; Before Bed</p>
-          <h3>Two capsules</h3>
-          <p>L-theanine and glycine help you wind down. Glucosamine and lithium orotate go to work overnight. 3 ingredients.</p>
+        </div>
+        <div class="v10-ampm-card">
+          <div class="v10-ampm-img">
+            <img src="{{ 'cc-v10-how-pm-v2.webp' | asset_url }}" alt="Evening capsules on a bedside table with moonlit ocean view">
+          </div>
+          <div class="v10-ampm-overlay">
+            <span class="v10-ampm-label">Evening &middot; Before Bed</span>
+            <h3>Two capsules</h3>
+            <p>3 ingredients. Wind down with L-theanine and glycine while glucosamine goes to work overnight.</p>
+          </div>
         </div>
       </div>
     </div>
