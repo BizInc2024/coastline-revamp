@@ -1293,7 +1293,6 @@
 
       <div class="cta-right">
       <div class="price-box" x-data="{
-        loading: false,
         flavor: 'unflavored',
         plan: 'monthly',
         variants: {
@@ -1310,36 +1309,8 @@
           twomonth: 120,
           onetime: 150
         },
-        savings: {
-          monthly: 34,
-          twomonth: 20,
-          onetime: 0
-        },
         get currentPrice() { return this.prices[this.plan]; },
-        get isSubscription() { return this.plan !== 'onetime'; },
-        addToCart() {
-          this.loading = true;
-          const payload = { id: this.variants[this.flavor], quantity: 1 };
-          if (this.sellingPlans[this.plan]) {
-            payload.selling_plan = this.sellingPlans[this.plan];
-          }
-          fetch('/cart/add.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-          .then(r => r.json())
-          .then(() => {
-            this.loading = false;
-            fetch('/cart.js').then(r => r.json()).then(cart => {
-              if (window.theme?.pubsub?.publish) {
-                window.theme.pubsub.publish(window.theme.pubsub.PUB_SUB_EVENTS.cartUpdate, { source: 'product-form', cart: cart });
-              }
-              document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: { cart: cart } }));
-            });
-          })
-          .catch(err => { this.loading = false; console.error('cart add error', err); });
-        }
+        get isSubscription() { return this.plan !== 'onetime'; }
       }">
 
         <!-- Flavor -->
@@ -1407,10 +1378,13 @@
           <p class="who" x-text="'\u2014 ' + quotes[current].name">&mdash; Robert K., 45</p>
         </div>
 
-        <button type="button" class="btn-primary cta-btn" :disabled="loading" @click="addToCart()">
-          <span x-show="!loading" x-text="'Start My System — $' + currentPrice + (isSubscription ? '/mo' : '')">Start My System &mdash; $99/mo</span>
-          <span x-show="loading">Adding...</span>
-        </button>
+        <form is="product-form" method="post" action="/cart/add">
+          <input type="hidden" name="id" :value="variants[flavor]">
+          <input type="hidden" name="selling_plan" :value="sellingPlans[plan] || ''" x-show="isSubscription">
+          <button type="submit" class="btn-primary cta-btn">
+            <span x-text="'Start My System — $' + currentPrice + (isSubscription ? '/mo' : '')">Start My System &mdash; $99/mo</span>
+          </button>
+        </form>
 
         <p class="micro-below">Free shipping &middot; Cancel anytime &middot; 60-day money-back guarantee</p>
         <div class="trust-icons">
