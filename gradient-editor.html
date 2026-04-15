@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hero Gradient Editor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; color: #fff; font-family: -apple-system, sans-serif; padding: 20px; }
+  h1 { font-size: 20px; font-weight: 400; margin-bottom: 20px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+  .tab { padding: 8px 20px; background: #222; border: 1px solid #333; border-radius: 4px; cursor: pointer; color: #888; font-size: 13px; }
+  .tab.active { background: #333; color: #fff; border-color: #555; }
+  .editor { display: flex; gap: 30px; }
+  .canvas-wrap { flex: 1; position: relative; }
+  canvas { width: 100%; border-radius: 8px; border: 1px solid #333; }
+  .controls { width: 320px; flex-shrink: 0; }
+  .group { margin-bottom: 24px; border: 1px solid #222; border-radius: 6px; padding: 16px; }
+  .group-title { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .control { margin-bottom: 12px; }
+  .control label { display: flex; justify-content: space-between; font-size: 12px; color: #aaa; margin-bottom: 4px; }
+  .control label span { color: #666; }
+  input[type="range"] { width: 100%; accent-color: #4a9; }
+  .checkbox { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #aaa; cursor: pointer; }
+  .checkbox input { accent-color: #4a9; }
+  .btn { padding: 12px 24px; background: #4a9; color: #000; border: none; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 8px; }
+  .btn:hover { opacity: 0.85; }
+  .btn-secondary { background: #333; color: #fff; }
+  .status { font-size: 11px; color: #666; margin-top: 8px; text-align: center; }
+</style>
+</head>
+<body>
+  <h1>Hero Gradient Editor</h1>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('desktop')">Desktop (16:9)</div>
+    <div class="tab" onclick="switchTab('mobile')">Mobile (9:16)</div>
+  </div>
+  <div class="editor">
+    <div class="canvas-wrap">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="controls">
+
+      <div class="group">
+        <div class="group-title">Left Gradient (desktop) / Top Gradient (mobile)</div>
+        <label class="checkbox"><input type="checkbox" id="g1_on" checked onchange="render()"> Enabled</label>
+        <div class="control">
+          <label>Intensity <span id="g1_intensity_val">55%</span></label>
+          <input type="range" id="g1_intensity" min="0" max="100" value="55" oninput="render()">
+        </div>
+        <div class="control">
+          <label>Reach <span id="g1_reach_val">50%</span></label>
+          <input type="range" id="g1_reach" min="10" max="90" value="50" oninput="render()">
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Bottom Gradient</div>
+        <label class="checkbox"><input type="checkbox" id="g2_on" checked onchange="render()"> Enabled</label>
+        <div class="control">
+          <label>Intensity <span id="g2_intensity_val">70%</span></label>
+          <input type="range" id="g2_intensity" min="0" max="100" value="70" oninput="render()">
+        </div>
+        <div class="control">
+          <label>Start position <span id="g2_start_val">55%</span></label>
+          <input type="range" id="g2_start" min="20" max="90" value="55" oninput="render()">
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Right Gradient (optional)</div>
+        <label class="checkbox"><input type="checkbox" id="g3_on" onchange="render()"> Enabled</label>
+        <div class="control">
+          <label>Intensity <span id="g3_intensity_val">30%</span></label>
+          <input type="range" id="g3_intensity" min="0" max="100" value="30" oninput="render()">
+        </div>
+        <div class="control">
+          <label>Reach <span id="g3_reach_val">30%</span></label>
+          <input type="range" id="g3_reach" min="10" max="90" value="30" oninput="render()">
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Overall</div>
+        <div class="control">
+          <label>Global darken <span id="global_val">0%</span></label>
+          <input type="range" id="global" min="0" max="50" value="0" oninput="render()">
+        </div>
+      </div>
+
+      <button class="btn" onclick="exportImage()">Download Image</button>
+      <button class="btn btn-secondary" onclick="exportBoth()">Download Both (apply same settings)</button>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+const desktopImg = new Image();
+const mobileImg = new Image();
+let currentTab = 'desktop';
+let loaded = { desktop: false, mobile: false };
+
+// Load ORIGINAL images (without baked gradients) from the generated folder
+// Fall back to current assets if originals not available
+desktopImg.onload = () => { loaded.desktop = true; if (currentTab === 'desktop') render(); };
+mobileImg.onload = () => { loaded.mobile = true; if (currentTab === 'mobile') render(); };
+
+// Try the AI-generated original first (no gradient baked in)
+desktopImg.src = '../coastline-marketing/generated-images/2026-04-01/hero-desktop-outpaint/004.jpg';
+desktopImg.onerror = () => { desktopImg.src = 'assets/cc-hero-desktop-apr.jpg'; };
+mobileImg.src = 'assets/cc-hero-mobile-apr.jpg';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab')[tab === 'desktop' ? 0 : 1].classList.add('active');
+
+  // Update labels
+  document.querySelector('.group:nth-child(1) .group-title').textContent =
+    tab === 'desktop' ? 'Left Gradient' : 'Top Gradient';
+
+  render();
+}
+
+function val(id) { return document.getElementById(id).value; }
+function checked(id) { return document.getElementById(id).checked; }
+
+function render() {
+  const img = currentTab === 'desktop' ? desktopImg : mobileImg;
+  if (!img.complete || !img.naturalWidth) return;
+
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  ctx.drawImage(img, 0, 0);
+
+  const w = canvas.width;
+  const h = canvas.height;
+
+  // Update value displays
+  ['g1_intensity', 'g1_reach', 'g2_intensity', 'g2_start', 'g3_intensity', 'g3_reach', 'global'].forEach(id => {
+    const el = document.getElementById(id + '_val');
+    if (el) el.textContent = val(id) + '%';
+  });
+
+  // Global darken
+  const globalAlpha = val('global') / 100;
+  if (globalAlpha > 0) {
+    ctx.fillStyle = `rgba(0,0,0,${globalAlpha})`;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  // Gradient 1: Left (desktop) or Top (mobile)
+  if (checked('g1_on')) {
+    const intensity = val('g1_intensity') / 100;
+    const reach = val('g1_reach') / 100;
+    let grad;
+    if (currentTab === 'desktop') {
+      grad = ctx.createLinearGradient(0, 0, w * reach, 0);
+    } else {
+      grad = ctx.createLinearGradient(0, 0, 0, h * reach);
+    }
+    grad.addColorStop(0, `rgba(0,0,0,${intensity})`);
+    grad.addColorStop(0.6, `rgba(0,0,0,${intensity * 0.4})`);
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  // Gradient 2: Bottom
+  if (checked('g2_on')) {
+    const intensity = val('g2_intensity') / 100;
+    const start = val('g2_start') / 100;
+    const grad = ctx.createLinearGradient(0, h * start, 0, h);
+    grad.addColorStop(0, 'rgba(0,0,0,0)');
+    grad.addColorStop(0.4, `rgba(0,0,0,${intensity * 0.5})`);
+    grad.addColorStop(1, `rgba(0,0,0,${intensity})`);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  // Gradient 3: Right (optional)
+  if (checked('g3_on')) {
+    const intensity = val('g3_intensity') / 100;
+    const reach = val('g3_reach') / 100;
+    const grad = ctx.createLinearGradient(w, 0, w - (w * reach), 0);
+    grad.addColorStop(0, `rgba(0,0,0,${intensity})`);
+    grad.addColorStop(0.6, `rgba(0,0,0,${intensity * 0.4})`);
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+}
+
+function exportImage() {
+  canvas.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = currentTab === 'desktop' ? 'cc-hero-desktop-apr.jpg' : 'cc-hero-mobile-apr.jpg';
+    a.click();
+    URL.revokeObjectURL(url);
+    document.getElementById('status').textContent = `Saved ${a.download}`;
+  }, 'image/jpeg', 0.92);
+}
+
+function exportBoth() {
+  // Save current settings
+  const settings = {};
+  ['g1_on', 'g1_intensity', 'g1_reach', 'g2_on', 'g2_intensity', 'g2_start', 'g3_on', 'g3_intensity', 'g3_reach', 'global'].forEach(id => {
+    const el = document.getElementById(id);
+    settings[id] = el.type === 'checkbox' ? el.checked : el.value;
+  });
+
+  // Export desktop
+  currentTab = 'desktop';
+  render();
+  canvas.toBlob(blob1 => {
+    const url1 = URL.createObjectURL(blob1);
+    const a1 = document.createElement('a');
+    a1.href = url1;
+    a1.download = 'cc-hero-desktop-apr.jpg';
+    a1.click();
+    URL.revokeObjectURL(url1);
+
+    // Export mobile
+    setTimeout(() => {
+      currentTab = 'mobile';
+      render();
+      canvas.toBlob(blob2 => {
+        const url2 = URL.createObjectURL(blob2);
+        const a2 = document.createElement('a');
+        a2.href = url2;
+        a2.download = 'cc-hero-mobile-apr.jpg';
+        a2.click();
+        URL.revokeObjectURL(url2);
+        document.getElementById('status').textContent = 'Both images saved! Drop them into coastline-revamp/assets/';
+
+        // Restore tab
+        currentTab = 'desktop';
+        switchTab('desktop');
+      }, 'image/jpeg', 0.92);
+    }, 500);
+  }, 'image/jpeg', 0.92);
+}
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "cc-landingpage-blueprint",
+      "type": "cc-landingpage-v11-blueprint",
       "settings": {
         "hero_eyebrow": "SUPPLEMENT COMPARISON - UPDATED APRIL 2026",
         "hero_headline": "Coastline vs Blueprint: Same Goal. Very Different Approach.",
