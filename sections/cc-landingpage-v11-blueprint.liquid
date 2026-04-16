@@ -97,16 +97,7 @@
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
                     {{ section.settings.hero_subheadline | default: 'Blueprint sells 7 products with 74 compounds for $361/month. Coastline uses 13 clinically dosed ingredients for $99/month. We compared the science, the doses, and the value.' }}
                 </p>
-                <div class="inline-flex items-center gap-3 mb-10">
-                    <div class="w-10 h-10 rounded-full bg-deep-ink flex items-center justify-center">
-                        <span class="text-parchment text-sm font-grotesk font-medium">MH</span>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-sm text-deep-ink font-medium leading-tight">Dr. Marcus Harrow, PhD</p>
-                        <p class="text-xs text-warm-gray leading-tight">Longevity Research &amp; Supplement Science</p>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center gap-4">
+                <div class="flex flex-col items-center gap-4 mt-6">
                     <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
                     <a href="#v6-takeaways" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO THE KEY TAKEAWAYS</a>
                 </div>
@@ -146,8 +137,8 @@
                 <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
                 <h2 class="font-grotesk text-2xl lg:text-3xl font-medium mb-8" style="color: #FAF9F6;">Blueprint was built around one person's experimental protocol.</h2>
                 <p style="color: #9A9A9A; font-size: 17px; line-height: 1.7; margin-bottom: 24px;">Bryan Johnson spent millions testing longevity interventions on himself -- bloodwork every month, dozens of experimental compounds, a protocol that once included rapamycin and growth hormone. He turned that personal experiment into a consumer brand called Blueprint.</p>
-                <p style="color: #9A9A9A; font-size: 17px; line-height: 1.7; margin-bottom: 24px;">The retail stack: 7 products, 74 compounds, $361 per month. No peer-reviewed clinical trials on the combined formulation. In 2024, Johnson dropped rapamycin after admitting it probably did more harm than good. He stopped growth hormone after side effects including elevated blood glucose.</p>
-                <p style="color: #FAF9F6; font-size: 17px; line-height: 1.7; font-weight: 500;">Coastline takes a different approach: 13 ingredients, each backed by published clinical trials, at the doses those trials used. One system. Full transparency.</p>
+                <p style="color: #9A9A9A; font-size: 17px; line-height: 1.7; margin-bottom: 24px;">The retail stack: 7 products, 74 compounds, $361 per month. Several of those compounds have limited human trial data &mdash; some are experimental, others are drawn from animal studies. In 2024, Johnson dropped rapamycin after admitting it probably did more harm than good. He stopped growth hormone after side effects including elevated blood glucose.</p>
+                <p style="color: #FAF9F6; font-size: 17px; line-height: 1.7; font-weight: 500;">Coastline takes a different approach: 13 ingredients, each backed by published human clinical trials, at the doses those trials used. No experimental compounds. No guesswork.</p>
             </div>
         </div>
     </section>
@@ -179,12 +170,11 @@
                             <tr><td>Ingredients</td><td style="text-align:center; color:#0A0A0A;">13 (clinically dosed)</td><td style="text-align:center; color:#6B6B6B;">74 compounds</td></tr>
                             <tr><td>Products to manage</td><td class="v6-check" style="text-align:center;">1 system, 2 moments</td><td class="v6-x" style="text-align:center;">7 separate products</td></tr>
                             <tr><td>Creatine</td><td class="v6-check" style="text-align:center;">5.25g (clinical dose)</td><td class="v6-x" style="text-align:center;">2.5g (half dose)</td></tr>
-                            <tr><td>Taurine</td><td class="v6-check" style="text-align:center;">3g</td><td style="text-align:center; color:#6B6B6B;">Present (dose undisclosed)</td></tr>
+                            <tr><td>Taurine</td><td class="v6-check" style="text-align:center;">3g</td><td style="text-align:center; color:#6B6B6B;">1.5g (half the clinical dose)</td></tr>
                             <tr><td>CoQ10</td><td class="v6-check" style="text-align:center;">200mg</td><td style="text-align:center; color:#6B6B6B;">Present (as ubiquinol)</td></tr>
                             <tr><td>Ergothioneine</td><td class="v6-check" style="text-align:center;">5mg</td><td class="v6-x" style="text-align:center;">Not included</td></tr>
                             <tr><td>Astaxanthin</td><td class="v6-check" style="text-align:center;">12mg</td><td class="v6-x" style="text-align:center;">Not included</td></tr>
-                            <tr><td>Dose transparency</td><td class="v6-check" style="text-align:center;">Every dose on the label</td><td class="v6-x" style="text-align:center;">Not all doses disclosed</td></tr>
-                            <tr><td>Clinical evidence</td><td style="text-align:center; color:#0A0A0A;">Published trials per ingredient</td><td class="v6-x" style="text-align:center;">No trials on combined stack</td></tr>
+                            <tr><td>Human trial evidence</td><td class="v6-check" style="text-align:center;">Every ingredient backed by published human trials</td><td class="v6-x" style="text-align:center;">Several ingredients lack human data</td></tr>
                             <tr><td>Vitamin E safety</td><td class="v6-check" style="text-align:center;">Not included (by design)</td><td class="v6-x" style="text-align:center;">447% DV (potential concern)</td></tr>
                             <tr><td>Caffeine-free</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
                             <tr><td>Vegan</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
@@ -205,7 +195,7 @@
                     <div style="border-top: 1px solid #E8E8E8; padding-top: 20px; text-align: center; flex: 1;">
                         <p style="font-size: 14px; color: #6B6B6B; margin-bottom: 8px;">74 compounds across 7 products</p>
                         <p style="font-size: 14px; color: #6B6B6B; margin-bottom: 8px;">$12/day &middot; $4,332/year</p>
-                        <p style="font-size: 12px; color: #C0392B; margin-top: 16px; line-height: 1.5;">No clinical trials on the combined stack</p>
+                        <p style="font-size: 12px; color: #C0392B; margin-top: 16px; line-height: 1.5;">Several ingredients have limited human data</p>
                     </div>
                 </div>
                 <div style="border: 1px solid #0A0A0A; padding: 40px 32px; position: relative; display: flex; flex-direction: column;">
@@ -218,7 +208,7 @@
                     <div style="border-top: 1px solid #E8E8E8; padding-top: 20px; text-align: center; flex: 1;">
                         <p style="font-size: 14px; color: #6B6B6B; margin-bottom: 8px;">13 ingredients at clinical doses</p>
                         <p style="font-size: 14px; color: #6B6B6B; margin-bottom: 8px;">$3.30/day &middot; $1,188/year</p>
-                        <p style="font-size: 12px; color: #2D5A47; margin-top: 16px; line-height: 1.5;">Full transparency -- every dose disclosed</p>
+                        <p style="font-size: 12px; color: #2D5A47; margin-top: 16px; line-height: 1.5;">Every ingredient at its clinical dose</p>
                     </div>
                 </div>
             </div>
@@ -238,7 +228,7 @@
             <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <p class="section-counter mb-6">The Coastline Formula</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
-                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.ingredients_headline | default: '13 ingredients. Every dose disclosed.' }}</h2>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">13 ingredients. All clinically dosed. All backed by human trials.</h2>
                 <p class="text-warm-gray text-lg max-w-xl mx-auto">{{ section.settings.ingredients_subheadline | default: 'Three products. One system. Optimized for your circadian rhythm.' }}</p>
             </div>
 
@@ -495,7 +485,7 @@
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I&rsquo;m a pharmacist. When I compared the labels side by side, Coastline was the obvious choice. Clinical doses, full transparency.&rdquo;</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I&rsquo;m a pharmacist. When I compared the labels side by side, Coastline was the obvious choice. Clinical doses on every ingredient with published human trials.&rdquo;</p>
                     <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-sarah.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Sarah K., 44</p><p class="text-xs text-warm-gray">PharmD</p></div></div>
                 </div>
             </div>
@@ -580,10 +570,10 @@
                 <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.5);">Key Takeaways</p>
                 <ul class="space-y-6">
                     <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">1</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint costs $12/day for 7 separate products. Coastline costs $3.30/day for one complete system.</span></li>
-                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">2</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint's Longevity Mix contains 2.5g of creatine. The clinical trials used 5g. Coastline includes 5.25g.</span></li>
-                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">3</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">No peer-reviewed clinical trials exist on Blueprint's combined stack.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">2</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint's Longevity Mix contains 2.5g of creatine. Most clinical trials conducted at 5+g/day. Coastline includes 5.25g.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">3</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint includes several compounds with limited human trial data. Coastline's 13 ingredients each have published human clinical trials.</span></li>
                     <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">4</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint's founder dropped rapamycin after admitting it did more harm than good.</span></li>
-                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">5</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Coastline discloses every dose. Blueprint does not.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">5</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint's Vitamin E is dosed at 447% DV &mdash; worth discussing with your doctor. Coastline doesn't include Vitamin E by design.</span></li>
                 </ul>
             </div>
         </div>
@@ -830,7 +820,7 @@
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 1 }">
-                        <div class="px-6 pb-6 text-warm-gray"><p>Blueprint spreads 74 compounds across 7 separate products for $361/month. Coastline delivers 13 clinically dosed ingredients in one system for $99/month. Every Coastline dose is disclosed on the label. No hidden amounts. One system, two daily moments (AM and PM).</p></div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>Blueprint spreads 74 compounds across 7 separate products for $361/month. Several of those ingredients have limited human trial data. Coastline delivers 13 clinically dosed ingredients in one system for $99/month -- each one backed by published human clinical trials. One system, two daily moments (AM and PM).</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
@@ -848,7 +838,7 @@
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 3 }">
-                        <div class="px-6 pb-6 text-warm-gray"><p>Yes -- 74 compounds vs 13. But more is not better when doses fall below clinical thresholds. Blueprint's Longevity Mix contains 2.5g of creatine. The clinical trials that demonstrated cognitive and performance benefits used 5g. Coastline includes 5.25g. Dose matters more than count.</p></div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>Yes -- 74 compounds vs 13. But more is not better when several of those compounds have limited human trial data. Blueprint's Longevity Mix contains 2.5g of creatine. Most clinical trials conducted at 5+g/day. Coastline includes 5.25g. Dose and evidence matter more than count.</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
@@ -857,7 +847,7 @@
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 4 }">
-                        <div class="px-6 pb-6 text-warm-gray"><p>No. Blueprint contains some well-researched ingredients. But the core stack costs $12/day, requires managing 7 products, has no published trials on the combined formulation, and the founder himself has walked back key parts of his own protocol. We believe a simpler, evidence-based approach works better.</p></div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>No. Blueprint contains some well-researched ingredients. But the core stack costs $12/day, requires managing 7 products, and includes several compounds with limited human trial evidence. The founder himself has walked back key parts of his own protocol. We believe a simpler, evidence-based approach works better.</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">

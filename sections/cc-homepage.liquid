@@ -554,7 +554,7 @@
          x-data="{ n: 0, started: false, run() { if (this.started) return; this.started = true; let i = 0; const t = setInterval(() => { i += 1; this.n = i; if (i >= 7) clearInterval(t); }, 140); } }"
          x-intersect="run()"
          x-init="setTimeout(() => run(), 100)">
-      <span class="eyebrow">Most Recent Research</span>
+      <span class="eyebrow">Research Indicates</span>
       <span class="stat"><span x-text="n">7</span>%</span>
       <h2>of how long you live is genetic.<br><span class="soft">The other 93% is up to you.</span></h2>
       <p class="body">
