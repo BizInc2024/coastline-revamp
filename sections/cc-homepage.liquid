@@ -358,8 +358,12 @@
     .cc-homepage .cc-ask-chip { padding: 10px 18px; font-family: 'Inter', sans-serif; font-size: 13px; color: #6B6B6B; background: transparent; border: 1px solid #E8E8E8; cursor: pointer; transition: all 0.2s; }
     .cc-homepage .cc-ask-chip:hover { border-color: #0A0A0A; color: #0A0A0A; }
     .cc-homepage .cc-ask-answer { background: #FFFFFF; border: 1px solid #E8E8E8; padding: 28px; text-align: left; margin-top: 16px; }
+    .cc-homepage .cc-ask-q-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 8px; }
+    .cc-homepage .cc-ask-q-text { font-size: 15px; line-height: 1.5; color: #0A0A0A; font-style: italic; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #E8E8E8; }
     .cc-homepage .cc-ask-answer-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 14px; }
     .cc-homepage .cc-ask-answer-text { font-size: 16px; line-height: 1.7; color: #0A0A0A; white-space: pre-wrap; }
+    .cc-homepage .cc-ask-reset { margin-top: 24px; padding: 12px 24px; font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: #0A0A0A; border: 1px solid #0A0A0A; cursor: pointer; transition: all 0.2s; }
+    .cc-homepage .cc-ask-reset:hover { background: #0A0A0A; color: #FAF9F6; }
     .cc-homepage .cc-ask-loading { display: flex; gap: 6px; padding: 12px 0; }
     .cc-homepage .cc-ask-dot { width: 8px; height: 8px; border-radius: 50%; background: #6B6B6B; animation: cc-ask-pulse 1.4s infinite; }
     .cc-homepage .cc-ask-dot:nth-child(2) { animation-delay: 0.2s; }
@@ -586,10 +590,12 @@
              loading: false,
              error: '',
              suggestions: ['What is in the morning blend?', 'Why only 13 ingredients?', 'How soon will I notice a difference?', 'Can I take this with my medication?', 'How is Coastline different from AG1?', 'Is it safe to take long-term?'],
+             lastQuestion: '',
              async ask(q) {
                const query = (q || this.question).trim();
                if (!query) return;
-               this.question = query;
+               this.lastQuestion = query;
+               this.question = '';
                this.answer = '';
                this.error = '';
                this.loading = true;
@@ -616,6 +622,12 @@
                  this.error = 'Network error. Please try again.';
                }
                this.loading = false;
+             },
+             reset() {
+               this.question = '';
+               this.answer = '';
+               this.error = '';
+               this.lastQuestion = '';
              }
            }">
     <div class="cc-ask-inner">
@@ -637,12 +649,15 @@
       </div>
 
       <div class="cc-ask-answer" x-show="answer || loading || error">
+        <div class="cc-ask-q-label" x-show="lastQuestion">You asked</div>
+        <div class="cc-ask-q-text" x-show="lastQuestion" x-text="lastQuestion"></div>
         <div class="cc-ask-answer-label" x-show="answer || loading">Answer</div>
         <div class="cc-ask-answer-text" x-show="answer" x-text="answer"></div>
         <div class="cc-ask-loading" x-show="loading && !answer">
           <span class="cc-ask-dot"></span><span class="cc-ask-dot"></span><span class="cc-ask-dot"></span>
         </div>
         <div class="cc-ask-error" x-show="error" x-text="error"></div>
+        <button type="button" class="cc-ask-reset" x-show="answer && !loading" @click="reset()">Ask another question</button>
       </div>
 
       <p class="cc-ask-disclaimer">AI responses are for educational purposes only and do not constitute medical advice.<br>Always consult a healthcare provider for questions about your health.</p>
