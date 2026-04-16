@@ -242,11 +242,16 @@
                 <p class="text-warm-gray text-lg max-w-xl mx-auto">{{ section.settings.ingredients_subheadline | default: 'Three products. One system. Optimized for your circadian rhythm.' }}</p>
             </div>
 
-            <!-- Morning Powder -->
+            <!-- Morning Blend -->
             <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="mb-6">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
-                    <p class="font-grotesk text-lg text-deep-ink font-medium">Powder Blend - 7 Ingredients</p>
+                <div class="flex items-center gap-4 mb-6">
+                    <div style="width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #F5F4F0; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194" alt="Morning Blend" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                    </div>
+                    <div>
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
+                        <p class="font-grotesk text-lg text-deep-ink font-medium">Morning Blend &mdash; 7 Ingredients</p>
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277" alt="Ergothioneine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Ergothioneine</p><p>5 mg -- crosses blood-brain barrier</p></div>
@@ -261,9 +266,14 @@
 
             <!-- Softgels -->
             <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="mb-6">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
-                    <p class="font-grotesk text-lg text-deep-ink font-medium">Softgels - 4 Ingredients</p>
+                <div class="flex items-center gap-4 mb-6">
+                    <div style="width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #F5F4F0; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188" alt="Softgels" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                    </div>
+                    <div>
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
+                        <p class="font-grotesk text-lg text-deep-ink font-medium">Softgels &mdash; 4 Ingredients</p>
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Astaxanthin</p><p>6 mg -- potent antioxidant</p></div>
@@ -275,9 +285,14 @@
 
             <!-- Evening Capsules -->
             <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="mb-6">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Evening</p>
-                    <p class="font-grotesk text-lg text-deep-ink font-medium">Capsules - 3 Ingredients</p>
+                <div class="flex items-center gap-4 mb-6">
+                    <div style="width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #F5F4F0; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766" alt="Evening Capsules" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                    </div>
+                    <div>
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Evening</p>
+                        <p class="font-grotesk text-lg text-deep-ink font-medium">Capsules &mdash; 3 Ingredients</p>
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Lithium (as Orotate)</p><p>400 mcg -- neuroprotection</p></div>
@@ -286,6 +301,42 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- AM/PM ROUTINE SECTION (from v10) -->
+    <section class="py-20 lg:py-28" style="background-color: #F5F4F0;">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">How It Works</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">Formulated for AM to PM.</h2>
+                <p class="text-warm-gray text-lg max-w-2xl mx-auto">Two moments you already have &mdash; morning and evening. Each dose timed to when your body can use it most. No new habits. No 15 pill bottles.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div style="position: relative; overflow: hidden; aspect-ratio: 3/4;">
+                    <img src="{{ 'cc-v10-how-am-v3.webp' | asset_url }}" alt="Morning routine" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 32px; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 60%, transparent 100%); color: #FAF9F6;">
+                        <span style="display: inline-block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,249,246,0.7); margin-bottom: 12px;">Morning &middot; With Breakfast</span>
+                        <h3 class="font-grotesk" style="font-size: 28px; font-weight: 500; margin-bottom: 12px;">Scoop + softgel</h3>
+                        <p style="font-size: 15px; color: rgba(250,249,246,0.8); line-height: 1.5;">10 ingredients. 45 seconds. One powder sachet in your shaker, plus one morning softgel.</p>
+                    </div>
+                </div>
+                <div style="position: relative; overflow: hidden; aspect-ratio: 3/4;">
+                    <img src="{{ 'cc-v10-how-pm-v2.webp' | asset_url }}" alt="Evening routine" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 32px; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 60%, transparent 100%); color: #FAF9F6;">
+                        <span style="display: inline-block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,249,246,0.7); margin-bottom: 12px;">Evening &middot; Before Bed</span>
+                        <h3 class="font-grotesk" style="font-size: 28px; font-weight: 500; margin-bottom: 12px;">Two capsules</h3>
+                        <p style="font-size: 15px; color: rgba(250,249,246,0.8); line-height: 1.5;">3 ingredients. Wind down with L-theanine and glycine while glucosamine goes to work overnight.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="#v6-plan-selector" class="btn-primary">Start My System &mdash; $99/mo</a>
+                <p style="margin-top: 12px; font-size: 12px; color: #6B6B6B;">Free shipping &middot; Cancel anytime</p>
+            </div>
         </div>
     </section>
 
