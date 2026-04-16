@@ -346,8 +346,7 @@
     .cc-homepage .cc-ask { padding: 80px 24px; background: #FAF9F6; text-align: center; }
     .cc-homepage .cc-ask-inner { max-width: 720px; margin: 0 auto; }
     .cc-homepage .cc-ask-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #1A3A2F; display: inline-block; margin-bottom: 16px; }
-    .cc-homepage .cc-ask-headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin-bottom: 12px; line-height: 1.15; }
-    .cc-homepage .cc-ask-sub { font-size: 15px; color: #6B6B6B; margin-bottom: 36px; line-height: 1.6; }
+    .cc-homepage .cc-ask-headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin-bottom: 36px; line-height: 1.15; }
     .cc-homepage .cc-ask-form { display: flex; gap: 8px; margin-bottom: 20px; }
     .cc-homepage .cc-ask-form input { flex: 1; padding: 16px 20px; font-family: 'Inter', sans-serif; font-size: 15px; border: 1px solid #E8E8E8; background: #FFFFFF; color: #0A0A0A; outline: none; transition: border-color 0.2s; }
     .cc-homepage .cc-ask-form input:focus { border-color: #0A0A0A; }
@@ -586,7 +585,7 @@
              answer: '',
              loading: false,
              error: '',
-             suggestions: ['What is in the morning blend?', 'Why only 13 ingredients?', 'How soon will I notice a difference?', 'Can I take this with my medication?'],
+             suggestions: ['What is in the morning blend?', 'Why only 13 ingredients?', 'How soon will I notice a difference?', 'Can I take this with my medication?', 'How is Coastline different from AG1?', 'Is it safe to take long-term?'],
              async ask(q) {
                const query = (q || this.question).trim();
                if (!query) return;
@@ -620,9 +619,8 @@
              }
            }">
     <div class="cc-ask-inner">
-      <span class="cc-ask-eyebrow">Ask Coastline</span>
-      <h2 class="cc-ask-headline">Curious about the science?</h2>
-      <p class="cc-ask-sub">Ask anything about our ingredients, doses, or approach. Powered by AI, grounded in our research.</p>
+      <span class="cc-ask-eyebrow">Coastline AI</span>
+      <h2 class="cc-ask-headline">Ask anything about Coastline</h2>
 
       <form class="cc-ask-form" @submit.prevent="ask()">
         <input type="text" x-model="question" placeholder="e.g. Why is creatine in a longevity supplement?" :disabled="loading" maxlength="1000">
@@ -647,7 +645,7 @@
         <div class="cc-ask-error" x-show="error" x-text="error"></div>
       </div>
 
-      <p class="cc-ask-disclaimer">AI responses are for educational purposes only and do not constitute medical advice. Always consult a healthcare provider for questions about your health.</p>
+      <p class="cc-ask-disclaimer">AI responses are for educational purposes only and do not constitute medical advice.<br>Always consult a healthcare provider for questions about your health.</p>
     </div>
   </section>
 
