@@ -334,6 +334,104 @@
       text-transform: uppercase;
       color: var(--warm-gray);
     }
+
+    /* ================================================
+       GENETICS STAT + UGC RAIL (ported from LP v10)
+       ================================================ */
+    .cc-homepage .v10-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .cc-homepage .v10-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; }
+    .cc-homepage .v10-divider { width: 60px; height: 1px; background: #0A0A0A; }
+
+    /* Genetics stat */
+    .cc-homepage .v10-genetics { padding: 120px 24px; background: #0A0A0A; color: #FAF9F6; text-align: center; position: relative; overflow: hidden; }
+    .cc-homepage .v10-genetics::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(231,255,86,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cc-homepage .v10-genetics-inner { position: relative; max-width: 880px; margin: 0 auto; }
+    .cc-homepage .v10-genetics .eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #9A9A9A; margin-bottom: 32px; display: block;
+    }
+    .cc-homepage .v10-genetics .stat {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(120px, 22vw, 280px);
+      font-weight: 500;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      color: #E7FF56;
+      display: block;
+      margin-bottom: 24px;
+    }
+    .cc-homepage .v10-genetics h2 {
+      color: #FAF9F6 !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-size: clamp(26px, 3.4vw, 44px) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em !important;
+    }
+    .cc-homepage .v10-genetics h2 .soft { color: rgba(250,249,246,0.55); }
+    .cc-homepage .v10-genetics .body {
+      max-width: 640px; margin: 0 auto 28px;
+      font-size: 17px !important; line-height: 1.6 !important; color: #9A9A9A !important;
+    }
+    .cc-homepage .v10-genetics .body strong { color: #FAF9F6; font-weight: 500; }
+    .cc-homepage .v10-genetics .source {
+      font-size: 11px !important; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #6B6B6B !important; margin-top: 12px; font-style: normal;
+    }
+    @media (max-width: 768px) {
+      .cc-homepage .v10-genetics { padding: 80px 24px; }
+    }
+
+    /* UGC section head */
+    .cc-homepage .v10-section { padding: 96px 0; }
+    .cc-homepage .v10-section.parchment { background: #FAF9F6; }
+    .cc-homepage .v10-section-head { text-align: center; margin-bottom: 56px; }
+    .cc-homepage .v10-section-head .v10-eyebrow { display: block; margin-bottom: 20px; }
+    .cc-homepage .v10-section-head .v10-divider { margin: 0 auto 28px; }
+    .cc-homepage .v10-section-head h2 {
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-size: clamp(30px, 4.5vw, 56px) !important;
+      font-weight: 500 !important;
+      line-height: 1.1 !important;
+      margin-bottom: 20px;
+      color: #0A0A0A !important;
+    }
+    .cc-homepage .v10-section-head h2 .soft { color: #6B6B6B; }
+    .cc-homepage .v10-section-head p {
+      max-width: 640px; margin: 0 auto;
+      font-size: 17px !important; line-height: 1.55 !important; color: #6B6B6B !important;
+    }
+
+    /* UGC rail */
+    .cc-homepage .v10-ugc-rail {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 8px 24px 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      align-items: flex-start;
+    }
+    .cc-homepage .v10-ugc-rail::-webkit-scrollbar { display: none; }
+    .cc-homepage .v10-ugc-item {
+      flex: 0 0 auto;
+      width: 260px;
+      overflow: visible;
+      scroll-snap-align: start;
+      background: transparent;
+    }
+    .cc-homepage .v10-ugc-item img { width: 100%; height: auto; display: block; }
+    @media (max-width: 640px) {
+      .cc-homepage .v10-ugc-item { width: 240px; }
+    }
 </style>
 
 {%- comment -%} === NOSCRIPT FALLBACK === {%- endcomment -%}
@@ -447,6 +545,45 @@
     </div>
   </section>
 
+
+  {%- comment -%} ============================================================
+     SECTION 2b: GENETICS STAT (ported from LP v10)
+  ============================================================ {%- endcomment -%}
+  <section class="v10-genetics reveal" x-intersect.once="$el.classList.add('visible')">
+    <div class="v10-genetics-inner"
+         x-data="{ n: 0, started: false, run() { if (this.started) return; this.started = true; let i = 0; const t = setInterval(() => { i += 1; this.n = i; if (i >= 7) clearInterval(t); }, 140); } }"
+         x-intersect="run()"
+         x-init="setTimeout(() => run(), 100)">
+      <span class="eyebrow">Most Recent Research</span>
+      <span class="stat"><span x-text="n">7</span>%</span>
+      <h2>of how long you live is genetic.<br><span class="soft">The other 93% is up to you.</span></h2>
+      <p class="body">
+        Recent twin studies show heritability accounts for only <strong>~7%</strong> of lifespan variation &mdash; far less than the widely cited 25%. How you move, sleep, eat, and what you put in your body does the other <strong>93%</strong> of the work.
+      </p>
+      <p class="source">Ruby et al., Genetics (2018) &middot; Nat. Communications (2018)</p>
+    </div>
+  </section>
+
+  {%- comment -%} ============================================================
+     SECTION 2c: UGC — THE COASTLINE COMMUNITY (ported from LP v10)
+  ============================================================ {%- endcomment -%}
+  <section class="v10-section parchment reveal" x-intersect.once="$el.classList.add('visible')">
+    <div class="v10-wrap">
+      <div class="v10-section-head">
+        <span class="v10-eyebrow">The Coastline Community</span>
+        <div class="v10-divider"></div>
+        <h2>See what Coastliners<br><span class="soft">are loving most.</span></h2>
+        <p>Real routines. Real people. Real-life results.</p>
+      </div>
+    </div>
+    <div class="v10-ugc-rail">
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+    </div>
+  </section>
 
   {%- comment -%} SECTION 3: PROBLEM — REMOVED (content preserved in schema settings) {%- endcomment -%}
 
