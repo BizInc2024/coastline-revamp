@@ -128,12 +128,17 @@
         </div>
     </section>
 
-    <!-- THE BLUEPRINT PROBLEM (with BJ background) -->
-    <section class="py-16 lg:py-24 relative" style="background-color: #0A0A0A; overflow: hidden;">
-        <img src="{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.12; z-index: 0;">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8 relative" style="z-index: 1;">
+    <!-- THE BLUEPRINT PROBLEM -->
+    <section class="py-16 lg:py-24" style="background-color: #0A0A0A;">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">The Background</p>
+                <div class="flex items-center gap-4 mb-8">
+                    <img src="{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}" alt="Bryan Johnson" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(250,249,246,0.2);" loading="lazy">
+                    <div>
+                        <p class="text-xs tracking-widest uppercase" style="color: rgba(250,249,246,0.5);">The Background</p>
+                        <p style="color: rgba(250,249,246,0.4); font-size: 13px; margin-top: 2px;">Bryan Johnson, Blueprint founder</p>
+                    </div>
+                </div>
                 <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
                 <h2 class="font-grotesk text-2xl lg:text-3xl font-medium mb-8" style="color: #FAF9F6;">Blueprint was built around one person's experimental protocol.</h2>
                 <p style="color: #9A9A9A; font-size: 17px; line-height: 1.7; margin-bottom: 24px;">Bryan Johnson spent millions testing longevity interventions on himself -- bloodwork every month, dozens of experimental compounds, a protocol that once included rapamycin and growth hormone. He turned that personal experiment into a consumer brand called Blueprint.</p>
