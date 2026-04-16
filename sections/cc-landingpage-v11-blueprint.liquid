@@ -99,11 +99,11 @@
                 </p>
                 <div class="inline-flex items-center gap-3 mb-10">
                     <div class="w-10 h-10 rounded-full bg-deep-ink flex items-center justify-center">
-                        <span class="text-parchment text-sm font-grotesk font-medium">JC</span>
+                        <span class="text-parchment text-sm font-grotesk font-medium">CL</span>
                     </div>
                     <div class="text-left">
-                        <p class="text-sm text-deep-ink font-medium leading-tight">{{ section.settings.hero_author | default: 'Dr. James Chen' }}</p>
-                        <p class="text-xs text-warm-gray leading-tight">{{ section.settings.hero_author_title | default: 'Clinical Nutrition Researcher' }}</p>
+                        <p class="text-sm text-deep-ink font-medium leading-tight">Coastline Editorial Team</p>
+                        <p class="text-xs text-warm-gray leading-tight">Evidence-Based Research</p>
                     </div>
                 </div>
                 <div class="flex flex-col items-center gap-4">
@@ -128,116 +128,39 @@
         </div>
     </section>
 
-    <!-- SECTION 2: NEUTRAL INTRO -->
-    <section class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.intro_body_1 | default: "Bryan Johnson built Blueprint around his personal anti-aging protocol -- a system that once included rapamycin, growth hormone, and over 100 daily pills. He has since dropped several key interventions after admitting they did more harm than good. The retail Blueprint stack is a simplified version of that protocol, but the question remains: is a system designed for one person's bloodwork the right foundation for a consumer supplement?" }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bridge: Intro &rarr; Blueprint Clinical Evidence -->
-    <section class="py-12 lg:py-16 bg-white">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The protocol Blueprint's own founder walked back" }}</h3>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "Bryan Johnson became the face of the longevity movement by spending millions of dollars a year on his own body. Bloodwork every month. Over 100 pills a day. Rapamycin, growth hormone, and dozens of experimental interventions. He turned his protocol into a consumer brand called Blueprint." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p2 | default: "Then he started walking it back. In 2024, Johnson dropped rapamycin -- once central to his protocol -- after admitting it probably did more harm than good. He also stopped growth hormone after 100 days due to increased intracranial pressure and elevated blood glucose." }}
-                </p>
-                <p class="text-deep-ink text-lg leading-relaxed font-medium">
-                    {{ section.settings.bridge_1_p3 | default: "If the founder is still figuring out what works in his own protocol, how much confidence should the retail stack inspire? Here is how Blueprint actually compares to a system built on published clinical evidence." }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA: After bridge 1 -->
-    <div class="py-8 text-center bg-white">
-        <a href="#v6-plan-selector" style="display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#6B6B6B;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">SKIP TO PRICING</a>
-    </div>
-
-    <!-- Divider Image -->
-    <div class="w-full">
-        <img src="{% if section.settings.breaker_image_pre_bj != blank %}{{ section.settings.breaker_image_pre_bj | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/canon-beach-haystack_1.png?v=1764011837{% endif %}" alt="" class="w-full" style="max-height: 40vh; object-fit: cover;" loading="lazy">
-    </div>
-
-    <!-- SECTION 3: Blueprint CLINICAL EVIDENCE -->
-    <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
+    <!-- KEY TAKEAWAYS (right after hero) -->
+    <section id="v6-takeaways" class="py-16 lg:py-20" style="background-color: #062F3D;">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.4);">The Clinical Evidence</p>
-                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
-
-                <!-- Study findings first -->
-                <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "Blueprint's Own Clinical Trial Found:" }}</p>
-                    <ul>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'No significant changes in blood biomarkers vs placebo' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: 'No statistically significant gut health improvement (p = 0.058)' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No metabolic or inflammatory benefits detected' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Microbiome changes were clinically irrelevant' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: 'Placebo showed similar or larger shifts' }}</li>
-                    </ul>
-                </div>
-
-                <!-- Bryan Johnson quote as supporting evidence -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 mb-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
-                    <div class="flex-shrink-0">
-                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}{% endif %}" alt="Bryan Johnson" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
-                    </div>
-                    <div>
-                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
-                            {{ section.settings.bj_quote | default: "&ldquo;I'd cancel your Blueprint subscription.&rdquo;" }}
-                        </blockquote>
-                        <p class="text-sm" style="color: rgba(250,249,246,0.5);">
-                            {{ section.settings.bj_attribution | default: '-- Bryan Johnson, tech entrepreneur and longevity advocate' }}
-                        </p>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
-                    <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
-                        {{ section.settings.pixie_dust_body | default: "Blueprint contains 74 compounds in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 74 compounds into one serving -- most are present in trace amounts far below what clinical trials use." }}
-                    </p>
-                </div>
+                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.5);">Key Takeaways</p>
+                <ul class="space-y-6">
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">1</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint costs $12/day for 7 separate products. Coastline costs $3.30/day for one complete system. That is 3.6x the price.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">2</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint's Longevity Mix contains 2.5g of creatine. The clinical trials used 5g. Coastline includes 5.25g.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">3</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">No peer-reviewed clinical trials exist on Blueprint's combined stack. Coastline's individual ingredients each have published human trial data.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">4</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Blueprint's founder dropped rapamycin in 2024, admitting it probably did more harm than good. He also stopped growth hormone after side effects including elevated blood glucose.</span></li>
+                    <li class="flex gap-4 items-start"><span style="color: #E7FF56; font-size: 18px; line-height: 1.4;">5</span><span style="color: #FAF9F6; font-size: 17px; line-height: 1.6;">Coastline discloses every dose on the label. Blueprint does not fully disclose individual ingredient amounts across all products.</span></li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- CTA: After clinical evidence -->
-    <div class="py-10 text-center bg-parchment">
-        <a href="#v6-plan-selector" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">START MY LONGEVITY SYSTEM</a>
-    </div>
-
-    <!-- Bridge: Bryan Johnson &rarr; Comparison -->
-    <section class="py-16 lg:py-20 bg-parchment">
+    <!-- THE BLUEPRINT PROBLEM -->
+    <section class="py-16 lg:py-24 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both Blueprint and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
-                </p>
-                <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
-                    {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
-                </p>
-                <div class="text-center">
-                    <a href="#v6-plan-selector" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP AHEAD TO PRICING</a>
-                </div>
+                <p class="section-counter mb-6">The Background</p>
+                <div class="editorial-divider mb-10"></div>
+                <h2 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">Blueprint was built around one person's experimental protocol.</h2>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">Bryan Johnson spent millions testing longevity interventions on himself -- bloodwork every month, dozens of experimental compounds, a protocol that once included rapamycin and growth hormone. He turned that personal experiment into a consumer brand called Blueprint.</p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">The retail stack is a simplified version: 7 products, 74 compounds, $361 per month. But there are no peer-reviewed clinical trials on the combined formulation. The evidence is anecdotal -- one person's biomarker data.</p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">Meanwhile, Johnson himself has walked back key parts of his protocol. In 2024, he dropped rapamycin after admitting it probably did more harm than good. He stopped growth hormone after 100 days due to increased intracranial pressure and elevated blood glucose.</p>
+                <p class="text-deep-ink text-lg leading-relaxed font-medium">Coastline takes a different approach: 13 ingredients, each backed by published clinical trials, at the doses those trials used. One system. Full transparency. Here is how they compare.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: COMPARISON BREAKDOWN -->
+    <!-- SECTION 3: COMBINED COMPARISON (price + ingredients) -->
+    <!-- COMPARISON SECTION -->
     <section id="v6-comparison" class="py-20 lg:py-28 bg-white">
         <div class="max-w-5xl mx-auto px-6 sm:px-8">
 
@@ -321,61 +244,6 @@
                 </div>
             </div>
 
-            <!-- PRODUCT SPOTLIGHT: Morning Blend vs Longevity Mix -->
-            <div class="mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="text-center mb-12">
-                    <p class="section-counter mb-6">Product Spotlight</p>
-                    <div class="editorial-divider mx-auto mb-10"></div>
-                    <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">Morning Blend vs Longevity Mix</h2>
-                    <p class="text-warm-gray mt-4 max-w-xl mx-auto">Both are daily drink powders targeting longevity. One gives you clinical doses. The other gives you half.</p>
-                </div>
-
-                <div class="v6-table-scroll">
-                    <table class="v6-comparison-table" style="min-width: 520px;">
-                        <thead>
-                            <tr>
-                                <th style="min-width:160px;">Ingredient</th>
-                                <th style="text-align:center;">Coastline Morning Blend</th>
-                                <th style="text-align:center;">Blueprint Longevity Mix</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Creatine</td><td class="v6-check" style="text-align:center;"><strong>5.25g</strong> (clinical dose)</td><td class="v6-x" style="text-align:center;">2.5g (half the clinical dose)</td></tr>
-                            <tr><td>Taurine</td><td class="v6-check" style="text-align:center;"><strong>3g</strong></td><td style="text-align:center; color:#6B6B6B;">Present (dose undisclosed)</td></tr>
-                            <tr><td>Glycine</td><td class="v6-check" style="text-align:center;"><strong>2g</strong></td><td style="text-align:center; color:#6B6B6B;">Present (dose undisclosed)</td></tr>
-                            <tr><td>Magnesium</td><td class="v6-check" style="text-align:center;"><strong>150mg</strong> (citrate)</td><td style="text-align:center; color:#6B6B6B;">Present (dose undisclosed)</td></tr>
-                            <tr><td>Ergothioneine</td><td class="v6-check" style="text-align:center;"><strong>5mg</strong></td><td class="v6-x" style="text-align:center;">Not included</td></tr>
-                            <tr><td>Inulin</td><td class="v6-check" style="text-align:center;"><strong>2g</strong></td><td class="v6-x" style="text-align:center;">Not included</td></tr>
-                            <tr><td>Price</td><td class="v6-check" style="text-align:center;">Included in $99/mo system</td><td class="v6-x" style="text-align:center;">$49/mo (just the drink)</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="mt-8 p-8" style="background: #FFF8E1; border-left: 4px solid #E7A100;">
-                    <p class="text-deep-ink text-lg font-medium mb-2">The creatine question</p>
-                    <p class="text-warm-gray leading-relaxed">Blueprint's Longevity Mix contains 2.5g of creatine. The clinical trials that demonstrated cognitive and performance benefits used 5g. Coastline includes 5.25g. When a brand says "clinically inspired" but delivers half the dose, that is a marketing decision, not a scientific one.</p>
-                </div>
-            </div>
-
-            <!-- 5C: EFFECTIVENESS -->
-            <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="border border-light-gray p-8">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Blueprint Claims</p>
-                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: '74 compounds across 7 separate products. The Longevity Mix contains just 2.5g of creatine -- half the dose used in clinical trials. Many individual ingredient doses remain undisclosed. No peer-reviewed trials on the combined stack.' }}</p>
-                </div>
-                <div class="p-8" style="background-color: #062F3D;">
-                    <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">Coastline Delivers</p>
-                    <ul class="space-y-3 leading-relaxed" style="color: #FAF9F6;">
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Taurine at 3.05g</strong> -- supports cardiovascular health and extends lifespan in animal models</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Creatine at 5.25g</strong> -- increases muscle strength and sharpens cognition</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Inulin at 4g</strong> -- feeds beneficial gut bacteria and supports digestion</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>CoQ10 at 200mg</strong> -- supports cellular energy and mitochondrial function</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Glycine at 5g</strong> -- improves sleep quality and reduces inflammation</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Astaxanthin at 6mg</strong> -- one of the most potent antioxidants known to science</span></li>
-                        <li class="text-sm mt-2 ml-6" style="color: rgba(250,249,246,0.4);">...and 7 more clinically dosed ingredients. Every dose backed by specific trials.</li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -690,89 +558,6 @@
         <a href="#v6-plan-selector" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">START MY LONGEVITY SYSTEM</a>
     </div>
 
-    <!-- Bridge: Testimonials &rarr; Star Rating -->
-    <section class="py-16 lg:py-20 bg-parchment">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_6_headline | default: "The final scorecard" }}</h3>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_6_p1 | default: "The customer reviews paint a consistent picture. But we wanted to go one step further and give you a clear, side-by-side rating across every dimension that actually matters when choosing a longevity supplement." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.bridge_6_p2 | default: "We evaluated both products on ingredient quality, clinical evidence, dose transparency, value per ingredient, and overall convenience. Here is the final scorecard." }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 8: SUMMARY STAR RATING TABLE -->
-    <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
-        <div class="max-w-3xl mx-auto px-6 sm:px-8">
-            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.4);">Summary</p>
-                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin: 0 auto 40px;"></div>
-                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium" style="color: #FAF9F6;">{{ section.settings.summary_headline | default: 'The final comparison' }}</h2>
-            </div>
-
-            <div class="v6-table-scroll reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <table class="v6-star-table v6-star-table-dark" style="min-width: 400px;">
-                    <thead>
-                        <tr>
-                            <th style="text-align:left; min-width:160px;"></th>
-                            <th>Coastline</th>
-                            <th>Blueprint</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Ingredient quality</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Clinical evidence</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9734;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Dose transparency</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9734;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Value per ingredient</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Convenience</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</td></tr>
-                        <tr style="font-weight:500;"><td style="color:#FAF9F6; font-weight:500;">Overall</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA: After star rating -->
-    <div class="py-10 text-center bg-parchment">
-        <a href="#v6-plan-selector" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">SKIP TO PRICING</a>
-    </div>
-
-    <!-- KEY TAKEAWAYS -->
-    <section id="v6-takeaways" class="py-16 lg:py-20 bg-white">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase text-warm-gray mb-6">{{ section.settings.takeaways_label | default: 'Key Takeaways' }}</p>
-                <div style="width:40px; height:1px; background:var(--light-gray); margin-bottom:24px;"></div>
-                <ul class="space-y-4">
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_1 | default: "Blueprint's own clinical trial found no significant benefits over placebo across blood biomarkers, gut health, and metabolic markers." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_2 | default: "Blueprint uses 74 compounds in hidden doses with undisclosed doses. Coastline uses 13 ingredients at full clinical doses with complete transparency." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_3 | default: "Coastline costs $0.67/day more ($3.30 vs $2.63) but delivers clinically validated doses of every ingredient." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_4 | default: "Coastline uses an AM/PM system timed to your circadian biology. Blueprint is a single scoop with no timing optimization." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_5 | default: "Coastline targets all 12 hallmarks of aging across 11 body systems. Blueprint addresses roughly 3-4 hallmarks." }}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- SECTION 10: SOFT CTA -->
     <section id="v6-offer-section" class="pt-10 pb-20 lg:pt-16 lg:pb-32" style="background-color:#E7FF56;">
         <div id="v6-offer-anchor-legacy" style="display:none;"></div>
@@ -889,7 +674,7 @@
                     <div class="flex justify-center items-center gap-6 mt-8">
                         <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" class="h-16 lg:h-20 object-contain opacity-80">
                         <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" class="h-16 lg:h-20 object-contain opacity-80">
-                        <img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" class="h-[88px] lg:h-[110px] object-contain opacity-80 -ml-2">
+                        <img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" class="h-16 lg:h-20 object-contain opacity-80">
                     </div>
                     <p class="text-xs uppercase tracking-widest text-warm-gray mt-6 text-center">{{ section.settings.trust_badges_text | default: 'Vegan , Sugar-Free , Caffeine-Free , GMP Certified , 60-Day Guarantee' }}</p>
                 </div>
@@ -966,7 +751,7 @@
                     </div>
                     <div class="border border-light-gray">
                         <button @click="openProduct = openProduct === 'shaker' ? null : 'shaker'" class="w-full p-6 flex items-center gap-6 text-left hover:bg-parchment transition-colors">
-                            <div class="h-20 w-20 flex items-center justify-center bg-parchment"><img src="{{ 'cc-v3-shaker.jpg' | asset_url }}" alt="Glass Shaker Bottle" class="h-full w-full object-contain" loading="lazy"></div>
+                            <div class="h-20 w-20 flex items-center justify-center bg-parchment overflow-hidden rounded"><img src="{{ 'cc-v3-shaker.jpg' | asset_url }}" alt="Glass Shaker Bottle" class="h-full w-full object-cover" loading="lazy"></div>
                             <div class="flex-1"><p class="text-xs tracking-widest uppercase mb-1" style="color: #2D5A47;">Free Gift</p><p class="font-grotesk text-lg text-deep-ink">Premium Glass Shaker Bottle</p><p class="text-sm text-warm-gray">Included free with your first order ($15 value)</p></div>
                             <svg class="w-5 h-5 text-warm-gray transition-transform" :class="openProduct === 'shaker' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
@@ -1072,52 +857,14 @@
     </section>
 
     <!-- Breaker Image -->
-    <div class="w-full">
-        <img src="{% if section.settings.breaker_image_2 != blank %}{{ section.settings.breaker_image_2 | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-11_2_1.png?v=1769557907{% endif %}" alt="" class="w-full" style="max-height: 50vh; object-fit: cover;" loading="lazy">
+    <!-- DISCLAIMERS -->
+    <div class="py-12 bg-parchment text-center">
+        <div class="max-w-xl mx-auto px-6">
+            <p style="font-size: 11px; color: #666; line-height: 1.8;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
+            <p style="font-size: 10px; color: #444; line-height: 1.6; margin-top: 12px;">Individual testimonials are not representative of typical outcomes.</p>
+            <p style="font-size: 10px; color: #444; line-height: 1.6; margin-top: 8px;">Blueprint is a trademark of Bryan Johnson. Coastline is not affiliated with, endorsed by, or connected to Blueprint or Bryan Johnson. All comparisons are based on publicly available information.</p>
+        </div>
     </div>
-
-    <!-- SECTION 12: EMAIL CAPTURE -->
-    <section class="py-20 lg:py-28 reveal" style="background-color: #062F3D;" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8 text-center">
-            <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">{{ section.settings.email_capture_label | default: 'Not Ready Yet?' }}</p>
-            <h3 class="font-grotesk font-medium mb-4 leading-tight" style="color: #FAF9F6; font-size: clamp(24px, 4vw, 36px);">
-                {{ section.settings.email_capture_headline | default: "We will send you the research." }}
-            </h3>
-            <p class="mb-10 mx-auto" style="color: rgba(250,249,246,0.6); font-size: 15px; max-width: 460px; line-height: 1.7;">
-                {{ section.settings.email_capture_body | default: "No pressure. We will send you the science behind our 13 ingredients so you can decide on your own time." }}
-            </p>
-            <form class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" @submit.prevent="
-                var email = $event.target.querySelector('input[type=email]').value;
-                if (email) {
-                    $event.target.querySelector('button').textContent = 'SENDING...';
-                    fetch('/contact', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'form_type=customer&utf8=%E2%9C%93&contact%5Bemail%5D=' + encodeURIComponent(email) + '&contact%5Btags%5D=newsletter%2Cnurture-blueprint-comparison' })
-                    .then(function(response) { if (response.ok || response.redirected) { $event.target.innerHTML = '<p style=&quot;color: #FAF9F6; font-size: 17px; font-weight: 500;&quot;>You are in. Check your inbox.</p>'; } else { $event.target.querySelector('button').textContent = 'TRY AGAIN'; } })
-                    .catch(function() { $event.target.querySelector('button').textContent = 'SOMETHING WENT WRONG'; });
-                }
-            ">
-                <input type="email" placeholder="Your email address" required class="flex-1 px-6 py-5 text-base" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(250,249,246,0.2); color: #FAF9F6; font-family: 'Inter', sans-serif; outline: none; min-width: 0;">
-                <button type="submit" class="whitespace-nowrap" style="background-color: #FAF9F6; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 40px; border: none; cursor: pointer; transition: opacity 0.3s ease;">
-                    {{ section.settings.email_capture_cta | default: 'Send Me The Research' }}
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- SECTION 13: FOOTER -->
-    <footer class="py-32 lg:py-40 bg-deep-ink">
-        <div class="max-w-4xl mx-auto px-8 lg:px-16 text-center">
-            <img src="{% if section.settings.footer_logo != blank %}{{ section.settings.footer_logo | image_url: width: 800 }}{% else %}{{ 'cc-v3-logo-white.png' | asset_url }}{% endif %}" alt="Coastline Longevity" class="h-48 lg:h-60 mx-auto mb-12">
-            <p class="text-lg lg:text-xl text-gray-400 max-w-xl mx-auto leading-relaxed mb-16">{{ section.settings.footer_tagline | default: 'Science-backed longevity, simplified. 13 ingredients optimized for morning, day, and night.' }}</p>
-            <a href="#v6-plan-selector" class="cc-v6-footer-cta" style="display: inline-block !important; width: auto !important; background-color: var(--parchment) !important; color: var(--deep-ink) !important; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px !important; text-decoration: none; transition: opacity 0.3s ease; line-height: 1; border: none; border-radius: 0;">
-                {{ section.settings.footer_cta_text | default: 'Switch from Blueprint - $99/mo' }}
-            </a>
-            <div style="padding-top: 80px;"><div style="height: 1px; background-color: #333; max-width: 400px; margin: 0 auto;"></div></div>
-            <div style="height: 40px;"></div>
-            <p style="font-size: 11px; color: #666; line-height: 1.8; max-width: 500px; margin: 0 auto;">{{ section.settings.footer_disclaimer | default: 'These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.' }}</p>
-            <p style="font-size: 10px; color: #444; line-height: 1.6; margin-top: 16px;">Individual testimonials are not representative of typical outcomes.</p>
-            <p style="font-size: 10px; color: #444; line-height: 1.6; margin-top: 8px;">{{ section.settings.ag1_disclaimer | default: 'Blueprint is a trademark of Bryan Johnson. Coastline is not affiliated with, endorsed by, or connected to Blueprint or Bryan Johnson. All comparisons are based on publicly available information.' }}</p>
-        </div>
-    </footer>
 
 
 </div>
