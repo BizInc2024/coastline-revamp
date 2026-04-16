@@ -342,6 +342,37 @@
     .cc-homepage .v10-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; }
     .cc-homepage .v10-divider { width: 60px; height: 1px; background: #0A0A0A; }
 
+    /* Ask Coastline */
+    .cc-homepage .cc-ask { padding: 80px 24px; background: #FAF9F6; text-align: center; }
+    .cc-homepage .cc-ask-inner { max-width: 720px; margin: 0 auto; }
+    .cc-homepage .cc-ask-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #1A3A2F; display: inline-block; margin-bottom: 16px; }
+    .cc-homepage .cc-ask-headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 500; letter-spacing: -0.02em; color: #0A0A0A; margin-bottom: 12px; line-height: 1.15; }
+    .cc-homepage .cc-ask-sub { font-size: 15px; color: #6B6B6B; margin-bottom: 36px; line-height: 1.6; }
+    .cc-homepage .cc-ask-form { display: flex; gap: 8px; margin-bottom: 20px; }
+    .cc-homepage .cc-ask-form input { flex: 1; padding: 16px 20px; font-family: 'Inter', sans-serif; font-size: 15px; border: 1px solid #E8E8E8; background: #FFFFFF; color: #0A0A0A; outline: none; transition: border-color 0.2s; }
+    .cc-homepage .cc-ask-form input:focus { border-color: #0A0A0A; }
+    .cc-homepage .cc-ask-form input:disabled { opacity: 0.6; }
+    .cc-homepage .cc-ask-form button { padding: 16px 32px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; background: #0A0A0A; color: #FAF9F6; border: none; cursor: pointer; transition: opacity 0.2s; }
+    .cc-homepage .cc-ask-form button:hover { opacity: 0.85; }
+    .cc-homepage .cc-ask-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .cc-homepage .cc-ask-suggestions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
+    .cc-homepage .cc-ask-chip { padding: 10px 18px; font-family: 'Inter', sans-serif; font-size: 13px; color: #6B6B6B; background: transparent; border: 1px solid #E8E8E8; cursor: pointer; transition: all 0.2s; }
+    .cc-homepage .cc-ask-chip:hover { border-color: #0A0A0A; color: #0A0A0A; }
+    .cc-homepage .cc-ask-answer { background: #FFFFFF; border: 1px solid #E8E8E8; padding: 28px; text-align: left; margin-top: 16px; }
+    .cc-homepage .cc-ask-answer-label { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 14px; }
+    .cc-homepage .cc-ask-answer-text { font-size: 16px; line-height: 1.7; color: #0A0A0A; white-space: pre-wrap; }
+    .cc-homepage .cc-ask-loading { display: flex; gap: 6px; padding: 12px 0; }
+    .cc-homepage .cc-ask-dot { width: 8px; height: 8px; border-radius: 50%; background: #6B6B6B; animation: cc-ask-pulse 1.4s infinite; }
+    .cc-homepage .cc-ask-dot:nth-child(2) { animation-delay: 0.2s; }
+    .cc-homepage .cc-ask-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes cc-ask-pulse { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
+    .cc-homepage .cc-ask-error { color: #C0392B; font-size: 14px; }
+    .cc-homepage .cc-ask-disclaimer { font-size: 11px; color: #999; margin-top: 20px; line-height: 1.5; }
+    @media (max-width: 640px) {
+      .cc-homepage .cc-ask-form { flex-direction: column; }
+      .cc-homepage .cc-ask-form button { width: 100%; }
+    }
+
     /* Genetics stat */
     .cc-homepage .v10-genetics { padding: 120px 24px; background: #0A0A0A; color: #FAF9F6; text-align: center; position: relative; overflow: hidden; }
     .cc-homepage .v10-genetics::before {
@@ -542,6 +573,81 @@
           {%- endif -%}
         {%- endfor -%}
       </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ============================================================
+     SECTION 2a: ASK COASTLINE (AI-powered Q&A)
+  ============================================================ {%- endcomment -%}
+  <section class="cc-ask reveal" x-intersect.once="$el.classList.add('visible')"
+           x-data="{
+             question: '',
+             answer: '',
+             loading: false,
+             error: '',
+             suggestions: ['What is in the morning blend?', 'Why only 13 ingredients?', 'How soon will I notice a difference?', 'Can I take this with my medication?'],
+             async ask(q) {
+               const query = (q || this.question).trim();
+               if (!query) return;
+               this.question = query;
+               this.answer = '';
+               this.error = '';
+               this.loading = true;
+               try {
+                 const res = await fetch('https://coastline-dashboard.vercel.app/api/ask', {
+                   method: 'POST',
+                   headers: { 'Content-Type': 'application/json' },
+                   body: JSON.stringify({ question: query })
+                 });
+                 if (!res.ok) {
+                   const err = await res.json().catch(() => ({}));
+                   this.error = err.error || 'Something went wrong. Please try again.';
+                   this.loading = false;
+                   return;
+                 }
+                 const reader = res.body.getReader();
+                 const decoder = new TextDecoder();
+                 while (true) {
+                   const { done, value } = await reader.read();
+                   if (done) break;
+                   this.answer += decoder.decode(value, { stream: true });
+                 }
+               } catch (e) {
+                 this.error = 'Network error. Please try again.';
+               }
+               this.loading = false;
+             }
+           }">
+    <div class="cc-ask-inner">
+      <span class="cc-ask-eyebrow">Ask Coastline</span>
+      <h2 class="cc-ask-headline">Curious about the science?</h2>
+      <p class="cc-ask-sub">Ask anything about our ingredients, doses, or approach. Powered by AI, grounded in our research.</p>
+
+      <form class="cc-ask-form" @submit.prevent="ask()">
+        <input type="text" x-model="question" placeholder="e.g. Why is creatine in a longevity supplement?" :disabled="loading" maxlength="1000">
+        <button type="submit" :disabled="loading || !question.trim()">
+          <span x-show="!loading">Ask</span>
+          <span x-show="loading">Thinking...</span>
+        </button>
+      </form>
+
+      <div class="cc-ask-suggestions" x-show="!answer && !loading && !error">
+        <template x-for="s in suggestions" :key="s">
+          <button type="button" class="cc-ask-chip" @click="ask(s)" x-text="s"></button>
+        </template>
+      </div>
+
+      <div class="cc-ask-answer" x-show="answer || loading || error">
+        <div class="cc-ask-answer-label" x-show="answer || loading">Answer</div>
+        <div class="cc-ask-answer-text" x-show="answer" x-text="answer"></div>
+        <div class="cc-ask-loading" x-show="loading && !answer">
+          <span class="cc-ask-dot"></span><span class="cc-ask-dot"></span><span class="cc-ask-dot"></span>
+        </div>
+        <div class="cc-ask-error" x-show="error" x-text="error"></div>
+      </div>
+
+      <p class="cc-ask-disclaimer">AI responses are for educational purposes only and do not constitute medical advice. Always consult a healthcare provider for questions about your health.</p>
     </div>
   </section>
 
