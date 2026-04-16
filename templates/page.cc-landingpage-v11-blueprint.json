@@ -2,38 +2,7 @@
   "sections": {
     "main": {
       "type": "cc-landingpage-v11-blueprint",
-      "settings": {
-        "hero_eyebrow": "SUPPLEMENT COMPARISON - UPDATED APRIL 2026",
-        "hero_headline": "Coastline vs Blueprint: Same Goal. Very Different Approach.",
-        "hero_subheadline": "Blueprint sells 7 products with 74 compounds for $361/month. Coastline uses 13 clinically dosed ingredients for $99/month. We compared the science, the doses, and the value.",
-        "hero_author": "By Dr. James Chen",
-        "hero_author_title": "Clinical Nutrition Researcher",
-        "hero_cta_text": "See the Full Comparison",
-        "bridge_1_headline": "The protocol Blueprint's own founder walked back",
-        "takeaway_1": "Blueprint's founder dropped rapamycin in 2024 after admitting it probably did more harm than good. He also stopped growth hormone after side effects.",
-        "takeaway_2": "Blueprint uses 74 compounds with hidden doses across 7 products. Coastline uses 13 ingredients at full clinical doses with complete transparency.",
-        "takeaway_3": "Coastline costs $3.30/day. Blueprint's core stack costs $12/day -- 3.6x more.",
-        "takeaway_4": "Blueprint's Longevity Mix contains 2.5g of creatine -- half the clinical dose. Coastline includes 5.25g.",
-        "takeaway_5": "No peer-reviewed clinical trials exist on Blueprint's combined stack. Coastline's individual ingredients each have published human trial data.",
-        "cta_counter": "READY TO SWITCH?",
-        "cta_headline": "Ready to try a simpler approach?",
-        "cta_body": "If you have been paying $361/month for Blueprint's core stack and want clinical doses at a fraction of the price, Coastline might be worth trying.",
-        "risk_reversal_text": "Worst case: you get a full refund. Best case: you get clinical doses for $3.30/day instead of $12.",
-        "faq_counter": "FAQ",
-        "faq_headline": "Common questions from Blueprint users",
-        "faq_1_question": "How is Coastline different from Blueprint?",
-        "faq_1_answer": "Blueprint uses 74 compounds across 7 separate products with hidden doses. Coastline uses 13 ingredients at full clinical doses with complete transparency. One system, two daily moments, every milligram disclosed.",
-        "faq_2_question": "Blueprint costs $361/month. Why is Coastline so much cheaper?",
-        "faq_2_answer": "Coastline focuses on 13 ingredients with the strongest clinical evidence, instead of 74 compounds spread across 7 products. Fewer products, fewer overheads, and no celebrity branding premium. The savings get passed to you.",
-        "faq_3_question": "Does Blueprint have more ingredients?",
-        "faq_3_answer": "Yes -- 74 compounds vs 13. But more is not better when doses are below clinical thresholds. Blueprint's Longevity Mix contains 2.5g of creatine. The clinical trials used 5g. Coastline includes 5.25g. Dose matters more than count.",
-        "faq_4_question": "Is Blueprint bad?",
-        "faq_4_answer": "No. Blueprint contains some well-researched ingredients. But the core stack costs $12/day, requires managing 7 products, and has no published trials on the combined formulation. We believe there is a simpler, more evidence-based approach.",
-        "ag1_disclaimer": "Blueprint is a trademark of Bryan Johnson. Coastline is not affiliated with, endorsed by, or connected to Blueprint or Bryan Johnson. All comparisons are based on publicly available information.",
-        "sticky_price": "$99/month",
-        "sticky_subtitle": "Switch from Blueprint",
-        "sticky_cta_text": "SWITCH NOW"
-      }
+      "settings": {}
     }
   },
   "order": [
