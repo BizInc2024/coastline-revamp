@@ -112,14 +112,18 @@
                 </div>
 
                 <!-- Side-by-side product images -->
-                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end">
-                    <div>
-                        <img src="{{ 'cc-coastline-family-cutout.png' | asset_url }}" alt="Coastline" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                <div class="grid grid-cols-2 gap-8 mt-16 max-w-3xl mx-auto">
+                    <div style="text-align: center;">
+                        <div style="height: 240px; display: flex; align-items: flex-end; justify-content: center;">
+                            <img src="{{ 'cc-coastline-family-cutout.png' | asset_url }}" alt="Coastline" style="max-height: 220px; max-width: 100%; width: auto; object-fit: contain;" loading="lazy">
+                        </div>
                         <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
                         <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
                     </div>
-                    <div>
-                        <img src="{% if section.settings.hero_ag1_image != blank %}{{ section.settings.hero_ag1_image | image_url: width: 600 }}{% else %}{{ 'cc-v6-blueprint-product.webp' | asset_url }}{% endif %}" alt="Blueprint" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                    <div style="text-align: center;">
+                        <div style="height: 240px; display: flex; align-items: flex-end; justify-content: center;">
+                            <img src="{{ 'cc-v6-blueprint-product.webp' | asset_url }}" alt="Blueprint" style="max-height: 220px; max-width: 100%; width: auto; object-fit: contain;" loading="lazy">
+                        </div>
                         <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">Blueprint</p>
                         <p class="text-xs text-warm-gray mt-1">74 compounds across 7 products</p>
                     </div>
