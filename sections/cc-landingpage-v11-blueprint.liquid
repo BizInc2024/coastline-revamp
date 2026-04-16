@@ -387,13 +387,28 @@
                 <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">Real reviews from real customers.</h2>
             </div>
 
-            <!-- UGC Gallery -->
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-16">
-                <div style="aspect-ratio: 3/4; overflow: hidden;"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                <div style="aspect-ratio: 3/4; overflow: hidden;"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                <div style="aspect-ratio: 3/4; overflow: hidden;"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                <div style="aspect-ratio: 3/4; overflow: hidden;"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                <div style="aspect-ratio: 3/4; overflow: hidden;"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+            <!-- UGC Carousel -->
+            <div class="mb-16" x-data="{
+                scroll(dir) {
+                    const track = this.$refs.ugcTrack;
+                    const itemWidth = 168;
+                    track.scrollBy({ left: dir * itemWidth * 2, behavior: 'smooth' });
+                }
+            }" style="position: relative;">
+                <div x-ref="ugcTrack" style="display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 4px;">
+                    <style>[x-ref="ugcTrack"]::-webkit-scrollbar { display: none; }</style>
+                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                </div>
+                <button @click="scroll(-1)" class="hidden md:flex" style="position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: #FAF9F6; border: 1px solid #E8E8E8; align-items: center; justify-content: center; cursor: pointer; z-index: 2;" aria-label="Previous">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button @click="scroll(1)" class="hidden md:flex" style="position: absolute; right: -20px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: #FAF9F6; border: 1px solid #E8E8E8; align-items: center; justify-content: center; cursor: pointer; z-index: 2;" aria-label="Next">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
             </div>
 
             <!-- Batch 1: Reviews 1-3 (always visible) -->
