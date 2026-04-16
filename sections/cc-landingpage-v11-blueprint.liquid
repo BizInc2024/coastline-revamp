@@ -115,7 +115,7 @@
                 <div class="grid grid-cols-2 gap-8 mt-16 max-w-3xl mx-auto">
                     <div style="text-align: center;">
                         <div style="height: 240px; display: flex; align-items: flex-end; justify-content: center;">
-                            <img src="{{ 'cc-coastline-family-cutout.png' | asset_url }}" alt="Coastline" style="max-height: 220px; max-width: 100%; width: auto; object-fit: contain;" loading="lazy">
+                            <img src="{{ 'cc-coastline-family-cutout.png' | asset_url }}" alt="Coastline" style="max-height: 165px; max-width: 75%; width: auto; object-fit: contain;" loading="lazy">
                         </div>
                         <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
                         <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
@@ -319,7 +319,7 @@
                     <img src="{{ 'cc-v10-how-am-v3.webp' | asset_url }}" alt="Morning routine" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 32px; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 60%, transparent 100%); color: #FAF9F6;">
                         <span style="display: inline-block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,249,246,0.7); margin-bottom: 12px;">Morning &middot; With Breakfast</span>
-                        <h3 class="font-grotesk" style="font-size: 28px; font-weight: 500; margin-bottom: 12px;">Scoop + softgel</h3>
+                        <h3 class="font-grotesk" style="font-size: 28px; font-weight: 500; margin-bottom: 12px; color: #FAF9F6;">Scoop + softgel</h3>
                         <p style="font-size: 15px; color: rgba(250,249,246,0.8); line-height: 1.5;">10 ingredients. 45 seconds. One powder sachet in your shaker, plus one morning softgel.</p>
                     </div>
                 </div>
@@ -327,7 +327,7 @@
                     <img src="{{ 'cc-v10-how-pm-v2.webp' | asset_url }}" alt="Evening routine" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
                     <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 32px; background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 60%, transparent 100%); color: #FAF9F6;">
                         <span style="display: inline-block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,249,246,0.7); margin-bottom: 12px;">Evening &middot; Before Bed</span>
-                        <h3 class="font-grotesk" style="font-size: 28px; font-weight: 500; margin-bottom: 12px;">Two capsules</h3>
+                        <h3 class="font-grotesk" style="font-size: 28px; font-weight: 500; margin-bottom: 12px; color: #FAF9F6;">Two capsules</h3>
                         <p style="font-size: 15px; color: rgba(250,249,246,0.8); line-height: 1.5;">3 ingredients. Wind down with L-theanine and glycine while glucosamine goes to work overnight.</p>
                     </div>
                 </div>
@@ -442,17 +442,17 @@
             <div class="mb-16" x-data="{
                 scroll(dir) {
                     const track = this.$refs.ugcTrack;
-                    const itemWidth = 168;
+                    const itemWidth = 232;
                     track.scrollBy({ left: dir * itemWidth * 2, behavior: 'smooth' });
                 }
             }" style="position: relative;">
                 <div x-ref="ugcTrack" style="display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 4px;">
                     <style>[x-ref="ugcTrack"]::-webkit-scrollbar { display: none; }</style>
-                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
-                    <div style="flex: 0 0 156px; aspect-ratio: 3/4; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 220px; aspect-ratio: 9/16; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 220px; aspect-ratio: 9/16; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 220px; aspect-ratio: 9/16; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 220px; aspect-ratio: 9/16; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
+                    <div style="flex: 0 0 220px; aspect-ratio: 9/16; overflow: hidden; scroll-snap-align: start;"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy"></div>
                 </div>
                 <button @click="scroll(-1)" class="hidden md:flex" style="position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: #FAF9F6; border: 1px solid #E8E8E8; align-items: center; justify-content: center; cursor: pointer; z-index: 2;" aria-label="Previous">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
@@ -608,7 +608,7 @@
                 </div>
 
                 <!-- Product + Pricing Side by Side -->
-                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-start max-w-4xl mx-auto mb-10">
+                <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-start max-w-5xl mx-auto mb-10">
                 <div class="flex items-center justify-center">
                     <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline Complete System" class="mx-auto" style="max-height: 400px; object-fit: contain;" loading="lazy">
                 </div>
@@ -703,24 +703,35 @@
                     <p class="text-xs text-warm-gray text-center">{{ section.settings.cta_micro_copy | default: 'Free shipping - Cancel anytime - 60-day money-back guarantee' }}</p>
 
                     <!-- Trust Badges -->
-                    <div class="flex justify-center items-center gap-6 mt-8">
-                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" class="h-16 lg:h-20 object-contain opacity-80">
-                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" class="h-16 lg:h-20 object-contain opacity-80">
-                        <img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" class="object-contain opacity-80" style="height: 120px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; align-items: center; margin-top: 32px; justify-items: center;">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height: 90px; object-fit: contain; opacity: 0.8;">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height: 90px; object-fit: contain; opacity: 0.8;">
+                        <img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" style="height: 90px; object-fit: contain; opacity: 0.8;">
                     </div>
                     <p class="text-xs uppercase tracking-widest text-warm-gray mt-6 text-center">{{ section.settings.trust_badges_text | default: 'Vegan , Sugar-Free , Caffeine-Free , GMP Certified , 60-Day Guarantee' }}</p>
                 </div>
                 </div><!-- close grid -->
 
-                <!-- Risk Reversal -->
-                <div class="max-w-xl mx-auto mt-10 border-l-2 p-6 text-left" style="border-color: #2D5A47; background: #F5F4F0;">
-                    <p class="text-xs tracking-widest uppercase mb-4" style="color: #2D5A47;">Risk-Free Guarantee</p>
-                    <ul class="space-y-2 text-sm text-warm-gray">
-                        <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span> 60-day money-back guarantee (no questions asked)</li>
-                        <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span> Free shipping on every order</li>
-                        <li class="flex items-start gap-2"><span style="color: #2D5A47;">&#10003;</span> Cancel anytime with one click</li>
-                    </ul>
-                    <p class="text-sm text-deep-ink mt-4 font-medium">{{ section.settings.risk_reversal_text | default: "Worst case: you get a full refund. Best case: you get better science for $0.67/day more." }}</p>
+                <!-- Risk Reversal (prominent) -->
+                <div class="max-w-3xl mx-auto mt-16 p-10 lg:p-12" style="background: #FAF9F6; border: 1px solid #E8E8E8; position: relative;">
+                    <div style="display: flex; align-items: flex-start; gap: 28px; flex-wrap: wrap;">
+                        <div style="flex-shrink: 0;">
+                            <div style="width: 96px; height: 96px; border-radius: 50%; background: #2D5A47; color: #FAF9F6; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif;">
+                                <span style="font-size: 32px; font-weight: 700; line-height: 1;">60</span>
+                                <span style="font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px;">Day</span>
+                            </div>
+                        </div>
+                        <div style="flex: 1; min-width: 260px;">
+                            <p class="text-xs tracking-widest uppercase mb-2" style="color: #2D5A47;">Risk-Free Guarantee</p>
+                            <h3 class="font-grotesk" style="font-size: 24px; font-weight: 500; color: #0A0A0A; line-height: 1.25; margin-bottom: 16px;">Try it for 60 days. If it is not working for you, get every penny back.</h3>
+                            <p style="font-size: 15px; color: #6B6B6B; line-height: 1.6;">No questions, no hoops, no fine print. We believe in the science behind Coastline and we will stand behind your results. If you are not feeling sharper, more energized, or better slept within two months, contact us for a full refund.</p>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 32px; padding-top: 28px; border-top: 1px solid #E8E8E8;">
+                        <div style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #2D5A47; flex-shrink: 0; font-size: 18px; line-height: 1.2;">&#10003;</span><span style="font-size: 13px; color: #6B6B6B; line-height: 1.5;">60-day money-back guarantee</span></div>
+                        <div style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #2D5A47; flex-shrink: 0; font-size: 18px; line-height: 1.2;">&#10003;</span><span style="font-size: 13px; color: #6B6B6B; line-height: 1.5;">Free shipping on every order</span></div>
+                        <div style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #2D5A47; flex-shrink: 0; font-size: 18px; line-height: 1.2;">&#10003;</span><span style="font-size: 13px; color: #6B6B6B; line-height: 1.5;">Cancel anytime with one click</span></div>
+                    </div>
                 </div>
 
                 <!-- What's Included -->
