@@ -83,7 +83,7 @@
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 </style>
 
-<div class="cc-landing-v6" x-data="{ visibleReviews: 6 }">
+<div class="cc-landing-v6" x-data="{ visibleBatches: 2 }">
 
     <!-- SECTION 1: EDITORIAL HERO -->
     <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
@@ -378,65 +378,56 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_1_quote | default: "&ldquo;As a physician, I&rsquo;m skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_1_name | default: 'Michael R., 62' }}</p>
-                    <p class="text-xs text-warm-gray">Physician</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;As a physician, I&rsquo;m skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-michael.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Michael R., 62</p><p class="text-xs text-warm-gray">Physician</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_2_quote | default: "&ldquo;Quality you can feel. You can tell this wasn&rsquo;t made by a marketing team, but by scientists.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_2_name | default: 'Edward Q., 49' }}</p>
-                    <p class="text-xs text-warm-gray">Richmond, VA</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;Switched from Blueprint. Same ingredients I was paying $12/day for, at clinical doses, for a third of the price.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-david.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Nathan K., 41</p><p class="text-xs text-warm-gray">Former Blueprint customer</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_3_quote | default: "&ldquo;I used to spend over $200 a month on five different supplements and still wasn&rsquo;t sure I was covering everything. Coastline replaced all of them. One system, done.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_3_name | default: 'Lisa T., 52' }}</p>
-                    <p class="text-xs text-warm-gray">Austin, TX</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I used to spend over $200 a month on five different supplements and still wasn&rsquo;t sure I was covering everything. Coastline replaced all of them.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-lisa.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Lisa T., 52</p><p class="text-xs text-warm-gray">Austin, TX</p></div></div>
                 </div>
             </div>
 
-            <!-- Batch 2: Reviews 4-6 -->
-            <div x-show="visibleBatches >= 2" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
+            <!-- Batch 2: Reviews 4-6 (visible by default) -->
+            <div class="grid md:grid-cols-3 gap-8 mt-8">
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_4_quote | default: "&ldquo;I&rsquo;m extremely careful about what I put in my body. Coastline checked every box for purity and data.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_4_name | default: 'Rachel G., 48' }}</p>
-                    <p class="text-xs text-warm-gray">Boulder, CO</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I was taking 6 Blueprint products. Now I take one system. Simpler, cheaper, and I actually know what dose I&rsquo;m getting.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-james.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Greg T., 53</p><p class="text-xs text-warm-gray">Former Blueprint customer</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_5_quote | default: "&ldquo;I love the convenience of having everything I need in one simple system. No more pill organizers.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_5_name | default: 'James U., 44' }}</p>
-                    <p class="text-xs text-warm-gray">Tampa, FL</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;The creatine alone sold me. 5.25g vs Blueprint&rsquo;s 2.5g. That&rsquo;s not a rounding error -- that&rsquo;s a different product.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Daniel M., 38</p><p class="text-xs text-warm-gray">Reviewed the labels</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_6_quote | default: "&ldquo;Finally, a longevity stack that doesn&rsquo;t require 15 different bottles. My morning brain fog is gone.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_6_name | default: 'Robert K., 45' }}</p>
-                    <p class="text-xs text-warm-gray">Chicago, IL</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I&rsquo;m a pharmacist. When I compared the labels side by side, Coastline was the obvious choice. Clinical doses, full transparency.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-sarah.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Sarah K., 44</p><p class="text-xs text-warm-gray">PharmD</p></div></div>
                 </div>
             </div>
 
-            <!-- Batch 3: Reviews 7-9 -->
+            <!-- Batch 3: Reviews 7-9 (loads on click) -->
             <div x-show="visibleBatches >= 3" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_7_quote | default: "&ldquo;Three weeks in and the mental sharpness is unmistakable. I&rsquo;m writing better code, retaining more from meetings, and my afternoon crash is just gone.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_7_name | default: 'Thomas H., 43' }}</p>
-                    <p class="text-xs text-warm-gray">Atlanta, GA</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;My wife and I both switched from Blueprint. We&rsquo;re saving over $500/month between us.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-robert.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Jonathan P., 47</p><p class="text-xs text-warm-gray">Former Blueprint customer</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_8_quote | default: "&ldquo;I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash. Just consistent output from 6 AM to 10 PM.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_8_name | default: 'Derek W., 47' }}</p>
-                    <p class="text-xs text-warm-gray">Scottsdale, AZ</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;Three weeks in and the mental sharpness is unmistakable. I&rsquo;m writing better code, retaining more from meetings.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-tom.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Thomas H., 43</p><p class="text-xs text-warm-gray">Atlanta, GA</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_9_quote | default: "&ldquo;As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the afternoon fog that I thought was just a permanent part of my life.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_9_name | default: 'Sophia R.' }}</p>
-                    <p class="text-xs text-warm-gray">Founder, New York</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Derek W., 47</p><p class="text-xs text-warm-gray">Scottsdale, AZ</p></div></div>
                 </div>
             </div>
 
@@ -444,21 +435,18 @@
             <div x-show="visibleBatches >= 4" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_10_quote | default: "&ldquo;I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_10_name | default: 'Andrew P., 55' }}</p>
-                    <p class="text-xs text-warm-gray">Boston, MA</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Andrew P., 55</p><p class="text-xs text-warm-gray">Boston, MA</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_11_quote | default: "&ldquo;I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I&rsquo;m bouncing back faster and my endurance has noticeably improved.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_11_name | default: 'Marcus D., 39' }}</p>
-                    <p class="text-xs text-warm-gray">Denver, CO</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I&rsquo;m bouncing back faster.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-nina.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Marcus D., 39</p><p class="text-xs text-warm-gray">Denver, CO</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_12_quote | default: "&ldquo;My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_12_name | default: 'Catherine W., 58' }}</p>
-                    <p class="text-xs text-warm-gray">Seattle, WA</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-karen.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Catherine W., 58</p><p class="text-xs text-warm-gray">Seattle, WA</p></div></div>
                 </div>
             </div>
 
@@ -466,21 +454,18 @@
             <div x-show="visibleBatches >= 5" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_13_quote | default: "&ldquo;My husband and I both switched to Coastline. We cancelled six separate subscriptions between us. Simpler, cheaper, and we actually feel the difference.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_13_name | default: 'Christine A., 49' }}</p>
-                    <p class="text-xs text-warm-gray">Denver, CO</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;My husband and I both switched to Coastline. We cancelled six separate subscriptions between us.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-elena.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Christine A., 49</p><p class="text-xs text-warm-gray">Denver, CO</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_14_quote | default: "&ldquo;At 72, I&rsquo;m still active and working. Coastline helps me keep pace with people half my age.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_14_name | default: 'Arthur B., 72' }}</p>
-                    <p class="text-xs text-warm-gray">Palm Springs, CA</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;At 72, I&rsquo;m still active and working. Coastline helps me keep pace with people half my age.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-maria.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Arthur B., 72</p><p class="text-xs text-warm-gray">Palm Springs, CA</p></div></div>
                 </div>
                 <div class="bg-white border border-light-gray p-8">
                     <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_15_quote | default: "&ldquo;Morning scoop, one softgel, two capsules before bed. That&rsquo;s it. I replaced an entire shelf of bottles with one system.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_15_name | default: 'Kevin M., 40' }}</p>
-                    <p class="text-xs text-warm-gray">Nashville, TN</p>
+                    <p class="text-warm-gray mb-6 leading-relaxed">&ldquo;Morning scoop, one softgel, two capsules before bed. That&rsquo;s it. I replaced an entire shelf of bottles with one system.&rdquo;</p>
+                    <div class="flex items-center gap-3"><img src="{{ 'cc-v10-rev-sophia.png' | asset_url }}" alt="" class="w-12 h-12 rounded-full object-cover"><div><p class="font-grotesk text-deep-ink text-sm">Kevin M., 40</p><p class="text-xs text-warm-gray">Nashville, TN</p></div></div>
                 </div>
             </div>
 
@@ -524,7 +509,7 @@
                     {{ section.settings.cta_headline | default: 'Ready to make the switch?' }}
                 </h2>
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-xl mx-auto leading-relaxed">
-                    {{ section.settings.cta_body | default: "If you have been paying $79/month for Blueprint and want ingredients that actually work at doses that actually matter, Coastline might be worth trying." }}
+                    If you have been paying $361/month for Blueprint's core stack and want clinical doses at a fraction of the price, Coastline might be worth trying.
                 </p>
                 <div class="flex justify-center items-center gap-2 mb-12">
                     <span class="text-deep-ink">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -739,38 +724,38 @@
             <div class="space-y-4" x-data="{ openFaq: null }">
                 <div class="border border-light-gray bg-white">
                     <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 1 ? null : 1">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_1_question | default: 'How is Coastline different from Blueprint?' }}</span>
+                        <span class="font-grotesk text-deep-ink pr-8">How is Coastline different from Blueprint?</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 1 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_1_answer | default: '<p>Coastline uses 13 clinically dosed ingredients with full transparency. Blueprint uses 74 compounds in hidden doses, meaning you cannot verify what dose of each ingredient you are actually getting. Coastline also includes an AM/PM system optimized for your circadian rhythm.</p>' }}</div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>Blueprint spreads 74 compounds across 7 separate products for $361/month. Coastline delivers 13 clinically dosed ingredients in one system for $99/month. Every Coastline dose is disclosed on the label. No hidden amounts. One system, two daily moments (AM and PM).</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
                     <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_2_question | default: 'Blueprint is $79/month. Why does Coastline cost $20 more?' }}</span>
+                        <span class="font-grotesk text-deep-ink pr-8">Why does Blueprint cost so much more?</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 2 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_2_answer | default: '<p>Blueprint spreads $79 across 74 compounds at trace amounts (~$1.05 per ingredient per month). Coastline invests $99 in 13 ingredients at clinical doses (~$7.62 per ingredient per month). You are paying for doses that match actual clinical trials, not a long ingredient list.</p>' }}</div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>Blueprint charges $361/month ($12/day) for 7 separate products, premium branding, and Bryan Johnson's celebrity association. Coastline focuses the budget on ingredient quality and clinical dosing -- not packaging, marketing, or a founder's personal brand.</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
                     <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 3 ? null : 3">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_3_question | default: 'Does Coastline include a greens blend?' }}</span>
+                        <span class="font-grotesk text-deep-ink pr-8">Does Blueprint have more ingredients than Coastline?</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 3 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_3_answer | default: '<p>No. Coastline is not a greens powder. It is a precision longevity system with 13 ingredients selected for their clinical evidence in addressing the hallmarks of aging. Every ingredient is dosed to match published clinical trials.</p>' }}</div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>Yes -- 74 compounds vs 13. But more is not better when doses fall below clinical thresholds. Blueprint's Longevity Mix contains 2.5g of creatine. The clinical trials that demonstrated cognitive and performance benefits used 5g. Coastline includes 5.25g. Dose matters more than count.</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
                     <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 4 ? null : 4">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_4_question | default: 'I just cancelled Blueprint. Can I start Coastline right away?' }}</span>
+                        <span class="font-grotesk text-deep-ink pr-8">Is Blueprint bad?</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 4 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_4_answer | default: '<p>Yes. There is no waiting period. Order today and your Coastline system ships right away. Most customers notice a difference within the first few weeks.</p>' }}</div>
+                        <div class="px-6 pb-6 text-warm-gray"><p>No. Blueprint contains some well-researched ingredients. But the core stack costs $12/day, requires managing 7 products, has no published trials on the combined formulation, and the founder himself has walked back key parts of his own protocol. We believe a simpler, evidence-based approach works better.</p></div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
