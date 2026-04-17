@@ -80,6 +80,12 @@
     .cc-landing-v6 .v6-plan-btn { width: 100%; text-align: left; cursor: pointer; transition: all 0.2s ease; border: 1px solid #E8E8E8; padding: 16px; }
     .cc-landing-v6 .v6-plan-btn.active { border: 2px solid #0A0A0A; }
 
+    /* CTA grid: side-by-side on desktop */
+    @media (min-width: 960px) {
+      .cc-landing-v6 #v6-offer-section .cta-grid { grid-template-columns: 0.9fr 1fr !important; gap: 64px !important; }
+      .cc-landing-v6 #v6-offer-section .cta-left { align-items: flex-start !important; text-align: left !important; }
+      .cc-landing-v6 #v6-offer-section .cta-left img { margin: 0 !important; max-width: 520px !important; }
+    }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 </style>
 
@@ -579,32 +585,20 @@
         </div>
     </section>
 
-    <!-- SECTION 10: SOFT CTA -->
-    <section id="v6-offer-section" class="pt-10 pb-20 lg:pt-16 lg:pb-32" style="background-color:#E7FF56;">
+    <!-- SECTION 10: CTA / PRICING (V10-style layout) -->
+    <section id="v6-offer-section" style="padding: 96px 0; background: #E7FF56;">
         <div id="v6-offer-anchor-legacy" style="display:none;"></div>
-        <div class="max-w-4xl mx-auto px-8 lg:px-16 text-center">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="section-counter mb-8">{{ section.settings.cta_counter | default: 'Make The Switch' }}</p>
-                <div class="editorial-divider mx-auto mb-12"></div>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-grotesk font-medium mb-8 leading-tight">
-                    {{ section.settings.cta_headline | default: 'Ready to make the switch?' }}
-                </h2>
-                <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-xl mx-auto leading-relaxed">
-                    If you have been paying $361/month for Blueprint's core stack and want clinical doses at a fraction of the price, Coastline might be worth trying.
-                </p>
-                <div class="flex justify-center items-center gap-2 mb-12">
-                    <span class="text-deep-ink">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                    <span class="text-warm-gray">{{ section.settings.cta_reviews_text | default: '2,000+ Five-Star Reviews' }}</span>
-                </div>
+        <div class="reveal cta-grid" style="max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
 
-                <!-- Product + Pricing Side by Side -->
-                <div class="grid md:grid-cols-2 gap-10 lg:gap-14 items-start max-w-5xl mx-auto mb-10">
-                <div class="flex items-center justify-center">
-                    <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113" alt="Coastline Complete System" class="mx-auto" style="max-height: 400px; object-fit: contain;" loading="lazy">
-                </div>
+            <!-- Left: headline + product image -->
+            <div class="cta-left" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+                <h2 class="font-grotesk" style="font-size: clamp(52px, 10vw, 100px); font-weight: 500; line-height: 0.9; letter-spacing: -0.04em; color: #0A0A0A; margin: 0 0 32px;">Get Started.</h2>
+                <img src="{{ 'cc-welcome-box-vertical.png' | asset_url }}" alt="Coastline Welcome Pack" style="width: 100%; max-width: 460px; display: block;" loading="lazy">
+            </div>
 
-                <!-- Pricing Box -->
-                <div class="bg-white border border-light-gray p-8 lg:p-12"
+            <!-- Right: pricing box -->
+            <div style="display: flex; justify-content: center;">
+            <div style="background: #fff; border: 1px solid #0A0A0A; padding: 40px; max-width: 560px; width: 100%;"
                      x-data="{
                          loading: false,
                          flavor: 'unflavored',
@@ -700,8 +694,14 @@
                     </div>
                     <p class="text-xs uppercase tracking-widest text-warm-gray mt-6 text-center">{{ section.settings.trust_badges_text | default: 'Vegan , Sugar-Free , Caffeine-Free , GMP Certified , 60-Day Guarantee' }}</p>
                 </div>
-                </div><!-- close grid -->
+                </div><!-- close flex -->
+            </div><!-- close cta-grid -->
+        </div>
+    </section>
 
+    <!-- Risk Reversal + What's Included -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
                 <!-- Risk Reversal (prominent) -->
                 <div class="max-w-3xl mx-auto mt-16 p-10 lg:p-12" style="background: #FAF9F6; border: 1px solid #E8E8E8; position: relative;">
                     <div style="display: flex; align-items: flex-start; gap: 28px; flex-wrap: wrap;">
@@ -802,8 +802,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </div><!-- close What's Included -->
+        </div><!-- close max-w-5xl -->
+    </section><!-- close Risk Reversal + What's Included -->
 
     <!-- SECTION 11: Blueprint-SPECIFIC FAQ -->
     <section class="py-20 lg:py-28 bg-parchment">
