@@ -553,30 +553,28 @@
   <section class="bg-parchment border-b border-light-gray reveal" style="padding-top:{{ section.settings.section2_padding_top | default: 48 }}px;padding-bottom:{{ section.settings.section2_padding_bottom | default: 48 }}px;" x-intersect.once="$el.classList.add('visible')">
     <div class="max-w-5xl mx-auto px-6 text-center">
       <p class="font-inter text-[10px] tracking-[0.2em] uppercase text-warm-gray font-medium mb-8">{{ section.settings.press_label | default: "AS FEATURED IN" }}</p>
-      <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;align-items:center;justify-items:center;opacity:0.4;filter:grayscale(100%);" class="md:!flex md:!flex-nowrap md:!justify-center md:!items-center md:!gap-16">
-        {%- capture man_of_many_url %}{{ 'cc-v8-logo-man-of-many.png' | asset_url }}{% endcapture -%}
-        {%- assign logo_defaults_str = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068,https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109,' | append: man_of_many_url | append: ',' -%}
-        {%- assign logo_defaults = logo_defaults_str | split: ',' -%}
-        {%- assign logo_alts = 'Uncrate,Vice,Daily Beast,Us Weekly,Man of Many,Press logo 6' | split: ',' -%}
-        {%- for i in (1..6) -%}
-          {%- assign logo_key = 'logo_' | append: i -%}
-          {%- assign url_key = 'logo_' | append: i | append: '_url' -%}
-          {%- assign height_key = 'logo_' | append: i | append: '_height' -%}
-          {%- assign logo_img = section.settings[logo_key] -%}
-          {%- assign logo_url = section.settings[url_key] | default: '#' -%}
-          {%- assign logo_height = section.settings[height_key] | default: 40 -%}
-          {%- assign default_index = i | minus: 1 -%}
-          {%- assign fallback = logo_defaults[default_index] -%}
-          {%- if logo_img != blank or fallback != blank -%}
-            <a href="{{ logo_url }}" style="text-decoration:none;{% if logo_url == '#' %}pointer-events:none;{% endif %}" {% if i == 5 %}class="cc-logo-5th"{% endif %}>
-              {%- if logo_img != blank -%}
-                <img src="{{ logo_img | image_url: width: 320 }}" alt="{{ logo_alts[default_index] }}" style="height:{{ logo_height }}px;width:auto;" loading="lazy">
-              {%- elsif fallback != blank -%}
-                <img src="{{ fallback }}" alt="{{ logo_alts[default_index] }}" style="height:{{ logo_height }}px;width:auto;" loading="lazy">
-              {%- endif -%}
-            </a>
-          {%- endif -%}
-        {%- endfor -%}
+      <div style="display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;justify-content:center;opacity:0.4;filter:grayscale(100%);">
+        <a href="https://uncrate.com/coastline-longevity-welcome-pack/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223" alt="Uncrate" style="height:40px;width:auto;" loading="lazy">
+        </a>
+        <a href="https://www.vice.com/en/article/coastline-longevity-supplements/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172" alt="Vice" style="height:40px;width:auto;" loading="lazy">
+        </a>
+        <a href="https://www.thedailybeast.com/coastline-longevity-supplements-are-formulated-for-dads/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068" alt="Daily Beast" style="height:40px;width:auto;" loading="lazy">
+        </a>
+        <a href="https://www.usmagazine.com/shopping/news/three-step-longevity-system-coastline-longevity/" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109" alt="Us Weekly" style="height:40px;width:auto;" loading="lazy">
+        </a>
+        <a href="#" style="text-decoration:none;pointer-events:none;">
+          <img src="{{ 'cc-v8-logo-man-of-many.png' | asset_url }}" alt="Man of Many" style="height:40px;width:auto;" loading="lazy">
+        </a>
+        <a href="https://mantry.com/blogs/manual/the-last-supplement-system-you-will-ever-need" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="{{ 'cc-press-mantry.svg' | asset_url }}" alt="Mantry" style="height:36px;width:auto;" loading="lazy">
+        </a>
+        <a href="https://www.insidehook.com/leisure/products-week-airpod-maxes-le-creuset-and-chore-coats" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="{{ 'cc-press-insidehook.webp' | asset_url }}" alt="InsideHook" style="height:28px;width:auto;" loading="lazy">
+        </a>
       </div>
     </div>
   </section>
