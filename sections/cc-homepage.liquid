@@ -1697,6 +1697,9 @@
   .cc-homepage .cc-press-track { display: flex; gap: 48px; align-items: center; animation: cc-marquee 30s linear infinite; width: max-content; }
   .cc-homepage .cc-press-track a { flex-shrink: 0; text-decoration: none; display: flex; align-items: center; }
   .cc-homepage .cc-press-track:hover { animation-play-state: paused; }
+  @media (max-width: 767px) {
+    .cc-homepage .cc-press-track { animation-duration: 18s; gap: 32px; }
+  }
   @keyframes cc-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
   /* Pricing section: two-column layout */
