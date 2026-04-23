@@ -1,0 +1,298 @@
+{%- comment -%}
+  cc-hero-apr26 — homepage hero section
+  Extracted from cc-homepage.liquid "SECTION 1: HERO" (Apr 26 rebuild).
+  Scoped to .cc-hero-apr26 so it's portable across templates.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<section id="{{ section.settings.anchor | default: 'cc-home-hero' }}" class="cc-hero-apr26">
+
+  {%- comment -%} Desktop hero image {%- endcomment -%}
+  {%- if section.settings.hero_image != blank -%}
+    <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="Coastline hero" class="cc-hero-apr26__img-desktop" loading="eager">
+  {%- else -%}
+    <img src="{{ 'cc-hero-desktop-apr.jpg' | asset_url }}" alt="Coastline hero" class="cc-hero-apr26__img-desktop" loading="eager">
+  {%- endif -%}
+
+  {%- comment -%} Mobile hero image {%- endcomment -%}
+  {%- if section.settings.hero_image_mobile != blank -%}
+    <img src="{{ section.settings.hero_image_mobile | image_url: width: 800 }}" alt="Coastline hero" class="cc-hero-apr26__img-mobile" loading="eager">
+  {%- else -%}
+    <img src="{{ 'cc-hero-mobile-apr.jpg' | asset_url }}" alt="Coastline hero" class="cc-hero-apr26__img-mobile" loading="eager">
+  {%- endif -%}
+
+  <div class="cc-hero-content-wrap" style="position:relative;z-index:2;width:100%;">
+    <div class="cc-hero-top">
+      <p class="cc-hero-label" style="letter-spacing:0.2em;text-transform:uppercase;font-weight:500;">{{ section.settings.hero_label | default: 'THE ULTIMATE LONGEVITY SYSTEM' }}</p>
+      <div class="cc-hero-divider" style="width:40px;height:1px;background:rgba(255,255,255,0.4);"></div>
+      <h1 class="cc-hero-headline">
+        {{ section.settings.hero_headline | default: 'Stay sharp, strong, and energized at every age' }}
+      </h1>
+    </div>
+    <div class="cc-hero-bottom">
+      <p class="cc-hero-subheadline" style="line-height:1.6;">
+        {{ section.settings.hero_subheadline | default: '13 science-backed ingredients. One simple system. From $3.30/day.' }}
+      </p>
+      <a href="{{ section.settings.hero_reviews_anchor | default: '#cc-reviews-anchor' }}" class="cc-hero-stars" style="display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;">
+        <span style="color:#fff;font-size:14px;letter-spacing:4px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.6);text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: '2,000+ five-star reviews' }}</span>
+      </a>
+      <div class="cc-hero-ctas">
+        <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" class="cc-hero-cta-primary">
+          {{ section.settings.hero_cta_text | default: 'START MY LONGEVITY SYSTEM' }}
+        </a>
+        <a href="{{ section.settings.hero_secondary_link | default: '#cc-home-pricing' }}" class="cc-hero-secondary-link">
+          {{ section.settings.hero_secondary_text | default: 'SKIP TO PRICING' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero section root */
+  .cc-hero-apr26 {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background-color: #0A0A0A;
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .cc-hero-apr26 {
+      align-items: center;
+    }
+  }
+
+  /* Hero images */
+  .cc-hero-apr26__img-desktop,
+  .cc-hero-apr26__img-mobile {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cc-hero-apr26__img-desktop { display: none; }
+  .cc-hero-apr26__img-mobile { display: block; object-position: center 30%; }
+  @media (min-width: 768px) {
+    .cc-hero-apr26__img-desktop { display: block; }
+    .cc-hero-apr26__img-mobile { display: none; }
+  }
+
+  /* Hero content layout — MOBILE: flex column, headline top, copy bottom */
+  .cc-hero-apr26 .cc-hero-content-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 24px 48px;
+    text-align: center;
+  }
+  .cc-hero-apr26 .cc-hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    margin-bottom: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+  .cc-hero-apr26 .cc-hero-divider { display: none; }
+  .cc-hero-apr26 .cc-hero-subheadline { margin-bottom: 20px; color: rgba(255,255,255,0.75) !important; }
+  .cc-hero-apr26 .cc-hero-stars { justify-content: center; margin-bottom: 20px; }
+  .cc-hero-apr26 .cc-hero-ctas { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .cc-hero-apr26 .cc-hero-secondary-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    padding: 4px 0;
+    transition: opacity 0.3s ease;
+    color: rgba(255,255,255,0.6);
+  }
+  .cc-hero-apr26 .cc-hero-secondary-link:hover { opacity: 0.75; }
+
+  /* Hero content layout — DESKTOP: single block, left-aligned, vertically centered */
+  @media (min-width: 768px) {
+    .cc-hero-apr26 .cc-hero-content-wrap {
+      min-height: auto;
+      display: block;
+      padding: 0 64px;
+      text-align: left;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .cc-hero-apr26 .cc-hero-top { max-width: 680px; }
+    .cc-hero-apr26 .cc-hero-bottom { max-width: 480px; }
+    .cc-hero-apr26 .cc-hero-label {
+      font-size: 12px;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.8);
+    }
+    .cc-hero-apr26 .cc-hero-divider { display: block; margin-bottom: 32px; }
+    .cc-hero-apr26 .cc-hero-subheadline { margin-bottom: 24px; color: rgba(255,255,255,0.85) !important; }
+    .cc-hero-apr26 .cc-hero-stars { justify-content: flex-start; margin-bottom: 32px; }
+    .cc-hero-apr26 .cc-hero-ctas { align-items: flex-start; }
+    .cc-hero-apr26 .cc-hero-secondary-link { color: rgba(255,255,255,0.7); }
+  }
+
+  /* Hero responsive typography */
+  .cc-hero-apr26 .cc-hero-headline {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 7.5vw, 44px);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #FFFFFF;
+    max-width: 100%;
+  }
+  .cc-hero-apr26 .cc-hero-subheadline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(14px, 3vw, 16px);
+    color: rgba(255,255,255,0.85) !important;
+    max-width: 380px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+    .cc-hero-apr26 .cc-hero-headline {
+      font-size: clamp(43px, 3.8vw, 56px);
+      max-width: 680px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .cc-hero-apr26 .cc-hero-subheadline {
+      font-size: 16px;
+      color: rgba(255,255,255,0.85) !important;
+      max-width: 440px;
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+
+  /* Primary CTA button */
+  .cc-hero-apr26 .cc-hero-cta-primary {
+    display: inline-block;
+    background: #0A0A0A;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 20px 48px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    min-width: 200px;
+    transition: opacity 0.3s ease;
+  }
+  .cc-hero-apr26 .cc-hero-cta-primary:hover { opacity: 0.85; }
+</style>
+
+{% schema %}
+{
+  "name": "Hero (apr26)",
+  "tag": "section",
+  "class": "section-cc-hero-apr26",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Desktop hero image",
+      "info": "Defaults to cc-hero-desktop-apr.jpg if empty"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Mobile hero image",
+      "info": "Defaults to cc-hero-mobile-apr.jpg if empty"
+    },
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "hero_label",
+      "label": "Eyebrow label",
+      "default": "THE ULTIMATE LONGEVITY SYSTEM"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_headline",
+      "label": "Headline",
+      "default": "Stay sharp, strong, and energized at every age"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subheadline",
+      "label": "Subheadline",
+      "default": "13 science-backed ingredients. One simple system. From $3.30/day."
+    },
+    {
+      "type": "text",
+      "id": "hero_reviews",
+      "label": "Reviews line",
+      "default": "2,000+ five-star reviews"
+    },
+    {
+      "type": "text",
+      "id": "hero_reviews_anchor",
+      "label": "Reviews link anchor",
+      "default": "#cc-reviews-anchor"
+    },
+    {
+      "type": "header",
+      "content": "CTAs"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "Primary CTA text",
+      "default": "START MY LONGEVITY SYSTEM"
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_link",
+      "label": "Primary CTA link",
+      "info": "Use #cc-home-pricing to scroll to pricing",
+      "default": "#cc-home-pricing"
+    },
+    {
+      "type": "text",
+      "id": "hero_secondary_text",
+      "label": "Secondary CTA text",
+      "default": "SKIP TO PRICING"
+    },
+    {
+      "type": "text",
+      "id": "hero_secondary_link",
+      "label": "Secondary CTA link",
+      "default": "#cc-home-pricing"
+    },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Section id (anchor)",
+      "default": "cc-home-hero"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero (apr26)",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}

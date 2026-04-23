@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "cc-hero-apr26": {
+      "type": "cc-hero-apr26",
+      "settings": {
+        "hero_label": "THE ULTIMATE LONGEVITY SYSTEM",
+        "hero_headline": "Unlock a whole new <br>horizon of health.",
+        "hero_subheadline": "13 science-backed, clinically-dosed ingredients in one easy AM/PM routine to support brain, energy, muscle, gut, skin, sleep and more.",
+        "hero_reviews": "2,000+ five-star reviews",
+        "hero_cta_text": "START MY LONGEVITY SYSTEM",
+        "hero_cta_link": "#cc-home-pricing",
+        "hero_secondary_text": "SKIP TO PRICING",
+        "hero_secondary_link": "#cc-home-pricing",
+        "anchor": "cc-home-hero"
+      }
+    }
+  },
+  "order": [
+    "cc-hero-apr26"
+  ]
+}
