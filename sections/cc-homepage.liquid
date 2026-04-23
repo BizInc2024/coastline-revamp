@@ -1212,156 +1212,16 @@
   {%- comment -%} ============================================================
      SECTION 10: PRICING CTA (cc-home-13)
   ============================================================ {%- endcomment -%}
-  <section id="cc-home-pricing" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#E7FF56;padding-top:{{ section.settings.section10_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section10_padding_bottom | default: 80 }}px;">
-    <div class="cc-pricing-layout" style="max-width:1100px;margin:0 auto;padding:0 24px;">
-      <!-- Product image column: square hero + thumbnail carousel -->
-      <div class="cc-pricing-image" x-data="{
-        active: 0,
-        images: [
-          { src: '{{ 'cc-welcome-box-vertical.png' | asset_url }}', alt: 'Coastline Welcome Pack', fit: 'cover' },
-          { src: '{{ 'cc-sell-mb-card.jpg' | asset_url }}', alt: 'Morning Blend ingredients', fit: 'cover' },
-          { src: '{{ 'cc-sell-sg-card.jpg' | asset_url }}', alt: 'Softgels ingredients', fit: 'cover' },
-          { src: '{{ 'cc-sell-ec-card.jpg' | asset_url }}', alt: 'Evening Capsules ingredients', fit: 'cover' },
-          { src: '{{ 'cc-sell-am-lifestyle.jpg' | asset_url }}', alt: 'AM routine', fit: 'cover' },
-          { src: '{{ 'cc-sell-pm-lifestyle.jpg' | asset_url }}', alt: 'PM routine', fit: 'cover' },
-          { src: '{{ 'cc-sell-ugc-brooke.jpg' | asset_url }}', alt: 'Customer review', fit: 'cover' },
-          { src: '{{ 'cc-sell-greg-quote.jpg' | asset_url }}', alt: 'Dr. Greg Potter, Scientific Advisor', fit: 'cover' },
-          { src: '{{ 'cc-sell-benefits.jpg' | asset_url }}', alt: 'Short and long-term benefits', fit: 'cover' },
-          { src: '{{ 'cc-sell-standards.jpg' | asset_url }}', alt: 'Safest standards', fit: 'cover' },
-          { src: '{{ 'cc-sell-clinical-proof.jpg' | asset_url }}', alt: 'Clinical proof', fit: 'cover' },
-          { src: '{{ 'cc-sell-guarantee.jpg' | asset_url }}', alt: '60-day money-back guarantee', fit: 'cover' }
-        ]
-      }">
-        <div class="cc-sell-hero">
-          <img :src="images[active].src" :alt="images[active].alt" :style="'width:100%;height:100%;object-fit:'+images[active].fit+';display:block;'" loading="lazy">
-        </div>
-        <div class="cc-sell-thumbs">
-          <template x-for="(img, i) in images" :key="i">
-            <button type="button" @click="active = i" :aria-pressed="active === i ? 'true' : 'false'" :class="active === i ? 'cc-thumb is-active' : 'cc-thumb'">
-              <img :src="img.src" :alt="img.alt" :style="'width:100%;height:100%;object-fit:'+img.fit+';display:block;'" loading="lazy">
-            </button>
-          </template>
-        </div>
-      </div>
-
-      <!-- Form column -->
-      <div
-      x-data="{
-        flavor: 'unflavored',
-        plan: 'monthly',
-        variants: { unflavored: 42179764453445, lemonade: 42179764486213 },
-        plans: {
-          monthly:   { id: 1862631493, price: '$99/mo',  label: 'Monthly',  save: 'Save 34%' },
-          bimonthly: { id: 1892712517, price: '$120/mo', label: '2-Month',  save: 'Save 20%' },
-          onetime:   { id: null,       price: '$150',    label: 'One-time', save: '' }
-        },
-        loading: false,
-        get variantId() { return this.variants[this.flavor]; },
-        get sellingPlanId() { return this.plans[this.plan].id; },
-        get buttonText() { return 'ADD TO CART - ' + this.plans[this.plan].price; }
-      }"
-      class="cc-pricing-form" style="text-align:center;"
-    >
-
-      {%- if section.settings.pricing_label != blank -%}
-        <span class="badge-minimal reveal" x-intersect.once="$el.classList.add('visible')">{{ section.settings.pricing_label }}</span>
-      {%- endif -%}
-      {%- if section.settings.pricing_headline != blank -%}
-        <h2 class="reveal text-deep-ink mt-4 mb-4 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);" x-intersect.once="$el.classList.add('visible')">
-          {{ section.settings.pricing_headline }}
-        </h2>
-      {%- endif -%}
-      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#4A4A4A;line-height:1.6;margin:0 auto 8px;max-width:380px;">30-day supply of Morning Blend, Softgels, and Evening Capsules</p>
-      <p style="font-family:'Inter',sans-serif;font-size:14px;color:#0A0A0A;font-weight:700;line-height:1.6;margin:0 auto 28px;max-width:380px;">+ Glass Shaker WELCOME GIFT</p>
-
-      <!-- Flavor selector -->
-      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:40px;" x-intersect.once="$el.classList.add('visible')">
-        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;">Choose your flavor</p>
-        <div style="display:inline-flex;gap:10px;">
-          <button type="button" @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'cc-flavor-unflavored-active' : 'cc-flavor-unflavored-idle'" class="cc-flavor-btn">Unflavored Blend</button>
-          <button type="button" @click="flavor = 'lemonade'" :class="flavor === 'lemonade' ? 'cc-flavor-lemonade-active' : 'cc-flavor-lemonade-idle'" class="cc-flavor-btn">Coastal Lemonade</button>
-        </div>
-      </div>
-
-      <!-- Plan selector -->
-      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:32px;text-align:left;" x-intersect.once="$el.classList.add('visible')">
-        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:14px;text-align:center;">Select your plan</p>
-
-        <!-- Monthly -->
-        <div @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;position:relative;">
-          <span style="position:absolute;top:-10px;left:20px;background:#0A0A0A;color:#E7FF56;font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:5px 12px;">LIMITED TIME OFFER</span>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
-            <div>
-              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Monthly subscription</span>
-              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:600;margin-top:3px;">Save 34%</span>
-            </div>
-            <div style="text-align:right;flex-shrink:0;margin-left:16px;">
-              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$99</span>
-              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2-Month -->
-        <div @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
-            <div>
-              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">Every 2 months</span>
-              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#1A3A2F;font-weight:500;margin-top:3px;">Save 20%</span>
-            </div>
-            <div style="text-align:right;flex-shrink:0;margin-left:16px;">
-              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$120</span>
-              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">/month</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- One-time -->
-        <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
-            <div>
-              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#0A0A0A;font-size:15px;line-height:1.3;">One-time purchase</span>
-              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:3px;">No subscription</span>
-            </div>
-            <div style="text-align:right;flex-shrink:0;margin-left:16px;">
-              <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0A0A0A;font-size:24px;line-height:1;">$150</span>
-              <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;margin-top:2px;">one-time</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add to cart — native product-form (theme.js handles cart drawer + updates) -->
-      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:20px;" x-intersect.once="$el.classList.add('visible')">
-        <form id="cc-home-cart-form" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
-          <input type="hidden" name="id" :value="variantId" />
-          <template x-if="sellingPlanId">
-            <input type="hidden" name="selling_plan" :value="sellingPlanId" />
-          </template>
-          <button type="submit" style="display:block;width:100%;background:var(--deep-ink);color:var(--parchment);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;cursor:pointer;transition:opacity 0.3s ease;">
-            <span class="btn-text"><span x-text="buttonText"></span></span>
-          </button>
-        </form>
-      </div>
-
-      <!-- Trust signals -->
-      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="margin-bottom:28px;text-align:center;" x-intersect.once="$el.classList.add('visible')">
-        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0 0 4px;">{{ section.settings.pricing_trust_1 | default: "Free shipping. Cancel anytime." }}</p>
-        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);margin:0;">{{ section.settings.pricing_trust_2 | default: "60-day money-back guarantee." }}</p>
-      </div>
-
-      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;" x-intersect.once="$el.classList.add('visible')">
-        <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-gray);margin:0;opacity:0.7;">VEGAN, SUGAR-FREE, CAFFEINE-FREE</p>
-      </div>
-
-      <!-- Trust badge images -->
-      <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:32px;" x-intersect.once="$el.classList.add('visible')">
-        <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:52px;object-fit:contain;" loading="lazy"></div>
-        <div style="background:white;border-radius:50%;padding:8px;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:52px;object-fit:contain;" loading="lazy"></div>
-        <div style="background:white;border-radius:50%;width:68px;height:68px;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" style="height:72px;object-fit:contain;" loading="lazy"></div>
-      </div>
-    </div><!-- /cc-pricing-layout -->
-  </section>
+  {%- render 'cc-pricing-apr26',
+      anchor: 'cc-home-pricing',
+      form_id: 'cc-home-cart-form',
+      pad_top: section.settings.section10_padding_top,
+      pad_bottom: section.settings.section10_padding_bottom,
+      label: section.settings.pricing_label,
+      headline: section.settings.pricing_headline,
+      trust_1: section.settings.pricing_trust_1,
+      trust_2: section.settings.pricing_trust_2
+    -%}
 
   {%- comment -%} ============================================================
      SECTION 9: COMPARISON TABLE (cc-home-12)
