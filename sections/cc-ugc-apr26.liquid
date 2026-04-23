@@ -1,0 +1,88 @@
+{%- comment -%}
+  cc-ugc-apr26 — UGC Community
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-ugc-apr26">
+    <section class="v10-section parchment reveal" x-intersect.once="$el.classList.add('visible')">
+      <div class="v10-wrap">
+        <div class="v10-section-head">
+          <span class="v10-eyebrow">The Coastline Community</span>
+          <div class="v10-divider"></div>
+          <h2>See what Coastliners<br><span class="soft">are loving most.</span></h2>
+          <p>Real routines. Real people. Real-life results.</p>
+        </div>
+      </div>
+      <div class="v10-ugc-rail">
+        <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+        <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+        <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+        <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+        <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
+      </div>
+    </section>
+</div>
+
+<style>
+.cc-ugc-apr26 .v10-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.cc-ugc-apr26 .v10-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; }
+.cc-ugc-apr26 .v10-divider { width: 60px; height: 1px; background: #0A0A0A; }
+.cc-ugc-apr26 .v10-section { padding: 96px 0; }
+.cc-ugc-apr26 .v10-section.parchment { background: #FAF9F6; }
+.cc-ugc-apr26 .v10-section-head { text-align: center; margin-bottom: 56px; }
+.cc-ugc-apr26 .v10-section-head .v10-eyebrow { display: block; margin-bottom: 20px; }
+.cc-ugc-apr26 .v10-section-head .v10-divider { margin: 0 auto 28px; }
+.cc-ugc-apr26 .v10-section-head h2 {
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-size: clamp(30px, 4.5vw, 56px) !important;
+      font-weight: 500 !important;
+      line-height: 1.1 !important;
+      margin-bottom: 20px;
+      color: #0A0A0A !important;
+    }
+.cc-ugc-apr26 .v10-section-head h2 .soft { color: #6B6B6B; }
+.cc-ugc-apr26 .v10-section-head p {
+      max-width: 640px; margin: 0 auto;
+      font-size: 17px !important; line-height: 1.55 !important; color: #6B6B6B !important;
+    }
+.cc-ugc-apr26 .v10-ugc-rail {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 8px 24px 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      align-items: flex-start;
+    }
+.cc-ugc-apr26 .v10-ugc-rail::-webkit-scrollbar { display: none; }
+.cc-ugc-apr26 .v10-ugc-item {
+      flex: 0 0 auto;
+      width: 260px;
+      overflow: visible;
+      scroll-snap-align: start;
+      background: transparent;
+    }
+.cc-ugc-apr26 .v10-ugc-item img { width: 100%; height: auto; display: block; filter: saturate(0.7); }
+@media (max-width: 640px) {
+      .cc-ugc-apr26 .v10-ugc-item { width: 240px; }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "UGC Community (apr26)",
+  "tag": "section",
+  "class": "section-cc-ugc-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "UGC Community (apr26)",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}

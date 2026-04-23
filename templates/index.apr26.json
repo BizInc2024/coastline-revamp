@@ -5,7 +5,7 @@
       "settings": {
         "hero_label": "THE ULTIMATE LONGEVITY SYSTEM",
         "hero_headline": "Unlock a whole new <br>horizon of health.",
-        "hero_subheadline": "13 science-backed, clinically-dosed ingredients in one easy AM/PM routine to support brain, energy, muscle, gut, skin, sleep and more.",
+        "hero_subheadline": "13 science-backed, clinically-verified ingredients in one easy AM/PM routine to support brain, energy, muscle, gut, skin, sleep and more.",
         "hero_reviews": "2,000+ five-star reviews",
         "hero_cta_text": "START MY LONGEVITY SYSTEM",
         "hero_cta_link": "#cc-home-pricing",
@@ -13,9 +13,507 @@
         "hero_secondary_link": "#cc-home-pricing",
         "anchor": "cc-home-hero"
       }
+    },
+    "cc-press-apr26": {
+      "type": "cc-press-apr26",
+      "settings": {}
+    },
+    "cc-ask-apr26": {
+      "type": "cc-ask-apr26",
+      "settings": {}
+    },
+    "cc-genetics-stat-apr26": {
+      "type": "cc-genetics-stat-apr26",
+      "settings": {}
+    },
+    "cc-system-apr26": {
+      "type": "cc-system-apr26",
+      "settings": {},
+      "blocks": {
+        "step_pMwWXk": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/POWDER_1.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194",
+            "title": "Morning Blend",
+            "description": "Mix one scoop with water. Start your day optimized.",
+            "ingredients_text": "Ergothioneine | 5 mg\nTaurine | 3.05 g\nCreatine Monohydrate | 5.25 g\nGlycine | 5 g\nInulin | 4 g\nMagnesium (as Citrate) | 150 mg\nGlucosamine Sulfate | 750 mg",
+            "directions": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day.",
+            "benefits_text": "Sustained natural energy\nSharper mental clarity\nStronger muscles and bones\nOptimized metabolic health"
+          }
+        },
+        "step_fLXUyX": {
+          "type": "step",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188",
+            "title": "Morning Softgels",
+            "description": "One softgel with your first meal.",
+            "ingredients_text": "Astaxanthin | 6 mg\nLutein | 10 mg\nZeaxanthin | 2 mg\nCoenzyme Q10 | 200 mg",
+            "directions": "Take 1 softgel with your first meal of the day, alongside your Morning Blend.",
+            "benefits_text": "Powerful cellular protection\nEnhanced eye and brain health\nHeart and mitochondrial support\nSkin protection from UV"
+          }
+        },
+        "step_wzNEjy": {
+          "type": "step",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766",
+            "title": "Evening Capsules",
+            "description": "Two capsules before bed. Wake refreshed.",
+            "ingredients_text": "Lithium Orotate | 400 mcg\nL-Theanine | 200 mg\nGlucosamine Sulfate | 750 mg",
+            "directions": "Take 2 capsules 30-60 minutes before bed with water.",
+            "benefits_text": "Deeper, restorative sleep\nReduced stress and anxiety\nJoint health and cellular repair\nNeuroprotection and mood support"
+          }
+        }
+      },
+      "block_order": [
+        "step_pMwWXk",
+        "step_fLXUyX",
+        "step_wzNEjy"
+      ]
+    },
+    "cc-ugc-apr26": {
+      "type": "cc-ugc-apr26",
+      "settings": {}
+    },
+    "cc-benefits-apr26": {
+      "type": "cc-benefits-apr26",
+      "settings": {},
+      "blocks": {
+        "pillar_Lzq4VK": {
+          "type": "pillar",
+          "settings": {
+            "image": "shopify://shop_images/CL-Landing_Page_Images-6_2_1.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194",
+            "icon": "energy",
+            "title": "Energy",
+            "description": "Creatine and taurine fuel sustained energy and endurance without caffeine or stimulants."
+          }
+        },
+        "pillar_Gdkfqx": {
+          "type": "pillar",
+          "settings": {
+            "image": "shopify://shop_images/CL-Landing_Page_Images-14_1.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-MORNING_2.png?v=1767928912",
+            "icon": "gut",
+            "title": "Gut Health",
+            "description": "Inulin feeds beneficial bacteria, strengthens your gut lining, and enhances mineral absorption."
+          }
+        },
+        "pillar_yEGHnn": {
+          "type": "pillar",
+          "settings": {
+            "image": "shopify://shop_images/CL-Landing_Page_Images-15_1.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-EVENING_1.png?v=1767928916",
+            "icon": "sleep",
+            "title": "Sleep",
+            "description": "L-theanine and glycine promote deeper, restorative sleep so you wake refreshed."
+          }
+        },
+        "pillar_EVYKDp": {
+          "type": "pillar",
+          "settings": {
+            "image": "shopify://shop_images/CL-Landing_Page_Images-11_1.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113",
+            "icon": "focus",
+            "title": "Clarity",
+            "description": "Ergothioneine crosses the blood-brain barrier. CoQ10 powers your mitochondria. Sharp mind, all day."
+          }
+        },
+        "pillar_kT9bRw": {
+          "type": "pillar",
+          "settings": {
+            "image": "shopify://shop_images/CL-Landing_Page_Images-13_1_1.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113",
+            "icon": "body",
+            "title": "Body",
+            "description": "Glucosamine supports joints, magnesium aids recovery, and astaxanthin protects at the cellular level."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_Lzq4VK",
+        "pillar_Gdkfqx",
+        "pillar_yEGHnn",
+        "pillar_EVYKDp",
+        "pillar_kT9bRw"
+      ]
+    },
+    "cc-expert-apr26": {
+      "type": "cc-expert-apr26",
+      "settings": {}
+    },
+    "cc-testimonials-apr26": {
+      "type": "cc-testimonials-apr26",
+      "settings": {},
+      "blocks": {
+        "testimonial_t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I am skeptical of most supplements. But the science behind Coastline convinced me. My biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        "testimonial_f1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder New York",
+            "category": "focus"
+          }
+        },
+        "testimonial_e6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash. Just consistent output from 6 AM to 10 PM.",
+            "name": "Derek W.",
+            "detail": "Scottsdale 47",
+            "category": "energy"
+          }
+        },
+        "testimonial_c2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I used to spend over $200 a month on five different supplements. Coastline replaced all of them. One system, done.",
+            "name": "Lisa T.",
+            "detail": "Austin 52",
+            "category": "convenience"
+          }
+        },
+        "testimonial_f6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Three weeks in and the mental sharpness is unmistakable. I am writing better code, retaining more from meetings, and my afternoon crash is just gone.",
+            "name": "Thomas H.",
+            "detail": "Atlanta 43",
+            "category": "focus"
+          }
+        },
+        "testimonial_e3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I am still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs 72",
+            "category": "energy"
+          }
+        },
+        "testimonial_e1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It has changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte 51",
+            "category": "energy"
+          }
+        },
+        "testimonial_e2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have tried every supplement out there. My energy levels have transformed, and I actually look forward to my morning runs again.",
+            "name": "Sarah M.",
+            "detail": "San Diego 54",
+            "category": "energy"
+          }
+        },
+        "testimonial_e4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have shared this with my entire cycling club. We are all seeing better recovery times.",
+            "name": "Patrick J.",
+            "detail": "Portland 53",
+            "category": "energy"
+          }
+        },
+        "testimonial_e5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I am bouncing back faster and my endurance has noticeably improved.",
+            "name": "Marcus D.",
+            "detail": "Denver 39",
+            "category": "energy"
+          }
+        },
+        "testimonial_f2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a longevity stack that does not require 15 different bottles. My morning brain fog is gone.",
+            "name": "Robert K.",
+            "detail": "Chicago 45",
+            "category": "focus"
+          }
+        },
+        "testimonial_f3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is the biggest win for me. The brain fog of my 40s has lifted completely.",
+            "name": "Megan S.",
+            "detail": "Columbus 46",
+            "category": "focus"
+          }
+        },
+        "testimonial_f4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel more locked in during my workday. It has significantly improved my productivity.",
+            "name": "Michelle P.",
+            "detail": "Indianapolis 41",
+            "category": "focus"
+          }
+        },
+        "testimonial_f5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It is the first thing I take every morning. My morning brain fog is gone, and my focus is immediate and lasts all day.",
+            "name": "William Z.",
+            "detail": "Salt Lake City 36",
+            "category": "focus"
+          }
+        },
+        "testimonial_t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I am extremely careful about what I put in my body. Coastline checked every box for purity and data.",
+            "name": "Rachel G.",
+            "detail": "Boulder 48",
+            "category": "trust"
+          }
+        },
+        "testimonial_t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. You can tell this was not made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond 49",
+            "category": "trust"
+          }
+        },
+        "testimonial_t4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans 57",
+            "category": "trust"
+          }
+        },
+        "testimonial_t5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.",
+            "name": "Catherine W.",
+            "detail": "Seattle 58",
+            "category": "trust"
+          }
+        },
+        "testimonial_t6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.",
+            "name": "Andrew P.",
+            "detail": "Boston 55",
+            "category": "trust"
+          }
+        },
+        "testimonial_c1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the convenience of having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        "testimonial_c3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I have spent a decade chasing biohacks, but this is the first time I have felt a sustained difference. It has simplified my entire morning.",
+            "name": "Daniel S.",
+            "detail": "Health Coach",
+            "category": "convenience"
+          }
+        },
+        "testimonial_c4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Morning scoop, one softgel, two capsules before bed. That is it. I replaced an entire shelf of bottles with one system.",
+            "name": "Kevin M.",
+            "detail": "Nashville 40",
+            "category": "convenience"
+          }
+        },
+        "testimonial_c5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My husband and I both switched to Coastline. We cancelled six separate subscriptions between us. Simpler, cheaper, and we actually feel the difference.",
+            "name": "Christine A.",
+            "detail": "Denver 49",
+            "category": "convenience"
+          }
+        },
+        "testimonial_c6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I travel three weeks a month for work. Having everything in one system means I just toss the pouches in my bag. No more forgetting half my stack at home.",
+            "name": "Brian T.",
+            "detail": "San Francisco 38",
+            "category": "convenience"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_t1",
+        "testimonial_f1",
+        "testimonial_e6",
+        "testimonial_c2",
+        "testimonial_f6",
+        "testimonial_e3",
+        "testimonial_e1",
+        "testimonial_e2",
+        "testimonial_e4",
+        "testimonial_e5",
+        "testimonial_f2",
+        "testimonial_f3",
+        "testimonial_f4",
+        "testimonial_f5",
+        "testimonial_t2",
+        "testimonial_t3",
+        "testimonial_t4",
+        "testimonial_t5",
+        "testimonial_t6",
+        "testimonial_c1",
+        "testimonial_c3",
+        "testimonial_c4",
+        "testimonial_c5",
+        "testimonial_c6"
+      ]
+    },
+    "cc-video-apr26": {
+      "type": "cc-video-apr26",
+      "settings": {}
+    },
+    "cc-comparison-apr26": {
+      "type": "cc-comparison-apr26",
+      "settings": {}
+    },
+    "cc-math-apr26": {
+      "type": "cc-math-apr26",
+      "settings": {}
+    },
+    "cc-story-apr26": {
+      "type": "cc-story-apr26",
+      "settings": {}
+    },
+    "cc-faq-apr26": {
+      "type": "cc-faq-apr26",
+      "settings": {},
+      "blocks": {
+        "faq_6L9W9r": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Coastline?",
+            "answer": "Coastline is a complete longevity system with 13 science-backed ingredients delivered in three daily steps: a morning blend, daily softgels, and evening capsules."
+          }
+        },
+        "faq_yyj4kx": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "Morning: mix one scoop of the Morning Blend with 8-12 oz of water. Take 1 softgel with your first meal. Evening: take 2 capsules 30-60 minutes before bed."
+          }
+        },
+        "faq_Hydfyh": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I feel a difference?",
+            "answer": "Most members notice improved energy and focus within the first 2-3 weeks. Sleep improvements often come sooner. Full benefits build over 60-90 days of consistent use."
+          }
+        },
+        "faq_xtQtUB": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe to take with other supplements?",
+            "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. However, we recommend consulting your healthcare provider if you take prescription medications."
+          }
+        },
+        "faq_QT79aJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel my subscription?",
+            "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees, no questions asked."
+          }
+        },
+        "faq_FeDmVr": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Coastline vegan?",
+            "answer": "Yes. All ingredients are vegan-friendly, including our glucosamine which is derived from a non-shellfish source."
+          }
+        },
+        "faq_qNMFfU": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer a guarantee?",
+            "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund."
+          }
+        },
+        "faq_bFg8Aa": {
+          "type": "faq",
+          "settings": {
+            "question": "How is Coastline different from AG1 or other greens?",
+            "answer": "Unlike greens powders that include 75+ ingredients at trace amounts, Coastline focuses on 13 clinically dosed ingredients that target all 12 hallmarks of aging."
+          }
+        }
+      },
+      "block_order": [
+        "faq_6L9W9r",
+        "faq_yyj4kx",
+        "faq_Hydfyh",
+        "faq_xtQtUB",
+        "faq_QT79aJ",
+        "faq_FeDmVr",
+        "faq_qNMFfU",
+        "faq_bFg8Aa"
+      ]
+    },
+    "cc-email-capture-apr26": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    },
+    "cc-final-cta-apr26": {
+      "type": "cc-final-cta-apr26",
+      "settings": {}
+    },
+    "cc-pricing-apr26": {
+      "type": "cc-pricing-apr26",
+      "settings": {
+        "anchor": "cc-home-pricing",
+        "form_id": "cc-home-cart-form",
+        "headline": "Start Your System",
+        "trust_1": "Free shipping. Cancel anytime.",
+        "trust_2": "60-day money-back guarantee."
+      }
     }
   },
   "order": [
-    "cc-hero-apr26"
+    "cc-hero-apr26",
+    "cc-press-apr26",
+    "cc-ask-apr26",
+    "cc-genetics-stat-apr26",
+    "cc-system-apr26",
+    "cc-ugc-apr26",
+    "cc-benefits-apr26",
+    "cc-expert-apr26",
+    "cc-testimonials-apr26",
+    "cc-video-apr26",
+    "cc-pricing-apr26",
+    "cc-comparison-apr26",
+    "cc-math-apr26",
+    "cc-story-apr26",
+    "cc-faq-apr26",
+    "cc-email-capture-apr26",
+    "cc-final-cta-apr26"
   ]
 }

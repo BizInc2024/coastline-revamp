@@ -1,0 +1,94 @@
+{%- comment -%}
+  cc-video-apr26 — Video
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-video-apr26">
+    <section class="bg-parchment" style="padding-top:{{ section.settings.section8_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section8_padding_bottom | default: 80 }}px;">
+      <div class="max-w-6xl mx-auto px-8 lg:px-16">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+  
+          <div class="lg:col-span-7 reveal" x-intersect.once="$el.classList.add('visible')" x-data="{ playing: false, embedUrl: '' }" x-init="
+            {% if video_url != blank %}
+              var raw = '{{ video_url }}';
+              if (raw.indexOf('youtube.com') > -1 || raw.indexOf('youtu.be') > -1) {
+                var id = '';
+                if (raw.indexOf('youtu.be/') > -1) { id = raw.split('youtu.be/')[1].split(/[?&#]/)[0]; }
+                else { var match = raw.match(/[?&]v=([^&#]+)/); if (match) id = match[1]; }
+                if (id) embedUrl = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+              } else if (raw.indexOf('vimeo.com') > -1) {
+                var vid = raw.split('vimeo.com/')[1].split(/[?&#]/)[0];
+                if (vid) embedUrl = 'https://player.vimeo.com/video/' + vid + '?autoplay=1';
+              }
+            {% endif %}
+          ">
+            <div class="cc-video-wrap">
+              <template x-if="!playing">
+                <div @click="if(embedUrl) playing = true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
+                  {% if section.settings.video_thumbnail != blank %}
+                    <img src="{{ section.settings.video_thumbnail | image_url: width: 1200 }}" alt="{{ section.settings.video_headline | default: 'Watch how Coastline works' }}" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                  {% else %}
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--deep-ink); display: flex; align-items: center; justify-content: center;">
+                      <p class="text-warm-gray font-inter text-sm tracking-widest uppercase">Video</p>
+                    </div>
+                  {% endif %}
+                  <svg style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; cursor: pointer; z-index: 2; transition: opacity 0.3s ease;" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="36" cy="36" r="35" fill="rgba(10,10,10,0.6)" stroke="#FAF9F6" stroke-width="1.5"/>
+                    <polygon points="29,22 29,50 52,36" fill="#FAF9F6"/>
+                  </svg>
+                </div>
+              </template>
+              <template x-if="playing">
+                <iframe :src="embedUrl" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+              </template>
+            </div>
+          </div>
+  
+          <div class="lg:col-span-5 reveal" x-intersect.once="$el.classList.add('visible')">
+            <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:12px;">{{ section.settings.video_label | default: "SEE THE SCIENCE" }}</p>
+            <div style="width:40px;height:1px;background:var(--light-gray);margin-bottom:24px;"></div>
+            <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(24px,3vw,36px);color:var(--deep-ink);letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;">{{ section.settings.video_headline | default: "Watch how Coastline works" }}</h2>
+            <p style="font-family:'Inter',sans-serif;font-size:17px;color:var(--warm-gray);line-height:1.7;margin-bottom:32px;">
+              {{ section.settings.video_body | default: "Our team of researchers breaks down the science behind each ingredient and why timing matters for longevity." }}
+            </p>
+            <a href="{{ section.settings.video_link_url | default: '#' }}" style="font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--deep-ink);text-decoration:none;border-bottom:1px solid var(--deep-ink);padding-bottom:2px;">{{ section.settings.video_link_text | default: "WATCH NOW" }}</a>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+</div>
+
+<style>
+.cc-video-apr26 .cc-video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--deep-ink);
+    overflow: hidden;
+  }
+.cc-video-apr26 .cc-video-wrap > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Video (apr26)",
+  "tag": "section",
+  "class": "section-cc-video-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Video (apr26)",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+{%- comment -%}
+  cc-expert-apr26 — Expert Narrative
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-expert-apr26">
+    <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background-color:#0A0A0A;padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+        <span class="badge-minimal inline-block mb-6 tracking-wider text-xs uppercase" style="color:#555555 !important;">
+          {{ section.settings.founder_label | default: "OUR APPROACH" }}
+        </span>
+        <h2 class="font-grotesk font-medium leading-tight mb-10" style="font-size: clamp(28px, 4vw, 44px);color:#FAF9F6 !important;">
+          {{ section.settings.founder_headline | default: "Built by researchers, not marketers" }}
+        </h2>
+        <div class="editorial-divider hairline w-12 h-px mx-auto mb-10" style="background:#333333;"></div>
+        <div class="leading-relaxed max-w-2xl mx-auto mb-12" style="font-size: clamp(16px, 2vw, 18px); line-height: 1.75; color:#9A9A9A !important;">
+          {{ section.settings.founder_body | default: "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers." | newline_to_br }}
+        </div>
+  
+        <!-- Expert portraits -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:640px;margin:0 auto 48px;" class="cc-expert-grid">
+          <div style="text-align:center;">
+            {%- if section.settings.expert_image_1 != blank -%}
+              <img src="{{ section.settings.expert_image_1 | image_url: width: 200 }}" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- else -%}
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- endif -%}
+            <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Greg Potter, PhD</p>
+          </div>
+          <div style="text-align:center;">
+            {%- if section.settings.expert_image_2 != blank -%}
+              <img src="{{ section.settings.expert_image_2 | image_url: width: 200 }}" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- else -%}
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques, ND" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- endif -%}
+            <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Dr. Jacqueline Jacques, ND</p>
+          </div>
+          <div style="text-align:center;">
+            {%- if section.settings.expert_image_3 != blank -%}
+              <img src="{{ section.settings.expert_image_3 | image_url: width: 200 }}" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- else -%}
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven, PhD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- endif -%}
+            <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Dr. Nicolas Verhoeven, PhD</p>
+          </div>
+          <div style="text-align:center;">
+            {%- if section.settings.expert_image_4 != blank -%}
+              <img src="{{ section.settings.expert_image_4 | image_url: width: 200 }}" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- else -%}
+              <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block;" loading="lazy">
+            {%- endif -%}
+            <p style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:#FAF9F6;margin-bottom:2px;">Chris Pollock, MD</p>
+          </div>
+        </div>
+  
+        {%- if section.settings.founder_link_text != blank and section.settings.founder_link_url != blank -%}
+          {%- assign _furl = section.settings.founder_link_url -%}
+          {%- assign _furl_start = _furl | slice: 0 -%}
+          {%- assign _furl_proto = _furl | slice: 0, 4 -%}
+          {%- if _furl_start != '/' and _furl_start != '#' and _furl_proto != 'http' -%}
+            {%- assign _furl = 'https://' | append: _furl -%}
+          {%- endif -%}
+          <a href="{{ _furl }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#FAF9F6;border:1px solid #FAF9F6;text-decoration:none;transition:all 0.3s ease;background:transparent;">
+            {{ section.settings.founder_link_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    </section>
+</div>
+
+<style>
+@media (max-width: 639px) {
+    .cc-expert-apr26 .cc-expert-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Expert Narrative (apr26)",
+  "tag": "section",
+  "class": "section-cc-expert-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Expert Narrative (apr26)",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}

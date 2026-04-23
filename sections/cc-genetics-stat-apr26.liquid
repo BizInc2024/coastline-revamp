@@ -1,0 +1,85 @@
+{%- comment -%}
+  cc-genetics-stat-apr26 — Genetics Stat
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-genetics-stat-apr26">
+    <section class="v10-genetics reveal" x-intersect.once="$el.classList.add('visible')">
+      <div class="v10-genetics-inner"
+           x-data="{ n: 0, started: false, run() { if (this.started) return; this.started = true; let i = 0; const t = setInterval(() => { i += 1; this.n = i; if (i >= 7) clearInterval(t); }, 140); } }"
+           x-intersect="run()"
+           x-init="setTimeout(() => run(), 100)">
+        <span class="eyebrow">Research Indicates</span>
+        <span class="stat"><span x-text="n">7</span>%</span>
+        <h2>of how long you live is genetic.<br><span class="soft">The other 93% is up to you.</span></h2>
+        <p class="body">
+          Recent twin studies show heritability accounts for only <strong>~7%</strong> of lifespan variation &mdash; far less than the widely cited 25%. How you move, sleep, eat, and what you put in your body does the other <strong>93%</strong> of the work.
+        </p>
+        <p class="source">Ruby et al., Genetics (2018) &middot; Nat. Communications (2018)</p>
+      </div>
+    </section>
+</div>
+
+<style>
+.cc-genetics-stat-apr26 .v10-genetics { padding: 120px 24px; background: #0A0A0A; color: #FAF9F6; text-align: center; position: relative; overflow: hidden; }
+.cc-genetics-stat-apr26 .v10-genetics::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(231,255,86,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+.cc-genetics-stat-apr26 .v10-genetics-inner { position: relative; max-width: 880px; margin: 0 auto; }
+.cc-genetics-stat-apr26 .v10-genetics .eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #9A9A9A; margin-bottom: 32px; display: block;
+    }
+.cc-genetics-stat-apr26 .v10-genetics .stat {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(120px, 22vw, 280px);
+      font-weight: 500;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      color: #E7FF56;
+      display: block;
+      margin-bottom: 24px;
+    }
+.cc-genetics-stat-apr26 .v10-genetics h2 {
+      color: #FAF9F6 !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-size: clamp(26px, 3.4vw, 44px) !important;
+      font-weight: 500 !important;
+      line-height: 1.15 !important;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em !important;
+    }
+.cc-genetics-stat-apr26 .v10-genetics h2 .soft { color: rgba(250,249,246,0.55); }
+.cc-genetics-stat-apr26 .v10-genetics .body {
+      max-width: 640px; margin: 0 auto 28px;
+      font-size: 17px !important; line-height: 1.6 !important; color: #9A9A9A !important;
+    }
+.cc-genetics-stat-apr26 .v10-genetics .body strong { color: #FAF9F6; font-weight: 500; }
+.cc-genetics-stat-apr26 .v10-genetics .source {
+      font-size: 11px !important; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #6B6B6B !important; margin-top: 12px; font-style: normal;
+    }
+@media (max-width: 768px) {
+      .cc-genetics-stat-apr26 .v10-genetics { padding: 80px 24px; }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Genetics Stat (apr26)",
+  "tag": "section",
+  "class": "section-cc-genetics-stat-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Genetics Stat (apr26)",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}

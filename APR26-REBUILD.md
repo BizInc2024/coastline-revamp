@@ -49,24 +49,32 @@
 
 **Source:** `cc-homepage.liquid` (~2500 lines) + `cc-lp-v8.liquid` + `cc-landing-v10.liquid`
 
-### Homepage blocks (inventory — 17 total, in on-page order)
-1. [ ] Hero → `cc-hero-apr26`
-2. [ ] Press logos marquee → `cc-press-apr26`
-3. [ ] Ask Coastline (AI Q&A — keeps existing Vercel endpoint) → `cc-ask-coastline-apr26`
-4. [ ] Genetics Stat (animated 7% / 93%) → `cc-genetics-stat-apr26`
-5. [ ] System (AM + PM 3-step) → `cc-system-apr26`
-6. [ ] UGC — Coastline Community → `cc-ugc-apr26`
-7. [ ] Benefits (5 pillars) → `cc-benefits-apr26` *(mobile carousel)*
-8. [ ] **Expert Narrative** (Greg Potter, Scientific Advisor) → `cc-expert-apr26`
-9. [ ] Reviews / testimonials → `cc-testimonials-apr26` *(rebuild as carousel)*
-10. [ ] Video → `cc-video-apr26` *(revisit — may be cut during length review)*
-11. [x] Pricing CTA → `cc-pricing-apr26` **SHIPPED as snippet** (promote to section)
-12. [ ] Comparison Table (vs AG1/Blueprint/etc.) → `cc-comparison-apr26`
-13. [ ] Do the Math (cost comparison) → `cc-math-apr26`
-14. [ ] Our Story (founder/brand story — distinct from Expert Narrative) → `cc-story-apr26`
-15. [ ] FAQ → `cc-faq-apr26`
-16. [ ] Email Capture → `cc-email-capture-apr26`
-17. [ ] Final CTA → `cc-final-cta-apr26`
+### Homepage blocks (inventory — all 17 extracted as first-draft sections)
+1. [x] Hero → `cc-hero-apr26` *(vanilla CSS, full schema)*
+2. [x] Press logos marquee → `cc-press-apr26`
+3. [x] Ask Coastline (AI Q&A) → `cc-ask-apr26`
+4. [x] Genetics Stat (animated 7% / 93%) → `cc-genetics-stat-apr26`
+5. [x] System (AM + PM 3-step, 3 step blocks wired) → `cc-system-apr26`
+6. [x] UGC — Coastline Community → `cc-ugc-apr26`
+7. [x] Benefits (5 pillar blocks wired) → `cc-benefits-apr26` *(mobile carousel — TODO)*
+8. [x] Expert Narrative (Greg Potter) → `cc-expert-apr26`
+9. [x] Reviews (24 testimonial blocks wired) → `cc-testimonials-apr26` *(carousel rebuild — TODO)*
+10. [x] Video → `cc-video-apr26`
+11. [x] Pricing CTA → `cc-pricing-apr26` *(section wrapper around shared snippet)*
+12. [x] Comparison Table → `cc-comparison-apr26`
+13. [x] Do the Math → `cc-math-apr26`
+14. [x] Our Story → `cc-story-apr26`
+15. [x] FAQ (8 faq blocks wired) → `cc-faq-apr26`
+16. [x] Email Capture → `cc-email-capture-apr26`
+17. [x] Final CTA → `cc-final-cta-apr26`
+
+**Preview:** `/?view=apr26` — composes all 17 above in the live on-page order.
+
+**Known gaps in first-draft extraction (fix per-section in follow-ups):**
+- Schema settings are empty on most sections — copy/images fall through to hardcoded defaults from the monolith. Theme-editor control requires adding `settings` arrays.
+- Some custom CSS may not have been pulled for sections whose classes didn't match `cc-*` / `v10-*` prefix patterns — these will fall back to Tailwind defaults. Verify each on preview.
+- Tailwind scope expanded to include `.cc-apr26` (tailwind.config.js + rebuilt `assets/cc-tailwind.css`).
+- Carousel rebuilds (Benefits, Testimonials) still TODO — first draft keeps original grid.
 
 ### Templates to build
 - [ ] `templates/index.apr26.json` — composed homepage (preview at `/?view=apr26`)

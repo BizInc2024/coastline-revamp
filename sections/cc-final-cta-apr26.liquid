@@ -1,0 +1,45 @@
+{%- comment -%}
+  cc-final-cta-apr26 — Final CTA
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-final-cta-apr26">
+    <section id="cc-home-final-cta" class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background:#062F3D;padding-top:{{ section.settings.section13_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section13_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+      <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+  
+        {%- if section.settings.final_headline != blank -%}
+          <h2 style="font-family:'Space Grotesk',sans-serif !important;font-weight:500 !important;color:#FAF9F6 !important;line-height:1.15 !important;margin-bottom:20px !important;font-size:clamp(28px,5vw,44px) !important;max-width:560px !important;margin-left:auto !important;margin-right:auto !important;">
+            {{ section.settings.final_headline }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.final_subheadline != blank -%}
+          <p style="font-family:'Inter',sans-serif;font-size:17px;line-height:1.7;color:#9A9A9A;margin:0 auto 40px;max-width:440px;">
+            {{ section.settings.final_subheadline }}
+          </p>
+        {%- endif -%}
+  
+        <div>
+          <a href="{{ section.settings.final_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;padding:20px 48px;background:var(--parchment);color:var(--deep-ink);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s ease;">
+            {{ section.settings.final_cta_text | default: "START MY LONGEVITY SYSTEM" }}
+          </a>
+        </div>
+      </div>
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "Final CTA (apr26)",
+  "tag": "section",
+  "class": "section-cc-final-cta-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Final CTA (apr26)",
+      "category": "Coastline"
+    }
+  ]
+}
+{% endschema %}

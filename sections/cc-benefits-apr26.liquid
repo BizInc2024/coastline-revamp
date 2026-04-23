@@ -1,0 +1,185 @@
+{%- comment -%}
+  cc-benefits-apr26 — Benefits
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-benefits-apr26">
+    <section class="bg-parchment" style="padding-top:{{ section.settings.section5_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section5_padding_bottom | default: 80 }}px;">
+      <div class="max-w-7xl mx-auto px-8 lg:px-16">
+        <div class="reveal text-center mb-14" x-intersect.once="$el.classList.add('visible')">
+          <span class="badge-minimal font-inter text-xs font-semibold tracking-wider uppercase text-warm-gray inline-block mb-5">
+            {{ section.settings.benefits_label | default: "THE BENEFITS" }}
+          </span>
+          <h2 class="font-grotesk font-medium text-deep-ink leading-tight" style="font-size: clamp(28px, 4vw, 44px);">
+            {{ section.settings.benefits_headline | default: "What Coastline does for you" }}
+          </h2>
+        </div>
+        <div class="reveal-stagger cc-benefits-grid" style="display:grid;grid-template-columns:1fr;gap:24px;" x-intersect.once="$el.classList.add('visible')">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'pillar' -%}
+              <div {{ block.shopify_attributes }} class="cc-pillar-card" style="border-top:1px solid var(--light-gray);padding-top:24px;">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="cc-pillar-img" style="width:100%;object-fit:cover;margin-bottom:16px;">
+                {%- elsif block.settings.fallback_image_url != blank -%}
+                  <img src="{{ block.settings.fallback_image_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="cc-pillar-img" style="width:100%;object-fit:cover;margin-bottom:16px;">
+                {%- else -%}
+                  <div class="text-forest mb-4">
+                    {%- case block.settings.icon -%}
+                      {%- when 'energy' -%}{{ icon_energy }}
+                      {%- when 'focus' -%}{{ icon_focus }}
+                      {%- when 'recovery' -%}{{ icon_recovery }}
+                      {%- when 'sleep' -%}{{ icon_sleep }}
+                      {%- when 'gut' -%}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12c0-2 1-3 2-3s2 1 2 3-1 3-2 3-2-1-2-3"/><path d="M14 10c1 0 2 1 2 2s-1 2-2 2"/></svg>
+                      {%- when 'body' -%}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M12 8v4m-4 2l4-2 4 2m-8 0v4m8-4v4"/></svg>
+                    {%- endcase -%}
+                  </div>
+                {%- endif -%}
+                <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:500;color:var(--deep-ink);margin-bottom:8px;line-height:1.3;">
+                  {{ block.settings.title }}
+                </h3>
+                <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--warm-gray);line-height:1.65;">
+                  {{ block.settings.description }}
+                </p>
+                {%- assign pillar_key = block.settings.title | downcase | strip -%}
+                {%- capture pillar_detail -%}
+                  {%- case pillar_key -%}
+                    {%- when 'energy' -%}Your cells rely on ATP for everything &mdash; movement, thinking, recovery. Creatine replenishes your ATP reserves while taurine supports mitochondrial efficiency. Together they deliver steady, all-day energy without the crash or jitters of caffeine. The result is a noticeable lift that lasts from morning through evening.
+                    {%- when 'gut health' -%}Your gut microbiome influences immunity, nutrient absorption, mood, and even sleep quality. At the clinical dose of 4g, inulin acts as a prebiotic &mdash; selectively feeding the beneficial bacteria that keep your digestive system running smoothly. A healthier gut means better absorption of every other ingredient in the system.
+                    {%- when 'sleep' -%}Quality sleep is when your body repairs, consolidates memory, and regulates hormones. L-theanine increases calming alpha brain waves to help you fall asleep, while glycine lowers core body temperature &mdash; a key signal for deeper sleep stages. Lithium orotate at micro-dose levels supports overnight neuroprotection and mood regulation.
+                    {%- when 'clarity' -%}Cognitive decline begins decades before symptoms appear. Ergothioneine is actively transported to your brain where it shields neurons from oxidative damage, while CoQ10 ensures your mitochondria produce the energy your brain demands. Lutein and zeaxanthin further protect cognitive processing speed and visual sharpness.
+                    {%- when 'body' -%}Aging affects every structural system &mdash; joints stiffen, muscles weaken, skin loses elasticity. Glucosamine supports cartilage repair during overnight recovery. Magnesium fuels over 300 enzymatic reactions including muscle function. Astaxanthin provides powerful antioxidant protection at the cellular level, supporting skin, joints, and exercise recovery.
+                  {%- endcase -%}
+                {%- endcapture -%}
+                {%- assign pillar_detail_stripped = pillar_detail | strip -%}
+                {%- if pillar_detail_stripped != blank -%}
+                  <div x-data="{ expanded: false }" style="margin-top:8px;">
+                    <button type="button" @click="expanded = !expanded" style="display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;color:var(--warm-gray);padding:0;transition:opacity 0.2s ease;" :style="expanded ? 'color:var(--deep-ink)' : ''">
+                      <span x-text="expanded ? 'Show less' : 'Read more'"></span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:transform 0.3s ease;" :style="expanded ? 'transform:rotate(180deg)' : ''"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="expanded" x-collapse x-cloak>
+                      <p style="font-family:'Inter',sans-serif;font-size:14px;color:var(--warm-gray);line-height:1.65;margin-top:10px;">{{ pillar_detail_stripped }}</p>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+  
+        <!-- Benefits page CTA -->
+        <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;margin-top:48px;" x-intersect.once="$el.classList.add('visible')">
+          <a href="{{ section.settings.benefits_link_url | default: '/pages/benefits' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+            {{ section.settings.benefits_link_text | default: "EXPLORE ALL THE BENEFITS" }}
+          </a>
+        </div>
+      </div>
+    </section>
+</div>
+
+<style>
+.cc-benefits-apr26 .cc-pillar-img {
+    height: 160px !important;
+    aspect-ratio: auto !important;
+  }
+@media (min-width: 640px) {
+    .cc-benefits-apr26 .cc-benefits-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .cc-benefits-apr26 .cc-pillar-img {
+      height: 180px !important;
+    }
+  }
+@media (min-width: 768px) {
+    .cc-benefits-apr26 .cc-benefits-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+@media (min-width: 1024px) {
+    .cc-benefits-apr26 .cc-benefits-grid {
+      grid-template-columns: repeat(5, 1fr) !important;
+    }
+    .cc-benefits-apr26 .cc-pillar-img {
+      height: 200px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Benefits (apr26)",
+  "tag": "section",
+  "class": "section-cc-benefits-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Benefits (apr26)",
+      "category": "Coastline"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Benefit Pillar",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Benefit image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Fallback image URL",
+          "info": "Used when no image is selected above."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon (fallback if no image)",
+          "options": [
+            {
+              "value": "energy",
+              "label": "Lightning bolt (Energy)"
+            },
+            {
+              "value": "focus",
+              "label": "Target (Focus)"
+            },
+            {
+              "value": "recovery",
+              "label": "Cycle arrows (Recovery)"
+            },
+            {
+              "value": "sleep",
+              "label": "Moon (Sleep)"
+            },
+            {
+              "value": "gut",
+              "label": "Gut (Digestion)"
+            },
+            {
+              "value": "body",
+              "label": "Body (Physical)"
+            }
+          ],
+          "default": "energy"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Pillar title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Pillar description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5
+}
+{% endschema %}

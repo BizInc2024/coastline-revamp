@@ -18,6 +18,21 @@
   <!-- Alpine x-cloak: hide elements until Alpine initializes -->
   <style>[x-cloak] { display: none !important; }</style>
 
+  <!-- Scroll-reveal (shared across all cc-* sections) -->
+  <style>
+    .cc-apr26 .reveal,
+    .cc-homepage .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .cc-apr26 .reveal.visible,
+    .cc-homepage .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
   <!-- Loading state for add-to-cart buttons -->
   <style>
     [is="product-form"] button[type="submit"][aria-busy="true"] .btn-text {

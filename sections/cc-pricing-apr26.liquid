@@ -1,0 +1,40 @@
+{%- comment -%}
+  cc-pricing-apr26 — thin wrapper around the cc-pricing-apr26 snippet.
+  Keeps the snippet as the single source of truth (shared with homepage
+  monolith + v8 + v10) while letting the apr26 JSON template compose it
+  as a real section.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+{% render 'cc-pricing-apr26',
+    anchor: section.settings.anchor,
+    form_id: section.settings.form_id,
+    pad_top: section.settings.pad_top,
+    pad_bottom: section.settings.pad_bottom,
+    label: section.settings.label,
+    headline: section.settings.headline,
+    trust_1: section.settings.trust_1,
+    trust_2: section.settings.trust_2
+%}
+
+{% schema %}
+{
+  "name": "Pricing (apr26)",
+  "tag": "section",
+  "class": "section-cc-pricing-apr26",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Section anchor id", "default": "cc-home-pricing" },
+    { "type": "text", "id": "form_id", "label": "Cart form id", "default": "cc-home-cart-form" },
+    { "type": "range", "id": "pad_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "pad_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "text", "id": "label", "label": "Eyebrow label (optional)" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Start Your System" },
+    { "type": "text", "id": "trust_1", "label": "Trust line 1", "default": "Free shipping. Cancel anytime." },
+    { "type": "text", "id": "trust_2", "label": "Trust line 2", "default": "60-day money-back guarantee." }
+  ],
+  "presets": [
+    { "name": "Pricing (apr26)", "category": "Coastline" }
+  ]
+}
+{% endschema %}

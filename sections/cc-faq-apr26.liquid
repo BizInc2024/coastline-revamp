@@ -1,0 +1,83 @@
+{%- comment -%}
+  cc-faq-apr26 — FAQ
+  Extracted from cc-homepage.liquid (Apr 26 rebuild, vanilla re-scope)
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-faq-apr26">
+    <section id="cc-home-faq" class="bg-parchment" style="padding-top:{{ section.settings.section12_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section12_padding_bottom | default: 80 }}px;">
+      <div class="max-w-3xl mx-auto px-8 lg:px-16">
+  
+        {%- if section.settings.faq_label != blank -%}
+          <p class="badge-minimal reveal text-center tracking-widest text-xs text-warm-gray mb-4" x-intersect.once="$el.classList.add('visible')">
+            {{ section.settings.faq_label }}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.faq_headline != blank -%}
+          <h2 class="reveal text-center font-grotesk font-medium text-deep-ink mb-12" style="font-size:clamp(28px,4vw,40px);" x-intersect.once="$el.classList.add('visible')">
+            {{ section.settings.faq_headline }}
+          </h2>
+        {%- endif -%}
+  
+        <div x-data="{ faqOpen: null }" class="reveal w-full" x-intersect.once="$el.classList.add('visible')">
+          {%- assign faq_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq' -%}
+              {%- assign faq_index = faq_index | plus: 1 -%}
+              <div {{ block.shopify_attributes }} class="hairline border-b border-light-gray">
+                <button type="button" @click="faqOpen === {{ faq_index }} ? faqOpen = null : faqOpen = {{ faq_index }}" class="w-full flex items-center justify-between gap-4 py-5 bg-transparent border-0 cursor-pointer font-grotesk font-medium text-deep-ink text-left leading-snug" style="font-size:clamp(16px,1.8vw,18px);" :aria-expanded="faqOpen === {{ faq_index }}">
+                  <span>{{ block.settings.question }}</span>
+                  <span class="flex-shrink-0 text-2xl font-light leading-none text-warm-gray transition-transform duration-300" :style="faqOpen === {{ faq_index }} ? 'transform:rotate(45deg)' : ''">+</span>
+                </button>
+                <div x-show="faqOpen === {{ faq_index }}" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak class="pb-5 text-[15px] leading-relaxed text-warm-gray">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+  
+        <!-- Link to full FAQ page -->
+        <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;margin-top:40px;" x-intersect.once="$el.classList.add('visible')">
+          <a href="{{ section.settings.faq_page_link | default: '/pages/faq' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+            {{ section.settings.faq_button_text | default: "VIEW ALL FAQS" }}
+          </a>
+        </div>
+      </div>
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ (apr26)",
+  "tag": "section",
+  "class": "section-cc-faq-apr26",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FAQ (apr26)",
+      "category": "Coastline"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20
+}
+{% endschema %}
