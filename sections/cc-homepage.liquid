@@ -1214,9 +1214,33 @@
   ============================================================ {%- endcomment -%}
   <section id="cc-home-pricing" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#E7FF56;padding-top:{{ section.settings.section10_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section10_padding_bottom | default: 80 }}px;">
     <div class="cc-pricing-layout" style="max-width:1100px;margin:0 auto;padding:0 24px;">
-      <!-- Product image column (desktop: left, mobile: hidden) -->
-      <div class="cc-pricing-image">
-        <img src="{{ 'cc-welcome-box-vertical.png' | asset_url }}" alt="Coastline Welcome Pack — Long Live Life" style="width:100%;height:auto;object-fit:contain;" loading="lazy">
+      <!-- Product image column: square hero + thumbnail carousel -->
+      <div class="cc-pricing-image" x-data="{
+        active: 0,
+        images: [
+          { src: '{{ 'cc-welcome-box-vertical.png' | asset_url }}', alt: 'Coastline Welcome Pack', fit: 'contain' },
+          { src: '{{ 'cc-sell-mb-card.jpg' | asset_url }}', alt: 'Morning Blend ingredients', fit: 'cover' },
+          { src: '{{ 'cc-sell-sg-card.jpg' | asset_url }}', alt: 'Softgels ingredients', fit: 'cover' },
+          { src: '{{ 'cc-sell-ec-card.jpg' | asset_url }}', alt: 'Evening Capsules ingredients', fit: 'cover' },
+          { src: '{{ 'cc-sell-am-lifestyle.jpg' | asset_url }}', alt: 'AM routine', fit: 'cover' },
+          { src: '{{ 'cc-sell-pm-lifestyle.jpg' | asset_url }}', alt: 'PM routine', fit: 'cover' },
+          { src: '{{ 'cc-sell-ugc-brooke.jpg' | asset_url }}', alt: 'Customer review', fit: 'cover' },
+          { src: '{{ 'cc-sell-greg-quote.jpg' | asset_url }}', alt: 'Dr. Greg Potter, Scientific Advisor', fit: 'cover' },
+          { src: '{{ 'cc-sell-benefits.jpg' | asset_url }}', alt: 'Short and long-term benefits', fit: 'cover' },
+          { src: '{{ 'cc-sell-standards.jpg' | asset_url }}', alt: 'Safest standards', fit: 'cover' },
+          { src: '{{ 'cc-sell-clinical-proof.jpg' | asset_url }}', alt: 'Clinical proof', fit: 'cover' }
+        ]
+      }">
+        <div class="cc-sell-hero">
+          <img :src="images[active].src" :alt="images[active].alt" :style="'width:100%;height:100%;object-fit:'+images[active].fit+';display:block;'" loading="lazy">
+        </div>
+        <div class="cc-sell-thumbs">
+          <template x-for="(img, i) in images" :key="i">
+            <button type="button" @click="active = i" :aria-pressed="active === i ? 'true' : 'false'" :class="active === i ? 'cc-thumb is-active' : 'cc-thumb'">
+              <img :src="img.src" :alt="img.alt" :style="'width:100%;height:100%;object-fit:'+img.fit+';display:block;'" loading="lazy">
+            </button>
+          </template>
+        </div>
       </div>
 
       <!-- Form column -->
@@ -1706,10 +1730,39 @@
   .cc-homepage .cc-pricing-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 40px;
   }
   .cc-homepage .cc-pricing-image {
-    display: none;
+    display: block;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cc-homepage .cc-sell-hero {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background: #FAF9F6;
+    overflow: hidden;
+    border: 1px solid rgba(6, 47, 61, 0.15);
+  }
+  .cc-homepage .cc-sell-thumbs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .cc-homepage .cc-thumb {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(6, 47, 61, 0.15);
+    background: #FAF9F6;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .cc-homepage .cc-thumb:hover { opacity: 0.8; }
+  .cc-homepage .cc-thumb.is-active {
+    border: 2px solid #0A0A0A;
   }
   @media (min-width: 768px) {
     .cc-homepage .cc-pricing-layout {
@@ -1718,11 +1771,7 @@
       align-items: center;
     }
     .cc-homepage .cc-pricing-image {
-      display: block;
-      overflow: hidden;
-    }
-    .cc-homepage .cc-pricing-image img {
-      border-radius: 0;
+      max-width: none;
     }
   }
 
