@@ -18,16 +18,17 @@
   <!-- Alpine x-cloak: hide elements until Alpine initializes -->
   <style>[x-cloak] { display: none !important; }</style>
 
-  <!-- Scroll-reveal (shared across all cc-* sections) -->
+  <!-- Scroll-reveal (apr26 extracted sections only). Do NOT add
+       .cc-homepage here: the monolith's reveal elements have no
+       x-data ancestor, so x-intersect never fires and sections get
+       stuck at opacity:0. -->
   <style>
-    .cc-apr26 .reveal,
-    .cc-homepage .reveal {
+    .cc-apr26 .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .cc-apr26 .reveal.visible,
-    .cc-homepage .reveal.visible {
+    .cc-apr26 .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
