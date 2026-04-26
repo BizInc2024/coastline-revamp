@@ -11,7 +11,7 @@
         <p class="badge-minimal text-center mb-3 tracking-widest text-xs reveal" x-intersect.once="$el.classList.add('visible')">
           {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
         </p>
-        <h2 class="reveal text-center text-deep-ink mb-10 font-grotesk font-medium leading-tight" style="font-size:clamp(1.75rem,4vw,2.75rem);" x-intersect.once="$el.classList.add('visible')">
+        <h2 class="reveal text-center text-deep-ink mb-10 font-grotesk font-medium leading-tight" style="font-size:clamp(1.375rem,4vw,2.75rem);" x-intersect.once="$el.classList.add('visible')">
           {{ section.settings.reviews_headline | default: "2,000+ five-star reviews" }}
         </h2>
   
@@ -48,7 +48,7 @@
             {%- endfor -%}
           </div>
   
-          <div style="display:grid;gap:24px;" class="md:!grid-cols-2 lg:!grid-cols-3" x-ref="reviewGrid" x-effect="resetCounters()">
+          <div class="cc-review-grid" x-ref="reviewGrid" x-effect="resetCounters()">
             {%- assign energy_idx = 0 -%}
             {%- assign focus_idx = 0 -%}
             {%- assign trust_idx = 0 -%}
@@ -103,7 +103,7 @@
 </div>
 
 <style>
-.cc-testimonials-apr26 .cc-review-tab {
+  .cc-testimonials-apr26 .cc-review-tab {
     padding: 8px 20px !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 0.8rem !important;
@@ -113,6 +113,45 @@
     border-radius: 40px !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
+  }
+  /* Mobile: horizontal scroll-snap carousel */
+  .cc-testimonials-apr26 .cc-review-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 24px;
+    padding: 4px 24px 16px;
+    margin: 0 -2rem;
+    scrollbar-width: none;
+  }
+  .cc-testimonials-apr26 .cc-review-grid::-webkit-scrollbar { display: none; }
+  .cc-testimonials-apr26 .cc-review-grid > div {
+    flex: 0 0 80%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+  /* Tablet+: revert to grid */
+  @media (min-width: 768px) {
+    .cc-testimonials-apr26 .cc-review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      overflow: visible;
+      scroll-snap-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cc-testimonials-apr26 .cc-review-grid > div {
+      flex: initial;
+      max-width: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .cc-testimonials-apr26 .cc-review-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 </style>
 

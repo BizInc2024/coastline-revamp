@@ -12,11 +12,11 @@
           <span class="badge-minimal font-inter text-xs font-semibold tracking-wider uppercase text-warm-gray inline-block mb-5">
             {{ section.settings.benefits_label | default: "THE BENEFITS" }}
           </span>
-          <h2 class="font-grotesk font-medium text-deep-ink leading-tight" style="font-size: clamp(28px, 4vw, 44px);">
+          <h2 class="font-grotesk font-medium text-deep-ink leading-tight" style="font-size: clamp(22px, 4vw, 44px);">
             {{ section.settings.benefits_headline | default: "What Coastline does for you" }}
           </h2>
         </div>
-        <div class="reveal-stagger cc-benefits-grid" style="display:grid;grid-template-columns:1fr;gap:24px;" x-intersect.once="$el.classList.add('visible')">
+        <div class="reveal-stagger cc-benefits-grid" x-intersect.once="$el.classList.add('visible')">
           {%- for block in section.blocks -%}
             {%- if block.type == 'pillar' -%}
               <div {{ block.shopify_attributes }} class="cc-pillar-card" style="border-top:1px solid var(--light-gray);padding-top:24px;">
@@ -80,24 +80,48 @@
 </div>
 
 <style>
-.cc-benefits-apr26 .cc-pillar-img {
+  /* Mobile: horizontal scroll-snap carousel */
+  .cc-benefits-apr26 .cc-benefits-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 24px;
+    padding: 4px 24px 16px;
+    margin: 0 -2rem;
+    scrollbar-width: none;
+  }
+  .cc-benefits-apr26 .cc-benefits-grid::-webkit-scrollbar { display: none; }
+  .cc-benefits-apr26 .cc-pillar-card {
+    flex: 0 0 78%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+  .cc-benefits-apr26 .cc-pillar-img {
     height: 160px !important;
     aspect-ratio: auto !important;
   }
-@media (min-width: 640px) {
+  /* Tablet+: revert to grid */
+  @media (min-width: 768px) {
     .cc-benefits-apr26 .cc-benefits-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px;
+      overflow: visible;
+      scroll-snap-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .cc-benefits-apr26 .cc-pillar-card {
+      flex: initial;
+      max-width: none;
     }
     .cc-benefits-apr26 .cc-pillar-img {
       height: 180px !important;
     }
   }
-@media (min-width: 768px) {
-    .cc-benefits-apr26 .cc-benefits-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
-  }
-@media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     .cc-benefits-apr26 .cc-benefits-grid {
       grid-template-columns: repeat(5, 1fr) !important;
     }
