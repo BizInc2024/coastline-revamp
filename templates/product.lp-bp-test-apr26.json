@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "TEST",
+        "pricing_headline": "Blueprint sync diagnostic",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 80,
+        "pad_bottom": 80
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pricing",
+    "final-cta"
+  ]
+}
