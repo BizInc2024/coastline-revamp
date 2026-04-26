@@ -500,7 +500,6 @@
   "order": [
     "cc-hero-apr26",
     "cc-press-apr26",
-    "cc-ask-apr26",
     "cc-genetics-stat-apr26",
     "cc-system-apr26",
     "cc-ugc-apr26",
@@ -512,6 +511,7 @@
     "cc-comparison-apr26",
     "cc-math-apr26",
     "cc-story-apr26",
+    "cc-ask-apr26",
     "cc-faq-apr26",
     "cc-email-capture-apr26",
     "cc-final-cta-apr26"
