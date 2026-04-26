@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "narrative": {
+      "type": "cc-lp-v10-apr26",
+      "settings": {}
+    },
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "READY TO START?",
+        "pricing_headline": "Start Your System",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 80,
+        "pad_bottom": 80
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "final_headline": "The future of your health starts today. Don't wait.",
+        "final_subheadline": "13 science-backed ingredients in one simple system -- from just $3.30 a day.",
+        "final_cta_text": "START MY LONGEVITY SYSTEM",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
+      }
+    },
+    "email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    }
+  },
+  "order": [
+    "narrative",
+    "pricing",
+    "final-cta",
+    "email"
+  ]
+}
