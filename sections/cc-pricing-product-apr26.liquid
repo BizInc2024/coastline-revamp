@@ -1,0 +1,500 @@
+{%- comment -%}
+  cc-pricing-product-apr26 — pricing section for product templates
+
+  Sister to sections/cc-pricing-apr26.liquid + snippets/cc-pricing-apr26.liquid.
+  Functionally identical UX, but variant IDs come from `product.variants` (Shopify-native)
+  instead of hardcoded numbers. Selling plan IDs stay (ReCharge plans, not Shopify variants).
+
+  Used by: templates/product.lp-*-apr26.json (AG1, Blueprint, V8, V10)
+  Cart-add flow: native <form is="product-form"> → POST /cart/add → ReCharge attaches plan.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+{%- liquid
+  assign anchor = section.settings.anchor | default: 'pricing-product-apr26'
+  assign form_id = anchor | append: '-cart-form'
+  assign pad_top = section.settings.pad_top | default: 80
+  assign pad_bottom = section.settings.pad_bottom | default: 80
+  assign label = section.settings.pricing_label
+  assign headline = section.settings.pricing_headline | default: 'Start Your System'
+  assign trust_1 = section.settings.pricing_trust_1 | default: 'Free shipping. Cancel anytime.'
+  assign trust_2 = section.settings.pricing_trust_2 | default: '60-day money-back guarantee.'
+
+  # Defensive variant lookup — match by title first, fall back to position.
+  # Welcome-pack product has 2 variants: Unflavored Blend / Coastal Lemonade.
+  assign unflavored_id = nil
+  assign lemonade_id = nil
+  for v in product.variants
+    assign vt = v.title | downcase
+    if vt contains 'unflavored'
+      assign unflavored_id = v.id
+    elsif vt contains 'lemonade' or vt contains 'coastal'
+      assign lemonade_id = v.id
+    endif
+  endfor
+  if unflavored_id == nil and product.variants.size > 0
+    assign unflavored_id = product.variants[0].id
+  endif
+  if lemonade_id == nil and product.variants.size > 1
+    assign lemonade_id = product.variants[1].id
+  endif
+  # Final fallback (welcome-pack hardcoded IDs) in case template renders outside product ctx
+  if unflavored_id == nil
+    assign unflavored_id = 42179764453445
+  endif
+  if lemonade_id == nil
+    assign lemonade_id = 42179764486213
+  endif
+-%}
+
+<div class="cc-apr26 cc-pricing-product-apr26-wrapper">
+<section id="{{ anchor }}" class="cc-pricing-product-apr26" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#E7FF56;padding-top:{{ pad_top }}px;padding-bottom:{{ pad_bottom }}px;">
+  <div class="cc-pricing-layout" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+
+    {%- comment -%} ── Product image column: square hero + thumbnail carousel ── {%- endcomment -%}
+    <div class="cc-pricing-image" x-data="{
+      active: 0,
+      images: [
+        { src: '{{ 'cc-welcome-box-vertical.png' | asset_url }}', alt: 'Coastline Welcome Pack', fit: 'cover' },
+        { src: '{{ 'cc-sell-mb-card.jpg' | asset_url }}', alt: 'Morning Blend ingredients', fit: 'cover' },
+        { src: '{{ 'cc-sell-sg-card.jpg' | asset_url }}', alt: 'Softgels ingredients', fit: 'cover' },
+        { src: '{{ 'cc-sell-ec-card.jpg' | asset_url }}', alt: 'Evening Capsules ingredients', fit: 'cover' },
+        { src: '{{ 'cc-sell-am-lifestyle.jpg' | asset_url }}', alt: 'AM routine', fit: 'cover' },
+        { src: '{{ 'cc-sell-pm-lifestyle.jpg' | asset_url }}', alt: 'PM routine', fit: 'cover' },
+        { src: '{{ 'cc-sell-ugc-brooke.jpg' | asset_url }}', alt: 'Customer review', fit: 'cover' },
+        { src: '{{ 'cc-sell-greg-quote.jpg' | asset_url }}', alt: 'Dr. Greg Potter, Scientific Advisor', fit: 'cover' },
+        { src: '{{ 'cc-sell-benefits.jpg' | asset_url }}', alt: 'Short and long-term benefits', fit: 'cover' },
+        { src: '{{ 'cc-sell-standards.jpg' | asset_url }}', alt: 'Safest standards', fit: 'cover' },
+        { src: '{{ 'cc-sell-clinical-proof.jpg' | asset_url }}', alt: 'Clinical proof', fit: 'cover' },
+        { src: '{{ 'cc-sell-guarantee.jpg' | asset_url }}', alt: '60-day money-back guarantee', fit: 'cover' }
+      ]
+    }">
+      <div class="cc-sell-hero">
+        <img :src="images[active].src" :alt="images[active].alt" :style="'width:100%;height:100%;object-fit:'+images[active].fit+';display:block;'" loading="lazy">
+      </div>
+      <div class="cc-sell-thumbs">
+        <template x-for="(img, i) in images" :key="i">
+          <button type="button" @click="active = i" :aria-pressed="active === i ? 'true' : 'false'" :class="active === i ? 'cc-thumb is-active' : 'cc-thumb'">
+            <img :src="img.src" :alt="img.alt" :style="'width:100%;height:100%;object-fit:'+img.fit+';display:block;'" loading="lazy">
+          </button>
+        </template>
+      </div>
+    </div>
+
+    {%- comment -%} ── Form column ── {%- endcomment -%}
+    <div
+      x-data="{
+        flavor: 'unflavored',
+        plan: 'monthly',
+        variants: { unflavored: {{ unflavored_id }}, lemonade: {{ lemonade_id }} },
+        plans: {
+          monthly:   { id: 1862631493, price: '$99/mo',  label: 'Monthly',  save: 'Save 34%' },
+          bimonthly: { id: 1892712517, price: '$120/mo', label: '2-Month',  save: 'Save 20%' },
+          onetime:   { id: null,       price: '$150',    label: 'One-time', save: '' }
+        },
+        loading: false,
+        get variantId() { return this.variants[this.flavor]; },
+        get sellingPlanId() { return this.plans[this.plan].id; },
+        get buttonText() { return 'ADD TO CART - ' + this.plans[this.plan].price; }
+      }"
+      class="cc-pricing-form" style="text-align:center;">
+
+      {%- if label != blank -%}
+        <span class="cc-pricing-eyebrow reveal" x-intersect.once="$el.classList.add('visible')">{{ label }}</span>
+      {%- endif -%}
+      {%- if headline != blank -%}
+        <h2 class="reveal cc-pricing-headline" x-intersect.once="$el.classList.add('visible')">{{ headline }}</h2>
+      {%- endif -%}
+      <p class="cc-pricing-sub">30-day supply of Morning Blend, Softgels, and Evening Capsules</p>
+      <p class="cc-pricing-sub cc-pricing-bonus">+ Glass Shaker WELCOME GIFT</p>
+
+      <div class="reveal cc-flavor-row" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+        <p class="cc-selector-label">Choose your flavor</p>
+        <div class="cc-flavor-buttons">
+          <button type="button" @click="flavor = 'unflavored'" :class="flavor === 'unflavored' ? 'cc-flavor-unflavored-active' : 'cc-flavor-unflavored-idle'" class="cc-flavor-btn">Unflavored Blend</button>
+          <button type="button" @click="flavor = 'lemonade'" :class="flavor === 'lemonade' ? 'cc-flavor-lemonade-active' : 'cc-flavor-lemonade-idle'" class="cc-flavor-btn">Coastal Lemonade</button>
+        </div>
+      </div>
+
+      <div class="reveal cc-plan-row" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+        <p class="cc-selector-label">Select your plan</p>
+
+        <div @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;position:relative;">
+          <span class="cc-plan-flag">LIMITED TIME OFFER</span>
+          <div class="cc-plan-body">
+            <div>
+              <span class="cc-plan-label">Monthly subscription</span>
+              <span class="cc-plan-save">Save 34%</span>
+            </div>
+            <div class="cc-plan-price-col">
+              <span class="cc-plan-price">$99</span>
+              <span class="cc-plan-cadence">/month</span>
+            </div>
+          </div>
+        </div>
+
+        <div @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
+          <div class="cc-plan-body">
+            <div>
+              <span class="cc-plan-label">Every 2 months</span>
+              <span class="cc-plan-save">Save 20%</span>
+            </div>
+            <div class="cc-plan-price-col">
+              <span class="cc-plan-price">$120</span>
+              <span class="cc-plan-cadence">/month</span>
+            </div>
+          </div>
+        </div>
+
+        <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card">
+          <div class="cc-plan-body">
+            <div>
+              <span class="cc-plan-label">One-time purchase</span>
+              <span class="cc-plan-save cc-plan-save--muted">No subscription</span>
+            </div>
+            <div class="cc-plan-price-col">
+              <span class="cc-plan-price">$150</span>
+              <span class="cc-plan-cadence">one-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal cc-atc-wrap" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+        <form id="{{ form_id }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
+          <input type="hidden" name="id" :value="variantId" />
+          <template x-if="sellingPlanId">
+            <input type="hidden" name="selling_plan" :value="sellingPlanId" />
+          </template>
+          <input type="hidden" name="quantity" value="1" />
+          <button type="submit" class="cc-atc-btn">
+            <span class="btn-text"><span x-text="buttonText"></span></span>
+          </button>
+        </form>
+      </div>
+
+      <div class="reveal cc-trust-lines" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+        <p>{{ trust_1 }}</p>
+        <p>{{ trust_2 }}</p>
+      </div>
+
+      <div class="reveal cc-trust-meta" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+        <p>VEGAN, SUGAR-FREE, CAFFEINE-FREE</p>
+      </div>
+
+      <div class="reveal cc-trust-badges" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+        <div class="cc-trust-badge"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" loading="lazy"></div>
+        <div class="cc-trust-badge"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" loading="lazy"></div>
+        <div class="cc-trust-badge cc-trust-badge--large"><img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" loading="lazy"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>
+
+<style>
+  .cc-pricing-product-apr26 .cc-pricing-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .cc-pricing-product-apr26 .cc-pricing-image {
+    display: block;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cc-pricing-product-apr26 .cc-sell-hero {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background: #FAF9F6;
+    overflow: hidden;
+    border: 1px solid rgba(6, 47, 61, 0.15);
+  }
+  .cc-pricing-product-apr26 .cc-sell-thumbs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .cc-pricing-product-apr26 .cc-thumb {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(6, 47, 61, 0.15);
+    background: #FAF9F6;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .cc-pricing-product-apr26 .cc-thumb:hover { opacity: 0.8; }
+  .cc-pricing-product-apr26 .cc-thumb.is-active { border: 2px solid #0A0A0A; }
+  @media (min-width: 768px) {
+    .cc-pricing-product-apr26 .cc-pricing-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .cc-pricing-product-apr26 .cc-pricing-image { max-width: none; }
+  }
+
+  .cc-pricing-product-apr26 .cc-pricing-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .cc-pricing-product-apr26 .cc-pricing-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: #0A0A0A;
+    font-size: clamp(1.25rem, 3.2vw, 2.4rem);
+    line-height: 1.2;
+    margin: 16px 0;
+  }
+  .cc-pricing-product-apr26 .cc-pricing-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #4A4A4A;
+    line-height: 1.6;
+    margin: 0 auto 8px;
+    max-width: 380px;
+  }
+  .cc-pricing-product-apr26 .cc-pricing-bonus {
+    color: #0A0A0A;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+
+  .cc-pricing-product-apr26 .cc-flavor-row { margin-bottom: 40px; }
+  .cc-pricing-product-apr26 .cc-plan-row { margin-bottom: 32px; text-align: left; }
+  .cc-pricing-product-apr26 .cc-selector-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    font-weight: 500;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .cc-pricing-product-apr26 .cc-flavor-buttons { display: inline-flex; gap: 10px; }
+
+  .cc-pricing-product-apr26 .cc-flavor-btn {
+    padding: 14px 28px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+    min-width: 140px !important;
+  }
+  .cc-pricing-product-apr26 .cc-flavor-unflavored-active {
+    background: #EDE8DF !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-pricing-product-apr26 .cc-flavor-unflavored-idle {
+    background: #EDE8DF !important;
+    color: #6B6B6B !important;
+    border: 1px solid #D5D0C8 !important;
+  }
+  .cc-pricing-product-apr26 .cc-flavor-lemonade-active {
+    background: #F5E0E4 !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-pricing-product-apr26 .cc-flavor-lemonade-idle {
+    background: #F5E0E4 !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E0CDD1 !important;
+  }
+
+  .cc-pricing-product-apr26 .cc-plan-card {
+    border: 2px solid !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .cc-pricing-product-apr26 .cc-plan-active {
+    border-color: #1A3A2F !important;
+    background: #F4F7F6 !important;
+  }
+  .cc-pricing-product-apr26 .cc-plan-idle {
+    border-color: #CCCCCC !important;
+    background: #FFFFFF !important;
+  }
+  .cc-pricing-product-apr26 .cc-plan-flag {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #0A0A0A;
+    color: #E7FF56;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+  }
+  .cc-pricing-product-apr26 .cc-plan-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .cc-pricing-product-apr26 .cc-plan-label {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: #0A0A0A;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .cc-pricing-product-apr26 .cc-plan-save {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #1A3A2F;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .cc-pricing-product-apr26 .cc-plan-save--muted {
+    color: #6B6B6B;
+    font-weight: 400;
+  }
+  .cc-pricing-product-apr26 .cc-plan-price-col {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .cc-pricing-product-apr26 .cc-plan-price {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #0A0A0A;
+    font-size: 24px;
+    line-height: 1;
+  }
+  .cc-pricing-product-apr26 .cc-plan-cadence {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #6B6B6B;
+    margin-top: 2px;
+  }
+
+  .cc-pricing-product-apr26 .cc-atc-wrap { margin-bottom: 20px; }
+  .cc-pricing-product-apr26 .cc-atc-btn {
+    display: block;
+    width: 100%;
+    background: #0A0A0A;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 20px 48px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  .cc-pricing-product-apr26 .cc-atc-btn:hover { opacity: 0.85; }
+  .cc-pricing-product-apr26 .cc-atc-btn[aria-busy="true"] { opacity: 0.6; cursor: wait; }
+
+  .cc-pricing-product-apr26 .cc-trust-lines {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .cc-pricing-product-apr26 .cc-trust-lines p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6B6B6B;
+    margin: 0 0 4px;
+  }
+  .cc-pricing-product-apr26 .cc-trust-meta {
+    text-align: center;
+  }
+  .cc-pricing-product-apr26 .cc-trust-meta p {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    opacity: 0.7;
+    margin: 0;
+  }
+  .cc-pricing-product-apr26 .cc-trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .cc-pricing-product-apr26 .cc-trust-badge {
+    background: white;
+    border-radius: 50%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cc-pricing-product-apr26 .cc-trust-badge--large {
+    width: 68px;
+    height: 68px;
+    overflow: hidden;
+  }
+  .cc-pricing-product-apr26 .cc-trust-badge img {
+    height: 52px;
+    object-fit: contain;
+  }
+  .cc-pricing-product-apr26 .cc-trust-badge--large img {
+    height: 72px;
+  }
+
+  .cc-pricing-product-apr26 .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .cc-pricing-product-apr26 .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Pricing — product (apr26)",
+  "tag": "section",
+  "class": "section-cc-pricing-product-apr26",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Section anchor id", "default": "pricing-product-apr26" },
+    { "type": "text", "id": "pricing_label", "label": "Eyebrow label" },
+    { "type": "text", "id": "pricing_headline", "label": "Headline", "default": "Start Your System" },
+    { "type": "text", "id": "pricing_trust_1", "label": "Trust line 1", "default": "Free shipping. Cancel anytime." },
+    { "type": "text", "id": "pricing_trust_2", "label": "Trust line 2", "default": "60-day money-back guarantee." },
+    { "type": "range", "id": "pad_top", "label": "Padding top (px)", "min": 0, "max": 200, "step": 4, "default": 80 },
+    { "type": "range", "id": "pad_bottom", "label": "Padding bottom (px)", "min": 0, "max": 200, "step": 4, "default": 80 }
+  ],
+  "presets": [
+    {
+      "name": "Pricing — product (apr26)",
+      "category": "Coastline"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  }
+}
+{% endschema %}
