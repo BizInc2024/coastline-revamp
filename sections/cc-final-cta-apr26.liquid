@@ -9,14 +9,16 @@
     <section id="cc-home-final-cta" class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background:#062F3D;padding-top:{{ section.settings.section13_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section13_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
       <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
   
-        {%- if section.settings.final_headline != blank -%}
+        {%- assign final_headline = section.settings.final_headline | default: "The future of your health starts today. Don't wait." -%}
+        {%- assign final_subheadline = section.settings.final_subheadline | default: "13 science-backed ingredients in one simple system -- from just $3.30 a day." -%}
+        {%- if final_headline != blank -%}
           <h2 style="font-family:'Space Grotesk',sans-serif !important;font-weight:500 !important;color:#FAF9F6 !important;line-height:1.15 !important;margin-bottom:20px !important;font-size:clamp(28px,5vw,44px) !important;max-width:560px !important;margin-left:auto !important;margin-right:auto !important;">
-            {{ section.settings.final_headline }}
+            {{ final_headline }}
           </h2>
         {%- endif -%}
-        {%- if section.settings.final_subheadline != blank -%}
+        {%- if final_subheadline != blank -%}
           <p style="font-family:'Inter',sans-serif;font-size:17px;line-height:1.7;color:#9A9A9A;margin:0 auto 40px;max-width:440px;">
-            {{ section.settings.final_subheadline }}
+            {{ final_subheadline }}
           </p>
         {%- endif -%}
   
@@ -34,7 +36,14 @@
   "name": "Final CTA (apr26)",
   "tag": "section",
   "class": "section-cc-final-cta-apr26",
-  "settings": [],
+  "settings": [
+    { "type": "text", "id": "final_headline", "label": "Headline", "default": "The future of your health starts today. Don't wait." },
+    { "type": "text", "id": "final_subheadline", "label": "Subheadline", "default": "13 science-backed ingredients in one simple system -- from just $3.30 a day." },
+    { "type": "text", "id": "final_cta_text", "label": "Button text", "default": "START MY LONGEVITY SYSTEM" },
+    { "type": "url", "id": "final_cta_link", "label": "Button link" },
+    { "type": "range", "id": "section13_padding_top", "label": "Padding top (px)", "min": 0, "max": 200, "step": 4, "default": 80 },
+    { "type": "range", "id": "section13_padding_bottom", "label": "Padding bottom (px)", "min": 0, "max": 200, "step": 4, "default": 80 }
+  ],
   "presets": [
     {
       "name": "Final CTA (apr26)",

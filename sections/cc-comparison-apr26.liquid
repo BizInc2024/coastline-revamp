@@ -9,12 +9,14 @@
     <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section9_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section9_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
       <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
   
-        {%- if section.settings.comparison_label != blank -%}
-          <span class="badge-minimal">{{ section.settings.comparison_label }}</span>
+        {%- assign comparison_label = section.settings.comparison_label | default: "HOW COASTLINE COMPARES" -%}
+        {%- assign comparison_headline = section.settings.comparison_headline | default: "More targeted. More transparent. More trusted." -%}
+        {%- if comparison_label != blank -%}
+          <span class="badge-minimal">{{ comparison_label }}</span>
         {%- endif -%}
-        {%- if section.settings.comparison_headline != blank -%}
+        {%- if comparison_headline != blank -%}
           <h2 class="text-deep-ink max-w-2xl mx-auto mt-4 mb-12 leading-snug" style="font-size:clamp(1.6rem,3.2vw,2.4rem);">
-            {{ section.settings.comparison_headline }}
+            {{ comparison_headline }}
           </h2>
         {%- endif -%}
   
@@ -110,7 +112,10 @@
   "name": "Comparison table (apr26)",
   "tag": "section",
   "class": "section-cc-comparison-apr26",
-  "settings": [],
+  "settings": [
+    { "type": "text", "id": "comparison_label", "label": "Eyebrow label", "default": "HOW COASTLINE COMPARES" },
+    { "type": "text", "id": "comparison_headline", "label": "Headline", "default": "More targeted. More transparent. More trusted." }
+  ],
   "presets": [
     {
       "name": "Comparison table (apr26)",

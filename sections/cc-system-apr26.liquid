@@ -9,15 +9,17 @@
     <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section4_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section4_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
       <div class="max-w-5xl mx-auto px-8 lg:px-16">
         <div class="text-center mb-12">
-          {%- if section.settings.system_label != blank -%}
+          {%- assign system_label = section.settings.system_label | default: "THE SYSTEM" -%}
+          {%- assign system_headline = section.settings.system_headline | default: "13 Ingredients. 1 Easy AM/PM routine." -%}
+          {%- if system_label != blank -%}
             <span class="badge-minimal font-inter text-xs font-semibold tracking-widest uppercase text-warm-gray inline-block mb-5">
-              {{ section.settings.system_label }}
+              {{ system_label }}
             </span>
           {%- endif -%}
           <div style="width:60px;height:1px;background:#0A0A0A;margin:0 auto 40px;"></div>
-          {%- if section.settings.system_headline != blank -%}
+          {%- if system_headline != blank -%}
             <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-4" style="font-size: clamp(1.75rem, 4vw, 2.75rem);">
-              {{ section.settings.system_headline }}
+              {{ system_headline }}
             </h2>
           {%- endif -%}
           <p style="font-family:'Inter',sans-serif;font-size:1.05rem;color:var(--warm-gray);max-width:36rem;margin:0 auto;line-height:1.6;">Comprehensive support that's easy to stick with.</p>
@@ -218,7 +220,12 @@
   "name": "The System (apr26)",
   "tag": "section",
   "class": "section-cc-system-apr26",
-  "settings": [],
+  "settings": [
+    { "type": "text", "id": "system_label", "label": "Eyebrow label", "default": "THE SYSTEM" },
+    { "type": "text", "id": "system_headline", "label": "Headline", "default": "13 Ingredients. 1 Easy AM/PM routine." },
+    { "type": "range", "id": "section4_padding_top", "label": "Padding top (px)", "min": 0, "max": 200, "step": 4, "default": 80 },
+    { "type": "range", "id": "section4_padding_bottom", "label": "Padding bottom (px)", "min": 0, "max": 200, "step": 4, "default": 80 }
+  ],
   "presets": [
     {
       "name": "The System (apr26)",
