@@ -66,4 +66,40 @@
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  {%- comment -%}
+    Vanilla IntersectionObserver fallback for .cc-apr26 .reveal elements.
+    Many apr26 sections wrap content in .reveal but don't have an x-data
+    ancestor, so Alpine's x-intersect never registers and elements stick
+    at opacity:0. This observer runs independently and reliably toggles
+    .visible whenever a .reveal enters the viewport.
+  {%- endcomment -%}
+  <script>
+    (function() {
+      function initRevealObserver() {
+        var nodes = document.querySelectorAll('.cc-apr26 .reveal:not(.visible)');
+        if (!nodes.length) return;
+        if (!('IntersectionObserver' in window)) {
+          nodes.forEach(function(n) { n.classList.add('visible'); });
+          return;
+        }
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+        nodes.forEach(function(n) { io.observe(n); });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRevealObserver);
+      } else {
+        initRevealObserver();
+      }
+      // Re-run after Alpine boots in case sections are inserted late.
+      window.addEventListener('load', initRevealObserver);
+    })();
+  </script>
 {% endunless %}
