@@ -18,6 +18,27 @@
   <!-- Alpine x-cloak: hide elements until Alpine initializes -->
   <style>[x-cloak] { display: none !important; }</style>
 
+  <!-- Brand CSS variables for apr26 sections. The monolithic sections
+       define these inside their own scoped blocks; apr26 sections need
+       them defined once at the .cc-apr26 wrapper. Without this, calls
+       like background:var(--parchment) silently fall back (e.g. the
+       Final CTA button rendered transparent on dark Ocean). -->
+  <style>
+    .cc-apr26 {
+      --parchment: #FAF9F6;
+      --deep-ink: #0A0A0A;
+      --warm-gray: #6B6B6B;
+      --light-gray: #E8E8E8;
+      --forest: #1A3A2F;
+      --forest-light: #2D5A47;
+      --ocean: #062F3D;
+      --acid-lime: #E7FF56;
+      --mist: #CCD7DA;
+      --coastal-blue: #A3C7D0;
+      --snow: #F7F7F7;
+    }
+  </style>
+
   <!-- Scroll-reveal (apr26 extracted sections only). Do NOT add
        .cc-homepage here: the monolith's reveal elements have no
        x-data ancestor, so x-intersect never fires and sections get
