@@ -42,7 +42,7 @@
   
         <!-- Link to full FAQ page -->
         <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;margin-top:40px;" x-intersect.once="$el.classList.add('visible')">
-          <a href="{{ section.settings.faq_page_link | default: '/pages/faq' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+          <a href="{{ section.settings.faq_page_link | default: '/pages/faqs' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
             {{ section.settings.faq_button_text | default: "VIEW ALL FAQS" }}
           </a>
         </div>

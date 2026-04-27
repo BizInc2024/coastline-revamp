@@ -71,7 +71,7 @@
   
         <!-- Benefits page CTA -->
         <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="text-align:center;margin-top:48px;" x-intersect.once="$el.classList.add('visible')">
-          <a href="{{ section.settings.benefits_link_url | default: '/pages/benefits' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
+          <a href="{{ section.settings.benefits_link_url | default: '/pages/coastline-benefits' }}" style="display:inline-block;padding:16px 40px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--deep-ink);border:1px solid var(--deep-ink);text-decoration:none;transition:all 0.3s ease;background:transparent;">
             {{ section.settings.benefits_link_text | default: "EXPLORE ALL THE BENEFITS" }}
           </a>
         </div>
