@@ -390,10 +390,6 @@
         "testimonial_c6"
       ]
     },
-    "cc-video-apr26": {
-      "type": "cc-video-apr26",
-      "settings": {}
-    },
     "cc-comparison-apr26": {
       "type": "cc-comparison-apr26",
       "settings": {}
@@ -506,7 +502,6 @@
     "cc-benefits-apr26",
     "cc-expert-apr26",
     "cc-testimonials-apr26",
-    "cc-video-apr26",
     "cc-pricing-apr26",
     "cc-comparison-apr26",
     "cc-math-apr26",
