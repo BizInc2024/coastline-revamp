@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "pdp-hero": {
+      "type": "cc-pdp-hero-apr26",
+      "settings": {}
+    },
+    "pdp-press": {
+      "type": "cc-press-apr26",
+      "settings": {}
+    },
+    "pdp-ugc": {
+      "type": "cc-ugc-apr26",
+      "settings": {}
+    },
+    "pdp-testimonials": {
+      "type": "cc-testimonials-apr26",
+      "settings": {},
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.", "name": "Jeffrey E.", "detail": "New Orleans 57", "category": "trust" } },
+        "t2": { "type": "testimonial", "settings": { "quote": "I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash.", "name": "Derek W.", "detail": "Scottsdale 47", "category": "energy" } },
+        "t3": { "type": "testimonial", "settings": { "quote": "Mental clarity is the biggest win for me. The brain fog of my 40s has lifted completely.", "name": "Megan S.", "detail": "Columbus 46", "category": "focus" } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "pdp-faq": {
+      "type": "cc-faq-apr26",
+      "settings": {},
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "How do I take it?", "answer": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day." } },
+        "f2": { "type": "faq", "settings": { "question": "When will I feel a difference?", "answer": "Most members notice improved energy and focus within the first 2-3 weeks. Full benefits build over 60-90 days of consistent use." } },
+        "f3": { "type": "faq", "settings": { "question": "Is it safe to take with other supplements?", "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. Consult your healthcare provider if you take prescription medications." } },
+        "f4": { "type": "faq", "settings": { "question": "Can I cancel my subscription?", "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees." } },
+        "f5": { "type": "faq", "settings": { "question": "Do you offer a guarantee?", "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+    },
+    "pdp-email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    },
+    "pdp-final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pdp-hero",
+    "pdp-press",
+    "pdp-ugc",
+    "pdp-testimonials",
+    "pdp-faq",
+    "pdp-email",
+    "pdp-final-cta"
+  ]
+}
