@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cc-pdp-evening-capsules",
+      "blocks": {
+        "expert_greg": {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "expert_jacqueline": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "expert_nic": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "expert_chris": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        },
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I fall asleep faster and wake up feeling actually rested. No grogginess, no weird dreams.",
+            "name": "David M.",
+            "detail": "Austin, 47",
+            "category": "sleep"
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The evening capsules are the part of the system I notice most. My sleep quality is night and day.",
+            "name": "Mark T.",
+            "detail": "Denver, 52",
+            "category": "sleep"
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I used to lie awake for an hour before falling asleep. Now I am out within 15 minutes. Consistently.",
+            "name": "Robert J.",
+            "detail": "San Diego, 58",
+            "category": "sleep"
+          }
+        },
+        "review_4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel calmer in the evenings now. Less racing thoughts before bed.",
+            "name": "Sarah K.",
+            "detail": "Portland, 39",
+            "category": "mood"
+          }
+        },
+        "review_5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My wife noticed I am less irritable in the evenings. I did not even realize how stressed I was before bed.",
+            "name": "James P.",
+            "detail": "Charlotte, 44",
+            "category": "mood"
+          }
+        },
+        "review_6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The lithium dose is tiny but I genuinely feel more even-keeled. Subtle but real.",
+            "name": "Karen W.",
+            "detail": "Seattle, 51",
+            "category": "mood"
+          }
+        },
+        "review_7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My joints feel better in the morning. The split AM/PM glucosamine dosing makes sense and I can feel the difference.",
+            "name": "Thomas H.",
+            "detail": "Phoenix, 61",
+            "category": "recovery"
+          }
+        },
+        "review_8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I recover faster from workouts. My knees used to ache every morning -- that has mostly gone away.",
+            "name": "Brian S.",
+            "detail": "Tampa, 49",
+            "category": "recovery"
+          }
+        },
+        "review_9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Post-run soreness has dropped significantly since I started the evening capsules. My body just feels better.",
+            "name": "Michelle R.",
+            "detail": "Boulder, 42",
+            "category": "recovery"
+          }
+        },
+        "review_10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I appreciate the trace-dose lithium approach. The science is solid and the safety profile is excellent.",
+            "name": "Michael R.",
+            "detail": "Physician, 62",
+            "category": "trust"
+          }
+        },
+        "review_11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I researched every ingredient before buying. Full transparency, clinical doses, no hidden blends. Exactly what I was looking for.",
+            "name": "Daniel C.",
+            "detail": "Boston, 55",
+            "category": "trust"
+          }
+        },
+        "review_12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Three ingredients, three reasons, zero filler. I trust this more than any sleep supplement I have tried.",
+            "name": "Lisa A.",
+            "detail": "Nashville, 46",
+            "category": "trust"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take the Evening Capsules?",
+            "answer": "Take 2 capsules 30-60 minutes before bed with water."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Will these make me drowsy?",
+            "answer": "L-Theanine promotes relaxation without drowsiness. It supports natural sleep onset, not sedation."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the lithium dose safe?",
+            "answer": "Yes. At 400 mcg, this is a trace dose -- roughly 1/100th of prescription lithium for bipolar disorder. It matches levels found naturally in tap water in some regions."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take these with the Morning Blend?",
+            "answer": "Yes. The Evening Capsules are designed as the PM portion of the Complete System. Take Morning Blend + SoftGels in the AM, Evening Capsules before bed."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "When does my order ship?",
+            "answer": "Same day if ordered before 2 PM ET. 3-5 business days delivery. Free shipping on all orders."
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "60-day money-back guarantee. No questions asked."
+          }
+        }
+      },
+      "block_order": [
+        "expert_greg",
+        "expert_jacqueline",
+        "expert_nic",
+        "expert_chris",
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6",
+        "review_7",
+        "review_8",
+        "review_9",
+        "review_10",
+        "review_11",
+        "review_12",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ],
+      "settings": {
+        "hero_title": "Evening Capsules",
+        "hero_review_text": "800+ reviews",
+        "hero_trust_badges": "VEGAN, SUGAR-FREE, CAFFEINE-FREE",
+        "directions": "Take 2 capsules 30-60 minutes before bed with water.",
+        "press_label": "AS FEATURED ON",
+        "upsell_headline": "Get all 13 ingredients in one system",
+        "upsell_subheadline": "Evening Capsules are the PM half of the Coastline Complete System. Add the Morning Blend and SoftGels to cover all 13 science-backed ingredients across every body system.",
+        "upsell_cta": "GET THE COMPLETE SYSTEM - $99/MO",
+        "ingredients_label": "THE INGREDIENTS",
+        "ingredients_headline": "Every ingredient, every dose, every reason",
+        "ingredients_subheadline": "3 clinically validated ingredients. Transparently dosed. Chosen for a reason.",
+        "experts_label": "EXPERT VALIDATION",
+        "experts_headline": "Trusted by leading health researchers",
+        "reviews_label": "WHAT MEMBERS ARE SAYING",
+        "reviews_headline": "Real reviews from real members",
+        "comparison_label": "HOW WE COMPARE",
+        "comparison_headline": "Coastline vs. the alternatives",
+        "comparison_footnote": "More ingredients does not mean better science. Every Coastline ingredient is dosed at the level proven effective in clinical trials -- not included at trace amounts to pad a label.",
+        "faq_label": "PRODUCT FAQ",
+        "faq_headline": "Common questions about Evening Capsules",
+        "sticky_button_text": "ADD TO CART",
+        "sticky_price_text": "$24/mo - Save 20%",
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
