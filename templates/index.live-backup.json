@@ -1,34 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "cc-hero-apr26": {
-      "type": "cc-hero-apr26",
-      "settings": {
-        "hero_label": "THE ULTIMATE LONGEVITY SYSTEM",
-        "hero_headline": "Unlock a whole new <br>horizon of health.",
-        "hero_subheadline": "13 science-backed, clinically-verified ingredients in one easy AM/PM routine to support brain, energy, muscle, gut, skin, sleep and more.",
-        "hero_reviews": "2,000+ five-star reviews",
-        "hero_cta_text": "START MY LONGEVITY SYSTEM",
-        "hero_cta_link": "#cc-home-pricing",
-        "hero_secondary_text": "SKIP TO PRICING",
-        "hero_secondary_link": "#cc-home-pricing",
-        "anchor": "cc-home-hero"
-      }
-    },
-    "cc-press-apr26": {
-      "type": "cc-press-apr26",
-      "settings": {}
-    },
-    "cc-ask-apr26": {
-      "type": "cc-ask-apr26",
-      "settings": {}
-    },
-    "cc-genetics-stat-apr26": {
-      "type": "cc-genetics-stat-apr26",
-      "settings": {}
-    },
-    "cc-system-apr26": {
-      "type": "cc-system-apr26",
-      "settings": {},
+    "main": {
+      "type": "cc-homepage",
       "blocks": {
         "step_pMwWXk": {
           "type": "step",
@@ -63,22 +45,7 @@
             "directions": "Take 2 capsules 30-60 minutes before bed with water.",
             "benefits_text": "Deeper, restorative sleep\nReduced stress and anxiety\nJoint health and cellular repair\nNeuroprotection and mood support"
           }
-        }
-      },
-      "block_order": [
-        "step_pMwWXk",
-        "step_fLXUyX",
-        "step_wzNEjy"
-      ]
-    },
-    "cc-ugc-apr26": {
-      "type": "cc-ugc-apr26",
-      "settings": {}
-    },
-    "cc-benefits-apr26": {
-      "type": "cc-benefits-apr26",
-      "settings": {},
-      "blocks": {
+        },
         "pillar_Lzq4VK": {
           "type": "pillar",
           "settings": {
@@ -128,24 +95,7 @@
             "title": "Body",
             "description": "Glucosamine supports joints, magnesium aids recovery, and astaxanthin protects at the cellular level."
           }
-        }
-      },
-      "block_order": [
-        "pillar_Lzq4VK",
-        "pillar_Gdkfqx",
-        "pillar_yEGHnn",
-        "pillar_EVYKDp",
-        "pillar_kT9bRw"
-      ]
-    },
-    "cc-expert-apr26": {
-      "type": "cc-expert-apr26",
-      "settings": {}
-    },
-    "cc-testimonials-apr26": {
-      "type": "cc-testimonials-apr26",
-      "settings": {},
-      "blocks": {
+        },
         "testimonial_t1": {
           "type": "testimonial",
           "settings": {
@@ -361,51 +311,7 @@
             "detail": "San Francisco 38",
             "category": "convenience"
           }
-        }
-      },
-      "block_order": [
-        "testimonial_t1",
-        "testimonial_f1",
-        "testimonial_e6",
-        "testimonial_c2",
-        "testimonial_f6",
-        "testimonial_e3",
-        "testimonial_e1",
-        "testimonial_e2",
-        "testimonial_e4",
-        "testimonial_e5",
-        "testimonial_f2",
-        "testimonial_f3",
-        "testimonial_f4",
-        "testimonial_f5",
-        "testimonial_t2",
-        "testimonial_t3",
-        "testimonial_t4",
-        "testimonial_t5",
-        "testimonial_t6",
-        "testimonial_c1",
-        "testimonial_c3",
-        "testimonial_c4",
-        "testimonial_c5",
-        "testimonial_c6"
-      ]
-    },
-    "cc-comparison-apr26": {
-      "type": "cc-comparison-apr26",
-      "settings": {}
-    },
-    "cc-math-apr26": {
-      "type": "cc-math-apr26",
-      "settings": {}
-    },
-    "cc-story-apr26": {
-      "type": "cc-story-apr26",
-      "settings": {}
-    },
-    "cc-faq-apr26": {
-      "type": "cc-faq-apr26",
-      "settings": {},
-      "blocks": {
+        },
         "faq_6L9W9r": {
           "type": "faq",
           "settings": {
@@ -464,6 +370,38 @@
         }
       },
       "block_order": [
+        "step_pMwWXk",
+        "step_fLXUyX",
+        "step_wzNEjy",
+        "pillar_Lzq4VK",
+        "pillar_Gdkfqx",
+        "pillar_yEGHnn",
+        "pillar_EVYKDp",
+        "pillar_kT9bRw",
+        "testimonial_t1",
+        "testimonial_f1",
+        "testimonial_e6",
+        "testimonial_c2",
+        "testimonial_f6",
+        "testimonial_e3",
+        "testimonial_e1",
+        "testimonial_e2",
+        "testimonial_e4",
+        "testimonial_e5",
+        "testimonial_f2",
+        "testimonial_f3",
+        "testimonial_f4",
+        "testimonial_f5",
+        "testimonial_t2",
+        "testimonial_t3",
+        "testimonial_t4",
+        "testimonial_t5",
+        "testimonial_t6",
+        "testimonial_c1",
+        "testimonial_c3",
+        "testimonial_c4",
+        "testimonial_c5",
+        "testimonial_c6",
         "faq_6L9W9r",
         "faq_yyj4kx",
         "faq_Hydfyh",
@@ -472,43 +410,123 @@
         "faq_FeDmVr",
         "faq_qNMFfU",
         "faq_bFg8Aa"
-      ]
-    },
-    "cc-email-capture-apr26": {
-      "type": "cc-email-capture-apr26",
-      "settings": {}
-    },
-    "cc-final-cta-apr26": {
-      "type": "cc-final-cta-apr26",
-      "settings": {}
-    },
-    "cc-pricing-apr26": {
-      "type": "cc-pricing-apr26",
+      ],
       "settings": {
-        "anchor": "cc-home-pricing",
-        "form_id": "cc-home-cart-form",
-        "headline": "Start Your System",
-        "trust_1": "Free shipping. Cancel anytime.",
-        "trust_2": "60-day money-back guarantee."
+        "hero_label": "THE ULTIMATE LONGEVITY SOLUTION",
+        "hero_headline": "Unlock a whole new <br>horizon of health.",
+        "hero_subheadline": "13 science-backed, clinically-dosed ingredients in one easy AM/PM routine  to support brain, energy, muscle, gut, skin, sleep and more.",
+        "hero_reviews": "2,000+ five-star reviews",
+        "hero_cta_text": "START MY LONGEVITY SYSTEM",
+        "hero_cta_link": "#cc-home-pricing",
+        "hero_secondary_text": "SKIP TO PRICING",
+        "hero_secondary_link": "#cc-home-pricing",
+        "section2_padding_top": 40,
+        "section2_padding_bottom": 50,
+        "press_label": "AS FEATURED IN",
+        "logo_1_url": "",
+        "logo_1_height": 40,
+        "logo_2_url": "",
+        "logo_2_height": 40,
+        "logo_3_url": "",
+        "logo_3_height": 40,
+        "logo_4_url": "",
+        "logo_4_height": 40,
+        "logo_5_url": "",
+        "logo_5_height": 40,
+        "logo_6_url": "",
+        "logo_6_height": 40,
+        "section3_visible": true,
+        "section3_padding_top": 80,
+        "section3_padding_bottom": 80,
+        "problem_label": "THE PROBLEM",
+        "problem_headline": "You want the benefits, but aren't totally sure what to take",
+        "problem_body": "You've read the articles, listened to the podcasts, and filled your cabinet with bottles you half remember buying. Fifteen supplements, four routines, and you're still not sure any of it's working.<br><br>The wellness industry profits from confusion -- contradictory advice, proprietary blends that hide behind labels, and an endless cycle of the next miracle ingredient. It is not your fault the system is broken.\n<br><br>\nBut what if it didn't have to be this way? What if everything you needed, fit into one honest, transparent system -- designed to actually work together?",
+        "problem_link_text": "SEE WHAT MAKES OUR APPROACH DIFFERENT",
+        "problem_link_url": "/pages/approach-to-formulation",
+        "section4_padding_top": 80,
+        "section4_padding_bottom": 80,
+        "system_label": "THE SYSTEM",
+        "system_headline": "13 Ingredients. 1 Easy AM/PM routine.",
+        "system_cta_text": "GET UP TO 34% OFF",
+        "system_cta_url": "#cc-home-pricing",
+        "section5_padding_top": 80,
+        "section5_padding_bottom": 80,
+        "benefits_label": "THE BENEFITS",
+        "benefits_headline": "What Coastline does for you",
+        "benefits_link_text": "EXPLORE ALL THE BENEFITS",
+        "benefits_link_url": "/pages/coastline-benefits",
+        "section6_padding_top": 80,
+        "section6_padding_bottom": 80,
+        "reviews_label": "WHAT MEMBERS ARE SAYING",
+        "reviews_headline": "2,000+ five-star reviews",
+        "section7_padding_top": 80,
+        "section7_padding_bottom": 80,
+        "ingredients_label": "THE INGREDIENTS",
+        "ingredients_headline": "13 science-backed ingredients, zero filler",
+        "ingredients_subheadline": "Every ingredient is clinically validated, transparently dosed, and chosen for a reason.",
+        "ingredients_link_text": "LEARN MORE ABOUT EACH INGREDIENT",
+        "ingredients_link_url": "/pages/ingredients",
+        "section8_visible": false,
+        "section8_padding_top": 80,
+        "section8_padding_bottom": 80,
+        "video_url": "",
+        "video_label": "SEE THE SCIENCE",
+        "video_headline": "Watch how Coastline works",
+        "video_body": "Our team of researchers breaks down the science behind each ingredient and why timing matters for longevity.",
+        "video_link_text": "WATCH NOW",
+        "video_link_url": "#",
+        "section9_padding_top": 80,
+        "section9_padding_bottom": 80,
+        "comparison_label": "HOW COASTLINE COMPARES",
+        "comparison_headline": "More targeted. More transparent. More trusted.",
+        "section10_padding_top": 80,
+        "section10_padding_bottom": 80,
+        "pricing_label": "",
+        "pricing_headline": "Start Your System",
+        "pricing_urgency": "",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "welcome_pack_image_desktop": "shopify://shop_images/Artboard_31.png",
+        "section11_padding_top": 80,
+        "section11_padding_bottom": 80,
+        "founder_label": "OUR EXPERT TEAM",
+        "founder_headline": "Built by researchers, not marketers",
+        "founder_body": "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers.\n\nAt Coastline, we cut through the noise. Our team of clinical researchers has spent years reviewing thousands of studies to identify what actually works.\n\nThe result? A foundational stack of 13 ingredients. Nothing speculative. No fads. No fluff. No filler. Just the most scientifically supported compounds for longevity -- dosed correctly, timed optimally, and delivered in a system you will actually stick with.",
+        "founder_link_text": "MEET THE COASTLINE RESEARCH TEAM",
+        "founder_link_url": "/pages/coastline-scientists",
+        "section12_padding_top": 80,
+        "section12_padding_bottom": 80,
+        "faq_label": "FREQUENTLY ASKED QUESTIONS",
+        "faq_headline": "Answers to the questions we get most",
+        "faq_button_text": "VIEW ALL FAQS",
+        "faq_page_link": "/pages/faqs",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80,
+        "final_headline": "The future of your health starts today. Don't wait.",
+        "final_subheadline": "13 science-backed ingredients in one simple system -- from just $3.30 a day.",
+        "final_cta_text": "START MY LONGEVITY SYSTEM",
+        "final_cta_link": "#cc-home-pricing",
+        "final_trust_text": "VEGAN, SUGAR-FREE, CAFFEINE-FREE, GMP CERTIFIED",
+        "final_disclaimer": "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "divider_image_2_desktop": "shopify://shop_images/BOTTLE_PROMO_IMAGE_4.png",
+        "free_gift_label": "Free gift with your first order of the complete system",
+        "free_gift_description": "Premium Glass Shaker Bottle ($15 value)",
+        "email_label": "STAY IN THE KNOW",
+        "email_headline": "Get longevity insights delivered weekly",
+        "email_body": "Join thousands of health-focused readers. Science-backed insights on aging, performance, and vitality -- no spam, no hype.",
+        "email_button_text": "SUBSCRIBE",
+        "nav_link_1_text": "THE SCIENCE",
+        "nav_link_1_url": "/pages/ingredients",
+        "nav_link_2_text": "OUR APPROACH",
+        "nav_link_2_url": "/pages/approach-to-formulation",
+        "nav_link_3_text": "ABOUT US",
+        "nav_link_3_url": "/pages/about",
+        "nav_link_4_text": "CONTACT",
+        "nav_link_4_url": "/pages/contact"
       }
     }
   },
   "order": [
-    "cc-hero-apr26",
-    "cc-press-apr26",
-    "cc-genetics-stat-apr26",
-    "cc-system-apr26",
-    "cc-benefits-apr26",
-    "cc-pricing-apr26",
-    "cc-ugc-apr26",
-    "cc-expert-apr26",
-    "cc-testimonials-apr26",
-    "cc-comparison-apr26",
-    "cc-math-apr26",
-    "cc-story-apr26",
-    "cc-ask-apr26",
-    "cc-faq-apr26",
-    "cc-email-capture-apr26",
-    "cc-final-cta-apr26"
+    "main"
   ]
 }
