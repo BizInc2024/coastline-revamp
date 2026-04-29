@@ -37,6 +37,10 @@
 .cc-press-apr26 .cc-press-track { display: flex; gap: 48px; align-items: center; animation: cc-marquee 30s linear infinite; width: max-content; }
 .cc-press-apr26 .cc-press-track a { flex-shrink: 0; text-decoration: none; display: flex; align-items: center; }
 .cc-press-apr26 .cc-press-track:hover { animation-play-state: paused; }
+@keyframes cc-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 @media (max-width: 767px) {
     .cc-press-apr26 .cc-press-track { animation-duration: 18s; gap: 32px; }
   }
