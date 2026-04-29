@@ -1,0 +1,87 @@
+{%- comment -%}
+  cc-pdp-upsell-apr26 — Complete System cross-sell
+  Dark Ocean section. Image left, copy + CTA right. Used on individual
+  PDPs to push the welcome pack bundle.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-pdp-upsell-apr26">
+  <section class="reveal" style="padding-top:80px;padding-bottom:80px;background:var(--ocean);">
+    <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+      <div class="cc-upsell-grid">
+
+        <div style="text-align:center;">
+          {%- if section.settings.image != blank -%}
+            <img src="{{ section.settings.image | image_url: width: 800 }}"
+                 alt="Coastline Complete System"
+                 style="max-height:320px;width:auto;margin:0 auto;display:block;object-fit:contain;"
+                 loading="lazy">
+          {%- else -%}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113"
+                 alt="Coastline Complete System"
+                 style="max-height:320px;width:auto;margin:0 auto;display:block;object-fit:contain;"
+                 loading="lazy">
+          {%- endif -%}
+        </div>
+
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin:0 0 20px;">
+            {{ section.settings.label | default: "UPGRADE YOUR ROUTINE" }}
+          </p>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:500;color:#FAF9F6;letter-spacing:-0.02em;line-height:1.2;margin:0 0 16px;">
+            {{ section.settings.headline | default: "Complete your system for full coverage" }}
+          </h2>
+          <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin:0 0 24px;">
+            {{ section.settings.body | default: "Add the Daily Softgels and Evening Capsules to target all 12 hallmarks of aging — for $99/mo." }}
+          </p>
+          {%- if section.settings.gift_line != blank -%}
+            <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FAF9F6;letter-spacing:0.05em;margin:0 0 32px;">
+              {{ section.settings.gift_line }}
+            </p>
+          {%- endif -%}
+          <a href="{{ section.settings.cta_link | default: '/products/coastline-welcome-pack' }}"
+             style="display:inline-block;padding:18px 48px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:#FFFFFF;color:var(--ocean);text-decoration:none;transition:opacity 0.3s ease;">
+            {{ section.settings.cta_text | default: "GET THE COMPLETE SYSTEM — $99/MO" }}
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .cc-pdp-upsell-apr26 .cc-upsell-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .cc-pdp-upsell-apr26 .cc-upsell-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP Upsell (apr26)",
+  "tag": "section",
+  "class": "section-cc-pdp-upsell-apr26",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Product image" },
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "UPGRADE YOUR ROUTINE" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Complete your system for full coverage" },
+    { "type": "textarea", "id": "body", "label": "Body copy" },
+    { "type": "text", "id": "gift_line", "label": "Gift line (bold)", "default": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)" },
+    { "type": "text", "id": "cta_text", "label": "CTA button text", "default": "GET THE COMPLETE SYSTEM — $99/MO" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" }
+  ],
+  "presets": [
+    { "name": "PDP Upsell (apr26)", "category": "Coastline" }
+  ]
+}
+{% endschema %}

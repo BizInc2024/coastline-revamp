@@ -2,11 +2,33 @@
   "sections": {
     "pdp-hero": {
       "type": "cc-pdp-hero-apr26",
-      "settings": {}
+      "settings": {
+        "review_text": "100+ five-star reviews",
+        "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
+        "hero_description": "4 fat-soluble ingredients in one softgel. Take with your first meal alongside Morning Blend. Supports cellular protection, eye, brain, and skin health.",
+        "ingredients_line": "Astaxanthin 6 mg · Lutein 10 mg · Zeaxanthin 2 mg · CoQ10 200 mg",
+        "supply_line": "30-day supply. Fully dosed."
+      }
     },
     "pdp-press": {
       "type": "cc-press-apr26",
       "settings": {}
+    },
+    "pdp-ingredients": {
+      "type": "cc-pdp-ingredients-apr26",
+      "settings": {
+        "label": "WHAT'S INSIDE",
+        "headline": "Four ingredients. Four powerful protections.",
+        "subheadline": "Fat-soluble nutrients absorb best with dietary fat — that's why one softgel goes alongside your morning meal.",
+        "ing_count_label": "MORNING SOFTGELS — 4 INGREDIENTS"
+      },
+      "blocks": {
+        "astax": { "type": "ingredient", "settings": { "name": "Astaxanthin", "dose": "6 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168", "description": "Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.", "science": "Activates NRF2 and FOXO3 pathways. Sourced from Haematococcus pluvialis microalgae." } },
+        "lutein": { "type": "ingredient", "settings": { "name": "Lutein", "dose": "10 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424", "description": "Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.", "science": "Accumulates in hippocampus and frontal cortex. Increases BDNF. AREDS2 study dose." } },
+        "zeax": { "type": "ingredient", "settings": { "name": "Zeaxanthin", "dose": "2 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424", "description": "Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.", "science": "Together they filter short-wavelength blue light, reducing damage by up to 100x at critical wavelengths." } },
+        "coq10": { "type": "ingredient", "settings": { "name": "Coenzyme Q10 (Ubiquinone)", "dose": "200 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360", "description": "Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.", "science": "Ubiquinone form (trans-isomer). Offsets statin-induced CoQ10 depletion." } }
+      },
+      "block_order": ["astax", "lutein", "zeax", "coq10"]
     },
     "pdp-ugc": {
       "type": "cc-ugc-apr26",
@@ -16,19 +38,27 @@
       "type": "cc-testimonials-apr26",
       "settings": {},
       "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.", "name": "Jeffrey E.", "detail": "New Orleans 57", "category": "trust" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash.", "name": "Derek W.", "detail": "Scottsdale 47", "category": "energy" } },
+        "t1": { "type": "testimonial", "settings": { "quote": "Quality you can feel. You can tell this was not made by a marketing team, but by scientists.", "name": "Edward Q.", "detail": "Richmond 49", "category": "trust" } },
+        "t2": { "type": "testimonial", "settings": { "quote": "I am extremely careful about what I put in my body. Coastline checked every box for purity and data.", "name": "Rachel G.", "detail": "Boulder 48", "category": "trust" } },
         "t3": { "type": "testimonial", "settings": { "quote": "Mental clarity is the biggest win for me. The brain fog of my 40s has lifted completely.", "name": "Megan S.", "detail": "Columbus 46", "category": "focus" } }
       },
       "block_order": ["t1", "t2", "t3"]
+    },
+    "pdp-upsell": {
+      "type": "cc-pdp-upsell-apr26",
+      "settings": {
+        "headline": "Complete your system for full coverage",
+        "body": "Softgels cover 4 of our 13 ingredients. Add Morning Blend and Evening Capsules to target all 12 hallmarks of aging — for $99/mo.",
+        "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
+      }
     },
     "pdp-faq": {
       "type": "cc-faq-apr26",
       "settings": {},
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "How do I take it?", "answer": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day." } },
-        "f2": { "type": "faq", "settings": { "question": "When will I feel a difference?", "answer": "Most members notice improved energy and focus within the first 2-3 weeks. Full benefits build over 60-90 days of consistent use." } },
-        "f3": { "type": "faq", "settings": { "question": "Is it safe to take with other supplements?", "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. Consult your healthcare provider if you take prescription medications." } },
+        "f1": { "type": "faq", "settings": { "question": "How do I take the Softgels?", "answer": "Take 1 softgel with your first meal of the day. Fat-soluble ingredients absorb best when taken with dietary fat." } },
+        "f2": { "type": "faq", "settings": { "question": "When will I feel a difference?", "answer": "Astaxanthin and CoQ10 build up in tissues over 4-6 weeks. Eye and skin benefits are typically noticed within 8-12 weeks." } },
+        "f3": { "type": "faq", "settings": { "question": "Is the softgel vegan?", "answer": "Yes. Our softgel uses a vegan-friendly tapioca-based shell. All ingredients inside are vegan-sourced." } },
         "f4": { "type": "faq", "settings": { "question": "Can I cancel my subscription?", "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees." } },
         "f5": { "type": "faq", "settings": { "question": "Do you offer a guarantee?", "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund." } }
       },
@@ -46,8 +76,10 @@
   "order": [
     "pdp-hero",
     "pdp-press",
+    "pdp-ingredients",
     "pdp-ugc",
     "pdp-testimonials",
+    "pdp-upsell",
     "pdp-faq",
     "pdp-email",
     "pdp-final-cta"

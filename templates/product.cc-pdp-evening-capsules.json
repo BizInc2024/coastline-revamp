@@ -2,11 +2,32 @@
   "sections": {
     "pdp-hero": {
       "type": "cc-pdp-hero-apr26",
-      "settings": {}
+      "settings": {
+        "review_text": "100+ five-star reviews",
+        "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
+        "hero_description": "3 evening ingredients in one capsule. Take 30-60 minutes before bed to support deeper sleep, mood, and overnight recovery.",
+        "ingredients_line": "Lithium Orotate 400 mcg · L-Theanine 200 mg · Glucosamine Sulfate 750 mg",
+        "supply_line": "30-day supply. Fully dosed."
+      }
     },
     "pdp-press": {
       "type": "cc-press-apr26",
       "settings": {}
+    },
+    "pdp-ingredients": {
+      "type": "cc-pdp-ingredients-apr26",
+      "settings": {
+        "label": "WHAT'S INSIDE",
+        "headline": "Three ingredients for restorative sleep",
+        "subheadline": "Quality sleep is when your body repairs, regulates hormones, and consolidates memory. These three work in concert to support that.",
+        "ing_count_label": "EVENING CAPSULES — 3 INGREDIENTS"
+      },
+      "blocks": {
+        "lithium": { "type": "ingredient", "settings": { "name": "Lithium Orotate", "dose": "400 mcg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524", "description": "At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.", "science": "15-month trial: maintained cognitive function at 300 mcg/day. Increases BDNF transcription. Far below prescription levels." } },
+        "theanine": { "type": "ingredient", "settings": { "name": "L-Theanine", "dose": "200 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312", "description": "Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.", "science": "Acts on suprachiasmatic nucleus, promoting natural sleep onset via peripheral vasodilation and core temperature lowering." } },
+        "gluc-pm": { "type": "ingredient", "settings": { "name": "Glucosamine Sulfate", "dose": "750 mg (PM dose)", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502", "description": "The PM portion of a 1,500 mg daily dose for optimal joint support. Split dosing (AM/PM) supports better absorption throughout the day.", "science": "Vegan-sourced sulfate form. Reduces joint space narrowing and pain in osteoarthritis. Also activates autophagy pathways for cellular repair." } }
+      },
+      "block_order": ["lithium", "theanine", "gluc-pm"]
     },
     "pdp-ugc": {
       "type": "cc-ugc-apr26",
@@ -16,19 +37,27 @@
       "type": "cc-testimonials-apr26",
       "settings": {},
       "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.", "name": "Jeffrey E.", "detail": "New Orleans 57", "category": "trust" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash.", "name": "Derek W.", "detail": "Scottsdale 47", "category": "energy" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "Mental clarity is the biggest win for me. The brain fog of my 40s has lifted completely.", "name": "Megan S.", "detail": "Columbus 46", "category": "focus" } }
+        "t1": { "type": "testimonial", "settings": { "quote": "I sleep deeper. My recovery between training days has noticeably improved.", "name": "Marcus D.", "detail": "Denver 39", "category": "energy" } },
+        "t2": { "type": "testimonial", "settings": { "quote": "Finally, a longevity stack that does not require 15 different bottles. My morning brain fog is gone.", "name": "Robert K.", "detail": "Chicago 45", "category": "focus" } },
+        "t3": { "type": "testimonial", "settings": { "quote": "At 72, I am still active and working. Coastline helps me keep pace with people half my age.", "name": "Arthur B.", "detail": "Palm Springs 72", "category": "energy" } }
       },
       "block_order": ["t1", "t2", "t3"]
+    },
+    "pdp-upsell": {
+      "type": "cc-pdp-upsell-apr26",
+      "settings": {
+        "headline": "Complete your system for full coverage",
+        "body": "Evening Capsules cover 3 of our 13 ingredients. Add Morning Blend and Softgels to target all 12 hallmarks of aging — for $99/mo.",
+        "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
+      }
     },
     "pdp-faq": {
       "type": "cc-faq-apr26",
       "settings": {},
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "How do I take it?", "answer": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day." } },
-        "f2": { "type": "faq", "settings": { "question": "When will I feel a difference?", "answer": "Most members notice improved energy and focus within the first 2-3 weeks. Full benefits build over 60-90 days of consistent use." } },
-        "f3": { "type": "faq", "settings": { "question": "Is it safe to take with other supplements?", "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. Consult your healthcare provider if you take prescription medications." } },
+        "f1": { "type": "faq", "settings": { "question": "How do I take Evening Capsules?", "answer": "Take 2 capsules 30-60 minutes before bed with water." } },
+        "f2": { "type": "faq", "settings": { "question": "Will L-Theanine make me drowsy?", "answer": "L-Theanine promotes relaxation without drowsiness. It supports natural sleep onset, not sedation." } },
+        "f3": { "type": "faq", "settings": { "question": "Is lithium orotate safe?", "answer": "At our 400 mcg trace dose, lithium orotate is far below prescription levels and has an excellent safety profile in long-term studies." } },
         "f4": { "type": "faq", "settings": { "question": "Can I cancel my subscription?", "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees." } },
         "f5": { "type": "faq", "settings": { "question": "Do you offer a guarantee?", "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund." } }
       },
@@ -46,8 +75,10 @@
   "order": [
     "pdp-hero",
     "pdp-press",
+    "pdp-ingredients",
     "pdp-ugc",
     "pdp-testimonials",
+    "pdp-upsell",
     "pdp-faq",
     "pdp-email",
     "pdp-final-cta"

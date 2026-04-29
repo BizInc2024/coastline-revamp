@@ -10,7 +10,7 @@
 {%- assign sp_group = product.selling_plan_groups | first -%}
 
 <div class="cc-apr26 cc-pdp-hero-apr26">
-  <section class="reveal" style="padding-top:{{ section.settings.padding_top | default: 32 }}px;padding-bottom:{{ section.settings.padding_bottom | default: 80 }}px;background:var(--parchment);">
+  <section class="reveal" style="padding-top:{{ section.settings.padding_top | default: 64 }}px;padding-bottom:{{ section.settings.padding_bottom | default: 96 }}px;background:var(--parchment);">
     <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
       <div class="cc-pdp-hero-grid">
 
@@ -113,10 +113,8 @@
                       {%- endif -%}
                     </div>
                     <div style="text-align:right;flex-shrink:0;margin-left:16px;">
-                      <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;"
-                            :data-plan-id="{{ sp.id }}"
-                            class="cc-pdp-plan-price">
-                        {{ sp_alloc.price | money }}
+                      <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
+                        {{ sp_alloc.price | money_without_trailing_zeros }}
                       </span>
                       <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">
                         {%- if sp.recurring_deliveries -%}/period{%- else -%}one-time{%- endif -%}
@@ -136,8 +134,8 @@
                     <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:3px;">No subscription</span>
                   </div>
                   <div style="text-align:right;flex-shrink:0;margin-left:16px;">
-                    <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;cc-pdp-onetime-price">
-                      {{ current_variant.price | money }}
+                    <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
+                      {{ current_variant.price | money_without_trailing_zeros }}
                     </span>
                     <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">one-time</span>
                   </div>
@@ -198,13 +196,13 @@
     gap: 32px;
     align-items: start;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .cc-pdp-hero-apr26 .cc-pdp-hero-grid {
-      grid-template-columns: 60% 40%;
-      gap: 56px;
+      grid-template-columns: 1fr 480px;
+      gap: 64px;
     }
   }
-  .cc-pdp-hero-apr26 .cc-pdp-buy-panel { font-family: 'Inter', sans-serif; }
+  .cc-pdp-hero-apr26 .cc-pdp-buy-panel { font-family: 'Inter', sans-serif; max-width: 480px; }
   .cc-pdp-hero-apr26 .cc-pdp-opt-btn {
     flex: 1;
     min-width: 120px;
@@ -225,7 +223,6 @@
   }
   .cc-pdp-hero-apr26 .cc-pdp-opt-active {
     border: 1px solid var(--deep-ink);
-    color: var(--deep-ink);
     background: var(--deep-ink);
     color: var(--parchment);
   }

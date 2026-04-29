@@ -1,0 +1,263 @@
+{%- comment -%}
+  cc-pdp-ingredients-apr26 — Ingredient deep-dive
+  Per audit doc: 2-3 column layout, "View Details" opens a slide-in
+  drawer (not inline accordion), so content doesn't push.
+  Block-based: each block = one ingredient.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-pdp-ingredients-apr26"
+     x-data="{ openId: null, get openBlock() { if (!this.openId) return null; return JSON.parse(document.getElementById('cc-pdp-ing-data-' + this.openId).textContent); } }">
+
+  {%- comment -%} Stash each ingredient as JSON so the drawer can read it {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'ingredient' -%}
+      <script id="cc-pdp-ing-data-{{ block.id }}" type="application/json">
+        {
+          "name": {{ block.settings.name | default: '' | json }},
+          "dose": {{ block.settings.dose | default: '' | json }},
+          "image": {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 600 | json }}{%- elsif block.settings.image_url != blank -%}{{ block.settings.image_url | json }}{%- else -%}""{%- endif -%},
+          "description": {{ block.settings.description | default: '' | json }},
+          "science": {{ block.settings.science | default: '' | json }}
+        }
+      </script>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <section class="reveal" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div class="cc-ing-wrap">
+
+      {%- if section.settings.lifestyle_image != blank -%}
+        <div style="margin-bottom:48px;">
+          <img src="{{ section.settings.lifestyle_image | image_url: width: 1600 }}"
+               alt="{{ product.title | escape }}"
+               class="cc-ing-lifestyle"
+               loading="lazy">
+        </div>
+      {%- endif -%}
+
+      <div class="cc-ing-head">
+        <p class="cc-ing-eyebrow">{{ section.settings.label | default: "WHAT'S INSIDE" }}</p>
+        <div class="cc-ing-rule"></div>
+        <h2 class="cc-ing-h2">{{ section.settings.headline | default: "Every ingredient earns its place" }}</h2>
+        <p class="cc-ing-sub">{{ section.settings.subheadline | default: "Each ingredient at a clinically-verified dose. No proprietary blends, no fillers, no marketing dust." }}</p>
+        {%- if section.settings.ing_count_label != blank -%}
+          <p class="cc-ing-count">{{ section.settings.ing_count_label }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="cc-ing-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'ingredient' -%}
+            <button type="button"
+                    class="cc-ing-card"
+                    @click="openId = '{{ block.id }}'; document.body.style.overflow = 'hidden'"
+                    {{ block.shopify_attributes }}>
+              <div class="cc-ing-card-inner">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 240 }}" alt="{{ block.settings.name | escape }}" class="cc-ing-card-img" loading="lazy">
+                {%- elsif block.settings.image_url != blank -%}
+                  <img src="{{ block.settings.image_url }}" alt="{{ block.settings.name | escape }}" class="cc-ing-card-img" loading="lazy">
+                {%- endif -%}
+                <h3 class="cc-ing-card-name">{{ block.settings.name }}</h3>
+                {%- if block.settings.dose != blank -%}
+                  <p class="cc-ing-card-dose">{{ block.settings.dose }}</p>
+                {%- endif -%}
+                <span class="cc-ing-card-link">View details &rarr;</span>
+              </div>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </section>
+
+  {%- comment -%} ===== Slide-in drawer ===== {%- endcomment -%}
+  <div class="cc-ing-drawer-overlay"
+       x-show="openId !== null"
+       x-cloak
+       x-transition.opacity
+       @click="openId = null; document.body.style.overflow = ''"
+       style="display:none;"></div>
+
+  <aside class="cc-ing-drawer"
+         x-show="openId !== null"
+         x-cloak
+         x-transition:enter="cc-drawer-enter"
+         x-transition:enter-start="cc-drawer-enter-start"
+         x-transition:enter-end="cc-drawer-enter-end"
+         x-transition:leave="cc-drawer-leave"
+         x-transition:leave-start="cc-drawer-leave-start"
+         x-transition:leave-end="cc-drawer-leave-end"
+         @keydown.escape.window="openId = null; document.body.style.overflow = ''"
+         role="dialog"
+         aria-modal="true">
+    <div class="cc-ing-drawer-inner" x-show="openBlock">
+      <button type="button"
+              class="cc-ing-drawer-close"
+              @click="openId = null; document.body.style.overflow = ''"
+              aria-label="Close ingredient details">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <template x-if="openBlock">
+        <div>
+          <img x-show="openBlock.image" :src="openBlock.image" :alt="openBlock.name" class="cc-ing-drawer-img" loading="lazy">
+          <p class="cc-ing-drawer-eyebrow">INGREDIENT</p>
+          <h3 class="cc-ing-drawer-name" x-text="openBlock.name"></h3>
+          <p class="cc-ing-drawer-dose" x-show="openBlock.dose" x-text="openBlock.dose"></p>
+          <div class="cc-ing-drawer-rule"></div>
+          <p class="cc-ing-drawer-desc" x-show="openBlock.description" x-text="openBlock.description"></p>
+          <p class="cc-ing-drawer-science" x-show="openBlock.science" x-text="openBlock.science"></p>
+        </div>
+      </template>
+    </div>
+  </aside>
+</div>
+
+<style>
+  .cc-pdp-ingredients-apr26 .cc-ing-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-lifestyle { width: 100%; max-height: 500px; object-fit: cover; display: block; }
+  .cc-pdp-ingredients-apr26 .cc-ing-head { margin-bottom: 48px; max-width: 720px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gray); font-weight: 500; margin: 0 0 20px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-rule { height: 1px; background: var(--light-gray); margin-bottom: 32px; width: 60px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(26px, 4.2vw, 44px); letter-spacing: -0.02em; line-height: 1.15; color: var(--deep-ink); margin: 0 0 20px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-sub { color: var(--warm-gray); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.65; margin: 0 0 16px; max-width: 600px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-count { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); font-weight: 600; margin: 24px 0 0; }
+
+  /* 2-3 column grid (audit) */
+  .cc-pdp-ingredients-apr26 .cc-ing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .cc-pdp-ingredients-apr26 .cc-ing-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  @media (min-width: 1024px) {
+    .cc-pdp-ingredients-apr26 .cc-ing-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+
+  .cc-pdp-ingredients-apr26 .cc-ing-card {
+    background: #FFFFFF;
+    border: 1px solid var(--light-gray);
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-card:hover {
+    border-color: var(--deep-ink);
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-card-inner { padding: 24px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-card-img {
+    width: 56px; height: 56px; object-fit: cover; display: block; margin: 0 0 16px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--deep-ink);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-card-dose {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--warm-gray);
+    margin: 0 0 16px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-card-link {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--deep-ink);
+    border-bottom: 1px solid var(--deep-ink);
+    padding-bottom: 2px;
+  }
+
+  /* Drawer */
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-overlay {
+    position: fixed; inset: 0; background: rgba(10, 10, 10, 0.5); z-index: 9998;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 100%; max-width: 480px;
+    background: var(--parchment);
+    z-index: 9999;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+    overflow-y: auto;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-inner { padding: 64px 32px 32px; position: relative; }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 40px; height: 40px;
+    background: transparent; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--deep-ink);
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-img {
+    width: 88px; height: 88px; object-fit: cover; display: block; margin: 0 0 24px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-eyebrow {
+    font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gray); font-weight: 500; margin: 0 0 8px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-name {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; color: var(--deep-ink); margin: 0 0 8px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-dose {
+    font-family: 'Inter', sans-serif; font-size: 15px; color: var(--forest); font-weight: 500; margin: 0 0 24px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-rule { height: 1px; background: var(--light-gray); margin: 0 0 24px; }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-desc {
+    font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; color: var(--warm-gray); margin: 0 0 20px;
+  }
+  .cc-pdp-ingredients-apr26 .cc-ing-drawer-science {
+    font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.65; color: var(--warm-gray); opacity: 0.85; margin: 0; padding-top: 16px; border-top: 1px solid var(--light-gray);
+  }
+
+  /* Drawer transitions */
+  .cc-pdp-ingredients-apr26 .cc-drawer-enter,
+  .cc-pdp-ingredients-apr26 .cc-drawer-leave { transition: transform 0.3s ease; }
+  .cc-pdp-ingredients-apr26 .cc-drawer-enter-start,
+  .cc-pdp-ingredients-apr26 .cc-drawer-leave-end { transform: translateX(100%); }
+  .cc-pdp-ingredients-apr26 .cc-drawer-enter-end,
+  .cc-pdp-ingredients-apr26 .cc-drawer-leave-start { transform: translateX(0); }
+</style>
+
+{% schema %}
+{
+  "name": "PDP Ingredients (apr26)",
+  "tag": "section",
+  "class": "section-cc-pdp-ingredients-apr26",
+  "settings": [
+    { "type": "image_picker", "id": "lifestyle_image", "label": "Lifestyle/hero image (above grid)" },
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "WHAT'S INSIDE" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Every ingredient earns its place" },
+    { "type": "textarea", "id": "subheadline", "label": "Subheadline" },
+    { "type": "text", "id": "ing_count_label", "label": "Ingredient count label", "info": "e.g. 'MORNING BLEND -- 7 INGREDIENTS'" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "dose", "label": "Dose" },
+        { "type": "image_picker", "id": "image", "label": "Ingredient image" },
+        { "type": "text", "id": "image_url", "label": "Image URL fallback" },
+        { "type": "textarea", "id": "description", "label": "Description (top paragraph)" },
+        { "type": "textarea", "id": "science", "label": "Science (smaller text)" }
+      ]
+    }
+  ],
+  "max_blocks": 13,
+  "presets": [
+    { "name": "PDP Ingredients (apr26)", "category": "Coastline" }
+  ]
+}
+{% endschema %}
