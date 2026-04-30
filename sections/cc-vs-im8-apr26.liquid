@@ -207,10 +207,10 @@
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." }}
+                    {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product fronted by one of the most recognizable athletes in the world, sold at a premium price, and the doses inside most of its 92+ ingredients are hidden behind proprietary blends." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both IM8 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
+                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available labels on both IM8 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses (where disclosed), and the price." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
                     {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
@@ -706,7 +706,7 @@
                     </li>
                     <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
                         <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_3 | default: "Coastline costs $0.67/day more ($3.30 vs $2.63) but delivers clinically validated doses of every ingredient." }}</span>
+                        <span>{{ section.settings.takeaway_3 | default: "Coastline costs $55/month less than IM8 ($99 vs $154) and discloses every dose on the label." }}</span>
                     </li>
                     <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
                         <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
@@ -835,8 +835,8 @@
     { "type": "header", "content": "-- Bridge: Intro to Clinical Evidence" },
     { "type": "text", "id": "bridge_1_headline", "label": "Bridge 1 headline", "default": "The study IM8 probably wishes you had not seen" },
     { "type": "textarea", "id": "bridge_1_p1", "label": "Bridge 1 paragraph 1", "default": "For years, IM8 has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." },
-    { "type": "textarea", "id": "bridge_1_p2", "label": "Bridge 1 paragraph 2", "default": "Then IM8 published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." },
-    { "type": "text", "id": "bridge_1_p3", "label": "Bridge 1 closing line", "default": "Here is what the study actually found -- and why it matters for anyone paying $79 a month." },
+    { "type": "textarea", "id": "bridge_1_p2", "label": "Bridge 1 paragraph 2", "default": "But here's what gets harder to find: the doses. IM8 lists 92+ ingredients on the label, then groups most of them into proprietary blends. You see a total milligram count for the blend -- never the amount of any single ingredient inside it." },
+    { "type": "text", "id": "bridge_1_p3", "label": "Bridge 1 closing line", "default": "And that matters. Because every clinical study on these ingredients tested a specific dose. If your scoop doesn't hit it, you're not getting the benefit -- no matter how many ingredients are listed." },
     { "type": "image_picker", "id": "breaker_image_pre_bj", "label": "Divider image (before David Beckham)" },
 
     { "type": "header", "content": "3. David Beckham Section" },
@@ -957,7 +957,7 @@
     { "type": "image_picker", "id": "cta_product_image", "label": "CTA product image" },
     { "type": "text", "id": "cta_counter", "label": "CTA counter text", "default": "READY TO SWITCH?" },
     { "type": "text", "id": "cta_headline", "label": "CTA headline", "default": "Ready to make the switch?" },
-    { "type": "textarea", "id": "cta_body", "label": "CTA body text", "default": "If you have been paying $79/month for IM8 and want ingredients that actually work at doses that actually matter, Coastline might be worth trying." },
+    { "type": "textarea", "id": "cta_body", "label": "CTA body text", "default": "If you have been paying $154/month for IM8 and want ingredients that actually work at doses you can verify, Coastline might be worth trying." },
     { "type": "text", "id": "cta_reviews_text", "label": "CTA reviews text", "default": "4.8 stars from 2,000+ reviews" },
     { "type": "text", "id": "cta_micro_copy", "label": "CTA micro copy", "default": "Cancel anytime. No questions asked." },
     { "type": "textarea", "id": "trust_badges_text", "label": "Trust badges text", "default": "VEGAN , SUGAR-FREE , CAFFEINE-FREE , GMP CERTIFIED" },
@@ -968,7 +968,7 @@
     { "type": "text", "id": "faq_headline", "label": "FAQ headline", "default": "Common questions from IM8 switchers" },
     { "type": "text", "id": "faq_1_question", "label": "FAQ 1 question", "default": "How is Coastline different from IM8?" },
     { "type": "textarea", "id": "faq_1_answer", "label": "FAQ 1 answer", "default": "IM8 uses 92 ingredients in proprietary blends, meaning you do not know how much of each ingredient you are getting. Coastline uses 13 ingredients at full clinical doses with complete transparency. Every milligram is disclosed." },
-    { "type": "text", "id": "faq_2_question", "label": "FAQ 2 question", "default": "IM8 is $79/month. Why does Coastline cost $20 more?" },
+    { "type": "text", "id": "faq_2_question", "label": "FAQ 2 question", "default": "IM8 is $154/month. How does Coastline cost less?" },
     { "type": "textarea", "id": "faq_2_answer", "label": "FAQ 2 answer", "default": "Clinical-dose ingredients cost more than trace amounts. Coastline spends more per ingredient because each one is dosed at the level proven effective in clinical trials. You are paying $0.67/day more for ingredients that actually work." },
     { "type": "text", "id": "faq_3_question", "label": "FAQ 3 question", "default": "Does Coastline include a greens blend?" },
     { "type": "textarea", "id": "faq_3_answer", "label": "FAQ 3 answer", "default": "No. Greens blends look impressive on a label but most ingredients are present in negligible amounts. Coastline focuses on 13 compounds with the strongest clinical evidence for longevity, each at doses proven to work." },
