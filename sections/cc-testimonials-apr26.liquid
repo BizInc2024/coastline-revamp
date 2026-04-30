@@ -6,7 +6,7 @@
 {% render 'cc-deps' %}
 
 <div class="cc-apr26 cc-testimonials-apr26">
-    <section id="cc-reviews-anchor" class="bg-parchment" style="padding-top:{{ section.settings.section6_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section6_padding_bottom | default: 80 }}px;">
+    <section id="cc-reviews-anchor" class="bg-parchment" style="scroll-margin-top:80px;padding-top:{{ section.settings.section6_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section6_padding_bottom | default: 80 }}px;">
       <div class="max-w-7xl mx-auto px-8 lg:px-16">
         <p class="badge-minimal text-center mb-3 tracking-widest text-xs reveal" x-intersect.once="$el.classList.add('visible')">
           {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
