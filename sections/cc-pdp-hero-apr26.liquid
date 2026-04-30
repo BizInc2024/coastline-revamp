@@ -100,10 +100,10 @@
                 <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin:0 0 12px;text-transform:uppercase;letter-spacing:0.1em;">Select your {{ option.name | downcase }}</p>
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
-                    {%- assign val_handle = value | handleize -%}
                     <div @click="selectedOption{{ opt_idx }} = '{{ value | escape }}'"
-                         :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-flavor-{{ val_handle }}-active' : 'cc-pdp-flavor-{{ val_handle }}-idle'"
-                         class="cc-pdp-flavor-btn">
+                         :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-plan-active' : 'cc-pdp-plan-idle'"
+                         class="cc-pdp-plan-card"
+                         style="flex:1;min-width:120px;text-align:center;padding:14px 16px;font-family:'Inter',sans-serif;font-size:14px;">
                       {{ value }}
                     </div>
                   {%- endfor -%}
