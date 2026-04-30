@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "narrative": {
@@ -25,14 +16,31 @@
         "pad_bottom": 96
       }
     },
-    "guarantee": {
-      "type": "cc-guarantee-apr29",
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "final_headline": "Better science. Different price.",
+        "final_subheadline": "13 ingredients at clinical doses, $99/month.",
+        "final_cta_text": "START MY LONGEVITY SYSTEM",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
+      }
+    },
+    "email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-vs-ag1-bottom-apr29",
       "settings": {}
     }
   },
   "order": [
     "narrative",
     "pricing",
-    "guarantee"
+    "narrative-bottom",
+    "final-cta",
+    "email"
   ]
 }
