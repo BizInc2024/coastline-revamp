@@ -117,25 +117,49 @@
 
               {%- for grp in product.selling_plan_groups -%}
               {%- for sp in grp.selling_plans -%}
-                {%- assign sp_alloc = current_variant.selling_plan_allocations | where: 'selling_plan_id', sp.id | first -%}
+                {%- assign sp_alloc = nil -%}
+                {%- for alloc in current_variant.selling_plan_allocations -%}
+                  {%- if alloc.selling_plan_id == sp.id -%}
+                    {%- assign sp_alloc = alloc -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- comment -%} Friendlier display labels + a "BEST VALUE" badge on monthly. {%- endcomment -%}
+                {%- assign sp_name_lower = sp.name | downcase -%}
+                {%- if sp_name_lower contains '2 month' or sp_name_lower contains '2-month' -%}
+                  {%- assign sp_display_name = 'Delivered every 2 months' -%}
+                  {%- assign sp_save_label = sp.description | default: 'Save 10%' -%}
+                  {%- assign show_best_value = false -%}
+                {%- elsif sp_name_lower contains '1 month' or sp_name_lower contains 'monthly' -%}
+                  {%- assign sp_display_name = 'Monthly subscription' -%}
+                  {%- assign sp_save_label = sp.description | default: 'Save 20%' -%}
+                  {%- assign show_best_value = true -%}
+                {%- else -%}
+                  {%- assign sp_display_name = sp.name -%}
+                  {%- assign sp_save_label = sp.description -%}
+                  {%- assign show_best_value = false -%}
+                {%- endif -%}
                 <div @click="plan = '{{ sp.id }}'"
                      :class="plan === '{{ sp.id }}' ? 'cc-pdp-plan-active' : 'cc-pdp-plan-idle'"
                      class="cc-pdp-plan-card"
-                     style="margin-bottom:10px;">
+                     style="margin-bottom:10px;position:relative;">
+                  {%- if show_best_value -%}
+                    <span class="cc-pdp-plan-badge">BEST VALUE</span>
+                  {%- endif -%}
                   <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;">
                     <div>
                       <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;color:var(--deep-ink);font-size:15px;line-height:1.3;">
-                        {{ sp.name }}
+                        {{ sp_display_name }}
                       </span>
-                      {%- if sp.description != blank -%}
+                      {%- if sp_save_label != blank -%}
                         <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--forest);font-weight:500;margin-top:3px;">
-                          {{ sp.description }}
+                          {{ sp_save_label }}
                         </span>
                       {%- endif -%}
                     </div>
                     <div style="text-align:right;flex-shrink:0;margin-left:16px;">
                       <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
-                        {{ sp_alloc.price | money_without_trailing_zeros }}
+                        {%- if sp_alloc -%}{{ sp_alloc.price | money_without_trailing_zeros }}{%- else -%}{{ current_variant.price | money_without_trailing_zeros }}{%- endif -%}
                       </span>
                       <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">
                         {%- if sp.recurring_deliveries -%}/period{%- else -%}one-time{%- endif -%}
@@ -319,6 +343,20 @@
   .cc-pdp-hero-apr26 .cc-pdp-plan-active {
     border: 2px solid var(--deep-ink);
     background: #FFFFFF;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-plan-badge {
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--forest-light);
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    line-height: 1;
   }
 </style>
 
