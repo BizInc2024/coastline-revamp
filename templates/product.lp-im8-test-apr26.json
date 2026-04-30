@@ -36,7 +36,7 @@
       "settings": {}
     },
     "guarantee": {
-      "type": "cc-guarantee-may",
+      "type": "cc-guarantee-final",
       "settings": {}
     }
   },

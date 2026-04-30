@@ -1,0 +1,136 @@
+{%- comment -%}
+  cc-guarantee-final -- 60-day risk-free guarantee block.
+  Extracted from cc-lp-v10 (the user-loved version). Standalone, scoped
+  to .cc-guarantee-final so it can be dropped onto any LP after the
+  pricing section without conflicting with that LP's own styles.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-guarantee-final">
+  <section class="cc-guarantee-block reveal" x-intersect.once="$el.classList.add('visible')">
+    <div class="cc-guarantee-inner">
+      <div class="cc-guarantee-badge">
+        <span class="days">{{ section.settings.badge_days | default: '60' }}</span>
+        <span class="label">{{ section.settings.badge_label | default: 'Day<br>Guarantee' }}</span>
+      </div>
+      <div class="cc-guarantee-copy">
+        <h3>{{ section.settings.headline | default: 'Try it risk-free for 60 days.' }}</h3>
+        <p>{{ section.settings.body | default: "Try risk-free, no questions asked, for a full refund. If you are not thrilled with how you feel, send back what is left of your order and we will refund every penny -- even if the box is empty. No phone calls, no penalties, no pressure." }}</p>
+        <div class="cc-guarantee-pills">
+          <span class="pill">Free Shipping</span>
+          <span class="pill">Cancel Anytime</span>
+          <span class="pill">GMP Certified</span>
+          <span class="pill">Made in USA</span>
+          <span class="pill">3rd Party Tested</span>
+          <span class="pill">Vegan</span>
+          <span class="pill">Caffeine-Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .cc-guarantee-final .cc-guarantee-block {
+    background: #0A0A0A;
+    padding: 80px 24px;
+    color: #FAF9F6;
+  }
+  .cc-guarantee-final .cc-guarantee-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+    align-items: center;
+  }
+  @media (min-width: 800px) {
+    .cc-guarantee-final .cc-guarantee-inner {
+      grid-template-columns: 180px 1fr;
+      gap: 56px;
+      text-align: left;
+    }
+  }
+  .cc-guarantee-final .cc-guarantee-badge {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid #FAF9F6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+  .cc-guarantee-final .cc-guarantee-badge .days {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .cc-guarantee-final .cc-guarantee-badge .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .cc-guarantee-final .cc-guarantee-copy h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 500;
+    color: #FAF9F6;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .cc-guarantee-final .cc-guarantee-copy p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(250, 249, 246, 0.75);
+    margin: 0 0 24px;
+    max-width: 640px;
+  }
+  .cc-guarantee-final .cc-guarantee-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  @media (min-width: 800px) {
+    .cc-guarantee-final .cc-guarantee-pills { justify-content: flex-start; }
+  }
+  .cc-guarantee-final .cc-guarantee-pills .pill {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid rgba(250, 249, 246, 0.25);
+    border-radius: 999px;
+    color: rgba(250, 249, 246, 0.85);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Guarantee (final)",
+  "tag": "section",
+  "class": "section-cc-guarantee-final",
+  "settings": [
+    { "type": "text", "id": "badge_days", "label": "Badge - Days", "default": "60" },
+    { "type": "text", "id": "badge_label", "label": "Badge - Label", "default": "Day<br>Guarantee" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Try it risk-free for 60 days." }
+  ],
+  "presets": [
+    { "name": "Guarantee (final)", "category": "Coastline" }
+  ]
+}
+{% endschema %}
