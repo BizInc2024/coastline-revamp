@@ -222,8 +222,8 @@
                 <!-- Coastline Card -->
                 <div class="border-2 border-deep-ink p-6 relative bg-parchment">
                     <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
-                    <div style="height: 140px; display: flex; align-items: center; justify-content: center;" class="mb-4">
-                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 400 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 140px; max-width: 100%; object-fit: contain;" loading="lazy">
+                    <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center;" class="mb-4">
+                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-v10-family-vert.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 140px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
