@@ -97,11 +97,14 @@
                 <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin:0 0 12px;text-transform:uppercase;letter-spacing:0.1em;">Select your {{ option.name | downcase }}</p>
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
+                    {%- assign opt_idx = forloop.parent.index0 -%}
+                    {%- assign is_active = false -%}
+                    {%- if current_variant.options[opt_idx] == value -%}{%- assign is_active = true -%}{%- endif -%}
                     <button type="button"
                             data-value="{{ value | escape }}"
-                            @click="setOption({{ forloop.parent.index0 }}, '{{ value | escape }}')"
-                            :class="options[{{ forloop.parent.index0 }}] === '{{ value | escape }}' ? 'cc-pdp-opt-active' : 'cc-pdp-opt-idle'"
-                            class="cc-pdp-opt-btn">
+                            @click="setOption({{ opt_idx }}, '{{ value | escape }}')"
+                            :class="{ 'cc-pdp-opt-active': options[{{ opt_idx }}] === '{{ value | escape }}', 'cc-pdp-opt-idle': options[{{ opt_idx }}] !== '{{ value | escape }}' }"
+                            class="cc-pdp-opt-btn {%- if is_active %} cc-pdp-opt-active{%- else %} cc-pdp-opt-idle{%- endif %}">
                       {{ value }}
                     </button>
                   {%- endfor -%}

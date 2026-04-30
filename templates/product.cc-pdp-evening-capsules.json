@@ -7,7 +7,12 @@
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "3 evening ingredients in one capsule. Take 30-60 minutes before bed to support deeper sleep, mood, and overnight recovery.",
         "ingredients_line": "Lithium Orotate 400 mcg \u00b7 L-Theanine 200 mg \u00b7 Glucosamine Sulfate 750 mg",
-        "supply_line": "30-day supply. Fully dosed."
+        "supply_line": "30-day supply. Fully dosed.",
+        "monthly_price": "$24",
+        "monthly_save": "Save 20%",
+        "bimonthly_price": "$27",
+        "bimonthly_save": "Save 10%",
+        "onetime_price": "$30"
       }
     },
     "pdp-press": {

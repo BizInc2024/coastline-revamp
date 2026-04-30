@@ -7,7 +7,12 @@
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "7 science-backed ingredients in one easy-scoop powder. Mix with water and take with your first meal. Supports energy, focus, muscle, joints, and gut health.",
         "ingredients_line": "Ergothioneine 5 mg \u00b7 Taurine 3.05 g \u00b7 Creatine 5.25 g \u00b7 Glycine 5 g \u00b7 Inulin 4 g \u00b7 Magnesium Citrate 150 mg \u00b7 Glucosamine Sulfate 750 mg",
-        "supply_line": "30-day supply. Fully dosed."
+        "supply_line": "30-day supply. Fully dosed.",
+        "monthly_price": "$55.20",
+        "monthly_save": "Save 20%",
+        "bimonthly_price": "$62.10",
+        "bimonthly_save": "Save 10%",
+        "onetime_price": "$69"
       }
     },
     "pdp-press": {

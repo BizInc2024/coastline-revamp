@@ -7,7 +7,12 @@
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "All 13 clinically dosed ingredients across 3 products. Morning Blend, Softgels, and Evening Capsules \u2014 taken at the right time for optimal absorption.",
         "ingredients_line": "13 ingredients \u00b7 3 products \u00b7 2 daily touchpoints",
-        "supply_line": "30-day supply. Fully dosed. + Glass Shaker WELCOME GIFT"
+        "supply_line": "30-day supply. Fully dosed. + Glass Shaker WELCOME GIFT",
+        "monthly_price": "$99",
+        "monthly_save": "Save 34%",
+        "bimonthly_price": "$120",
+        "bimonthly_save": "Save 20%",
+        "onetime_price": "$150"
       }
     },
     "pdp-press": {

@@ -7,7 +7,12 @@
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "4 fat-soluble ingredients in one softgel. Take with your first meal alongside Morning Blend. Supports cellular protection, eye, brain, and skin health.",
         "ingredients_line": "Astaxanthin 6 mg \u00b7 Lutein 10 mg \u00b7 Zeaxanthin 2 mg \u00b7 CoQ10 200 mg",
-        "supply_line": "30-day supply. Fully dosed."
+        "supply_line": "30-day supply. Fully dosed.",
+        "monthly_price": "$28",
+        "monthly_save": "Save 20%",
+        "bimonthly_price": "$31.50",
+        "bimonthly_save": "Save 10%",
+        "onetime_price": "$35"
       }
     },
     "pdp-press": {
