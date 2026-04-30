@@ -24,10 +24,15 @@
         "pad_top": 96,
         "pad_bottom": 96
       }
+    },
+    "guarantee": {
+      "type": "cc-guarantee-apr29",
+      "settings": {}
     }
   },
   "order": [
     "narrative",
-    "pricing"
+    "pricing",
+    "guarantee"
   ]
 }
