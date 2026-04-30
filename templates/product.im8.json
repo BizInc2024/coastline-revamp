@@ -1,6 +1,6 @@
 {
   "sections": {
-    "narrative": { "type": "cc-vs-im8-v2", "settings": {} }
+    "narrative": { "type": "cc-im8-clone", "settings": {} }
   },
   "order": ["narrative"]
 }
