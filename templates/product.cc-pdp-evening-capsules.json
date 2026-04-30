@@ -6,7 +6,7 @@
         "review_text": "100+ five-star reviews",
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "3 evening ingredients in one capsule. Take 30-60 minutes before bed to support deeper sleep, mood, and overnight recovery.",
-        "ingredients_line": "Lithium Orotate 400 mcg · L-Theanine 200 mg · Glucosamine Sulfate 750 mg",
+        "ingredients_line": "Lithium Orotate 400 mcg \u00b7 L-Theanine 200 mg \u00b7 Glucosamine Sulfate 750 mg",
         "supply_line": "30-day supply. Fully dosed."
       }
     },
@@ -20,34 +20,55 @@
         "label": "WHAT'S INSIDE",
         "headline": "Three ingredients for restorative sleep",
         "subheadline": "Quality sleep is when your body repairs, regulates hormones, and consolidates memory. These three work in concert to support that.",
-        "ing_count_label": "EVENING CAPSULES — 3 INGREDIENTS"
+        "ing_count_label": "EVENING CAPSULES \u2014 3 INGREDIENTS"
       },
       "blocks": {
-        "lithium": { "type": "ingredient", "settings": { "name": "Lithium Orotate", "dose": "400 mcg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524", "description": "At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.", "science": "15-month trial: maintained cognitive function at 300 mcg/day. Increases BDNF transcription. Far below prescription levels." } },
-        "theanine": { "type": "ingredient", "settings": { "name": "L-Theanine", "dose": "200 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312", "description": "Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.", "science": "Acts on suprachiasmatic nucleus, promoting natural sleep onset via peripheral vasodilation and core temperature lowering." } },
-        "gluc-pm": { "type": "ingredient", "settings": { "name": "Glucosamine Sulfate", "dose": "750 mg (PM dose)", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502", "description": "The PM portion of a 1,500 mg daily dose for optimal joint support. Split dosing (AM/PM) supports better absorption throughout the day.", "science": "Vegan-sourced sulfate form. Reduces joint space narrowing and pain in osteoarthritis. Also activates autophagy pathways for cellular repair." } }
+        "lithium": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Lithium Orotate",
+            "dose": "400 mcg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524",
+            "description": "At trace doses, supports mood, neuroprotection, and brain autophagy. Associated with improved cognitive function in clinical trials.",
+            "science": "15-month trial: maintained cognitive function at 300 mcg/day. Increases BDNF transcription. Far below prescription levels."
+          }
+        },
+        "theanine": {
+          "type": "ingredient",
+          "settings": {
+            "name": "L-Theanine",
+            "dose": "200 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312",
+            "description": "Promotes relaxation and sleep quality without drowsiness. Reduces stress and anxiety while supporting calm focus.",
+            "science": "Acts on suprachiasmatic nucleus, promoting natural sleep onset via peripheral vasodilation and core temperature lowering."
+          }
+        },
+        "gluc-pm": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Glucosamine Sulfate",
+            "dose": "750 mg (PM dose)",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502",
+            "description": "The PM portion of a 1,500 mg daily dose for optimal joint support. Split dosing (AM/PM) supports better absorption throughout the day.",
+            "science": "Vegan-sourced sulfate form. Reduces joint space narrowing and pain in osteoarthritis. Also activates autophagy pathways for cellular repair."
+          }
+        }
       },
-      "block_order": ["lithium", "theanine", "gluc-pm"]
+      "block_order": [
+        "lithium",
+        "theanine",
+        "gluc-pm"
+      ]
     },
     "pdp-ugc": {
       "type": "cc-ugc-apr26",
       "settings": {}
     },
-    "pdp-testimonials": {
-      "type": "cc-testimonials-apr26",
-      "settings": {},
-      "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "I sleep deeper. My recovery between training days has noticeably improved.", "name": "Marcus D.", "detail": "Denver 39", "category": "energy" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "Finally, a longevity stack that does not require 15 different bottles. My morning brain fog is gone.", "name": "Robert K.", "detail": "Chicago 45", "category": "focus" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "At 72, I am still active and working. Coastline helps me keep pace with people half my age.", "name": "Arthur B.", "detail": "Palm Springs 72", "category": "energy" } }
-      },
-      "block_order": ["t1", "t2", "t3"]
-    },
     "pdp-upsell": {
       "type": "cc-pdp-upsell-apr26",
       "settings": {
         "headline": "Complete your system for full coverage",
-        "body": "Evening Capsules cover 3 of our 13 ingredients. Add Morning Blend and Softgels to target all 12 hallmarks of aging — for $99/mo.",
+        "body": "Evening Capsules cover 3 of our 13 ingredients. Add Morning Blend and Softgels to target all 12 hallmarks of aging \u2014 for $99/mo.",
         "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
       }
     },
@@ -55,13 +76,49 @@
       "type": "cc-faq-apr26",
       "settings": {},
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "How do I take Evening Capsules?", "answer": "Take 2 capsules 30-60 minutes before bed with water." } },
-        "f2": { "type": "faq", "settings": { "question": "Will L-Theanine make me drowsy?", "answer": "L-Theanine promotes relaxation without drowsiness. It supports natural sleep onset, not sedation." } },
-        "f3": { "type": "faq", "settings": { "question": "Is lithium orotate safe?", "answer": "At our 400 mcg trace dose, lithium orotate is far below prescription levels and has an excellent safety profile in long-term studies." } },
-        "f4": { "type": "faq", "settings": { "question": "Can I cancel my subscription?", "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees." } },
-        "f5": { "type": "faq", "settings": { "question": "Do you offer a guarantee?", "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund." } }
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take Evening Capsules?",
+            "answer": "Take 2 capsules 30-60 minutes before bed with water."
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "Will L-Theanine make me drowsy?",
+            "answer": "L-Theanine promotes relaxation without drowsiness. It supports natural sleep onset, not sedation."
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is lithium orotate safe?",
+            "answer": "At our 400 mcg trace dose, lithium orotate is far below prescription levels and has an excellent safety profile in long-term studies."
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel my subscription?",
+            "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees."
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer a guarantee?",
+            "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ]
     },
     "pdp-email": {
       "type": "cc-email-capture-apr26",
@@ -70,14 +127,241 @@
     "pdp-final-cta": {
       "type": "cc-final-cta-apr26",
       "settings": {}
+    },
+    "pdp-mechanism": {
+      "type": "cc-pdp-mechanism-apr26",
+      "settings": {
+        "label": "WHY PM CAPSULES",
+        "headline": "3 ingredients that support better sleep and overnight recovery"
+      },
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Deeper sleep",
+            "summary": "L-Theanine promotes relaxation and natural sleep onset without drowsiness or grogginess.",
+            "detail": "200mg L-Theanine increases alpha brain wave activity, promoting a calm-but-alert state that transitions naturally into restful sleep. Unlike sedatives, it supports your natural sleep architecture without morning grogginess."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Calmer evenings",
+            "summary": "Trace-dose lithium orotate supports mood stability and reduces racing thoughts before bed.",
+            "detail": "At 400mcg, lithium orotate is a trace dose -- roughly 1/100th of prescription levels. Population studies show regions with naturally higher lithium in tap water have lower rates of mood disorders and neurodegenerative disease."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Joint recovery",
+            "summary": "The PM dose of glucosamine sulfate supports overnight joint repair and reduces morning stiffness.",
+            "detail": "750mg glucosamine sulfate completes the 1,500mg daily clinical dose (split AM/PM for steady levels). Overnight, the body prioritizes repair -- glucosamine supports cartilage regeneration and reduces inflammatory markers in joint tissue."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Neuroprotection",
+            "summary": "Lithium orotate increases BDNF and supports brain autophagy at safe, trace-level doses.",
+            "detail": "Trace lithium upregulates BDNF (brain-derived neurotrophic factor), promotes neuronal autophagy, and inhibits GSK-3 beta -- a key enzyme linked to neurodegeneration. These neuroprotective effects occur at doses far below therapeutic psychiatric use."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "pdp-reviews": {
+      "type": "cc-pdp-reviews-apr26",
+      "settings": {
+        "label": "WHAT MEMBERS ARE SAYING",
+        "headline": "Real reviews from real members"
+      },
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "I fall asleep faster and wake up feeling actually rested. No grogginess, no weird dreams.",
+            "name": "David M.",
+            "detail": "Austin, 47",
+            "category": "sleep"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "The evening capsules are the part of the system I notice most. My sleep quality is night and day.",
+            "name": "Mark T.",
+            "detail": "Denver, 52",
+            "category": "sleep"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "I used to lie awake for an hour before falling asleep. Now I am out within 15 minutes. Consistently.",
+            "name": "Robert J.",
+            "detail": "San Diego, 58",
+            "category": "sleep"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "quote": "I feel calmer in the evenings now. Less racing thoughts before bed.",
+            "name": "Sarah K.",
+            "detail": "Portland, 39",
+            "category": "mood"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "quote": "My wife noticed I am less irritable in the evenings. I did not even realize how stressed I was before bed.",
+            "name": "James P.",
+            "detail": "Charlotte, 44",
+            "category": "mood"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "quote": "The lithium dose is tiny but I genuinely feel more even-keeled. Subtle but real.",
+            "name": "Karen W.",
+            "detail": "Seattle, 51",
+            "category": "mood"
+          }
+        },
+        "r7": {
+          "type": "review",
+          "settings": {
+            "quote": "My joints feel better in the morning. The split AM/PM glucosamine dosing makes sense and I can feel the difference.",
+            "name": "Thomas H.",
+            "detail": "Phoenix, 61",
+            "category": "recovery"
+          }
+        },
+        "r8": {
+          "type": "review",
+          "settings": {
+            "quote": "I recover faster from workouts. My knees used to ache every morning -- that has mostly gone away.",
+            "name": "Brian S.",
+            "detail": "Tampa, 49",
+            "category": "recovery"
+          }
+        },
+        "r9": {
+          "type": "review",
+          "settings": {
+            "quote": "Post-run soreness has dropped significantly since I started the evening capsules. My body just feels better.",
+            "name": "Michelle R.",
+            "detail": "Boulder, 42",
+            "category": "recovery"
+          }
+        },
+        "r10": {
+          "type": "review",
+          "settings": {
+            "quote": "As a physician, I appreciate the trace-dose lithium approach. The science is solid and the safety profile is excellent.",
+            "name": "Michael R.",
+            "detail": "Physician, 62",
+            "category": "trust"
+          }
+        },
+        "r11": {
+          "type": "review",
+          "settings": {
+            "quote": "I researched every ingredient before buying. Full transparency, clinical doses, no hidden blends. Exactly what I was looking for.",
+            "name": "Daniel C.",
+            "detail": "Boston, 55",
+            "category": "trust"
+          }
+        },
+        "r12": {
+          "type": "review",
+          "settings": {
+            "quote": "Three ingredients, three reasons, zero filler. I trust this more than any sleep supplement I have tried.",
+            "name": "Lisa A.",
+            "detail": "Nashville, 46",
+            "category": "trust"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12"
+      ]
+    },
+    "pdp-experts": {
+      "type": "cc-pdp-experts-apr26",
+      "settings": {
+        "label": "EXPERT VALIDATION",
+        "headline": "Trusted by leading health researchers"
+      },
+      "blocks": {
+        "e1": {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "e2": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "e3": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "e4": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ]
     }
   },
   "order": [
     "pdp-hero",
     "pdp-press",
+    "pdp-mechanism",
     "pdp-ingredients",
+    "pdp-experts",
     "pdp-ugc",
-    "pdp-testimonials",
+    "pdp-reviews",
     "pdp-upsell",
     "pdp-faq",
     "pdp-email",

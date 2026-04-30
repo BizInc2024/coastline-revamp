@@ -1,0 +1,95 @@
+{%- comment -%}
+  cc-pdp-mechanism-apr26 — "Why this product" benefit accordion
+  Block-based: each block = one benefit (title, summary, science detail).
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-pdp-mechanism-apr26">
+  <section class="reveal" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div class="cc-mech-wrap">
+
+      <div class="cc-mech-head">
+        <p class="cc-mech-eyebrow">{{ section.settings.label | default: "WHY THIS PRODUCT" }}</p>
+        <h2 class="cc-mech-h2">{{ section.settings.headline | default: "Built for a reason" }}</h2>
+      </div>
+
+      <div x-data="{ open: null }" class="cc-mech-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <div class="cc-mech-row" {{ block.shopify_attributes }}>
+              <button type="button"
+                      class="cc-mech-btn"
+                      @click="open === '{{ block.id }}' ? open = null : open = '{{ block.id }}'"
+                      :aria-expanded="open === '{{ block.id }}'">
+                <span class="cc-mech-title">{{ block.settings.title }}</span>
+                <span class="cc-mech-icon" :style="open === '{{ block.id }}' ? 'transform:rotate(45deg)' : ''">+</span>
+              </button>
+              <p class="cc-mech-summary">{{ block.settings.summary }}</p>
+              <div x-show="open === '{{ block.id }}'" x-collapse x-cloak>
+                <p class="cc-mech-detail">{{ block.settings.detail }}</p>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<style>
+  .cc-pdp-mechanism-apr26 .cc-mech-wrap { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+  .cc-pdp-mechanism-apr26 .cc-mech-head { text-align: center; margin-bottom: 48px; }
+  .cc-pdp-mechanism-apr26 .cc-mech-eyebrow {
+    font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-gray); font-weight: 500; margin: 0 0 20px;
+  }
+  .cc-pdp-mechanism-apr26 .cc-mech-h2 {
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(26px, 4.5vw, 42px); font-weight: 500; color: var(--deep-ink); letter-spacing: -0.02em; line-height: 1.2; margin: 0;
+  }
+  .cc-pdp-mechanism-apr26 .cc-mech-row { border-bottom: 1px solid var(--light-gray); padding: 20px 0; }
+  .cc-pdp-mechanism-apr26 .cc-mech-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 0; background: transparent; border: 0; cursor: pointer; text-align: left;
+    font-family: inherit;
+  }
+  .cc-pdp-mechanism-apr26 .cc-mech-title {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 18px; color: var(--deep-ink); line-height: 1.3;
+  }
+  .cc-pdp-mechanism-apr26 .cc-mech-icon {
+    font-size: 1.25rem; color: var(--warm-gray); transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px;
+  }
+  .cc-pdp-mechanism-apr26 .cc-mech-summary {
+    font-family: 'Inter', sans-serif; font-size: 15px; color: var(--warm-gray); line-height: 1.6; margin: 8px 0 0;
+  }
+  .cc-pdp-mechanism-apr26 .cc-mech-detail {
+    font-family: 'Inter', sans-serif; font-size: 14px; color: var(--warm-gray); line-height: 1.7; margin: 12px 0 0; opacity: 0.85;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP Mechanism (apr26)",
+  "tag": "section",
+  "class": "section-cc-pdp-mechanism-apr26",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "WHY THIS PRODUCT" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Built for a reason" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "summary", "label": "Summary (always visible)" },
+        { "type": "textarea", "id": "detail", "label": "Detail (expanded)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "PDP Mechanism (apr26)", "category": "Coastline" }
+  ]
+}
+{% endschema %}

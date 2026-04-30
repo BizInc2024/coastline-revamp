@@ -6,7 +6,7 @@
         "review_text": "100+ five-star reviews",
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "4 fat-soluble ingredients in one softgel. Take with your first meal alongside Morning Blend. Supports cellular protection, eye, brain, and skin health.",
-        "ingredients_line": "Astaxanthin 6 mg · Lutein 10 mg · Zeaxanthin 2 mg · CoQ10 200 mg",
+        "ingredients_line": "Astaxanthin 6 mg \u00b7 Lutein 10 mg \u00b7 Zeaxanthin 2 mg \u00b7 CoQ10 200 mg",
         "supply_line": "30-day supply. Fully dosed."
       }
     },
@@ -19,36 +19,67 @@
       "settings": {
         "label": "WHAT'S INSIDE",
         "headline": "Four ingredients. Four powerful protections.",
-        "subheadline": "Fat-soluble nutrients absorb best with dietary fat — that's why one softgel goes alongside your morning meal.",
-        "ing_count_label": "MORNING SOFTGELS — 4 INGREDIENTS"
+        "subheadline": "Fat-soluble nutrients absorb best with dietary fat \u2014 that's why one softgel goes alongside your morning meal.",
+        "ing_count_label": "MORNING SOFTGELS \u2014 4 INGREDIENTS"
       },
       "blocks": {
-        "astax": { "type": "ingredient", "settings": { "name": "Astaxanthin", "dose": "6 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168", "description": "Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.", "science": "Activates NRF2 and FOXO3 pathways. Sourced from Haematococcus pluvialis microalgae." } },
-        "lutein": { "type": "ingredient", "settings": { "name": "Lutein", "dose": "10 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424", "description": "Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.", "science": "Accumulates in hippocampus and frontal cortex. Increases BDNF. AREDS2 study dose." } },
-        "zeax": { "type": "ingredient", "settings": { "name": "Zeaxanthin", "dose": "2 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424", "description": "Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.", "science": "Together they filter short-wavelength blue light, reducing damage by up to 100x at critical wavelengths." } },
-        "coq10": { "type": "ingredient", "settings": { "name": "Coenzyme Q10 (Ubiquinone)", "dose": "200 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360", "description": "Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.", "science": "Ubiquinone form (trans-isomer). Offsets statin-induced CoQ10 depletion." } }
+        "astax": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Astaxanthin",
+            "dose": "6 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168",
+            "description": "Over 100x more potent than vitamin E at protecting cell membranes. Supports skin, eye, and cardiovascular health while activating key longevity pathways.",
+            "science": "Activates NRF2 and FOXO3 pathways. Sourced from Haematococcus pluvialis microalgae."
+          }
+        },
+        "lutein": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Lutein",
+            "dose": "10 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424",
+            "description": "Protects the macula from blue light damage and accumulates in the brain to support memory, learning, and reasoning.",
+            "science": "Accumulates in hippocampus and frontal cortex. Increases BDNF. AREDS2 study dose."
+          }
+        },
+        "zeax": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Zeaxanthin",
+            "dose": "2 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424",
+            "description": "Works with lutein to form complementary eye protection. Dominates the fovea for sharp central vision.",
+            "science": "Together they filter short-wavelength blue light, reducing damage by up to 100x at critical wavelengths."
+          }
+        },
+        "coq10": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Coenzyme Q10 (Ubiquinone)",
+            "dose": "200 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360",
+            "description": "Essential for mitochondrial energy production. Supports heart health, reduces migraine frequency, and helps regenerate vitamins C and E.",
+            "science": "Ubiquinone form (trans-isomer). Offsets statin-induced CoQ10 depletion."
+          }
+        }
       },
-      "block_order": ["astax", "lutein", "zeax", "coq10"]
+      "block_order": [
+        "astax",
+        "lutein",
+        "zeax",
+        "coq10"
+      ]
     },
     "pdp-ugc": {
       "type": "cc-ugc-apr26",
       "settings": {}
     },
-    "pdp-testimonials": {
-      "type": "cc-testimonials-apr26",
-      "settings": {},
-      "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "Quality you can feel. You can tell this was not made by a marketing team, but by scientists.", "name": "Edward Q.", "detail": "Richmond 49", "category": "trust" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "I am extremely careful about what I put in my body. Coastline checked every box for purity and data.", "name": "Rachel G.", "detail": "Boulder 48", "category": "trust" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "Mental clarity is the biggest win for me. The brain fog of my 40s has lifted completely.", "name": "Megan S.", "detail": "Columbus 46", "category": "focus" } }
-      },
-      "block_order": ["t1", "t2", "t3"]
-    },
     "pdp-upsell": {
       "type": "cc-pdp-upsell-apr26",
       "settings": {
         "headline": "Complete your system for full coverage",
-        "body": "Softgels cover 4 of our 13 ingredients. Add Morning Blend and Evening Capsules to target all 12 hallmarks of aging — for $99/mo.",
+        "body": "Softgels cover 4 of our 13 ingredients. Add Morning Blend and Evening Capsules to target all 12 hallmarks of aging \u2014 for $99/mo.",
         "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
       }
     },
@@ -56,13 +87,49 @@
       "type": "cc-faq-apr26",
       "settings": {},
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "How do I take the Softgels?", "answer": "Take 1 softgel with your first meal of the day. Fat-soluble ingredients absorb best when taken with dietary fat." } },
-        "f2": { "type": "faq", "settings": { "question": "When will I feel a difference?", "answer": "Astaxanthin and CoQ10 build up in tissues over 4-6 weeks. Eye and skin benefits are typically noticed within 8-12 weeks." } },
-        "f3": { "type": "faq", "settings": { "question": "Is the softgel vegan?", "answer": "Yes. Our softgel uses a vegan-friendly tapioca-based shell. All ingredients inside are vegan-sourced." } },
-        "f4": { "type": "faq", "settings": { "question": "Can I cancel my subscription?", "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees." } },
-        "f5": { "type": "faq", "settings": { "question": "Do you offer a guarantee?", "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund." } }
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take the Softgels?",
+            "answer": "Take 1 softgel with your first meal of the day. Fat-soluble ingredients absorb best when taken with dietary fat."
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I feel a difference?",
+            "answer": "Astaxanthin and CoQ10 build up in tissues over 4-6 weeks. Eye and skin benefits are typically noticed within 8-12 weeks."
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is the softgel vegan?",
+            "answer": "Yes. Our softgel uses a vegan-friendly tapioca-based shell. All ingredients inside are vegan-sourced."
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel my subscription?",
+            "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees."
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer a guarantee?",
+            "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ]
     },
     "pdp-email": {
       "type": "cc-email-capture-apr26",
@@ -71,14 +138,271 @@
     "pdp-final-cta": {
       "type": "cc-final-cta-apr26",
       "settings": {}
+    },
+    "pdp-mechanism": {
+      "type": "cc-pdp-mechanism-apr26",
+      "settings": {
+        "label": "WHY AM SOFTGELS",
+        "headline": "4 fat-soluble ingredients in one morning capsule"
+      },
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Cellular protection",
+            "summary": "Astaxanthin is one of the most powerful antioxidants in nature, protecting cells from oxidative stress.",
+            "detail": "At 6mg clinical dose, astaxanthin is 6,000x more potent than vitamin C as an antioxidant. It embeds in cell membranes to neutralize free radicals and protect mitochondrial DNA from oxidative damage."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Eye and brain health",
+            "summary": "AREDS2-dose lutein and zeaxanthin support macular health and reduce eye strain from screens.",
+            "detail": "10mg lutein and 2mg zeaxanthin match the AREDS2 clinical trial doses shown to reduce risk of age-related macular degeneration. These carotenoids filter blue light and accumulate in the macula to protect retinal cells."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Heart and mitochondria",
+            "summary": "200 mg CoQ10 fuels mitochondrial energy production and supports cardiovascular function.",
+            "detail": "CoQ10 (ubiquinone) is essential for the electron transport chain in every cell. At 200mg, it supports ATP production, reduces oxidative stress in cardiac tissue, and may help maintain healthy blood pressure already within normal range."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Skin protection",
+            "summary": "Astaxanthin supports skin elasticity and provides internal UV protection from the inside out.",
+            "detail": "Clinical studies show 6mg daily astaxanthin improves skin moisture, elasticity, and wrinkle depth. It provides internal photoprotection by quenching singlet oxygen generated by UV exposure."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "pdp-reviews": {
+      "type": "cc-pdp-reviews-apr26",
+      "settings": {
+        "label": "WHAT MEMBERS ARE SAYING",
+        "headline": "Real reviews from real members"
+      },
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "The softgels are so easy to take. One capsule with breakfast and I know my eyes and cells are covered. No taste, no hassle.",
+            "name": "Michael R.",
+            "detail": "Physician, 62",
+            "category": "convenience"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "I was spending over $90 a month on four separate bottles for these exact ingredients. Coastline consolidated them into one softgel for $35. Easy decision.",
+            "name": "Lisa T.",
+            "detail": "Austin, 52",
+            "category": "trust"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "As someone who stares at screens 12 hours a day, the lutein and zeaxanthin alone are worth it. My eyes feel less strained by end of day.",
+            "name": "Thomas H.",
+            "detail": "Atlanta, 43",
+            "category": "focus"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "quote": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.",
+            "name": "Andrew P.",
+            "detail": "Boston, 55",
+            "category": "trust"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "quote": "I started taking CoQ10 for heart health on my doctor's recommendation. Getting it bundled with astaxanthin and eye support at this price is a no-brainer.",
+            "name": "Sarah M.",
+            "detail": "San Diego, 54",
+            "category": "energy"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. The CoQ10 dose in these softgels has made a real difference in how I feel by mid-afternoon.",
+            "name": "Scott L.",
+            "detail": "Charlotte, 51",
+            "category": "energy"
+          }
+        },
+        "r7": {
+          "type": "review",
+          "settings": {
+            "quote": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.",
+            "name": "Catherine W.",
+            "detail": "Seattle, 58",
+            "category": "trust"
+          }
+        },
+        "r8": {
+          "type": "review",
+          "settings": {
+            "quote": "At 72, I am still active and working. The astaxanthin and CoQ10 in these softgels help me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs, 72",
+            "category": "energy"
+          }
+        },
+        "r9": {
+          "type": "review",
+          "settings": {
+            "quote": "I love the convenience of having all four fat-soluble ingredients in one capsule. No more juggling multiple bottles every morning.",
+            "name": "James U.",
+            "detail": "Tampa, 44",
+            "category": "convenience"
+          }
+        },
+        "r10": {
+          "type": "review",
+          "settings": {
+            "quote": "Quality you can feel. Full dose CoQ10, clinical-dose astaxanthin -- you can tell this was not made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond, 49",
+            "category": "trust"
+          }
+        },
+        "r11": {
+          "type": "review",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. The lutein and astaxanthin combination has made a noticeable difference in my afternoon focus.",
+            "name": "Sophia R.",
+            "detail": "Founder, New York",
+            "category": "focus"
+          }
+        },
+        "r12": {
+          "type": "review",
+          "settings": {
+            "quote": "I travel three weeks a month for work. Having all four ingredients in one softgel means I just toss the bottle in my bag. Simple.",
+            "name": "Brian T.",
+            "detail": "San Francisco, 38",
+            "category": "convenience"
+          }
+        },
+        "r13": {
+          "type": "review",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. These softgels are the simplest part of my daily routine and I have not missed a day in three months.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans, 57",
+            "category": "convenience"
+          }
+        },
+        "r14": {
+          "type": "review",
+          "settings": {
+            "quote": "The AREDS2-dose lutein and zeaxanthin sold me. I was already paying $33 just for those two. Getting CoQ10 and astaxanthin on top for $35 total is incredible value.",
+            "name": "David N.",
+            "detail": "Washington DC, 48",
+            "category": "trust"
+          }
+        },
+        "r15": {
+          "type": "review",
+          "settings": {
+            "quote": "I stopped needing my second coffee by week two. The CoQ10 gives me steady mitochondrial energy without any jitters or crash.",
+            "name": "Derek W.",
+            "detail": "Scottsdale, 47",
+            "category": "energy"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15"
+      ]
+    },
+    "pdp-experts": {
+      "type": "cc-pdp-experts-apr26",
+      "settings": {
+        "label": "EXPERT VALIDATION",
+        "headline": "Trusted by leading health researchers"
+      },
+      "blocks": {
+        "e1": {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "e2": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "e3": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "e4": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ]
     }
   },
   "order": [
     "pdp-hero",
     "pdp-press",
+    "pdp-mechanism",
     "pdp-ingredients",
+    "pdp-experts",
     "pdp-ugc",
-    "pdp-testimonials",
+    "pdp-reviews",
     "pdp-upsell",
     "pdp-faq",
     "pdp-email",

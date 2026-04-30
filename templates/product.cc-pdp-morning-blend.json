@@ -6,7 +6,7 @@
         "review_text": "200+ five-star reviews",
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "7 science-backed ingredients in one easy-scoop powder. Mix with water and take with your first meal. Supports energy, focus, muscle, joints, and gut health.",
-        "ingredients_line": "Ergothioneine 5 mg · Taurine 3.05 g · Creatine 5.25 g · Glycine 5 g · Inulin 4 g · Magnesium Citrate 150 mg · Glucosamine Sulfate 750 mg",
+        "ingredients_line": "Ergothioneine 5 mg \u00b7 Taurine 3.05 g \u00b7 Creatine 5.25 g \u00b7 Glycine 5 g \u00b7 Inulin 4 g \u00b7 Magnesium Citrate 150 mg \u00b7 Glucosamine Sulfate 750 mg",
         "supply_line": "30-day supply. Fully dosed."
       }
     },
@@ -20,38 +20,99 @@
         "label": "WHAT'S INSIDE",
         "headline": "Every ingredient earns its place",
         "subheadline": "Each ingredient at a clinically-verified dose. No proprietary blends, no fillers, no marketing dust.",
-        "ing_count_label": "MORNING BLEND — 7 INGREDIENTS"
+        "ing_count_label": "MORNING BLEND \u2014 7 INGREDIENTS"
       },
       "blocks": {
-        "ergo": { "type": "ingredient", "settings": { "name": "Ergothioneine", "dose": "5 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277", "description": "Crosses the blood-brain barrier and increases NAD+ levels in cells. A powerful cellular antioxidant that accumulates in the brain and mitochondria.", "science": "Clinical trial: improved cognition and reduced neurodegeneration markers at 5 mg/day." } },
-        "taurine": { "type": "ingredient", "settings": { "name": "Taurine", "dose": "3.05 g", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425", "description": "Supports cardiovascular health, reduces blood pressure and inflammation, and improves metabolic markers including blood sugar and cholesterol.", "science": "Targets nearly all hallmarks of aging including epigenetic alterations, inflammation, and mitochondrial dysfunction." } },
-        "creatine": { "type": "ingredient", "settings": { "name": "Creatine Monohydrate", "dose": "5.25 g", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945", "description": "Supports muscle strength, bone density, and cognitive function under stress. One of the most studied supplements with an excellent safety profile.", "science": "Buffers ATP levels as a temporal and spatial energy source. Reduces cellular waste accumulation." } },
-        "glycine": { "type": "ingredient", "settings": { "name": "Glycine", "dose": "5 g", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227", "description": "Improves sleep quality and reduces daytime sleepiness. A precursor to glutathione, your body's master antioxidant, and supports blood sugar control.", "science": "Reduces blood sugar swings when taken with meals. May mimic methionine restriction." } },
-        "inulin": { "type": "ingredient", "settings": { "name": "Inulin", "dose": "4 g", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618", "description": "Prebiotic fiber that feeds beneficial gut bacteria, enhances mineral absorption, supports cognition, and improves bowel regularity.", "science": "Fermented into short-chain fatty acids (butyrate). Improves cognition in adults over 60 in a 12-week study." } },
-        "mag": { "type": "ingredient", "settings": { "name": "Magnesium Citrate", "dose": "150 mg", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678", "description": "Essential mineral for 300+ enzymatic reactions. Supports blood pressure, sleep onset, muscle recovery, and stress reduction.", "science": "50% of adults fail to meet the RDA. Citrate form chosen for superior bioavailability over oxide." } },
-        "gluc": { "type": "ingredient", "settings": { "name": "Glucosamine Sulfate", "dose": "750 mg (AM dose)", "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502", "description": "Supports joint health, reduces joint space narrowing, and is associated with reduced all-cause mortality in population studies.", "science": "Mimics calorie restriction at the cellular level. Activates AMP kinase and autophagy." } }
+        "ergo": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Ergothioneine",
+            "dose": "5 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277",
+            "description": "Crosses the blood-brain barrier and increases NAD+ levels in cells. A powerful cellular antioxidant that accumulates in the brain and mitochondria.",
+            "science": "Clinical trial: improved cognition and reduced neurodegeneration markers at 5 mg/day."
+          }
+        },
+        "taurine": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Taurine",
+            "dose": "3.05 g",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425",
+            "description": "Supports cardiovascular health, reduces blood pressure and inflammation, and improves metabolic markers including blood sugar and cholesterol.",
+            "science": "Targets nearly all hallmarks of aging including epigenetic alterations, inflammation, and mitochondrial dysfunction."
+          }
+        },
+        "creatine": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Creatine Monohydrate",
+            "dose": "5.25 g",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945",
+            "description": "Supports muscle strength, bone density, and cognitive function under stress. One of the most studied supplements with an excellent safety profile.",
+            "science": "Buffers ATP levels as a temporal and spatial energy source. Reduces cellular waste accumulation."
+          }
+        },
+        "glycine": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Glycine",
+            "dose": "5 g",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227",
+            "description": "Improves sleep quality and reduces daytime sleepiness. A precursor to glutathione, your body's master antioxidant, and supports blood sugar control.",
+            "science": "Reduces blood sugar swings when taken with meals. May mimic methionine restriction."
+          }
+        },
+        "inulin": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Inulin",
+            "dose": "4 g",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618",
+            "description": "Prebiotic fiber that feeds beneficial gut bacteria, enhances mineral absorption, supports cognition, and improves bowel regularity.",
+            "science": "Fermented into short-chain fatty acids (butyrate). Improves cognition in adults over 60 in a 12-week study."
+          }
+        },
+        "mag": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Magnesium Citrate",
+            "dose": "150 mg",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678",
+            "description": "Essential mineral for 300+ enzymatic reactions. Supports blood pressure, sleep onset, muscle recovery, and stress reduction.",
+            "science": "50% of adults fail to meet the RDA. Citrate form chosen for superior bioavailability over oxide."
+          }
+        },
+        "gluc": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Glucosamine Sulfate",
+            "dose": "750 mg (AM dose)",
+            "image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502",
+            "description": "Supports joint health, reduces joint space narrowing, and is associated with reduced all-cause mortality in population studies.",
+            "science": "Mimics calorie restriction at the cellular level. Activates AMP kinase and autophagy."
+          }
+        }
       },
-      "block_order": ["ergo", "taurine", "creatine", "glycine", "inulin", "mag", "gluc"]
+      "block_order": [
+        "ergo",
+        "taurine",
+        "creatine",
+        "glycine",
+        "inulin",
+        "mag",
+        "gluc"
+      ]
     },
     "pdp-ugc": {
       "type": "cc-ugc-apr26",
       "settings": {}
     },
-    "pdp-testimonials": {
-      "type": "cc-testimonials-apr26",
-      "settings": {},
-      "blocks": {
-        "t1": { "type": "testimonial", "settings": { "quote": "I stopped needing my second coffee by week two. The energy is steady — no spike, no crash.", "name": "Derek W.", "detail": "Scottsdale 47", "category": "energy" } },
-        "t2": { "type": "testimonial", "settings": { "quote": "Energy that feels natural, not forced. It has changed how I approach my workouts.", "name": "Scott L.", "detail": "Charlotte 51", "category": "energy" } },
-        "t3": { "type": "testimonial", "settings": { "quote": "I have tried every supplement out there. My energy levels have transformed.", "name": "Sarah M.", "detail": "San Diego 54", "category": "energy" } }
-      },
-      "block_order": ["t1", "t2", "t3"]
-    },
     "pdp-upsell": {
       "type": "cc-pdp-upsell-apr26",
       "settings": {
         "headline": "Complete your system for full coverage",
-        "body": "Morning Blend covers 7 of our 13 ingredients. Add the Daily Softgels and Evening Capsules to target all 12 hallmarks of aging — for $99/mo.",
+        "body": "Morning Blend covers 7 of our 13 ingredients. Add the Daily Softgels and Evening Capsules to target all 12 hallmarks of aging \u2014 for $99/mo.",
         "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
       }
     },
@@ -59,13 +120,49 @@
       "type": "cc-faq-apr26",
       "settings": {},
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "How do I take Morning Blend?", "answer": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day." } },
-        "f2": { "type": "faq", "settings": { "question": "When will I feel a difference?", "answer": "Most members notice improved energy and focus within 2-3 weeks. Full benefits build over 60-90 days of consistent use." } },
-        "f3": { "type": "faq", "settings": { "question": "Is it safe with other supplements?", "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. Consult your healthcare provider if you take prescription medications." } },
-        "f4": { "type": "faq", "settings": { "question": "Can I cancel my subscription?", "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees." } },
-        "f5": { "type": "faq", "settings": { "question": "Do you offer a guarantee?", "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund." } }
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take Morning Blend?",
+            "answer": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day."
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I feel a difference?",
+            "answer": "Most members notice improved energy and focus within 2-3 weeks. Full benefits build over 60-90 days of consistent use."
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe with other supplements?",
+            "answer": "Coastline is formulated in NSF certified facilities with well-studied ingredients at safe doses. Consult your healthcare provider if you take prescription medications."
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel my subscription?",
+            "answer": "Yes, cancel anytime with one click from your account dashboard. No penalties, no fees."
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer a guarantee?",
+            "answer": "Yes. We offer a 60-day money-back guarantee. If you do not notice a difference, contact us for a full refund."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ]
     },
     "pdp-email": {
       "type": "cc-email-capture-apr26",
@@ -74,14 +171,241 @@
     "pdp-final-cta": {
       "type": "cc-final-cta-apr26",
       "settings": {}
+    },
+    "pdp-mechanism": {
+      "type": "cc-pdp-mechanism-apr26",
+      "settings": {
+        "label": "WHY MORNING BLEND",
+        "headline": "7 ingredients working together for your morning"
+      },
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Sustained energy",
+            "summary": "Creatine and taurine support steady mitochondrial energy without caffeine or crashes.",
+            "detail": "5.25g creatine monohydrate replenishes ATP stores for sustained physical and mental energy. 3.05g taurine supports mitochondrial function and acts as an osmolyte to maintain cellular hydration. Together they provide stable, all-day energy without stimulants."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Mental clarity",
+            "summary": "Ergothioneine crosses the blood-brain barrier to support cognitive function and focus.",
+            "detail": "Ergothioneine is a rare amino acid that accumulates in the brain and acts as a potent antioxidant. It crosses the blood-brain barrier via a dedicated transporter (OCTN1) and may support neuroprotection against age-related cognitive decline."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Muscle and joints",
+            "summary": "Creatine supports lean muscle mass. Glucosamine promotes joint health and reduces stiffness.",
+            "detail": "Clinical-dose creatine supports muscle protein synthesis and strength, especially important after 40. 750mg glucosamine sulfate (AM dose) helps maintain cartilage integrity and joint space, with the PM dose completing the full 1,500mg daily target."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gut and metabolic health",
+            "summary": "Inulin feeds beneficial gut bacteria. Glycine supports metabolic function and collagen production.",
+            "detail": "4g inulin is a prebiotic fiber that feeds Bifidobacterium and Lactobacillus species in the gut. 5g glycine supports collagen synthesis, glutathione production, and has been shown to improve sleep quality and metabolic markers."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ]
+    },
+    "pdp-reviews": {
+      "type": "cc-pdp-reviews-apr26",
+      "settings": {
+        "label": "WHAT MEMBERS ARE SAYING",
+        "headline": "Real reviews from real members"
+      },
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "I stopped needing my second coffee within a week. The creatine and taurine give me steady energy all morning without any crash.",
+            "name": "James R.",
+            "detail": "San Diego, 47",
+            "category": "energy"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "I was spending over $120 a month on seven separate bottles. Coastline Morning Blend replaced all of them for $55. The math was easy.",
+            "name": "David L.",
+            "detail": "Austin, 52",
+            "category": "trust"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "My focus has improved noticeably. I can power through deep work sessions without my mind wandering like it used to.",
+            "name": "Michael T.",
+            "detail": "Boston, 44",
+            "category": "focus"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "quote": "I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.",
+            "name": "Andrew P.",
+            "detail": "Denver, 55",
+            "category": "trust"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "quote": "One scoop, one glass of water, done. No pills to count, no timing to worry about. Simplest part of my morning.",
+            "name": "Robert K.",
+            "detail": "Portland, 41",
+            "category": "convenience"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "quote": "The joint stiffness I used to feel every morning has basically disappeared. The glucosamine dose in this is legit.",
+            "name": "Thomas H.",
+            "detail": "Phoenix, 58",
+            "category": "energy"
+          }
+        },
+        "r7": {
+          "type": "review",
+          "settings": {
+            "quote": "My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.",
+            "name": "Catherine W.",
+            "detail": "Seattle, 53",
+            "category": "trust"
+          }
+        },
+        "r8": {
+          "type": "review",
+          "settings": {
+            "quote": "Mental clarity is my most valuable asset. The ergothioneine has made a noticeable difference in my afternoon focus and recall.",
+            "name": "Sophia R.",
+            "detail": "New York, 39",
+            "category": "focus"
+          }
+        },
+        "r9": {
+          "type": "review",
+          "settings": {
+            "quote": "I travel three weeks a month. Having all seven ingredients in one powder means I just toss the pouch in my bag. Simple.",
+            "name": "Brian T.",
+            "detail": "San Francisco, 38",
+            "category": "convenience"
+          }
+        },
+        "r10": {
+          "type": "review",
+          "settings": {
+            "quote": "Quality you can verify. Full dose creatine, clinical-dose ergothioneine -- you can tell this was made by scientists, not marketers.",
+            "name": "Edward Q.",
+            "detail": "Richmond, 49",
+            "category": "trust"
+          }
+        },
+        "r11": {
+          "type": "review",
+          "settings": {
+            "quote": "My gut health has improved since starting Morning Blend. The inulin makes a real difference and I feel less bloated overall.",
+            "name": "Lisa M.",
+            "detail": "Nashville, 46",
+            "category": "energy"
+          }
+        },
+        "r12": {
+          "type": "review",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. Morning Blend is the simplest part of my daily routine and I have not missed a day in three months.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans, 57",
+            "category": "convenience"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12"
+      ]
+    },
+    "pdp-experts": {
+      "type": "cc-pdp-experts-apr26",
+      "settings": {
+        "label": "EXPERT VALIDATION",
+        "headline": "Trusted by leading health researchers"
+      },
+      "blocks": {
+        "e1": {
+          "type": "expert",
+          "settings": {
+            "quote": "The ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.",
+            "name": "Greg Potter, PhD, MSc",
+            "credential": "Sleep & Circadian Health"
+          }
+        },
+        "e2": {
+          "type": "expert",
+          "settings": {
+            "quote": "Coastline is what happens when you combine scientific rigor with real-world clinical understanding.",
+            "name": "Dr. Jacqueline Jacques, ND",
+            "credential": "Naturopathic Doctor"
+          }
+        },
+        "e3": {
+          "type": "expert",
+          "settings": {
+            "quote": "I value Coastline's quality. It means less hassle with the greatest certainty of results.",
+            "name": "Dr. Nicolas Verhoeven, PhD",
+            "credential": "Molecular Medicine"
+          }
+        },
+        "e4": {
+          "type": "expert",
+          "settings": {
+            "quote": "The formulation reflects deep understanding of human physiology and clinical evidence.",
+            "name": "Chris Pollock, MD",
+            "credential": "Clinical Medicine"
+          }
+        }
+      },
+      "block_order": [
+        "e1",
+        "e2",
+        "e3",
+        "e4"
+      ]
     }
   },
   "order": [
     "pdp-hero",
     "pdp-press",
+    "pdp-mechanism",
     "pdp-ingredients",
+    "pdp-experts",
     "pdp-ugc",
-    "pdp-testimonials",
+    "pdp-reviews",
     "pdp-upsell",
     "pdp-faq",
     "pdp-email",

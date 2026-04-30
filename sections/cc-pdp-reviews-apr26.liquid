@@ -1,0 +1,134 @@
+{%- comment -%}
+  cc-pdp-reviews-apr26 — Full review wall with show-more
+  Block-based: each block = one review (quote, name, detail, category).
+  Initial show: 6 reviews. Click to load 6 more at a time.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+{%- assign total = 0 -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'review' -%}{%- assign total = total | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+
+<div class="cc-apr26 cc-pdp-reviews-apr26">
+  <section class="reveal" style="padding-top:80px;padding-bottom:80px;background:var(--parchment);">
+    <div class="cc-rev-wrap">
+
+      <div id="cc-rev-anchor-{{ section.id | replace: '-', '_' }}" style="position:relative;top:-100px;visibility:hidden;pointer-events:none;"></div>
+      <p class="cc-rev-eyebrow">{{ section.settings.label | default: "WHAT MEMBERS ARE SAYING" }}</p>
+      <h2 class="cc-rev-h2">{{ section.settings.headline | default: "Real reviews from real members" }}</h2>
+
+      <div x-data="{ shown: 6 }">
+        <div class="cc-rev-grid">
+          {%- assign idx = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'review' -%}
+              {%- assign idx = idx | plus: 1 -%}
+              <article x-show="{{ idx }} <= shown"
+                       x-transition:enter="cc-rev-enter"
+                       x-transition:enter-start="cc-rev-enter-start"
+                       x-transition:enter-end="cc-rev-enter-end"
+                       class="cc-rev-card"
+                       {{ block.shopify_attributes }}>
+                <p class="cc-rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                <p class="cc-rev-quote">&ldquo;{{ block.settings.quote }}&rdquo;</p>
+                <p class="cc-rev-byline">
+                  {{ block.settings.name }}{% if block.settings.detail != blank %} &middot; {{ block.settings.detail }}{% endif %}
+                </p>
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="cc-rev-controls">
+          <button type="button"
+                  class="cc-rev-tab"
+                  x-show="shown < {{ total }}"
+                  @click="shown = shown + 6">SHOW MORE REVIEWS</button>
+          <button type="button"
+                  class="cc-rev-tab"
+                  x-show="shown > 6"
+                  @click="shown = 6; $nextTick(() => { document.getElementById('cc-rev-anchor-{{ section.id | replace: '-', '_' }}').scrollIntoView({ behavior: 'smooth' }) })">SHOW LESS</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<style>
+  .cc-pdp-reviews-apr26 .cc-rev-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .cc-pdp-reviews-apr26 .cc-rev-eyebrow {
+    font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-gray); font-weight: 500; text-align: center; margin: 0 0 12px;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-h2 {
+    text-align: center; color: var(--deep-ink); font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: -0.02em; font-size: clamp(24px, 3.5vw, 36px); margin: 0 0 32px;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .cc-pdp-reviews-apr26 .cc-rev-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .cc-pdp-reviews-apr26 .cc-rev-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-card {
+    padding: 28px 32px; border: 1px solid var(--light-gray); background: #fff;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-stars {
+    color: var(--deep-ink); font-size: 14px; letter-spacing: 0.1em; margin: 0 0 8px;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-quote {
+    font-family: 'Inter', sans-serif; color: var(--deep-ink); font-size: 15px; line-height: 1.65; margin: 0 0 16px;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-byline {
+    font-family: 'Inter', sans-serif; color: var(--warm-gray); font-size: 13px; margin: 0; letter-spacing: 0.05em; font-weight: 500;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-controls {
+    text-align: center; margin-top: 32px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-tab {
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep-ink); background: transparent; border: 1px solid var(--deep-ink); padding: 14px 32px; cursor: pointer; transition: all 0.2s;
+  }
+  .cc-pdp-reviews-apr26 .cc-rev-tab:hover { background: var(--deep-ink); color: var(--parchment); }
+  .cc-pdp-reviews-apr26 .cc-rev-enter { transition: opacity 0.3s ease, transform 0.3s ease; }
+  .cc-pdp-reviews-apr26 .cc-rev-enter-start { opacity: 0; transform: translateY(8px); }
+  .cc-pdp-reviews-apr26 .cc-rev-enter-end { opacity: 1; transform: translateY(0); }
+</style>
+
+{% schema %}
+{
+  "name": "PDP Reviews (apr26)",
+  "tag": "section",
+  "class": "section-cc-pdp-reviews-apr26",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow label", "default": "WHAT MEMBERS ARE SAYING" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Real reviews from real members" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "detail", "label": "City / age / detail" },
+        { "type": "select", "id": "category", "label": "Category", "options": [
+          { "value": "energy", "label": "Energy" },
+          { "value": "focus", "label": "Focus" },
+          { "value": "trust", "label": "Trust" },
+          { "value": "convenience", "label": "Convenience" },
+          { "value": "sleep", "label": "Sleep" }
+        ], "default": "trust" }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    { "name": "PDP Reviews (apr26)", "category": "Coastline" }
+  ]
+}
+{% endschema %}
