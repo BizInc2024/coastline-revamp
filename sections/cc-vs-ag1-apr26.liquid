@@ -142,16 +142,6 @@
         </div>
     </section>
 
-    <!-- CTA: After bridge 1 -->
-    <div class="py-8 text-center bg-white">
-        <a href="#pricing-product-apr26" style="display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:4px;color:#6B6B6B;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">SKIP TO PRICING</a>
-    </div>
-
-    <!-- Divider Image -->
-    <div class="w-full">
-        <img src="{% if section.settings.breaker_image_pre_bj != blank %}{{ section.settings.breaker_image_pre_bj | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/canon-beach-haystack_1.png?v=1764011837{% endif %}" alt="" class="w-full" style="max-height: 40vh; object-fit: cover;" loading="lazy">
-    </div>
-
     <!-- SECTION 3: AG1 CLINICAL EVIDENCE -->
     <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
@@ -195,11 +185,6 @@
             </div>
         </div>
     </section>
-
-    <!-- CTA: After clinical evidence -->
-    <div class="py-10 text-center bg-parchment">
-        <a href="#pricing-product-apr26" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">START MY LONGEVITY SYSTEM</a>
-    </div>
 
     <!-- Bridge: Bryan Johnson → Comparison -->
     <section class="py-16 lg:py-20 bg-parchment">
@@ -408,16 +393,6 @@
         </div>
     </section>
 
-    <!-- CTA: After ingredients -->
-    <div class="py-10 text-center bg-white">
-        <a href="#pricing-product-apr26" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">SKIP TO PRICING</a>
-    </div>
-
-    <!-- Divider Image -->
-    <div class="w-full">
-        <img src="{% if section.settings.breaker_image_pre_experts != blank %}{{ section.settings.breaker_image_pre_experts | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/bizhillingdon_soft_white_sand_--ar_169_--v_6.1_8e5ae34c-3d82-46a0-9d03-dfdf1f4d715f.png?v=1742830305{% endif %}" alt="" class="w-full" style="max-height: 40vh; object-fit: cover;" loading="lazy">
-    </div>
-
     <!-- Bridge: Ingredients → Experts -->
     <section class="py-16 lg:py-20 bg-parchment">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
@@ -486,241 +461,6 @@
         </div>
     </section>
 
-    <!-- Bridge: Experts → Testimonials -->
-    <section class="py-16 lg:py-20 bg-parchment">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_5_headline | default: "What real customers are saying" }}</h3>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_5_p1 | default: "Expert validation matters. But at the end of the day, what matters most is whether real people notice a real difference. Not in a lab. In their actual lives -- their mornings, their workouts, their energy at 3 PM, their sleep." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.bridge_5_p2 | default: "We asked Coastline customers to share their experience. Many of them came from AG1 or other supplements. Some are physicians. Some are athletes. Some are parents who just wanted to stop feeling exhausted. Here is what they said." }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 7: SWITCHER TESTIMONIALS -->
-    <section class="py-20 lg:py-28" style="background-color: #F5F4F0;" x-data="{ visibleBatches: 1 }">
-        <div class="max-w-5xl mx-auto px-6 sm:px-8">
-            <div class="text-center mb-16">
-                <p class="section-counter mb-6">{{ section.settings.reviews_counter | default: 'What People Are Saying' }}</p>
-                <div class="editorial-divider mx-auto mb-10"></div>
-                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.reviews_headline | default: 'Real reviews from real customers.' }}</h2>
-            </div>
-
-            <!-- Batch 1: Reviews 1-3 (always visible) -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_1_quote | default: "&ldquo;As a physician, I&rsquo;m skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_1_name | default: 'Michael R., 62' }}</p>
-                    <p class="text-xs text-warm-gray">Physician</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_2_quote | default: "&ldquo;Quality you can feel. You can tell this wasn&rsquo;t made by a marketing team, but by scientists.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_2_name | default: 'Edward Q., 49' }}</p>
-                    <p class="text-xs text-warm-gray">Richmond, VA</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_3_quote | default: "&ldquo;I used to spend over $200 a month on five different supplements and still wasn&rsquo;t sure I was covering everything. Coastline replaced all of them. One system, done.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_3_name | default: 'Lisa T., 52' }}</p>
-                    <p class="text-xs text-warm-gray">Austin, TX</p>
-                </div>
-            </div>
-
-            <!-- Batch 2: Reviews 4-6 -->
-            <div x-show="visibleBatches >= 2" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_4_quote | default: "&ldquo;I&rsquo;m extremely careful about what I put in my body. Coastline checked every box for purity and data.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_4_name | default: 'Rachel G., 48' }}</p>
-                    <p class="text-xs text-warm-gray">Boulder, CO</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_5_quote | default: "&ldquo;I love the convenience of having everything I need in one simple system. No more pill organizers.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_5_name | default: 'James U., 44' }}</p>
-                    <p class="text-xs text-warm-gray">Tampa, FL</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_6_quote | default: "&ldquo;Finally, a longevity stack that doesn&rsquo;t require 15 different bottles. My morning brain fog is gone.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_6_name | default: 'Robert K., 45' }}</p>
-                    <p class="text-xs text-warm-gray">Chicago, IL</p>
-                </div>
-            </div>
-
-            <!-- Batch 3: Reviews 7-9 -->
-            <div x-show="visibleBatches >= 3" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_7_quote | default: "&ldquo;Three weeks in and the mental sharpness is unmistakable. I&rsquo;m writing better code, retaining more from meetings, and my afternoon crash is just gone.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_7_name | default: 'Thomas H., 43' }}</p>
-                    <p class="text-xs text-warm-gray">Atlanta, GA</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_8_quote | default: "&ldquo;I stopped needing my second coffee by week two. The energy is steady -- no spike, no crash. Just consistent output from 6 AM to 10 PM.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_8_name | default: 'Derek W., 47' }}</p>
-                    <p class="text-xs text-warm-gray">Scottsdale, AZ</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_9_quote | default: "&ldquo;As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the afternoon fog that I thought was just a permanent part of my life.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_9_name | default: 'Sophia R.' }}</p>
-                    <p class="text-xs text-warm-gray">Founder, New York</p>
-                </div>
-            </div>
-
-            <!-- Batch 4: Reviews 10-12 -->
-            <div x-show="visibleBatches >= 4" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_10_quote | default: "&ldquo;I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_10_name | default: 'Andrew P., 55' }}</p>
-                    <p class="text-xs text-warm-gray">Boston, MA</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_11_quote | default: "&ldquo;I train six days a week and recovery used to be my biggest bottleneck. Since starting Coastline, I&rsquo;m bouncing back faster and my endurance has noticeably improved.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_11_name | default: 'Marcus D., 39' }}</p>
-                    <p class="text-xs text-warm-gray">Denver, CO</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_12_quote | default: "&ldquo;My naturopath actually recommended Coastline after reviewing the ingredient list. That kind of third-party validation sealed the deal for me.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_12_name | default: 'Catherine W., 58' }}</p>
-                    <p class="text-xs text-warm-gray">Seattle, WA</p>
-                </div>
-            </div>
-
-            <!-- Batch 5: Reviews 13-15 -->
-            <div x-show="visibleBatches >= 5" x-collapse class="grid md:grid-cols-3 gap-8 mt-8">
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_13_quote | default: "&ldquo;My husband and I both switched to Coastline. We cancelled six separate subscriptions between us. Simpler, cheaper, and we actually feel the difference.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_13_name | default: 'Christine A., 49' }}</p>
-                    <p class="text-xs text-warm-gray">Denver, CO</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_14_quote | default: "&ldquo;At 72, I&rsquo;m still active and working. Coastline helps me keep pace with people half my age.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_14_name | default: 'Arthur B., 72' }}</p>
-                    <p class="text-xs text-warm-gray">Palm Springs, CA</p>
-                </div>
-                <div class="bg-white border border-light-gray p-8">
-                    <div class="flex gap-1 mb-4 text-deep-ink text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="text-warm-gray mb-6 leading-relaxed">{{ section.settings.review_15_quote | default: "&ldquo;Morning scoop, one softgel, two capsules before bed. That&rsquo;s it. I replaced an entire shelf of bottles with one system.&rdquo;" }}</p>
-                    <p class="font-grotesk text-deep-ink text-sm">{{ section.settings.review_15_name | default: 'Kevin M., 40' }}</p>
-                    <p class="text-xs text-warm-gray">Nashville, TN</p>
-                </div>
-            </div>
-
-            <div class="text-center mt-12" x-show="visibleBatches < 5">
-                <button @click="visibleBatches++" class="font-grotesk text-xs tracking-widest uppercase text-deep-ink border border-deep-ink px-12 py-4 hover:bg-deep-ink hover:text-parchment transition-all duration-300">
-                    Show More Reviews
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Breaker Image -->
-    <div class="w-full">
-        <img src="{% if section.settings.breaker_image_1 != blank %}{{ section.settings.breaker_image_1 | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Hero_Coastline_Bottle_On_Coast_2_3.jpg?v=1769557785{% endif %}" alt="" class="w-full" style="max-height: 50vh; object-fit: cover;" loading="lazy">
-    </div>
-
-    <!-- CTA: After testimonials -->
-    <div class="py-10 text-center" style="background-color: #F5F4F0;">
-        <a href="#pricing-product-apr26" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">START MY LONGEVITY SYSTEM</a>
-    </div>
-
-    <!-- Bridge: Testimonials → Star Rating -->
-    <section class="py-16 lg:py-20 bg-parchment">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_6_headline | default: "The final scorecard" }}</h3>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_6_p1 | default: "The customer reviews paint a consistent picture. But we wanted to go one step further and give you a clear, side-by-side rating across every dimension that actually matters when choosing a longevity supplement." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.bridge_6_p2 | default: "We evaluated both products on ingredient quality, clinical evidence, dose transparency, value per ingredient, and overall convenience. Here is the final scorecard." }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 8: SUMMARY STAR RATING TABLE -->
-    <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
-        <div class="max-w-3xl mx-auto px-6 sm:px-8">
-            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.4);">Summary</p>
-                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin: 0 auto 40px;"></div>
-                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium" style="color: #FAF9F6;">{{ section.settings.summary_headline | default: 'The final comparison' }}</h2>
-            </div>
-
-            <div class="v6-table-scroll reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <table class="v6-star-table v6-star-table-dark" style="min-width: 400px;">
-                    <thead>
-                        <tr>
-                            <th style="text-align:left; min-width:160px;"></th>
-                            <th>Coastline</th>
-                            <th>AG1</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Ingredient quality</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Clinical evidence</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9734;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Dose transparency</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9734;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Value per ingredient</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
-                        <tr><td>Convenience</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</td></tr>
-                        <tr style="font-weight:500;"><td style="color:#FAF9F6; font-weight:500;">Overall</td><td class="v6-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</td><td class="v6-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA: After star rating -->
-    <div class="py-10 text-center bg-parchment">
-        <a href="#pricing-product-apr26" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;text-decoration:none;transition:opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">SKIP TO PRICING</a>
-    </div>
-
-    <!-- KEY TAKEAWAYS -->
-    <section id="v6-takeaways" class="py-16 lg:py-20 bg-white">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase text-warm-gray mb-6">{{ section.settings.takeaways_label | default: 'Key Takeaways' }}</p>
-                <div style="width:40px; height:1px; background:var(--light-gray); margin-bottom:24px;"></div>
-                <ul class="space-y-4">
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_1 | default: "AG1's own clinical trial found no significant benefits over placebo across blood biomarkers, gut health, and metabolic markers." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_2 | default: "AG1 uses 75 ingredients in proprietary blends with undisclosed doses. Coastline uses 13 ingredients at full clinical doses with complete transparency." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_3 | default: "Coastline costs $0.67/day more ($3.30 vs $2.63) but delivers clinically validated doses of every ingredient." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_4 | default: "Coastline uses an AM/PM system timed to your circadian biology. AG1 is a single scoop with no timing optimization." }}</span>
-                    </li>
-                    <li class="flex gap-3 text-deep-ink text-lg leading-relaxed">
-                        <span class="flex-shrink-0 mt-1" style="color: #2D5A47;">&#10003;</span>
-                        <span>{{ section.settings.takeaway_5 | default: "Coastline targets all 12 hallmarks of aging across 11 body systems. AG1 addresses roughly 3-4 hallmarks." }}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- SECTION 11: AG1-SPECIFIC FAQ -->
     <section class="py-20 lg:py-28 bg-parchment">
         <div class="max-w-3xl mx-auto px-8 lg:px-16">
@@ -775,43 +515,14 @@
                         <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_5_answer | default: '<p class="mb-4"><strong class="text-deep-ink">Morning Step:</strong> Mix the powder blend with water or your favorite beverage and take with your first meal.</p><p class="mb-4"><strong class="text-deep-ink">Softgels:</strong> Take with your first meal, alongside the Morning Blend.</p><p><strong class="text-deep-ink">Evening Step:</strong> Take the capsules before bed to support sleep and recovery.</p>' }}</div>
                     </div>
                 </div>
-                <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 6 ? null : 6">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_6_question | default: 'Can I cancel anytime?' }}</span>
-                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 6 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="accordion-content" :class="{ 'open': openFaq === 6 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_6_answer | default: '<p>Yes. Cancel anytime with one click from your account dashboard. No phone calls, no penalties, no fees. You can also pause or skip shipments if you need a break.</p>' }}</div>
-                    </div>
-                </div>
-                <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 7 ? null : 7">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_7_question | default: 'How long until I notice a difference?' }}</span>
-                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 7 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="accordion-content" :class="{ 'open': openFaq === 7 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_7_answer | default: '<p>Many customers notice improvements in energy and mental clarity within the first few weeks. The full benefits of longevity-focused ingredients build over time. We recommend committing to at least 60 days, which is why we offer our money-back guarantee for that period.</p>' }}</div>
-                    </div>
-                </div>
-                <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 8 ? null : 8">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_8_question | default: "What is your money-back guarantee?" }}</span>
-                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 8 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="accordion-content" :class="{ 'open': openFaq === 8 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_8_answer | default: '<p>Try Coastline risk-free for 60 days. If you are not satisfied for any reason, contact us for a full refund. No questions asked.</p>' }}</div>
-                    </div>
-                </div>
+                
+                
+                
             </div>
         </div>
     </section>
 
-    <!-- Breaker Image -->
-    <div class="w-full">
-        <img src="{% if section.settings.breaker_image_2 != blank %}{{ section.settings.breaker_image_2 | image_url: width: 1600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-Landing_Page_Images-11_2_1.png?v=1769557907{% endif %}" alt="" class="w-full" style="max-height: 50vh; object-fit: cover;" loading="lazy">
     </div>
-
-</div>
 
 {% schema %}
 {

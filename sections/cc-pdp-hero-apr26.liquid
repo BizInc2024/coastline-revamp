@@ -117,6 +117,11 @@
 
               {%- for grp in product.selling_plan_groups -%}
               {%- for sp in grp.selling_plans -%}
+                {%- comment -%}
+                  Try the allocation lookup first (cleanest source of truth for the
+                  discounted price). If it doesn't resolve, compute from the
+                  price_adjustments[0] — works for percentage / fixed / price types.
+                {%- endcomment -%}
                 {%- assign sp_alloc = nil -%}
                 {%- for alloc in current_variant.selling_plan_allocations -%}
                   {%- if alloc.selling_plan_id == sp.id -%}
@@ -124,6 +129,21 @@
                     {%- break -%}
                   {%- endif -%}
                 {%- endfor -%}
+                {%- if sp_alloc -%}
+                  {%- assign sp_display_price = sp_alloc.price -%}
+                {%- else -%}
+                  {%- assign adj = sp.price_adjustments | first -%}
+                  {%- if adj.value_type == 'percentage' -%}
+                    {%- assign discount_amount = current_variant.price | times: adj.value | divided_by: 100 -%}
+                    {%- assign sp_display_price = current_variant.price | minus: discount_amount -%}
+                  {%- elsif adj.value_type == 'fixed_amount' -%}
+                    {%- assign sp_display_price = current_variant.price | minus: adj.value -%}
+                  {%- elsif adj.value_type == 'price' -%}
+                    {%- assign sp_display_price = adj.value -%}
+                  {%- else -%}
+                    {%- assign sp_display_price = current_variant.price -%}
+                  {%- endif -%}
+                {%- endif -%}
                 {%- comment -%} Friendlier display labels + a "BEST VALUE" badge on monthly. {%- endcomment -%}
                 {%- assign sp_name_lower = sp.name | downcase -%}
                 {%- if sp_name_lower contains '2 month' or sp_name_lower contains '2-month' -%}
@@ -159,7 +179,7 @@
                     </div>
                     <div style="text-align:right;flex-shrink:0;margin-left:16px;">
                       <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
-                        {%- if sp_alloc -%}{{ sp_alloc.price | money_without_trailing_zeros }}{%- else -%}{{ current_variant.price | money_without_trailing_zeros }}{%- endif -%}
+                        {{ sp_display_price | money_without_trailing_zeros }}
                       </span>
                       <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">
                         {%- if sp.recurring_deliveries -%}/period{%- else -%}one-time{%- endif -%}
@@ -325,7 +345,18 @@
   .cc-pdp-hero-apr26 .cc-pdp-opt-active[data-value*="Lemonade" i] {
     border: 3px solid #0A0A0A !important;
     color: #0A0A0A !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.08) !important;
+  }
+  /* Generic non-flavor variants — make active state pop on dark fill */
+  .cc-pdp-hero-apr26 .cc-pdp-opt-active:not([data-value*="Unflavored" i]):not([data-value*="Lemonade" i]) {
+    box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.15) !important;
+  }
+  /* Selected indicator (checkmark) on flavor buttons */
+  .cc-pdp-hero-apr26 .cc-pdp-opt-active::before {
+    content: "✓ ";
+    font-weight: 700;
+    color: inherit;
   }
   .cc-pdp-hero-apr26 .cc-pdp-plan-card {
     cursor: pointer;
