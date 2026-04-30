@@ -43,8 +43,8 @@
   "order": [
     "narrative",
     "pricing",
-    "narrative-bottom",
     "guarantee",
+    "narrative-bottom",
     "final-cta",
     "email"
   ]
