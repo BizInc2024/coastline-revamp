@@ -3,9 +3,22 @@
     "narrative": {
       "type": "cc-bp-clone",
       "settings": {}
+    },
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "READY TO SWITCH?",
+        "pricing_headline": "Get Started.",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 96,
+        "pad_bottom": 96
+      }
     }
   },
   "order": [
-    "narrative"
+    "narrative",
+    "pricing"
   ]
 }
