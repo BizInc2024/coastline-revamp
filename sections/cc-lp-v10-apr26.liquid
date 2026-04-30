@@ -23,6 +23,15 @@
   .cc-lp-v10-apr26 .v10-wrap-wide { max-width: 1360px; margin: 0 auto; padding: 0 24px; }
 
   .cc-lp-v10-apr26 .v10-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; }
+
+  /* Press marquee (mirrors cc-press-apr26) */
+  .cc-lp-v10-apr26 .v10-press-marquee { overflow: hidden; width: 100%; opacity: 0.4; filter: grayscale(100%); }
+  .cc-lp-v10-apr26 .v10-press-track { display: flex; gap: 48px; align-items: center; animation: cc-marquee 30s linear infinite; width: max-content; }
+  .cc-lp-v10-apr26 .v10-press-track a { flex-shrink: 0; text-decoration: none; display: flex; align-items: center; }
+  .cc-lp-v10-apr26 .v10-press-track:hover { animation-play-state: paused; }
+  @media (max-width: 767px) {
+    .cc-lp-v10-apr26 .v10-press-track { animation-duration: 18s; gap: 32px; }
+  }
   .cc-lp-v10-apr26 .v10-divider { width: 60px; height: 1px; background: #0A0A0A; }
 
   .cc-lp-v10-apr26 .v10-btn {
@@ -821,7 +830,33 @@
     </div>
   </section>
 
-  {%- comment -%} Press logos rendered by cc-press-apr26 section in template JSON (modern marquee). {%- endcomment -%}
+  <!-- ================================================== -->
+  <!-- 2. PRESS LOGOS (modern marquee, mirrors cc-press-apr26) -->
+  <!-- ================================================== -->
+  <section class="v10-press-marquee-wrap" style="background:#FAF9F6;border-bottom:1px solid #E8E8E8;padding:48px 24px;">
+    <div style="max-width:1024px;margin:0 auto;text-align:center;">
+      <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:32px;">As Featured In</p>
+      <div class="v10-press-marquee">
+        <div class="v10-press-track">
+          <a href="https://uncrate.com/coastline-longevity-welcome-pack/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223" alt="Uncrate" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.vice.com/en/article/coastline-longevity-supplements/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172" alt="Vice" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.thedailybeast.com/coastline-longevity-supplements-are-formulated-for-dads/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068" alt="Daily Beast" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.usmagazine.com/shopping/news/three-step-longevity-system-coastline-longevity/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109" alt="Us Weekly" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="#" style="pointer-events:none;"><img src="{{ 'cc-v8-logo-man-of-many.png' | asset_url }}" alt="Man of Many" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://mantry.com/blogs/manual/the-last-supplement-system-you-will-ever-need" target="_blank" rel="noopener"><img src="{{ 'cc-press-mantry.svg' | asset_url }}" alt="Mantry" style="height:32px;width:auto;" loading="lazy"></a>
+          <a href="https://www.insidehook.com/leisure/products-week-airpod-maxes-le-creuset-and-chore-coats" target="_blank" rel="noopener"><img src="{{ 'cc-press-insidehook.webp' | asset_url }}" alt="InsideHook" style="height:64px;width:auto;" loading="lazy"></a>
+          <!-- Duplicate set for seamless loop -->
+          <a href="https://uncrate.com/coastline-longevity-welcome-pack/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223" alt="Uncrate" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.vice.com/en/article/coastline-longevity-supplements/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172" alt="Vice" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.thedailybeast.com/coastline-longevity-supplements-are-formulated-for-dads/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068" alt="Daily Beast" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.usmagazine.com/shopping/news/three-step-longevity-system-coastline-longevity/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109" alt="Us Weekly" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="#" style="pointer-events:none;"><img src="{{ 'cc-v8-logo-man-of-many.png' | asset_url }}" alt="Man of Many" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://mantry.com/blogs/manual/the-last-supplement-system-you-will-ever-need" target="_blank" rel="noopener"><img src="{{ 'cc-press-mantry.svg' | asset_url }}" alt="Mantry" style="height:32px;width:auto;" loading="lazy"></a>
+          <a href="https://www.insidehook.com/leisure/products-week-airpod-maxes-le-creuset-and-chore-coats" target="_blank" rel="noopener"><img src="{{ 'cc-press-insidehook.webp' | asset_url }}" alt="InsideHook" style="height:64px;width:auto;" loading="lazy"></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ================================================== -->
   <!-- 2b. GENETICS STAT                                    -->

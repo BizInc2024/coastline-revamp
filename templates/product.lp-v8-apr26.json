@@ -45,10 +45,6 @@
         "section13_padding_bottom": 80
       }
     },
-    "press": {
-      "type": "cc-press-apr26",
-      "settings": {}
-    },
     "email": {
       "type": "cc-email-capture-apr26",
       "settings": {}
@@ -56,7 +52,6 @@
   },
   "order": [
     "narrative",
-    "press",
     "pricing",
     "final-cta",
     "email"
