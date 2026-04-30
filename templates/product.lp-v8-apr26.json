@@ -34,17 +34,6 @@
         "pad_bottom": 80
       }
     },
-    "final-cta": {
-      "type": "cc-final-cta-apr26",
-      "settings": {
-        "final_headline": "Start your longevity journey today.",
-        "final_subheadline": "13 science-backed ingredients in one simple system -- from just $3.30 a day.",
-        "final_cta_text": "START MY LONGEVITY SYSTEM",
-        "final_cta_link": "#pricing-product-apr26",
-        "section13_padding_top": 80,
-        "section13_padding_bottom": 80
-      }
-    },
     "narrative-bottom": {
       "type": "cc-lp-v8-bottom-apr29",
       "settings": {}
@@ -58,7 +47,6 @@
     "narrative",
     "pricing",
     "narrative-bottom",
-    "final-cta",
     "email"
   ]
 }
