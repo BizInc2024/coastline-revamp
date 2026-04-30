@@ -1,0 +1,1321 @@
+{% comment %}
+  cc-lp-v10-apr26 — V10 narrative section
+  Extracted from sections/cc-landing-v10.liquid (Apr 26 rebuild).
+  Pairs with cc-pricing-product-apr26 (cart) + cc-final-cta-apr26 +
+  cc-email-capture-apr26 inside templates/product.lp-v10-apr26.json.
+  Live LP (page.cc-landingpage-v10-journey + sections/cc-landing-v10.liquid)
+  untouched.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+  .cc-lp-v10-apr26 { font-family: 'Inter', system-ui, sans-serif; background: #FAF9F6; color: #6B6B6B; -webkit-font-smoothing: antialiased; }
+  .cc-lp-v10-apr26 * { box-sizing: border-box; }
+  .cc-lp-v10-apr26 h1, .cc-lp-v10-apr26 h2, .cc-lp-v10-apr26 h3, .cc-lp-v10-apr26 h4 { font-family: 'Space Grotesk', system-ui, sans-serif; color: #0A0A0A; letter-spacing: -0.02em; margin: 0; }
+  .cc-lp-v10-apr26 p { margin: 0; }
+  .cc-lp-v10-apr26 a { color: inherit; text-decoration: none; }
+  .cc-lp-v10-apr26 img { max-width: 100%; display: block; }
+  .cc-lp-v10-apr26 button { font-family: inherit; }
+
+  .cc-lp-v10-apr26 .v10-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .cc-lp-v10-apr26 .v10-wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .cc-lp-v10-apr26 .v10-wrap-wide { max-width: 1360px; margin: 0 auto; padding: 0 24px; }
+
+  .cc-lp-v10-apr26 .v10-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; }
+
+  /* Press marquee (mirrors cc-press-apr26) */
+  .cc-lp-v10-apr26 .v10-press-marquee { overflow: hidden; width: 100%; opacity: 0.4; filter: grayscale(100%); }
+  .cc-lp-v10-apr26 .v10-press-track { display: flex; gap: 48px; align-items: center; animation: cc-marquee 30s linear infinite; width: max-content; }
+  .cc-lp-v10-apr26 .v10-press-track a { flex-shrink: 0; text-decoration: none; display: flex; align-items: center; }
+  .cc-lp-v10-apr26 .v10-press-track:hover { animation-play-state: paused; }
+  @keyframes cc-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (max-width: 767px) {
+    .cc-lp-v10-apr26 .v10-press-track { animation-duration: 18s; gap: 32px; }
+  }
+  .cc-lp-v10-apr26 .v10-divider { width: 60px; height: 1px; background: #0A0A0A; }
+
+  .cc-lp-v10-apr26 .v10-btn {
+    display: inline-block;
+    background: #0A0A0A;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 20px 44px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .cc-lp-v10-apr26 .v10-btn:hover { opacity: 0.85; }
+  .cc-lp-v10-apr26 .v10-btn.v10-btn-light { background: #FAF9F6; color: #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-btn.v10-btn-lime { background: #E7FF56; color: #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-btn-outline { background: transparent; color: #0A0A0A; border: 1.5px solid #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-btn-outline:hover { background: #0A0A0A; color: #FAF9F6; opacity: 1; }
+
+  .cc-lp-v10-apr26 .v10-urgency {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    background: #E7FF56;
+    color: #062F3D;
+  }
+
+  .cc-lp-v10-apr26 .v10-stars { letter-spacing: 2px; color: #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-stars-white { color: #FAF9F6; }
+
+  .cc-lp-v10-apr26 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .cc-lp-v10-apr26 .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .cc-lp-v10-apr26 .reveal { opacity: 1; transform: none; } }
+
+  /* ---------- HERO ---------- */
+  .cc-lp-v10-apr26 .v10-hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-hero-bg { position: absolute; inset: 0; }
+  .cc-lp-v10-apr26 .v10-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+  @media (max-width: 640px) { .cc-lp-v10-apr26 .v10-hero-bg img { object-position: center 30%; } }
+  .cc-lp-v10-apr26 .v10-hero-overlay { display: none; }
+  .cc-lp-v10-apr26 .v10-hero-inner { position: relative; z-index: 2; width: 100%; padding: 48px 24px 48px; }
+  @media (max-width: 640px) { .cc-lp-v10-apr26 .v10-hero-inner { padding: 36px 20px 36px; } }
+  .cc-lp-v10-apr26 .v10-hero-grid { max-width: 1200px; margin: 0 auto; }
+  .cc-lp-v10-apr26 .v10-hero-copy { max-width: 640px; color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-hero-eyebrow { color: rgba(255,255,255,0.75); font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+  .cc-lp-v10-apr26 .v10-hero-divider { width: 50px; height: 1px; background: rgba(255,255,255,0.35); margin-bottom: 18px; }
+  .cc-lp-v10-apr26 .v10-hero h1 { color: #FAF9F6; font-size: clamp(28px, 4.2vw, 46px); font-weight: 500; line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 16px; }
+  .cc-lp-v10-apr26 .v10-hero h1 .soft { color: rgba(250,249,246,0.62); }
+  .cc-lp-v10-apr26 .v10-hero .v10-hero-sub { color: rgba(250,249,246,0.82); font-size: clamp(14px, 1.2vw, 16px); line-height: 1.55; max-width: 380px; margin-bottom: 18px; }
+  .cc-lp-v10-apr26 .v10-hero-stars { display: flex; align-items: center; gap: 10px; color: #FAF9F6; font-size: 12px; margin-bottom: 14px; }
+  @media (max-width: 640px) { .cc-lp-v10-apr26 .v10-hero-stars { margin-bottom: 15vh; } }
+  .cc-lp-v10-apr26 .v10-hero-stars .v10-stars { font-size: 14px; color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-hero-stars span:last-child { color: rgba(250,249,246,0.75); }
+  .cc-lp-v10-apr26 .v10-hero-urgency-row { margin-bottom: 10px; }
+  .cc-lp-v10-apr26 .v10-urgency { border: 1px solid rgba(231,255,86,0.4); background: transparent; color: #E7FF56; }
+  .cc-lp-v10-apr26 .v10-hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  @media (max-width: 640px) { .cc-lp-v10-apr26 .v10-hero-cta-row .v10-btn { font-size: 10px; padding: 15px 32px; letter-spacing: 0.14em; } }
+  .cc-lp-v10-apr26 .v10-hero-microcopy { margin-top: 16px; font-size: 11px; letter-spacing: 0.04em; color: rgba(250,249,246,0.72); line-height: 1.7; }
+  @media (max-width: 640px) { .cc-lp-v10-apr26 .v10-hero-micro-line { display: block; margin-top: 4px; } }
+  .cc-lp-v10-apr26 .v10-hero-microcopy strong { color: #FAF9F6; font-weight: 500; }
+
+  /* ---------- PRESS ---------- */
+  .cc-lp-v10-apr26 .v10-press { padding: 56px 0; background: #fff; border-bottom: 1px solid #E8E8E8; text-align: center; }
+  .cc-lp-v10-apr26 .v10-press-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 36px; }
+  .cc-lp-v10-apr26 .v10-press-row {
+    display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center;
+    gap: 32px; max-width: 1100px; margin: 0 auto;
+  }
+  .cc-lp-v10-apr26 .v10-press-row img {
+    height: clamp(40px, 6vw, 88px);
+    width: auto; opacity: 0.7; transition: opacity 0.3s ease; filter: grayscale(100%);
+    flex: 1 1 0; min-width: 0; max-width: 180px; object-fit: contain;
+  }
+  .cc-lp-v10-apr26 .v10-press-row img:hover { opacity: 1; filter: none; }
+  .cc-lp-v10-apr26 .v10-press-row img.small { height: clamp(20px, 3vw, 36px); }
+  @media (max-width: 640px) {
+    .cc-lp-v10-apr26 .v10-press { padding: 36px 0; }
+    .cc-lp-v10-apr26 .v10-press-row { gap: 16px; padding: 0 12px; }
+  }
+
+  /* ---------- SCENE DIVIDERS ---------- */
+  .cc-lp-v10-apr26 .v10-scene {
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    overflow: hidden;
+    position: relative;
+    background: #0A0A0A;
+  }
+  .cc-lp-v10-apr26 .v10-scene img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .cc-lp-v10-apr26 .v10-scene::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.35) 100%);
+    pointer-events: none;
+  }
+  @media (max-width: 768px) { .cc-lp-v10-apr26 .v10-scene { aspect-ratio: 16 / 9; } }
+
+  /* ---------- GENETICS STAT ---------- */
+  .cc-lp-v10-apr26 .v10-genetics { padding: 120px 24px; background: #0A0A0A; color: #FAF9F6; text-align: center; position: relative; overflow: hidden; }
+  .cc-lp-v10-apr26 .v10-genetics::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(231,255,86,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cc-lp-v10-apr26 .v10-genetics-inner { position: relative; max-width: 880px; margin: 0 auto; }
+  .cc-lp-v10-apr26 .v10-genetics .eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #9A9A9A; margin-bottom: 32px; display: block;
+  }
+  .cc-lp-v10-apr26 .v10-genetics .stat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(120px, 22vw, 280px);
+    font-weight: 500;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: #E7FF56;
+    display: block;
+    margin-bottom: 24px;
+  }
+  .cc-lp-v10-apr26 .v10-genetics h2 {
+    color: #FAF9F6;
+    font-size: clamp(26px, 3.4vw, 44px);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .cc-lp-v10-apr26 .v10-genetics h2 .soft { color: rgba(250,249,246,0.55); }
+  .cc-lp-v10-apr26 .v10-genetics .body {
+    max-width: 640px; margin: 0 auto 28px;
+    font-size: 17px; line-height: 1.6; color: #9A9A9A;
+  }
+  .cc-lp-v10-apr26 .v10-genetics .body strong { color: #FAF9F6; font-weight: 500; }
+  .cc-lp-v10-apr26 .v10-genetics .source {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6B6B6B; margin-top: 12px; font-style: normal;
+  }
+  @media (max-width: 768px) {
+    .cc-lp-v10-apr26 .v10-genetics { padding: 80px 24px; }
+  }
+
+  /* ---------- SECTION HEAD ---------- */
+  .cc-lp-v10-apr26 .v10-section { padding: 96px 0; }
+  .cc-lp-v10-apr26 .v10-section.tight { padding: 72px 0; }
+  .cc-lp-v10-apr26 .v10-section.dark { background: #0A0A0A; color: #9A9A9A; }
+  .cc-lp-v10-apr26 .v10-section.dark h2, .cc-lp-v10-apr26 .v10-section.dark h3 { color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-eyebrow { color: #9A9A9A; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-divider { background: #333; }
+  .cc-lp-v10-apr26 .v10-section.parchment { background: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-section.white { background: #fff; }
+  .cc-lp-v10-apr26 .v10-section.pale-blue { background: #F0F5F7; }
+  .cc-lp-v10-apr26 .v10-section-head { text-align: center; margin-bottom: 56px; }
+  .cc-lp-v10-apr26 .v10-section-head .v10-eyebrow { display: block; margin-bottom: 20px; }
+  .cc-lp-v10-apr26 .v10-section-head .v10-divider { margin: 0 auto 28px; }
+  .cc-lp-v10-apr26 .v10-section-head h2 { font-size: clamp(30px, 4.5vw, 56px); font-weight: 500; line-height: 1.1; margin-bottom: 20px; }
+  .cc-lp-v10-apr26 .v10-section-head h2 .soft { color: #6B6B6B; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-section-head h2 .soft { color: #6B6B6B; }
+  .cc-lp-v10-apr26 .v10-section-head p { max-width: 640px; margin: 0 auto; font-size: 17px; line-height: 1.55; color: #6B6B6B; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-section-head p { color: #9A9A9A; }
+  @media (max-width: 768px) { .cc-lp-v10-apr26 .v10-section { padding: 64px 0; } }
+
+  /* ---------- SYSTEM (AM/PM) ---------- */
+  .cc-lp-v10-apr26 .v10-system-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 900px) { .cc-lp-v10-apr26 .v10-system-grid { grid-template-columns: 1fr 1fr; gap: 0; } }
+  .cc-lp-v10-apr26 .v10-system-col { padding: 0 0 32px; border-bottom: 1px solid #E8E8E8; text-align: center; }
+  @media (min-width: 900px) {
+    .cc-lp-v10-apr26 .v10-system-col { padding: 0 48px; border-bottom: none; }
+    .cc-lp-v10-apr26 .v10-system-col.am { border-right: 1px solid #E8E8E8; }
+  }
+  .cc-lp-v10-apr26 .v10-system-col .step-label { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 14px; }
+  .cc-lp-v10-apr26 .v10-system-col h3 { font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+  .cc-lp-v10-apr26 .v10-system-col .sub { font-size: 13px; color: #6B6B6B; margin-bottom: 24px; }
+  .cc-lp-v10-apr26 .v10-product-circle {
+    width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+    background: #F0F5F7; border: 1px solid #E8E8E8; display: inline-block; margin-right: 8px;
+  }
+  .cc-lp-v10-apr26 .v10-product-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-lp-v10-apr26 .v10-product-circles { display: inline-flex; gap: 8px; vertical-align: middle; }
+  .cc-lp-v10-apr26 .ing-head-row { display: flex; align-items: center; gap: 10px; margin: 20px 0 10px; flex-direction: row; }
+  .cc-lp-v10-apr26 .v10-system-col .v10-system-img { max-width: 340px; margin: 0 auto 24px; aspect-ratio: 4/3; overflow: hidden; background: #F5F5F2; }
+  .cc-lp-v10-apr26 .v10-system-col .v10-system-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-lp-v10-apr26 .v10-system-col.pm .v10-system-img img { object-position: center bottom; }
+  .cc-lp-v10-apr26 .v10-system-col .ing-list { max-width: 320px; margin: 0 auto; text-align: left; }
+  .cc-lp-v10-apr26 .ing-toggle {
+    display: none; width: 100%; padding: 14px 0; background: none; border: none; border-top: 1px solid #E8E8E8;
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #6B6B6B; cursor: pointer; text-align: center; margin-top: 16px;
+  }
+  .cc-lp-v10-apr26 .ing-toggle:hover { color: #0A0A0A; }
+  @media (max-width: 900px) {
+    .cc-lp-v10-apr26 .ing-toggle { display: block; }
+    .cc-lp-v10-apr26 .ing-list-wrap { display: none !important; }
+    .cc-lp-v10-apr26 .ing-list-wrap.open { display: block !important; }
+  }
+  .cc-lp-v10-apr26 .v10-system-col .ing-list .ing-head { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin: 20px 0 10px; }
+  .cc-lp-v10-apr26 .ing-accordion { border-top: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .ing-accordion:last-child { border-bottom: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .ing-accordion summary {
+    list-style: none; cursor: pointer; padding: 12px 0;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  .cc-lp-v10-apr26 .ing-accordion summary::-webkit-details-marker { display: none; }
+  .cc-lp-v10-apr26 .ing-accordion summary:hover { color: #2D5A47; }
+  .cc-lp-v10-apr26 .ing-accordion summary .name {
+    color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-weight: 500;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .cc-lp-v10-apr26 .ing-accordion summary .name::before {
+    content: '+'; font-size: 16px; color: #9A9A9A; transition: transform 0.2s ease;
+    display: inline-block; line-height: 1;
+  }
+  .cc-lp-v10-apr26 .ing-accordion[open] summary .name::before { content: '−'; }
+  .cc-lp-v10-apr26 .ing-accordion summary .dose { color: #6B6B6B; font-family: 'Space Grotesk', sans-serif; }
+  .cc-lp-v10-apr26 .ing-accordion .ing-detail {
+    padding: 0 0 14px 22px; font-size: 13px; line-height: 1.55; color: #6B6B6B;
+  }
+  .cc-lp-v10-apr26 .v10-two-moments-note { text-align: center; margin-top: 48px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B; }
+
+  /* ---------- SYSTEM BADGE ROW ---------- */
+  .cc-lp-v10-apr26 .v10-badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 40px; }
+  .cc-lp-v10-apr26 .v10-badge-row .badge { border: 1px solid #E8E8E8; padding: 10px 18px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; background: #fff; }
+
+  /* ---------- REVIEWS (refined) ---------- */
+  .cc-lp-v10-apr26 .v10-reviews-grid {
+    display: flex; gap: 24px; max-width: 1200px; margin: 0 auto;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding-bottom: 8px;
+  }
+  .cc-lp-v10-apr26 .v10-reviews-grid::-webkit-scrollbar { display: none; }
+  .cc-lp-v10-apr26 .v10-reviews-grid > .v10-review-card { flex: 0 0 85%; scroll-snap-align: start; min-width: 280px; }
+  @media (min-width: 800px) {
+    .cc-lp-v10-apr26 .v10-reviews-grid { display: grid; overflow: visible; scroll-snap-type: none; padding-bottom: 0; }
+    .cc-lp-v10-apr26 .v10-reviews-grid.three { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .cc-lp-v10-apr26 .v10-reviews-grid.two { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .cc-lp-v10-apr26 .v10-reviews-grid > .v10-review-card { flex: auto; min-width: auto; }
+  }
+  .cc-lp-v10-apr26 .v10-review-card {
+    background: #fff;
+    border: 1px solid #E8E8E8;
+    padding: 36px 32px 32px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.25s ease;
+  }
+  .cc-lp-v10-apr26 .v10-review-card:hover { border-color: #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-review-card { background: transparent; border-color: #222; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-review-card:hover { border-color: #E7FF56; }
+  .cc-lp-v10-apr26 .v10-review-card .v10-stars { display: block; margin-bottom: 18px; font-size: 14px; letter-spacing: 3px; }
+  .cc-lp-v10-apr26 .v10-review-card p.quote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; line-height: 1.45; font-weight: 400;
+    color: #0A0A0A; margin: 0 0 auto 0;
+    letter-spacing: -0.01em;
+  }
+  .cc-lp-v10-apr26 .v10-review-card p.quote::before { content: '\201C'; margin-right: -2px; color: #9A9A9A; }
+  .cc-lp-v10-apr26 .v10-review-card p.quote::after { content: '\201D'; margin-left: -2px; color: #9A9A9A; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-review-card p.quote { color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-review-card .who {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid #F0F0ED;
+  }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-review-card .who { border-top-color: #222; }
+  .cc-lp-v10-apr26 .v10-review-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: #0A0A0A; color: #FAF9F6;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500;
+    flex-shrink: 0; overflow: hidden;
+  }
+  .cc-lp-v10-apr26 .v10-review-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-lp-v10-apr26 .v10-review-card .name {
+    font-size: 12px; color: #6B6B6B;
+    line-height: 1.5;
+  }
+  .cc-lp-v10-apr26 .v10-review-card .name strong {
+    display: block;
+    color: #0A0A0A;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    margin-bottom: 2px;
+  }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-review-card .name strong { color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-review-card .verified {
+    font-size: 10px; color: #2D5A47;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-review-card .verified { color: #9AE5B8; }
+  .cc-lp-v10-apr26 .v10-reviews-header { text-align: center; margin-bottom: 48px; }
+  .cc-lp-v10-apr26 .v10-reviews-header .v10-stars { display: block; font-size: 18px; margin-bottom: 8px; }
+
+  /* ---------- UGC GALLERY ---------- */
+  .cc-lp-v10-apr26 .v10-ugc-rail {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 8px 24px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    align-items: flex-start;
+  }
+  .cc-lp-v10-apr26 .v10-ugc-rail::-webkit-scrollbar { display: none; }
+  .cc-lp-v10-apr26 .v10-ugc-item {
+    flex: 0 0 auto;
+    width: 260px;
+    overflow: visible;
+    scroll-snap-align: start;
+    background: transparent;
+  }
+  .cc-lp-v10-apr26 .v10-ugc-item img { width: 100%; height: auto; display: block; filter: saturate(0.7); }
+  @media (max-width: 640px) {
+    .cc-lp-v10-apr26 .v10-ugc-item { width: 240px; }
+  }
+
+  /* ---------- MICRO-REVIEW STRIP ---------- */
+  .cc-lp-v10-apr26 .v10-micro-strip {
+    background: #0A0A0A;
+    padding: 20px 24px;
+    color: #FAF9F6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  .cc-lp-v10-apr26 .v10-micro-strip .sep { width: 1px; height: 20px; background: rgba(255,255,255,0.2); }
+  .cc-lp-v10-apr26 .v10-micro-strip .v10-stars { color: #FAF9F6; font-size: 14px; }
+  .cc-lp-v10-apr26 .v10-micro-strip strong { color: #FAF9F6; font-weight: 500; }
+  .cc-lp-v10-apr26 .v10-micro-strip em { font-style: normal; color: #9A9A9A; }
+
+  /* ---------- BENEFITS (DARK) ---------- */
+  .cc-lp-v10-apr26 .v10-benefits { max-width: 880px; margin: 0 auto; }
+  .cc-lp-v10-apr26 .v10-benefit { border-top: 1px solid #222; }
+  .cc-lp-v10-apr26 .v10-benefit:last-child { border-bottom: 1px solid #222; }
+  .cc-lp-v10-apr26 .v10-benefit summary {
+    list-style: none; cursor: pointer; padding: 26px 0;
+    display: grid; grid-template-columns: 50px 1fr 30px; gap: 20px; align-items: center;
+    transition: background 0.2s ease;
+  }
+  .cc-lp-v10-apr26 .v10-benefit summary::-webkit-details-marker { display: none; }
+  .cc-lp-v10-apr26 .v10-benefit summary:hover .title { color: #E7FF56; }
+  .cc-lp-v10-apr26 .v10-benefit summary .num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px;
+    letter-spacing: 0.2em; color: #6B6B6B;
+  }
+  .cc-lp-v10-apr26 .v10-benefit summary .title {
+    font-family: 'Space Grotesk', sans-serif; font-size: 20px;
+    font-weight: 500; color: #FAF9F6; transition: color 0.2s ease;
+  }
+  .cc-lp-v10-apr26 .v10-benefit summary .plus {
+    font-family: 'Space Grotesk', sans-serif; font-size: 24px; color: #9A9A9A;
+    text-align: right; transition: transform 0.25s ease;
+  }
+  .cc-lp-v10-apr26 .v10-benefit[open] summary .plus { transform: rotate(45deg); color: #E7FF56; }
+  .cc-lp-v10-apr26 .v10-benefit[open] summary .title { color: #E7FF56; }
+  .cc-lp-v10-apr26 .v10-benefit-body { padding: 0 0 28px 70px; }
+  .cc-lp-v10-apr26 .v10-benefit-body p { font-size: 15px; line-height: 1.65; color: #C5C5C5; margin-bottom: 12px; max-width: 640px; }
+  .cc-lp-v10-apr26 .v10-benefit-body p.keys {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #6B6B6B; margin-top: 10px; margin-bottom: 0;
+  }
+  @media (max-width: 640px) {
+    .cc-lp-v10-apr26 .v10-benefit summary { grid-template-columns: 32px 1fr 24px; gap: 12px; padding: 20px 0; }
+    .cc-lp-v10-apr26 .v10-benefit summary .title { font-size: 16px; }
+    .cc-lp-v10-apr26 .v10-benefit summary .num { font-size: 10px; }
+    .cc-lp-v10-apr26 .v10-benefit-body { padding-left: 44px; }
+    .cc-lp-v10-apr26 .v10-benefit-body p.keys { font-size: 11px; }
+  }
+
+  /* ---------- INGREDIENT TABLE ---------- */
+  .cc-lp-v10-apr26 .v10-ing-table { max-width: 960px; margin: 0 auto; border-top: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-ing-table { border-top-color: #222; }
+  .cc-lp-v10-apr26 .v10-ing-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 90px;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid #E8E8E8;
+    align-items: baseline;
+  }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-ing-row { border-bottom-color: #222; }
+  .cc-lp-v10-apr26 .v10-ing-row .ing-name { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; color: #0A0A0A; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-ing-row .ing-name { color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-ing-row .ing-why { font-size: 14px; line-height: 1.5; color: #6B6B6B; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-ing-row .ing-why { color: #9A9A9A; }
+  .cc-lp-v10-apr26 .v10-ing-row .ing-dose { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; color: #2D5A47; text-align: right; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-ing-row .ing-dose { color: #E7FF56; }
+  @media (max-width: 700px) {
+    .cc-lp-v10-apr26 .v10-ing-row { grid-template-columns: 1fr 80px; }
+    .cc-lp-v10-apr26 .v10-ing-row .ing-why { grid-column: 1 / -1; }
+  }
+  .cc-lp-v10-apr26 .v10-ing-footnote { text-align: center; margin-top: 32px; font-size: 13px; color: #6B6B6B; }
+  .cc-lp-v10-apr26 .v10-section.dark .v10-ing-footnote { color: #9A9A9A; }
+
+  /* ---------- HOW IT WORKS ---------- */
+  /* ---------- AM/PM TWO-PANEL ---------- */
+  .cc-lp-v10-apr26 .v10-ampm { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 1200px; margin: 0 auto; overflow: hidden; }
+  @media (min-width: 800px) { .cc-lp-v10-apr26 .v10-ampm { grid-template-columns: 1fr 1fr; } }
+  .cc-lp-v10-apr26 .v10-ampm-card { position: relative; overflow: hidden; }
+  .cc-lp-v10-apr26 .v10-ampm-img {
+    aspect-ratio: 3/4; overflow: hidden;
+  }
+  .cc-lp-v10-apr26 .v10-ampm-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-lp-v10-apr26 .v10-ampm-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 32px 36px;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.65) 100%);
+    color: #FAF9F6;
+  }
+  .cc-lp-v10-apr26 .v10-ampm-label {
+    font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(250,249,246,0.7); margin-bottom: 8px; display: block;
+  }
+  .cc-lp-v10-apr26 .v10-ampm-card h3 { font-size: 24px; font-weight: 500; margin-bottom: 8px; color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-ampm-card p { font-size: 14px; line-height: 1.5; color: rgba(250,249,246,0.8); max-width: 380px; }
+  @media (max-width: 799px) {
+    .cc-lp-v10-apr26 .v10-ampm-img { aspect-ratio: 4/3; }
+    .cc-lp-v10-apr26 .v10-ampm-overlay { padding: 28px 24px 24px; }
+  }
+
+  /* ---------- SCIENTISTS ---------- */
+  .cc-lp-v10-apr26 .v10-scientists-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 28px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  @media (min-width: 900px) {
+    .cc-lp-v10-apr26 .v10-scientists-grid { grid-template-columns: repeat(4, 1fr); gap: 40px 32px; }
+  }
+  .cc-lp-v10-apr26 .v10-sci-card { text-align: center; }
+  .cc-lp-v10-apr26 .v10-sci-avatar {
+    width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
+    margin: 0 auto 18px; background: #1a1a1a;
+    border: 2px solid rgba(231,255,86,0.25);
+  }
+  @media (min-width: 900px) {
+    .cc-lp-v10-apr26 .v10-sci-avatar { width: 105px; height: 105px; }
+  }
+  .cc-lp-v10-apr26 .v10-sci-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-lp-v10-apr26 .v10-sci-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px; font-weight: 500; color: #FAF9F6; margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .cc-lp-v10-apr26 .v10-sci-title {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #9A9A9A; margin-bottom: 14px;
+  }
+  .cc-lp-v10-apr26 .v10-sci-quote {
+    font-size: 14px; line-height: 1.55; color: #C5C5C5;
+    font-style: italic;
+    max-width: 240px; margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    .cc-lp-v10-apr26 .v10-scientists-grid { gap: 36px 20px; }
+    .cc-lp-v10-apr26 .v10-sci-avatar { width: 72px; height: 72px; }
+    .cc-lp-v10-apr26 .v10-sci-quote { font-size: 13px; }
+  }
+
+  /* ---------- OUR STORY ---------- */
+  .cc-lp-v10-apr26 .v10-story-body p { font-size: 17px; line-height: 1.7; color: #3d3d3d; margin-bottom: 20px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .cc-lp-v10-apr26 .v10-story-body p:last-child { margin-bottom: 0; }
+  .cc-lp-v10-apr26 .v10-story-founder {
+    width: 120px; height: 120px; border-radius: 50%;
+    overflow: hidden; margin: 0 auto 24px;
+    border: 2px solid #E7FF56;
+    background: #F5F5F2;
+  }
+  .cc-lp-v10-apr26 .v10-story-founder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-lp-v10-apr26 .v10-story-signature {
+    text-align: center; margin-top: 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px; color: #6B6B6B;
+    letter-spacing: 0.02em;
+  }
+  .cc-lp-v10-apr26 .v10-story-signature strong { display: block; color: #0A0A0A; font-weight: 500; font-size: 14px; margin-bottom: 2px; }
+
+  /* ---------- 60-DAY GUARANTEE BLOCK ---------- */
+  .cc-lp-v10-apr26 .v10-guarantee-block { background: #0A0A0A; padding: 80px 24px; color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-guarantee-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+    text-align: center;
+  }
+  @media (min-width: 800px) {
+    .cc-lp-v10-apr26 .v10-guarantee-inner { grid-template-columns: 180px 1fr; gap: 56px; text-align: left; }
+  }
+  .cc-lp-v10-apr26 .v10-guarantee-badge {
+    width: 180px; height: 180px; border-radius: 50%;
+    border: 2px solid #E7FF56;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto;
+    background: rgba(231,255,86,0.05);
+  }
+  .cc-lp-v10-apr26 .v10-guarantee-badge .days {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px; font-weight: 500; line-height: 1;
+    color: #E7FF56; letter-spacing: -0.03em;
+  }
+  .cc-lp-v10-apr26 .v10-guarantee-badge .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #FAF9F6; text-align: center; margin-top: 4px; line-height: 1.3;
+  }
+  .cc-lp-v10-apr26 .v10-guarantee-copy h3 {
+    color: #FAF9F6;
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  .cc-lp-v10-apr26 .v10-guarantee-copy p {
+    font-size: 16px; line-height: 1.6; color: #C5C5C5; max-width: 640px;
+    margin: 0 auto 24px;
+  }
+  @media (min-width: 800px) { .cc-lp-v10-apr26 .v10-guarantee-copy p { margin: 0 0 24px; } }
+  .cc-lp-v10-apr26 .v10-guarantee-pills {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  }
+  @media (min-width: 800px) { .cc-lp-v10-apr26 .v10-guarantee-pills { justify-content: flex-start; } }
+  .cc-lp-v10-apr26 .v10-guarantee-pills .pill {
+    display: inline-block; padding: 7px 13px;
+    border: 1px solid #333;
+    background: transparent;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- COMPARISON ---------- */
+  .cc-lp-v10-apr26 .v10-compare-wrap { overflow-x: auto; max-width: 880px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .cc-lp-v10-apr26 .v10-compare { width: 100%; border-collapse: collapse; min-width: 560px; }
+  .cc-lp-v10-apr26 .v10-compare th, .cc-lp-v10-apr26 .v10-compare td { padding: 18px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .v10-compare thead th { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #6B6B6B; font-weight: 500; padding-bottom: 20px; }
+  .cc-lp-v10-apr26 .v10-compare thead th.coastline { background: #0A0A0A; color: #FAF9F6; text-align: center; }
+  .cc-lp-v10-apr26 .v10-compare td.coastline { background: #F5F5F2; text-align: center; color: #0A0A0A; font-weight: 500; }
+  .cc-lp-v10-apr26 .v10-compare td.typical { color: #6B6B6B; text-align: center; }
+  .cc-lp-v10-apr26 .v10-compare td.attr { color: #0A0A0A; font-weight: 500; }
+  .cc-lp-v10-apr26 .v10-compare .check { color: #2D5A47; font-weight: 600; }
+  .cc-lp-v10-apr26 .v10-compare .miss { color: #C0392B; font-weight: 600; }
+
+  /* ---------- CTA (pricing box) ---------- */
+  /* uses v8 scoped styles */
+
+  /* ---------- FAQ ---------- */
+  .cc-lp-v10-apr26 .v10-faq { max-width: 780px; margin: 0 auto; }
+  .cc-lp-v10-apr26 .v10-faq-item { border-top: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .v10-faq-item:last-child { border-bottom: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .v10-faq-q { width: 100%; text-align: left; padding: 24px 0; background: none; border: none; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; color: #0A0A0A; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .cc-lp-v10-apr26 .v10-faq-q .plus { font-size: 22px; line-height: 1; color: #6B6B6B; transition: transform 0.3s ease; flex-shrink: 0; }
+  .cc-lp-v10-apr26 .v10-faq-q[aria-expanded="true"] .plus { transform: rotate(45deg); }
+  .cc-lp-v10-apr26 .v10-faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+  .cc-lp-v10-apr26 .v10-faq-a.open { max-height: 600px; }
+  .cc-lp-v10-apr26 .v10-faq-a p { padding: 0 0 24px; font-size: 15px; line-height: 1.6; color: #6B6B6B; max-width: 680px; }
+
+  /* ---------- TRUST FOOTER ---------- */
+  .cc-lp-v10-apr26 .v10-trust-footer { background: #FAF9F6; padding: 64px 0 48px; text-align: center; border-top: 1px solid #E8E8E8; }
+  .cc-lp-v10-apr26 .v10-trust-footer .row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; margin-bottom: 32px; }
+  .cc-lp-v10-apr26 .v10-trust-footer .badge { font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; }
+  .cc-lp-v10-apr26 .v10-trust-footer .guarantee { font-size: 17px; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; }
+  .cc-lp-v10-apr26 .v10-trust-footer .disclaimer { font-size: 11px; color: #9A9A9A; max-width: 640px; margin: 24px auto 0; line-height: 1.5; }
+
+  /* ---------- GUARANTEE BANNER ---------- */
+  .cc-lp-v10-apr26 .v10-guarantee-banner {
+    background: #0A0A0A;
+    padding: 42px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+    color: #FAF9F6;
+  }
+  .cc-lp-v10-apr26 .v10-guarantee-banner .lead { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-guarantee-banner .sub { font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #FAF9F6; }
+  .cc-lp-v10-apr26 .v10-guarantee-banner .sep { width: 1px; height: 28px; background: rgba(255,255,255,0.35); display: none; }
+  @media (min-width: 900px) { .cc-lp-v10-apr26 .v10-guarantee-banner .sep { display: block; } }
+
+  /* ---------- SHAKER BONUS ---------- */
+  .cc-lp-v10-apr26 .v10-shaker-bonus { background: #0A0A0A; padding: 96px 0; color: #FAF9F6; position: relative; overflow: hidden; }
+  .cc-lp-v10-apr26 .v10-shaker-bonus::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(231,255,86,0.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .cc-lp-v10-apr26 .v10-shaker-grid {
+    position: relative;
+    display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+  }
+  @media (min-width: 900px) { .cc-lp-v10-apr26 .v10-shaker-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
+  .cc-lp-v10-apr26 .v10-shaker-img { aspect-ratio: 4/5; overflow: hidden; background: #1a1a1a; }
+  .cc-lp-v10-apr26 .v10-shaker-img img { width: 100%; height: 100%; object-fit: cover; }
+  .cc-lp-v10-apr26 .v10-shaker-copy h2 {
+    color: #FAF9F6; font-size: clamp(36px, 5vw, 64px); font-weight: 500;
+    line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 24px;
+  }
+  .cc-lp-v10-apr26 .v10-shaker-copy p { color: #C5C5C5; font-size: 17px; line-height: 1.6; margin-bottom: 28px; max-width: 480px; }
+  .cc-lp-v10-apr26 .v10-shaker-list { list-style: none; padding: 0; margin: 0 0 36px; }
+  .cc-lp-v10-apr26 .v10-shaker-list li {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 15px; color: #C5C5C5; padding: 8px 0;
+    border-bottom: 1px solid #222;
+  }
+  .cc-lp-v10-apr26 .v10-shaker-list li .check { color: #E7FF56; font-weight: 600; }
+  .cc-lp-v10-apr26 .v10-shaker-bonus .v10-btn-lime:hover { opacity: 0.88; }
+  @media (max-width: 768px) {
+    .cc-lp-v10-apr26 .v10-shaker-bonus { padding: 72px 0; }
+  }
+
+  /* ---------- CTA PRICING BOX (bright yellow) ---------- */
+  .cc-lp-v10-apr26 #cta .btn-primary {
+    display: inline-block; background: #0A0A0A; color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px;
+    text-decoration: none; transition: opacity 0.3s ease; border: none; cursor: pointer;
+  }
+  .cc-lp-v10-apr26 #cta .btn-primary:hover { opacity: 0.85; }
+  .cc-lp-v10-apr26 #cta { padding: 96px 0; background: #E7FF56; }
+  .cc-lp-v10-apr26 #cta .cta-layout {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
+  }
+  @media (min-width: 960px) {
+    .cc-lp-v10-apr26 #cta .cta-layout { grid-template-columns: 0.9fr 1fr; gap: 64px; }
+  }
+  .cc-lp-v10-apr26 #cta .cta-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  @media (min-width: 960px) { .cc-lp-v10-apr26 #cta .cta-left { align-items: flex-start; text-align: left; } }
+  .cc-lp-v10-apr26 #cta .cta-product-img {
+    width: 100%; max-width: 460px;
+    display: block; margin: 0 auto;
+  }
+  @media (min-width: 960px) { .cc-lp-v10-apr26 #cta .cta-product-img { margin: 0; max-width: 520px; } }
+  .cc-lp-v10-apr26 #cta h2.cta-hero {
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 500;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: #0A0A0A;
+    margin: 0 0 32px;
+  }
+  @media (max-width: 640px) {
+    .cc-lp-v10-apr26 #cta h2.cta-hero { font-size: clamp(52px, 14vw, 80px); margin-bottom: 24px; }
+  }
+  .cc-lp-v10-apr26 #cta .cta-right { display: flex; justify-content: center; }
+  .cc-lp-v10-apr26 #cta .cta-wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; text-align: center; }
+  .cc-lp-v10-apr26 #cta h2 { font-size: clamp(30px, 4.5vw, 54px); font-weight: 500; line-height: 1.1; margin-bottom: 20px; }
+  .cc-lp-v10-apr26 #cta h2 .soft { color: #6B6B6B; }
+  .cc-lp-v10-apr26 #cta .lead { font-size: 17px; color: #6B6B6B; margin: 0 auto 20px; max-width: 560px; line-height: 1.55; }
+  .cc-lp-v10-apr26 #cta .stars-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 28px; color: #6B6B6B; }
+  .cc-lp-v10-apr26 #cta .stars-row .v10-stars { color: #0A0A0A; }
+  .cc-lp-v10-apr26 #cta .price-box {
+    background: #fff; border: 1px solid #0A0A0A; padding: 40px;
+    max-width: 560px; width: 100%; margin: 0 auto;
+  }
+  @media (min-width: 768px) { .cc-lp-v10-apr26 #cta .price-box { padding: 48px; } }
+  .cc-lp-v10-apr26 #cta .label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; margin-bottom: 16px; text-align: left; }
+  .cc-lp-v10-apr26 #cta .flavor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+  .cc-lp-v10-apr26 #cta .flavor-btn {
+    padding: 16px 12px; border: 2px solid #E8E8E8; background: #F5EFE6; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; color: #0A0A0A;
+    transition: all 0.2s ease;
+  }
+  .cc-lp-v10-apr26 #cta .flavor-btn.lemonade { background: #FDF2F8; }
+  .cc-lp-v10-apr26 #cta .flavor-btn.active { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
+  .cc-lp-v10-apr26 #cta .plan-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 32px; }
+  @media (max-width: 480px) { .cc-lp-v10-apr26 #cta .plan-grid { grid-template-columns: 1fr; gap: 8px; } }
+  .cc-lp-v10-apr26 #cta .plan-btn {
+    padding: 16px 10px; border: 2px solid #E8E8E8; background: #fff; cursor: pointer;
+    text-align: center; transition: all 0.2s ease; position: relative; overflow: visible;
+  }
+  .cc-lp-v10-apr26 #cta .plan-btn .flag {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: #E7FF56; color: #062F3D;
+    font-family: 'Space Grotesk', sans-serif; font-size: 9px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 3px 10px; white-space: nowrap; z-index: 1;
+  }
+  @media (max-width: 480px) {
+    .cc-lp-v10-apr26 #cta .plan-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px; text-align: left; gap: 8px;
+    }
+    .cc-lp-v10-apr26 #cta .plan-btn .flag { left: auto; right: -2px; top: -10px; transform: none; }
+    .cc-lp-v10-apr26 #cta .plan-btn .tag { margin-bottom: 0; font-size: 9px; flex: 0 0 auto; order: -1; }
+    .cc-lp-v10-apr26 #cta .plan-btn .price { font-size: 22px; flex: 0 0 auto; }
+    .cc-lp-v10-apr26 #cta .plan-btn .cadence { font-size: 11px; flex: 1; }
+    .cc-lp-v10-apr26 #cta .plan-btn .save { margin-top: 0; flex: 0 0 auto; }
+    .cc-lp-v10-apr26 #cta .plan-btn .label-cadence { display: none; }
+  }
+  .cc-lp-v10-apr26 #cta .plan-btn.active { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
+  .cc-lp-v10-apr26 #cta .plan-btn .tag { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 0.1em; font-weight: 500; color: #2D5A47; margin-bottom: 4px; text-transform: uppercase; }
+  .cc-lp-v10-apr26 #cta .plan-btn.active .tag { color: #E7FF56; }
+  .cc-lp-v10-apr26 #cta .plan-btn .price { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 500; color: #0A0A0A; }
+  .cc-lp-v10-apr26 #cta .plan-btn.active .price { color: #fff; }
+  .cc-lp-v10-apr26 #cta .plan-btn .cadence { display: block; font-size: 12px; color: #6B6B6B; }
+  .cc-lp-v10-apr26 #cta .plan-btn.active .cadence { color: rgba(255,255,255,0.8); }
+  .cc-lp-v10-apr26 #cta .plan-btn .label-cadence { display: block; font-size: 11px; color: #6B6B6B; margin-top: 4px; }
+  .cc-lp-v10-apr26 #cta .plan-btn.active .label-cadence { color: rgba(255,255,255,0.8); }
+  .cc-lp-v10-apr26 #cta .plan-btn .save { display: block; font-size: 11px; color: #2D5A47; margin-top: 4px; }
+  .cc-lp-v10-apr26 #cta .plan-btn.active .save { color: #E7FF56; }
+  .cc-lp-v10-apr26 #cta .price-display { border-top: 1px solid #E8E8E8; padding-top: 24px; margin-bottom: 20px; }
+  .cc-lp-v10-apr26 #cta .price-display .big {
+    display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-bottom: 6px;
+  }
+  .cc-lp-v10-apr26 #cta .price-display .big .dollars { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 500; color: #0A0A0A; }
+  .cc-lp-v10-apr26 #cta .price-display .big .per { color: #6B6B6B; font-size: 15px; }
+  .cc-lp-v10-apr26 #cta .price-display .line { font-size: 13px; color: #6B6B6B; }
+  .cc-lp-v10-apr26 #cta .micro-testimonial { padding: 14px 16px; background: #FAFAF8; border: 1px solid #E8E8E8; margin-bottom: 20px; }
+  .cc-lp-v10-apr26 #cta .micro-testimonial .v10-stars { font-size: 12px; margin-bottom: 4px; display: block; }
+  .cc-lp-v10-apr26 #cta .micro-testimonial p.quote { font-size: 14px; color: #0A0A0A; line-height: 1.4; margin: 0; }
+  .cc-lp-v10-apr26 #cta .micro-testimonial p.who { font-size: 11px; color: #6B6B6B; margin-top: 4px; }
+  .cc-lp-v10-apr26 #cta .cta-btn { width: 100%; padding: 22px; display: block; text-align: center; }
+  .cc-lp-v10-apr26 #cta .cta-btn:disabled { opacity: 0.7; cursor: wait; }
+  .cc-lp-v10-apr26 #cta .micro-below { font-size: 12px; color: #6B6B6B; margin-top: 18px; text-align: center; }
+  .cc-lp-v10-apr26 #cta .trust-icons {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 16px;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B6B6B;
+  }
+  .cc-lp-v10-apr26 #cta .badges { margin-top: 32px; padding-top: 24px; border-top: 1px solid #E8E8E8; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; text-align: center; }
+  .cc-lp-v10-apr26 #cta .urgency-pill {
+    display: inline-block; margin-bottom: 28px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 10px 20px; background: #E7FF56; color: #062F3D;
+  }
+
+  [x-cloak] { display: none !important; }
+</style>
+
+
+<div class="cc-apr26 cc-lp-v10-apr26" x-data="{
+    visibleReviews: 3,
+    faq: null,
+    toggleFaq(i) { this.faq = this.faq === i ? null : i; }
+  }">
+
+  <!-- ================================================== -->
+  <!-- 1. HERO                                              -->
+  <!-- ================================================== -->
+  <section class="v10-hero" id="top">
+    <div class="v10-hero-bg">
+      <picture>
+        <source media="(max-width: 640px)" srcset="{{ 'cc-v10-hero-baked.jpg' | asset_url }}">
+        <img src="{{ 'cc-v10-hero-desktop-baked.webp' | asset_url }}" alt="A man preparing his Coastline morning system in a sunlit kitchen">
+      </picture>
+    </div>
+    <div class="v10-hero-inner">
+      <div class="v10-hero-grid">
+        <div class="v10-hero-copy reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+          <span class="v10-urgency" style="margin-bottom:18px;">Limited Time &mdash; Save 34%</span>
+          <div class="v10-hero-divider"></div>
+          <h1>
+            13 ingredients.<br>
+            One daily ritual.<br>
+            <span class="soft">A new horizon of health.</span>
+          </h1>
+          <p class="v10-hero-sub">
+            A morning scoop, a softgel, two capsules before bed &mdash; total-system support for the long run.
+          </p>
+          <div class="v10-hero-stars">
+            <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>2,000+ Five-Star Reviews</span>
+          </div>
+          <div class="v10-hero-cta-row">
+            <a href="#pricing-product-apr26" class="v10-btn v10-btn-lime">Start My System &mdash; $99/mo</a>
+            <a href="#pricing-product-apr26" style="color: rgba(250,249,246,0.8); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.35); padding-bottom: 2px;">Skip to pricing &darr;</a>
+          </div>
+          <p class="v10-hero-microcopy">
+            <strong>60-day money-back guarantee.</strong> <span class="v10-hero-micro-line">Free shipping. Cancel anytime.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 2. PRESS LOGOS (modern marquee, mirrors cc-press-apr26) -->
+  <!-- ================================================== -->
+  <section class="v10-press-marquee-wrap" style="background:#FAF9F6;border-bottom:1px solid #E8E8E8;padding:48px 24px;">
+    <div style="max-width:1024px;margin:0 auto;text-align:center;">
+      <p style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#6B6B6B;font-weight:500;margin-bottom:32px;">As Featured In</p>
+      <div class="v10-press-marquee">
+        <div class="v10-press-track">
+          <a href="https://uncrate.com/coastline-longevity-welcome-pack/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223" alt="Uncrate" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.vice.com/en/article/coastline-longevity-supplements/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172" alt="Vice" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.thedailybeast.com/coastline-longevity-supplements-are-formulated-for-dads/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068" alt="Daily Beast" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.usmagazine.com/shopping/news/three-step-longevity-system-coastline-longevity/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109" alt="Us Weekly" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="#" style="pointer-events:none;"><img src="{{ 'cc-v8-logo-man-of-many.png' | asset_url }}" alt="Man of Many" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://mantry.com/blogs/manual/the-last-supplement-system-you-will-ever-need" target="_blank" rel="noopener"><img src="{{ 'cc-press-mantry.svg' | asset_url }}" alt="Mantry" style="height:32px;width:auto;" loading="lazy"></a>
+          <a href="https://www.insidehook.com/leisure/products-week-airpod-maxes-le-creuset-and-chore-coats" target="_blank" rel="noopener"><img src="{{ 'cc-press-insidehook.webp' | asset_url }}" alt="InsideHook" style="height:64px;width:auto;" loading="lazy"></a>
+          <!-- Duplicate set for seamless loop -->
+          <a href="https://uncrate.com/coastline-longevity-welcome-pack/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-1.png?v=1769181223" alt="Uncrate" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.vice.com/en/article/coastline-longevity-supplements/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-2.png?v=1769181172" alt="Vice" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.thedailybeast.com/coastline-longevity-supplements-are-formulated-for-dads/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-3.png?v=1769181068" alt="Daily Beast" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://www.usmagazine.com/shopping/news/three-step-longevity-system-coastline-longevity/" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-PARTNERSHIP_LOGOS-4.png?v=1769181109" alt="Us Weekly" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="#" style="pointer-events:none;"><img src="{{ 'cc-v8-logo-man-of-many.png' | asset_url }}" alt="Man of Many" style="height:36px;width:auto;" loading="lazy"></a>
+          <a href="https://mantry.com/blogs/manual/the-last-supplement-system-you-will-ever-need" target="_blank" rel="noopener"><img src="{{ 'cc-press-mantry.svg' | asset_url }}" alt="Mantry" style="height:32px;width:auto;" loading="lazy"></a>
+          <a href="https://www.insidehook.com/leisure/products-week-airpod-maxes-le-creuset-and-chore-coats" target="_blank" rel="noopener"><img src="{{ 'cc-press-insidehook.webp' | asset_url }}" alt="InsideHook" style="height:64px;width:auto;" loading="lazy"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 2b. GENETICS STAT                                    -->
+  <!-- ================================================== -->
+  <section class="v10-genetics">
+    <div class="v10-genetics-inner reveal"
+         x-data="{ n: 0, started: false, run() { if (this.started) return; this.started = true; let i = 0; const t = setInterval(() => { i += 1; this.n = i; if (i >= 7) clearInterval(t); }, 140); } }"
+         x-intersect="$el.classList.add('visible'); run()"
+         x-init="setTimeout(() => { $el.classList.add('visible'); run(); }, 100)">
+      <span class="eyebrow">Research Indicates</span>
+      <span class="stat"><span x-text="n">7</span>%</span>
+      <h2>of how long you live is genetic.<br><span class="soft">The other 93% is up to you.</span></h2>
+      <p class="body">
+        Recent twin studies show heritability accounts for only <strong>~7%</strong> of lifespan variation &mdash; far less than the widely cited 25%. How you move, sleep, eat, and what you put in your body does the other <strong>93%</strong> of the work.
+      </p>
+      <p class="source">Ruby et al., Genetics (2018) &middot; Nat. Communications (2018)</p>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 3. PRODUCT SYSTEM OVERVIEW                           -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment" id="system">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">The System</span>
+        <div class="v10-divider"></div>
+        <h2>
+          One system. Built for longevity.<br>
+          <span class="soft">Backed by science.</span>
+        </h2>
+        <p>13 ingredients, split into a morning ritual and an evening wind-down. Each dose matches the level used in the clinical trials that earned it a spot. Tap any ingredient to see why it's in the formula.</p>
+      </div>
+
+      <div class="v10-system-grid reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <!-- AM -->
+        <div class="v10-system-col am">
+          <p class="step-label">Moment One &middot; AM</p>
+          <h3>Morning Blend + Softgels</h3>
+          <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
+          <div class="v10-system-img">
+            <img src="{{ 'cc-v10-am-morning-only.webp' | asset_url }}" alt="Coastline morning softgels and glass shaker with pink liquid">
+          </div>
+          <div x-data="{ showIng: false }">
+            <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
+            <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
+              <div class="ing-list">
+                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-powder.webp' | asset_url }}" alt="Powder sachet"></div><p class="ing-head" style="margin:0">Easy-Scoop Powder Sachet</p></div>
+                <details class="ing-accordion"><summary><span class="name">Creatine</span><span class="dose">5.25g</span></summary><div class="ing-detail">Fuels cellular energy (ATP) in brain and muscle. Shown to improve memory, power output, and lean mass &mdash; especially after 40.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Glycine</span><span class="dose">5g</span></summary><div class="ing-detail">Calming amino acid that supports glutathione production, collagen synthesis, and deeper sleep architecture.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Inulin</span><span class="dose">4g</span></summary><div class="ing-detail">Prebiotic fiber that feeds beneficial gut bacteria and supports short-chain fatty acid production for gut and metabolic health.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Taurine</span><span class="dose">3.05g</span></summary><div class="ing-detail">Declines sharply after 40. Supplementation extended healthy lifespan in animal studies and improves mitochondrial function and insulin sensitivity.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Magnesium</span><span class="dose">150mg</span></summary><div class="ing-detail">Cofactor in 300+ enzymatic reactions. Supports muscle, sleep, cardiovascular, and nervous system health. Most adults are deficient.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Ergothioneine</span><span class="dose">5mg</span></summary><div class="ing-detail">The "longevity vitamin." Accumulates in mitochondria and protects tissues from oxidative damage &mdash; levels strongly correlate with healthy aging.</div></details>
+                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-softgel.webp' | asset_url }}" alt="Softgels"></div><p class="ing-head" style="margin:0">Morning Softgels</p></div>
+                <details class="ing-accordion"><summary><span class="name">CoQ10</span><span class="dose">200mg</span></summary><div class="ing-detail">Essential for mitochondrial ATP production. Levels decline with age; supplementation especially important for statin users and anyone over 40.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Lutein</span><span class="dose">10mg</span></summary><div class="ing-detail">Antioxidant carotenoid concentrated in the macula and brain. Protects against blue light damage and supports cognitive health.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Astaxanthin</span><span class="dose">6mg</span></summary><div class="ing-detail">One of nature's most potent antioxidants. Crosses the blood-brain barrier and supports skin, eye, and cardiovascular health.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Zeaxanthin</span><span class="dose">2mg</span></summary><div class="ing-detail">Works alongside lutein in the macula. Reduces age-related macular degeneration risk and supports visual performance.</div></details>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- PM -->
+        <div class="v10-system-col pm">
+          <p class="step-label">Moment Two &middot; PM</p>
+          <h3>Evening Capsules</h3>
+          <p class="sub">30-60 minutes before bed &middot; 3 ingredients</p>
+          <div class="v10-system-img">
+            <img src="{{ 'cc-bedside-evening.png' | asset_url }}" alt="Evening capsules on a bedside table">
+          </div>
+          <div x-data="{ showIng: false }">
+            <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
+            <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
+              <div class="ing-list">
+                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-capsule.webp' | asset_url }}" alt="Capsules"></div><p class="ing-head" style="margin:0">Evening Capsules</p></div>
+                <details class="ing-accordion"><summary><span class="name">Glucosamine</span><span class="dose">750mg</span></summary><div class="ing-detail">Associated with ~15% lower all-cause mortality in large observational studies. Supports joint repair, cartilage health, and long-term mobility.</div></details>
+                <details class="ing-accordion"><summary><span class="name">L-Theanine</span><span class="dose">200mg</span></summary><div class="ing-detail">Promotes relaxation without sedation by increasing alpha brain waves. Helps you wind down and improves sleep quality without morning grogginess.</div></details>
+                <details class="ing-accordion"><summary><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></summary><div class="ing-detail">At microdoses, populations with higher lithium in drinking water show lower rates of dementia, depression, and suicide. Supports mood and cognitive longevity.</div></details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="v10-two-moments-note">Two moments. 13 doses. Zero guesswork.</p>
+
+      <div class="v10-badge-row">
+        <span class="badge">3rd Party Tested</span>
+        <span class="badge">GMP Certified</span>
+        <span class="badge">Made in USA</span>
+        <span class="badge">Vegan</span>
+        <span class="badge">Caffeine-Free</span>
+        <span class="badge">Satisfaction Guaranteed</span>
+      </div>
+
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#pricing-product-apr26" class="v10-btn">Start My System &mdash; $99/mo</a>
+        <p style="margin-top:12px; font-size:12px; color:#6B6B6B;">60-day money-back guarantee &middot; Free glass shaker</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- GUARANTEE BANNER #1                                  -->
+  <!-- ================================================== -->
+  <section class="v10-guarantee-banner">
+    <p class="lead">60-day money-back guarantee.</p>
+    <span class="sep"></span>
+    <p class="sub">TRY RISK-FREE &middot; NO QUESTIONS ASKED &middot; FULL REFUND</p>
+    <span class="sep"></span>
+    <a href="#pricing-product-apr26" style="color: #FAF9F6; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid rgba(250,249,246,0.4); padding-bottom: 3px;">Get 34% off now &rarr;</a>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 5. INFLUENCER UGC GALLERY                            -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">The Coastline Community</span>
+        <div class="v10-divider"></div>
+        <h2>See what Coastliners<br><span class="soft">are loving most.</span></h2>
+        <p>Real routines. Real people. Real-life results.</p>
+      </div>
+    </div>
+    <div class="v10-ugc-rail reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 5b. FREE GLASS SHAKER BONUS                          -->
+  <!-- ================================================== -->
+  <section class="v10-shaker-bonus">
+    <div class="v10-wrap">
+      <div class="v10-shaker-grid reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-shaker-img">
+          <img src="{{ 'cc-v8-shaker-boardwalk.png' | asset_url }}" alt="Free Coastline glass shaker">
+        </div>
+        <div class="v10-shaker-copy">
+          <span class="v10-eyebrow" style="color: #E7FF56;">A Free Gift With Every System</span>
+          <div class="v10-divider" style="background: #E7FF56; margin: 18px 0 24px;"></div>
+          <h2>Your free<br>glass shaker.</h2>
+          <p>Every complete system ships with a premium glass shaker &mdash; built for the morning ritual. No plastic, no BPA, no cheap metal ball. Just one beautiful object you&rsquo;ll reach for every day.</p>
+          <ul class="v10-shaker-list">
+            <li><span class="check">&#10003;</span> Borosilicate glass &mdash; safe for hot and cold</li>
+            <li><span class="check">&#10003;</span> Free with first complete-system order</li>
+          </ul>
+          <a href="#pricing-product-apr26" class="v10-btn v10-btn-lime">Get the complete system</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 6. TOP 10 BENEFITS                                   -->
+  <!-- ================================================== -->
+  <section class="v10-section dark">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">What It Does</span>
+        <div class="v10-divider"></div>
+        <h2>
+          What 13 clinical doses<br>
+          <span class="soft">actually do for you.</span>
+        </h2>
+        <p>These are the outcomes the literature shows at the exact dose levels we chose. Tap any benefit to see the mechanism and the ingredients doing the work.</p>
+      </div>
+
+      <div class="v10-benefits reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <details class="v10-benefit">
+          <summary><span class="num">01</span><span class="title">Sharper Morning Focus</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Creatine fuels brain ATP and improves memory and cognitive speed &mdash; especially under stress or sleep debt. CoQ10 supports mitochondrial output. Taurine and ergothioneine protect neurons from oxidative wear.</p><p class="keys">Key ingredients: Creatine 5.25g &middot; CoQ10 200mg &middot; Taurine 3.05g &middot; Ergothioneine 5mg</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">02</span><span class="title">Deeper, More Restorative Sleep</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Glycine lowers core body temperature and improves subjective sleep quality in controlled trials. L-theanine quiets racing thoughts without sedation. Magnesium supports GABA signaling for deeper slow-wave sleep.</p><p class="keys">Key ingredients: Glycine 5g &middot; L-Theanine 200mg &middot; Magnesium 150mg</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">03</span><span class="title">Steady All-Day Energy</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>No caffeine crash. CoQ10 and taurine power mitochondrial ATP production; ergothioneine protects mitochondrial membranes. The result is cellular energy that doesn&rsquo;t spike and collapse.</p><p class="keys">Key ingredients: CoQ10 200mg &middot; Taurine 3.05g &middot; Ergothioneine 5mg &middot; Creatine 5.25g</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">04</span><span class="title">Joint &amp; Mobility Support</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Glucosamine is associated with ~15% lower all-cause mortality in large observational studies, alongside joint repair and cartilage support. Glycine supplies the raw material for collagen synthesis.</p><p class="keys">Key ingredients: Glucosamine 750mg &middot; Glycine 5g</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">05</span><span class="title">Healthier Gut Microbiome</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Inulin is a prebiotic fiber that feeds beneficial bacteria and supports short-chain fatty acid production &mdash; the metabolites most linked to metabolic and immune health.</p><p class="keys">Key ingredients: Inulin 4g</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">06</span><span class="title">Stronger Muscles &amp; Lean Mass</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Creatine is the most studied supplement in history for preserving strength and lean mass, especially after 40. Taurine supports muscle contraction and recovery. Magnesium fuels muscle relaxation and cramp prevention.</p><p class="keys">Key ingredients: Creatine 5.25g &middot; Taurine 3.05g &middot; Magnesium 150mg</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">07</span><span class="title">Long-Term Vision Protection</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Lutein and zeaxanthin accumulate in the macula and protect retinal cells from blue-light and oxidative damage. Associated with reduced age-related macular degeneration risk.</p><p class="keys">Key ingredients: Lutein 10mg &middot; Zeaxanthin 2mg &middot; Astaxanthin 6mg</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">08</span><span class="title">Stress &amp; Nervous System Balance</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>L-theanine increases alpha brain waves for calm focus. Magnesium supports nervous system regulation. Lithium orotate at microdose levels is associated with mood stability in population studies.</p><p class="keys">Key ingredients: L-Theanine 200mg &middot; Magnesium 150mg &middot; Lithium Orotate 400mcg</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">09</span><span class="title">Cellular Antioxidant Defense</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Astaxanthin is one of the most potent antioxidants ever measured and crosses the blood-brain barrier. Ergothioneine accumulates in mitochondria under oxidative stress. Glycine is the rate-limiting precursor to glutathione &mdash; the body&rsquo;s master antioxidant.</p><p class="keys">Key ingredients: Astaxanthin 6mg &middot; Ergothioneine 5mg &middot; Glycine 5g</p></div>
+        </details>
+        <details class="v10-benefit">
+          <summary><span class="num">10</span><span class="title">Cognitive &amp; Brain Longevity</span><span class="plus">+</span></summary>
+          <div class="v10-benefit-body"><p>Populations with higher trace lithium in drinking water show lower rates of dementia, depression, and suicide. Creatine and CoQ10 fuel brain energy metabolism. Astaxanthin protects neurons from oxidative damage.</p><p class="keys">Key ingredients: Lithium Orotate 400mcg &middot; Creatine 5.25g &middot; CoQ10 200mg &middot; Astaxanthin 6mg</p></div>
+        </details>
+      </div>
+
+      <p class="v10-ing-footnote">Supports 11 body systems &mdash; brain, energy, sleep, muscle, gut, vision, joints, cardiovascular, antioxidant defense, skin, and immune. <a href="#pricing-product-apr26" style="color:#E7FF56; border-bottom: 1px solid #E7FF56; padding-bottom: 1px;">Start the system &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- Scene divider -->
+  <div class="v10-scene">
+    <img src="{{ 'cc-v10-scene-2.jpg' | asset_url }}" alt="Pacific coastline">
+  </div>
+
+  <!-- ================================================== -->
+  <!-- 7. SOCIAL PROOF — 6 REVIEWS                           -->
+  <!-- ================================================== -->
+  <section class="v10-section pale-blue">
+    <div class="v10-wrap">
+      <div class="v10-reviews-grid three reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Finally, a longevity stack that doesn&rsquo;t need 15 bottles. My morning brain fog is gone and I feel sharper by week three.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-robert.png' | asset_url }}" alt="Robert K."></div>
+            <div class="name"><strong>Robert K., 45</strong>Chicago, IL<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I&rsquo;ve tried every greens powder on the market. This is the first one where I can read the label and actually know what I&rsquo;m getting &mdash; and the doses match the studies.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-sarah-v2.png' | asset_url }}" alt="Sarah M."></div>
+            <div class="name"><strong>Sarah M., 42</strong>Austin, TX<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Energy that feels natural, not forced. No jitters, no crash &mdash; just steady output from morning to night.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="Scott L."></div>
+            <div class="name"><strong>Scott L., 51</strong>Charlotte, NC<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">As a physician, I&rsquo;m skeptical of most supplements &mdash; but the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-michael-v2.png' | asset_url }}" alt="Michael R."></div>
+            <div class="name"><strong>Michael R., 58</strong>Physician &middot; Seattle, WA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">As a busy mother and founder, mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was just part of getting older.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-sophia.png' | asset_url }}" alt="Sophia R."></div>
+            <div class="name"><strong>Sophia R., 41</strong>Founder &middot; Brooklyn, NY<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">My wife and I both take it. She sleeps better, I recover faster after training. It&rsquo;s the first supplement we actually agree on.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="name"><strong>Andrew P., 48</strong>Portland, OR<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#pricing-product-apr26" class="v10-btn">Get 34% Off Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 8. HOW IT WORKS — 3 STEPS                            -->
+  <!-- ================================================== -->
+  <section class="v10-section pale-blue" id="how">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">How It Works</span>
+        <div class="v10-divider"></div>
+        <h2>Formulated for AM to PM.<br><span class="soft">Built to fit your rhythms.</span></h2>
+        <p>Two moments you already have &mdash; morning and evening. Each dose timed to when your body can use it most. No new habits. No 15 pill bottles. Just a ritual that works with the day you&rsquo;re already living.</p>
+      </div>
+
+      <div class="v10-ampm reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-ampm-card">
+          <div class="v10-ampm-img">
+            <img src="{{ 'cc-v10-how-am-v3.webp' | asset_url }}" alt="Woman taking Coastline morning softgels at her bathroom vanity">
+          </div>
+          <div class="v10-ampm-overlay">
+            <span class="v10-ampm-label">Morning &middot; With Breakfast</span>
+            <h3>Scoop + softgel</h3>
+            <p>10 ingredients. 45 seconds. One powder scoop in your shaker, plus one morning softgel.</p>
+          </div>
+        </div>
+        <div class="v10-ampm-card">
+          <div class="v10-ampm-img">
+            <img src="{{ 'cc-v10-how-pm-v2.webp' | asset_url }}" alt="Evening capsules on a bedside table with moonlit ocean view">
+          </div>
+          <div class="v10-ampm-overlay">
+            <span class="v10-ampm-label">Evening &middot; Before Bed</span>
+            <h3>Two capsules</h3>
+            <p>3 ingredients. Wind down with L-theanine and glycine while glucosamine goes to work overnight.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#pricing-product-apr26" class="v10-btn">Start My System &mdash; $99/mo</a>
+        <p style="margin-top:12px; font-size:12px; color:#6B6B6B;">Free shipping &middot; Cancel anytime</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 9. MADE BY SCIENTISTS, NOT MARKETERS                 -->
+  <!-- ================================================== -->
+  <section class="v10-section dark">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">The Team Behind Coastline</span>
+        <div class="v10-divider"></div>
+        <h2>Made by scientists.<br><span class="soft">Not marketers.</span></h2>
+        <p>Four PhDs and MDs built this formula &mdash; not a branding agency. Every ingredient, every dose, every pairing was argued over by people who read the studies for a living.</p>
+      </div>
+
+      <div class="v10-scientists-grid reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-sci-card">
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-greg.png' | asset_url }}" alt="Greg Potter, PhD"></div>
+          <p class="v10-sci-name">Greg Potter, PhD</p>
+          <p class="v10-sci-title">Lead Scientist</p>
+          <p class="v10-sci-quote">&ldquo;We picked doses the literature actually defends &mdash; not doses that fit on a label.&rdquo;</p>
+        </div>
+        <div class="v10-sci-card">
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-nic.png' | asset_url }}" alt="Nicolas Verhoeven, PhD"></div>
+          <p class="v10-sci-name">Nicolas Verhoeven, PhD</p>
+          <p class="v10-sci-title">Molecular Medicine</p>
+          <p class="v10-sci-quote">&ldquo;Every one of these 13 has human data behind it. Most supplement aisles can&rsquo;t say that.&rdquo;</p>
+        </div>
+        <div class="v10-sci-card">
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-jacqueline.png' | asset_url }}" alt="Dr. Jacqueline Jacques, ND"></div>
+          <p class="v10-sci-name">Dr. Jacqueline Jacques, ND</p>
+          <p class="v10-sci-title">Naturopathic Medicine</p>
+          <p class="v10-sci-quote">&ldquo;My patients don&rsquo;t need more pills. They need the right ones at the right dose.&rdquo;</p>
+        </div>
+        <div class="v10-sci-card">
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-chris.png' | asset_url }}" alt="Dr. Christopher Pollock, MD"></div>
+          <p class="v10-sci-name">Dr. Christopher Pollock, MD</p>
+          <p class="v10-sci-title">Senior Science Advisor</p>
+          <p class="v10-sci-quote">&ldquo;Most supplements I see in clinic are dosed too low to matter. These aren&rsquo;t.&rdquo;</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#pricing-product-apr26" class="v10-btn v10-btn-light">Try It Risk-Free &mdash; 60-Day Guarantee</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- 11. SOCIAL PROOF #3 — 2 REVIEWS                      -->
+  <!-- ================================================== -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap">
+      <div class="v10-reviews-grid three reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I used to spend $200+/month on five different supplements and still wasn&rsquo;t sure I had everything covered. Coastline replaced all of them. One routine. Done.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
+            <div class="name"><strong>Lisa T., 52</strong>Denver, CO<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Three weeks in and the deep sleep is real. I wake up before my alarm now. Haven&rsquo;t said that since my 20s.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-james.png' | asset_url }}" alt="James W."></div>
+            <div class="name"><strong>James W., 49</strong>San Diego, CA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Bought it for the creatine and CoQ10 doses. Staying for the sleep. The evening capsules are an underrated part of this system.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-elena-v2.png' | asset_url }}" alt="Elena R."></div>
+            <div class="name"><strong>Elena R., 38</strong>Miami, FL<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">My trainer noticed my recovery times before I did. Whatever the taurine and creatine are doing together, it&rsquo;s working.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-tom-v2.jpg' | asset_url }}" alt="Tom H."></div>
+            <div class="name"><strong>Tom H., 46</strong>Chicago, IL<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I was spending more on random Amazon supplements that weren&rsquo;t even dosed right. This is fewer pills, better ingredients, and I actually trust it.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-maria-v2.png' | asset_url }}" alt="Maria L."></div>
+            <div class="name"><strong>Maria L., 39</strong>Atlanta, GA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="#pricing-product-apr26" class="v10-btn">Get Started &mdash; $99/mo</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 12b. 60-DAY GUARANTEE BLOCK                          -->
+
+</div>
+
+{% schema %}
+{
+  "name": "LP V10 Top (apr29)",
+  "tag": "section",
+  "class": "cc-lp-v10",
+  "settings": [],
+  "presets": [{ "name": "LP V10 Top (apr29)", "category": "Landing Pages" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

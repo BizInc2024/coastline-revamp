@@ -153,11 +153,16 @@
     "narrative-bottom": {
       "type": "cc-vs-ag1-bottom-apr29",
       "settings": {}
+    },
+    "guarantee": {
+      "type": "cc-guarantee-apr29",
+      "settings": {}
     }
   },
   "order": [
     "narrative",
     "pricing",
+    "guarantee",
     "narrative-bottom",
     "final-cta",
     "email"

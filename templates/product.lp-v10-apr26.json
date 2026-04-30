@@ -1,7 +1,7 @@
 {
   "sections": {
     "narrative": {
-      "type": "cc-lp-v10-apr26",
+      "type": "cc-lp-v10-apr29",
       "settings": {}
     },
     "pricing": {
@@ -30,11 +30,16 @@
     "email": {
       "type": "cc-email-capture-apr26",
       "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-lp-v10-bottom-apr29",
+      "settings": {}
     }
   },
   "order": [
     "narrative",
     "pricing",
+    "narrative-bottom",
     "final-cta",
     "email"
   ]

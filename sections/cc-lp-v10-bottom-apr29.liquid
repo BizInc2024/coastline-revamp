@@ -1,0 +1,237 @@
+{% comment %}
+  cc-lp-v10-bottom-apr29 — V10 narrative continuation (after pricing).
+  Splits cc-lp-v10-apr29 so pricing block can render between the
+  upper narrative and the 60-day guarantee section. Inherits CSS
+  from the top section (rendered earlier on same page; shared
+  .cc-apr26 .cc-lp-v10-apr26 scope).
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-lp-v10-apr26">
+
+  <section class="v10-guarantee-block">
+    <div class="v10-guarantee-inner reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+      <div class="v10-guarantee-badge">
+        <span class="days">60</span>
+        <span class="label">Day<br>Guarantee</span>
+      </div>
+      <div class="v10-guarantee-copy">
+        <h3>Try it risk-free for 60 days.</h3>
+        <p>Try risk-free, no questions asked, for a full refund. If you&rsquo;re not thrilled with how you feel, send back what&rsquo;s left of your order and we&rsquo;ll refund every penny &mdash; even if the box is empty. No phone calls, no penalties, no pressure.</p>
+        <div class="v10-guarantee-pills">
+          <span class="pill">Free Shipping</span>
+          <span class="pill">Cancel Anytime</span>
+          <span class="pill">GMP Certified</span>
+          <span class="pill">Made in USA</span>
+          <span class="pill">3rd Party Tested</span>
+          <span class="pill">Vegan</span>
+          <span class="pill">Caffeine-Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 12b2. COMPARISON                                     -->
+  <section class="v10-section white">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">How We Compare</span>
+        <div class="v10-divider"></div>
+        <h2>Coastline vs typical<br><span class="soft">longevity supplements.</span></h2>
+        <p>Most supplements hide their doses behind mystery ingredients. Here&rsquo;s the honest comparison.</p>
+      </div>
+
+      <div class="v10-compare-wrap reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <table class="v10-compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="coastline">COASTLINE</th>
+              <th style="text-align:center;">Typical Greens</th>
+              <th style="text-align:center;">Multi-Bottle Stack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="attr">Clinical doses</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical">Sometimes</td></tr>
+            <tr><td class="attr">Every dose published</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> Hidden</td><td class="typical"><span class="check">&#10003;</span></td></tr>
+            <tr><td class="attr">Mystery ingredient blends</td><td class="coastline">None</td><td class="typical">50+</td><td class="typical">Varies</td></tr>
+            <tr><td class="attr">AM/PM timing</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span></td><td class="typical"><span class="miss">&times;</span></td></tr>
+            <tr><td class="attr">All in one routine</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical"><span class="check">&#10003;</span></td><td class="typical"><span class="miss">&times;</span> 5-15 bottles</td></tr>
+            <tr><td class="attr">Cost per day</td><td class="coastline">$3.30</td><td class="typical">$2.60</td><td class="typical">$6-10+</td></tr>
+            <tr><td class="attr">60-day guarantee</td><td class="coastline"><span class="check">&#10003;</span></td><td class="typical">30 days</td><td class="typical">Varies</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="text-align:center; margin-top:32px; font-size:14px; color:#6B6B6B;">Less than your daily coffee &mdash; backed by a 60-day guarantee.</p>
+    </div>
+  </section>
+  <!-- 12c. OUR STORY — WE'RE SKEPTICS TOO                  -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap-narrow">
+      <div class="v10-story reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-story-founder">
+          <img src="{{ 'cc-v8-founder-portrait.png' | asset_url }}" alt="Chris Booth, Coastline co-founder">
+        </div>
+        <span class="v10-eyebrow" style="display:block; text-align:center; margin-bottom: 20px;">A Note From One Of The Co-Founders</span>
+        <div class="v10-divider" style="margin: 0 auto 28px;"></div>
+        <h2 style="text-align: center; font-size: clamp(30px, 4vw, 48px); font-weight: 500; line-height: 1.1; margin-bottom: 28px; color: #0A0A0A;">We&rsquo;re skeptics too.</h2>
+        <div class="v10-story-body">
+          <p>We started Coastline because we were tired of the same con. A shiny bottle, a vague promise, a proprietary blend hiding how little of the good stuff you&rsquo;re actually getting. Then you cross-reference the label against the literature and realize the doses are a fraction of what the studies used.</p>
+          <p>So we built the thing we wanted to take ourselves. We picked 13 compounds with the strongest human data. We dosed every one at the clinical level. We published every amount on the label. We had four scientists argue about every pairing until the formula earned its place.</p>
+          <p>If you&rsquo;re skeptical of longevity supplements, good. So are we. Read the ingredients, check the doses, compare it to anything else on the shelf. Then decide.</p>
+        </div>
+        <p class="v10-story-signature"><strong>Chris Booth</strong>Co-founder, Coastline</p>
+        <div style="text-align:center; margin-top:32px;">
+          <a href="#pricing-product-apr26" class="v10-btn">Get Started Today &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene divider -->
+  <div class="v10-scene">
+    <img src="{{ 'cc-v10-scene-1.jpg' | asset_url }}" alt="Coastline horizon">
+  </div>
+  <!-- 12d. REVIEWS AGGREGATE                               -->
+  <section class="v10-section pale-blue">
+    <div class="v10-wrap">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">What Our Customers Say</span>
+        <div class="v10-divider"></div>
+        <h2>2,000+ five-star reviews<br><span class="soft">and counting.</span></h2>
+      </div>
+      <div class="v10-reviews-grid three reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I used to spend $200+/month on five different supplements and still wasn&rsquo;t sure I had everything covered. Coastline replaced all of them.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
+            <div class="name"><strong>Lisa T., 52</strong>Denver, CO<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I ran every ingredient through PubMed before buying. Every dose checks out. That&rsquo;s never happened with a supplement before.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Sharper mornings, better sleep, and my joints feel 10 years younger. The evening capsules alone are worth it.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="James W."></div>
+            <div class="name"><strong>James W., 49</strong>Portland, OR<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">I&rsquo;m a nurse and I&rsquo;m on my feet 12 hours a day. The joint support from glucosamine and the energy from CoQ10 are keeping me going through double shifts.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-karen.png' | asset_url }}" alt="Karen D."></div>
+            <div class="name"><strong>Karen D., 44</strong>Nashville, TN<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">Replaced AG1 with this. Twice the transparency at half the hype. My wife noticed I was sleeping deeper before I did.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-david.png' | asset_url }}" alt="David M."></div>
+            <div class="name"><strong>David M., 53</strong>Austin, TX<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+        <div class="v10-review-card">
+          <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p class="quote">The glass shaker alone was worth signing up. But the real surprise was how much better my recovery is after long runs. Creatine and taurine are doing something.</p>
+          <div class="who">
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-nina.png' | asset_url }}" alt="Nina P."></div>
+            <div class="name"><strong>Nina P., 36</strong>Brooklyn, NY<div class="verified">&#10003; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 13. FAQ                                              -->
+  <section class="v10-section parchment">
+    <div class="v10-wrap-narrow">
+      <div class="v10-section-head reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <span class="v10-eyebrow">Common Questions</span>
+        <div class="v10-divider"></div>
+        <h2>Before you start.</h2>
+      </div>
+
+      <div class="v10-faq reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 1" @click="toggleFaq(1)">What is Coastline? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 1 ? 'open' : ''"><p>Coastline is a complete daily longevity system &mdash; 13 science-backed ingredients split into a morning ritual (easy-scoop powder sachet + softgel) and two evening capsules. Every dose matches the level used in clinical studies. No mystery ingredients, no hidden doses, every milligram published on the label.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 2" @click="toggleFaq(2)">How do I know it&rsquo;s for me? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 2 ? 'open' : ''"><p>If you&rsquo;re over 35 and want to support your health for the long run &mdash; sharper focus, steadier energy, better sleep, stronger joints &mdash; without managing a dozen different bottles, Coastline was built for you. It&rsquo;s gender-neutral, caffeine-free, and designed to fit into the routine you already have.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 3" @click="toggleFaq(3)">How do I actually take Coastline? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 3 ? 'open' : ''"><p>Morning: scoop the powder into your free glass shaker with water and take one softgel with breakfast. Evening: take two capsules 30-60 minutes before bed. That&rsquo;s the entire system &mdash; two moments, under a minute each.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 4" @click="toggleFaq(4)">When will I notice a difference? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 4 ? 'open' : ''"><p>Most customers report sharper mornings and steadier energy in 2-3 weeks. Deep-structural benefits &mdash; sleep quality, joint comfort, biomarker shifts &mdash; typically build through weeks 4-8 of consistent use.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 5" @click="toggleFaq(5)">Why 13 ingredients instead of 75? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 5 ? 'open' : ''"><p>Because doses matter more than ingredient count. A supplement with 75 ingredients at trace amounts hides behind mystery ingredients. Coastline uses 13 compounds at the exact dose used in the studies that proved they work &mdash; published on the label, every milligram.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 6" @click="toggleFaq(6)">Is there caffeine or sugar? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 6 ? 'open' : ''"><p>No caffeine, no added sugar. Coastline is vegan, GMP-certified, 3rd-party tested, and made in the USA. The Coastal Lemonade flavor is naturally sweetened.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 7" @click="toggleFaq(7)">Can I take it with medication? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 7 ? 'open' : ''"><p>Every ingredient is well-studied and generally recognized as safe at these doses, but we always recommend checking with your doctor if you&rsquo;re on prescription medication &mdash; especially blood thinners or blood pressure medication.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 8" @click="toggleFaq(8)">What if it doesn&rsquo;t work for me? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 8 ? 'open' : ''"><p>You have 60 days to try it risk-free. If it&rsquo;s not right for you, contact us for a full refund &mdash; no questions, no return shipping fees, no hoops. We stand behind the science.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 9" @click="toggleFaq(9)">Can I cancel my subscription? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 9 ? 'open' : ''"><p>Yes &mdash; cancel any time with one click from your account. No phone calls, no penalties, no pressure. We make it easy because we believe the product speaks for itself.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 10" @click="toggleFaq(10)">Do I really need the free glass shaker? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 10 ? 'open' : ''"><p>The free glass shaker makes the morning ritual almost automatic. It&rsquo;s included at no extra cost with your first order &mdash; not a gimmick, just the easiest way to mix the powder cleanly without plastic.</p></div>
+        </div>
+        <div class="v10-faq-item">
+          <button type="button" class="v10-faq-q" :aria-expanded="faq === 11" @click="toggleFaq(11)">How much would these supplements cost individually? <span class="plus">+</span></button>
+          <div class="v10-faq-a" :class="faq === 11 ? 'open' : ''"><p>If you bought each of the 13 ingredients separately at clinical doses, you&rsquo;d spend $200-$300+ per month and manage 6-10 different bottles. Coastline combines them into one system at $99/month &mdash; with a free glass shaker, free shipping, and a 60-day money-back guarantee.</p></div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:56px;">
+        <a href="#pricing-product-apr26" class="v10-btn">Start My System &mdash; $99/mo</a>
+        <p style="margin-top:14px; font-size:12px; color:#6B6B6B;">Just $3.30/day &middot; 60-day money-back guarantee &middot; Free glass shaker with first order</p>
+      </div>
+    </div>
+  </section>
+  <!-- 14. TRUST FOOTER                                     -->
+  <section class="v10-trust-footer">
+    <div class="v10-wrap">
+      <p class="disclaimer">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult your healthcare provider before starting a new supplement.</p>
+    </div>
+  </section>
+
+
+</div>
+
+{% schema %}
+{
+  "name": "LP V10 Bottom (apr29)",
+  "tag": "section",
+  "class": "cc-lp-v10",
+  "settings": [],
+  "presets": [{ "name": "LP V10 Bottom (apr29)", "category": "Landing Pages" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

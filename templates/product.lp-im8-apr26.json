@@ -24,7 +24,7 @@
       "type": "cc-final-cta-apr26",
       "settings": {
         "final_headline": "Built by researchers, not celebrities.",
-        "final_subheadline": "13 ingredients at clinical doses — the science IM8 stretches across 92 compounds in pixie-dust amounts.",
+        "final_subheadline": "13 ingredients at clinical doses \u2014 the science IM8 stretches across 92 compounds in pixie-dust amounts.",
         "final_cta_text": "START MY LONGEVITY SYSTEM",
         "final_cta_link": "#pricing-product-apr26",
         "section13_padding_top": 80,
@@ -34,12 +34,17 @@
     "email": {
       "type": "cc-email-capture-apr26",
       "settings": {}
+    },
+    "guarantee": {
+      "type": "cc-guarantee-apr29",
+      "settings": {}
     }
   },
   "order": [
     "narrative",
     "press",
     "pricing",
+    "guarantee",
     "final-cta",
     "email"
   ]
