@@ -26,7 +26,7 @@
 
     .v6-blockquote { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; color: #FAF9F6; }
     .v6-study-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 32px; margin-top: 40px; }
-    .v6-study-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: #9A9A9A; }
+    .v6-study-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: #E0DED9; line-height: 1.55; }
 
     .v6-table-scroll { overflow-x: auto; display: block; }
     .v6-comparison-table { width: 100%; border-collapse: collapse; }
@@ -146,12 +146,12 @@
     <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.4);">The Clinical Evidence</p>
+                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.75);">The Clinical Evidence</p>
                 <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
 
                 <!-- Study findings first -->
                 <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "On IM8 Daily Ultimate Label:" }}</p>
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.85);">{{ section.settings.study_label | default: "On IM8 Daily Ultimate Label:" }}</p>
                     <ul>
                         <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: "Most ingredients hidden inside proprietary blends - individual doses not disclosed" }}</li>
                         <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: "92+ active compounds split across one daily scoop - single-digit milligrams each" }}</li>
