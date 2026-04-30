@@ -1,5 +1,5 @@
 {% comment %}
-  cc-vs-ag1-apr26 -- Coastline vs AG1 narrative section
+  CSSCLASSIM8 -- Coastline vs IM8 narrative section
   Extracted from sections/cc-landingpage-v6-ag1.liquid (Apr 26 rebuild).
   Pairs with cc-pricing-product-apr26 (cart) + cc-email-capture-apr26 inside
   templates/product.lp-ag1-apr26.json. Live LP (page.cc-landingpage-v6-ag1)
@@ -10,8 +10,8 @@
 
 <style>
     html { scroll-behavior: smooth; }
-    .cc-vs-ag1-apr26 p { max-width: none !important; }
-    .cc-vs-ag1-apr26 h1, .cc-vs-ag1-apr26 h2 { text-wrap: balance; }
+    .CSSCLASSIM8 p { max-width: none !important; }
+    .CSSCLASSIM8 h1, .CSSCLASSIM8 h2 { text-wrap: balance; }
 
     .editorial-divider { width: 60px; height: 1px; background: #0A0A0A; }
     .section-counter { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; }
@@ -19,7 +19,7 @@
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
     .accordion-content.open { max-height: 2000px; }
 
-    .cc-vs-ag1-apr26 footer .cc-v6-footer-cta {
+    .CSSCLASSIM8 footer .cc-v6-footer-cta {
         display: inline-block !important; width: auto !important; min-width: 0 !important; min-height: 0 !important;
         padding: 20px 48px !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; border: none !important; box-sizing: border-box !important;
     }
@@ -50,7 +50,7 @@
     .v6-ingredient-card p:first-of-type { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #0A0A0A; margin-bottom: 4px; }
     .v6-ingredient-card p:last-of-type { font-size: 12px; color: #6B6B6B; }
 
-    .cc-vs-ag1-apr26 .btn-primary {
+    .CSSCLASSIM8 .btn-primary {
         display: inline-block;
         background-color: #0A0A0A;
         color: #FAF9F6;
@@ -65,28 +65,28 @@
         cursor: pointer;
         border: none;
     }
-    .cc-vs-ag1-apr26 .btn-primary:hover { opacity: 0.8; }
+    .CSSCLASSIM8 .btn-primary:hover { opacity: 0.8; }
 
     /* Flavor selector active state */
-    .cc-vs-ag1-apr26 .v6-flavor-btn { border: 1px solid #E8E8E8; padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
-    .cc-vs-ag1-apr26 .v6-flavor-btn.active { border-color: #0A0A0A; box-shadow: 0 0 0 2px #0A0A0A; }
+    .CSSCLASSIM8 .v6-flavor-btn { border: 1px solid #E8E8E8; padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
+    .CSSCLASSIM8 .v6-flavor-btn.active { border-color: #0A0A0A; box-shadow: 0 0 0 2px #0A0A0A; }
 
     /* Plan selector active state */
-    .cc-vs-ag1-apr26 .v6-plan-btn { width: 100%; text-align: left; cursor: pointer; transition: all 0.2s ease; border: 1px solid #E8E8E8; padding: 16px; }
-    .cc-vs-ag1-apr26 .v6-plan-btn.active { border: 2px solid #0A0A0A; }
+    .CSSCLASSIM8 .v6-plan-btn { width: 100%; text-align: left; cursor: pointer; transition: all 0.2s ease; border: 1px solid #E8E8E8; padding: 16px; }
+    .CSSCLASSIM8 .v6-plan-btn.active { border: 2px solid #0A0A0A; }
 
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 </style>
 
-<div class="cc-apr26 cc-vs-ag1-apr26" x-data="{ visibleReviews: 3 }">
+<div class="cc-apr26 CSSCLASSIM8" x-data="{ visibleReviews: 3 }">
     <!-- SECTION 1: EDITORIAL HERO -->
     <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
         <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED MARCH 2026' }}</p>
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED APRIL 2026' }}</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
-                    {{ section.settings.hero_headline | default: 'Coastline vs AG1: Which Longevity Supplement Is Actually Worth It?' }}
+                    {{ section.settings.hero_headline | default: 'Coastline vs IM8: Which Longevity Supplement Is Actually Worth It?' }}
                 </h1>
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
                     {{ section.settings.hero_subheadline | default: 'Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback.' }}
@@ -104,9 +104,9 @@
                         <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
                     </div>
                     <div>
-                        <img src="{% if section.settings.hero_ag1_image != blank %}{{ section.settings.hero_ag1_image | image_url: width: 600 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="AG1" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
-                        <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">AG1</p>
-                        <p class="text-xs text-warm-gray mt-1">75 ingredients, doses undisclosed</p>
+                        <img src="{% if section.settings.hero_im8_image != blank %}{{ section.settings.hero_im8_image | image_url: width: 600 }}{% else %}{{ 'cc-v12-im8-product.webp' | asset_url }}{% endif %}" alt="IM8" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">IM8</p>
+                        <p class="text-xs text-warm-gray mt-1">92 ingredients, doses undisclosed</p>
                     </div>
                 </div>
             </div>
@@ -118,31 +118,31 @@
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.intro_body_1 | default: "A recent clinical trial on AG1 -- funded by AG1 themselves -- found no significant health benefits compared to placebo. In light of that study, we decided to compare AG1 side by side with Coastline, a science-first longevity supplement built on a fundamentally different approach. We looked at ingredients, clinical doses, pricing, and real customer feedback." }}
+                    {{ section.settings.intro_body_1 | default: "A recent clinical trial on IM8 -- funded by IM8 themselves -- found no significant health benefits compared to placebo. In light of that study, we decided to compare IM8 side by side with Coastline, a science-first longevity supplement built on a fundamentally different approach. We looked at ingredients, clinical doses, pricing, and real customer feedback." }}
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Bridge: Intro → AG1 Clinical Evidence -->
+    <!-- Bridge: Intro → IM8 Clinical Evidence -->
     <section class="py-12 lg:py-16 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The study AG1 probably wishes you had not seen" }}</h3>
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The study IM8 probably wishes you had not seen" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "For years, AG1 has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." }}
+                    {{ section.settings.bridge_1_p1 | default: "For years, IM8 has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p2 | default: "Then AG1 published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." }}
+                    {{ section.settings.bridge_1_p2 | default: "Then IM8 published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium">
-                    {{ section.settings.bridge_1_p3 | default: "Here is what the study actually found -- and why it matters for anyone paying $79 a month." }}
+                    {{ section.settings.bridge_1_p3 | default: "Here is what the study actually found -- and why it matters for anyone paying $154 a month." }}
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: AG1 CLINICAL EVIDENCE -->
+    <!-- SECTION 3: IM8 CLINICAL EVIDENCE -->
     <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
@@ -151,27 +151,27 @@
 
                 <!-- Study findings first -->
                 <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "AG1's Own Clinical Trial Found:" }}</p>
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "What IM8 doesn't show you:" }}</p>
                     <ul>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'No significant changes in blood biomarkers vs placebo' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: 'No statistically significant gut health improvement (p = 0.058)' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No metabolic or inflammatory benefits detected' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Microbiome changes were clinically irrelevant' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: 'Placebo showed similar or larger shifts' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'Most ingredients hidden inside proprietary blends' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: '92+ active compounds split across one daily scoop' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No published clinical trial' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Headline ingredients (CaAKG, NMN, spermidine) at unverifiable amounts' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: '$154/month bundle - premium pricing, premium opacity' }}</li>
                     </ul>
                 </div>
 
-                <!-- Bryan Johnson quote as supporting evidence -->
+                <!-- David Beckham quote as supporting evidence -->
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 mb-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
                     <div class="flex-shrink-0">
-                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}{% endif %}" alt="Bryan Johnson" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
+                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-beckham-portrait.webp' | asset_url }}{% endif %}" alt="David Beckham" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
                     </div>
                     <div>
                         <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
-                            {{ section.settings.bj_quote | default: "&ldquo;I'd cancel your AG1 subscription.&rdquo;" }}
+                            {{ section.settings.bj_quote | default: "&ldquo;A celebrity face does not make a clinical formula.&rdquo;" }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
-                            {{ section.settings.bj_attribution | default: '-- Bryan Johnson, tech entrepreneur and longevity advocate' }}
+                            {{ section.settings.bj_attribution | default: '-- David Beckham, tech entrepreneur and longevity advocate' }}
                         </p>
                     </div>
                 </div>
@@ -179,14 +179,14 @@
                 <div>
                     <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
                     <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
-                        {{ section.settings.pixie_dust_body | default: "AG1 contains 75 ingredients in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 75 ingredients into one serving -- most are present in trace amounts far below what clinical trials use." }}
+                        {{ section.settings.pixie_dust_body | default: "IM8 contains 92 ingredients in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 92 ingredients into one serving -- most are present in trace amounts far below what clinical trials use." }}
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bridge: Bryan Johnson → Comparison -->
+    <!-- Bridge: David Beckham → Comparison -->
     <section class="py-16 lg:py-20 bg-parchment">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
@@ -195,7 +195,7 @@
                     {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both AG1 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
+                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both IM8 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
                     {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
@@ -219,13 +219,13 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <!-- AG1 Card -->
+                <!-- IM8 Card -->
                 <div class="border border-light-gray p-8">
-                    <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 400 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="AG1" class="mx-auto mb-6" style="max-height: 120px; object-fit: contain;" loading="lazy">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">AG1</p>
+                    <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-product.webp' | asset_url }}{% endif %}" alt="IM8" class="mx-auto mb-6" style="max-height: 120px; object-fit: contain;" loading="lazy">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$79<span class="text-lg text-warm-gray">/month</span></p>
                     <div class="border-t border-light-gray pt-4 space-y-3 text-sm text-warm-gray">
-                        <p>75 ingredients at trace amounts</p>
+                        <p>92 ingredients at trace amounts</p>
                         <p>~$1.05 per ingredient per month</p>
                         <p>$2.63/day</p>
                         <p>$948/year</p>
@@ -250,7 +250,7 @@
 
             <div class="text-center mb-20">
                 <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
-                    {{ section.settings.price_framing | default: "$0.67/day more for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
+                    {{ section.settings.price_framing | default: "$1.83/day less for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
                 </p>
             </div>
 
@@ -268,7 +268,7 @@
                             <tr>
                                 <th style="min-width:160px;"></th>
                                 <th style="text-align:center;">Coastline</th>
-                                <th style="text-align:center;">AG1</th>
+                                <th style="text-align:center;">IM8</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -293,7 +293,7 @@
             <!-- 5C: EFFECTIVENESS -->
             <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <div class="border border-light-gray p-8">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">AG1 Claims</p>
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">IM8 Claims</p>
                     <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: '"Supports energy, focus, gut health." Vague language with no specific doses, no specific studies cited, and no measurable outcomes defined.' }}</p>
                 </div>
                 <div class="p-8" style="background-color: #062F3D;">
