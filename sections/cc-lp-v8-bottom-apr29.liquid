@@ -1,0 +1,509 @@
+{%- comment -%}
+  cc-lp-v8-bottom-apr29 — V8 narrative continuation (after pricing).
+  Splits cc-lp-v8-apr26.liquid so the pricing section can render
+  midway, immediately after the 5 benefits. This file picks up at
+  Expert Endorsements and goes through FAQ + footer.
+
+  Inherits the <style> block from cc-lp-v8-apr26 (rendered earlier
+  on the same page). Both sections share class scope .cc-apr26
+  .cc-lp-v8-apr26 so all v8 selectors continue to apply.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-lp-v8-apr26">
+
+    <!-- ============================================================ -->
+    <!-- EXPERT ENDORSEMENTS -->
+    <!-- ============================================================ -->
+    <section class="py-20 lg:py-28 bg-parchment">
+        <div class="max-w-5xl mx-auto px-8 lg:px-16">
+            <div class="text-center mb-16 reveal" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">Trusted By Experts</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">Formulated by leading researchers.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 reveal-stagger" x-intersect="$el.classList.add('visible')">
+                <!-- Expert 1 -->
+                <div class="pt-8 border-t border-light-gray">
+                    <div class="flex flex-col items-center text-center gap-3 mb-6">
+                        <div class="w-28 h-28 rounded-full overflow-hidden flex-shrink-0"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" class="w-full h-full object-cover object-top" loading="lazy"></div>
+                        <div>
+                            <p class="font-grotesk text-deep-ink text-sm">Chris Pollock, MD</p>
+                            <p class="text-xs text-warm-gray">Clinical Medicine</p>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed text-sm text-warm-gray">
+                        A practicing physician bringing real-world clinical expertise to Coastline's formulation. Ensures every ingredient is safe, effective, and grounded in medical evidence.
+                    </p>
+                </div>
+
+                <!-- Expert 2 -->
+                <div class="pt-8 border-t border-light-gray">
+                    <div class="flex flex-col items-center text-center gap-3 mb-6">
+                        <div class="w-28 h-28 rounded-full overflow-hidden flex-shrink-0"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter PhD" class="w-full h-full object-cover object-top" loading="lazy"></div>
+                        <div>
+                            <p class="font-grotesk text-deep-ink text-sm">Greg Potter, PhD, MSc</p>
+                            <p class="text-xs text-warm-gray">Sleep &amp; Circadian Health</p>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed text-sm text-warm-gray">
+                        &ldquo;The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.&rdquo;
+                    </p>
+                </div>
+
+                <!-- Expert 3 -->
+                <div class="pt-8 border-t border-light-gray">
+                    <div class="flex flex-col items-center text-center gap-3 mb-6">
+                        <div class="w-28 h-28 rounded-full overflow-hidden flex-shrink-0"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques ND" class="w-full h-full object-cover object-top" loading="lazy"></div>
+                        <div>
+                            <p class="font-grotesk text-deep-ink text-sm">Dr. Jacqueline Jacques, ND</p>
+                            <p class="text-xs text-warm-gray">Naturopathic Doctor</p>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed text-sm text-warm-gray">
+                        &ldquo;Coastline is what happens when you combine scientific rigor with real-world clinical understanding.&rdquo;
+                    </p>
+                </div>
+
+                <!-- Expert 4 -->
+                <div class="pt-8 border-t border-light-gray">
+                    <div class="flex flex-col items-center text-center gap-3 mb-6">
+                        <div class="w-28 h-28 rounded-full overflow-hidden flex-shrink-0"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven PhD" class="w-full h-full object-cover object-top" loading="lazy"></div>
+                        <div>
+                            <p class="font-grotesk text-deep-ink text-sm">Dr. Nicolas Verhoeven</p>
+                            <p class="text-xs text-warm-gray">Ph.D. in Molecular Medicine</p>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed text-warm-gray">
+                        &ldquo;I value Coastline's quality. It means less hassle with the greatest certainty.&rdquo;
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="#pricing-product-apr26" class="btn-primary">Get My Complete System</a>
+                <p class="text-sm mt-4 text-warm-gray">$99/mo &middot; Save 34% &middot; Cancel anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOCIAL PROOF #2 -- More Reviews (Dark) -->
+    <!-- ============================================================ -->
+    <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
+        <div class="max-w-6xl mx-auto px-8 lg:px-16">
+            <div class="grid md:grid-cols-3 gap-8 reveal-stagger" x-intersect="$el.classList.add('visible')">
+                <!-- Review 4 -->
+                <div class="pt-8" style="border-top: 1px solid rgba(255,255,255,0.12);">
+                    <p class="text-parchment text-lg leading-relaxed mb-6">
+                        &ldquo;As a physician, I'm skeptical of most supplements. But the science behind Coastline convinced me. <strong style="color: #ffffff;">Three months in, my biomarkers have never looked better.</strong>&rdquo;
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <img src="{{ 'cc-v8-avatar-michael-r.png' | asset_url }}" alt="Michael R." class="review-avatar" loading="lazy">
+                        <div>
+                            <p class="text-sm" style="color: #9A9A9A;">Michael R., 62 &mdash; Physician</p>
+                            <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.35);">&#9733;&#9733;&#9733;&#9733;&#9733; Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="pt-8" style="border-top: 1px solid rgba(255,255,255,0.12);">
+                    <p class="text-parchment text-lg leading-relaxed mb-6">
+                        &ldquo;Quality you can feel. <strong style="color: #ffffff;">You can tell this wasn't made by a marketing team, but by scientists.</strong>&rdquo;
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <img src="{{ 'cc-v8-avatar-edward-q.png' | asset_url }}" alt="Edward Q." class="review-avatar" loading="lazy">
+                        <div>
+                            <p class="text-sm" style="color: #9A9A9A;">Edward Q., 49 &mdash; Richmond, VA</p>
+                            <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.35);">&#9733;&#9733;&#9733;&#9733;&#9733; Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="pt-8" style="border-top: 1px solid rgba(255,255,255,0.12);">
+                    <p class="text-parchment text-lg leading-relaxed mb-6">
+                        &ldquo;At 72, I'm still active and working. <strong style="color: #ffffff;">Coastline helps me keep pace with people half my age.</strong>&rdquo;
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <img src="{{ 'cc-v8-avatar-arthur-b.png' | asset_url }}" alt="Arthur B." class="review-avatar" style="object-position: 15% 10%;" loading="lazy">
+                        <div>
+                            <p class="text-sm" style="color: #9A9A9A;">Arthur B., 72 &mdash; Palm Springs, CA</p>
+                            <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.35);">&#9733;&#9733;&#9733;&#9733;&#9733; Verified Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FREE GIFT -- Glass Shaker -->
+    <!-- ============================================================ -->
+    <section class="py-20 lg:py-28 bg-parchment">
+        <div class="max-w-6xl mx-auto px-8 lg:px-16">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal" x-intersect="$el.classList.add('visible')">
+                    <div class="img-zoom rounded-sm overflow-hidden">
+                        <img src="{{ 'cc-v8-shaker-boardwalk.png' | asset_url }}" alt="Coastline Glass Shaker Bottle on boardwalk at sunrise" class="w-full object-cover" style="aspect-ratio: 4/5;" loading="lazy">
+                    </div>
+                </div>
+                <div class="reveal" x-intersect="$el.classList.add('visible')" style="transition-delay: 0.2s">
+                    <p class="text-xs tracking-widest uppercase text-forest mb-4" style="letter-spacing: 0.15em;">Free With Your First Order</p>
+                    <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-6 leading-tight">
+                        Free Glass Shaker Bottle<br>
+                        <span class="text-warm-gray">($15 value) &mdash; on us.</span>
+                    </h2>
+                    <p class="text-lg text-warm-gray mb-10 max-w-lg leading-relaxed">
+                        Your first order includes a premium glass shaker bottle for mixing your Morning Blend. No plastic. Built to last.
+                    </p>
+
+                    <a href="#pricing-product-apr26" class="btn-primary">Buy Welcome Pack Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- COMPETITOR COMPARISON CHART -->
+    <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
+        <div class="max-w-5xl mx-auto px-8 lg:px-16">
+            <div class="text-center mb-16 reveal" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6" style="color: #9A9A9A;">How We Compare</p>
+                <div class="editorial-divider mx-auto mb-10" style="background-color: #333;"></div>
+                <h2 class="text-4xl lg:text-6xl font-grotesk font-medium mb-6" style="color: #FAF9F6;">See how we stack up.</h2>
+                <p class="text-lg max-w-2xl mx-auto" style="color: #9A9A9A;">See how Coastline stacks up against the most popular longevity and greens supplements on the market.</p>
+            </div>
+
+            <div class="overflow-x-auto reveal" x-intersect="$el.classList.add('visible')" style="transition-delay: 0.2s; -webkit-overflow-scrolling: touch;">
+                <table style="min-width: 700px; width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; padding: 20px 12px; font-weight: 400; color: #666; min-width: 140px;"></th>
+                            <th style="padding: 20px 12px; text-align: center; background-color: #A3C7D0; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.05em; min-width: 90px;">COASTLINE</th>
+                            <th style="padding: 20px 12px; text-align: center; font-weight: 400; color: #666; font-size: 12px; letter-spacing: 0.03em; min-width: 80px;">NOVOS</th>
+                            <th style="padding: 20px 12px; text-align: center; font-weight: 400; color: #666; font-size: 12px; letter-spacing: 0.03em; min-width: 80px;">AG1</th>
+                            <th style="padding: 20px 12px; text-align: center; font-weight: 400; color: #666; font-size: 12px; letter-spacing: 0.03em; min-width: 80px;">IM8</th>
+                            <th style="padding: 20px 12px; text-align: center; font-weight: 400; color: #666; font-size: 12px; letter-spacing: 0.03em; min-width: 80px;">BLUEPRINT</th>
+                            <th style="padding: 20px 12px; text-align: center; font-weight: 400; color: #666; font-size: 12px; letter-spacing: 0.03em; min-width: 80px;">TIMELINE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Row 1: Clinical Dosing -->
+                        <tr style="border-top: 1px solid rgba(255,255,255,0.12);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #FAF9F6;">Clinical dosing</td>
+                            <td style="padding: 16px 12px; text-align: center; background-color: rgba(255,255,255,0.06);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                        </tr>
+                        <!-- Row 2: Full Transparency -->
+                        <tr style="border-top: 1px solid rgba(255,255,255,0.12);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #FAF9F6;">Full transparency</td>
+                            <td style="padding: 16px 12px; text-align: center; background-color: rgba(255,255,255,0.06);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                        </tr>
+                        <!-- Row 3: All 12 Hallmarks -->
+                        <tr style="border-top: 1px solid rgba(255,255,255,0.12);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #FAF9F6;">All 12 hallmarks</td>
+                            <td style="padding: 16px 12px; text-align: center; background-color: rgba(255,255,255,0.06);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                        </tr>
+                        <!-- Row 4: Complete System -->
+                        <tr style="border-top: 1px solid rgba(255,255,255,0.12);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #FAF9F6;">Complete system</td>
+                            <td style="padding: 16px 12px; text-align: center; background-color: rgba(255,255,255,0.06);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                        </tr>
+                        <!-- Row 5: AM/PM Timing -->
+                        <tr style="border-top: 1px solid rgba(255,255,255,0.12);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #FAF9F6;">AM/PM timing</td>
+                            <td style="padding: 16px 12px; text-align: center; background-color: rgba(255,255,255,0.06);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="12" fill="#A3C7D0"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                            <td style="padding: 16px 12px; text-align: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: inline-block;"><circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/></svg></td>
+                        </tr>
+                        <!-- Row 6: Price -->
+                        <tr style="border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12);">
+                            <td style="padding: 16px 12px; font-size: 14px; color: #FAF9F6; font-weight: 500;">Price/month</td>
+                            <td style="padding: 16px 12px; text-align: center; background-color: rgba(255,255,255,0.06); font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #FAF9F6;">$99</td>
+                            <td style="padding: 16px 12px; text-align: center; color: #666; font-size: 14px;">$109</td>
+                            <td style="padding: 16px 12px; text-align: center; color: #666; font-size: 14px;">$79</td>
+                            <td style="padding: 16px 12px; text-align: center; color: #666; font-size: 14px;">$154</td>
+                            <td style="padding: 16px 12px; text-align: center; color: #666; font-size: 14px;">$179+</td>
+                            <td style="padding: 16px 12px; text-align: center; color: #666; font-size: 14px;">$125</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-center mt-8" style="font-size: 12px; color: #666;">Based on publicly available data for leading longevity supplement brands.</p>
+
+            <div class="text-center mt-12">
+                <a href="#pricing-product-apr26" class="btn-primary" style="background-color: #FAF9F6; color: #0A0A0A;">Get My Complete System</a>
+                <p class="text-sm mt-4" style="color: #9A9A9A;">$99/mo &middot; 60-day money-back guarantee</p>
+            </div>
+        </div>
+    </section>
+    <!-- GUARANTEE -->
+    <section class="py-20 lg:py-28 bg-parchment">
+        <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+            <div class="reveal" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">Our Promise</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-8">Try it risk-free for 60 days.</h2>
+                <p class="text-lg text-warm-gray mb-8 max-w-xl mx-auto leading-relaxed">
+                    We're so confident Coastline will change how you feel that we offer a <strong class="text-deep-ink">60-day money-back guarantee</strong>. Try it for two full months. If you don't notice sharper focus, better energy, or improved recovery &mdash; we'll refund every penny. No questions asked.
+                </p>
+                <p class="text-lg text-warm-gray mb-8 max-w-xl mx-auto leading-relaxed">
+                    <strong class="text-deep-ink">Month 1:</strong> Your Welcome Kit arrives with a free glass shaker bottle ($15 value).<br>
+                    <strong class="text-deep-ink">Month 2+:</strong> Refill pouches shipped to your door.
+                </p>
+                <a href="#pricing-product-apr26" class="btn-primary">Start My System &mdash; $99/mo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENIC DIVIDER: Beach Sand Waves -->
+    <div class="relative h-[200px] lg:h-[280px] overflow-hidden">
+        <img src="{{ 'cc-v8-sand-texture.jpg' | asset_url }}" alt="" class="w-full h-full object-cover" loading="lazy">
+    </div>
+    <!-- FOUNDER STORY -->
+    <section class="py-20 lg:py-32 bg-parchment">
+        <div class="max-w-3xl mx-auto px-8 lg:px-16">
+            <div class="reveal" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">Our Story</p>
+                <div class="editorial-divider mb-10"></div>
+
+                <p class="pull-quote mb-12">&ldquo;Skeptics first.<br>Founders second.&rdquo;</p>
+
+                <p class="text-lg text-warm-gray mb-8 max-w-xl leading-relaxed">
+                    We didn't start Coastline because we believed in supplements. We started because we didn't. Every product we tried was either underdosed, overhyped, or hiding behind a label designed to confuse.
+                </p>
+
+                <p class="text-lg text-warm-gray mb-8 max-w-xl leading-relaxed">
+                    <strong class="text-deep-ink">So four of us &mdash; dads, researchers, skeptics &mdash; built the thing we couldn't find.</strong> Thirteen ingredients. Every dose matched to the clinical trial, not the marketing budget. Timed to your biology. Simple enough to actually stick with.
+                </p>
+
+                <p class="text-lg text-warm-gray mb-12 max-w-xl leading-relaxed">
+                    No fads. Nothing speculative. Just the science &mdash; and the stubbornness to get it right.
+                </p>
+
+                <div class="flex items-center gap-4">
+                    <img src="{{ 'cc-v8-founder-portrait.png' | asset_url }}" alt="Chris Booth, Coastline Founder" class="w-16 h-16 rounded-full object-cover" loading="lazy">
+                    <div>
+                        <p class="font-grotesk text-deep-ink">Chris Booth</p>
+                        <p class="text-sm text-warm-gray">Co-Founder, Coastline Longevity</p>
+                    </div>
+                </div>
+
+                <div class="mt-12">
+                    <a href="#pricing-product-apr26" class="text-sm font-grotesk tracking-wider uppercase text-deep-ink border-b border-deep-ink pb-1 hover:opacity-60 transition-opacity" style="font-size: 12px; letter-spacing: 0.12em;">Join us &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENIC DIVIDER: Between Promise & FAQ -->
+    <div class="relative h-[280px] lg:h-[360px] overflow-hidden">
+        <img src="{{ 'cc-v9-coastal-trail.png' | asset_url }}" alt="" class="w-full h-full object-cover object-center" loading="lazy">
+    </div>
+    <!-- FAQ -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-3xl mx-auto px-8 lg:px-16">
+            <div class="text-center mb-16">
+                <p class="section-counter mb-6">Questions &amp; Answers</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">Frequently asked questions.</h2>
+            </div>
+
+            <div class="space-y-4" x-data="{ openFaq: null }">
+                <!-- FAQ 1 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 1 ? null : 1">
+                        <span class="font-grotesk text-deep-ink pr-8">What's in Coastline?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 1" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>13 science-backed ingredients across three products: a morning powder blend (6 ingredients), morning softgels (4 ingredients), and evening capsules (3 ingredients). Every ingredient is dosed at clinical trial levels &mdash; no hidden doses, no hidden amounts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
+                        <span class="font-grotesk text-deep-ink pr-8">How do I take it?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 2" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p class="mb-4"><strong class="text-deep-ink">Morning:</strong> Mix the powder blend with water or your favorite beverage. Take the softgels with food. That's one touchpoint &mdash; done before you leave the house.</p>
+                            <p><strong class="text-deep-ink">Evening:</strong> Take the capsules before bed to support sleep and recovery. Two moments per day. That's it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 3 ? null : 3">
+                        <span class="font-grotesk text-deep-ink pr-8">Is it safe?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 3" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>All 13 ingredients have established safety profiles at our doses and beyond. We're formulated in NSF certified facilities, and we're vegan, sugar-free, and caffeine-free. As with any supplement, consult your healthcare provider if you have specific concerns or take medications.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 4 ? null : 4">
+                        <span class="font-grotesk text-deep-ink pr-8">What if it doesn't work for me?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 4" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>We offer a 60-day money-back guarantee. Try it for two full months. If you're not satisfied for any reason, contact us for a full refund &mdash; no questions asked.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 5 ? null : 5">
+                        <span class="font-grotesk text-deep-ink pr-8">How is this different from AG1?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 5 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 5" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>AG1 is a greens powder with 75 ingredients at undisclosed doses. Coastline is a precision system with 13 ingredients, each at clinical trial doses, timed to your circadian rhythm. We show every milligram on the label. Most greens powders use mystery ingredients that hide what's inside.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 6 ? null : 6">
+                        <span class="font-grotesk text-deep-ink pr-8">I already take creatine &mdash; can I still use this?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 6 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 6" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>Yes, but you likely won't need to. Coastline includes 5.25g of creatine monohydrate &mdash; a clinical dose that matches what most people supplement separately. You can replace your standalone creatine with Coastline and simplify your routine.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 7 ? null : 7">
+                        <span class="font-grotesk text-deep-ink pr-8">Is there caffeine?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 7 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 7" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>No. Coastline is 100% caffeine-free. We support energy at the cellular level &mdash; through mitochondrial function, not stimulants. No jitters, no crashes, and it won't interfere with your sleep.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 8 ? null : 8">
+                        <span class="font-grotesk text-deep-ink pr-8">When will I notice a difference?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 8 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 8" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>Many people notice improvements in energy and clarity within the first few weeks. The full benefits build over time as ingredients reach optimal levels in your body. We recommend 60 days &mdash; which is exactly why our guarantee covers that period.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 9 ? null : 9">
+                        <span class="font-grotesk text-deep-ink pr-8">Can I cancel anytime?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 9 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 9" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>Yes. Cancel anytime with one click from your account dashboard &mdash; no phone calls, no penalties, no fees. You can also pause or skip shipments if you need a break.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="border border-light-gray">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 10 ? null : 10">
+                        <span class="font-grotesk text-deep-ink pr-8">What does it taste like?</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 10 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div x-show="openFaq === 10" x-collapse x-cloak>
+                        <div class="px-6 pb-6 text-warm-gray">
+                            <p>The Morning Blend comes in two options: Unflavored (mixes into anything without altering the taste) and Coastal Lemonade (a light, refreshing pink lemonade flavor). Both mix smoothly with 8-12oz of water.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FINAL CTA -->
+    <section class="py-20 lg:py-32 bg-parchment">
+        <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
+            <div class="reveal" x-intersect="$el.classList.add('visible')">
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-6">Start your longevity journey today.</h2>
+                <p class="text-lg text-warm-gray mb-10 max-w-xl mx-auto leading-relaxed">
+                    13 science-backed ingredients. Two touchpoints per day. One system &mdash; built for people who plan on being here for the long run.
+                </p>
+                <a href="#pricing-product-apr26" class="btn-primary">Get My Complete System &mdash; $99/mo</a>
+                <p class="text-xs text-warm-gray mt-6">Free shipping &middot; 60-day guarantee &middot; Cancel anytime</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- STICKY CTA (Mobile) -->
+    <!-- ============================================================ -->
+
+
+</div>
+
+{% schema %}
+{
+  "name": "LP V8 Bottom (apr26)",
+  "tag": "section",
+  "class": "cc-lp-v8",
+  "settings": [],
+  "presets": [
+    {
+      "name": "LP V8 Bottom (apr26)",
+      "category": "Landing Pages"
+    }
+  ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}
