@@ -144,19 +144,27 @@
                     {%- assign sp_display_price = current_variant.price -%}
                   {%- endif -%}
                 {%- endif -%}
-                {%- comment -%} Friendlier display labels + a "BEST VALUE" badge on monthly. {%- endcomment -%}
+                {%- comment -%}
+                  Friendlier display labels + "BEST VALUE" badge on monthly.
+                  Explicit price overrides via section.settings.{monthly,bimonthly}_price
+                  beat the computed math — these are populated from ReCharge in the
+                  template JSON for each product. Computed value is the fallback.
+                {%- endcomment -%}
                 {%- assign sp_name_lower = sp.name | downcase -%}
                 {%- if sp_name_lower contains '2 month' or sp_name_lower contains '2-month' -%}
                   {%- assign sp_display_name = 'Delivered every 2 months' -%}
-                  {%- assign sp_save_label = sp.description | default: 'Save 10%' -%}
+                  {%- assign sp_save_label = section.settings.bimonthly_save | default: 'Save 10%' -%}
+                  {%- assign sp_price_override = section.settings.bimonthly_price -%}
                   {%- assign show_best_value = false -%}
                 {%- elsif sp_name_lower contains '1 month' or sp_name_lower contains 'monthly' -%}
                   {%- assign sp_display_name = 'Monthly subscription' -%}
-                  {%- assign sp_save_label = sp.description | default: 'Save 20%' -%}
+                  {%- assign sp_save_label = section.settings.monthly_save | default: 'Save 20%' -%}
+                  {%- assign sp_price_override = section.settings.monthly_price -%}
                   {%- assign show_best_value = true -%}
                 {%- else -%}
                   {%- assign sp_display_name = sp.name -%}
                   {%- assign sp_save_label = sp.description -%}
+                  {%- assign sp_price_override = '' -%}
                   {%- assign show_best_value = false -%}
                 {%- endif -%}
                 <div @click="plan = '{{ sp.id }}'"
@@ -179,7 +187,7 @@
                     </div>
                     <div style="text-align:right;flex-shrink:0;margin-left:16px;">
                       <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
-                        {{ sp_display_price | money_without_trailing_zeros }}
+                        {%- if sp_price_override != blank -%}{{ sp_price_override }}{%- else -%}{{ sp_display_price | money_without_trailing_zeros }}{%- endif -%}
                       </span>
                       <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">
                         {%- if sp.recurring_deliveries -%}/period{%- else -%}one-time{%- endif -%}
@@ -201,7 +209,7 @@
                   </div>
                   <div style="text-align:right;flex-shrink:0;margin-left:16px;">
                     <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
-                      {{ current_variant.price | money_without_trailing_zeros }}
+                      {%- if section.settings.onetime_price != blank -%}{{ section.settings.onetime_price }}{%- else -%}{{ current_variant.price | money_without_trailing_zeros }}{%- endif -%}
                     </span>
                     <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">one-time</span>
                   </div>
@@ -458,6 +466,12 @@
     { "type": "textarea", "id": "hero_description", "label": "Hero description", "info": "Defaults to product.description" },
     { "type": "textarea", "id": "ingredients_line", "label": "Ingredients line (forest accent)" },
     { "type": "text", "id": "supply_line", "label": "Supply line", "default": "30-day supply. Fully dosed." },
+    { "type": "header", "content": "Pricing overrides (optional — overrides computed selling-plan math)" },
+    { "type": "text", "id": "monthly_price", "label": "Monthly price override", "info": "e.g. $55.20 — leave blank to compute from selling plan" },
+    { "type": "text", "id": "monthly_save", "label": "Monthly save label", "default": "Save 20%" },
+    { "type": "text", "id": "bimonthly_price", "label": "2-month price override" },
+    { "type": "text", "id": "bimonthly_save", "label": "2-month save label", "default": "Save 10%" },
+    { "type": "text", "id": "onetime_price", "label": "One-time price override" },
     { "type": "range", "id": "padding_top", "label": "Padding top (px)", "min": 0, "max": 200, "step": 4, "default": 32 },
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom (px)", "min": 0, "max": 200, "step": 4, "default": 80 }
   ],
