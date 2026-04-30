@@ -97,7 +97,7 @@
                 </div>
 
                 <!-- Side-by-side product images -->
-                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end" style="min-height: 360px;">
+                <div class="grid grid-cols-2 gap-8 mt-12 max-w-2xl mx-auto items-end" style="min-height: 200px;">
                     <div>
                         <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" class="mx-auto block" style="max-height: 135px; object-fit: contain; object-position: bottom;" loading="lazy">
                         <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
@@ -167,8 +167,8 @@
                         <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-beckham-portrait.webp' | asset_url }}{% endif %}" alt="David Beckham" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
                     </div>
                     <div>
-                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
-                            {{ section.settings.bj_quote | default: "When the formula does not have the evidence, the brand pays for endorsement instead." }}
+                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6; text-wrap: balance;">
+                            {{ section.settings.bj_quote | default: "When the formula does not have the evidence, the brand pays for endorsement&nbsp;instead." }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
                             {{ section.settings.bj_attribution | default: "-- David Beckham was reportedly paid an eight-figure sum plus co-founder equity to put his face on IM8. Most of the 92+ compounds inside have no published trial showing they work at the doses used." }}
@@ -222,8 +222,8 @@
                 <!-- Coastline Card -->
                 <div class="border-2 border-deep-ink p-6 relative bg-parchment">
                     <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
-                    <div style="height: 140px; display: flex; align-items: center; justify-content: center;" class="mb-4">
-                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 400 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 140px; max-width: 100%; object-fit: contain;" loading="lazy">
+                    <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center;" class="mb-4">
+                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 400 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 200px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
@@ -237,8 +237,8 @@
                 </div>
                 <!-- IM8 Card -->
                 <div class="border border-light-gray p-6 bg-parchment">
-                    <div style="height: 140px; display: flex; align-items: center; justify-content: center;" class="mb-4">
-                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-product.webp' | asset_url }}{% endif %}" alt="IM8" style="max-height: 140px; max-width: 100%; object-fit: contain;" loading="lazy">
+                    <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
+                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-v12-im8-product.webp' | asset_url }}{% endif %}" alt="IM8" style="max-height: 350px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$154<span class="text-lg text-warm-gray">/month</span></p>

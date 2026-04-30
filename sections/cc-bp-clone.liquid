@@ -167,8 +167,8 @@
                         <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}{% endif %}" alt="Bryan Johnson" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
                     </div>
                     <div>
-                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
-                            {{ section.settings.bj_quote | default: "Real longevity is dose-precision, not pill-count." }}
+                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6; text-wrap: balance;">
+                            {{ section.settings.bj_quote | default: "Real longevity is dose-precision, not pill&#8209;count." }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
                             {{ section.settings.bj_attribution | default: "-- Bryan Johnson, Blueprint founder, on what got cut from his own stack" }}
