@@ -34,11 +34,16 @@
     "email": {
       "type": "cc-email-capture-apr26",
       "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-bp-bottom-clone",
+      "settings": {}
     }
   },
   "order": [
     "narrative",
     "pricing",
+    "narrative-bottom",
     "guarantee",
     "final-cta",
     "email"
