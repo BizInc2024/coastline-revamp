@@ -1,5 +1,5 @@
 {%- comment -%}
-  cc-pdp-hero-apr26 — Universal PDP hero (image + buy panel)
+  cc-pdp-hero-apr29 -- Universal PDP hero (image + buy panel)
   Works for any single product. Reads variants + selling plans from
   product.* Liquid vars. Used by product.pdp-apr26.json template.
 {%- endcomment -%}
@@ -9,7 +9,7 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {%- comment -%}
-  Per-product pricing fallbacks — used when template JSON doesn't set
+  Per-product pricing fallbacks -- used when template JSON doesn't set
   monthly_price / monthly_save / etc. Authoritative values pulled from
   ReCharge-synced selling plans (Apr 29):
 {%- endcomment -%}
@@ -52,7 +52,7 @@
 {%- endcomment -%}
 {%- assign sp_group = product.selling_plan_groups | first -%}
 
-<div class="cc-apr26 cc-pdp-hero-apr26">
+<div class="cc-apr26 cc-pdp-hero-apr29">
   <section class="reveal" style="padding-top:{{ section.settings.padding_top | default: 64 }}px;padding-bottom:{{ section.settings.padding_bottom | default: 96 }}px;background:var(--parchment);">
     <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
       <div class="cc-pdp-hero-grid">
@@ -129,7 +129,7 @@
           </div>
 
           {%- comment -%}
-            ===== Variant selector — DIV-based, identical to plan card pattern =====
+            ===== Variant selector -- DIV-based, identical to plan card pattern =====
           {%- endcomment -%}
           {%- if product.has_only_default_variant == false -%}
             {%- for option in product.options_with_values -%}
@@ -164,7 +164,7 @@
                 {%- comment -%}
                   Try the allocation lookup first (cleanest source of truth for the
                   discounted price). If it doesn't resolve, compute from the
-                  price_adjustments[0] — works for percentage / fixed / price types.
+                  price_adjustments[0] -- works for percentage / fixed / price types.
                 {%- endcomment -%}
                 {%- assign sp_alloc = nil -%}
                 {%- for alloc in current_variant.selling_plan_allocations -%}
@@ -191,7 +191,7 @@
                 {%- comment -%}
                   Friendlier display labels + "BEST VALUE" badge on monthly.
                   Explicit price overrides via section.settings.{monthly,bimonthly}_price
-                  beat the computed math — these are populated from ReCharge in the
+                  beat the computed math -- these are populated from ReCharge in the
                   template JSON for each product. Computed value is the fallback.
                 {%- endcomment -%}
                 {%- assign sp_name_lower = sp.name | downcase -%}
@@ -308,39 +308,39 @@
 </div>
 
 <style>
-  .cc-pdp-hero-apr26 .cc-pdp-hero-grid {
+  .cc-pdp-hero-apr29 .cc-pdp-hero-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
     align-items: start;
   }
   @media (min-width: 1024px) {
-    .cc-pdp-hero-apr26 .cc-pdp-hero-grid {
+    .cc-pdp-hero-apr29 .cc-pdp-hero-grid {
       grid-template-columns: 1fr 480px;
       gap: 64px;
     }
   }
-  .cc-pdp-hero-apr26 .cc-pdp-buy-panel { font-family: 'Inter', sans-serif; max-width: 480px; }
+  .cc-pdp-hero-apr29 .cc-pdp-buy-panel { font-family: 'Inter', sans-serif; max-width: 480px; }
 
   /* Gallery */
-  .cc-pdp-hero-apr26 .cc-pdp-gallery { width: 100%; max-width: 600px; margin: 0 auto; }
-  .cc-pdp-hero-apr26 .cc-pdp-hero-img {
+  .cc-pdp-hero-apr29 .cc-pdp-gallery { width: 100%; max-width: 600px; margin: 0 auto; }
+  .cc-pdp-hero-apr29 .cc-pdp-hero-img {
     aspect-ratio: 1 / 1;
     width: 100%;
     background: #FAF9F6;
     overflow: hidden;
     border: 1px solid rgba(10, 10, 10, 0.08);
   }
-  .cc-pdp-hero-apr26 .cc-pdp-hero-img img {
+  .cc-pdp-hero-apr29 .cc-pdp-hero-img img {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-thumbs {
+  .cc-pdp-hero-apr29 .cc-pdp-thumbs {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 6px;
     margin-top: 10px;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-thumb {
+  .cc-pdp-hero-apr29 .cc-pdp-thumb {
     aspect-ratio: 1 / 1;
     overflow: hidden;
     padding: 0;
@@ -349,13 +349,13 @@
     cursor: pointer;
     transition: opacity 0.2s ease, border-color 0.2s ease;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-thumb:hover { opacity: 0.85; }
-  .cc-pdp-hero-apr26 .cc-pdp-thumb.is-active { border: 2px solid var(--deep-ink); }
-  .cc-pdp-hero-apr26 .cc-pdp-thumb img {
+  .cc-pdp-hero-apr29 .cc-pdp-thumb:hover { opacity: 0.85; }
+  .cc-pdp-hero-apr29 .cc-pdp-thumb.is-active { border: 2px solid var(--deep-ink); }
+  .cc-pdp-hero-apr29 .cc-pdp-thumb img {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  /* Flavor selector — DIV-based, mirrors plan card pattern */
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-btn {
+  /* Flavor selector -- DIV-based, mirrors plan card pattern */
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-btn {
     flex: 1;
     min-width: 120px;
     padding: 14px 16px;
@@ -365,22 +365,22 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-active,
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-blend-active {
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-unflavored-active,
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-unflavored-blend-active {
     background: #EDE8DF; color: #0A0A0A; border: 3px solid #0A0A0A; font-weight: 600;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-idle,
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-blend-idle {
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-unflavored-idle,
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-unflavored-blend-idle {
     background: #EDE8DF; color: #6B6B6B; border: 1px solid #D5D0C8;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-coastal-lemonade-active {
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-coastal-lemonade-active {
     background: #F5E0E4; color: #0A0A0A; border: 3px solid #0A0A0A; font-weight: 600;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-flavor-coastal-lemonade-idle {
+  .cc-pdp-hero-apr29 .cc-pdp-flavor-coastal-lemonade-idle {
     background: #F5E0E4; color: #6B6B6B; border: 1px solid #E0CDD1;
   }
   /* Legacy class kept for any old refs */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-btn {
+  .cc-pdp-hero-apr29 .cc-pdp-opt-btn {
     flex: 1; min-width: 120px; padding: 14px 16px;
     font-family: 'Inter', sans-serif; font-size: 14px;
     cursor: pointer; transition: all 0.2s;
@@ -388,71 +388,71 @@
     border: 1px solid var(--light-gray);
     color: var(--warm-gray);
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-idle {
+  .cc-pdp-hero-apr29 .cc-pdp-opt-idle {
     border: 1px solid var(--light-gray);
     color: var(--warm-gray);
     background: transparent;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-idle:hover {
+  .cc-pdp-hero-apr29 .cc-pdp-opt-idle:hover {
     border-color: var(--deep-ink);
     color: var(--deep-ink);
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active {
+  .cc-pdp-hero-apr29 .cc-pdp-opt-active {
     border: 1px solid var(--deep-ink);
     background: var(--deep-ink);
     color: var(--parchment);
   }
 
-  /* Per-flavor active/idle pairs — same pattern as homepage cc-pricing-apr26
+  /* Per-flavor active/idle pairs -- same pattern as homepage cc-pricing-apr26
      snippet (which works). Each flavor has its own class names so there's no
      specificity battle between active/idle. Handleize generates these from the
      variant value (e.g. "Unflavored Blend" → "unflavored-blend"). */
 
-  /* Unflavored / Unflavored Blend — beige */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-active,
-  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-blend-active {
+  /* Unflavored / Unflavored Blend -- beige */
+  .cc-pdp-hero-apr29 .cc-pdp-opt-unflavored-active,
+  .cc-pdp-hero-apr29 .cc-pdp-opt-unflavored-blend-active {
     background: #EDE8DF !important;
     color: #0A0A0A !important;
     border: 3px solid #0A0A0A !important;
     font-weight: 600 !important;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-idle,
-  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-blend-idle {
+  .cc-pdp-hero-apr29 .cc-pdp-opt-unflavored-idle,
+  .cc-pdp-hero-apr29 .cc-pdp-opt-unflavored-blend-idle {
     background: #EDE8DF !important;
     color: #6B6B6B !important;
     border: 1px solid #D5D0C8 !important;
   }
 
-  /* Coastal Lemonade — pale pink */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-coastal-lemonade-active {
+  /* Coastal Lemonade -- pale pink */
+  .cc-pdp-hero-apr29 .cc-pdp-opt-coastal-lemonade-active {
     background: #F5E0E4 !important;
     color: #0A0A0A !important;
     border: 3px solid #0A0A0A !important;
     font-weight: 600 !important;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-coastal-lemonade-idle {
+  .cc-pdp-hero-apr29 .cc-pdp-opt-coastal-lemonade-idle {
     background: #F5E0E4 !important;
     color: #6B6B6B !important;
     border: 1px solid #E0CDD1 !important;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-plan-card {
+  .cc-pdp-hero-apr29 .cc-pdp-plan-card {
     cursor: pointer;
     transition: border-color 0.2s;
     border: 1px solid var(--light-gray);
     background: var(--parchment);
   }
-  .cc-pdp-hero-apr26 .cc-pdp-plan-idle {
+  .cc-pdp-hero-apr29 .cc-pdp-plan-idle {
     border: 1px solid var(--light-gray);
     background: var(--parchment);
   }
-  .cc-pdp-hero-apr26 .cc-pdp-plan-idle:hover {
+  .cc-pdp-hero-apr29 .cc-pdp-plan-idle:hover {
     border-color: var(--warm-gray);
   }
-  .cc-pdp-hero-apr26 .cc-pdp-plan-active {
+  .cc-pdp-hero-apr29 .cc-pdp-plan-active {
     border: 2px solid var(--deep-ink);
     background: #FFFFFF;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-plan-badge {
+  .cc-pdp-hero-apr29 .cc-pdp-plan-badge {
     position: absolute;
     top: -10px;
     left: 16px;
@@ -523,7 +523,7 @@
 {
   "name": "PDP Hero (apr26)",
   "tag": "section",
-  "class": "section-cc-pdp-hero-apr26",
+  "class": "section-cc-pdp-hero-apr29",
   "settings": [
     { "type": "image_picker", "id": "hero_image", "label": "Hero image override", "info": "Defaults to product featured image" },
     { "type": "text", "id": "hero_title", "label": "Title override", "info": "Defaults to product title" },
