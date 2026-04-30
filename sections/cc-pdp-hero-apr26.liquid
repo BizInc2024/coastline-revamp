@@ -93,6 +93,7 @@
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
                     <button type="button"
+                            data-value="{{ value | escape }}"
                             @click="setOption({{ forloop.parent.index0 }}, '{{ value | escape }}')"
                             :class="options[{{ forloop.parent.index0 }}] === '{{ value | escape }}' ? 'cc-pdp-opt-active' : 'cc-pdp-opt-idle'"
                             class="cc-pdp-opt-btn">
@@ -275,6 +276,25 @@
     border: 1px solid var(--deep-ink);
     background: var(--deep-ink);
     color: var(--parchment);
+  }
+
+  /* Flavor-specific colors (matches homepage pricing snippet).
+     Applies whenever a variant value contains "unflavored" or "lemonade". */
+  .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-value*="Unflavored" i] {
+    background: #EDE8DF !important;
+    border: 1px solid #D5D0C8 !important;
+    color: #6B6B6B !important;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-value*="Lemonade" i] {
+    background: #F5E0E4 !important;
+    border: 1px solid #E0CDD1 !important;
+    color: #6B6B6B !important;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-opt-active[data-value*="Unflavored" i],
+  .cc-pdp-hero-apr26 .cc-pdp-opt-active[data-value*="Lemonade" i] {
+    border: 3px solid #0A0A0A !important;
+    color: #0A0A0A !important;
+    font-weight: 600 !important;
   }
   .cc-pdp-hero-apr26 .cc-pdp-plan-card {
     cursor: pointer;
