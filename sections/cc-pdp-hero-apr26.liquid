@@ -99,12 +99,22 @@
                   {%- for value in option.values -%}
                     {%- assign opt_idx = forloop.parent.index0 -%}
                     {%- assign val_handle = value | handleize -%}
+                    {%- comment -%}
+                      Background fill computed in Liquid based on the value handle
+                      (no Alpine needed for that). Active border + text style is
+                      driven purely by Alpine :style — inline always wins, no
+                      class-binding conflict.
+                    {%- endcomment -%}
+                    {%- assign btn_bg = '#FFFFFF' -%}
+                    {%- if val_handle contains 'unflavored' -%}{%- assign btn_bg = '#EDE8DF' -%}{%- endif -%}
+                    {%- if val_handle contains 'lemonade' -%}{%- assign btn_bg = '#F5E0E4' -%}{%- endif -%}
                     <button type="button"
                             data-value="{{ value | escape }}"
+                            data-bg="{{ btn_bg }}"
                             @click="selectedOption{{ opt_idx }} = '{{ value | escape }}'"
-                            :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-opt-{{ val_handle }}-active' : 'cc-pdp-opt-{{ val_handle }}-idle'"
-                            :style="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'border:3px solid #0A0A0A; color:#0A0A0A; font-weight:700;' : 'border:1px solid #D5D0C8; color:#6B6B6B; font-weight:400;'"
-                            class="cc-pdp-opt-btn">
+                            x-bind:style="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'background:{{ btn_bg }}; border:3px solid #0A0A0A; color:#0A0A0A; font-weight:700;' : 'background:{{ btn_bg }}; border:1px solid #D5D0C8; color:#6B6B6B; font-weight:400;'"
+                            class="cc-pdp-opt-btn"
+                            style="background:{{ btn_bg }}; flex:1; min-width:120px; padding:14px 16px; cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif; font-size:14px;">
                       {{ value }}
                     </button>
                   {%- endfor -%}
