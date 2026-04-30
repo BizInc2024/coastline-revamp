@@ -7,6 +7,44 @@
 {% render 'cc-deps' %}
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- comment -%}
+  Per-product pricing fallbacks — used when template JSON doesn't set
+  monthly_price / monthly_save / etc. Authoritative values pulled from
+  ReCharge-synced selling plans (Apr 29):
+{%- endcomment -%}
+{%- case product.handle -%}
+  {%- when 'coastline-welcome-pack' -%}
+    {%- assign default_monthly_price = '$99' -%}
+    {%- assign default_monthly_save = 'Save 34%' -%}
+    {%- assign default_bimonthly_price = '$120' -%}
+    {%- assign default_bimonthly_save = 'Save 20%' -%}
+    {%- assign default_onetime_price = '$150' -%}
+  {%- when 'coastline-creatine' -%}
+    {%- assign default_monthly_price = '$55.20' -%}
+    {%- assign default_monthly_save = 'Save 20%' -%}
+    {%- assign default_bimonthly_price = '$62.10' -%}
+    {%- assign default_bimonthly_save = 'Save 10%' -%}
+    {%- assign default_onetime_price = '$69' -%}
+  {%- when 'coastline-morning-softgels' -%}
+    {%- assign default_monthly_price = '$28' -%}
+    {%- assign default_monthly_save = 'Save 20%' -%}
+    {%- assign default_bimonthly_price = '$31.50' -%}
+    {%- assign default_bimonthly_save = 'Save 10%' -%}
+    {%- assign default_onetime_price = '$35' -%}
+  {%- when 'coastline-evening-capsules' -%}
+    {%- assign default_monthly_price = '$24' -%}
+    {%- assign default_monthly_save = 'Save 20%' -%}
+    {%- assign default_bimonthly_price = '$27' -%}
+    {%- assign default_bimonthly_save = 'Save 10%' -%}
+    {%- assign default_onetime_price = '$30' -%}
+  {%- else -%}
+    {%- assign default_monthly_price = '' -%}
+    {%- assign default_monthly_save = 'Save 20%' -%}
+    {%- assign default_bimonthly_price = '' -%}
+    {%- assign default_bimonthly_save = 'Save 10%' -%}
+    {%- assign default_onetime_price = '' -%}
+{%- endcase -%}
 {%- comment -%}
   Coastline products use ONE selling plan per group (monthly group +
   2-month group). The render loop below iterates ALL groups, not just
@@ -100,10 +138,14 @@
                 <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin:0 0 12px;text-transform:uppercase;letter-spacing:0.1em;">Select your {{ option.name | downcase }}</p>
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
+                    {%- assign val_handle = value | handleize -%}
+                    {%- assign btn_bg = '#FFFFFF' -%}
+                    {%- if val_handle contains 'unflavored' -%}{%- assign btn_bg = '#EDE8DF' -%}{%- endif -%}
+                    {%- if val_handle contains 'lemonade' -%}{%- assign btn_bg = '#F5E0E4' -%}{%- endif -%}
                     <div @click="selectedOption{{ opt_idx }} = '{{ value | escape }}'"
                          :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-plan-active' : 'cc-pdp-plan-idle'"
                          class="cc-pdp-plan-card"
-                         style="flex:1;min-width:120px;text-align:center;padding:14px 16px;font-family:'Inter',sans-serif;font-size:14px;">
+                         style="background:{{ btn_bg }} !important;flex:1;min-width:120px;text-align:center;padding:14px 16px;font-family:'Inter',sans-serif;font-size:14px;">
                       {{ value }}
                     </div>
                   {%- endfor -%}
@@ -155,13 +197,13 @@
                 {%- assign sp_name_lower = sp.name | downcase -%}
                 {%- if sp_name_lower contains '2 month' or sp_name_lower contains '2-month' -%}
                   {%- assign sp_display_name = 'Delivered every 2 months' -%}
-                  {%- assign sp_save_label = section.settings.bimonthly_save | default: 'Save 10%' -%}
-                  {%- assign sp_price_override = section.settings.bimonthly_price -%}
+                  {%- assign sp_save_label = section.settings.bimonthly_save | default: default_bimonthly_save -%}
+                  {%- assign sp_price_override = section.settings.bimonthly_price | default: default_bimonthly_price -%}
                   {%- assign show_best_value = false -%}
                 {%- elsif sp_name_lower contains '1 month' or sp_name_lower contains 'monthly' -%}
                   {%- assign sp_display_name = 'Monthly subscription' -%}
-                  {%- assign sp_save_label = section.settings.monthly_save | default: 'Save 20%' -%}
-                  {%- assign sp_price_override = section.settings.monthly_price -%}
+                  {%- assign sp_save_label = section.settings.monthly_save | default: default_monthly_save -%}
+                  {%- assign sp_price_override = section.settings.monthly_price | default: default_monthly_price -%}
                   {%- assign show_best_value = true -%}
                 {%- else -%}
                   {%- assign sp_display_name = sp.name -%}
@@ -211,7 +253,7 @@
                   </div>
                   <div style="text-align:right;flex-shrink:0;margin-left:16px;">
                     <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
-                      {%- if section.settings.onetime_price != blank -%}{{ section.settings.onetime_price }}{%- else -%}{{ current_variant.price | money_without_trailing_zeros }}{%- endif -%}
+                      {%- if section.settings.onetime_price != blank -%}{{ section.settings.onetime_price }}{%- elsif default_onetime_price != blank -%}{{ default_onetime_price }}{%- else -%}{{ current_variant.price | money_without_trailing_zeros }}{%- endif -%}
                     </span>
                     <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">one-time</span>
                   </div>
