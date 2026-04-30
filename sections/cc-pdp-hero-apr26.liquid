@@ -100,8 +100,8 @@
                     {%- assign opt_idx = forloop.parent.index0 -%}
                     <button type="button"
                             data-value="{{ value | escape }}"
-                            @click="setOption({{ opt_idx }}, '{{ value | escape }}')"
-                            :class="options[{{ opt_idx }}] === '{{ value | escape }}' ? 'cc-pdp-opt-active' : 'cc-pdp-opt-idle'"
+                            @click="selectedOption{{ opt_idx }} = '{{ value | escape }}'"
+                            :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-opt-active' : 'cc-pdp-opt-idle'"
                             class="cc-pdp-opt-btn">
                       {{ value }}
                     </button>
@@ -394,9 +394,12 @@
 
 <script>
   function ccPdpBuyApr26() {
+    var initialOpts = {{ current_variant.options | json }};
     return {
       loading: false,
-      options: {{ current_variant.options | json }},
+      selectedOption0: initialOpts[0] || '',
+      selectedOption1: initialOpts[1] || '',
+      selectedOption2: initialOpts[2] || '',
       plan: '{%- if sp_group -%}{{ sp_group.selling_plans.first.id }}{%- endif -%}',
       variantsData: {{ product.variants | json }},
       sellingPlanAllocations: {},
@@ -412,16 +415,11 @@
         });
       },
 
-      setOption(idx, value) {
-        var newOptions = this.options.slice();
-        newOptions[idx] = value;
-        this.options = newOptions;
-      },
-
       get currentVariant() {
         var self = this;
+        var picks = [self.selectedOption0, self.selectedOption1, self.selectedOption2];
         return this.variantsData.find(function(v) {
-          return v.options.every(function(opt, i) { return opt === self.options[i]; });
+          return v.options.every(function(opt, i) { return opt === picks[i]; });
         }) || this.variantsData[0];
       },
 
