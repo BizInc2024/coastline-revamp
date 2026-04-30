@@ -98,13 +98,19 @@
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
                     {%- assign opt_idx = forloop.parent.index0 -%}
+                    {%- comment -%}
+                      option.selected_value is Shopify's documented accessor for
+                      the currently-selected value of this option — more reliable
+                      than current_variant.options[idx] which can be flaky.
+                    {%- endcomment -%}
                     {%- assign is_active = false -%}
-                    {%- if current_variant.options[opt_idx] == value -%}{%- assign is_active = true -%}{%- endif -%}
+                    {%- if option.selected_value == value -%}{%- assign is_active = true -%}{%- endif -%}
                     <button type="button"
                             data-value="{{ value | escape }}"
+                            data-active="{{ is_active }}"
                             @click="setOption({{ opt_idx }}, '{{ value | escape }}')"
-                            :class="{ 'cc-pdp-opt-active': options[{{ opt_idx }}] === '{{ value | escape }}', 'cc-pdp-opt-idle': options[{{ opt_idx }}] !== '{{ value | escape }}' }"
-                            class="cc-pdp-opt-btn {%- if is_active %} cc-pdp-opt-active{%- else %} cc-pdp-opt-idle{%- endif %}">
+                            x-bind:data-active="options[{{ opt_idx }}] === '{{ value | escape }}'"
+                            class="cc-pdp-opt-btn">
                       {{ value }}
                     </button>
                   {%- endfor -%}
@@ -341,30 +347,27 @@
   }
 
   /* Flavor-specific colors (matches homepage pricing snippet).
-     Applies whenever a variant value contains "unflavored" or "lemonade". */
+     Active state driven by data-active="true" attribute (server-rendered
+     by Liquid using option.selected_value, then updated by Alpine on click). */
   .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-value*="Unflavored" i] {
     background: #EDE8DF !important;
     border: 1px solid #D5D0C8 !important;
     color: #6B6B6B !important;
+    font-weight: 400 !important;
   }
   .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-value*="Lemonade" i] {
     background: #F5E0E4 !important;
     border: 1px solid #E0CDD1 !important;
     color: #6B6B6B !important;
+    font-weight: 400 !important;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active[data-value*="Unflavored" i],
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active[data-value*="Lemonade" i] {
+  .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-active="true"] {
     border: 3px solid #0A0A0A !important;
     color: #0A0A0A !important;
     font-weight: 700 !important;
     box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.08) !important;
   }
-  /* Generic non-flavor variants — make active state pop on dark fill */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active:not([data-value*="Unflavored" i]):not([data-value*="Lemonade" i]) {
-    box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.15) !important;
-  }
-  /* Selected indicator (checkmark) on flavor buttons */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active::before {
+  .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-active="true"]::before {
     content: "✓ ";
     font-weight: 700;
     color: inherit;
