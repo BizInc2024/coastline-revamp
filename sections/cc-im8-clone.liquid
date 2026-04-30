@@ -97,7 +97,7 @@
                 </div>
 
                 <!-- Side-by-side product images -->
-                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end">
+                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end" style="min-height: 220px;">
                     <div>
                         <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" class="mx-auto" style="max-height: 126px; object-fit: contain;" loading="lazy">
                         <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
