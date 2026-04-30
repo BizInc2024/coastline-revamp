@@ -1,0 +1,326 @@
+{% comment %}
+  cc-vs-ag1-apr26 -- Coastline vs Blueprint narrative section
+  Extracted from sections/cc-landingpage-v6-ag1.liquid (Apr 26 rebuild).
+  Pairs with cc-pricing-product-apr26 (cart) + cc-email-capture-apr26 inside
+  templates/product.lp-ag1-apr26.json. Live LP (page.cc-landingpage-v6-ag1)
+  remains untouched.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+    html { scroll-behavior: smooth; }
+    .cc-vs-ag1-apr26 p { max-width: none !important; }
+    .cc-vs-ag1-apr26 h1, .cc-vs-ag1-apr26 h2 { text-wrap: balance; }
+
+    .editorial-divider { width: 60px; height: 1px; background: #0A0A0A; }
+    .section-counter { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; }
+
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .accordion-content.open { max-height: 2000px; }
+
+    .cc-vs-ag1-apr26 footer .cc-v6-footer-cta {
+        display: inline-block !important; width: auto !important; min-width: 0 !important; min-height: 0 !important;
+        padding: 20px 48px !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; border: none !important; box-sizing: border-box !important;
+    }
+
+    .v6-blockquote { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; color: #FAF9F6; }
+    .v6-study-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 32px; margin-top: 40px; }
+    .v6-study-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: #9A9A9A; }
+
+    .v6-table-scroll { overflow-x: auto; display: block; }
+    .v6-comparison-table { width: 100%; border-collapse: collapse; }
+    .v6-comparison-table th, .v6-comparison-table td { padding: 16px 12px; text-align: left; border-bottom: 1px solid #E8E8E8; font-size: 14px; }
+    .v6-comparison-table th { font-weight: 500; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .v6-comparison-table td:first-child { color: #6B6B6B; min-width: 140px; }
+    .v6-comparison-table .v6-check { color: #2D5A47; font-weight: 600; }
+    .v6-comparison-table .v6-x { color: #C0392B; font-weight: 600; }
+
+    .v6-star-table { width: 100%; border-collapse: collapse; }
+    .v6-star-table th, .v6-star-table td { padding: 16px 12px; text-align: center; border-bottom: 1px solid #E8E8E8; }
+    .v6-star-table th { font-weight: 500; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; }
+    .v6-star-table td:first-child { text-align: left; color: #6B6B6B; font-size: 14px; }
+    .v6-star-table .v6-stars { letter-spacing: 2px; font-size: 16px; color: #0A0A0A; }
+    .v6-star-table-dark th, .v6-star-table-dark td { border-bottom-color: rgba(250,249,246,0.1); }
+    .v6-star-table-dark th { color: rgba(250,249,246,0.5); }
+    .v6-star-table-dark td:first-child { color: rgba(250,249,246,0.6); }
+    .v6-star-table-dark .v6-stars { color: #FAF9F6; }
+
+    .v6-ingredient-card { border: 1px solid #E8E8E8; padding: 20px; text-align: center; }
+    .v6-ingredient-card p:first-of-type { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #0A0A0A; margin-bottom: 4px; }
+    .v6-ingredient-card p:last-of-type { font-size: 12px; color: #6B6B6B; }
+
+    .cc-vs-ag1-apr26 .btn-primary {
+        display: inline-block;
+        background-color: #0A0A0A;
+        color: #FAF9F6;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 20px 48px;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+        border: none;
+    }
+    .cc-vs-ag1-apr26 .btn-primary:hover { opacity: 0.8; }
+
+    /* Flavor selector active state */
+    .cc-vs-ag1-apr26 .v6-flavor-btn { border: 1px solid #E8E8E8; padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s ease; }
+    .cc-vs-ag1-apr26 .v6-flavor-btn.active { border-color: #0A0A0A; box-shadow: 0 0 0 2px #0A0A0A; }
+
+    /* Plan selector active state */
+    .cc-vs-ag1-apr26 .v6-plan-btn { width: 100%; text-align: left; cursor: pointer; transition: all 0.2s ease; border: 1px solid #E8E8E8; padding: 16px; }
+    .cc-vs-ag1-apr26 .v6-plan-btn.active { border: 2px solid #0A0A0A; }
+
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
+
+<div class="cc-apr26 cc-vs-ag1-apr26" x-data="{ visibleReviews: 3 }">
+    <!-- SECTION 1: EDITORIAL HERO -->
+    <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED MARCH 2026' }}</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
+                    {{ section.settings.hero_headline | default: 'Coastline vs Blueprint: Which Longevity Supplement Is Actually Worth It?' }}
+                </h1>
+                <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
+                    {{ section.settings.hero_subheadline | default: 'Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback.' }}
+                </p>
+                <div class="flex flex-col items-center gap-4 mt-6">
+                    <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
+                    <a href="#v6-takeaways" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO THE KEY TAKEAWAYS</a>
+                </div>
+
+                <!-- Side-by-side product images -->
+                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end">
+                    <div>
+                        <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113{% endif %}" alt="Coastline" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                        <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
+                        <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
+                    </div>
+                    <div>
+                        <img src="{% if section.settings.hero_ag1_image != blank %}{{ section.settings.hero_ag1_image | image_url: width: 600 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="Blueprint" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">Blueprint</p>
+                        <p class="text-xs text-warm-gray mt-1">74 ingredients across 7 products, doses undisclosed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: NEUTRAL INTRO -->
+    <section class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="text-warm-gray text-lg leading-relaxed">
+                    {{ section.settings.intro_body_1 | default: "A recent clinical trial on Blueprint -- funded by Blueprint themselves -- found no significant health benefits compared to placebo. In light of that study, we decided to compare Blueprint side by side with Coastline, a science-first longevity supplement built on a fundamentally different approach. We looked at ingredients, clinical doses, pricing, and real customer feedback." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge: Intro → Blueprint Clinical Evidence -->
+    <section class="py-12 lg:py-16 bg-white">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The study Blueprint probably wishes you had not seen" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_1_p1 | default: "For years, Blueprint has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_1_p2 | default: "Then Blueprint publishes its own ingredient stack. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." }}
+                </p>
+                <p class="text-deep-ink text-lg leading-relaxed font-medium">
+                    {{ section.settings.bridge_1_p3 | default: "Here is what the study actually found -- and why it matters for anyone paying $179 a month." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Blueprint CLINICAL EVIDENCE -->
+    <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.4);">The Clinical Evidence</p>
+                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
+
+                <!-- Study findings first -->
+                <div class="v6-study-card mb-12">
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "What Blueprint actually requires:" }}</p>
+                    <ul>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: '40+ pills daily, taken across multiple windows' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: 'Multiple powders, capsules, and softgels per day' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'Total stack pricing exceeds \$179/month' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Built around the founder's regimen, not yours' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: 'Aggressive measurement protocol required' }}</li>
+                    </ul>
+                </div>
+
+                <!-- Bryan Johnson's protocol quote as supporting evidence -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 mb-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
+                    <div class="flex-shrink-0">
+                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v6-bryan-johnson.jpg' | asset_url }}{% endif %}" alt="Bryan Johnson's protocol" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
+                    </div>
+                    <div>
+                        <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
+                            {{ section.settings.bj_quote | default: "&ldquo;Real longevity is dose-precision, not pill-count.&rdquo;" }}
+                        </blockquote>
+                        <p class="text-sm" style="color: rgba(250,249,246,0.5);">
+                            {{ section.settings.bj_attribution | default: '-- Bryan Johnson's protocol, tech entrepreneur and longevity advocate' }}
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
+                    <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
+                        {{ section.settings.pixie_dust_body | default: "Blueprint contains 74 ingredients across 7 products in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 74 ingredients across 7 products into one serving -- most are present in trace amounts far below what clinical trials use." }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge: Bryan Johnson's protocol → Comparison -->
+    <section class="py-16 lg:py-20 bg-parchment">
+        <div class="max-w-2xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." }}
+                </p>
+                <p class="text-warm-gray text-lg leading-relaxed mb-6">
+                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both Blueprint and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
+                </p>
+                <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
+                    {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
+                </p>
+                <div class="text-center">
+                    <a href="#pricing-product-apr26" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP AHEAD TO PRICING</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: COMPARISON BREAKDOWN -->
+    <section id="v6-comparison" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+
+            <!-- 5A: PRICE COMPARISON -->
+            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">Price Comparison</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.price_headline | default: "What you're actually paying for" }}</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <!-- Blueprint Card -->
+                <div class="border border-light-gray p-8">
+                    <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 400 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="Blueprint" class="mx-auto mb-6" style="max-height: 120px; object-fit: contain;" loading="lazy">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Blueprint</p>
+                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$179<span class="text-lg text-warm-gray">/month</span></p>
+                    <div class="border-t border-light-gray pt-4 space-y-3 text-sm text-warm-gray">
+                        <p>74 ingredients across 7 products at trace amounts</p>
+                        <p>~$1.05 per ingredient per month</p>
+                        <p>$2.63/day</p>
+                        <p>$948/year</p>
+                        <p class="text-xs pt-2" style="color: #C0392B;">Proprietary blends -- doses undisclosed</p>
+                    </div>
+                </div>
+                <!-- Coastline Card -->
+                <div class="border-2 border-deep-ink p-8 relative">
+                    <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
+                    <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 400 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113{% endif %}" alt="Coastline" class="mx-auto mb-6" style="max-height: 120px; object-fit: contain;" loading="lazy">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
+                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
+                    <div class="border-t border-light-gray pt-4 space-y-3 text-sm text-warm-gray">
+                        <p>13 ingredients at clinical doses</p>
+                        <p>~$7.62 per ingredient per month</p>
+                        <p>$3.30/day</p>
+                        <p>$1,188/year</p>
+                        <p class="text-xs pt-2" style="color: #2D5A47;">Full transparency -- every dose disclosed</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-20">
+                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
+                    {{ section.settings.price_framing | default: "\$2.66/day LESS for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
+                </p>
+            </div>
+
+            <!-- 5B: INGREDIENT COMPARISON GRID -->
+            <div class="mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="text-center mb-12">
+                    <p class="section-counter mb-6">Ingredient Comparison</p>
+                    <div class="editorial-divider mx-auto mb-10"></div>
+                    <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.ingredient_comparison_headline | default: 'Side by side' }}</h2>
+                </div>
+
+                <div class="v6-table-scroll">
+                    <table class="v6-comparison-table" style="min-width: 520px;">
+                        <thead>
+                            <tr>
+                                <th style="min-width:160px;"></th>
+                                <th style="text-align:center;">Coastline</th>
+                                <th style="text-align:center;">Blueprint</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Clinical dosing</td><td class="v6-check" style="text-align:center;">&#10003; Full transparency</td><td class="v6-x" style="text-align:center;">&#10007; Proprietary blends</td></tr>
+                            <tr><td>Ingredient count</td><td style="text-align:center; color:#0A0A0A;">13 (precision)</td><td style="text-align:center; color:#6B6B6B;">75 (pixie dusting)</td></tr>
+                            <tr><td>Inulin dose</td><td class="v6-check" style="text-align:center;">4g (clinical dose)</td><td class="v6-x" style="text-align:center;">Undisclosed</td></tr>
+                            <tr><td>Creatine</td><td class="v6-check" style="text-align:center;">5.25g</td><td class="v6-x" style="text-align:center;">None</td></tr>
+                            <tr><td>CoQ10</td><td class="v6-check" style="text-align:center;">200mg</td><td class="v6-x" style="text-align:center;">None</td></tr>
+                            <tr><td>Taurine</td><td class="v6-check" style="text-align:center;">3.05g</td><td class="v6-x" style="text-align:center;">None</td></tr>
+                            <tr><td>AM/PM timing</td><td class="v6-check" style="text-align:center;">&#10003; Yes</td><td class="v6-x" style="text-align:center;">&#10007; No</td></tr>
+                            <tr><td>Hallmarks of aging</td><td style="text-align:center; color:#0A0A0A;">All 12</td><td style="text-align:center; color:#6B6B6B;">~3-4</td></tr>
+                            <tr><td>Body systems</td><td style="text-align:center; color:#0A0A0A;">11</td><td style="text-align:center; color:#6B6B6B;">6</td></tr>
+                            <tr><td>Caffeine-free</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
+                            <tr><td>Vegan</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
+                            <tr><td>Clinical trial</td><td style="text-align:center; color:#6B6B6B;">Individual ingredients proven</td><td class="v6-x" style="text-align:center;">No significant benefit</td></tr>
+                            <tr><td>Dose transparency</td><td class="v6-check" style="text-align:center;">Full disclosure</td><td class="v6-x" style="text-align:center;">Proprietary blends</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 5C: EFFECTIVENESS -->
+            <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="border border-light-gray p-8">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Blueprint Claims</p>
+                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: '"Supports energy, focus, gut health." Vague language with no specific doses, no specific studies cited, and no measurable outcomes defined.' }}</p>
+                </div>
+                <div class="p-8" style="background-color: #062F3D;">
+                    <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">Coastline Delivers</p>
+                    <ul class="space-y-3 leading-relaxed" style="color: #FAF9F6;">
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Taurine at 3.05g</strong> -- supports cardiovascular health and extends lifespan in animal models</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Creatine at 5.25g</strong> -- increases muscle strength and sharpens cognition</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Inulin at 4g</strong> -- feeds beneficial gut bacteria and supports digestion</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>CoQ10 at 200mg</strong> -- supports cellular energy and mitochondrial function</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Glycine at 5g</strong> -- improves sleep quality and reduces inflammation</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Astaxanthin at 6mg</strong> -- one of the most potent antioxidants known to science</span></li>
+                        <li class="text-sm mt-2 ml-6" style="color: rgba(250,249,246,0.4);">...and 7 more clinically dosed ingredients. Every dose backed by specific trials.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+{% schema %}
+{
+  "name": "vs Blueprint Top (apr29)",
+  "tag": "section",
+  "class": "cc-landingpage-v6",
+  "settings": [],
+  "presets": [{ "name": "vs Blueprint Top (apr29)", "category": "Landing Pages" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

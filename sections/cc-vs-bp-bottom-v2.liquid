@@ -1,0 +1,209 @@
+{% comment %}
+  cc-vs-ag1-bottom-apr29 — Blueprint LP narrative continuation (after pricing).
+  Splits cc-vs-ag1-apr29 so pricing block can render between the
+  comparison table and the ingredient deep-dive. Inherits CSS from
+  the top section (rendered earlier on the same page; shared
+  .cc-apr26 .cc-vs-ag1-apr26 scope).
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<div class="cc-apr26 cc-vs-ag1-apr26">
+    <!-- SECTION 5: INGREDIENT DEEP DIVE -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <p class="section-counter mb-6">The Coastline Formula</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.ingredients_headline | default: '13 ingredients. Every dose disclosed.' }}</h2>
+                <p class="text-warm-gray text-lg max-w-xl mx-auto">{{ section.settings.ingredients_subheadline | default: 'Three products. One system. Optimized for your circadian rhythm.' }}</p>
+            </div>
+
+            <!-- Morning Powder -->
+            <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
+                    <p class="font-grotesk text-lg text-deep-ink font-medium">Powder Blend - 7 Ingredients</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_10_2.png?v=1767986277" alt="Ergothioneine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Ergothioneine</p><p>5 mg -- crosses blood-brain barrier</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425" alt="Taurine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Taurine</p><p>3.05 g -- cardiovascular and lifespan support</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png?v=1767985945" alt="Creatine Monohydrate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Creatine Monohydrate</p><p>5.25 g -- muscle strength and cognition</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227" alt="Glycine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Glycine</p><p>5 g -- sleep quality and blood sugar</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png?v=1767986618" alt="Inulin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Inulin</p><p>4 g -- prebiotic gut health</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_12_2.png?v=1767986678" alt="Magnesium Citrate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Magnesium (Citrate)</p><p>150 mg -- 300+ enzyme cofactor</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Glucosamine Sulfate</p><p>750 mg -- joint health (AM dose)</p></div>
+                </div>
+            </div>
+
+            <!-- Softgels -->
+            <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Morning</p>
+                    <p class="font-grotesk text-lg text-deep-ink font-medium">Softgels - 4 Ingredients</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Astaxanthin</p><p>6 mg -- potent antioxidant</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Lutein" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Lutein</p><p>10 mg -- eye and brain health</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_11_2.png?v=1767987424" alt="Zeaxanthin" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Zeaxanthin</p><p>2 mg -- macular protection</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png?v=1767986360" alt="Coenzyme Q10" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Coenzyme Q10</p><p>200 mg -- cellular energy</p></div>
+                </div>
+            </div>
+
+            <!-- Evening Capsules -->
+            <div class="mb-12 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="mb-6">
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-1">Evening</p>
+                    <p class="font-grotesk text-lg text-deep-ink font-medium">Capsules - 3 Ingredients</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_17_2.png?v=1767987524" alt="Lithium Orotate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Lithium (as Orotate)</p><p>400 mcg -- neuroprotection</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_7_2.png?v=1767987312" alt="L-Theanine" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>L-Theanine</p><p>200 mg -- calm without grogginess</p></div>
+                    <div class="v6-ingredient-card"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_14_2.png?v=1767986502" alt="Glucosamine Sulfate" class="w-12 h-12 mx-auto mb-3 object-cover" loading="lazy"><p>Glucosamine Sulfate</p><p>750 mg -- joint health (PM dose)</p></div>
+                </div>
+            </div>
+
+            <!-- Bryan Johnson's protocol Inulin Callout -->
+            <div class="border-l-2 p-6 mt-8" style="border-color: #2D5A47; background: #F5F4F0;">
+                <p class="text-deep-ink leading-relaxed">
+                    {{ section.settings.bj_inulin_callout | default: "Coastline includes clinical-dose inulin at 4g -- the very prebiotic Bryan Johnson's protocol recommends -- as just one of 13 ingredients." }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: EXPERT QUOTES -->
+    <section class="py-20 lg:py-32" style="background-color: #062F3D;">
+        <div class="max-w-6xl mx-auto px-8 lg:px-16">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')" style="max-width:680px;margin:0 auto 48px;text-align:left;">
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium mb-6" style="color:#FAF9F6;">{{ section.settings.bridge_4_headline | default: "Built by researchers, not marketers" }}</h3>
+                <p class="text-lg leading-relaxed mb-4" style="color:rgba(250,249,246,0.75);">
+                    {{ section.settings.bridge_4_p1 | default: "We did not design this formulation in isolation. Coastline was built alongside a team of researchers and clinicians with decades of combined experience in circadian biology, molecular medicine, and human performance." }}
+                </p>
+                <p class="text-lg leading-relaxed" style="color:rgba(250,249,246,0.75);">
+                    {{ section.settings.bridge_4_p2 | default: "Their job was simple: review thousands of studies and identify the compounds with the strongest evidence for human longevity. Not trends. Not marketing-friendly superfoods. Just what actually works, at doses that actually matter." }}
+                </p>
+            </div>
+            <p class="text-xs tracking-widest uppercase mb-12 text-center" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_label | default: 'What Researchers Say About Coastline' }}</p>
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Expert 1 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_1_name | default: '- Greg Potter, PhD, MSc' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_1_credential | default: 'Sleep & Circadian Health Expert' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_1_quote | default: '&ldquo;The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.&rdquo;' }}</p>
+                </div>
+                <!-- Expert 2 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')" >
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_2_name | default: '- Dr. Jacqueline Jacques, ND' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_2_credential | default: 'Naturopathic Doctor' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_2_quote | default: '&ldquo;Coastline is what happens when you combine scientific rigor with real-world clinical understanding.&rdquo;' }}</p>
+                </div>
+                <!-- Expert 3 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_3_name | default: '- Dr. Nicolas Verhoeven' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_3_credential | default: 'Ph.D. in Molecular Medicine' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_3_quote | default: '&ldquo;I value Coastline&rsquo;s quality. It means less hassle with the greatest certainty of results.&rdquo;' }}</p>
+                </div>
+                <!-- Expert 4 -->
+                <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp?v=1767053015" alt="Chris Pollock, MD" class="w-16 h-16 rounded-full object-cover">
+                        <div>
+                            <p class="text-sm tracking-widest uppercase" style="color: #FAF9F6;">{{ section.settings.expert_4_name | default: '- Chris Pollock, MD' }}</p>
+                            <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_4_credential | default: 'Physician & Coastline Co-Founder' }}</p>
+                        </div>
+                    </div>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_4_quote | default: '&ldquo;We reviewed thousands of studies to identify 13 ingredients with the strongest evidence for human longevity. Nothing speculative. No fads. Just science.&rdquo;' }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: Blueprint-SPECIFIC FAQ -->
+    <section class="py-20 lg:py-28 bg-parchment">
+        <div class="max-w-3xl mx-auto px-8 lg:px-16">
+            <div class="text-center mb-16">
+                <p class="section-counter mb-6">{{ section.settings.faq_counter | default: 'Questions & Answers' }}</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.faq_headline | default: 'Frequently asked questions.' }}</h2>
+            </div>
+            <div class="space-y-4" x-data="{ openFaq: null }">
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 1 ? null : 1">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_1_question | default: 'How is Coastline different from Blueprint?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 1 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_1_answer | default: '<p>Coastline uses 13 clinically dosed ingredients with full transparency. Blueprint uses 74 ingredients across 7 products in proprietary blends, meaning you cannot verify what dose of each ingredient you are actually getting. Coastline also includes an AM/PM system optimized for your circadian rhythm.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_2_question | default: 'Blueprint is $179/month. Why does Coastline cost $20 more?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 2 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_2_answer | default: '<p>Blueprint spreads $179 across 74 ingredients across 7 products at trace amounts (~$1.05 per ingredient per month). Coastline invests $99 in 13 ingredients at clinical doses (~$7.62 per ingredient per month). You are paying for doses that match actual clinical trials, not a long ingredient list.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 3 ? null : 3">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_3_question | default: 'Does Coastline include a greens blend?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 3 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_3_answer | default: '<p>No. Coastline is not a greens powder. It is a precision longevity system with 13 ingredients selected for their clinical evidence in addressing the hallmarks of aging. Every ingredient is dosed to match published clinical trials.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 4 ? null : 4">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_4_question | default: 'I just cancelled Blueprint. Can I start Coastline right away?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 4 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_4_answer | default: '<p>Yes. There is no waiting period. Order today and your Coastline system ships right away. Most customers notice a difference within the first few weeks.</p>' }}</div>
+                    </div>
+                </div>
+                <div class="border border-light-gray bg-white">
+                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 5 ? null : 5">
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_5_question | default: 'How do I take Coastline?' }}</span>
+                        <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 5 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="accordion-content" :class="{ 'open': openFaq === 5 }">
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_5_answer | default: '<p class="mb-4"><strong class="text-deep-ink">Morning Step:</strong> Mix the powder blend with water or your favorite beverage and take with your first meal.</p><p class="mb-4"><strong class="text-deep-ink">Softgels:</strong> Take with your first meal, alongside the Morning Blend.</p><p><strong class="text-deep-ink">Evening Step:</strong> Take the capsules before bed to support sleep and recovery.</p>' }}</div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+{% schema %}
+{
+  "name": "vs Blueprint Bottom (apr29)",
+  "tag": "section",
+  "class": "cc-landingpage-v6",
+  "settings": [],
+  "presets": [{ "name": "vs Blueprint Bottom (apr29)", "category": "Landing Pages" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

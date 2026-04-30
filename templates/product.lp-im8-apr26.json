@@ -1,7 +1,7 @@
 {
   "sections": {
     "narrative": {
-      "type": "cc-vs-im8-apr29",
+      "type": "cc-vs-im8-v2",
       "settings": {}
     },
     "press": {
@@ -38,12 +38,17 @@
     "guarantee": {
       "type": "cc-guarantee-apr29",
       "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-vs-im8-bottom-v2",
+      "settings": {}
     }
   },
   "order": [
     "narrative",
     "press",
     "pricing",
+    "narrative-bottom",
     "guarantee",
     "final-cta",
     "email"
