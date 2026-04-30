@@ -19,8 +19,9 @@
     "final-cta": {
       "type": "cc-final-cta-apr26",
       "settings": {
-        "final_headline": "Better science. Different price.",
-        "final_subheadline": "13 ingredients at clinical doses, $99/month.",
+        "show_product_image": true,
+        "final_headline": "13 ingredients. Clinical doses. $99 a month.",
+        "final_subheadline": "Every dose disclosed. Free shipping. 60-day guarantee.",
         "final_cta_text": "START MY LONGEVITY SYSTEM",
         "final_cta_link": "#pricing-product-apr26",
         "section13_padding_top": 80,
