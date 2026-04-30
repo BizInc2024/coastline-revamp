@@ -83,13 +83,13 @@
     <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
         <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED MARCH 2026' }}</p>
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED APRIL 2026' }}</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
-                    {{ section.settings.hero_headline | default: 'Coastline vs IM8: Which Longevity Supplement Is Actually Worth It?' }}
+                    {{ section.settings.hero_headline | default: 'Coastline vs IM8: 92 Ingredients, or 13 You Can Actually Feel?' }}
                 </h1>
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-                    {{ section.settings.hero_subheadline | default: 'Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback.' }}
+                    {{ section.settings.hero_subheadline | default: 'IM8 is Beckham-backed, $154 a month, and 92 ingredients deep — most of them hidden behind proprietary blends. We compared the formulas, the doses, the price, and what 13 clinical-dose ingredients actually delivers.' }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
                     <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
@@ -118,7 +118,7 @@
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.intro_body_1 | default: "A recent clinical trial on IM8 -- funded by IM8 themselves -- found no significant health benefits compared to placebo. In light of that study, we decided to compare IM8 side by side with Coastline, a science-first longevity supplement built on a fundamentally different approach. We looked at ingredients, clinical doses, pricing, and real customer feedback." }}
+                    {{ section.settings.intro_body_1 | default: "IM8 launched with a billion-dollar marketing engine and a David Beckham endorsement. Promising 92+ ingredients, all 12 hallmarks of aging, and \"engineered greatness\" in every scoop. We compared it side by side with Coastline -- a science-first longevity system built around 13 fully-disclosed ingredients at clinical doses. We looked at what's actually inside, what each ingredient does at its labeled dose, and what you're paying $154 a month for." }}
                 </p>
             </div>
         </div>
@@ -128,15 +128,15 @@
     <section class="py-12 lg:py-16 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The study IM8 probably wishes you had not seen" }}</h3>
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "What's actually in your $154 scoop?" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "For years, IM8 has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." }}
+                    {{ section.settings.bridge_1_p1 | default: "IM8 launched on Beckham's name. The marketing is everywhere -- football pitches, Instagram, premium magazines. It became a supplement people bought because the man who sold it to them looked great in a kit." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p2 | default: "Then IM8 published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." }}
+                    {{ section.settings.bridge_1_p2 | default: "But here's what gets harder to find: the doses. IM8 lists 92+ ingredients on the label, then groups most of them into proprietary blends. You see a total milligram count for the blend -- never the amount of any single ingredient inside it." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium">
-                    {{ section.settings.bridge_1_p3 | default: "Here is what the study actually found -- and why it matters for anyone paying $79 a month." }}
+                    {{ section.settings.bridge_1_p3 | default: "And that matters. Because every clinical study on these ingredients tested a specific dose. If your scoop doesn't hit it, you're not getting the benefit -- no matter how many ingredients are listed." }}
                 </p>
             </div>
         </div>
@@ -156,32 +156,32 @@
     <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.4);">The Clinical Evidence</p>
+                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.4);">What IM8 Doesn't Show You</p>
                 <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
 
-                <!-- Study findings first -->
+                <!-- What's hidden behind the label -->
                 <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "IM8's Own Clinical Trial Found:" }}</p>
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "On IM8's Daily Ultimate Label:" }}</p>
                     <ul>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'No significant changes in blood biomarkers vs placebo' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: 'No statistically significant gut health improvement (p = 0.058)' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No metabolic or inflammatory benefits detected' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Microbiome changes were clinically irrelevant' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: 'Placebo showed similar or larger shifts' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'Most ingredients hidden inside proprietary blends -- individual doses not disclosed' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: '92+ active compounds split across one daily scoop -- single-digit milligrams each' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No published clinical trial showing the formula outperforms placebo' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Headline ingredients (CaAKG, NMN, spermidine) at unverifiable amounts' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: '$154/month for the bundle -- premium pricing, premium opacity' }}</li>
                     </ul>
                 </div>
 
-                <!-- David Beckham quote as supporting evidence -->
+                <!-- Marketing-first vs science-first framing -->
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 mb-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
                     <div class="flex-shrink-0">
-                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-beckham-portrait.webp' | asset_url }}{% endif %}" alt="David Beckham" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
+                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-beckham-portrait.webp' | asset_url }}{% endif %}" alt="David Beckham, IM8 co-founder" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
                     </div>
                     <div>
                         <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
-                            {{ section.settings.bj_quote | default: "&ldquo;I'd cancel your IM8 subscription.&rdquo;" }}
+                            {{ section.settings.bj_quote | default: "&ldquo;A celebrity face doesn't make a clinical formula.&rdquo;" }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
-                            {{ section.settings.bj_attribution | default: '-- David Beckham, tech entrepreneur and longevity advocate' }}
+                            {{ section.settings.bj_attribution | default: '-- David Beckham fronts and co-founded IM8. He is not a researcher.' }}
                         </p>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                 <div>
                     <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
                     <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
-                        {{ section.settings.pixie_dust_body | default: "IM8 contains 92 ingredients in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 92 ingredients into one serving -- most are present in trace amounts far below what clinical trials use." }}
+                        {{ section.settings.pixie_dust_body | default: "IM8 lists 92+ ingredients in a single scoop. That sounds impressive until you do the math. Picture pouring one glass of water across 92 cups -- each gets drops. That is what happens when you cram 92 ingredients into one serving: most are present in trace amounts, far below what any clinical trial actually used. \"Pixie dusting\" lets a brand list an ingredient on the panel without paying for an effective dose." }}
                     </p>
                 </div>
             </div>
