@@ -1,6 +1,0 @@
-{
-  "sections": {
-    "narrative": { "type": "cc-aaa-test", "settings": {} }
-  },
-  "order": ["narrative"]
-}

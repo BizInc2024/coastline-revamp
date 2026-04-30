@@ -1,6 +1,0 @@
-{
-  "sections": {
-    "narrative": { "type": "cc-vs-bp-v2", "settings": {} }
-  },
-  "order": ["narrative"]
-}
