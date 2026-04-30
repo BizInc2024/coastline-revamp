@@ -91,39 +91,21 @@
           </div>
 
           {%- comment -%}
-            ===== Variant selector — vanilla JS, no Alpine binding =====
-            Direct DOM manipulation: each button has onclick that updates
-            the visual state itself + writes the variant value to a hidden
-            input. Alpine still tracks selectedOption0/1/2 for cart logic
-            but the visual active state is independent of Alpine reactivity.
+            ===== Variant selector — DIV-based, identical to plan card pattern =====
           {%- endcomment -%}
           {%- if product.has_only_default_variant == false -%}
             {%- for option in product.options_with_values -%}
               {%- assign opt_idx = forloop.index0 -%}
-              <div style="margin-bottom:28px;" data-opt-group="{{ opt_idx }}">
+              <div style="margin-bottom:28px;">
                 <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--deep-ink);margin:0 0 12px;text-transform:uppercase;letter-spacing:0.1em;">Select your {{ option.name | downcase }}</p>
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
                     {%- assign val_handle = value | handleize -%}
-                    {%- assign btn_bg = '#FFFFFF' -%}
-                    {%- if val_handle contains 'unflavored' -%}{%- assign btn_bg = '#EDE8DF' -%}{%- endif -%}
-                    {%- if val_handle contains 'lemonade' -%}{%- assign btn_bg = '#F5E0E4' -%}{%- endif -%}
-                    {%- assign is_active = false -%}
-                    {%- if option.selected_value == value -%}{%- assign is_active = true -%}{%- endif -%}
-                    {%- if is_active -%}
-                      {%- assign init_style = 'background:' | append: btn_bg | append: ';border:3px solid #0A0A0A;color:#0A0A0A;font-weight:700;' -%}
-                    {%- else -%}
-                      {%- assign init_style = 'background:' | append: btn_bg | append: ';border:1px solid #D5D0C8;color:#6B6B6B;font-weight:400;' -%}
-                    {%- endif -%}
-                    <button type="button"
-                            data-value="{{ value | escape }}"
-                            data-bg="{{ btn_bg }}"
-                            data-opt-idx="{{ opt_idx }}"
-                            onclick="ccPdpFlavor(this)"
-                            class="cc-pdp-opt-btn"
-                            style="{{ init_style }}flex:1;min-width:120px;padding:14px 16px;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;font-size:14px;">
+                    <div @click="selectedOption{{ opt_idx }} = '{{ value | escape }}'"
+                         :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-flavor-{{ val_handle }}-active' : 'cc-pdp-flavor-{{ val_handle }}-idle'"
+                         class="cc-pdp-flavor-btn">
                       {{ value }}
-                    </button>
+                    </div>
                   {%- endfor -%}
                 </div>
               </div>
@@ -330,14 +312,36 @@
   .cc-pdp-hero-apr26 .cc-pdp-thumb img {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-btn {
+  /* Flavor selector — DIV-based, mirrors plan card pattern */
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-btn {
     flex: 1;
     min-width: 120px;
     padding: 14px 16px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
+    text-align: center;
     cursor: pointer;
     transition: all 0.2s;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-active,
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-blend-active {
+    background: #EDE8DF; color: #0A0A0A; border: 3px solid #0A0A0A; font-weight: 600;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-idle,
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-unflavored-blend-idle {
+    background: #EDE8DF; color: #6B6B6B; border: 1px solid #D5D0C8;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-coastal-lemonade-active {
+    background: #F5E0E4; color: #0A0A0A; border: 3px solid #0A0A0A; font-weight: 600;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-flavor-coastal-lemonade-idle {
+    background: #F5E0E4; color: #6B6B6B; border: 1px solid #E0CDD1;
+  }
+  /* Legacy class kept for any old refs */
+  .cc-pdp-hero-apr26 .cc-pdp-opt-btn {
+    flex: 1; min-width: 120px; padding: 14px 16px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    cursor: pointer; transition: all 0.2s;
     background: transparent;
     border: 1px solid var(--light-gray);
     color: var(--warm-gray);
@@ -423,33 +427,6 @@
 </style>
 
 <script>
-  // Vanilla flavor selector — bypasses Alpine reactivity entirely so
-  // visual state always updates on click regardless of any binding issues.
-  // Still pushes the value into Alpine's selectedOptionN so currentVariant
-  // / variantId getters resolve correctly for ATC.
-  function ccPdpFlavor(btn) {
-    var idx = btn.getAttribute('data-opt-idx') || '0';
-    var value = btn.getAttribute('data-value') || '';
-    var bg = btn.getAttribute('data-bg') || '#FFFFFF';
-    var group = btn.closest('[data-opt-group="' + idx + '"]');
-    if (group) {
-      var siblings = group.querySelectorAll('.cc-pdp-opt-btn');
-      siblings.forEach(function(s) {
-        var sBg = s.getAttribute('data-bg') || '#FFFFFF';
-        s.setAttribute('style', 'background:' + sBg + ';border:1px solid #D5D0C8;color:#6B6B6B;font-weight:400;flex:1;min-width:120px;padding:14px 16px;cursor:pointer;transition:all 0.2s;font-family:\'Inter\',sans-serif;font-size:14px;');
-      });
-    }
-    btn.setAttribute('style', 'background:' + bg + ';border:3px solid #0A0A0A;color:#0A0A0A;font-weight:700;flex:1;min-width:120px;padding:14px 16px;cursor:pointer;transition:all 0.2s;font-family:\'Inter\',sans-serif;font-size:14px;');
-    // Sync Alpine state for cart logic
-    var alpineEl = btn.closest('[x-data]');
-    if (alpineEl && window.Alpine) {
-      try {
-        var data = Alpine.$data(alpineEl);
-        if (data) data['selectedOption' + idx] = value;
-      } catch(e) {}
-    }
-  }
-
   function ccPdpBuyApr26() {
     return {
       loading: false,
