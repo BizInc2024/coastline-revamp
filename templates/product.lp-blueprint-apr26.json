@@ -1,7 +1,7 @@
 {
   "sections": {
     "narrative": {
-      "type": "cc-blueprint-comparison",
+      "type": "cc-test-blueprint",
       "settings": {}
     },
     "pricing": {
