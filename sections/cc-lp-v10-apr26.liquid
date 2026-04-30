@@ -877,20 +877,20 @@
           <h3>Morning Blend + Softgels</h3>
           <p class="sub">With breakfast &middot; 10 ingredients &middot; taken together</p>
           <div class="v10-system-img">
-            <img src="{{ 'cc-lp-v10-apr26-am-morning-only.webp' | asset_url }}" alt="Coastline morning softgels and glass shaker with pink liquid">
+            <img src="{{ 'cc-v10-am-morning-only.webp' | asset_url }}" alt="Coastline morning softgels and glass shaker with pink liquid">
           </div>
           <div x-data="{ showIng: false }">
             <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
             <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
               <div class="ing-list">
-                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-lp-v10-apr26-prod-powder.webp' | asset_url }}" alt="Powder sachet"></div><p class="ing-head" style="margin:0">Easy-Scoop Powder Sachet</p></div>
+                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-powder.webp' | asset_url }}" alt="Powder sachet"></div><p class="ing-head" style="margin:0">Easy-Scoop Powder Sachet</p></div>
                 <details class="ing-accordion"><summary><span class="name">Creatine</span><span class="dose">5.25g</span></summary><div class="ing-detail">Fuels cellular energy (ATP) in brain and muscle. Shown to improve memory, power output, and lean mass &mdash; especially after 40.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Glycine</span><span class="dose">5g</span></summary><div class="ing-detail">Calming amino acid that supports glutathione production, collagen synthesis, and deeper sleep architecture.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Inulin</span><span class="dose">4g</span></summary><div class="ing-detail">Prebiotic fiber that feeds beneficial gut bacteria and supports short-chain fatty acid production for gut and metabolic health.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Taurine</span><span class="dose">3.05g</span></summary><div class="ing-detail">Declines sharply after 40. Supplementation extended healthy lifespan in animal studies and improves mitochondrial function and insulin sensitivity.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Magnesium</span><span class="dose">150mg</span></summary><div class="ing-detail">Cofactor in 300+ enzymatic reactions. Supports muscle, sleep, cardiovascular, and nervous system health. Most adults are deficient.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Ergothioneine</span><span class="dose">5mg</span></summary><div class="ing-detail">The "longevity vitamin." Accumulates in mitochondria and protects tissues from oxidative damage &mdash; levels strongly correlate with healthy aging.</div></details>
-                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-lp-v10-apr26-prod-softgel.webp' | asset_url }}" alt="Softgels"></div><p class="ing-head" style="margin:0">Morning Softgels</p></div>
+                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-softgel.webp' | asset_url }}" alt="Softgels"></div><p class="ing-head" style="margin:0">Morning Softgels</p></div>
                 <details class="ing-accordion"><summary><span class="name">CoQ10</span><span class="dose">200mg</span></summary><div class="ing-detail">Essential for mitochondrial ATP production. Levels decline with age; supplementation especially important for statin users and anyone over 40.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Lutein</span><span class="dose">10mg</span></summary><div class="ing-detail">Antioxidant carotenoid concentrated in the macula and brain. Protects against blue light damage and supports cognitive health.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Astaxanthin</span><span class="dose">6mg</span></summary><div class="ing-detail">One of nature's most potent antioxidants. Crosses the blood-brain barrier and supports skin, eye, and cardiovascular health.</div></details>
@@ -911,7 +911,7 @@
             <button class="ing-toggle" @click="showIng = !showIng" x-text="showIng ? 'Hide ingredients −' : 'See ingredients +'">See ingredients +</button>
             <div class="ing-list-wrap" :class="showIng ? 'open' : ''">
               <div class="ing-list">
-                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-lp-v10-apr26-prod-capsule.webp' | asset_url }}" alt="Capsules"></div><p class="ing-head" style="margin:0">Evening Capsules</p></div>
+                <div class="ing-head-row"><div class="v10-product-circle"><img src="{{ 'cc-v10-prod-capsule.webp' | asset_url }}" alt="Capsules"></div><p class="ing-head" style="margin:0">Evening Capsules</p></div>
                 <details class="ing-accordion"><summary><span class="name">Glucosamine</span><span class="dose">750mg</span></summary><div class="ing-detail">Associated with ~15% lower all-cause mortality in large observational studies. Supports joint repair, cartilage health, and long-term mobility.</div></details>
                 <details class="ing-accordion"><summary><span class="name">L-Theanine</span><span class="dose">200mg</span></summary><div class="ing-detail">Promotes relaxation without sedation by increasing alpha brain waves. Helps you wind down and improves sleep quality without morning grogginess.</div></details>
                 <details class="ing-accordion"><summary><span class="name">Lithium Orotate</span><span class="dose">400mcg</span></summary><div class="ing-detail">At microdoses, populations with higher lithium in drinking water show lower rates of dementia, depression, and suicide. Supports mood and cognitive longevity.</div></details>
@@ -963,11 +963,11 @@
       </div>
     </div>
     <div class="v10-ugc-rail reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
-      <div class="v10-ugc-item"><img src="{{ 'cc-lp-v10-apr26-ugc-1.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
-      <div class="v10-ugc-item"><img src="{{ 'cc-lp-v10-apr26-ugc-2.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
-      <div class="v10-ugc-item"><img src="{{ 'cc-lp-v10-apr26-ugc-3.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
-      <div class="v10-ugc-item"><img src="{{ 'cc-lp-v10-apr26-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
-      <div class="v10-ugc-item"><img src="{{ 'cc-lp-v10-apr26-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-1.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-2.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-3.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
+      <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline"></div>
     </div>
   </section>
 
@@ -1059,7 +1059,7 @@
 
   <!-- Scene divider -->
   <div class="v10-scene">
-    <img src="{{ 'cc-lp-v10-apr26-scene-2.jpg' | asset_url }}" alt="Pacific coastline">
+    <img src="{{ 'cc-v10-scene-2.jpg' | asset_url }}" alt="Pacific coastline">
   </div>
 
   <!-- ================================================== -->
@@ -1072,7 +1072,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">Finally, a longevity stack that doesn&rsquo;t need 15 bottles. My morning brain fog is gone and I feel sharper by week three.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-robert.png' | asset_url }}" alt="Robert K."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-robert.png' | asset_url }}" alt="Robert K."></div>
             <div class="name"><strong>Robert K., 45</strong>Chicago, IL<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1081,7 +1081,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I&rsquo;ve tried every greens powder on the market. This is the first one where I can read the label and actually know what I&rsquo;m getting &mdash; and the doses match the studies.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-sarah-v2.png' | asset_url }}" alt="Sarah M."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-sarah-v2.png' | asset_url }}" alt="Sarah M."></div>
             <div class="name"><strong>Sarah M., 42</strong>Austin, TX<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1090,7 +1090,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">Energy that feels natural, not forced. No jitters, no crash &mdash; just steady output from morning to night.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-scott.png' | asset_url }}" alt="Scott L."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="Scott L."></div>
             <div class="name"><strong>Scott L., 51</strong>Charlotte, NC<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1099,7 +1099,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">As a physician, I&rsquo;m skeptical of most supplements &mdash; but the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-michael-v2.png' | asset_url }}" alt="Michael R."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-michael-v2.png' | asset_url }}" alt="Michael R."></div>
             <div class="name"><strong>Michael R., 58</strong>Physician &middot; Seattle, WA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1108,7 +1108,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">As a busy mother and founder, mental clarity is my most valuable asset. Coastline cleared the afternoon fog I thought was just part of getting older.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-sophia.png' | asset_url }}" alt="Sophia R."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-sophia.png' | asset_url }}" alt="Sophia R."></div>
             <div class="name"><strong>Sophia R., 41</strong>Founder &middot; Brooklyn, NY<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1117,7 +1117,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">My wife and I both take it. She sleeps better, I recover faster after training. It&rsquo;s the first supplement we actually agree on.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
             <div class="name"><strong>Andrew P., 48</strong>Portland, OR<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1143,7 +1143,7 @@
       <div class="v10-ampm reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <div class="v10-ampm-card">
           <div class="v10-ampm-img">
-            <img src="{{ 'cc-lp-v10-apr26-how-am-v3.webp' | asset_url }}" alt="Woman taking Coastline morning softgels at her bathroom vanity">
+            <img src="{{ 'cc-v10-how-am-v3.webp' | asset_url }}" alt="Woman taking Coastline morning softgels at her bathroom vanity">
           </div>
           <div class="v10-ampm-overlay">
             <span class="v10-ampm-label">Morning &middot; With Breakfast</span>
@@ -1153,7 +1153,7 @@
         </div>
         <div class="v10-ampm-card">
           <div class="v10-ampm-img">
-            <img src="{{ 'cc-lp-v10-apr26-how-pm-v2.webp' | asset_url }}" alt="Evening capsules on a bedside table with moonlit ocean view">
+            <img src="{{ 'cc-v10-how-pm-v2.webp' | asset_url }}" alt="Evening capsules on a bedside table with moonlit ocean view">
           </div>
           <div class="v10-ampm-overlay">
             <span class="v10-ampm-label">Evening &middot; Before Bed</span>
@@ -1183,25 +1183,25 @@
 
       <div class="v10-scientists-grid reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <div class="v10-sci-card">
-          <div class="v10-sci-avatar"><img src="{{ 'cc-lp-v10-apr26-sci-greg.png' | asset_url }}" alt="Greg Potter, PhD"></div>
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-greg.png' | asset_url }}" alt="Greg Potter, PhD"></div>
           <p class="v10-sci-name">Greg Potter, PhD</p>
           <p class="v10-sci-title">Lead Scientist</p>
           <p class="v10-sci-quote">&ldquo;We picked doses the literature actually defends &mdash; not doses that fit on a label.&rdquo;</p>
         </div>
         <div class="v10-sci-card">
-          <div class="v10-sci-avatar"><img src="{{ 'cc-lp-v10-apr26-sci-nic.png' | asset_url }}" alt="Nicolas Verhoeven, PhD"></div>
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-nic.png' | asset_url }}" alt="Nicolas Verhoeven, PhD"></div>
           <p class="v10-sci-name">Nicolas Verhoeven, PhD</p>
           <p class="v10-sci-title">Molecular Medicine</p>
           <p class="v10-sci-quote">&ldquo;Every one of these 13 has human data behind it. Most supplement aisles can&rsquo;t say that.&rdquo;</p>
         </div>
         <div class="v10-sci-card">
-          <div class="v10-sci-avatar"><img src="{{ 'cc-lp-v10-apr26-sci-jacqueline.png' | asset_url }}" alt="Dr. Jacqueline Jacques, ND"></div>
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-jacqueline.png' | asset_url }}" alt="Dr. Jacqueline Jacques, ND"></div>
           <p class="v10-sci-name">Dr. Jacqueline Jacques, ND</p>
           <p class="v10-sci-title">Naturopathic Medicine</p>
           <p class="v10-sci-quote">&ldquo;My patients don&rsquo;t need more pills. They need the right ones at the right dose.&rdquo;</p>
         </div>
         <div class="v10-sci-card">
-          <div class="v10-sci-avatar"><img src="{{ 'cc-lp-v10-apr26-sci-chris.png' | asset_url }}" alt="Dr. Christopher Pollock, MD"></div>
+          <div class="v10-sci-avatar"><img src="{{ 'cc-v10-sci-chris.png' | asset_url }}" alt="Dr. Christopher Pollock, MD"></div>
           <p class="v10-sci-name">Dr. Christopher Pollock, MD</p>
           <p class="v10-sci-title">Senior Science Advisor</p>
           <p class="v10-sci-quote">&ldquo;Most supplements I see in clinic are dosed too low to matter. These aren&rsquo;t.&rdquo;</p>
@@ -1223,7 +1223,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I used to spend $200+/month on five different supplements and still wasn&rsquo;t sure I had everything covered. Coastline replaced all of them. One routine. Done.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
             <div class="name"><strong>Lisa T., 52</strong>Denver, CO<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1232,7 +1232,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I ran every ingredient through PubMed before buying. Every single one checks out at clinical doses. That never happens with supplement companies.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
             <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1241,7 +1241,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">Three weeks in and the deep sleep is real. I wake up before my alarm now. Haven&rsquo;t said that since my 20s.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-james.png' | asset_url }}" alt="James W."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-james.png' | asset_url }}" alt="James W."></div>
             <div class="name"><strong>James W., 49</strong>San Diego, CA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1250,7 +1250,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">Bought it for the creatine and CoQ10 doses. Staying for the sleep. The evening capsules are an underrated part of this system.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-elena-v2.png' | asset_url }}" alt="Elena R."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-elena-v2.png' | asset_url }}" alt="Elena R."></div>
             <div class="name"><strong>Elena R., 38</strong>Miami, FL<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1259,7 +1259,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">My trainer noticed my recovery times before I did. Whatever the taurine and creatine are doing together, it&rsquo;s working.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-tom-v2.jpg' | asset_url }}" alt="Tom H."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-tom-v2.jpg' | asset_url }}" alt="Tom H."></div>
             <div class="name"><strong>Tom H., 46</strong>Chicago, IL<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1268,7 +1268,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I was spending more on random Amazon supplements that weren&rsquo;t even dosed right. This is fewer pills, better ingredients, and I actually trust it.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-maria-v2.png' | asset_url }}" alt="Maria L."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-maria-v2.png' | asset_url }}" alt="Maria L."></div>
             <div class="name"><strong>Maria L., 39</strong>Atlanta, GA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1362,7 +1362,7 @@
 
   <!-- Scene divider -->
   <div class="v10-scene">
-    <img src="{{ 'cc-lp-v10-apr26-scene-1.jpg' | asset_url }}" alt="Coastline horizon">
+    <img src="{{ 'cc-v10-scene-1.jpg' | asset_url }}" alt="Coastline horizon">
   </div>
   <!-- 12d. REVIEWS AGGREGATE                               -->
   <section class="v10-section pale-blue">
@@ -1377,7 +1377,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I used to spend $200+/month on five different supplements and still wasn&rsquo;t sure I had everything covered. Coastline replaced all of them.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-lisa.png' | asset_url }}" alt="Lisa T."></div>
             <div class="name"><strong>Lisa T., 52</strong>Denver, CO<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1385,7 +1385,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I ran every ingredient through PubMed before buying. Every dose checks out. That&rsquo;s never happened with a supplement before.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-andrew.png' | asset_url }}" alt="Andrew P."></div>
             <div class="name"><strong>Andrew P., 55</strong>Boston, MA<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1393,7 +1393,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">Sharper mornings, better sleep, and my joints feel 10 years younger. The evening capsules alone are worth it.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-scott.png' | asset_url }}" alt="James W."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-scott.png' | asset_url }}" alt="James W."></div>
             <div class="name"><strong>James W., 49</strong>Portland, OR<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1401,7 +1401,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">I&rsquo;m a nurse and I&rsquo;m on my feet 12 hours a day. The joint support from glucosamine and the energy from CoQ10 are keeping me going through double shifts.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-karen.png' | asset_url }}" alt="Karen D."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-karen.png' | asset_url }}" alt="Karen D."></div>
             <div class="name"><strong>Karen D., 44</strong>Nashville, TN<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1409,7 +1409,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">Replaced AG1 with this. Twice the transparency at half the hype. My wife noticed I was sleeping deeper before I did.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-david.png' | asset_url }}" alt="David M."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-david.png' | asset_url }}" alt="David M."></div>
             <div class="name"><strong>David M., 53</strong>Austin, TX<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
@@ -1417,7 +1417,7 @@
           <span class="v10-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <p class="quote">The glass shaker alone was worth signing up. But the real surprise was how much better my recovery is after long runs. Creatine and taurine are doing something.</p>
           <div class="who">
-            <div class="v10-review-avatar"><img src="{{ 'cc-lp-v10-apr26-rev-nina.png' | asset_url }}" alt="Nina P."></div>
+            <div class="v10-review-avatar"><img src="{{ 'cc-v10-rev-nina.png' | asset_url }}" alt="Nina P."></div>
             <div class="name"><strong>Nina P., 36</strong>Brooklyn, NY<div class="verified">&#10003; Verified Buyer</div></div>
           </div>
         </div>
