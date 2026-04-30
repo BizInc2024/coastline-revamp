@@ -7,6 +7,11 @@
 {% render 'cc-deps' %}
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- comment -%}
+  Coastline products use ONE selling plan per group (monthly group +
+  2-month group). The render loop below iterates ALL groups, not just
+  the first, so every plan shows up.
+{%- endcomment -%}
 {%- assign sp_group = product.selling_plan_groups | first -%}
 
 <div class="cc-apr26 cc-pdp-hero-apr26">
@@ -110,7 +115,8 @@
             <div style="margin-bottom:28px;">
               <p style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-gray);font-weight:500;margin-bottom:14px;">Select your plan</p>
 
-              {%- for sp in sp_group.selling_plans -%}
+              {%- for grp in product.selling_plan_groups -%}
+              {%- for sp in grp.selling_plans -%}
                 {%- assign sp_alloc = current_variant.selling_plan_allocations | where: 'selling_plan_id', sp.id | first -%}
                 <div @click="plan = '{{ sp.id }}'"
                      :class="plan === '{{ sp.id }}' ? 'cc-pdp-plan-active' : 'cc-pdp-plan-idle'"
@@ -137,6 +143,7 @@
                     </div>
                   </div>
                 </div>
+              {%- endfor -%}
               {%- endfor -%}
 
               {%- comment -%} One-time option (no selling plan) {%- endcomment -%}
