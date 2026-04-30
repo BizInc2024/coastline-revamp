@@ -98,10 +98,11 @@
                 <div style="display:flex;gap:10px;flex-wrap:wrap;">
                   {%- for value in option.values -%}
                     {%- assign opt_idx = forloop.parent.index0 -%}
+                    {%- assign val_handle = value | handleize -%}
                     <button type="button"
                             data-value="{{ value | escape }}"
                             @click="selectedOption{{ opt_idx }} = '{{ value | escape }}'"
-                            :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-opt-active' : 'cc-pdp-opt-idle'"
+                            :class="selectedOption{{ opt_idx }} === '{{ value | escape }}' ? 'cc-pdp-opt-{{ val_handle }}-active' : 'cc-pdp-opt-{{ val_handle }}-idle'"
                             class="cc-pdp-opt-btn">
                       {{ value }}
                     </button>
@@ -338,26 +339,37 @@
     color: var(--parchment);
   }
 
-  /* Flavor-specific FILL colors (background only — no border conflict). */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-value*="Unflavored" i] {
+  /* Per-flavor active/idle pairs — same pattern as homepage cc-pricing-apr26
+     snippet (which works). Each flavor has its own class names so there's no
+     specificity battle between active/idle. Handleize generates these from the
+     variant value (e.g. "Unflavored Blend" → "unflavored-blend"). */
+
+  /* Unflavored / Unflavored Blend — beige */
+  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-active,
+  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-blend-active {
     background: #EDE8DF !important;
-  }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-btn[data-value*="Lemonade" i] {
-    background: #F5E0E4 !important;
-  }
-  /* Active state — uses outline (sits OUTSIDE border, never overridden by
-     specificity battles with data-value rules). Mirrors the plan selector
-     active treatment. */
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active {
-    outline: 3px solid #0A0A0A !important;
-    outline-offset: -3px !important;
     color: #0A0A0A !important;
-    font-weight: 700 !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
   }
-  .cc-pdp-hero-apr26 .cc-pdp-opt-active::before {
-    content: "✓ ";
-    font-weight: 700;
-    color: inherit;
+  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-idle,
+  .cc-pdp-hero-apr26 .cc-pdp-opt-unflavored-blend-idle {
+    background: #EDE8DF !important;
+    color: #6B6B6B !important;
+    border: 1px solid #D5D0C8 !important;
+  }
+
+  /* Coastal Lemonade — pale pink */
+  .cc-pdp-hero-apr26 .cc-pdp-opt-coastal-lemonade-active {
+    background: #F5E0E4 !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-pdp-hero-apr26 .cc-pdp-opt-coastal-lemonade-idle {
+    background: #F5E0E4 !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E0CDD1 !important;
   }
   .cc-pdp-hero-apr26 .cc-pdp-plan-card {
     cursor: pointer;
