@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "narrative": {
+      "type": "cc-vs-bp-v2",
+      "settings": {}
+    },
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "READY TO SWITCH?",
+        "pricing_headline": "Get Started.",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 96,
+        "pad_bottom": 96
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "final_headline": "Built by researchers, not exhibitionists.",
+        "final_subheadline": "13 ingredients at clinical doses -- the science Blueprint stretches across 74 compounds in 7 products.",
+        "final_cta_text": "START MY LONGEVITY SYSTEM",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
+      }
+    },
+    "email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "cc-guarantee-apr29",
+      "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-vs-bp-bottom-v2",
+      "settings": {}
+    }
+  },
+  "order": [
+    "narrative",
+    "pricing",
+    "narrative-bottom",
+    "guarantee",
+    "final-cta",
+    "email"
+  ]
+}
