@@ -83,7 +83,7 @@
     <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
         <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: 'SUPPLEMENT COMPARISON - UPDATED MARCH 2026' }}</p>
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: "SUPPLEMENT COMPARISON - UPDATED APRIL 2026" }}</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
                     {{ section.settings.hero_headline | default: 'Coastline vs Blueprint: Same Goal. Very Different Approach.' }}
@@ -128,12 +128,12 @@
     <section class="py-12 lg:py-16 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "The study Blueprint probably wishes you had not seen" }}</h3>
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "Built around one person experimental protocol" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "For years, Blueprint has been the default recommendation. You have seen it everywhere -- podcast ads, YouTube sponsorships, Instagram stories. It became the supplement that people bought because everyone else seemed to be buying it." }}
+                    {{ section.settings.bridge_1_p1 | default: "Bryan Johnson spent millions testing longevity interventions on himself - bloodwork every month, dozens of experimental compounds, a protocol that once included rapamycin and growth hormone. He turned that personal experiment into a consumer brand." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p2 | default: "Then Blueprint published its own clinical trial. The results were supposed to validate what millions of subscribers already believed. Instead, the data told a very different story." }}
+                    {{ section.settings.bridge_1_p2 | default: "The retail stack: 7 products, 74 compounds, $361 per month. Several of those compounds have limited human trial data - some are experimental, others are drawn from animal studies." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium">
                     {{ section.settings.bridge_1_p3 | default: "Here is what the study actually found -- and why it matters for anyone paying $79 a month." }}
@@ -151,13 +151,13 @@
 
                 <!-- Study findings first -->
                 <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "Blueprint's Own Clinical Trial Found:" }}</p>
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.5);">{{ section.settings.study_label | default: "Inside the Blueprint protocol:" }}</p>
                     <ul>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: 'No significant changes in blood biomarkers vs placebo' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: 'No statistically significant gut health improvement (p = 0.058)' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: 'No metabolic or inflammatory benefits detected' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: 'Microbiome changes were clinically irrelevant' }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: 'Placebo showed similar or larger shifts' }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: "7 separate products, 40+ pills daily across multiple windows" }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: "74 compounds total - several with limited human trial data" }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: "Total stack: $361/month, $12/day" }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: "Built around the founder personal regimen" }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: "Aggressive monthly bloodwork measurement protocol" }}</li>
                     </ul>
                 </div>
 
@@ -168,10 +168,10 @@
                     </div>
                     <div>
                         <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6;">
-                            {{ section.settings.bj_quote | default: "&ldquo;I'd cancel your Blueprint subscription.&rdquo;" }}
+                            {{ section.settings.bj_quote | default: "Real longevity is dose-precision, not pill-count."" }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
-                            {{ section.settings.bj_attribution | default: '-- Bryan Johnson, tech entrepreneur and longevity advocate' }}
+                            {{ section.settings.bj_attribution | default: "-- Bryan Johnson, Blueprint founder, on what got cut from his own stack" }}
                         </p>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                 <div>
                     <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
                     <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
-                        {{ section.settings.pixie_dust_body | default: "Blueprint contains 75 ingredients in a single scoop. That sounds impressive until you do the math. Imagine splitting a single glass of water among 75 people. Each person gets a few drops. That is what happens when you cram 75 ingredients into one serving -- most are present in trace amounts far below what clinical trials use." }}
+                        {{ section.settings.pixie_dust_body | default: "Blueprint contains 74 compounds across 7 products. That sounds comprehensive until you look at the trial evidence behind each one. Several are experimental. Several are drawn from animal studies, not human trials. The Longevity Mix has 2.5g of creatine - most clinical trials use 5g or more. Coastline includes 5.25g. Quantity is not the same as quality at clinical dose." }}
                     </p>
                 </div>
             </div>
@@ -192,7 +192,7 @@
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p1 | default: "That is a lot to take in. A product used by millions, backed by some of the biggest names on the internet, and its own clinical trial could not demonstrate significant benefits over a placebo." }}
+                    {{ section.settings.bridge_2_p1 | default: "A protocol fronted by one of the most public people in longevity, sold at a premium price, and pieced together from 7 separate products." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
                     {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both Blueprint and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
