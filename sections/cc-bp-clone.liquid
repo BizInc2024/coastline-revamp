@@ -298,7 +298,14 @@
             <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <div class="border border-light-gray p-8">
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">Blueprint Claims</p>
-                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: "Blueprint positions itself as the most rigorously measured longevity protocol -- built from Bryan Johnson's personal regimen of monthly bloodwork and 1,000+ biomarkers. The retail stack: 7 separate products, 74 compounds, 40+ pills a day, $361 a month. Several of those compounds rely on animal-trial evidence at the doses Blueprint uses, and the protocol assumes you will adopt the founder's measurement regimen to know if any of it is working." }}</p>
+                    <ul class="space-y-3 text-warm-gray leading-relaxed text-sm">
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Built around one founder's personal regimen, not population trials</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>7 separate products, 74 compounds, 40+ pills daily</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Several compounds rely on animal-trial evidence at the doses used</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Protocol assumes you adopt monthly bloodwork to know what is working</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>$361 a month before any testing or follow-up</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>The protocol that "Don't Die" is built on has been quietly walked back over time</span></li>
+                    </ul>
                 </div>
                 <div class="p-8" style="background-color: #062F3D;">
                     <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">Coastline Delivers</p>

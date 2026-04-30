@@ -298,7 +298,14 @@
             <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <div class="border border-light-gray p-8">
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">IM8 Claims</p>
-                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: "IM8 markets a single daily scoop supporting energy, focus, gut, immunity, sleep, joints and longevity -- 92+ ingredients positioned to address all 12 hallmarks of aging. Most of those ingredients are grouped into proprietary blends, so individual doses are not disclosed on the label." }}</p>
+                    <ul class="space-y-3 text-warm-gray leading-relaxed text-sm">
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>One scoop, marketed to address all 12 hallmarks of aging</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>92+ ingredients, most hidden inside proprietary blends</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Headline ingredients (CaAKG, NMN, spermidine) at undisclosed doses</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>No published clinical trial showing the formula outperforms placebo</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fronted by paid celebrity co-founder, not researchers</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>$154 a month for premium pricing with premium opacity</span></li>
+                    </ul>
                 </div>
                 <div class="p-8" style="background-color: #062F3D;">
                     <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">Coastline Delivers</p>
