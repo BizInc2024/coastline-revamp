@@ -33,7 +33,7 @@
 
         {%- comment -%} ===== RIGHT: Buy panel ===== {%- endcomment -%}
         <div class="cc-pdp-buy-panel"
-             x-data="ccPdpBuy_{{ section.id }}()"
+             x-data="ccPdpBuyApr26()"
              style="padding-top:8px;">
 
           <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,4vw,40px);margin:0 0 16px;color:var(--deep-ink);">
@@ -145,7 +145,7 @@
           {%- endif -%}
 
           {%- comment -%} ===== ATC Form (native ReCharge-compatible) ===== {%- endcomment -%}
-          <form id="cc-pdp-cart-form-{{ section.id }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
+          <form id="cc-pdp-cart-form-{{ section.id | replace: '-', '_' }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
             <input type="hidden" name="id" :value="variantId" />
             <template x-if="plan">
               <input type="hidden" name="selling_plan" :value="plan" />
@@ -212,10 +212,13 @@
     cursor: pointer;
     transition: all 0.2s;
     background: transparent;
+    border: 1px solid var(--light-gray);
+    color: var(--warm-gray);
   }
   .cc-pdp-hero-apr26 .cc-pdp-opt-idle {
     border: 1px solid var(--light-gray);
     color: var(--warm-gray);
+    background: transparent;
   }
   .cc-pdp-hero-apr26 .cc-pdp-opt-idle:hover {
     border-color: var(--deep-ink);
@@ -229,6 +232,8 @@
   .cc-pdp-hero-apr26 .cc-pdp-plan-card {
     cursor: pointer;
     transition: border-color 0.2s;
+    border: 1px solid var(--light-gray);
+    background: var(--parchment);
   }
   .cc-pdp-hero-apr26 .cc-pdp-plan-idle {
     border: 1px solid var(--light-gray);
@@ -244,7 +249,7 @@
 </style>
 
 <script>
-  function ccPdpBuy_{{ section.id }}() {
+  function ccPdpBuyApr26() {
     return {
       loading: false,
       options: {{ current_variant.options | json }},
