@@ -98,7 +98,7 @@
   <script>
     (function() {
       function initRevealObserver() {
-        var nodes = document.querySelectorAll('.cc-apr26 .reveal:not(.visible)');
+        var nodes = document.querySelectorAll('.cc-apr26 .reveal:not(.visible), .cc-apr26 .reveal-stagger:not(.visible)');
         if (!nodes.length) return;
         if (!('IntersectionObserver' in window)) {
           nodes.forEach(function(n) { n.classList.add('visible'); });
