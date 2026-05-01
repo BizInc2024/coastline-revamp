@@ -8,11 +8,14 @@
         width: var(--sp-12);
         margin: 0;
         margin-inline-start: auto;
-        overflow: visible;
+        overflow: hidden;
         padding: 0;
         position: relative;
         white-space: normal;
         display: flex !important;
+      }
+      html.js #CartDrawer .drawer__close[aria-controls="CartDrawer"] .btn-fill {
+        display: none !important;
       }
     }
   </style>
