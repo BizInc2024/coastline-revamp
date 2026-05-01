@@ -88,16 +88,9 @@
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
                     {{ section.settings.hero_headline | default: 'Coastline vs AG1: Which Longevity Supplement Is Actually Worth It?' }}
                 </h1>
-                <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-                    {{ section.settings.hero_subheadline | default: 'Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback.' }}
-                </p>
-                <div class="flex flex-col items-center gap-4 mt-6">
-                    <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
-                    <a href="#v6-takeaways" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO THE KEY TAKEAWAYS</a>
-                </div>
 
                 <!-- Side-by-side product images -->
-                <div class="grid grid-cols-2 gap-8 mt-16 max-w-2xl mx-auto items-end">
+                <div class="grid grid-cols-2 gap-8 mb-10 max-w-2xl mx-auto items-end">
                     <div>
                         <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113{% endif %}" alt="Coastline" class="mx-auto" style="max-height: 240px; object-fit: contain;" loading="lazy">
                         <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
@@ -108,6 +101,14 @@
                         <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">AG1</p>
                         <p class="text-xs text-warm-gray mt-1">75 ingredients, doses undisclosed</p>
                     </div>
+                </div>
+
+                <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
+                    {{ section.settings.hero_subheadline | default: 'Both brands promise better health. But which one actually delivers? We compared ingredients, clinical evidence, pricing, and real user feedback.' }}
+                </p>
+                <div class="flex flex-col items-center gap-4 mt-6">
+                    <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
+                    <a href="#v6-takeaways" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO THE KEY TAKEAWAYS</a>
                 </div>
             </div>
         </div>
