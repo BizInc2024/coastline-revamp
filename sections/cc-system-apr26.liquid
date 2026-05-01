@@ -162,7 +162,7 @@
           <div style="display:flex;justify-content:center;align-items:center;gap:24px;">
             <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
             <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" style="height:64px;object-fit:contain;opacity:0.8;" loading="lazy">
-            <img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" style="height:106px;object-fit:contain;opacity:0.8;margin-left:-12px;" loading="lazy">
+            <img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" class="cc-system-usa-badge" style="height:106px;object-fit:contain;opacity:0.8;margin-left:-12px;" loading="lazy">
           </div>
         </div>
   
@@ -176,6 +176,9 @@
 </div>
 
 <style>
+@media (max-width: 767px) {
+  .cc-system-apr26 .cc-system-usa-badge { height: 143px !important; }
+}
 .cc-system-apr26 .cc-home-system-grid {
     display: grid;
     grid-template-columns: 1fr;
