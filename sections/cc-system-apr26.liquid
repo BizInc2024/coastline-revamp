@@ -19,7 +19,7 @@
           <div style="width:60px;height:1px;background:#0A0A0A;margin:0 auto 40px;"></div>
           {%- if system_headline != blank -%}
             <h2 class="font-grotesk font-medium text-deep-ink leading-tight mb-4" style="font-size: clamp(1.375rem, 4vw, 2.75rem);">
-              {{ system_headline }}
+              {{ system_headline | replace: 'Ingredients. ', 'Ingredients.<br class="md:hidden"> ' }}
             </h2>
           {%- endif -%}
           <p style="font-family:'Inter',sans-serif;font-size:1.05rem;color:var(--warm-gray);max-width:36rem;margin:0 auto;line-height:1.6;">Comprehensive support that's easy to stick with.</p>
