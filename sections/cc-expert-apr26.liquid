@@ -12,7 +12,7 @@
           {{ section.settings.founder_label | default: "OUR APPROACH" }}
         </span>
         <h2 class="font-grotesk font-medium leading-tight mb-10" style="font-size: clamp(22px, 4vw, 44px);color:#FAF9F6 !important;">
-          {{ section.settings.founder_headline | default: "Built by researchers, not marketers" }}
+          {{ section.settings.founder_headline | default: "Built by researchers, not marketers" | replace: 'researchers, ', 'researchers,<br class="md:hidden"> ' }}
         </h2>
         <div class="editorial-divider hairline w-12 h-px mx-auto mb-10" style="background:#333333;"></div>
         <div class="leading-relaxed max-w-2xl mx-auto mb-12" style="font-size: clamp(16px, 2vw, 18px); line-height: 1.75; color:#9A9A9A !important;">
