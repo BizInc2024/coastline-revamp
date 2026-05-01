@@ -107,7 +107,7 @@
                     {{ section.settings.hero_subheadline | default: 'IM8 is Beckham-backed, $154 a month, and 92 ingredients deep - most of them hidden behind proprietary blends. We compared the formulas, the doses, the price, and what 13 clinical-dose ingredients actually delivers.' }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
-                    <a href="#v6-comparison" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
+                    <a href="#v6-comparison-table" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
                     <a href="#v6-takeaways" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO THE KEY TAKEAWAYS</a>
                 </div>
             </div>
@@ -260,7 +260,7 @@
             </div>
 
             <!-- 5B: INGREDIENT COMPARISON GRID -->
-            <div class="mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+            <div id="v6-comparison-table" class="mb-20 reveal" style="scroll-margin-top: 80px;" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <div class="text-center mb-12">
                     <p class="section-counter mb-6">Ingredient Comparison</p>
                     <div class="editorial-divider mx-auto mb-10"></div>
