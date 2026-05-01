@@ -186,7 +186,7 @@
       <div class="reveal cc-trust-badges" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
         <div class="cc-trust-badge"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" loading="lazy"></div>
         <div class="cc-trust-badge"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" loading="lazy"></div>
-        <div class="cc-trust-badge cc-trust-badge--large"><img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" loading="lazy"></div>
+        <div class="cc-trust-badge"><img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" loading="lazy"></div>
       </div>
 
     </div>
@@ -438,28 +438,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
     margin-top: 32px;
   }
   .cc-pricing-product-apr26 .cc-trust-badge {
-    background: white;
-    border-radius: 50%;
-    padding: 8px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .cc-pricing-product-apr26 .cc-trust-badge--large {
-    width: 68px;
-    height: 68px;
-    overflow: hidden;
+    flex-shrink: 0;
   }
   .cc-pricing-product-apr26 .cc-trust-badge img {
-    height: 52px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
-  }
-  .cc-pricing-product-apr26 .cc-trust-badge--large img {
-    height: 72px;
   }
 
   .cc-pricing-product-apr26 .reveal {
