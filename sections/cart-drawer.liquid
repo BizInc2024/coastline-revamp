@@ -1,4 +1,21 @@
 {%- if request.page_type != 'cart' and settings.cart_type == 'drawer' -%}
+  <style>
+    @media screen and (max-width: 639px) {
+      html.js #CartDrawer .drawer__close {
+        clip: auto;
+        border-width: 1px;
+        height: var(--sp-12);
+        width: var(--sp-12);
+        margin: 0;
+        margin-inline-start: auto;
+        overflow: visible;
+        padding: 0;
+        position: relative;
+        white-space: normal;
+        display: flex !important;
+      }
+    }
+  </style>
   <script src="{{ 'cart.js' | asset_url }}" defer></script>
   {%- if linklists.gift-wrapping.links != blank and linklists.gift-wrapping.links.first.type == 'product_link' -%}
     <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
