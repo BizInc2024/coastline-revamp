@@ -90,14 +90,18 @@
                 </h1>
 
                 <!-- Side-by-side product images -->
-                <div class="grid grid-cols-2 gap-8 mb-10 max-w-2xl mx-auto items-end" style="min-height: 240px;">
-                    <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;">
-                        <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Family_Vert_-_CL_2_20aeec91-5477-425f-84e0-5ea21f9239ad.png?v=1769186113{% endif %}" alt="Coastline" class="mx-auto block" style="max-height: 240px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
+                <div class="grid grid-cols-2 gap-8 mb-10 max-w-2xl mx-auto">
+                    <div style="display:flex;flex-direction:column;align-items:center;">
+                        <div style="width:100%;aspect-ratio:1/1;background:#F0EFEC;display:flex;align-items:center;justify-content:center;padding:40px;">
+                            <img src="{% if section.settings.hero_coastline_image != blank %}{{ section.settings.hero_coastline_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;" loading="lazy">
+                        </div>
                         <p class="text-xs tracking-widest uppercase text-deep-ink mt-4">Coastline</p>
                         <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
                     </div>
-                    <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;">
-                        <img src="{% if section.settings.hero_ag1_image != blank %}{{ section.settings.hero_ag1_image | image_url: width: 600 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="AG1" class="mx-auto block" style="max-height: 240px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: -20px;" loading="lazy">
+                    <div style="display:flex;flex-direction:column;align-items:center;">
+                        <div style="width:100%;aspect-ratio:1/1;background:#F0EFEC;display:flex;align-items:center;justify-content:center;padding:40px;">
+                            <img src="{% if section.settings.hero_ag1_image != blank %}{{ section.settings.hero_ag1_image | image_url: width: 600 }}{% else %}{{ 'cc-v6-ag1-product.webp' | asset_url }}{% endif %}" alt="AG1" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;" loading="lazy">
+                        </div>
                         <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">AG1</p>
                         <p class="text-xs text-warm-gray mt-1">75 ingredients, doses undisclosed</p>
                     </div>
