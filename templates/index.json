@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "cc-hero-apr26": {
@@ -6,7 +15,7 @@
         "hero_label": "THE ULTIMATE LONGEVITY SYSTEM",
         "hero_headline": "Unlock a whole new <br>horizon of health.",
         "hero_subheadline": "13 science-backed, clinically-verified ingredients in one easy AM/PM routine to support brain, energy, muscle, gut, skin, sleep and more.",
-        "hero_reviews": "2,000+ five-star reviews",
+        "hero_reviews": "Consistent 5-Star Reviews",
         "hero_cta_text": "START MY LONGEVITY SYSTEM",
         "hero_cta_link": "#cc-home-pricing",
         "hero_secondary_text": "SKIP TO PRICING",
