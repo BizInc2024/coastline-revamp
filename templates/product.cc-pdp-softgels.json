@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "pdp-hero": {
       "type": "cc-pdp-hero-apr29",
       "settings": {
-        "review_text": "100+ five-star reviews",
+        "review_text": "Consistent 5-Star Reviews",
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "4 fat-soluble ingredients in one softgel. Take with your first meal alongside Morning Blend. Supports cellular protection, eye, brain, and skin health.",
         "ingredients_line": "Astaxanthin 6 mg \u00b7 Lutein 10 mg \u00b7 Zeaxanthin 2 mg \u00b7 CoQ10 200 mg",

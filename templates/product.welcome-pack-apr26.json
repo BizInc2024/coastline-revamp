@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "pdp-hero": {
       "type": "cc-pdp-hero-apr29",
       "settings": {
-        "review_text": "2,000+ five-star reviews",
+        "review_text": "Consistent 5-Star Reviews",
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "All 13 clinically dosed ingredients across 3 products. Morning Blend, Softgels, and Evening Capsules \u2014 taken at the right time for optimal absorption.",
         "ingredients_line": "13 ingredients \u00b7 3 products \u00b7 2 daily touchpoints",

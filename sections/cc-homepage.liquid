@@ -532,7 +532,7 @@
         </p>
         <a href="#cc-reviews-anchor" class="cc-hero-stars" style="display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;">
           <span style="color:#fff;font-size:14px;letter-spacing:4px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span class="font-inter" style="font-size:11px;color:rgba(255,255,255,0.6);text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "2,000+ five-star reviews" }}</span>
+          <span class="font-inter" style="font-size:11px;color:rgba(255,255,255,0.6);text-decoration:underline;text-underline-offset:3px;">{{ section.settings.hero_reviews | default: "Consistent 5-Star Reviews" }}</span>
         </a>
         <div class="cc-hero-ctas">
           <a href="{{ section.settings.hero_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;background:#0A0A0A;color:#FAF9F6;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;padding:20px 48px;border:none;text-decoration:none;text-align:center;min-width:200px;transition:opacity 0.3s ease;">
@@ -1035,7 +1035,7 @@
         {{ section.settings.reviews_label | default: "WHAT MEMBERS ARE SAYING" }}
       </p>
       <h2 class="reveal text-center text-deep-ink mb-10 font-grotesk font-medium leading-tight" style="font-size:clamp(1.75rem,4vw,2.75rem);" x-intersect.once="$el.classList.add('visible')">
-        {{ section.settings.reviews_headline | default: "2,000+ five-star reviews" }}
+        {{ section.settings.reviews_headline | default: "Consistent 5-Star Reviews" }}
       </h2>
 
       {%- comment -%} Count reviews per category for Alpine {%- endcomment -%}
@@ -2005,7 +2005,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "hero_reviews",
       "label": "Hero reviews text",
-      "default": "2,000+ five-star reviews"
+      "default": "Consistent 5-Star Reviews"
     },
     {
       "type": "text",
@@ -2385,7 +2385,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "reviews_headline",
       "label": "Reviews headline",
-      "default": "2,000+ five-star reviews"
+      "default": "Consistent 5-Star Reviews"
     },
     {
       "type": "header",

@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "pdp-hero": {
       "type": "cc-pdp-hero-apr29",
       "settings": {
-        "review_text": "200+ five-star reviews",
+        "review_text": "Consistent 5-Star Reviews",
         "trust_badges": "Vegan, Sugar-Free, Caffeine-Free, GMP Certified",
         "hero_description": "7 science-backed ingredients in one easy-scoop powder. Mix with water and take with your first meal. Supports energy, focus, muscle, joints, and gut health.",
         "ingredients_line": "Ergothioneine 5 mg \u00b7 Taurine 3.05 g \u00b7 Creatine 5.25 g \u00b7 Glycine 5 g \u00b7 Inulin 4 g \u00b7 Magnesium Citrate 150 mg \u00b7 Glucosamine Sulfate 750 mg",
