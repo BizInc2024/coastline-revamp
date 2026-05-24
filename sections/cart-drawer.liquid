@@ -640,6 +640,20 @@
                   </div>
                 </div>
   
+                {%- comment -%} ===== ARL auto-renewal disclosure ABOVE checkout button ===== {%- endcomment -%}
+                {%- assign cart_has_subscription = false -%}
+                {%- for item in cart.items -%}
+                  {%- if item.selling_plan_allocation -%}
+                    {%- assign cart_has_subscription = true -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if cart_has_subscription -%}
+                  <div class="cart-arl-disclosure" style="font-family:'Inter',sans-serif;font-size:11px;color:#6B6B6B;line-height:1.5;padding:12px 14px;margin-bottom:12px;background:rgba(0,0,0,0.03);border:1px solid #E8E8E8;">
+                    <strong style="color:#0A0A0A;font-weight:500;">Recurring subscription in cart.</strong> By proceeding to checkout, you authorize Coastline to automatically charge your payment method at the price and frequency shown above for each subscription item, until you cancel. Cancel anytime online from your <a href="/account" style="color:#0A0A0A;text-decoration:underline;">account</a> -- no fees. <a href="/policies/subscription-policy" style="color:#0A0A0A;text-decoration:underline;">Subscription policy</a>.
+                  </div>
+                {%- endif -%}
+
                 {%- if section.settings.show_checkout_button or section.settings.show_view_cart_button -%}
                   <form action="{{ routes.cart_url }}" method="POST" novalidate class="drawer__footer-buttons grid grid-cols-12 gap-4">
                     {%- if section.settings.show_checkout_button -%}

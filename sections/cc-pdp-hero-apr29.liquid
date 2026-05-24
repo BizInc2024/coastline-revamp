@@ -199,16 +199,22 @@
                   {%- assign sp_display_name = 'Delivered every 2 months' -%}
                   {%- assign sp_save_label = section.settings.bimonthly_save | default: default_bimonthly_save -%}
                   {%- assign sp_price_override = section.settings.bimonthly_price | default: default_bimonthly_price -%}
+                  {%- assign sp_renewal_text = 'Renews every 2 months until cancelled' -%}
+                  {%- assign sp_price_suffix = '2 months' -%}
                   {%- assign show_best_value = false -%}
                 {%- elsif sp_name_lower contains '1 month' or sp_name_lower contains 'monthly' -%}
                   {%- assign sp_display_name = 'Monthly subscription' -%}
                   {%- assign sp_save_label = section.settings.monthly_save | default: default_monthly_save -%}
                   {%- assign sp_price_override = section.settings.monthly_price | default: default_monthly_price -%}
+                  {%- assign sp_renewal_text = 'Renews every month until cancelled' -%}
+                  {%- assign sp_price_suffix = 'month' -%}
                   {%- assign show_best_value = true -%}
                 {%- else -%}
                   {%- assign sp_display_name = sp.name -%}
                   {%- assign sp_save_label = sp.description -%}
                   {%- assign sp_price_override = '' -%}
+                  {%- assign sp_renewal_text = 'Renews until cancelled' -%}
+                  {%- assign sp_price_suffix = 'recurring' -%}
                   {%- assign show_best_value = false -%}
                 {%- endif -%}
                 <div @click="plan = '{{ sp.id }}'"
@@ -228,13 +234,18 @@
                           {{ sp_save_label }}
                         </span>
                       {%- endif -%}
+                      {%- if sp.recurring_deliveries -%}
+                        <span style="display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--warm-gray);margin-top:2px;line-height:1.4;">
+                          {{ sp_renewal_text }}
+                        </span>
+                      {%- endif -%}
                     </div>
                     <div style="text-align:right;flex-shrink:0;margin-left:16px;">
                       <span style="display:block;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);font-size:24px;line-height:1;">
                         {%- if sp_price_override != blank -%}{{ sp_price_override }}{%- else -%}{{ sp_display_price | money_without_trailing_zeros }}{%- endif -%}
                       </span>
                       <span style="display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);margin-top:2px;">
-                        {%- if sp.recurring_deliveries -%}/period{%- else -%}one-time{%- endif -%}
+                        {%- if sp.recurring_deliveries -%}/{{ sp_price_suffix }}{%- else -%}one-time{%- endif -%}
                       </span>
                     </div>
                   </div>
@@ -261,6 +272,11 @@
               </div>
             </div>
           {%- endif -%}
+
+          {%- comment -%} ===== ARL auto-renewal proximity disclosure (CA Bus. & Prof. Code 17602) ===== {%- endcomment -%}
+          <div x-show="plan !== ''" x-cloak style="font-family:'Inter',sans-serif;font-size:12px;color:var(--warm-gray);line-height:1.5;padding:14px 16px;margin-bottom:16px;background:rgba(0,0,0,0.025);border:1px solid var(--light-gray);">
+            <strong style="color:var(--deep-ink);font-weight:500;">Subscription terms.</strong> By adding this to your cart with a subscription plan, you authorize Coastline to automatically charge your payment method at the price and frequency shown above, on each renewal date, until you cancel. Cancel anytime online from your <a href="/account" style="color:var(--deep-ink);text-decoration:underline;">account</a> -- no fees, no penalties. See our full <a href="/policies/subscription-policy" style="color:var(--deep-ink);text-decoration:underline;">subscription policy</a>.
+          </div>
 
           {%- comment -%} ===== ATC Form (native ReCharge-compatible) ===== {%- endcomment -%}
           <form id="cc-pdp-cart-form-{{ section.id | replace: '-', '_' }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
