@@ -182,7 +182,9 @@
         <cart-count class="count absolute top-0 right-0 text-xs" aria-label="{{ 'general.cart.cart_count' | t: count: cart.item_count | escape }}"{% if cart == empty %} hidden{% endif %}>{{ cart.item_count }}</cart-count>
       </a>
       <script>
-        document.addEventListener('DOMContentLoaded',()=>{const d=document.querySelector('cart-drawer');if(d)new MutationObserver(()=>fetch('/cart.js').then(r=>r.json()).then(c=>document.querySelectorAll('a.cart-drawer-button cart-count').forEach(e=>{e.innerText=c.item_count;e.hidden=c.item_count===0;}))).observe(d,{childList:true,subtree:true});});
+        document.addEventListener('DOMContentLoaded',()=>{const r=()=>fetch('/cart.js',{cache:'no-store'}).then(x=>x.json()).then(c=>document.querySelectorAll('cart-count').forEach(e=>{e.innerText=c.item_count;e.hidden=c.item_count===0;}));
+        document.addEventListener('click',e=>{if(e.target.closest('[is="cart-remove-button"], #CartDrawer button, #CartDrawer input, #CartDrawer a')) setTimeout(r,600);},true);
+        document.addEventListener('change',e=>{if(e.target.closest('#CartDrawer')) setTimeout(r,400);},true);});
       </script>
     {%- endif -%}
 
