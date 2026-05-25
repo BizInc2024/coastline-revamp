@@ -1,0 +1,96 @@
+{%- comment -%}
+  ============================================================
+  Coastline GEO — Product JSON-LD  (cc-product-schema.liquid)
+  ------------------------------------------------------------
+  WHERE TO INCLUDE:
+    In the product template (sections/cc-pdp-hero-apr29.liquid or
+    main product section). Render once per product page:
+      {% render 'cc-product-schema' %}
+
+  WHY:
+    PDPs currently emit only Organization JSON-LD. This adds
+    Product + AggregateOffer so ChatGPT shopping, Perplexity,
+    Google AI Overviews and the agentic-commerce layer can read
+    name / price-range / availability / SKU.
+
+  PRICING NOTE:
+    AggregateOffer brackets the real purchasable range:
+    lowPrice = subscription entry (e.g. $99), highPrice = one-time
+    (e.g. $150). Driven by Shopify product.price_min/max so it
+    never drifts. Welcome Pack verified: $99 / $120 / $150.
+
+  ⚠️ AGGREGATERATING — DO NOT HARDCODE:
+    Okendo (primary), Yotpo and Loox are installed and already
+    inject their OWN review schema. Adding a second hardcoded
+    AggregateRating here risks duplicate/conflicting markup AND
+    re-introduces an invented review count (the "2,000+" claim
+    was deliberately removed). Leave the rating block commented
+    until you confirm Okendo's real numbers — see the optional
+    block at the bottom + README.
+  ============================================================
+{%- endcomment -%}
+
+{%- assign p = product -%}
+{%- assign v = p.selected_or_first_available_variant -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ p.title | json }},
+  "description": {{ p.description | strip_html | truncate: 5000 | json }},
+  "image": [
+    {%- for image in p.images limit: 5 -%}
+      {{ image | image_url: width: 1200 | prepend: "https:" | json }}{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "sku": {{ v.sku | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": "Coastline Longevity"
+  },
+  "category": "Health & Beauty > Health Care > Vitamins & Supplements",
+  "url": {{ request.origin | append: p.url | json }},
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "lowPrice": "{{ p.price_min | divided_by: 100.0 }}",
+    "highPrice": "{{ p.price_max | divided_by: 100.0 }}",
+    "offerCount": {{ p.variants.size }},
+    "availability": "{% if p.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "url": {{ request.origin | append: p.url | json }}
+  }
+}
+</script>
+
+{%- comment -%}
+  ----------------------------------------------------------------
+  OPTIONAL — AggregateRating wired to OKENDO real data ONLY.
+  Uncomment ONLY after:
+    1. Confirming Okendo does NOT already output its own
+       AggregateRating schema on the PDP (check View Source /
+       Rich Results Test — if it does, leave this OFF to avoid
+       duplicate markup).
+    2. Verifying the metafield namespace/keys match your Okendo
+       install (these are Okendo's standard keys; confirm in
+       Settings → Custom data → Products).
+  Never type a number in by hand here.
+  ----------------------------------------------------------------
+  {%- assign ok_rating = p.metafields.okendo.summaryData.value.reviewAverageValue -%}
+  {%- assign ok_count  = p.metafields.okendo.summaryData.value.reviewCount -%}
+  {%- if ok_rating and ok_count and ok_count > 0 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ p.title | json }},
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "{{ ok_rating }}",
+      "reviewCount": "{{ ok_count }}",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+  {%- endif -%}
+{%- endcomment -%}
