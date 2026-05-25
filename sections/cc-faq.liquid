@@ -1,4 +1,6 @@
 {% render 'cc-deps' %}
+{%- comment -%} GEO: FAQPage JSON-LD, FAQ page only (added 2026-05-24) {%- endcomment -%}
+{%- if page.handle == 'faqs' -%}{% render 'cc-faq-schema' %}{%- endif -%}
 {% comment %}
   CC-FAQ: Comprehensive FAQ page organized by category
   Layout: theme.liquid (deps loaded via cc-deps snippet)
