@@ -1,5 +1,5 @@
 {%- comment -%} GEO: Product/Offer JSON-LD (added 2026-05-24) {%- endcomment -%}
-{% render 'cc-product-schema', product: product %}
+{% render 'cc-product-schema', product: product, onetime_price: section.settings.onetime_price, monthly_price: section.settings.monthly_price, bimonthly_price: section.settings.bimonthly_price %}
 
 {%- comment -%}
   cc-pdp-hero-apr29 -- Universal PDP hero (image + buy panel)

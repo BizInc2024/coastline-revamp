@@ -50,15 +50,40 @@
   },
   "category": "Health & Beauty > Health Care > Vitamins & Supplements",
   "url": {{ request.origin | append: p.url | json }},
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": {{ cart.currency.iso_code | json }},
-    "lowPrice": "{{ p.price_min | divided_by: 100.0 }}",
-    "highPrice": "{{ p.price_max | divided_by: 100.0 }}",
-    "offerCount": {{ p.variants.size }},
-    "availability": "{% if p.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
-    "url": {{ request.origin | append: p.url | json }}
-  }
+  {%- assign cur = cart.currency.iso_code -%}
+  {%- assign avail = 'https://schema.org/InStock' -%}
+  {%- unless p.available -%}{%- assign avail = 'https://schema.org/OutOfStock' -%}{%- endunless -%}
+  {%- assign offer_url = request.origin | append: p.url -%}
+  {%- assign ot = onetime_price | remove: '$' | remove: ',' | strip -%}
+  {%- if ot == blank -%}{%- assign ot = p.price | divided_by: 100.0 -%}{%- endif -%}
+  {%- assign mo = monthly_price | remove: '$' | remove: ',' | strip -%}
+  {%- assign bi = bimonthly_price | remove: '$' | remove: ',' | strip -%}
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "One-time purchase",
+      "priceCurrency": "{{ cur }}",
+      "price": "{{ ot }}",
+      "availability": "{{ avail }}",
+      "url": {{ offer_url | json }}
+    }{%- if mo != blank -%},
+    {
+      "@type": "Offer",
+      "name": "Subscribe & Save — Monthly",
+      "priceCurrency": "{{ cur }}",
+      "price": "{{ mo }}",
+      "availability": "{{ avail }}",
+      "url": {{ offer_url | json }}
+    }{%- endif -%}{%- if bi != blank -%},
+    {
+      "@type": "Offer",
+      "name": "Subscribe & Save — Every 2 Months",
+      "priceCurrency": "{{ cur }}",
+      "price": "{{ bi }}",
+      "availability": "{{ avail }}",
+      "url": {{ offer_url | json }}
+    }{%- endif -%}
+  ]
 }
 </script>
 
