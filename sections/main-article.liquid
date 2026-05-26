@@ -60,9 +60,14 @@
                 </li>
               {%- endif -%}
               {%- if section.settings.show_author -%}
-                <li class="italic text-sm relative" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                  {%- capture author -%}<span class="font-medium not-italic" itemprop="name">{{ article.author }}</span>{%- endcapture -%}
+                {%- assign byline = article.author -%}
+                {%- if byline == blank or byline contains 'Shopify' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
+                <li class="italic text-sm relative" itemprop="author" itemscope itemtype="http://schema.org/Organization">
+                  {%- capture author -%}<span class="font-medium not-italic" itemprop="name">{{ byline }}</span>{%- endcapture -%}
                   {{- 'blogs.article.written_by_html' | t: author: author -}}
+                  {%- if blog.handle == 'deep-dive' -%}
+                    <span class="not-italic"> · Based on the work of <a href="https://www.youtube.com/@gregpotterphd" target="_blank" rel="noopener" class="underline">Greg Potter, PhD</a></span>
+                  {%- endif -%}
                 </li>
               {%- endif -%}
             {%- endcapture -%}
@@ -322,8 +327,25 @@
   </div>
 {%- endif -%}
 
+{%- comment -%} GEO: custom Article schema — author = Coastline Research Team, based on Greg Potter PhD (replaces Shopify structured_data which set author to "Shopify API"). 2026-05-24 {%- endcomment -%}
+{%- assign jbyline = article.author -%}
+{%- if jbyline == blank or jbyline contains 'Shopify' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
 <script type="application/ld+json">
-  {{- article | structured_data -}}
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ request.origin | append: article.url | json }} },
+  "headline": {{ article.title | truncate: 110 | json }},
+  {%- if article.image -%}"image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],{%- endif -%}
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "author": { "@type": "Organization", "name": {{ jbyline | json }}, "url": {{ request.origin | json }} },
+  {%- if blog.handle == 'deep-dive' -%}
+  "isBasedOn": { "@type": "CreativeWork", "name": "Greg Potter, PhD", "url": "https://www.youtube.com/@gregpotterphd", "creator": { "@type": "Person", "name": "Greg Potter", "honorificSuffix": "PhD", "sameAs": "https://www.youtube.com/@gregpotterphd" } },
+  {%- endif -%}
+  "publisher": { "@type": "Organization", "name": "Coastline Longevity", "logo": { "@type": "ImageObject", "url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CoastlineLongevity_LogoOnly_DarkBlue.png?v=1742841454" } },
+  "description": {{ article.excerpt_or_content | strip_html | truncate: 300 | json }}
+}
 </script>
 
 {% schema %}
