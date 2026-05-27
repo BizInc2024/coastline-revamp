@@ -39,7 +39,9 @@
               </time>
               {%- if section.settings.show_author -%}
                 <span class="dd-card__meta-divider"></span>
-                <span>{{ article.author }}</span>
+                {%- assign card_author = article.author -%}
+                {%- if card_author == blank or card_author contains 'Shopify' or card_author contains 'Coastline' -%}{%- assign card_author = 'Coastline Research Team' -%}{%- endif -%}
+                <span>{{ card_author }}</span>
               {%- endif -%}
             </div>
 

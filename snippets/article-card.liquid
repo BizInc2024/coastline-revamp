@@ -43,7 +43,9 @@
 
           {%- if show_author -%}
             <li class="italic text-xs relative">
-              {%- capture author -%}<span class="font-medium not-italic">{{ article.author }}</span>{%- endcapture -%}
+              {%- assign card_author2 = article.author -%}
+              {%- if card_author2 == blank or card_author2 contains 'Shopify' or card_author2 contains 'Coastline' -%}{%- assign card_author2 = 'Coastline Research Team' -%}{%- endif -%}
+              {%- capture author -%}<span class="font-medium not-italic">{{ card_author2 }}</span>{%- endcapture -%}
               {{- 'blogs.article.written_by_html' | t: author: author -}}
             </li>
           {%- endif -%}
