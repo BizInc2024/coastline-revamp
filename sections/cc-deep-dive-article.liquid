@@ -27,7 +27,7 @@
 
     <p class="dd-article__byline">
       {%- assign byline = article.author -%}
-      {%- if byline == blank or byline contains 'Shopify' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
+      {%- if byline == blank or byline contains 'Shopify' or byline contains 'Coastline' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
       By <strong itemprop="author">{{ byline }}</strong>
       {%- if blog.handle == 'deep-dive' -%}
         <span style="color:#6B6B6B;"> · Based on the work of <a href="https://www.youtube.com/@gregpotterphd" target="_blank" rel="noopener" style="color:#6B6B6B; text-decoration:underline;">Greg Potter,&nbsp;PhD</a></span>
@@ -216,7 +216,7 @@
 
 {%- comment -%} GEO: custom Article schema — author = Coastline Research Team, based on Greg Potter PhD (replaces Shopify structured_data which set author to "Shopify API"). 2026-05-24 {%- endcomment -%}
 {%- assign jbyline = article.author -%}
-{%- if jbyline == blank or jbyline contains 'Shopify' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
+{%- if jbyline == blank or jbyline contains 'Shopify' or jbyline contains 'Coastline' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
