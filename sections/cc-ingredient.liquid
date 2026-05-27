@@ -47,6 +47,34 @@
     {%- assign product_img = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766' -%}
 {%- endcase -%}
 
+{%- comment -%} GEO: MedicalWebPage schema — auto-extracts in-body study links as formal citations (2026-05-24) {%- endcomment -%}
+{%- assign cl_cites = '' -%}
+{%- assign cl_chunks = page.content | split: 'href="' -%}
+{%- for cl_chunk in cl_chunks -%}
+  {%- assign cl_url = cl_chunk | split: '"' | first -%}
+  {%- if cl_url contains 'pubmed' or cl_url contains 'ncbi.nlm' or cl_url contains 'doi.org' or cl_url contains 'nih.gov' or cl_url contains 'sciencedirect' or cl_url contains 'nature.com' or cl_url contains 'jamanetwork' or cl_url contains 'thelancet' or cl_url contains 'cell.com' or cl_url contains 'frontiersin' or cl_url contains 'springer' or cl_url contains 'wiley' or cl_url contains 'mdpi' or cl_url contains 'biorxiv' or cl_url contains 'examine.com' -%}
+    {%- unless cl_cites contains cl_url -%}{%- assign cl_cites = cl_cites | append: cl_url | append: '|||' -%}{%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign cl_citelist = cl_cites | split: '|||' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": {{ page.title | json }},
+  "url": {{ request.origin | append: page.url | json }},
+  "mainEntityOfPage": {{ request.origin | append: page.url | json }},
+  {%- if ingredient_tagline != blank %}"description": {{ ingredient_tagline | strip_html | json }},{% endif %}
+  "about": { "@type": "Substance", "name": {{ ingredient_name | json }} },
+  "author": { "@type": "Organization", "name": "Coastline Research Team", "url": {{ request.origin | json }} },
+  "publisher": { "@type": "Organization", "name": "Coastline Longevity", "logo": { "@type": "ImageObject", "url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CoastlineLongevity_LogoOnly_DarkBlue.png?v=1742841454" } }{%- if cl_citelist.size > 0 -%},
+  "citation": [
+    {%- assign cl_first = true -%}
+    {%- for cl_u in cl_citelist -%}{%- if cl_u != blank -%}{%- unless cl_first %},{% endunless %}{ "@type": "CreativeWork", "url": {{ cl_u | json }} }{%- assign cl_first = false -%}{%- endif -%}{%- endfor -%}
+  ]{%- endif -%}
+}
+</script>
+
 <div class="cci" x-data="{ openBenefit: null, openMechanism: null, openFaq: null }">
 
   {%- comment -%} ============================================================
