@@ -26,7 +26,12 @@
     <h1 class="dd-article__h1" itemprop="headline">{{ article.title }}</h1>
 
     <p class="dd-article__byline">
-      By <strong itemprop="author">{{ article.author }}</strong>
+      {%- assign byline = article.author -%}
+      {%- if byline == blank or byline contains 'Shopify' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
+      By <strong itemprop="author">{{ byline }}</strong>
+      {%- if blog.handle == 'deep-dive' -%}
+        <span style="color:#6B6B6B;"> · Based on the work of <a href="https://www.youtube.com/@gregpotterphd" target="_blank" rel="noopener" style="color:#6B6B6B; text-decoration:underline;">Greg Potter,&nbsp;PhD</a></span>
+      {%- endif -%}
       <span style="margin: 0 8px; color: #E8E8E8;">|</span>
       <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
         {{ article.published_at | date: '%B %d, %Y' }}
@@ -72,7 +77,7 @@
           </div>
         {%- endif -%}
         <div>
-          <p class="dd-article__author-name">{{ section.settings.author_name | default: article.author }}</p>
+          <p class="dd-article__author-name">{{ section.settings.author_name | default: 'Coastline Research Team' }}</p>
           <p class="dd-article__author-role">{{ section.settings.author_role }}</p>
           <p class="dd-article__author-bio">{{ section.settings.author_bio }}</p>
         </div>
@@ -209,8 +214,25 @@
   {%- endif -%}
 </div>
 
+{%- comment -%} GEO: custom Article schema — author = Coastline Research Team, based on Greg Potter PhD (replaces Shopify structured_data which set author to "Shopify API"). 2026-05-24 {%- endcomment -%}
+{%- assign jbyline = article.author -%}
+{%- if jbyline == blank or jbyline contains 'Shopify' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
 <script type="application/ld+json">
-  {{ article | structured_data }}
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ request.origin | append: article.url | json }} },
+  "headline": {{ article.title | truncate: 110 | json }},
+  {%- if article.image -%}"image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],{%- endif -%}
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
+  "author": { "@type": "Organization", "name": {{ jbyline | json }}, "url": {{ request.origin | json }} },
+  {%- if blog.handle == 'deep-dive' -%}
+  "isBasedOn": { "@type": "CreativeWork", "name": "Greg Potter, PhD", "url": "https://www.youtube.com/@gregpotterphd", "creator": { "@type": "Person", "name": "Greg Potter", "honorificSuffix": "PhD", "sameAs": "https://www.youtube.com/@gregpotterphd" } },
+  {%- endif -%}
+  "publisher": { "@type": "Organization", "name": "Coastline Longevity", "logo": { "@type": "ImageObject", "url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CoastlineLongevity_LogoOnly_DarkBlue.png?v=1742841454" } },
+  "description": {{ article.excerpt_or_content | strip_html | truncate: 300 | json }}
+}
 </script>
 
 {% schema %}
