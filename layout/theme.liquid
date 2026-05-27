@@ -45,6 +45,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KQQJLHDZ');</script>
+  <!-- End Google Tag Manager -->
+
   <meta name="theme-color" content="{{ settings.color_button_background }}">
   <link rel="canonical" href="{{ canonical_url }}">
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -100,6 +109,10 @@
 </head>
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}" data-rounded-button="{{ settings.rounded_button }}" data-rounded-input="{{ settings.rounded_input }}" data-rounded-block="{{ settings.rounded_block }}" data-rounded-card="{{ settings.rounded_card }}" data-button-hover="{{ settings.buttons_hover }}"{% if settings.enable_lazy_image %} data-lazy-image{% endif %} data-title-animation data-page-rendering>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQQJLHDZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a class="sr-only skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   {%- liquid
