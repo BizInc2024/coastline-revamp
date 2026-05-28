@@ -1,5 +1,63 @@
 {{ 'cc-scientists.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%} GEO: Person @graph for the science team — sameAs to verified external profiles for E-E-A-T (2026-05-28) {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Greg Potter",
+      "honorificSuffix": "PhD, MSc",
+      "jobTitle": "Head of Formulation",
+      "description": "Leads Coastline's formulation development. PhD from the University of Leeds focused on sleep, circadian rhythms, nutrition, and metabolism. Has worked with the US Naval Special Warfare Command on health and performance optimization; health coach at the London Psychiatry Clinic.",
+      "image": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015",
+      "affiliation": { "@type": "Organization", "name": "Coastline Longevity", "url": "https://coastlinelongevity.com/" },
+      "alumniOf": { "@type": "EducationalOrganization", "name": "University of Leeds" },
+      "sameAs": ["https://www.youtube.com/@gregpotterphd"]
+    },
+    {
+      "@type": "Person",
+      "name": "Jacqueline Jacques",
+      "honorificPrefix": "Dr.",
+      "honorificSuffix": "ND",
+      "jobTitle": "Scientific Advisor",
+      "description": "Decades of clinical experience in naturopathic medicine. Bridges laboratory research and real-world clinical application in Coastline's formulation process.",
+      "image": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015",
+      "affiliation": { "@type": "Organization", "name": "Coastline Longevity", "url": "https://coastlinelongevity.com/" },
+      "sameAs": ["https://naturemed.org/team/jacqueline-jacques-nd/"]
+    },
+    {
+      "@type": "Person",
+      "name": "Nicolas Verhoeven",
+      "honorificPrefix": "Dr.",
+      "honorificSuffix": "PhD",
+      "jobTitle": "Scientific Advisor",
+      "description": "Over a decade analyzing scientific literature across nutrition science, exercise physiology, and molecular medicine. Doctoral research on mitochondrial function, autophagy, and peroxisome biogenesis. Creator of the Physionic YouTube channel.",
+      "image": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015",
+      "affiliation": { "@type": "Organization", "name": "Coastline Longevity", "url": "https://coastlinelongevity.com/" },
+      "sameAs": ["https://www.youtube.com/physionic"]
+    },
+    {
+      "@type": "Person",
+      "name": "Christopher Pollock",
+      "honorificPrefix": "Dr.",
+      "honorificSuffix": "M.D., M.Sc.",
+      "jobTitle": "Scientific Advisor",
+      "description": "Governor General's Medal for placing first in his graduating class at Mount Allison University. MSc University of Toronto, MD University of Ottawa, Ophthalmology Residency and Oculoplastic Surgery fellowship at UBC.",
+      "image": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp",
+      "affiliation": { "@type": "Organization", "name": "Coastline Longevity", "url": "https://coastlinelongevity.com/" },
+      "alumniOf": [
+        { "@type": "EducationalOrganization", "name": "Mount Allison University" },
+        { "@type": "EducationalOrganization", "name": "University of Toronto" },
+        { "@type": "EducationalOrganization", "name": "University of Ottawa" },
+        { "@type": "EducationalOrganization", "name": "University of British Columbia" }
+      ]
+    }
+  ]
+}
+</script>
+
 <div class="sci">
 
   <div class="sci__hero">
@@ -21,6 +79,7 @@
         <li class="sci__cred">London Psychiatry Clinic</li>
       </ul>
       <p class="sci__text">Greg leads the development of Coastline's formulation. His PhD from the University of Leeds focused on sleep, circadian rhythms, nutrition, and metabolism. He has worked with the US Naval Special Warfare Command on health and performance optimization, and serves as a health coach at the London Psychiatry Clinic.</p>
+      <p class="sci__profile-link" style="margin-top:12px; font-size:11px; letter-spacing:0.15em; text-transform:uppercase;"><a href="https://www.youtube.com/@gregpotterphd" target="_blank" rel="noopener" style="color:#6B6B6B; text-decoration:none; border-bottom:1px solid #E8E8E8; padding-bottom:2px;">Verified profile ↗</a></p>
       <p class="sci__text">As a coach at Loughborough University, he trained a sprinter to four gold medals at the European Championships. His research has been featured by the BBC World Service, The Washington Post, Reuters, and TIME Magazine.</p>
       <p class="sci__quote">"The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered."</p>
     </div>
@@ -39,6 +98,7 @@
         <li class="sci__cred">Formulation Science</li>
       </ul>
       <p class="sci__text">Dr. Jacques brings decades of clinical experience in naturopathic medicine to Coastline's formulation process. Her expertise bridges the gap between laboratory research and real-world clinical application, ensuring that every ingredient selection is grounded in both scientific evidence and practical patient outcomes.</p>
+      <p class="sci__profile-link" style="margin-top:12px; font-size:11px; letter-spacing:0.15em; text-transform:uppercase;"><a href="https://naturemed.org/team/jacqueline-jacques-nd/" target="_blank" rel="noopener" style="color:#6B6B6B; text-decoration:none; border-bottom:1px solid #E8E8E8; padding-bottom:2px;">Verified profile ↗</a></p>
       <p class="sci__quote">"Coastline is what happens when you combine scientific rigor with real-world clinical understanding."</p>
     </div>
   </div>
@@ -56,6 +116,7 @@
         <li class="sci__cred">11 Years Literature Analysis</li>
       </ul>
       <p class="sci__text">Dr. Verhoeven has spent over a decade analyzing the scientific literature across nutrition science, exercise physiology, and molecular medicine. His doctoral research focused on mitochondrial function, autophagy, and peroxisome biogenesis.</p>
+      <p class="sci__profile-link" style="margin-top:12px; font-size:11px; letter-spacing:0.15em; text-transform:uppercase;"><a href="https://www.youtube.com/physionic" target="_blank" rel="noopener" style="color:#6B6B6B; text-decoration:none; border-bottom:1px solid #E8E8E8; padding-bottom:2px;">Verified profile ↗ (Physionic)</a></p>
       <p class="sci__text">His role at Coastline is to ensure every ingredient is backed by the strongest available evidence and dosed at levels shown to be effective in clinical research. He bridges the gap between complex physiological concepts and practical supplementation.</p>
     </div>
   </div>
