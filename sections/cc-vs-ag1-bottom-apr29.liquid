@@ -77,12 +77,14 @@
           <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.ampm_intro | default: "Your mornings and your nights aren't asking for the same thing. IM8 gives you one sachet for both. Coastline splits the formula across your day -- energy and focus in the morning, recovery and repair at night." }}</p>
         </div>
         <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto items-stretch">
-          <div class="p-8 bg-white" style="border:1px solid #E8E8E8;">
+          <div class="p-8 bg-white" style="border:1px solid #E8E8E8;overflow:hidden;">
+            <img src="{{ 'cc-v10-am-morning-fixed.jpg' | asset_url }}" alt="Coastline morning routine" style="display:block;width:calc(100% + 64px);height:180px;object-fit:cover;margin:-32px -32px 24px;" loading="lazy">
             <p class="text-xs tracking-widest uppercase mb-3 text-warm-gray">Morning</p>
             <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-3">Morning Blend + softgels</h3>
             <p class="text-warm-gray leading-relaxed">{{ section.settings.ampm_am | default: "With your first meal -- creatine, taurine, ergothioneine and CoQ10 for energy, focus, and cellular support." }}</p>
           </div>
-          <div class="p-8" style="background:#062F3D;">
+          <div class="p-8" style="background:#062F3D;overflow:hidden;">
+            <img src="{{ 'cc-bedside-evening.png' | asset_url }}" alt="Coastline evening routine" style="display:block;width:calc(100% + 64px);height:180px;object-fit:cover;margin:-32px -32px 24px;" loading="lazy">
             <p class="text-xs tracking-widest uppercase mb-3" style="color:rgba(250,249,246,0.55);">Evening</p>
             <h3 class="font-grotesk text-xl font-medium mb-3" style="color:#FAF9F6;">Evening capsules</h3>
             <p class="leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.ampm_pm | default: "Before bed -- L-theanine, glucosamine and more for calm, recovery, and overnight repair." }}</p>
