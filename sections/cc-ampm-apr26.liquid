@@ -1,0 +1,53 @@
+{% comment %}
+  cc-ampm-apr26 — "Timed to your biology" AM/PM section.
+  Standalone so it can be ordered BELOW the formulation section on the IM8 LP
+  (the formula grid lives in cc-vs-ag1-bottom). IM8-only via template order.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+  .cc-ampm-apr26 .editorial-divider { width: 60px; height: 1px; background: #0A0A0A; }
+  .cc-ampm-apr26 .section-counter { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #6B6B6B; }
+</style>
+
+<section class="cc-ampm-apr26 py-16 lg:py-24 bg-parchment">
+  <div class="max-w-4xl mx-auto px-6 sm:px-8">
+    <div class="text-center mb-12">
+      <p class="section-counter mb-6">Timed To Your Biology</p>
+      <div class="editorial-divider mx-auto mb-10"></div>
+      <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4 text-deep-ink">{{ section.settings.ampm_headline | default: "One scoop, or built around your day?" }}</h2>
+      <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.ampm_intro | default: "Your mornings and your nights aren't asking for the same thing. IM8 gives you one sachet for both. Coastline splits the formula across your day -- energy and focus in the morning, recovery and repair at night." }}</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="p-8 bg-white" style="border:1px solid #E8E8E8;">
+        <p class="text-xs tracking-widest uppercase mb-3 text-warm-gray">Morning</p>
+        <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-3">Morning Blend + softgels</h3>
+        <p class="text-warm-gray leading-relaxed">{{ section.settings.ampm_am | default: "With your first meal -- creatine, taurine, ergothioneine and CoQ10 for energy, focus, and cellular support." }}</p>
+      </div>
+      <div class="p-8" style="background:#062F3D;">
+        <p class="text-xs tracking-widest uppercase mb-3" style="color:rgba(250,249,246,0.55);">Evening</p>
+        <h3 class="font-grotesk text-xl font-medium mb-3" style="color:#FAF9F6;">Evening capsules</h3>
+        <p class="leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.ampm_pm | default: "Before bed -- L-theanine, glucosamine and more for calm, recovery, and overnight repair." }}</p>
+      </div>
+    </div>
+    <p class="text-center text-base max-w-xl mx-auto leading-relaxed mt-10 text-warm-gray">{{ section.settings.ampm_close | default: "IM8: one scoop, morning only. Coastline: dosed for morning and night." }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AM/PM Timed (apr26)",
+  "tag": "section",
+  "class": "cc-ampm-apr26-wrap",
+  "settings": [
+    { "type": "text", "id": "ampm_headline", "label": "Headline", "default": "One scoop, or built around your day?" },
+    { "type": "textarea", "id": "ampm_intro", "label": "Intro" },
+    { "type": "textarea", "id": "ampm_am", "label": "Morning copy" },
+    { "type": "textarea", "id": "ampm_pm", "label": "Evening copy" },
+    { "type": "text", "id": "ampm_close", "label": "Close line" }
+  ],
+  "presets": [{ "name": "AM/PM Timed (apr26)", "category": "Landing Pages" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

@@ -210,6 +210,10 @@
         "r14",
         "r15"
       ]
+    },
+    "ampm": {
+      "type": "cc-ampm-apr26",
+      "settings": {}
     }
   },
   "order": [
@@ -219,6 +223,7 @@
     "community",
     "reviews",
     "narrative-bottom",
+    "ampm",
     "final-cta",
     "email"
   ]
