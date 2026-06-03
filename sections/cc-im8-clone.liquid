@@ -83,7 +83,7 @@
     <section id="hero" class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
         <div class="max-w-3xl mx-auto px-6 sm:px-8 text-center">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: "SUPPLEMENT COMPARISON - UPDATED APRIL 2026" }}</p>
+                <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: "SUPPLEMENT COMPARISON - UPDATED JUNE 3, 2026" }}</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
                     {{ section.settings.hero_headline | default: 'Coastline vs IM8 Longevity: the trending molecules, or the proven ones?' }}
@@ -215,8 +215,8 @@
                 <!-- Coastline Card -->
                 <div class="border-2 border-deep-ink p-6 relative bg-parchment">
                     <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
-                    <div style="height: 230px; display: flex; align-items: flex-end; justify-content: center;" class="mb-4">
-                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 210px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
+                    <div style="height: 180px; display: flex; align-items: flex-end; justify-content: center;" class="mb-3">
+                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 170px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
@@ -230,8 +230,8 @@
                 </div>
                 <!-- IM8 Card -->
                 <div class="border border-light-gray p-6 bg-parchment">
-                    <div style="height: 230px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
-                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" style="max-height: 200px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
+                    <div style="height: 180px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-3">
+                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" style="max-height: 170px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8 Longevity</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$119<span class="text-lg text-warm-gray">/month</span></p>
