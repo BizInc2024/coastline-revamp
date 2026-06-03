@@ -97,14 +97,14 @@
                         <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
                     </div>
                     <div>
-                        <img src="{% if section.settings.hero_im8_image != blank %}{{ section.settings.hero_im8_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8" class="mx-auto block" style="max-height: 348px; max-width: 100%; object-fit: contain; object-position: bottom; margin-top: -60px; margin-bottom: -22px;" loading="lazy">
+                        <img src="{% if section.settings.hero_im8_image != blank %}{{ section.settings.hero_im8_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" class="mx-auto block" style="max-height: 150px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 13px;" loading="lazy">
                         <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">IM8 Longevity</p>
                         <p class="text-xs text-warm-gray mt-1">10 trending molecules &middot; $119/mo</p>
                     </div>
                 </div>
 
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-                    {{ section.settings.hero_subheadline | default: 'IM8 Longevity is Beckham-backed, $119 a month, and built on the molecules longevity marketing loves - NMN, resveratrol, spermidine. We took the opposite approach. We compared both formulas on the only thing that counts: what is actually proven in humans.' }}
+                    {{ section.settings.hero_subheadline | default: 'We do not chase longevity trends. We formulate around what is proven in humans -- and here is the side-by-side.' }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
                     <a href="#v6-comparison-table" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
@@ -114,30 +114,16 @@
         </div>
     </section>
 
-    <!-- SECTION 2: NEUTRAL INTRO -->
-    <section class="pt-2 pb-12 lg:pt-4 lg:pb-16 bg-parchment">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.intro_body_1 | default: "IM8 Daily Ultimate Longevity launched with a billion-dollar marketing engine and a David Beckham endorsement, built around the trendiest names in longevity - NMN, resveratrol, fisetin, spermidine. Coastline took the opposite approach: 13 ingredients, each chosen for one reason - real human evidence at a clinical dose. We left the trendy molecules out on purpose. Here is why." }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bridge: Intro → IM8 Clinical Evidence -->
+    <!-- Bridge: setup the central idea (trendy vs proven) → IM8 Clinical Evidence -->
     <section class="py-12 lg:py-16 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "What is actually proven in your $119 sachet?" }}</h3>
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "Trendy is not the same as proven." }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "IM8 launched on the Beckham name. The marketing is everywhere - football pitches, Instagram, premium magazines. It became a supplement people bought because the man selling it looked great in a kit." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p2 | default: "And to their credit, IM8 Longevity discloses its doses. The issue is not transparency - it is the evidence. The headline molecules are the ones longevity marketing has hyped for a decade: NMN, resveratrol, fisetin, spermidine. Exciting in a petri dish. Much quieter in human trials." }}
+                    {{ section.settings.bridge_1_p1 | default: "IM8 Longevity is built on the molecules longevity marketing has hyped for a decade -- NMN, resveratrol, fisetin, spermidine. To their credit, IM8 discloses every dose. The problem is not transparency. It is the evidence." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium">
-                    {{ section.settings.bridge_1_p3 | default: "Here is what the human research actually shows -- and why we left these ingredients out." }}
+                    {{ section.settings.bridge_1_p3 | default: "Here is what the human research on those molecules actually shows." }}
                 </p>
             </div>
         </div>
@@ -187,19 +173,46 @@
         </div>
     </section>
 
+    <!-- COMMON GROUND (navy) — moved up: shared ingredients, dose deltas -->
+    <section class="py-20 lg:py-28" style="background-color: #062F3D;">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+            <div class="text-center mb-12">
+                <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.55);">Common Ground</p>
+                <div style="width:60px; height:1px; background:rgba(250,249,246,0.25); margin:0 auto 40px;"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4" style="color:#FAF9F6;">{{ section.settings.common_headline | default: 'Where the two formulas overlap' }}</h2>
+                <p class="text-lg max-w-xl mx-auto leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.common_intro | default: "Three ingredients appear in both. We are not going to pretend otherwise -- but look at the doses. We formulate to the amounts used in the research." }}</p>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div style="border:1px solid rgba(250,249,246,0.15); padding:24px; text-align:center;">
+                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:17px;">Taurine</p>
+                    <p style="font-size:14px; margin-top:12px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">Coastline 3.05g</span><br>IM8 Longevity 2g</p>
+                    <p style="color:#E7FF56; font-size:13px; margin-top:10px; font-weight:600;">~50% more</p>
+                </div>
+                <div style="border:1px solid rgba(250,249,246,0.15); padding:24px; text-align:center;">
+                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:17px;">Glycine</p>
+                    <p style="font-size:14px; margin-top:12px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">Coastline 5g</span><br>IM8 Longevity 3g</p>
+                    <p style="color:#E7FF56; font-size:13px; margin-top:10px; font-weight:600;">~65% more</p>
+                </div>
+                <div style="border:1px solid rgba(250,249,246,0.15); padding:24px; text-align:center;">
+                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:17px;">Astaxanthin</p>
+                    <p style="font-size:14px; margin-top:12px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">Coastline 6mg</span><br>IM8 Longevity 6mg</p>
+                    <p style="color:rgba(250,249,246,0.55); font-size:13px; margin-top:10px;">Matched</p>
+                </div>
+            </div>
+            <p class="text-center text-base max-w-xl mx-auto leading-relaxed mt-10" style="color:rgba(250,249,246,0.7);">{{ section.settings.common_close | default: "Same ingredients. Higher doses where it counts -- and matched where they already got it right." }}</p>
+        </div>
+    </section>
+
     <!-- Bridge: David Beckham → Comparison -->
     <section class="py-16 lg:py-20 bg-parchment">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p1 | default: "A product fronted by one of the most recognizable athletes in the world, sold at a premium, built on the molecules longevity marketing cannot stop talking about." }}
-                </p>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both IM8 Longevity and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the human evidence, and the price." }}
+                    {{ section.settings.bridge_2_p2 | default: "No marketing claims -- just the publicly available data on both, side by side: the ingredients, the doses, the human evidence, and the price." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
-                    {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
+                    {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found." }}
                 </p>
                 <div class="text-center">
                     <a href="#pricing-product-apr26" class="link-underline" style="font-size:12px; color:var(--warm-gray);">GET 34% OFF COASTLINE NOW</a>
@@ -239,7 +252,7 @@
                 <!-- IM8 Card -->
                 <div class="border border-light-gray p-6 bg-parchment">
                     <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
-                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8" style="max-height: 350px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
+                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" style="max-height: 170px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 80px;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8 Longevity</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$119<span class="text-lg text-warm-gray">/month</span></p>
@@ -257,34 +270,6 @@
                 <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
                     {{ section.settings.price_framing | default: "$0.67 a day less -- for ingredients with the human evidence to back them. You are not paying for trending molecules or a celebrity's face. You are paying for what is proven to work." }}
                 </p>
-            </div>
-
-            <!-- 5A2: COMMON GROUND -->
-            <div class="mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="text-center mb-12">
-                    <p class="section-counter mb-6">Common Ground</p>
-                    <div class="editorial-divider mx-auto mb-10"></div>
-                    <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.common_headline | default: 'Where the two formulas overlap' }}</h2>
-                    <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.common_intro | default: "Three ingredients appear in both formulas. We are not going to pretend otherwise -- but look at the doses. We formulate to the amounts used in the research." }}</p>
-                </div>
-                <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <div class="v6-ingredient-card">
-                        <p>Taurine</p>
-                        <p style="font-size:13px; margin-top:10px; color:#6B6B6B;"><span style="color:#0A0A0A; font-weight:600;">Coastline 3.05g</span><br>IM8 Longevity 2g</p>
-                        <p style="color:#2D5A47; font-size:12px; margin-top:8px; font-weight:600;">~50% more</p>
-                    </div>
-                    <div class="v6-ingredient-card">
-                        <p>Glycine</p>
-                        <p style="font-size:13px; margin-top:10px; color:#6B6B6B;"><span style="color:#0A0A0A; font-weight:600;">Coastline 5g</span><br>IM8 Longevity 3g</p>
-                        <p style="color:#2D5A47; font-size:12px; margin-top:8px; font-weight:600;">~65% more</p>
-                    </div>
-                    <div class="v6-ingredient-card">
-                        <p>Astaxanthin</p>
-                        <p style="font-size:13px; margin-top:10px; color:#6B6B6B;"><span style="color:#0A0A0A; font-weight:600;">Coastline 6mg</span><br>IM8 Longevity 6mg</p>
-                        <p style="color:#6B6B6B; font-size:12px; margin-top:8px;">Matched</p>
-                    </div>
-                </div>
-                <p class="text-center text-warm-gray text-base max-w-xl mx-auto leading-relaxed mt-10">{{ section.settings.common_close | default: "Same ingredients. Higher doses where it counts -- and matched where they already got it right." }}</p>
             </div>
 
             <!-- 5B: INGREDIENT COMPARISON GRID -->
