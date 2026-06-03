@@ -86,7 +86,7 @@
                 <p class="section-counter mb-6">{{ section.settings.hero_eyebrow | default: "SUPPLEMENT COMPARISON - UPDATED APRIL 2026" }}</p>
                 <div class="editorial-divider mx-auto mb-10"></div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-grotesk font-medium mb-8 leading-tight text-deep-ink">
-                    {{ section.settings.hero_headline | default: 'Coastline vs IM8: 92 Ingredients, or 13 You Can Actually Feel?' }}
+                    {{ section.settings.hero_headline | default: 'Coastline vs IM8 Longevity: the trending molecules, or the proven ones?' }}
                 </h1>
 
                 <!-- Side-by-side product images -->
@@ -97,14 +97,14 @@
                         <p class="text-xs text-warm-gray mt-1">13 clinical-dose ingredients</p>
                     </div>
                     <div>
-                        <img src="{% if section.settings.hero_im8_image != blank %}{{ section.settings.hero_im8_image | image_url: width: 600 }}{% else %}{{ 'cc-v12-im8-product.webp' | asset_url }}{% endif %}" alt="IM8" class="mx-auto block" style="max-height: 348px; max-width: 100%; object-fit: contain; object-position: bottom; margin-top: -60px; margin-bottom: -22px;" loading="lazy">
-                        <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">IM8</p>
-                        <p class="text-xs text-warm-gray mt-1">92 ingredients, doses undisclosed</p>
+                        <img src="{% if section.settings.hero_im8_image != blank %}{{ section.settings.hero_im8_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8" class="mx-auto block" style="max-height: 348px; max-width: 100%; object-fit: contain; object-position: bottom; margin-top: -60px; margin-bottom: -22px;" loading="lazy">
+                        <p class="text-xs tracking-widest uppercase text-warm-gray mt-4">IM8 Longevity</p>
+                        <p class="text-xs text-warm-gray mt-1">10 trending molecules &middot; $119/mo</p>
                     </div>
                 </div>
 
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-                    {{ section.settings.hero_subheadline | default: 'IM8 is Beckham-backed, $154 a month, and 92 ingredients deep - most of them hidden behind proprietary blends. We compared the formulas, the doses, the price, and what 13 clinical-dose ingredients actually delivers.' }}
+                    {{ section.settings.hero_subheadline | default: 'IM8 Longevity is Beckham-backed, $119 a month, and built on the molecules longevity marketing loves - NMN, resveratrol, spermidine. We took the opposite approach. We compared both formulas on the only thing that counts: what is actually proven in humans.' }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
                     <a href="#v6-comparison-table" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
@@ -119,7 +119,7 @@
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <p class="text-warm-gray text-lg leading-relaxed">
-                    {{ section.settings.intro_body_1 | default: "IM8 launched with a billion-dollar marketing engine and a David Beckham endorsement. Promising 92+ ingredients, all 12 hallmarks of aging, and engineered greatness in every scoop. We compared it side by side with Coastline - a science-first longevity system built around 13 fully-disclosed ingredients at clinical doses. We looked at what is actually inside, what each ingredient does at its labeled dose, and what you are paying $154 a month for." }}
+                    {{ section.settings.intro_body_1 | default: "IM8 Daily Ultimate Longevity launched with a billion-dollar marketing engine and a David Beckham endorsement, built around the trendiest names in longevity - NMN, resveratrol, fisetin, spermidine. Coastline took the opposite approach: 13 ingredients, each chosen for one reason - real human evidence at a clinical dose. We left the trendy molecules out on purpose. Here is why." }}
                 </p>
             </div>
         </div>
@@ -129,15 +129,15 @@
     <section class="py-12 lg:py-16 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "What is actually in your $154 scoop?" }}</h3>
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "What is actually proven in your $119 sachet?" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "IM8 launched on Beckham name. The marketing is everywhere - football pitches, Instagram, premium magazines. It became a supplement people bought because the man who sold it to them looked great in a kit." }}
+                    {{ section.settings.bridge_1_p1 | default: "IM8 launched on the Beckham name. The marketing is everywhere - football pitches, Instagram, premium magazines. It became a supplement people bought because the man selling it looked great in a kit." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p2 | default: "But here is what gets harder to find: the doses. IM8 lists 92+ ingredients on the label, then groups most of them into proprietary blends. You see a total milligram count for the blend - never the amount of any single ingredient inside it." }}
+                    {{ section.settings.bridge_1_p2 | default: "And to their credit, IM8 Longevity discloses its doses. The issue is not transparency - it is the evidence. The headline molecules are the ones longevity marketing has hyped for a decade: NMN, resveratrol, fisetin, spermidine. Exciting in a petri dish. Much quieter in human trials." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium">
-                    {{ section.settings.bridge_1_p3 | default: "Here is what we found when we pulled the data -- and why it matters for anyone paying $154 a month." }}
+                    {{ section.settings.bridge_1_p3 | default: "Here is what the human research actually shows -- and why we left these ingredients out." }}
                 </p>
             </div>
         </div>
@@ -152,13 +152,13 @@
 
                 <!-- Study findings first -->
                 <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.85);">{{ section.settings.study_label | default: "On IM8 Daily Ultimate Label:" }}</p>
+                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.85);">{{ section.settings.study_label | default: "On IM8 Longevity's headline molecules:" }}</p>
                     <ul>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: "Most ingredients hidden inside proprietary blends - individual doses not disclosed" }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: "92+ active compounds split across one daily scoop - single-digit milligrams each" }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: "No published clinical trial showing the formula outperforms placebo" }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: "Headline ingredients (CaAKG, NMN, spermidine) at unverifiable amounts" }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: "$154/month for the bundle - premium pricing, premium opacity" }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: "NMN (300mg) - a 2025 meta-analysis of 10 human trials found no benefit to strength, muscle, or physical function." }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: "Resveratrol (250mg) - notoriously poor absorption; human longevity outcomes still unproven after 20 years of study." }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: "Fisetin, quercetin, spermidine - senolytics with promising mouse data; human evidence is early-stage and mostly preclinical." }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: "Every dose is disclosed. What is missing is the human proof these molecules deliver the longevity they are sold on." }}</li>
+                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: "$119/month - for a formula built on promise, not proof." }}</li>
                     </ul>
                 </div>
 
@@ -172,15 +172,15 @@
                             {{ section.settings.bj_quote | default: "When the formula does not have the evidence, the brand pays for endorsement&nbsp;instead." }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
-                            {{ section.settings.bj_attribution | default: "-- David Beckham was reportedly paid an eight-figure sum plus co-founder equity to put his face on IM8. Most of the 92+ compounds inside have no published trial showing they work at the doses used." }}
+                            {{ section.settings.bj_attribution | default: "-- David Beckham was reportedly paid an eight-figure sum plus co-founder equity to put his face on IM8. The longevity molecules inside are trending -- but most have no human trial showing they work at the doses used." }}
                         </p>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The pixie dusting problem' }}</h3>
+                    <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The trend problem' }}</h3>
                     <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
-                        {{ section.settings.pixie_dust_body | default: "IM8 lists 92+ ingredients in a single scoop -- most of them tucked inside proprietary blends. That sounds comprehensive until you do the math. Imagine splitting a single serving across 92 ingredients. Most end up in trace amounts far below what clinical trials use. The Daily Ultimate label gives you blend totals, not the dose of any single compound inside them." }}
+                        {{ section.settings.pixie_dust_body | default: "Longevity marketing runs on molecule names -- NMN, resveratrol, spermidine, fisetin. They test beautifully in mice and make for great headlines. In humans, the results keep coming back thin: NAD+ rises, and strength, muscle, and function do not follow. We read the same trials and made a different call -- if it is not proven in people, it does not go in the jar." }}
                     </p>
                 </div>
             </div>
@@ -193,10 +193,10 @@
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p1 | default: "A product fronted by one of the most recognizable athletes in the world, sold at a premium price, and the doses inside most of its 92+ ingredients are hidden behind proprietary blends." }}
+                    {{ section.settings.bridge_2_p1 | default: "A product fronted by one of the most recognizable athletes in the world, sold at a premium, built on the molecules longevity marketing cannot stop talking about." }}
                 </p>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both IM8 and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the clinical evidence, and the price." }}
+                    {{ section.settings.bridge_2_p2 | default: "So we did what any rational person would do. We pulled the publicly available data on both IM8 Longevity and Coastline and laid them side by side. Not marketing claims. Just the ingredients, the doses, the human evidence, and the price." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
                     {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
@@ -233,30 +233,58 @@
                         <p>~$7.62 per ingredient per month</p>
                         <p>$3.30/day</p>
                         <p>$1,188/year</p>
-                        <p class="text-xs pt-2" style="color: #2D5A47;">Full transparency -- every dose disclosed</p>
+                        <p class="text-xs pt-2" style="color: #2D5A47;">Backed by human clinical evidence</p>
                     </div>
                 </div>
                 <!-- IM8 Card -->
                 <div class="border border-light-gray p-6 bg-parchment">
                     <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
-                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-v12-im8-product.webp' | asset_url }}{% endif %}" alt="IM8" style="max-height: 350px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
+                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8" style="max-height: 350px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
                     </div>
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8</p>
-                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$154<span class="text-lg text-warm-gray">/month</span></p>
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8 Longevity</p>
+                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$119<span class="text-lg text-warm-gray">/month</span></p>
                     <div class="border-t border-light-gray pt-4 space-y-2 text-sm text-warm-gray">
-                        <p>75 ingredients at trace amounts</p>
-                        <p>~$1.05 per ingredient per month</p>
-                        <p>$2.63/day</p>
-                        <p>$948/year</p>
-                        <p class="text-xs pt-2" style="color: #C0392B;">Proprietary blends -- doses undisclosed</p>
+                        <p>10 trending longevity molecules</p>
+                        <p>~$11.90 per ingredient per month</p>
+                        <p>$3.97/day</p>
+                        <p>$1,428/year</p>
+                        <p class="text-xs pt-2" style="color: #C0392B;">Unproven in humans -- promise over proof</p>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mb-20">
                 <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
-                    {{ section.settings.price_framing | default: "$0.67/day more for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
+                    {{ section.settings.price_framing | default: "$0.67 a day less -- for ingredients with the human evidence to back them. You are not paying for trending molecules or a celebrity's face. You are paying for what is proven to work." }}
                 </p>
+            </div>
+
+            <!-- 5A2: COMMON GROUND -->
+            <div class="mb-20 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="text-center mb-12">
+                    <p class="section-counter mb-6">Common Ground</p>
+                    <div class="editorial-divider mx-auto mb-10"></div>
+                    <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4">{{ section.settings.common_headline | default: 'Where the two formulas overlap' }}</h2>
+                    <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.common_intro | default: "Three ingredients appear in both formulas. We are not going to pretend otherwise -- but look at the doses. We formulate to the amounts used in the research." }}</p>
+                </div>
+                <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="v6-ingredient-card">
+                        <p>Taurine</p>
+                        <p style="font-size:13px; margin-top:10px; color:#6B6B6B;"><span style="color:#0A0A0A; font-weight:600;">Coastline 3.05g</span><br>IM8 Longevity 2g</p>
+                        <p style="color:#2D5A47; font-size:12px; margin-top:8px; font-weight:600;">~50% more</p>
+                    </div>
+                    <div class="v6-ingredient-card">
+                        <p>Glycine</p>
+                        <p style="font-size:13px; margin-top:10px; color:#6B6B6B;"><span style="color:#0A0A0A; font-weight:600;">Coastline 5g</span><br>IM8 Longevity 3g</p>
+                        <p style="color:#2D5A47; font-size:12px; margin-top:8px; font-weight:600;">~65% more</p>
+                    </div>
+                    <div class="v6-ingredient-card">
+                        <p>Astaxanthin</p>
+                        <p style="font-size:13px; margin-top:10px; color:#6B6B6B;"><span style="color:#0A0A0A; font-weight:600;">Coastline 6mg</span><br>IM8 Longevity 6mg</p>
+                        <p style="color:#6B6B6B; font-size:12px; margin-top:8px;">Matched</p>
+                    </div>
+                </div>
+                <p class="text-center text-warm-gray text-base max-w-xl mx-auto leading-relaxed mt-10">{{ section.settings.common_close | default: "Same ingredients. Higher doses where it counts -- and matched where they already got it right." }}</p>
             </div>
 
             <!-- 5B: INGREDIENT COMPARISON GRID -->
@@ -273,23 +301,20 @@
                             <tr>
                                 <th style="min-width:160px;"></th>
                                 <th style="text-align:center;">Coastline</th>
-                                <th style="text-align:center;">IM8</th>
+                                <th style="text-align:center;">IM8 Longevity</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Clinical dosing</td><td class="v6-check" style="text-align:center;">&#10003; Full transparency</td><td class="v6-x" style="text-align:center;">&#10007; Proprietary blends</td></tr>
-                            <tr><td>Ingredient count</td><td style="text-align:center; color:#0A0A0A;">13 (precision)</td><td style="text-align:center; color:#6B6B6B;">75 (pixie dusting)</td></tr>
-                            <tr><td>Inulin dose</td><td class="v6-check" style="text-align:center;">4g (clinical dose)</td><td class="v6-x" style="text-align:center;">Undisclosed</td></tr>
-                            <tr><td>Creatine</td><td class="v6-check" style="text-align:center;">5.25g</td><td class="v6-x" style="text-align:center;">None</td></tr>
-                            <tr><td>CoQ10</td><td class="v6-check" style="text-align:center;">200mg</td><td class="v6-x" style="text-align:center;">None</td></tr>
-                            <tr><td>Taurine</td><td class="v6-check" style="text-align:center;">3.05g</td><td class="v6-x" style="text-align:center;">None</td></tr>
-                            <tr><td>AM/PM timing</td><td class="v6-check" style="text-align:center;">&#10003; Yes</td><td class="v6-x" style="text-align:center;">&#10007; No</td></tr>
-                            <tr><td>Hallmarks of aging</td><td style="text-align:center; color:#0A0A0A;">All 12</td><td style="text-align:center; color:#6B6B6B;">~3-4</td></tr>
-                            <tr><td>Body systems</td><td style="text-align:center; color:#0A0A0A;">11</td><td style="text-align:center; color:#6B6B6B;">6</td></tr>
+                            <tr><td>Lead actives</td><td style="text-align:center; color:#0A0A0A;">Creatine, taurine, glycine, CoQ10</td><td style="text-align:center; color:#6B6B6B;">NMN, resveratrol, fisetin, spermidine</td></tr>
+                            <tr><td>Human evidence on lead molecules</td><td class="v6-check" style="text-align:center;">&#10003; Established</td><td class="v6-x" style="text-align:center;">&#10007; Early / preclinical</td></tr>
+                            <tr><td>Creatine</td><td class="v6-check" style="text-align:center;">5.25g</td><td class="v6-x" style="text-align:center;">Not included</td></tr>
+                            <tr><td>CoQ10</td><td class="v6-check" style="text-align:center;">200mg</td><td class="v6-x" style="text-align:center;">Not included</td></tr>
+                            <tr><td>Doses disclosed</td><td class="v6-check" style="text-align:center;">&#10003; Yes</td><td class="v6-check" style="text-align:center;">&#10003; Yes</td></tr>
+                            <tr><td>AM &amp; PM system</td><td class="v6-check" style="text-align:center;">&#10003; Yes</td><td class="v6-x" style="text-align:center;">&#10007; One morning sachet</td></tr>
                             <tr><td>Caffeine-free</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
                             <tr><td>Vegan</td><td class="v6-check" style="text-align:center;">&#10003;</td><td class="v6-check" style="text-align:center;">&#10003;</td></tr>
-                            <tr><td>Clinical trial</td><td style="text-align:center; color:#6B6B6B;">Individual ingredients proven</td><td class="v6-x" style="text-align:center;">No significant benefit</td></tr>
-                            <tr><td>Dose transparency</td><td class="v6-check" style="text-align:center;">Full disclosure</td><td class="v6-x" style="text-align:center;">Proprietary blends</td></tr>
+                            <tr><td>Celebrity co-founder</td><td style="text-align:center; color:#0A0A0A;">None</td><td class="v6-x" style="text-align:center;">Reported 8-figure deal</td></tr>
+                            <tr><td>Price per month</td><td style="text-align:center; color:#0A0A0A;">$99</td><td style="text-align:center; color:#6B6B6B;">$119</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -298,14 +323,14 @@
             <!-- 5C: EFFECTIVENESS -->
             <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
                 <div class="border border-light-gray p-8">
-                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">IM8 Claims</p>
+                    <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">IM8 Longevity</p>
                     <ul class="space-y-3 text-warm-gray leading-relaxed text-sm">
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>One scoop, marketed to address all 12 hallmarks of aging</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>92+ ingredients, most hidden inside proprietary blends</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Headline ingredients (CaAKG, NMN, spermidine) at undisclosed doses</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>No published clinical trial showing the formula outperforms placebo</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fronted by paid celebrity co-founder, not researchers</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>$154 a month for premium pricing with premium opacity</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Built around trending longevity molecules - NMN, resveratrol, fisetin, spermidine</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>NMN (300mg) - no benefit to strength, muscle, or function in a 2025 meta-analysis of 10 human trials</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Resveratrol (250mg) - poor absorption; human longevity outcomes unproven</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fisetin, quercetin, spermidine - senolytics proven mostly in mice, not people</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fronted by a paid celebrity co-founder, not the human evidence</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>$119 a month for promise over proof</span></li>
                     </ul>
                 </div>
                 <div class="p-8" style="background-color: #062F3D;">
