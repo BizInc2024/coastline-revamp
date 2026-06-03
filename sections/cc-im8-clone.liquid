@@ -104,7 +104,7 @@
                 </div>
 
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-                    {{ section.settings.hero_subheadline | default: 'We do not chase longevity trends. We formulate around what is proven in humans -- and here is the side-by-side.' }}
+                    {{ section.settings.hero_subheadline | default: "We don't chase longevity trends. We formulate around what's proven in humans -- and here's the side-by-side." }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
                     <a href="#v6-comparison-table" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
@@ -118,104 +118,82 @@
     <section class="py-12 lg:py-16 bg-white">
         <div class="max-w-2xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "Trendy is not the same as proven." }}</h3>
+                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_1_headline | default: "Trendy isn't the same as proven." }}</h3>
                 <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_1_p1 | default: "IM8 Longevity is built on the molecules longevity marketing has hyped for a decade -- NMN, resveratrol, fisetin, spermidine. To their credit, IM8 discloses every dose. The problem is not transparency. It is the evidence." }}
+                    {{ section.settings.bridge_1_p1 | default: "IM8 Longevity is built on the molecules longevity marketing has hyped for a decade -- NMN, resveratrol, fisetin, spermidine. To their credit, IM8 discloses every dose. The problem isn't transparency. It's the evidence." }}
                 </p>
                 <p class="text-deep-ink text-lg leading-relaxed font-medium">
-                    {{ section.settings.bridge_1_p3 | default: "Here is what the human research on those molecules actually shows." }}
+                    {{ section.settings.bridge_1_p3 | default: "Here's what the human research on those molecules actually shows." }}
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: IM8 CLINICAL EVIDENCE -->
-    <section class="py-20 lg:py-32" style="background-color: #0A0A0A;">
+    <!-- SECTION 3a: CLINICAL EVIDENCE (white) -->
+    <section class="py-12 lg:py-20 bg-white">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <p class="text-xs tracking-widest uppercase mb-8" style="color: rgba(250,249,246,0.75);">The Clinical Evidence</p>
-                <div style="width:60px; height:1px; background:rgba(250,249,246,0.2); margin-bottom:40px;"></div>
+                <p class="section-counter mb-6">The Clinical Evidence</p>
+                <div class="editorial-divider mb-10"></div>
+                <p class="text-xs tracking-widest uppercase mb-6 text-warm-gray">{{ section.settings.study_label | default: "On IM8 Longevity's headline molecules:" }}</p>
+                <ul class="space-y-4" style="border-top:1px solid #E8E8E8; padding-top:24px;">
+                    <li class="flex gap-3 text-deep-ink leading-relaxed" style="font-size:17px;"><span style="color:#C0392B;flex-shrink:0;font-weight:600;">&#10007;</span> <span>{{ section.settings.study_1 | default: "NMN (300mg) -- a 2025 meta-analysis of 10 human trials found no benefit to strength, muscle, or physical function." }}</span></li>
+                    <li class="flex gap-3 text-deep-ink leading-relaxed" style="font-size:17px;"><span style="color:#C0392B;flex-shrink:0;font-weight:600;">&#10007;</span> <span>{{ section.settings.study_2 | default: "Resveratrol (250mg) -- notoriously poor absorption; human longevity outcomes still unproven after 20 years of study." }}</span></li>
+                    <li class="flex gap-3 text-deep-ink leading-relaxed" style="font-size:17px;"><span style="color:#C0392B;flex-shrink:0;font-weight:600;">&#10007;</span> <span>{{ section.settings.study_3 | default: "Fisetin, quercetin, spermidine -- senolytics with promising mouse data; human evidence is early-stage and mostly preclinical." }}</span></li>
+                    <li class="flex gap-3 text-deep-ink leading-relaxed" style="font-size:17px;"><span style="color:#C0392B;flex-shrink:0;font-weight:600;">&#10007;</span> <span>{{ section.settings.study_4 | default: "Every dose is disclosed. What's missing is the human proof these molecules deliver the longevity they're sold on." }}</span></li>
+                    <li class="flex gap-3 text-deep-ink leading-relaxed" style="font-size:17px;"><span style="color:#C0392B;flex-shrink:0;font-weight:600;">&#10007;</span> <span>{{ section.settings.study_5 | default: "$119/month -- for a formula built on promise, not proof." }}</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-                <!-- Study findings first -->
-                <div class="v6-study-card mb-12">
-                    <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.85);">{{ section.settings.study_label | default: "On IM8 Longevity's headline molecules:" }}</p>
-                    <ul>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_1 | default: "NMN (300mg) - a 2025 meta-analysis of 10 human trials found no benefit to strength, muscle, or physical function." }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_2 | default: "Resveratrol (250mg) - notoriously poor absorption; human longevity outcomes still unproven after 20 years of study." }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_3 | default: "Fisetin, quercetin, spermidine - senolytics with promising mouse data; human evidence is early-stage and mostly preclinical." }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_4 | default: "Every dose is disclosed. What is missing is the human proof these molecules deliver the longevity they are sold on." }}</li>
-                        <li><span style="color: #C0392B; flex-shrink: 0;">&#10007;</span> {{ section.settings.study_5 | default: "$119/month - for a formula built on promise, not proof." }}</li>
-                    </ul>
-                </div>
-
-                <!-- David Beckham quote as supporting evidence -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-12 mb-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
+    <!-- SECTION 3b: DAVID BECKHAM (dark) -->
+    <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8">
+            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
                     <div class="flex-shrink-0">
                         <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-beckham-portrait.webp' | asset_url }}{% endif %}" alt="David Beckham" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
                     </div>
                     <div>
                         <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6; text-wrap: balance;">
-                            {{ section.settings.bj_quote | default: "When the formula does not have the evidence, the brand pays for endorsement&nbsp;instead." }}
+                            {{ section.settings.bj_quote | default: "When the formula doesn't have the evidence, the brand pays for endorsement&nbsp;instead." }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
                             {{ section.settings.bj_attribution | default: "-- David Beckham was reportedly paid an eight-figure sum plus co-founder equity to put his face on IM8. The longevity molecules inside are trending -- but most have no human trial showing they work at the doses used." }}
                         </p>
                     </div>
                 </div>
-
-                <div>
-                    <h3 class="font-grotesk font-medium text-xl mb-4" style="color: #FAF9F6;">{{ section.settings.pixie_dust_headline | default: 'The trend problem' }}</h3>
-                    <p class="leading-relaxed mb-8" style="color: #9A9A9A; font-size: 16px;">
-                        {{ section.settings.pixie_dust_body | default: "Longevity marketing runs on molecule names -- NMN, resveratrol, spermidine, fisetin. They test beautifully in mice and make for great headlines. In humans, the results keep coming back thin: NAD+ rises, and strength, muscle, and function do not follow. We read the same trials and made a different call -- if it is not proven in people, it does not go in the jar." }}
-                    </p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- COMMON GROUND (navy) — moved up: shared ingredients, dose deltas -->
-    <section class="py-20 lg:py-28" style="background-color: #062F3D;">
-        <div class="max-w-5xl mx-auto px-6 sm:px-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-            <div class="text-center mb-12">
-                <p class="text-xs tracking-widest uppercase mb-6" style="color: rgba(250,249,246,0.55);">Common Ground</p>
-                <div style="width:60px; height:1px; background:rgba(250,249,246,0.25); margin:0 auto 40px;"></div>
-                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4" style="color:#FAF9F6;">{{ section.settings.common_headline | default: 'Where the two formulas overlap' }}</h2>
-                <p class="text-lg max-w-xl mx-auto leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.common_intro | default: "Three ingredients appear in both. We are not going to pretend otherwise -- but look at the doses. We formulate to the amounts used in the research." }}</p>
+    <!-- COMMON GROUND (navy) — condensed, with ingredient images -->
+    <section class="py-14 lg:py-20" style="background-color: #062F3D;">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+            <div class="text-center mb-10">
+                <p class="text-xs tracking-widest uppercase mb-5" style="color: rgba(250,249,246,0.55);">Common Ground</p>
+                <h2 class="text-2xl lg:text-3xl font-grotesk font-medium mb-3" style="color:#FAF9F6;">{{ section.settings.common_headline | default: 'Where the two formulas overlap' }}</h2>
+                <p class="text-base max-w-lg mx-auto leading-relaxed" style="color:rgba(250,249,246,0.7);">{{ section.settings.common_intro | default: "Three ingredients appear in both. Look at the doses -- we formulate to the amounts used in the research." }}</p>
             </div>
-            <div class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div style="border:1px solid rgba(250,249,246,0.15); padding:24px; text-align:center;">
-                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:17px;">Taurine</p>
-                    <p style="font-size:14px; margin-top:12px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">Coastline 3.05g</span><br>IM8 Longevity 2g</p>
-                    <p style="color:#E7FF56; font-size:13px; margin-top:10px; font-weight:600;">~50% more</p>
+            <div class="grid grid-cols-3 gap-3 sm:gap-5 max-w-3xl mx-auto">
+                <div style="border:1px solid rgba(250,249,246,0.15); padding:16px 10px; text-align:center;">
+                    <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_16_2.png?v=1767986425" alt="Taurine" style="width:44px;height:44px;object-fit:cover;margin:0 auto 8px;" loading="lazy">
+                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:15px;">Taurine</p>
+                    <p style="font-size:13px; margin-top:6px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">3.05g</span> vs 2g</p>
+                    <p style="color:#E7FF56; font-size:12px; margin-top:4px; font-weight:600;">~50% more</p>
                 </div>
-                <div style="border:1px solid rgba(250,249,246,0.15); padding:24px; text-align:center;">
-                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:17px;">Glycine</p>
-                    <p style="font-size:14px; margin-top:12px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">Coastline 5g</span><br>IM8 Longevity 3g</p>
-                    <p style="color:#E7FF56; font-size:13px; margin-top:10px; font-weight:600;">~65% more</p>
+                <div style="border:1px solid rgba(250,249,246,0.15); padding:16px 10px; text-align:center;">
+                    <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_2.png?v=1767987227" alt="Glycine" style="width:44px;height:44px;object-fit:cover;margin:0 auto 8px;" loading="lazy">
+                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:15px;">Glycine</p>
+                    <p style="font-size:13px; margin-top:6px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">5g</span> vs 3g</p>
+                    <p style="color:#E7FF56; font-size:12px; margin-top:4px; font-weight:600;">~65% more</p>
                 </div>
-                <div style="border:1px solid rgba(250,249,246,0.15); padding:24px; text-align:center;">
-                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:17px;">Astaxanthin</p>
-                    <p style="font-size:14px; margin-top:12px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">Coastline 6mg</span><br>IM8 Longevity 6mg</p>
-                    <p style="color:rgba(250,249,246,0.55); font-size:13px; margin-top:10px;">Matched</p>
-                </div>
-            </div>
-            <p class="text-center text-base max-w-xl mx-auto leading-relaxed mt-10" style="color:rgba(250,249,246,0.7);">{{ section.settings.common_close | default: "Same ingredients. Higher doses where it counts -- and matched where they already got it right." }}</p>
-        </div>
-    </section>
-
-    <!-- Bridge: David Beckham → Comparison -->
-    <section class="py-16 lg:py-20 bg-parchment">
-        <div class="max-w-2xl mx-auto px-6 sm:px-8">
-            <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <h3 class="font-grotesk text-2xl lg:text-3xl font-medium text-deep-ink mb-8">{{ section.settings.bridge_2_headline | default: "So we pulled the data" }}</h3>
-                <p class="text-warm-gray text-lg leading-relaxed mb-6">
-                    {{ section.settings.bridge_2_p2 | default: "No marketing claims -- just the publicly available data on both, side by side: the ingredients, the doses, the human evidence, and the price." }}
-                </p>
-                <p class="text-deep-ink text-lg leading-relaxed font-medium mb-8">
-                    {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found." }}
-                </p>
-                <div class="text-center">
-                    <a href="#pricing-product-apr26" class="link-underline" style="font-size:12px; color:var(--warm-gray);">GET 34% OFF COASTLINE NOW</a>
+                <div style="border:1px solid rgba(250,249,246,0.15); padding:16px 10px; text-align:center;">
+                    <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_8_2.png?v=1767987168" alt="Astaxanthin" style="width:44px;height:44px;object-fit:cover;margin:0 auto 8px;" loading="lazy">
+                    <p class="font-grotesk" style="color:#FAF9F6; font-weight:500; font-size:15px;">Astaxanthin</p>
+                    <p style="font-size:13px; margin-top:6px; color:rgba(250,249,246,0.6);"><span style="color:#FAF9F6; font-weight:600;">6mg</span> vs 6mg</p>
+                    <p style="color:rgba(250,249,246,0.55); font-size:12px; margin-top:4px;">Matched</p>
                 </div>
             </div>
         </div>
@@ -268,7 +246,7 @@
 
             <div class="text-center mb-20">
                 <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
-                    {{ section.settings.price_framing | default: "$0.67 a day less -- for ingredients with the human evidence to back them. You are not paying for trending molecules or a celebrity's face. You are paying for what is proven to work." }}
+                    {{ section.settings.price_framing | default: "$0.67 a day less -- for ingredients with the human evidence to back them. You're not paying for trending molecules or a celebrity's face. You're paying for what's proven to work." }}
                 </p>
             </div>
 
