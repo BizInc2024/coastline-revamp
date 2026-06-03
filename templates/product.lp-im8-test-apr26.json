@@ -55,7 +55,6 @@
     },
     "reviews": {
       "type": "cc-testimonials-apr26",
-      "settings": {},
       "blocks": {
         "r1": {
           "type": "testimonial",
@@ -209,10 +208,7 @@
         "r13",
         "r14",
         "r15"
-      ]
-    },
-    "ampm": {
-      "type": "cc-ampm-apr26",
+      ],
       "settings": {}
     }
   },
@@ -223,7 +219,6 @@
     "community",
     "reviews",
     "narrative-bottom",
-    "ampm",
     "final-cta",
     "email"
   ]
