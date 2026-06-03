@@ -84,6 +84,7 @@
       <p class="cc-pricing-sub">30-day supply of Morning Blend, Softgels, and Evening Capsules</p>
       <p class="cc-pricing-sub cc-pricing-bonus">+ Glass Shaker WELCOME GIFT</p>
 
+
       <div class="reveal cc-flavor-row" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
         <p class="cc-selector-label">Choose your flavor</p>
         <div class="cc-flavor-buttons">
@@ -101,7 +102,6 @@
             <div>
               <span class="cc-plan-label">Monthly subscription</span>
               <span class="cc-plan-save">Save 34%</span>
-              <span class="cc-plan-renewal" style="display:block;font-family:'Inter',sans-serif;font-size:11px;color:#6B6B6B;margin-top:3px;line-height:1.4;">Renews every month until cancelled</span>
             </div>
             <div class="cc-plan-price-col">
               <span class="cc-plan-price">$99</span>
@@ -115,11 +115,10 @@
             <div>
               <span class="cc-plan-label">Every 2 months</span>
               <span class="cc-plan-save">Save 20%</span>
-              <span class="cc-plan-renewal" style="display:block;font-family:'Inter',sans-serif;font-size:11px;color:#6B6B6B;margin-top:3px;line-height:1.4;">Renews every 2 months until cancelled</span>
             </div>
             <div class="cc-plan-price-col">
               <span class="cc-plan-price">$120</span>
-              <span class="cc-plan-cadence">/2 months</span>
+              <span class="cc-plan-cadence">/month</span>
             </div>
           </div>
         </div>
@@ -136,10 +135,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div x-show="plan !== 'onetime'" x-cloak class="cc-arl-disclosure" style="font-family:'Inter',sans-serif;font-size:12px;color:#6B6B6B;line-height:1.5;padding:14px 16px;margin-bottom:16px;background:rgba(0,0,0,0.03);border:1px solid #E8E8E8;">
-        <strong style="color:#0A0A0A;font-weight:500;">Subscription terms.</strong> By adding this to your cart with a subscription plan, you authorize Coastline to automatically charge your payment method at the price and frequency shown above, on each renewal date, until you cancel. Cancel anytime online from your <a href="/account" style="color:#0A0A0A;text-decoration:underline;">account</a> -- no fees, no penalties. See our full <a href="/policies/subscription-policy" style="color:#0A0A0A;text-decoration:underline;">subscription policy</a>.
       </div>
 
       <div class="reveal cc-atc-wrap" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
