@@ -199,6 +199,31 @@
         </div>
     </section>
 
+    <!-- AM/PM: one scoop vs timed to your biology -->
+    <section class="py-16 lg:py-24 bg-parchment">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+            <div class="text-center mb-12">
+                <p class="section-counter mb-6">Timed To Your Biology</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4 text-deep-ink">{{ section.settings.ampm_headline | default: "One scoop, or built around your day?" }}</h2>
+                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.ampm_intro | default: "IM8 Longevity is a single morning sachet -- one hit, once a day. Coastline works in two moments, because your body doesn't keep one schedule." }}</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="p-8 bg-white" style="border:1px solid #E8E8E8;">
+                    <p class="text-xs tracking-widest uppercase mb-3 text-warm-gray">Morning</p>
+                    <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-3">Morning Blend + softgels</h3>
+                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ampm_am | default: "With your first meal -- creatine, taurine, ergothioneine and CoQ10 for energy, focus, and cellular support." }}</p>
+                </div>
+                <div class="p-8" style="background:#062F3D;">
+                    <p class="text-xs tracking-widest uppercase mb-3" style="color:rgba(250,249,246,0.55);">Evening</p>
+                    <h3 class="font-grotesk text-xl font-medium mb-3" style="color:#FAF9F6;">Evening capsules</h3>
+                    <p class="leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.ampm_pm | default: "Before bed -- L-theanine, glucosamine and more for calm, recovery, and overnight repair." }}</p>
+                </div>
+            </div>
+            <p class="text-center text-base max-w-xl mx-auto leading-relaxed mt-10 text-warm-gray">{{ section.settings.ampm_close | default: "IM8: one scoop, morning only. Coastline: dosed for morning and night." }}</p>
+        </div>
+    </section>
+
     <!-- SECTION 4: COMPARISON BREAKDOWN -->
     <section id="v6-comparison" class="py-20 lg:py-28 bg-white">
         <div class="max-w-5xl mx-auto px-6 sm:px-8">
@@ -214,8 +239,8 @@
                 <!-- Coastline Card -->
                 <div class="border-2 border-deep-ink p-6 relative bg-parchment">
                     <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
-                    <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center;" class="mb-4">
-                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 160px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 80px;" loading="lazy">
+                    <div style="height: 230px; display: flex; align-items: flex-end; justify-content: center;" class="mb-4">
+                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 210px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
@@ -229,8 +254,8 @@
                 </div>
                 <!-- IM8 Card -->
                 <div class="border border-light-gray p-6 bg-parchment">
-                    <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
-                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" style="max-height: 170px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 80px;" loading="lazy">
+                    <div style="height: 230px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
+                        <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" style="max-height: 200px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8 Longevity</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$119<span class="text-lg text-warm-gray">/month</span></p>
