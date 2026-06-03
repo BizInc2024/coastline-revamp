@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "narrative": {
@@ -39,12 +48,106 @@
     "guarantee": {
       "type": "cc-guarantee-final",
       "settings": {}
+    },
+    "community": {
+      "type": "cc-ugc-apr26",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "cc-testimonials-apr26",
+      "settings": {},
+      "blocks": {
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is the biggest win for me. The 'brain fog' of my 40s has lifted completely.",
+            "name": "Megan S.",
+            "detail": "Columbus 46",
+            "category": "focus"
+          }
+        },
+        "r2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It's the first thing I take every morning. My morning brain fog is gone, and my focus is immediate and lasts all day.",
+            "name": "William Z.",
+            "detail": "Salt Lake City 36",
+            "category": "focus"
+          }
+        },
+        "r3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every supplement out there. My energy levels have transformed, and I actually look forward to my morning runs again.",
+            "name": "Sarah M.",
+            "detail": "San Diego 54",
+            "category": "energy"
+          }
+        },
+        "r4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It's changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte 51",
+            "category": "energy"
+          }
+        },
+        "r5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans 57",
+            "category": "trust"
+          }
+        },
+        "r6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I'm skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        "r7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the convenience of having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        "r8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've spent a decade chasing biohacks, but this is the first time I've felt a sustained difference. It's simplified my entire morning.",
+            "name": "Daniel S.",
+            "detail": "Health Coach",
+            "category": "convenience"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8"
+      ]
     }
   },
   "order": [
     "narrative",
     "pricing",
     "guarantee",
+    "community",
+    "reviews",
     "narrative-bottom",
     "final-cta",
     "email"
