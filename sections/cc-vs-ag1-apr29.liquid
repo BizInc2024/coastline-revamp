@@ -301,11 +301,11 @@
 
             <!-- 5C: EFFECTIVENESS -->
             <div class="grid md:grid-cols-2 gap-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="border border-light-gray p-8">
+                <div class="border border-light-gray p-8 md:order-2">
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-4">AG1 Claims</p>
                     <p class="text-warm-gray leading-relaxed">{{ section.settings.ag1_claims | default: '"Supports energy, focus, gut health." Vague language with no specific doses, no specific studies cited, and no measurable outcomes defined.' }}</p>
                 </div>
-                <div class="p-8" style="background-color: #062F3D;">
+                <div class="p-8 md:order-1" style="background-color: #062F3D;">
                     <p class="text-xs tracking-widest uppercase mb-4" style="color: rgba(250,249,246,0.5);">Coastline Delivers</p>
                     <ul class="space-y-3 leading-relaxed" style="color: #FAF9F6;">
                         <li class="flex gap-2"><span class="flex-shrink-0" style="color: rgba(250,249,246,0.6);">&#10003;</span> <span><strong>Taurine at 3.05g</strong> -- supports cardiovascular health and extends lifespan in animal models</span></li>

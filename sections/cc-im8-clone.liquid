@@ -199,30 +199,6 @@
         </div>
     </section>
 
-    <!-- AM/PM: one scoop vs timed to your biology -->
-    <section class="py-16 lg:py-24 bg-parchment">
-        <div class="max-w-4xl mx-auto px-6 sm:px-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-            <div class="text-center mb-12">
-                <p class="section-counter mb-6">Timed To Your Biology</p>
-                <div class="editorial-divider mx-auto mb-10"></div>
-                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4 text-deep-ink">{{ section.settings.ampm_headline | default: "One scoop, or built around your day?" }}</h2>
-                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.ampm_intro | default: "IM8 Longevity is a single morning sachet -- one hit, once a day. Coastline works in two moments, because your body doesn't keep one schedule." }}</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                <div class="p-8 bg-white" style="border:1px solid #E8E8E8;">
-                    <p class="text-xs tracking-widest uppercase mb-3 text-warm-gray">Morning</p>
-                    <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-3">Morning Blend + softgels</h3>
-                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ampm_am | default: "With your first meal -- creatine, taurine, ergothioneine and CoQ10 for energy, focus, and cellular support." }}</p>
-                </div>
-                <div class="p-8" style="background:#062F3D;">
-                    <p class="text-xs tracking-widest uppercase mb-3" style="color:rgba(250,249,246,0.55);">Evening</p>
-                    <h3 class="font-grotesk text-xl font-medium mb-3" style="color:#FAF9F6;">Evening capsules</h3>
-                    <p class="leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.ampm_pm | default: "Before bed -- L-theanine, glucosamine and more for calm, recovery, and overnight repair." }}</p>
-                </div>
-            </div>
-            <p class="text-center text-base max-w-xl mx-auto leading-relaxed mt-10 text-warm-gray">{{ section.settings.ampm_close | default: "IM8: one scoop, morning only. Coastline: dosed for morning and night." }}</p>
-        </div>
-    </section>
 
     <!-- SECTION 4: COMPARISON BREAKDOWN -->
     <section id="v6-comparison" class="py-20 lg:py-28 bg-white">
@@ -334,6 +310,31 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- AM/PM: one scoop vs timed to your biology (moved below the formula) -->
+    <section class="py-16 lg:py-24 bg-parchment">
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
+            <div class="text-center mb-12">
+                <p class="section-counter mb-6">Timed To Your Biology</p>
+                <div class="editorial-divider mx-auto mb-10"></div>
+                <h2 class="text-3xl lg:text-4xl font-grotesk font-medium mb-4 text-deep-ink">{{ section.settings.ampm_headline | default: "One scoop, or built around your day?" }}</h2>
+                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">{{ section.settings.ampm_intro | default: "Your mornings and your nights aren't asking for the same thing. IM8 gives you one sachet for both. Coastline splits the formula across your day -- energy and focus in the morning, recovery and repair at night." }}</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="p-8 bg-white" style="border:1px solid #E8E8E8;">
+                    <p class="text-xs tracking-widest uppercase mb-3 text-warm-gray">Morning</p>
+                    <h3 class="font-grotesk text-xl font-medium text-deep-ink mb-3">Morning Blend + softgels</h3>
+                    <p class="text-warm-gray leading-relaxed">{{ section.settings.ampm_am | default: "With your first meal -- creatine, taurine, ergothioneine and CoQ10 for energy, focus, and cellular support." }}</p>
+                </div>
+                <div class="p-8" style="background:#062F3D;">
+                    <p class="text-xs tracking-widest uppercase mb-3" style="color:rgba(250,249,246,0.55);">Evening</p>
+                    <h3 class="font-grotesk text-xl font-medium mb-3" style="color:#FAF9F6;">Evening capsules</h3>
+                    <p class="leading-relaxed" style="color:rgba(250,249,246,0.75);">{{ section.settings.ampm_pm | default: "Before bed -- L-theanine, glucosamine and more for calm, recovery, and overnight repair." }}</p>
+                </div>
+            </div>
+            <p class="text-center text-base max-w-xl mx-auto leading-relaxed mt-10 text-warm-gray">{{ section.settings.ampm_close | default: "IM8: one scoop, morning only. Coastline: dosed for morning and night." }}</p>
         </div>
     </section>
 
