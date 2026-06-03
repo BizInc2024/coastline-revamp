@@ -43,7 +43,9 @@
     },
     "narrative-bottom": {
       "type": "cc-vs-ag1-bottom-apr29",
-      "settings": {}
+      "settings": {
+        "show_ampm": true
+      }
     },
     "guarantee": {
       "type": "cc-guarantee-final",
@@ -55,6 +57,7 @@
     },
     "reviews": {
       "type": "cc-testimonials-apr26",
+      "settings": {},
       "blocks": {
         "r1": {
           "type": "testimonial",
@@ -208,8 +211,7 @@
         "r13",
         "r14",
         "r15"
-      ],
-      "settings": {}
+      ]
     }
   },
   "order": [
