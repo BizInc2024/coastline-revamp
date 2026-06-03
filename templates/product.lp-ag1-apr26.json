@@ -58,31 +58,49 @@
         "r1": {
           "type": "testimonial",
           "settings": {
-            "quote": "Mental clarity is the biggest win for me. The 'brain fog' of my 40s has lifted completely.",
-            "name": "Megan S.",
-            "detail": "Columbus 46",
+            "quote": "As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the 'afternoon fog' I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder, NY",
             "category": "focus"
           }
         },
         "r2": {
           "type": "testimonial",
           "settings": {
-            "quote": "It's the first thing I take every morning. My morning brain fog is gone, and my focus is immediate and lasts all day.",
-            "name": "William Z.",
-            "detail": "Salt Lake City 36",
+            "quote": "Mental clarity is the biggest win for me. The 'brain fog' of my 40s has lifted completely.",
+            "name": "Megan S.",
+            "detail": "Columbus 46",
             "category": "focus"
           }
         },
         "r3": {
           "type": "testimonial",
           "settings": {
-            "quote": "I've tried every supplement out there. My energy levels have transformed, and I actually look forward to my morning runs again.",
+            "quote": "I feel more 'locked in' during my workday. It's significantly improved my productivity.",
+            "name": "Michelle P.",
+            "detail": "Indianapolis 41",
+            "category": "focus"
+          }
+        },
+        "r4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It's the first thing I take every morning. My brain fog is gone, and my focus is immediate and lasts all day.",
+            "name": "William Z.",
+            "detail": "Salt Lake City 36",
+            "category": "focus"
+          }
+        },
+        "r5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every supplement out there. My energy has transformed, and I actually look forward to my morning runs again.",
             "name": "Sarah M.",
             "detail": "San Diego 54",
             "category": "energy"
           }
         },
-        "r4": {
+        "r6": {
           "type": "testimonial",
           "settings": {
             "quote": "Energy that feels natural, not forced. It's changed how I approach my workouts.",
@@ -91,7 +109,52 @@
             "category": "energy"
           }
         },
-        "r5": {
+        "r7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've shared this with my entire cycling club. We're all seeing better recovery times.",
+            "name": "Patrick J.",
+            "detail": "Portland 53",
+            "category": "energy"
+          }
+        },
+        "r8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I'm still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs 72",
+            "category": "energy"
+          }
+        },
+        "r9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I'm skeptical of most supplements. But the science convinced me. Three months in, my biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        "r10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I'm extremely careful about what I put in my body. Coastline checked every box for purity and data.",
+            "name": "Rachel G.",
+            "detail": "Boulder 48",
+            "category": "trust"
+          }
+        },
+        "r11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. You can tell this wasn't made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond 49",
+            "category": "trust"
+          }
+        },
+        "r12": {
           "type": "testimonial",
           "settings": {
             "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.",
@@ -100,30 +163,30 @@
             "category": "trust"
           }
         },
-        "r6": {
+        "r13": {
           "type": "testimonial",
           "settings": {
-            "quote": "As a physician, I'm skeptical of most supplements. But the science behind Coastline convinced me. Three months in, my biomarkers have never looked better.",
-            "name": "Michael R.",
-            "detail": "Physician 62",
-            "category": "trust"
-          }
-        },
-        "r7": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "I love the convenience of having everything I need in one simple system. No more pill organizers.",
+            "quote": "I love having everything I need in one simple system. No more pill organizers.",
             "name": "James U.",
             "detail": "Tampa 44",
             "category": "convenience"
           }
         },
-        "r8": {
+        "r14": {
           "type": "testimonial",
           "settings": {
-            "quote": "I've spent a decade chasing biohacks, but this is the first time I've felt a sustained difference. It's simplified my entire morning.",
+            "quote": "I've chased biohacks for a decade, but this is the first time I've felt a sustained difference. It's simplified my whole morning.",
             "name": "Daniel S.",
             "detail": "Health Coach",
+            "category": "convenience"
+          }
+        },
+        "r15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a longevity stack that doesn't need 15 different bottles. My morning brain fog is gone.",
+            "name": "Robert K.",
+            "detail": "Chicago 45",
             "category": "convenience"
           }
         }
@@ -136,7 +199,14 @@
         "r5",
         "r6",
         "r7",
-        "r8"
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15"
       ],
       "settings": {}
     }
