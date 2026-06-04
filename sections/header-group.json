@@ -28,6 +28,7 @@
         },
         "announcement_xQT6UT": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "text": "ALWAYS FREE SHIPPING",
