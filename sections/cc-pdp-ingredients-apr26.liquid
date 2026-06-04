@@ -139,6 +139,31 @@
     .cc-pdp-ingredients-apr26 .cc-ing-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   }
 
+  /* Mobile: horizontal swipe carousel instead of a long stacked column.
+     Full-bleed to screen edges; next card peeks to signal swipeability.
+     Desktop/tablet grid (>=640px) is untouched. */
+  @media (max-width: 639px) {
+    .cc-pdp-ingredients-apr26 .cc-ing-grid {
+      display: flex;
+      grid-template-columns: none;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 14px;
+      padding: 4px 24px 8px;   /* left inset aligns first card w/ content edge */
+      margin: 0 -24px;         /* cancel .cc-ing-wrap padding -> true full bleed */
+      scroll-padding-left: 24px;
+      scrollbar-width: none;   /* Firefox */
+    }
+    .cc-pdp-ingredients-apr26 .cc-ing-grid::-webkit-scrollbar { display: none; }
+    .cc-pdp-ingredients-apr26 .cc-ing-card {
+      flex: 0 0 80%;           /* ~20% peek of the next card */
+      scroll-snap-align: start;
+    }
+    /* equal-height cards across the row */
+    .cc-pdp-ingredients-apr26 .cc-ing-card-inner { height: 100%; box-sizing: border-box; }
+  }
+
   .cc-pdp-ingredients-apr26 .cc-ing-card {
     background: #FFFFFF;
     border: 1px solid var(--light-gray);
