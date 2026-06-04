@@ -44,7 +44,15 @@
     "narrative-bottom": {
       "type": "cc-vs-ag1-bottom-apr29",
       "settings": {
-        "show_ampm": true
+        "show_ampm": true,
+        "faq_1_question": "How is Coastline different from IM8 Longevity?",
+        "faq_1_answer": "<p>Coastline is 13 ingredients chosen for one reason: established human evidence, each dosed to match the clinical study behind it. IM8 Longevity is built around trending longevity molecules -- NMN, resveratrol, spermidine -- whose human evidence is still limited. Coastline also works as a morning + evening system; IM8 is a single daily sachet.</p>",
+        "faq_2_question": "Is Coastline cheaper than IM8 Longevity?",
+        "faq_2_answer": "<p>Yes -- Coastline is $99/month versus IM8 Longevity's $119. That's $20 less, and none of it goes toward a celebrity endorsement. You're paying for 13 clinically-dosed ingredients, not a famous face.</p>",
+        "faq_3_question": "Does Coastline use NMN or resveratrol like IM8?",
+        "faq_3_answer": "<p>No -- and that's deliberate. NMN, resveratrol and spermidine are the molecules longevity marketing loves, but the human evidence isn't there yet. A 2025 meta-analysis of 10 randomized trials found NMN didn't improve strength, muscle or physical function. Coastline includes only ingredients with established human evidence, at clinical doses.</p>",
+        "faq_4_question": "I just cancelled IM8. Can I start Coastline right away?",
+        "faq_4_answer": "<p>Yes. There's no waiting period -- order today and your Coastline system ships right away. Most customers notice a difference within the first few weeks.</p>"
       }
     },
     "guarantee": {
