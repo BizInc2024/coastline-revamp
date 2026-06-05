@@ -107,8 +107,8 @@
                     {{ section.settings.hero_subheadline | default: "We don't chase longevity trends. We formulate around what's proven in humans -- and here's the side-by-side." }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
-                    <a href="#v6-comparison-table" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
-                    <a href="#v6-comparison" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SKIP TO PRICE COMPARISON</a>
+                    <a href="#pricing-product-apr26" class="btn-primary">{{ section.settings.hero_cta_text | default: 'Start Coastline Today' }}</a>
+                    <a href="#v6-comparison-table" class="link-underline" style="font-size:12px; color:var(--warm-gray);">SEE THE FULL COMPARISON</a>
                 </div>
             </div>
         </div>
@@ -227,7 +227,7 @@
                 </div>
                 <!-- IM8 Card -->
                 <div class="border border-light-gray p-6 bg-parchment">
-                    <div style="height: 180px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-3">
+                    <div style="height: 230px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;" class="mb-4">
                         <img src="{% if section.settings.ag1_product_image != blank %}{{ section.settings.ag1_product_image | image_url: width: 600 }}{% else %}{{ 'cc-im8-longevity-box.png' | asset_url }}{% endif %}" alt="IM8 Longevity" style="max-height: 170px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">IM8 Longevity</p>
@@ -243,9 +243,10 @@
             </div>
 
             <div class="text-center mb-20">
-                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
+                <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed mb-8">
                     {{ section.settings.price_framing | default: "$0.67 a day less -- for ingredients with the human evidence to back them. You're not paying for trending molecules or a celebrity's face. You're paying for what's proven to work." }}
                 </p>
+                <a href="#pricing-product-apr26" class="btn-primary">Start Coastline Today</a>
             </div>
 
             <!-- 5B: INGREDIENT COMPARISON GRID -->
