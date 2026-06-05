@@ -151,16 +151,13 @@
     <section class="py-20 lg:py-28" style="background-color: #0A0A0A;">
         <div class="max-w-3xl mx-auto px-6 sm:px-8">
             <div class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')">
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
-                    <div class="flex-shrink-0">
-                        <img src="{% if section.settings.bj_portrait != blank %}{{ section.settings.bj_portrait | image_url: width: 400 }}{% else %}{{ 'cc-v12-im8-beckham-portrait.webp' | asset_url }}{% endif %}" alt="David Beckham" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover" style="border: 2px solid rgba(250,249,246,0.15);" loading="lazy">
-                    </div>
+                <div class="flex flex-col items-center text-center gap-6" style="padding: 32px; background: rgba(255,255,255,0.03); border: 1px solid rgba(250,249,246,0.08); border-radius: 4px;">
                     <div>
                         <blockquote class="font-grotesk font-medium text-xl md:text-2xl leading-snug mb-4" style="color: #FAF9F6; text-wrap: balance;">
                             {{ section.settings.bj_quote | default: "When the formula doesn't have the evidence, the brand pays for endorsement&nbsp;instead." }}
                         </blockquote>
                         <p class="text-sm" style="color: rgba(250,249,246,0.5);">
-                            {{ section.settings.bj_attribution | default: "-- David Beckham was reportedly paid an eight-figure sum plus co-founder equity to put his face on IM8. The longevity molecules inside are trending -- but most have no human trial showing they work at the doses used." }}
+                            {{ section.settings.bj_attribution | default: "IM8 is a celebrity-fronted longevity brand. The molecules inside are trending — but most have no human trial showing they work at the doses&nbsp;used." }}
                         </p>
                     </div>
                 </div>
@@ -215,8 +212,8 @@
                 <!-- Coastline Card -->
                 <div class="border-2 border-deep-ink p-6 relative bg-parchment">
                     <span style="position: absolute; top: -12px; left: 16px; background: var(--forest-light); color: white; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; padding: 4px 10px;">BETTER VALUE</span>
-                    <div style="height: 180px; display: flex; align-items: flex-end; justify-content: center;" class="mb-3">
-                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 170px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
+                    <div style="height: 230px; display: flex; align-items: flex-end; justify-content: center;" class="mb-4">
+                        <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 210px; max-width: 100%; object-fit: contain; object-position: bottom; margin-bottom: 0;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
@@ -272,7 +269,7 @@
                             <tr><td>Human evidence on lead actives</td><td class="v6-check" style="text-align:center;">&#10003; Established</td><td class="v6-x" style="text-align:center;">&#10007; Early / preclinical</td></tr>
                             <tr><td>Foundational actives</td><td class="v6-check" style="text-align:center;">Creatine, CoQ10 + 11 more</td><td class="v6-x" style="text-align:center;">Not in the formula</td></tr>
                             <tr><td>Built for morning &amp; night</td><td class="v6-check" style="text-align:center;">&#10003; AM + PM system</td><td class="v6-x" style="text-align:center;">&#10007; One morning sachet</td></tr>
-                            <tr><td>Celebrity co-founder</td><td class="v6-check" style="text-align:center;">&#10003; None</td><td class="v6-x" style="text-align:center;">&#10007; Reported 8-figure deal</td></tr>
+                            <tr><td>Celebrity co-founder</td><td class="v6-check" style="text-align:center;">&#10003; None</td><td class="v6-x" style="text-align:center;">&#10007; Yes</td></tr>
                             <tr><td>Price per month</td><td style="text-align:center; color:#0A0A0A; font-weight:600;">$99</td><td style="text-align:center; color:#6B6B6B;">$119</td></tr>
                         </tbody>
                     </table>
@@ -300,7 +297,7 @@
                         <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>NMN (300mg) - no benefit to strength, muscle, or function in a 2025 meta-analysis of 10 human trials</span></li>
                         <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Resveratrol (250mg) - poor absorption; human longevity outcomes unproven</span></li>
                         <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fisetin, quercetin, spermidine - senolytics proven mostly in mice, not people</span></li>
-                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fronted by a paid celebrity co-founder, not the human evidence</span></li>
+                        <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>Fronted by a celebrity, not the human evidence</span></li>
                         <li class="flex gap-2"><span class="flex-shrink-0" style="color: #C0392B;">&#10007;</span> <span>$119 a month for promise over proof</span></li>
                     </ul>
                 </div>

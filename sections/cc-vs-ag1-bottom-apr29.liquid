@@ -218,6 +218,15 @@
         </div>
     </section>
 
+    <!-- COMPLIANCE: FDA/DSHEA + comparison/trademark disclaimer (shared, both LPs) -->
+    <section style="padding: 8px 0 40px;">
+        <div class="max-w-3xl mx-auto px-6 sm:px-8">
+            <p style="font-size: 11px; line-height: 1.6; color: #9A968C; text-align: center;">
+                {{ section.settings.compliance_disclaimer | default: "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Comparisons reflect publicly available information about the compared products at the time of publication. All third-party names and trademarks are the property of their respective owners and are used here for identification and comparison purposes only." }}
+            </p>
+        </div>
+    </section>
+
     </div>
 
 {% schema %}
