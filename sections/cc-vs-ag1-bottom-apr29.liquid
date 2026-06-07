@@ -167,7 +167,7 @@
             </div>
             <div class="space-y-4" x-data="{ openFaq: null }">
                 <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 1 ? null : 1">
+                    <button type="button" class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 1 ? null : 1">
                         <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_1_question | default: 'How is Coastline different from AG1?' }}</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 1 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
@@ -176,7 +176,7 @@
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
+                    <button type="button" class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
                         <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_2_question | default: 'AG1 is $79/month. Why does Coastline cost $20 more?' }}</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
@@ -185,7 +185,7 @@
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 3 ? null : 3">
+                    <button type="button" class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 3 ? null : 3">
                         <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_3_question | default: 'Does Coastline include a greens blend?' }}</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 3 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
@@ -194,7 +194,7 @@
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 4 ? null : 4">
+                    <button type="button" class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 4 ? null : 4">
                         <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_4_question | default: 'I just cancelled AG1. Can I start Coastline right away?' }}</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 4 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
@@ -203,7 +203,7 @@
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">
-                    <button class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 5 ? null : 5">
+                    <button type="button" class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 5 ? null : 5">
                         <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_5_question | default: 'How do I take Coastline?' }}</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 5 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
