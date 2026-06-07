@@ -168,7 +168,7 @@
         By subscribing you agree to recurring billing of <span x-text="plans[plan].price"></span> until you cancel. Cancel anytime in one click from your account — no fees, no penalties.
       </div>
 
-      <div class="reveal cc-atc-wrap" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
+      <div class="cc-atc-wrap" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
         <form id="{{ form_id }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
           <input type="hidden" name="id" :value="variantId" />
           <template x-if="sellingPlanId">
