@@ -170,7 +170,7 @@
 
       <div class="cc-atc-wrap" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect.once="$el.classList.add('visible')">
         <form id="{{ form_id }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
-          <input type="hidden" name="id" :value="variantId" />
+          <input type="hidden" name="id" :value="variantId" value="{{ product.selected_or_first_available_variant.id }}" />
           <template x-if="sellingPlanId">
             <input type="hidden" name="selling_plan" :value="sellingPlanId" />
           </template>
