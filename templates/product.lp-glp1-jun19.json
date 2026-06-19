@@ -1,0 +1,272 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narrative": {
+      "type": "cc-glp1-clone",
+      "settings": {}
+    },
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "READY TO SWITCH?",
+        "pricing_headline": "Get started today.",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 96,
+        "pad_bottom": 96
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "show_product_image": true,
+        "final_headline": "Weight comes off. Muscle shouldn't.",
+        "final_subheadline": "13 ingredients, every dose disclosed. $99/mo, 60-day guarantee.",
+        "final_cta_text": "GET THE MORNING SYSTEM",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
+      }
+    },
+    "email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-faq-apr26",
+      "blocks": {
+        "glpfaq1": {
+          "type": "faq",
+          "settings": {
+            "question": "I'm losing weight — why add this?",
+            "answer": "<p>When you eat less, muscle, energy and digestion are usually the first to slip. Coastline supports all three with clinically used doses: 5.25 g creatine for strength, CoQ10 plus magnesium for energy, and 4 g fiber for digestion.</p>"
+          }
+        },
+        "glpfaq2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I take it alongside a weight-loss program?",
+            "answer": "<p>Coastline is a daily supplement, not a medication. As with any supplement, check with your doctor about your specific routine.</p>"
+          }
+        },
+        "glpfaq3": {
+          "type": "faq",
+          "settings": {
+            "question": "Will it help me hold onto muscle?",
+            "answer": "<p>Creatine is the most-studied compound for supporting strength, dosed here at a full 5.25 g. These statements have not been evaluated by the FDA.</p>"
+          }
+        },
+        "glpfaq4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I actually see the doses?",
+            "answer": "<p>Yes. All 13 ingredients and every milligram are printed on the label — no proprietary blend.</p>"
+          }
+        },
+        "glpfaq5": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it cost?",
+            "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "glpfaq1",
+        "glpfaq2",
+        "glpfaq3",
+        "glpfaq4",
+        "glpfaq5"
+      ],
+      "settings": {
+        "faq_label": "FREQUENTLY ASKED",
+        "faq_headline": "Losing weight, answered"
+      }
+    },
+    "guarantee": {
+      "type": "cc-guarantee-final",
+      "settings": {}
+    },
+    "community": {
+      "type": "cc-ugc-apr26",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "cc-testimonials-apr26",
+      "blocks": {
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the 'afternoon fog' I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder, NY",
+            "category": "focus"
+          }
+        },
+        "r2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is the biggest win for me. The 'brain fog' of my 40s has lifted completely.",
+            "name": "Megan S.",
+            "detail": "Columbus 46",
+            "category": "focus"
+          }
+        },
+        "r3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel more 'locked in' during my workday. It's significantly improved my productivity.",
+            "name": "Michelle P.",
+            "detail": "Indianapolis 41",
+            "category": "focus"
+          }
+        },
+        "r4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "It's the first thing I take every morning. My brain fog is gone, and my focus is immediate and lasts all day.",
+            "name": "William Z.",
+            "detail": "Salt Lake City 36",
+            "category": "focus"
+          }
+        },
+        "r5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every supplement out there. My energy has transformed, and I actually look forward to my morning runs again.",
+            "name": "Sarah M.",
+            "detail": "San Diego 54",
+            "category": "energy"
+          }
+        },
+        "r6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It's changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte 51",
+            "category": "energy"
+          }
+        },
+        "r7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've shared this with my entire cycling club. We're all seeing better recovery times.",
+            "name": "Patrick J.",
+            "detail": "Portland 53",
+            "category": "energy"
+          }
+        },
+        "r8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I'm still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs 72",
+            "category": "energy"
+          }
+        },
+        "r9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I'm skeptical of most supplements. But the science convinced me. Three months in, my biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        "r10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I'm extremely careful about what I put in my body. Coastline checked every box for purity and data.",
+            "name": "Rachel G.",
+            "detail": "Boulder 48",
+            "category": "trust"
+          }
+        },
+        "r11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. You can tell this wasn't made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond 49",
+            "category": "trust"
+          }
+        },
+        "r12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans 57",
+            "category": "trust"
+          }
+        },
+        "r13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        "r14": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've chased biohacks for a decade, but this is the first time I've felt a sustained difference. It's simplified my whole morning.",
+            "name": "Daniel S.",
+            "detail": "Health Coach",
+            "category": "convenience"
+          }
+        },
+        "r15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a longevity stack that doesn't need 15 different bottles. My morning brain fog is gone.",
+            "name": "Robert K.",
+            "detail": "Chicago 45",
+            "category": "convenience"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10",
+        "r11",
+        "r12",
+        "r13",
+        "r14",
+        "r15"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "narrative",
+    "pricing",
+    "guarantee",
+    "community",
+    "reviews",
+    "narrative-bottom",
+    "final-cta",
+    "email"
+  ]
+}

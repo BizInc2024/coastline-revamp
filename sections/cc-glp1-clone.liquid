@@ -1,0 +1,117 @@
+{% comment %}
+  cc-glp1-clone -- Coastline GLP-1 / weight-loss narrative hero.
+  Pairs with the SHARED sections (cc-pricing-product-apr26 cart, cc-guarantee-final,
+  cc-ugc-apr26, cc-testimonials-apr26, cc-vs-ag1-bottom-apr29, cc-final-cta-apr26,
+  cc-email-capture-apr26) inside templates/product.lp-glp1-jun19.json.
+  Angle: when you eat less, muscle / energy / digestion slip first — Coastline supports all three.
+  Structure/function claims only. No Rx-drug names. FDA disclaimer at foot.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+  html { scroll-behavior: smooth; }
+  .cc-glp1 * { box-sizing: border-box; }
+  .cc-glp1 { font-family: 'Inter', sans-serif; color: #0A0A0A; }
+  .cc-glp1 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .cc-glp1 h1, .cc-glp1 h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; }
+  .cc-glp1 .eyebrow { font-size: 13px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; }
+
+  /* HERO (navy) */
+  .cc-glp1 .hero { background: #062F3D; color: #FAF9F6; padding: 132px 0 120px; text-align: center; }
+  .cc-glp1 .hero .eyebrow { color: #A3C7D0; }
+  .cc-glp1 .hero h1 { font-size: clamp(46px, 8vw, 92px); margin: 22px auto 0; max-width: 880px; }
+  .cc-glp1 .hero h1 em { font-style: normal; color: #E7FF56; }
+  .cc-glp1 .hero p.sub { font-size: clamp(18px, 2.4vw, 26px); line-height: 1.5; color: rgba(250,249,246,0.82); max-width: 740px; margin: 30px auto 0; }
+  .cc-glp1 .btn { display: inline-block; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; padding: 22px 52px; text-decoration: none; margin-top: 42px; }
+  .cc-glp1 .btn.dark { background: #0A0A0A; color: #FAF9F6; }
+
+  /* PILLARS (parchment) */
+  .cc-glp1 .pillars { background: #FAF9F6; padding: 110px 0; }
+  .cc-glp1 .pillars h2 { font-size: clamp(32px, 5vw, 56px); text-align: center; max-width: 760px; margin: 0 auto 14px; }
+  .cc-glp1 .pillars .lede { text-align: center; color: #6B6B6B; font-size: 19px; max-width: 620px; margin: 0 auto 64px; }
+  .cc-glp1 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .cc-glp1 .card { border-top: 2px solid #062F3D; padding-top: 26px; }
+  .cc-glp1 .card .dose { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 46px; letter-spacing: -0.02em; color: #062F3D; }
+  .cc-glp1 .card .ing { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 21px; margin-top: 6px; }
+  .cc-glp1 .card .ben { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; margin: 10px 0 12px; }
+  .cc-glp1 .card p { font-size: 16px; line-height: 1.6; color: #444; }
+
+  /* TRANSPARENCY band (lime) */
+  .cc-glp1 .band { background: #E7FF56; color: #062F3D; padding: 84px 0; text-align: center; }
+  .cc-glp1 .band h2 { font-size: clamp(30px, 4.5vw, 50px); max-width: 820px; margin: 0 auto; }
+  .cc-glp1 .band p { font-size: 19px; color: rgba(6,47,61,0.78); margin: 20px auto 0; max-width: 600px; }
+
+  /* SCIENTISTS (dark) */
+  .cc-glp1 .sci { background: #0A0A0A; color: #FAF9F6; padding: 110px 0; text-align: center; }
+  .cc-glp1 .sci h2 { font-size: clamp(30px, 5vw, 52px); max-width: 760px; margin: 0 auto; }
+  .cc-glp1 .sci h2 em { font-style: normal; color: #E7FF56; }
+  .cc-glp1 .sci p { font-size: 19px; line-height: 1.6; color: #9A9A9A; max-width: 620px; margin: 24px auto 0; }
+
+  .cc-glp1 .disc { background: #FAF9F6; color: #9a9a93; font-size: 12px; line-height: 1.5; text-align: center; padding: 40px 24px 56px; max-width: 820px; margin: 0 auto; }
+
+  @media (max-width: 749px) {
+    .cc-glp1 .grid3 { grid-template-columns: 1fr; gap: 0; }
+    .cc-glp1 .card { border-top: none; border-bottom: 1px solid #E8E8E8; padding: 28px 0; }
+    .cc-glp1 .hero { padding: 96px 0 84px; }
+    .cc-glp1 .pillars, .cc-glp1 .sci { padding: 72px 0; }
+  }
+</style>
+
+<section class="cc-glp1 cc-landingpage-v6">
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">When the weight comes off</div>
+      <h1>Weight comes off.<br><em>Muscle shouldn&rsquo;t.</em></h1>
+      <p class="sub">Eating less is the goal &mdash; but muscle, energy, and a working gut are the first things to slip with it. Coastline&rsquo;s morning system supports all three, every dose printed and set by the research.</p>
+      <a class="btn" href="#pricing-product-apr26">See the system</a>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="wrap">
+      <h2>Eating less? Here&rsquo;s what slips first.</h2>
+      <p class="lede">A greens scoop won&rsquo;t cover it. Three things your body still needs &mdash; at doses you can actually see.</p>
+      <div class="grid3">
+        <div class="card">
+          <div class="dose">5.25 g</div>
+          <div class="ing">Creatine Monohydrate</div>
+          <div class="ben">Muscle &amp; strength</div>
+          <p>The most-studied compound for holding onto strength &mdash; at a full, clinically used dose.</p>
+        </div>
+        <div class="card">
+          <div class="dose">200 mg</div>
+          <div class="ing">CoQ10 + Magnesium</div>
+          <div class="ben">Energy</div>
+          <p>For cellular energy and muscle function when calories run low. (Plus 150&nbsp;mg magnesium citrate.)</p>
+        </div>
+        <div class="card">
+          <div class="dose">4 g</div>
+          <div class="ing">Inulin Fiber</div>
+          <div class="ben">Digestion</div>
+          <p>Prebiotic fiber to support a digestive system that&rsquo;s doing a lot with less food.</p>
+        </div>
+      </div>
+      <div style="text-align:center;"><a class="btn dark" href="#pricing-product-apr26">Get the morning system</a></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2>13 ingredients. Every milligram on the label.</h2>
+      <p>No proprietary blend. You see exactly what you&rsquo;re getting &mdash; and exactly how much.</p>
+    </div>
+  </div>
+
+  <div class="sci">
+    <div class="wrap">
+      <h2>Built by scientists.<br><em>Not marketers.</em></h2>
+      <p>Four founders, four scientists. Every dose set by the research &mdash; not a celebrity, not a sponsorship.</p>
+      <a class="btn" href="#pricing-product-apr26">See the system</a>
+    </div>
+  </div>
+
+  <p class="disc">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
+
+</section>
