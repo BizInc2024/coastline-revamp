@@ -21,7 +21,7 @@
   .cc-scilp .hero { background: #0E1626; color: #FAF9F6; }
   .cc-scilp .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
   .cc-scilp .hero-img { position: relative; height: 720px; overflow: hidden; }
-  .cc-scilp .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-scilp .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 62%; display: block; }
   .cc-scilp .ai-disc { position: absolute; bottom: 7px; right: 8px; font-size: 9px; line-height: 1; letter-spacing: 0.03em; color: rgba(255,255,255,0.72); background: rgba(0,0,0,0.30); padding: 3px 5px; border-radius: 2px; }
   .cc-scilp .hero-copy { padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; }
   .cc-scilp .hero-cutout { width: 176px; height: 104px; background-repeat: no-repeat; background-position: left center; background-size: contain; display: block; margin: 0 0 24px; }
@@ -121,12 +121,12 @@
         <div class="card">
           <p class="pnum">02 &middot; The doses</p>
           <p class="phead">Trendy, but barely there.</p>
-          <p class="pbody">Those hyped ingredients often show up at trace amounts, tucked inside a proprietary blend you can&rsquo;t see. It looks impressive on the label and does little in the body.</p>
+          <p class="pbody">Those hyped ingredients often show up at trace amounts, tucked inside a proprietary blend you can&rsquo;t see. It looks impressive on the label and underdelivers in the body.</p>
         </div>
         <div class="card">
           <p class="pnum">03 &middot; The evidence</p>
           <p class="phead">We did the opposite.</p>
-          <p class="pbody">Four scientists read the research and chose 13 ingredients with the strongest human evidence &mdash; every dose printed on the label and set to the clinical studies.</p>
+          <p class="pbody">Four scientists read the research and chose 13 ingredients with the strongest evidence behind them &mdash; every dose printed on the label and set to the clinical studies.</p>
         </div>
       </div>
       <div style="text-align:center; margin-top:56px;"><a class="btn dark" href="#pricing-product-apr26">Buy Coastline Now</a></div>
@@ -171,7 +171,7 @@
     </div>
   </div>
 
-  {% render 'cc-ingredients-accordion', ing_eyebrow: 'The formula', ing_heading: '13 ingredients, chosen by scientists.', ing_lede: 'Each one earned its place through human research, at a dose you can actually see. Tap any one to read why the team put it in.' %}
+  {% render 'cc-ingredients-accordion', ing_eyebrow: 'The formula', ing_heading: '13 ingredients, chosen by scientists.', ing_lede: 'Each one earned its place through the research, at a dose you can actually see. Tap any one to read why the team put it in.' %}
 
   <div class="band">
     <div class="band-grid">
