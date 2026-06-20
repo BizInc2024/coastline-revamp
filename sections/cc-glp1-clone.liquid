@@ -20,7 +20,7 @@
   /* HERO (navy, 2-col: image left / copy right) */
   .cc-glp1 .hero { background: #062F3D; color: #FAF9F6; }
   .cc-glp1 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
-  .cc-glp1 .hero-img { position: relative; height: 560px; overflow: hidden; }
+  .cc-glp1 .hero-img { position: relative; height: 680px; overflow: hidden; }
   .cc-glp1 .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .cc-glp1 .ai-disc { position: absolute; bottom: 7px; right: 8px; font-size: 9px; line-height: 1; letter-spacing: 0.03em; color: rgba(255,255,255,0.72); background: rgba(0,0,0,0.30); padding: 3px 5px; border-radius: 2px; }
   .cc-glp1 .hero-copy { padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; }
@@ -39,17 +39,10 @@
   .cc-glp1 .pillars h2 { font-size: clamp(34px, 4.8vw, 52px); text-align: center; max-width: 760px; margin: 0 auto 14px; }
   .cc-glp1 .pillars .lede { text-align: center; color: #6B6B6B; font-size: 19px; max-width: 620px; margin: 0 auto 64px; }
   .cc-glp1 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-  .cc-glp1 .card { display: flex; flex-direction: column; }
-  .cc-glp1 .card-img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; display: block; margin-bottom: 22px; }
-  .cc-glp1 .card .dose { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 42px; letter-spacing: -0.02em; color: #062F3D; line-height: 1; }
-  .cc-glp1 .card .ing { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 21px; margin-top: 8px; color: #0A0A0A; }
-  .cc-glp1 .card .ben { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; margin: 10px 0 0; }
-  .cc-glp1 .card-more { margin-top: 18px; border-top: 1px solid #E8E8E8; }
-  .cc-glp1 .card-more summary { cursor: pointer; list-style: none; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #062F3D; padding: 14px 0 0; display: flex; justify-content: space-between; align-items: center; }
-  .cc-glp1 .card-more summary::-webkit-details-marker { display: none; }
-  .cc-glp1 .card-more summary::after { content: '+'; font-size: 20px; line-height: 1; color: #6B6B6B; }
-  .cc-glp1 .card-more[open] summary::after { content: '\2212'; }
-  .cc-glp1 .card-more p { font-size: 14.5px; line-height: 1.6; color: #444; margin: 12px 0 0; }
+  .cc-glp1 .card { border-top: 2px solid #062F3D; padding-top: 24px; }
+  .cc-glp1 .card .pnum { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 14px; }
+  .cc-glp1 .card .phead { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(22px, 2.2vw, 26px); letter-spacing: -0.02em; line-height: 1.12; color: #0A0A0A; margin: 0 0 12px; }
+  .cc-glp1 .card .pbody { font-size: 15.5px; line-height: 1.62; color: #444; margin: 0; }
   .cc-glp1 .pillars .cta-center { text-align: center; margin-top: 56px; }
 
   /* TRANSPARENCY band (lime, 2-col: claim + product) */
@@ -75,7 +68,7 @@
   .cc-glp1 .exp-name { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #FAF9F6; margin: 0; }
   .cc-glp1 .exp-role { font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #7E7E7E; margin: 5px 0 0; }
 
-  .cc-glp1 .disc { background: #FAF9F6; color: #9a9a93; font-size: 12px; line-height: 1.5; text-align: center; padding: 40px 24px 56px; max-width: 820px; margin: 0 auto; }
+  .cc-glp1 .sci .disc-in { margin: 60px auto 0; max-width: 720px; font-size: 12px; line-height: 1.55; color: #6A6A6A; text-align: center; border-top: 1px solid #2A2A2A; padding-top: 30px; }
 
   @media (max-width: 749px) {
     .cc-glp1 .hero-grid { grid-template-columns: 1fr; }
@@ -112,37 +105,22 @@
   <div class="pillars">
     <div class="wrap">
       <h2>Eating less? Here&rsquo;s what slips first.</h2>
-      <p class="lede">A greens scoop won&rsquo;t cover it. Three things your body still needs &mdash; at doses you can actually see.</p>
+      <p class="lede">Losing weight fast takes more than fat with it. Three things tend to slip first &mdash; here&rsquo;s what&rsquo;s really going on, and how we help.</p>
       <div class="grid3">
         <div class="card">
-          <img class="card-img" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png" alt="Creatine monohydrate" loading="lazy">
-          <div class="dose">5.25 g</div>
-          <div class="ing">Creatine Monohydrate</div>
-          <div class="ben">Muscle &amp; strength</div>
-          <details class="card-more">
-            <summary>More on creatine</summary>
-            <p>The most-studied compound in sports science for holding onto lean muscle and strength &mdash; which matters most when you&rsquo;re eating less. It works by buffering ATP, the energy your muscles burn to contract and recover. We use a full 5.25&nbsp;g, the dose used in the clinical research.</p>
-          </details>
+          <p class="pnum">01 &middot; Muscle</p>
+          <p class="phead">You lose muscle, not just fat.</p>
+          <p class="pbody">When the weight comes off quickly, a real share of it is lean muscle &mdash; the tissue that keeps you strong and your metabolism running. Our morning blend leads with a full dose of creatine, plus the amino acids your muscles depend on, to help you hold onto strength while the fat goes.</p>
         </div>
         <div class="card">
-          <img class="card-img" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_4_2.png" alt="CoQ10" loading="lazy">
-          <div class="dose">100 mg</div>
-          <div class="ing">CoQ10 + Magnesium</div>
-          <div class="ben">Energy</div>
-          <details class="card-more">
-            <summary>More on CoQ10</summary>
-            <p>CoQ10 is essential for the way your cells turn food into usable energy, and your body makes less of it with age. We pair it with 150&nbsp;mg of magnesium citrate &mdash; a mineral your body uses in hundreds of processes, including muscle function. Together they help keep energy steady when calories are low.</p>
-          </details>
+          <p class="pnum">02 &middot; Energy</p>
+          <p class="phead">Your energy takes a hit.</p>
+          <p class="pbody">Eat far less and your cells get less of the fuel they run on, so afternoons start to drag. We pair CoQ10 with magnesium to support the way your body turns food into steady energy &mdash; even on a lighter plate.</p>
         </div>
         <div class="card">
-          <img class="card-img" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-13IngredientImages-v1_15_2.png" alt="Inulin from chicory" loading="lazy">
-          <div class="dose">5 g</div>
-          <div class="ing">Inulin Fiber</div>
-          <div class="ben">Digestion</div>
-          <details class="card-more">
-            <summary>More on inulin</summary>
-            <p>A prebiotic fiber from chicory root that feeds the beneficial bacteria in your gut. When you eat less, fiber is usually the first thing to drop &mdash; and digestion notices. 5&nbsp;g a day helps keep things moving and your gut microbiome fed.</p>
-          </details>
+          <p class="pnum">03 &middot; Digestion</p>
+          <p class="phead">Digestion slows down.</p>
+          <p class="pbody">Less food often means fiber is the first thing to disappear &mdash; and a slower gut notices. Our prebiotic inulin feeds the good bacteria and helps keep everything moving comfortably.</p>
         </div>
       </div>
       <div class="cta-center"><a class="btn dark" href="#pricing-product-apr26">Buy Coastline Now</a></div>
@@ -189,15 +167,14 @@
         </div>
         <div class="exp">
           <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp" alt="Dr. Christopher Pollock, MD" loading="lazy">
-          <p class="exp-cred">Medical doctor and UBC clinical instructor, focused on chronic-disease prevention and longevity science.</p>
+          <p class="exp-quote">&ldquo;We reviewed thousands of studies to identify 13 ingredients with the strongest evidence for human longevity. Nothing speculative. No fads. Just science.&rdquo;</p>
           <p class="exp-name">Dr. Christopher Pollock, MD</p>
           <p class="exp-role">Senior Science Advisor</p>
         </div>
       </div>
       <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
+      <p class="disc-in">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
     </div>
   </div>
-
-  <p class="disc">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
 
 </section>
