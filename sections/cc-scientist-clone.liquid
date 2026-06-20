@@ -1,0 +1,190 @@
+{% comment %}
+  cc-scientist-clone -- Coastline "scientists, not celebrity" narrative.
+  Pairs with SHARED sections (cc-pricing-product-apr26, cc-guarantee-final, cc-ugc-apr26,
+  cc-testimonials-apr26, cc-faq-apr26, cc-final-cta-apr26, cc-email-capture-apr26) +
+  the cc-ingredients-accordion snippet, inside templates/product.lp-scientist-jun20.json.
+  Angle: most brands buy a celebrity; we had 4 scientists choose 13 ingredients at clinical doses.
+  Structure/function claims only. FDA disclaimer integrated in the team section.
+  Hero microscope image (cc-sci-hero.jpg) is AI-generated -> carries an in-image AI disclosure.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+  html { scroll-behavior: smooth; }
+  .cc-scilp * { box-sizing: border-box; }
+  .cc-scilp { font-family: 'Inter', sans-serif; color: #0A0A0A; }
+  .cc-scilp .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .cc-scilp h1, .cc-scilp h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; }
+
+  /* HERO (ink blue, 2-col) */
+  .cc-scilp .hero { background: #0E1626; color: #FAF9F6; }
+  .cc-scilp .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .cc-scilp .hero-img { position: relative; height: 720px; overflow: hidden; }
+  .cc-scilp .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-scilp .ai-disc { position: absolute; bottom: 7px; right: 8px; font-size: 9px; line-height: 1; letter-spacing: 0.03em; color: rgba(255,255,255,0.72); background: rgba(0,0,0,0.30); padding: 3px 5px; border-radius: 2px; }
+  .cc-scilp .hero-copy { padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; }
+  .cc-scilp .hero-cutout { width: 176px; height: 104px; background-repeat: no-repeat; background-position: left center; background-size: contain; display: block; margin: 0 0 24px; }
+  .cc-scilp .hero-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #A3C7D0; margin: 0 0 12px; }
+  .cc-scilp .stars { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; letter-spacing: 0.04em; color: rgba(250,249,246,0.82); }
+  .cc-scilp .stars .s { color: #E7FF56; letter-spacing: 3px; font-size: 21px; }
+  .cc-scilp .hero h1 { font-size: clamp(40px, 4vw, 60px); margin: 4px 0 0; color: #FAF9F6; }
+  .cc-scilp .hero h1 em { font-style: normal; color: #E7FF56; }
+  .cc-scilp .hero p.sub { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: rgba(250,249,246,0.82); margin: 20px 0 0; max-width: 460px; }
+  .cc-scilp .btn { display: inline-block; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; padding: 22px 52px; text-decoration: none; }
+  .cc-scilp .btn.dark { background: #0A0A0A; color: #FAF9F6; }
+  .cc-scilp .cta-row { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 26px; }
+  .cc-scilp .price-anchor { font-size: 13px; color: rgba(250,249,246,0.6); margin: 4px 0 4px; }
+  .cc-scilp .skip { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,249,246,0.72); text-decoration: underline; text-underline-offset: 5px; }
+
+  /* CONTRAST (parchment) */
+  .cc-scilp .contrast { background: #FAF9F6; padding: 110px 0; }
+  .cc-scilp .contrast h2 { font-size: clamp(34px, 4.8vw, 52px); text-align: center; max-width: 760px; margin: 0 auto 14px; }
+  .cc-scilp .contrast .lede { text-align: center; color: #6B6B6B; font-size: 19px; max-width: 600px; margin: 0 auto 64px; }
+  .cc-scilp .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .cc-scilp .card { border-top: 2px solid #062F3D; padding-top: 24px; }
+  .cc-scilp .card .pnum { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 10px; }
+  .cc-scilp .card .phead { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(24px, 2.6vw, 30px); letter-spacing: -0.02em; line-height: 1.12; color: #0A0A0A; margin: 0 0 12px; }
+  .cc-scilp .card .pbody { font-size: 15.5px; line-height: 1.62; color: #444; margin: 0; }
+
+  /* TEAM (dark) */
+  .cc-scilp .team { background: #0A0A0A; color: #FAF9F6; padding: 110px 0; text-align: center; }
+  .cc-scilp .team h2 { font-size: clamp(34px, 4.8vw, 52px); max-width: 760px; margin: 0 auto; color: #FAF9F6; }
+  .cc-scilp .team h2 em { font-style: normal; color: #E7FF56; }
+  .cc-scilp .team .lede { font-size: 19px; line-height: 1.6; color: #9A9A9A; max-width: 620px; margin: 24px auto 0; }
+  .cc-scilp .experts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 28px; max-width: 1000px; margin: 56px auto 46px; }
+  .cc-scilp .exp { text-align: center; }
+  .cc-scilp .exp-photo { width: 118px; height: 118px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 18px; }
+  .cc-scilp .exp-quote { font-size: 14.5px; line-height: 1.55; color: #D8D8D8; margin: 0 0 16px; }
+  .cc-scilp .exp-name { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #FAF9F6; margin: 0; }
+  .cc-scilp .exp-role { font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #7E7E7E; margin: 5px 0 0; }
+  .cc-scilp .press { max-width: 820px; margin: 0 auto; padding-top: 8px; }
+  .cc-scilp .press-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 18px; }
+  .cc-scilp .press-logos { font-family: 'Space Grotesk', sans-serif; font-size: 15px; letter-spacing: 0.04em; color: #8A8A8A; }
+  .cc-scilp .press-logos span { margin: 0 14px; }
+  .cc-scilp .team .disc-in { margin: 56px auto 0; max-width: 720px; font-size: 12px; line-height: 1.55; color: #6A6A6A; text-align: center; border-top: 1px solid #2A2A2A; padding-top: 30px; }
+
+  /* TRANSPARENCY band (lime, 2-col) */
+  .cc-scilp .band { background: #E7FF56; color: #062F3D; padding: 96px 0; }
+  .cc-scilp .band-grid { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+  .cc-scilp .band h2 { font-size: clamp(32px, 3.8vw, 50px); margin: 0; }
+  .cc-scilp .band p { font-size: 18px; line-height: 1.55; color: rgba(6,47,61,0.80); margin: 18px 0 0; }
+  .cc-scilp .band-img { position: relative; }
+  .cc-scilp .band-img img { width: 100%; display: block; }
+  .cc-scilp .band .btn { margin-top: 28px; }
+
+  @media (max-width: 749px) {
+    .cc-scilp .hero-grid { grid-template-columns: 1fr; }
+    .cc-scilp .hero-img { height: 320px; order: -1; }
+    .cc-scilp .hero-copy { padding: 56px 28px 64px; }
+    .cc-scilp .hero-cutout { width: 122px; height: 72px; margin-bottom: 18px; }
+    .cc-scilp .grid3 { grid-template-columns: 1fr; gap: 40px; }
+    .cc-scilp .contrast, .cc-scilp .team, .cc-scilp .band { padding: 72px 0; }
+    .cc-scilp .band-grid { grid-template-columns: 1fr; gap: 40px; }
+    .cc-scilp .experts { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+  }
+</style>
+
+<section class="cc-scilp cc-landingpage-v6">
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="hero-img">
+        <img src="{{ 'cc-sci-hero.jpg' | asset_url }}" alt="A microscope in a coastal research setting" loading="eager">
+        <span class="ai-disc">AI-generated image</span>
+      </div>
+      <div class="hero-copy">
+        <div class="hero-cutout" role="img" aria-label="The Coastline morning system" style="background-image: url({{ 'cc-coastline-family-cutout.png' | asset_url }});"></div>
+        <div class="stars"><span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Consistent 5-star reviews</span></div>
+        <p class="hero-eyebrow">Formulated by four scientists</p>
+        <h1>Most brands use celebrity.<br><em>We use scientists.</em></h1>
+        <p class="sub">No paid faces, no hyped molecules. Four scientists chose all 13 ingredients &mdash; at clinical doses, every milligram on the label.</p>
+        <div class="cta-row">
+          <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
+          <p class="price-anchor">From $3.30/day &middot; $99/mo &middot; 60-day money-back guarantee</p>
+          <a class="skip" href="#the-team">Meet the team &darr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contrast">
+    <div class="wrap">
+      <h2>Who formulates it matters.</h2>
+      <p class="lede">Most supplement brands spend on a famous face. We spent on the research. Here&rsquo;s the difference.</p>
+      <div class="grid3">
+        <div class="card">
+          <p class="pnum">01 &middot; The hype</p>
+          <p class="phead">Celebrity sells the trend.</p>
+          <p class="pbody">Most brands buy a famous name and chase whatever molecule is having a moment. The budget goes to the endorsement &mdash; not to what&rsquo;s actually in the jar.</p>
+        </div>
+        <div class="card">
+          <p class="pnum">02 &middot; The doses</p>
+          <p class="phead">Trendy, but barely there.</p>
+          <p class="pbody">Those hyped ingredients often show up at trace amounts, tucked inside a proprietary blend you can&rsquo;t see. It looks impressive on the label and does little in the body.</p>
+        </div>
+        <div class="card">
+          <p class="pnum">03 &middot; The evidence</p>
+          <p class="phead">We did the opposite.</p>
+          <p class="pbody">Four scientists read the research and chose 13 ingredients with the strongest human evidence &mdash; every dose printed on the label and set to the clinical studies.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:56px;"><a class="btn dark" href="#pricing-product-apr26">Buy Coastline Now</a></div>
+    </div>
+  </div>
+
+  <div class="team" id="the-team">
+    <div class="wrap">
+      <h2>Meet the scientists.<br><em>Not marketers.</em></h2>
+      <p class="lede">Four founders, four scientists &mdash; spanning sleep science, molecular medicine, naturopathic and clinical practice.</p>
+      <div class="experts">
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" loading="lazy">
+          <p class="exp-quote">&ldquo;The 13 ingredients chosen for Coastline are the most scientifically supported and clinically validated supplements yet to be discovered.&rdquo;</p>
+          <p class="exp-name">Greg Potter, PhD</p>
+          <p class="exp-role">Chief Science Officer</p>
+        </div>
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques, ND" loading="lazy">
+          <p class="exp-quote">&ldquo;Coastline is what happens when you combine scientific rigor with real-world clinical understanding.&rdquo;</p>
+          <p class="exp-name">Dr. Jacqueline Jacques, ND</p>
+          <p class="exp-role">Naturopathic Medicine Advisor</p>
+        </div>
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven, PhD" loading="lazy">
+          <p class="exp-quote">&ldquo;I value Coastline&rsquo;s quality. It means less hassle, with the greatest certainty of results.&rdquo;</p>
+          <p class="exp-name">Dr. Nicolas Verhoeven, PhD</p>
+          <p class="exp-role">Senior Formulation Advisor</p>
+        </div>
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp" alt="Dr. Christopher Pollock, MD" loading="lazy">
+          <p class="exp-quote">&ldquo;We reviewed thousands of studies to identify 13 ingredients with the strongest evidence for human longevity. Nothing speculative. No fads. Just science.&rdquo;</p>
+          <p class="exp-name">Dr. Christopher Pollock, MD</p>
+          <p class="exp-role">Senior Science Advisor</p>
+        </div>
+      </div>
+      <div class="press">
+        <p class="press-label">Their research featured in</p>
+        <p class="press-logos"><span>BBC</span><span>The Washington Post</span><span>TIME</span><span>Reuters</span></p>
+      </div>
+      <p class="disc-in">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
+    </div>
+  </div>
+
+  {% render 'cc-ingredients-accordion', ing_eyebrow: 'The formula', ing_heading: '13 ingredients, chosen by scientists.', ing_lede: 'Each one earned its place through human research, at a dose you can actually see. Tap any one to read why the team put it in.' %}
+
+  <div class="band">
+    <div class="band-grid">
+      <div>
+        <h2>13 ingredients.<br>Every milligram on the&nbsp;label.</h2>
+        <p>No proprietary blend, no hidden doses. You see exactly what the scientists chose &mdash; and exactly how much.</p>
+        <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
+      </div>
+      <div class="band-img">
+        <img src="{{ 'cc-glp1-product.jpg' | asset_url }}" alt="The Coastline system on a coastal deck" loading="lazy">
+        <span class="ai-disc">AI-generated image</span>
+      </div>
+    </div>
+  </div>
+
+</section>

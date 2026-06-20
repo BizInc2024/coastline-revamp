@@ -1,0 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narrative": {
+      "type": "cc-scientist-clone",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "cc-testimonials-apr26",
+      "blocks": {
+        "r9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I'm skeptical of most supplements. But the science convinced me. Three months in, my biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        "r11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. You can tell this wasn't made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond 49",
+            "category": "trust"
+          }
+        },
+        "r10": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I'm extremely careful about what I put in my body. Coastline checked every box for purity and data.",
+            "name": "Rachel G.",
+            "detail": "Boulder 48",
+            "category": "trust"
+          }
+        },
+        "r12": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Steady, reliable, and evidence-based. This is the future of human optimization.",
+            "name": "Jeffrey E.",
+            "detail": "New Orleans 57",
+            "category": "trust"
+          }
+        },
+        "r5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every supplement out there. My energy has transformed, and I actually look forward to my morning runs again.",
+            "name": "Sarah M.",
+            "detail": "San Diego 54",
+            "category": "energy"
+          }
+        },
+        "r6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Energy that feels natural, not forced. It's changed how I approach my workouts.",
+            "name": "Scott L.",
+            "detail": "Charlotte 51",
+            "category": "energy"
+          }
+        },
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the 'afternoon fog' I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder, NY",
+            "category": "focus"
+          }
+        },
+        "r13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        "r15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a longevity stack that doesn't need 15 different bottles. My morning brain fog is gone.",
+            "name": "Robert K.",
+            "detail": "Chicago 45",
+            "category": "convenience"
+          }
+        },
+        "r3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel more 'locked in' during my workday. It's significantly improved my productivity.",
+            "name": "Michelle P.",
+            "detail": "Indianapolis 41",
+            "category": "focus"
+          }
+        }
+      },
+      "block_order": [
+        "r9",
+        "r11",
+        "r10",
+        "r12",
+        "r5",
+        "r6",
+        "r1",
+        "r13",
+        "r15",
+        "r3"
+      ],
+      "settings": {}
+    },
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "READY TO SWITCH?",
+        "pricing_headline": "Get started today.",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 96,
+        "pad_bottom": 96
+      }
+    },
+    "guarantee": {
+      "type": "cc-guarantee-final",
+      "settings": {}
+    },
+    "community": {
+      "type": "cc-ugc-apr26",
+      "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-faq-apr26",
+      "blocks": {
+        "sf1": {
+          "type": "faq",
+          "settings": {
+            "question": "Who actually formulates Coastline?",
+            "answer": "<p>Four scientists — spanning sleep science, molecular medicine, naturopathic and clinical practice — selected all 13 ingredients and set every dose.</p>"
+          }
+        },
+        "sf2": {
+          "type": "faq",
+          "settings": {
+            "question": "Why no celebrity endorsements?",
+            "answer": "<p>We'd rather spend on the research than a famous face. The formula is the product, and it was chosen by scientists — not a marketing team.</p>"
+          }
+        },
+        "sf3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I see every dose?",
+            "answer": "<p>Yes. All 13 ingredients and every milligram are printed on the label — no proprietary blend.</p>"
+          }
+        },
+        "sf4": {
+          "type": "faq",
+          "settings": {
+            "question": "How were the ingredients chosen?",
+            "answer": "<p>Each one had to show strong human evidence at a clinically used dose. Nothing speculative, no fads, no filler. These statements have not been evaluated by the FDA.</p>"
+          }
+        },
+        "sf5": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it cost?",
+            "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "sf1",
+        "sf2",
+        "sf3",
+        "sf4",
+        "sf5"
+      ],
+      "settings": {
+        "faq_label": "FREQUENTLY ASKED",
+        "faq_headline": "The science, answered"
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "show_product_image": true,
+        "final_headline": "Built by scientists. Not marketers.",
+        "final_subheadline": "13 ingredients, every dose disclosed. $99/mo, 60-day guarantee.",
+        "final_cta_text": "Start my system",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
+      }
+    },
+    "email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    }
+  },
+  "order": [
+    "narrative",
+    "reviews",
+    "pricing",
+    "guarantee",
+    "community",
+    "narrative-bottom",
+    "final-cta",
+    "email"
+  ]
+}
