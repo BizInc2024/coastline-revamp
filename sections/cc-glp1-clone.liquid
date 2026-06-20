@@ -31,7 +31,8 @@
   .cc-glp1 .btn.dark { background: #0A0A0A; color: #FAF9F6; }
   .cc-glp1 .stars { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; letter-spacing: 0.04em; color: rgba(250,249,246,0.82); }
   .cc-glp1 .stars .s { color: #E7FF56; letter-spacing: 3px; font-size: 21px; }
-  .cc-glp1 .cta-row { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 28px; }
+  .cc-glp1 .cta-row { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 26px; }
+  .cc-glp1 .price-anchor { font-size: 13px; color: rgba(250,249,246,0.6); margin: 4px 0 4px; letter-spacing: 0.01em; }
   .cc-glp1 .skip { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,249,246,0.72); text-decoration: underline; text-underline-offset: 5px; }
 
   /* PILLARS (parchment) */
@@ -39,8 +40,10 @@
   .cc-glp1 .pillars h2 { font-size: clamp(34px, 4.8vw, 52px); text-align: center; max-width: 760px; margin: 0 auto 14px; }
   .cc-glp1 .pillars .lede { text-align: center; color: #6B6B6B; font-size: 19px; max-width: 620px; margin: 0 auto 64px; }
   .cc-glp1 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-  .cc-glp1 .card { border-top: 2px solid #062F3D; padding-top: 24px; }
-  .cc-glp1 .card .pnum { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 14px; }
+  .cc-glp1 .card { display: flex; flex-direction: column; }
+  .cc-glp1 .card-imgwrap { position: relative; margin-bottom: 22px; }
+  .cc-glp1 .card-img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; display: block; }
+  .cc-glp1 .card .pnum { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 10px; }
   .cc-glp1 .card .phead { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(22px, 2.2vw, 26px); letter-spacing: -0.02em; line-height: 1.12; color: #0A0A0A; margin: 0 0 12px; }
   .cc-glp1 .card .pbody { font-size: 15.5px; line-height: 1.62; color: #444; margin: 0; }
   .cc-glp1 .pillars .cta-center { text-align: center; margin-top: 56px; }
@@ -93,34 +96,47 @@
       <div class="hero-copy">
         <div class="stars"><span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Consistent 5-star reviews</span></div>
         <h1>Weight comes off.<br><em>Muscle shouldn&rsquo;t.</em></h1>
-        <p class="sub">Eating less is the goal &mdash; but muscle, energy, and a working gut are the first things to slip with it. Coastline&rsquo;s morning system supports all three, every dose printed and set by the research.</p>
+        <p class="sub">Eating less is the goal &mdash; but muscle, energy, and digestion are the first to slip. Coastline&rsquo;s morning system supports all three.</p>
         <div class="cta-row">
           <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
-          <a class="skip" href="#pricing-product-apr26">Skip to pricing &rarr;</a>
+          <p class="price-anchor">From $3.30/day &middot; $99/mo &middot; 60-day money-back guarantee</p>
+          <a class="skip" href="#why-it-slips">See why muscle matters &darr;</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="pillars">
+  <div class="pillars" id="why-it-slips">
     <div class="wrap">
       <h2>Eating less? Here&rsquo;s what slips first.</h2>
       <p class="lede">Losing weight fast takes more than fat with it. Three things tend to slip first &mdash; here&rsquo;s what&rsquo;s really going on, and how we help.</p>
       <div class="grid3">
         <div class="card">
+          <div class="card-imgwrap">
+            <img class="card-img" src="{{ 'cc-glp1-muscle.jpg' | asset_url }}" alt="A man exercising on a coastal deck" loading="lazy">
+            <span class="ai-disc">AI-generated image</span>
+          </div>
           <p class="pnum">01 &middot; Muscle</p>
           <p class="phead">You lose muscle, not just fat.</p>
-          <p class="pbody">When the weight comes off quickly, a real share of it is lean muscle &mdash; the tissue that keeps you strong and your metabolism running. Our morning blend leads with a full dose of creatine, plus the amino acids your muscles depend on, to help you hold onto strength while the fat goes.</p>
+          <p class="pbody">When weight comes off quickly, a real share of it is lean muscle &mdash; the tissue that keeps you strong and your metabolism running. Our morning blend leads with a full dose of creatine, plus the amino acids your muscles depend on.</p>
         </div>
         <div class="card">
+          <div class="card-imgwrap">
+            <img class="card-img" src="{{ 'cc-glp1-energy.jpg' | asset_url }}" alt="A man hiking a coastal trail with his child" loading="lazy">
+            <span class="ai-disc">AI-generated image</span>
+          </div>
           <p class="pnum">02 &middot; Energy</p>
           <p class="phead">Your energy takes a hit.</p>
-          <p class="pbody">Eat far less and your cells get less of the fuel they run on, so afternoons start to drag. We pair CoQ10 with magnesium to support the way your body turns food into steady energy &mdash; even on a lighter plate.</p>
+          <p class="pbody">Eat far less and your cells get less of the fuel they run on, so the afternoons start to drag. We pair CoQ10 with magnesium to support the way your body turns food into steady, all-day energy.</p>
         </div>
         <div class="card">
+          <div class="card-imgwrap">
+            <img class="card-img" src="{{ 'cc-glp1-digestion.jpg' | asset_url }}" alt="A man preparing a meal in a bright coastal kitchen" loading="lazy">
+            <span class="ai-disc">AI-generated image</span>
+          </div>
           <p class="pnum">03 &middot; Digestion</p>
           <p class="phead">Digestion slows down.</p>
-          <p class="pbody">Less food often means fiber is the first thing to disappear &mdash; and a slower gut notices. Our prebiotic inulin feeds the good bacteria and helps keep everything moving comfortably.</p>
+          <p class="pbody">Less food usually means less fiber, and a slower gut is quick to notice. Our prebiotic inulin feeds the good bacteria and helps keep everything moving the way it should &mdash; comfortably, on schedule.</p>
         </div>
       </div>
       <div class="cta-center"><a class="btn dark" href="#pricing-product-apr26">Buy Coastline Now</a></div>

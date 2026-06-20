@@ -29,7 +29,7 @@
       "type": "cc-final-cta-apr26",
       "settings": {
         "show_product_image": true,
-        "final_headline": "Weight comes off. Muscle shouldn't.",
+        "final_headline": "Lose the weight. Keep your strength.",
         "final_subheadline": "13 ingredients, every dose disclosed. $99/mo, 60-day guarantee.",
         "final_cta_text": "GET THE MORNING SYSTEM",
         "final_cta_link": "#pricing-product-apr26",
@@ -261,10 +261,10 @@
   },
   "order": [
     "narrative",
+    "reviews",
     "pricing",
     "guarantee",
     "community",
-    "reviews",
     "narrative-bottom",
     "final-cta",
     "email"
