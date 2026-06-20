@@ -17,7 +17,8 @@
   .cc-ing-acc .grp details:last-child { border-bottom: 1px solid #E8E8E8; }
   .cc-ing-acc summary { display: flex; align-items: center; gap: 18px; padding: 18px 4px; cursor: pointer; list-style: none; }
   .cc-ing-acc summary::-webkit-details-marker { display: none; }
-  .cc-ing-acc .thumb { width: 54px; height: 54px; object-fit: cover; flex-shrink: 0; display: block; }
+  .cc-ing-acc .thumb { width: 54px; height: 54px; object-fit: cover; flex-shrink: 0; display: block; filter: grayscale(1) contrast(1.04); }
+  .cc-ing-acc .acc-trust { text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 16px 0 0; }
   .cc-ing-acc .nm { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 18px; color: #0A0A0A; letter-spacing: -0.01em; line-height: 1.2; }
   .cc-ing-acc .ds { font-size: 13px; color: #6B6B6B; margin-top: 2px; }
   .cc-ing-acc summary::after { content: '+'; margin-left: auto; font-size: 22px; line-height: 1; color: #6B6B6B; padding-left: 16px; }
@@ -39,6 +40,7 @@
     <p class="eyebrow">{{ ing_eyebrow | default: 'The Coastline System' }}</p>
     <h2>{{ ing_heading | default: '13 clinical-dose ingredients. Nothing hidden.' }}</h2>
     <p class="lede">{{ ing_lede | default: 'Every ingredient earned its place through human research, at a dose you can actually see. Tap any one to read why it’s in.' }}</p>
+    <p class="acc-trust">GMP Certified &middot; Every dose disclosed &middot; No proprietary blend</p>
 
     <div class="grp">
       <p class="grp-label">Morning Blend &middot; Powder</p>
