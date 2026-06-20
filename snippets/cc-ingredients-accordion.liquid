@@ -1,0 +1,107 @@
+{% comment %}
+  cc-ingredients-accordion -- full 13-ingredient list, grouped by step,
+  each with image thumb + dose + expandable dropdown (pure-CSS <details>).
+  Reusable across LPs. Doses/descriptions mirror cc-ingredients-overview (source of truth).
+{% endcomment %}
+
+<style>
+  .cc-ing-acc { background: #FAF9F6; padding: 104px 24px; font-family: 'Inter', sans-serif; }
+  .cc-ing-acc * { box-sizing: border-box; }
+  .cc-ing-acc .wrap { max-width: 840px; margin: 0 auto; }
+  .cc-ing-acc .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #6B6B6B; text-align: center; margin: 0 0 14px; }
+  .cc-ing-acc h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(30px, 4.4vw, 46px); letter-spacing: -0.02em; line-height: 1.08; color: #0A0A0A; text-align: center; margin: 0 auto; text-wrap: balance; max-width: 640px; }
+  .cc-ing-acc .lede { text-align: center; color: #6B6B6B; font-size: 17px; line-height: 1.6; max-width: 540px; margin: 16px auto 0; text-wrap: balance; }
+  .cc-ing-acc .grp { margin-top: 56px; }
+  .cc-ing-acc .grp-label { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #062F3D; margin: 0 0 6px; }
+  .cc-ing-acc details { border-top: 1px solid #E8E8E8; }
+  .cc-ing-acc .grp details:last-child { border-bottom: 1px solid #E8E8E8; }
+  .cc-ing-acc summary { display: flex; align-items: center; gap: 18px; padding: 18px 4px; cursor: pointer; list-style: none; }
+  .cc-ing-acc summary::-webkit-details-marker { display: none; }
+  .cc-ing-acc .thumb { width: 54px; height: 54px; object-fit: cover; flex-shrink: 0; display: block; }
+  .cc-ing-acc .nm { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 18px; color: #0A0A0A; letter-spacing: -0.01em; line-height: 1.2; }
+  .cc-ing-acc .ds { font-size: 13px; color: #6B6B6B; margin-top: 2px; }
+  .cc-ing-acc summary::after { content: '+'; margin-left: auto; font-size: 22px; line-height: 1; color: #6B6B6B; padding-left: 16px; }
+  .cc-ing-acc details[open] summary::after { content: '\2212'; }
+  .cc-ing-acc .body { font-size: 15px; line-height: 1.62; color: #444; margin: 0; padding: 0 40px 22px 72px; }
+  @media (max-width: 749px) {
+    .cc-ing-acc { padding: 72px 20px; }
+    .cc-ing-acc .thumb { width: 46px; height: 46px; }
+    .cc-ing-acc .nm { font-size: 16px; }
+    .cc-ing-acc .body { padding: 0 0 20px 64px; font-size: 14px; }
+  }
+</style>
+
+{%- assign cdn = 'https://cdn.shopify.com/s/files/1/0619/6861/3445/files/' -%}
+
+<div class="cc-ing-acc">
+  <div class="wrap">
+    <p class="eyebrow">{{ ing_eyebrow | default: 'The Coastline System' }}</p>
+    <h2>{{ ing_heading | default: '13 clinical-dose ingredients. Nothing hidden.' }}</h2>
+    <p class="lede">{{ ing_lede | default: 'Every ingredient earned its place through human research, at a dose you can actually see. Tap any one to read why it’s in.' }}</p>
+
+    <div class="grp">
+      <p class="grp-label">Morning Blend &middot; Powder</p>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_2_a9a90961-637d-402f-856b-17493e2fe0d7.png" alt="Creatine" loading="lazy"><span><span class="nm">Creatine</span><span class="ds">5.25 g</span></span></summary>
+        <p class="body">Extended disease-free lifespan 9% in mice. It buffers ATP &mdash; the energy your cells burn to work and recover &mdash; which supports muscle, bone, and cognitive function. We use a full 5.25&nbsp;g, the dose used in the research.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_16_2.png" alt="Taurine" loading="lazy"><span><span class="nm">Taurine</span><span class="ds">3.05 g</span></span></summary>
+        <p class="body">Extended lifespan 10&ndash;12% in mice. It targets nearly all the hallmarks of aging, including inflammation, senescent cells, and mitochondrial dysfunction &mdash; one of the most broadly acting compounds in the formula.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_10_2.png" alt="Ergothioneine" loading="lazy"><span><span class="nm">Ergothioneine</span><span class="ds">5 mg</span></span></summary>
+        <p class="body">A &ldquo;longevity vitamin&rdquo; that extends lifespan in animal models. It raises NAD+ and crosses the blood-brain barrier, where it supports cognitive function and protects cells from oxidative stress.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_2_2.png" alt="Glycine" loading="lazy"><span><span class="nm">Glycine</span><span class="ds">5 g</span></span></summary>
+        <p class="body">Extended lifespan in mice. It improves sleep quality, smooths out blood-sugar swings, and is a precursor for glutathione &mdash; your body&rsquo;s master antioxidant.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_15_2.png" alt="Inulin" loading="lazy"><span><span class="nm">Inulin</span><span class="ds">5 g</span></span></summary>
+        <p class="body">A prebiotic fiber from chicory root that feeds the beneficial bacteria in your gut. It also increases calcium absorption and supports blood-sugar control &mdash; the fiber most people miss when they eat less.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_12_2.png" alt="Magnesium" loading="lazy"><span><span class="nm">Magnesium Citrate</span><span class="ds">150 mg</span></span></summary>
+        <p class="body">A cofactor in over 300 enzymatic reactions. It supports sleep, blood pressure, blood sugar, and bone density. Most adults run low &mdash; we use the citrate form for better absorption.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_14_2.png" alt="Glucosamine" loading="lazy"><span><span class="nm">Glucosamine</span><span class="ds">750 mg (AM)</span></span></summary>
+        <p class="body">Associated with 39% lower all-cause mortality in population studies. It activates the NRF2 and AMPK longevity pathways. We split the dose morning and evening for sustained activation.</p>
+      </details>
+    </div>
+
+    <div class="grp">
+      <p class="grp-label">Morning Softgels &middot; Fat-soluble</p>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_4_2.png" alt="CoQ10" loading="lazy"><span><span class="nm">CoQ10</span><span class="ds">100 mg</span></span></summary>
+        <p class="body">Essential for the way your mitochondria turn food into usable energy, and your body makes less of it with age. It supports cardiovascular health and helps reduce oxidative stress.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_8_2.png" alt="Astaxanthin" loading="lazy"><span><span class="nm">Astaxanthin</span><span class="ds">6 mg</span></span></summary>
+        <p class="body">Extended lifespan 12% in male mice. It&rsquo;s over 100&times; more potent than vitamin E as an antioxidant and activates five major longevity pathways. The pigment that makes salmon pink.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_11_2.png" alt="Lutein and Zeaxanthin" loading="lazy"><span><span class="nm">Lutein &amp; Zeaxanthin</span><span class="ds">10 mg + 2 mg</span></span></summary>
+        <p class="body">A pair of carotenoids that protect the eyes from age-related decline and support cognitive function. They also help shield skin from UV. Dosed to the AREDS2 clinical study.</p>
+      </details>
+    </div>
+
+    <div class="grp">
+      <p class="grp-label">Evening Capsules</p>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_7_2.png" alt="L-Theanine" loading="lazy"><span><span class="nm">L-Theanine</span><span class="ds">200 mg</span></span></summary>
+        <p class="body">Reduces stress and anxiety at clinical doses without making you drowsy. It improves sleep quality and serves as a substrate for glutathione synthesis. The calm in green tea.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_17_2.png" alt="Lithium" loading="lazy"><span><span class="nm">Lithium</span><span class="ds">400 mcg</span></span></summary>
+        <p class="body">At trace doses &mdash; a fraction of a prescription &mdash; lithium is associated with longer lifespan in population studies. It supports cognitive function, raises BDNF, and promotes brain autophagy.</p>
+      </details>
+      <details>
+        <summary><img class="thumb" src="{{ cdn }}CL-13IngredientImages-v1_14_2.png" alt="Glucosamine" loading="lazy"><span><span class="nm">Glucosamine</span><span class="ds">750 mg (PM)</span></span></summary>
+        <p class="body">The second daily dose, timed for the evening. It sustains longevity-pathway activation overnight, and its chronobiotic effects help support your circadian rhythm.</p>
+      </details>
+    </div>
+
+  </div>
+</div>

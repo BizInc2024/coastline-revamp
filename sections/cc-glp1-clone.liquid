@@ -153,22 +153,7 @@
     <div class="band-grid">
       <div>
         <h2>13 ingredients.<br>Every milligram on the&nbsp;label.</h2>
-        <p>No proprietary blend. You see exactly what you&rsquo;re getting &mdash; and exactly how much.</p>
-        <ul class="ing-list">
-          <li>Creatine Monohydrate</li>
-          <li>Inulin Fiber</li>
-          <li>Magnesium Citrate</li>
-          <li>Ergothioneine</li>
-          <li>Taurine</li>
-          <li>Glycine</li>
-          <li>CoQ10</li>
-          <li>Astaxanthin</li>
-          <li>Lutein</li>
-          <li>Zeaxanthin</li>
-          <li>L-Theanine</li>
-          <li>Lithium</li>
-          <li>Glucosamine</li>
-        </ul>
+        <p>No proprietary blend. You see exactly what you&rsquo;re getting &mdash; and exactly how much. Every dose is printed below, set to the clinical research.</p>
       </div>
       <div class="band-img">
         <img src="{{ 'cc-glp1-product.jpg' | asset_url }}" alt="The Coastline system on a coastal deck" loading="lazy">
@@ -176,6 +161,8 @@
       </div>
     </div>
   </div>
+
+  {% render 'cc-ingredients-accordion' %}
 
   <div class="sci">
     <div class="wrap">
