@@ -19,7 +19,7 @@
 
   /* HERO (ink blue, 2-col: image left / copy right) */
   .cc-glp1 .hero { background: #0E1626; color: #FAF9F6; }
-  .cc-glp1 .hero-cutout { height: 104px !important; width: auto !important; max-width: 100%; object-fit: contain; display: block; margin: 0 0 24px; }
+  .cc-glp1 .hero-cutout { width: 176px; height: 104px; background-repeat: no-repeat; background-position: left center; background-size: contain; display: block; margin: 0 0 24px; }
   .cc-glp1 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
   .cc-glp1 .hero-img { position: relative; height: 720px; overflow: hidden; }
   .cc-glp1 .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -78,7 +78,7 @@
     .cc-glp1 .hero-grid { grid-template-columns: 1fr; }
     .cc-glp1 .hero-img { height: 320px; order: -1; }
     .cc-glp1 .hero-copy { padding: 56px 28px 64px; }
-    .cc-glp1 .hero-cutout { height: 72px !important; margin-bottom: 18px; }
+    .cc-glp1 .hero-cutout { width: 122px; height: 72px; margin-bottom: 18px; }
     .cc-glp1 .grid3 { grid-template-columns: 1fr; gap: 40px; }
     .cc-glp1 .card-img { aspect-ratio: 16 / 9; }
     .cc-glp1 .pillars, .cc-glp1 .sci, .cc-glp1 .band { padding: 72px 0; }
@@ -96,7 +96,7 @@
         <span class="ai-disc">AI-generated image</span>
       </div>
       <div class="hero-copy">
-        <img class="hero-cutout" src="{{ 'cc-coastline-family-cutout.png' | asset_url }}" alt="The Coastline morning system &mdash; blend and softgels" loading="eager">
+        <div class="hero-cutout" role="img" aria-label="The Coastline morning system" style="background-image: url({{ 'cc-coastline-family-cutout.png' | asset_url }});"></div>
         <div class="stars"><span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Consistent 5-star reviews</span></div>
         <h1>Weight comes off.<br><em>Muscle shouldn&rsquo;t.</em></h1>
         <p class="sub">Eating less is the goal &mdash; but muscle, energy, and digestion are the first to slip. Coastline&rsquo;s morning system supports all three.</p>
