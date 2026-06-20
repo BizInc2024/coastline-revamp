@@ -17,18 +17,18 @@
   .cc-glp1 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
   .cc-glp1 h1, .cc-glp1 h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; }
 
-  /* HERO (ink blue, 2-col: image left / copy right) */
-  .cc-glp1 .hero { background: #0E1626; color: #FAF9F6; }
+  /* HERO (brand indigo, 2-col: image left / copy right) */
+  .cc-glp1 .hero { background: #062F3D; color: #FAF9F6; }
   .cc-glp1 .hero-cutout { width: 176px; height: 104px; background-repeat: no-repeat; background-position: left center; background-size: contain; display: block; margin: 0 0 24px; }
-  .cc-glp1 .hero-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #A3C7D0; margin: 0 0 12px; }
+  .cc-glp1 .hero-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #A3C7D0; margin: 18px 0 0; }
   .cc-glp1 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
-  .cc-glp1 .hero-img { position: relative; height: 720px; overflow: hidden; }
+  .cc-glp1 .hero-img { position: relative; height: 780px; overflow: hidden; }
   .cc-glp1 .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .cc-glp1 .ai-disc { position: absolute; bottom: 7px; right: 8px; font-size: 9px; line-height: 1; letter-spacing: 0.03em; color: rgba(255,255,255,0.72); background: rgba(0,0,0,0.30); padding: 3px 5px; border-radius: 2px; }
-  .cc-glp1 .hero-copy { padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; }
-  .cc-glp1 .hero h1 { font-size: clamp(40px, 4vw, 60px); margin: 4px 0 0; color: #FAF9F6; }
+  .cc-glp1 .hero-copy { padding: 64px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .cc-glp1 .hero h1 { font-size: clamp(38px, 3.8vw, 56px); line-height: 1.07; margin: 8px 0 0; color: #FAF9F6; }
   .cc-glp1 .hero h1 em { font-style: normal; color: #E7FF56; }
-  .cc-glp1 .hero p.sub { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: rgba(250,249,246,0.82); margin: 20px 0 0; max-width: 460px; }
+  .cc-glp1 .hero p.sub { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: rgba(250,249,246,0.82); margin: 26px 0 0; max-width: 460px; }
   .cc-glp1 .btn { display: inline-block; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; padding: 22px 52px; text-decoration: none; }
   .cc-glp1 .btn.dark { background: #0A0A0A; color: #FAF9F6; }
   .cc-glp1 .stars { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; letter-spacing: 0.04em; color: rgba(250,249,246,0.82); }
@@ -50,8 +50,9 @@
   .cc-glp1 .card .pbody { font-size: 15.5px; line-height: 1.62; color: #444; margin: 0; }
   .cc-glp1 .pillars .cta-center { text-align: center; margin-top: 56px; }
 
-  /* TRANSPARENCY band (lime, 2-col: claim + product) */
-  .cc-glp1 .band { background: #E7FF56; color: #062F3D; padding: 96px 0; }
+  /* INGREDIENTS / TRANSPARENCY (pale blue Mist, claim + product, flows into accordion) */
+  .cc-glp1 .band { background: #CCD7DA; color: #062F3D; padding: 96px 0 56px; }
+  .cc-glp1 .band-trust { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #062F3D; opacity: 0.72; margin: 22px 0 0; }
   .cc-glp1 .band-grid { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
   .cc-glp1 .band h2 { font-size: clamp(32px, 3.8vw, 50px); margin: 0; }
   .cc-glp1 .band p { font-size: 18px; line-height: 1.55; color: rgba(6,47,61,0.80); margin: 18px 0 0; }
@@ -97,11 +98,11 @@
         <span class="ai-disc">AI-generated image</span>
       </div>
       <div class="hero-copy">
-        <div class="hero-cutout" role="img" aria-label="The Coastline morning system" style="background-image: url({{ 'cc-coastline-family-cutout.png' | asset_url }});"></div>
+        <div class="hero-cutout" role="img" aria-label="The Coastline 13-ingredient system" style="background-image: url({{ 'cc-coastline-family-cutout.png' | asset_url }});"></div>
         <div class="stars"><span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Consistent 5-star reviews</span></div>
         <p class="hero-eyebrow">For people on GLP-1 medications</p>
         <h1>Weight comes off.<br><em>Muscle shouldn&rsquo;t.</em></h1>
-        <p class="sub">On a GLP-1, eating less is the point &mdash; but muscle, energy, and digestion are the first to slip. Coastline&rsquo;s morning system supports all three.</p>
+        <p class="sub">On a GLP-1, eating less is the point &mdash; but muscle, energy, and digestion are the first to slip. Coastline&rsquo;s 13-ingredient system supports all three.</p>
         <div class="cta-row">
           <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
           <p class="price-anchor">From $3.30/day &middot; $99/mo &middot; 60-day money-back guarantee</p>
@@ -123,7 +124,7 @@
           </div>
           <p class="pnum">01 &middot; Muscle</p>
           <p class="phead">You lose muscle, not just fat.</p>
-          <p class="pbody">When weight comes off quickly, a real share of it is lean muscle &mdash; the tissue that keeps you strong and your metabolism running. Our morning blend leads with a full dose of creatine, plus the amino acids your muscles depend on.</p>
+          <p class="pbody">When weight comes off quickly, a real share of it is lean muscle &mdash; the tissue that keeps you strong and your metabolism running. The system leads with a full dose of creatine, plus the amino acids your muscles depend on.</p>
         </div>
         <div class="card">
           <div class="card-imgwrap">
@@ -153,6 +154,7 @@
       <div>
         <h2>13 ingredients.<br>Every milligram on the&nbsp;label.</h2>
         <p>No proprietary blend. You see exactly what you&rsquo;re getting &mdash; and exactly how much. Every dose is printed below, set to the clinical research.</p>
+        <p class="band-trust">GMP Certified &middot; Every dose disclosed &middot; No proprietary blend</p>
       </div>
       <div class="band-img">
         <img src="{{ 'cc-glp1-product.jpg' | asset_url }}" alt="The Coastline system on a coastal deck" loading="lazy">
@@ -161,7 +163,7 @@
     </div>
   </div>
 
-  {% render 'cc-ingredients-accordion' %}
+  {% render 'cc-ingredients-accordion', ing_bg: '#CCD7DA', ing_hide_header: true %}
 
   <div class="sci">
     <div class="wrap">
