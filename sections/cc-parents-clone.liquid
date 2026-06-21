@@ -1,0 +1,198 @@
+{% comment %}
+  cc-parents-clone -- Coastline "for parents playing the long game" narrative.
+  Pairs with SHARED sections (cc-pricing-product-apr26, cc-guarantee-final, cc-ugc-apr26,
+  cc-testimonials-apr26, cc-faq-apr26, cc-final-cta-apr26, cc-email-capture-apr26) +
+  the cc-ingredients-accordion snippet, inside templates/product.lp-parents-jun20.json.
+  Angle: longevity for parents 35-65 — be around for all of it. Energy, strength, a clear mind.
+  Structure/function claims only. FDA disclaimer integrated in the experts section.
+  Hero (cc-par-hero.jpg) + card images are AI-generated -> carry in-image AI disclosure.
+{% endcomment %}
+
+{% render 'cc-deps' %}
+
+<style>
+  html { scroll-behavior: smooth; }
+  .cc-par * { box-sizing: border-box; }
+  .cc-par { font-family: 'Inter', sans-serif; color: #0A0A0A; }
+  .cc-par .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .cc-par h1, .cc-par h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; letter-spacing: -0.03em; line-height: 1.04; text-wrap: balance; }
+
+  /* HERO (brand indigo, 2-col) */
+  .cc-par .hero { background: #062F3D; color: #FAF9F6; }
+  .cc-par .hero-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .cc-par .hero-img { position: relative; height: 780px; overflow: hidden; }
+  .cc-par .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+  .cc-par .ai-disc { position: absolute; bottom: 7px; right: 8px; font-size: 9px; line-height: 1; letter-spacing: 0.03em; color: rgba(255,255,255,0.72); background: rgba(0,0,0,0.30); padding: 3px 5px; border-radius: 2px; }
+  .cc-par .hero-copy { padding: 64px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .cc-par .hero-cutout { width: 176px; height: 104px; background-repeat: no-repeat; background-position: left center; background-size: contain; display: block; margin: 0 0 24px; }
+  .cc-par .hero-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #A3C7D0; margin: 18px 0 0; }
+  .cc-par .stars { display: inline-flex; align-items: center; gap: 11px; font-size: 15px; letter-spacing: 0.04em; color: rgba(250,249,246,0.82); }
+  .cc-par .stars .s { color: #E7FF56; letter-spacing: 3px; font-size: 21px; }
+  .cc-par .hero h1 { font-size: clamp(38px, 3.8vw, 56px); line-height: 1.07; margin: 8px 0 0; color: #FAF9F6; }
+  .cc-par .hero h1 em { font-style: normal; color: #E7FF56; }
+  .cc-par .hero p.sub { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: rgba(250,249,246,0.82); margin: 26px 0 0; max-width: 460px; }
+  .cc-par .btn { display: inline-block; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; padding: 22px 52px; text-decoration: none; }
+  .cc-par .btn.dark { background: #0A0A0A; color: #FAF9F6; }
+  .cc-par .cta-row { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 26px; }
+  .cc-par .price-anchor { font-size: 13px; color: rgba(250,249,246,0.6); margin: 4px 0 4px; }
+  .cc-par .skip { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,249,246,0.72); text-decoration: underline; text-underline-offset: 5px; }
+
+  /* PILLARS (parchment) */
+  .cc-par .pillars { background: #FAF9F6; padding: 110px 0; }
+  .cc-par .pillars h2 { font-size: clamp(34px, 4.8vw, 52px); text-align: center; max-width: 760px; margin: 0 auto 14px; }
+  .cc-par .pillars .lede { text-align: center; color: #6B6B6B; font-size: 19px; max-width: 600px; margin: 0 auto 64px; }
+  .cc-par .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .cc-par .card { display: flex; flex-direction: column; }
+  .cc-par .card-imgwrap { position: relative; margin-bottom: 22px; }
+  .cc-par .card-img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; display: block; }
+  .cc-par .card .pnum { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 10px; }
+  .cc-par .card .phead { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(24px, 2.6vw, 30px); letter-spacing: -0.02em; line-height: 1.12; color: #0A0A0A; margin: 0 0 12px; }
+  .cc-par .card .pbody { font-size: 15.5px; line-height: 1.62; color: #444; margin: 0; }
+  .cc-par .pillars .cta-center { text-align: center; margin-top: 56px; }
+
+  /* INGREDIENTS / TRANSPARENCY (pale blue Mist, flows into accordion) */
+  .cc-par .band { background: #CCD7DA; color: #062F3D; padding: 96px 0 56px; }
+  .cc-par .band-grid { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+  .cc-par .band h2 { font-size: clamp(32px, 3.8vw, 50px); margin: 0; }
+  .cc-par .band p { font-size: 18px; line-height: 1.55; color: rgba(6,47,61,0.80); margin: 18px 0 0; }
+  .cc-par .band-trust { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #062F3D; opacity: 0.72; margin: 22px 0 0; }
+  .cc-par .band-img { position: relative; }
+  .cc-par .band-img img { width: 100%; display: block; }
+
+  /* TEAM (dark) */
+  .cc-par .team { background: #0A0A0A; color: #FAF9F6; padding: 110px 0; text-align: center; }
+  .cc-par .team h2 { font-size: clamp(34px, 4.8vw, 52px); max-width: 760px; margin: 0 auto; color: #FAF9F6; }
+  .cc-par .team h2 em { font-style: normal; color: #E7FF56; }
+  .cc-par .team .lede { font-size: 19px; line-height: 1.6; color: #9A9A9A; max-width: 620px; margin: 24px auto 0; }
+  .cc-par .experts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 28px; max-width: 1000px; margin: 56px auto 46px; }
+  .cc-par .exp { text-align: center; }
+  .cc-par .exp-photo { width: 118px; height: 118px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 18px; }
+  .cc-par .exp-quote { font-size: 14.5px; line-height: 1.55; color: #D8D8D8; margin: 0 0 16px; }
+  .cc-par .exp-name { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 15px; color: #FAF9F6; margin: 0; }
+  .cc-par .exp-role { font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #7E7E7E; margin: 5px 0 0; }
+  .cc-par .team .disc-in { margin: 56px auto 0; max-width: 720px; font-size: 12px; line-height: 1.55; color: #6A6A6A; text-align: center; border-top: 1px solid #2A2A2A; padding-top: 30px; }
+
+  @media (max-width: 749px) {
+    .cc-par .hero-grid { grid-template-columns: 1fr; }
+    .cc-par .hero-img { height: 340px; order: -1; }
+    .cc-par .hero-copy { padding: 56px 28px 64px; }
+    .cc-par .hero-cutout { width: 122px; height: 72px; margin-bottom: 18px; }
+    .cc-par .grid3 { grid-template-columns: 1fr; gap: 40px; }
+    .cc-par .card-img { aspect-ratio: 16 / 9; }
+    .cc-par .pillars, .cc-par .team, .cc-par .band { padding: 72px 0; }
+    .cc-par .band-grid { grid-template-columns: 1fr; gap: 40px; }
+    .cc-par .experts { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+  }
+</style>
+
+<section class="cc-par cc-landingpage-v6">
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="hero-img">
+        <img src="{{ 'cc-par-hero.jpg' | asset_url }}" alt="A father holding his daughter in a sunlit coastal kitchen" loading="eager">
+        <span class="ai-disc">AI-generated image</span>
+      </div>
+      <div class="hero-copy">
+        <div class="hero-cutout" role="img" aria-label="The Coastline 13-ingredient system" style="background-image: url({{ 'cc-coastline-family-cutout.png' | asset_url }});"></div>
+        <div class="stars"><span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Consistent 5-star reviews</span></div>
+        <p class="hero-eyebrow">For parents playing the long game</p>
+        <h1>Be around for<br><em>all of it.</em></h1>
+        <p class="sub">The milestones are decades of small days. Coastline&rsquo;s 13-ingredient system helps you keep the energy, strength, and clear head to be there for them.</p>
+        <div class="cta-row">
+          <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
+          <p class="price-anchor">From $3.30/day &middot; $99/mo &middot; 60-day money-back guarantee</p>
+          <a class="skip" href="#long-game">What the long game needs &darr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillars" id="long-game">
+    <div class="wrap">
+      <h2>What the long game needs.</h2>
+      <p class="lede">Staying capable for the people who count on you comes down to three things &mdash; and we built the system around them.</p>
+      <div class="grid3">
+        <div class="card">
+          <div class="card-imgwrap">
+            <img class="card-img" src="{{ 'cc-par-1.jpg' | asset_url }}" alt="A father hiking a coastal trail with his child" loading="lazy">
+            <span class="ai-disc">AI-generated image</span>
+          </div>
+          <p class="pnum">01 &middot; Energy</p>
+          <p class="phead">Energy to keep&nbsp;up.</p>
+          <p class="pbody">Keeping pace with kids and a full life runs on steady cellular energy. The system pairs CoQ10 and magnesium with creatine and taurine to support how your body makes and uses it &mdash; all day.</p>
+        </div>
+        <div class="card">
+          <div class="card-imgwrap">
+            <img class="card-img" src="{{ 'cc-par-2.jpg' | asset_url }}" alt="A man staying active outdoors at sunrise" loading="lazy">
+            <span class="ai-disc">AI-generated image</span>
+          </div>
+          <p class="pnum">02 &middot; Strength</p>
+          <p class="phead">Strength for the&nbsp;decades.</p>
+          <p class="pbody">Muscle and joints are what keep you doing the things you love, year after year. A full dose of creatine plus glucosamine supports strength and mobility for the long haul.</p>
+        </div>
+        <div class="card">
+          <div class="card-imgwrap">
+            <img class="card-img" src="{{ 'cc-par-3.jpg' | asset_url }}" alt="A couple walking a coastal trail together" loading="lazy">
+            <span class="ai-disc">AI-generated image</span>
+          </div>
+          <p class="pnum">03 &middot; Mind</p>
+          <p class="phead">A clear, steady&nbsp;mind.</p>
+          <p class="pbody">Being present is its own kind of fitness. Lithium, L-theanine, and the carotenoids support focus, a calm mood, and long-term brain health &mdash; so you&rsquo;re all there for it.</p>
+        </div>
+      </div>
+      <div class="cta-center"><a class="btn dark" href="#pricing-product-apr26">Buy Coastline Now</a></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="band-grid">
+      <div>
+        <h2>13 ingredients.<br>Every milligram on the&nbsp;label.</h2>
+        <p>No proprietary blend. You see exactly what you&rsquo;re giving your body &mdash; and exactly how much. Every dose is printed below, set to the clinical research.</p>
+        <p class="band-trust">GMP Certified &middot; Every dose disclosed &middot; No proprietary blend</p>
+      </div>
+      <div class="band-img">
+        <img src="{{ 'cc-glp1-product.jpg' | asset_url }}" alt="The Coastline system on a coastal deck" loading="lazy">
+        <span class="ai-disc">AI-generated image</span>
+      </div>
+    </div>
+  </div>
+
+  {% render 'cc-ingredients-accordion', ing_bg: '#CCD7DA', ing_hide_header: true %}
+
+  <div class="team">
+    <div class="wrap">
+      <h2>Built by scientists.<br><em>For the long game.</em></h2>
+      <p class="lede">Four founders, four scientists &mdash; spanning sleep science, molecular medicine, naturopathic and clinical practice &mdash; chose all 13 ingredients at clinical doses.</p>
+      <div class="experts">
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD" loading="lazy">
+          <p class="exp-quote">&ldquo;The 13 ingredients chosen for Coastline are the most scientifically supported and clinically validated supplements yet to be discovered.&rdquo;</p>
+          <p class="exp-name">Greg Potter, PhD</p>
+          <p class="exp-role">Chief Science Officer</p>
+        </div>
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Jessicabodasphotography-jacques.webp?v=1767053015" alt="Dr. Jacqueline Jacques, ND" loading="lazy">
+          <p class="exp-quote">&ldquo;Coastline is what happens when you combine scientific rigor with real-world clinical understanding.&rdquo;</p>
+          <p class="exp-name">Dr. Jacqueline Jacques, ND</p>
+          <p class="exp-role">Naturopathic Medicine Advisor</p>
+        </div>
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Nic_Portrait.webp?v=1767053015" alt="Dr. Nicolas Verhoeven, PhD" loading="lazy">
+          <p class="exp-quote">&ldquo;I value Coastline&rsquo;s quality. It means less hassle, with the greatest certainty of results.&rdquo;</p>
+          <p class="exp-name">Dr. Nicolas Verhoeven, PhD</p>
+          <p class="exp-role">Senior Formulation Advisor</p>
+        </div>
+        <div class="exp">
+          <img class="exp-photo" src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CL-ChrisP-Scientist.webp" alt="Dr. Christopher Pollock, MD" loading="lazy">
+          <p class="exp-quote">&ldquo;We reviewed thousands of studies to identify 13 ingredients with the strongest evidence for human longevity. Nothing speculative. No fads. Just science.&rdquo;</p>
+          <p class="exp-name">Dr. Christopher Pollock, MD</p>
+          <p class="exp-role">Senior Science Advisor</p>
+        </div>
+      </div>
+      <p class="disc-in">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
+    </div>
+  </div>
+
+</section>

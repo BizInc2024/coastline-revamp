@@ -1,0 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "narrative": {
+      "type": "cc-parents-clone",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "cc-testimonials-apr26",
+      "blocks": {
+        "r1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a busy mother and entrepreneur, mental clarity is my most valuable asset. Coastline cleared the 'afternoon fog' I thought was permanent.",
+            "name": "Sophia R.",
+            "detail": "Founder, NY",
+            "category": "focus"
+          }
+        },
+        "r15": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a longevity stack that doesn't need 15 different bottles. My morning brain fog is gone.",
+            "name": "Robert K.",
+            "detail": "Chicago 45",
+            "category": "convenience"
+          }
+        },
+        "r5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every supplement out there. My energy has transformed, and I actually look forward to my morning runs again.",
+            "name": "Sarah M.",
+            "detail": "San Diego 54",
+            "category": "energy"
+          }
+        },
+        "r8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "At 72, I'm still active and working. Coastline helps me keep pace with people half my age.",
+            "name": "Arthur B.",
+            "detail": "Palm Springs 72",
+            "category": "energy"
+          }
+        },
+        "r2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Mental clarity is the biggest win for me. The 'brain fog' of my 40s has lifted completely.",
+            "name": "Megan S.",
+            "detail": "Columbus 46",
+            "category": "focus"
+          }
+        },
+        "r9": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a physician, I'm skeptical of most supplements. But the science convinced me. Three months in, my biomarkers have never looked better.",
+            "name": "Michael R.",
+            "detail": "Physician 62",
+            "category": "trust"
+          }
+        },
+        "r13": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love having everything I need in one simple system. No more pill organizers.",
+            "name": "James U.",
+            "detail": "Tampa 44",
+            "category": "convenience"
+          }
+        },
+        "r7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've shared this with my entire cycling club. We're all seeing better recovery times.",
+            "name": "Patrick J.",
+            "detail": "Portland 53",
+            "category": "energy"
+          }
+        },
+        "r11": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Quality you can feel. You can tell this wasn't made by a marketing team, but by scientists.",
+            "name": "Edward Q.",
+            "detail": "Richmond 49",
+            "category": "trust"
+          }
+        },
+        "r3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I feel more 'locked in' during my workday. It's significantly improved my productivity.",
+            "name": "Michelle P.",
+            "detail": "Indianapolis 41",
+            "category": "focus"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r15",
+        "r5",
+        "r8",
+        "r2",
+        "r9",
+        "r13",
+        "r7",
+        "r11",
+        "r3"
+      ],
+      "settings": {}
+    },
+    "pricing": {
+      "type": "cc-pricing-product-apr26",
+      "settings": {
+        "anchor": "pricing-product-apr26",
+        "pricing_label": "READY TO START?",
+        "pricing_headline": "Get started today.",
+        "pricing_trust_1": "Free shipping. Cancel anytime.",
+        "pricing_trust_2": "60-day money-back guarantee.",
+        "pad_top": 96,
+        "pad_bottom": 96
+      }
+    },
+    "guarantee": {
+      "type": "cc-guarantee-final",
+      "settings": {}
+    },
+    "community": {
+      "type": "cc-ugc-apr26",
+      "settings": {}
+    },
+    "narrative-bottom": {
+      "type": "cc-faq-apr26",
+      "blocks": {
+        "pf1": {
+          "type": "faq",
+          "settings": {
+            "question": "I'm already pretty healthy — why add this?",
+            "answer": "<p>Staying capable for decades is easier to protect than to rebuild. Coastline covers the foundational gaps — energy, strength, and a clear head — at clinically used doses, so you keep what you've got.</p>"
+          }
+        },
+        "pf2": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it actually help with?",
+            "answer": "<p>The 13 ingredients support cellular energy, muscle and joint strength, and cognitive function and mood. These statements have not been evaluated by the FDA.</p>"
+          }
+        },
+        "pf3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I see every dose?",
+            "answer": "<p>Yes. All 13 ingredients and every milligram are printed on the label — no proprietary blend.</p>"
+          }
+        },
+        "pf4": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I take it?",
+            "answer": "<p>Two simple moments a day: the morning blend and softgels with your first meal, and the evening capsules before bed.</p>"
+          }
+        },
+        "pf5": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it cost?",
+            "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "pf1",
+        "pf2",
+        "pf3",
+        "pf4",
+        "pf5"
+      ],
+      "settings": {
+        "faq_label": "FREQUENTLY ASKED",
+        "faq_headline": "The long game, answered"
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "show_product_image": true,
+        "final_headline": "Be around for all of it.",
+        "final_subheadline": "13 ingredients, every dose disclosed. $99/mo, 60-day guarantee.",
+        "final_cta_text": "Start my system",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
+      }
+    },
+    "email": {
+      "type": "cc-email-capture-apr26",
+      "settings": {}
+    }
+  },
+  "order": [
+    "narrative",
+    "reviews",
+    "pricing",
+    "guarantee",
+    "community",
+    "narrative-bottom",
+    "final-cta",
+    "email"
+  ]
+}
