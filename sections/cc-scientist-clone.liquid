@@ -30,7 +30,7 @@
   .cc-scilp .stars .s { color: #E7FF56; letter-spacing: 3px; font-size: 21px; }
   .cc-scilp .hero h1 { font-size: clamp(38px, 3.8vw, 56px); line-height: 1.07; margin: 8px 0 0; color: #FAF9F6; }
   .cc-scilp .hero h1 em { font-style: normal; color: #E7FF56; }
-  .cc-scilp .hero p.sub { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.6; color: rgba(250,249,246,0.82); margin: 26px 0 0; max-width: 460px; }
+  .cc-scilp .hero p.sub { font-size: clamp(15px, 1.15vw, 17px); line-height: 1.65; color: rgba(250,249,246,0.74); margin: 24px 0 0; max-width: 430px; letter-spacing: 0.004em; }
   .cc-scilp .btn { display: inline-block; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; padding: 22px 52px; text-decoration: none; }
   .cc-scilp .btn.dark { background: #0A0A0A; color: #FAF9F6; }
   .cc-scilp .cta-row { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 26px; }
@@ -65,7 +65,8 @@
   .cc-scilp .team .disc-in { margin: 56px auto 0; max-width: 720px; font-size: 12px; line-height: 1.55; color: #6A6A6A; text-align: center; border-top: 1px solid #2A2A2A; padding-top: 30px; }
 
   /* TRANSPARENCY band (lime, 2-col) */
-  .cc-scilp .band { background: #E7FF56; color: #062F3D; padding: 96px 0; }
+  .cc-scilp .band { background: #CCD7DA; color: #062F3D; padding: 96px 0 56px; }
+  .cc-scilp .band-trust { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #062F3D; opacity: 0.72; margin: 22px 0 0; }
   .cc-scilp .band-grid { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
   .cc-scilp .band h2 { font-size: clamp(32px, 3.8vw, 50px); margin: 0; }
   .cc-scilp .band p { font-size: 18px; line-height: 1.55; color: rgba(6,47,61,0.80); margin: 18px 0 0; }
@@ -171,14 +172,12 @@
     </div>
   </div>
 
-  {% render 'cc-ingredients-accordion', ing_eyebrow: 'The formula', ing_heading: '13 ingredients, chosen by scientists.', ing_lede: 'Each one earned its place through the research, at a dose you can actually see. Tap any one to read why the team put it in.' %}
-
   <div class="band">
     <div class="band-grid">
       <div>
         <h2>13 ingredients.<br>Every milligram on the&nbsp;label.</h2>
-        <p>No proprietary blend, no hidden doses. You see exactly what the scientists chose &mdash; and exactly how much.</p>
-        <a class="btn" href="#pricing-product-apr26">Buy Coastline Now</a>
+        <p>No proprietary blend, no hidden doses. You see exactly what the scientists chose &mdash; and exactly how much. Every dose is printed below.</p>
+        <p class="band-trust">GMP Certified &middot; Every dose disclosed &middot; No proprietary blend</p>
       </div>
       <div class="band-img">
         <img src="{{ 'cc-glp1-product.jpg' | asset_url }}" alt="The Coastline system on a coastal deck" loading="lazy">
@@ -186,5 +185,7 @@
       </div>
     </div>
   </div>
+
+  {% render 'cc-ingredients-accordion', ing_bg: '#CCD7DA', ing_hide_header: true %}
 
 </section>
