@@ -178,6 +178,27 @@
             "question": "What does it cost?",
             "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
           }
+        },
+        "pf6": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I feel a difference?",
+            "answer": "<p>Energy and focus often show up within a few weeks; the longevity benefits build with consistent daily use.</p>"
+          }
+        },
+        "pf7": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe to take long-term?",
+            "answer": "<p>It's a daily supplement of foundational nutrients at studied doses. As with any supplement, check with your doctor about your routine. These statements have not been evaluated by the FDA.</p>"
+          }
+        },
+        "pf8": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel anytime?",
+            "answer": "<p>Yes — subscriptions save 34%, ship free, and cancel in one click. A 60-day money-back guarantee covers your first order.</p>"
+          }
         }
       },
       "block_order": [
@@ -185,7 +206,10 @@
         "pf2",
         "pf3",
         "pf4",
-        "pf5"
+        "pf5",
+        "pf6",
+        "pf7",
+        "pf8"
       ],
       "settings": {
         "faq_label": "FREQUENTLY ASKED",

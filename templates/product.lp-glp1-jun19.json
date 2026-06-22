@@ -74,6 +74,27 @@
             "question": "What does it cost?",
             "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
           }
+        },
+        "glpfaq6": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I notice a difference?",
+            "answer": "<p>Most people feel steadier energy within a few weeks; the muscle and digestion support build with daily use. Consistency matters more than any single dose.</p>"
+          }
+        },
+        "glpfaq7": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I know the quality is there?",
+            "answer": "<p>It's made in a GMP-certified facility, with every ingredient and milligram printed on the label — no proprietary blend.</p>"
+          }
+        },
+        "glpfaq8": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I have to subscribe?",
+            "answer": "<p>No. Subscribe and save 34% with free shipping and one-click cancel anytime, or order one-time. A 60-day money-back guarantee covers your first order.</p>"
+          }
         }
       },
       "block_order": [
@@ -81,7 +102,10 @@
         "glpfaq2",
         "glpfaq3",
         "glpfaq4",
-        "glpfaq5"
+        "glpfaq5",
+        "glpfaq6",
+        "glpfaq7",
+        "glpfaq8"
       ],
       "settings": {
         "faq_label": "FREQUENTLY ASKED",

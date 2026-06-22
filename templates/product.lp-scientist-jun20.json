@@ -178,6 +178,27 @@
             "question": "What does it cost?",
             "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
           }
+        },
+        "sf6": {
+          "type": "faq",
+          "settings": {
+            "question": "How is this different from a greens powder?",
+            "answer": "<p>Greens powders spread dozens of under-dosed ingredients across a proprietary blend. We chose 13, each at a clinically used dose, fully disclosed on the label.</p>"
+          }
+        },
+        "sf7": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I know the quality is there?",
+            "answer": "<p>Made in a GMP-certified facility, with every dose printed on the label — nothing hidden in a proprietary blend.</p>"
+          }
+        },
+        "sf8": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I cancel anytime?",
+            "answer": "<p>Yes — subscriptions save 34%, ship free, and cancel in one click with no penalties. A 60-day money-back guarantee covers your first order.</p>"
+          }
         }
       },
       "block_order": [
@@ -185,7 +206,10 @@
         "sf2",
         "sf3",
         "sf4",
-        "sf5"
+        "sf5",
+        "sf6",
+        "sf7",
+        "sf8"
       ],
       "settings": {
         "faq_label": "FREQUENTLY ASKED",
