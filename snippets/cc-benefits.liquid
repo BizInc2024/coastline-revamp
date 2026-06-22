@@ -1,0 +1,35 @@
+{% comment %}
+  cc-benefits -- "what the system does for you" benefits grid (editorial, type-only, no icons).
+  Reusable across LPs. Structure/function framing only.
+{% endcomment %}
+
+<style>
+  .cc-ben { background: {{ ben_bg | default: '#F7F7F7' }}; padding: 104px 24px; font-family: 'Inter', sans-serif; }
+  .cc-ben * { box-sizing: border-box; }
+  .cc-ben .wrap { max-width: 1040px; margin: 0 auto; }
+  .cc-ben .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #6B6B6B; text-align: center; margin: 0 0 14px; }
+  .cc-ben h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(30px, 4.2vw, 46px); letter-spacing: -0.02em; line-height: 1.02; color: #0A0A0A; text-align: center; margin: 0 auto; text-wrap: balance; max-width: 680px; }
+  .cc-ben .bgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 44px; margin-top: 64px; }
+  .cc-ben .b { border-top: 2px solid #062F3D; padding-top: 22px; }
+  .cc-ben .b h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; letter-spacing: -0.01em; color: #0A0A0A; margin: 0 0 10px; }
+  .cc-ben .b p { font-size: 15.5px; line-height: 1.6; color: #444; margin: 0; }
+  @media (max-width: 749px) {
+    .cc-ben { padding: 72px 20px; }
+    .cc-ben .bgrid { grid-template-columns: 1fr; gap: 32px; margin-top: 44px; }
+  }
+</style>
+
+<div class="cc-ben">
+  <div class="wrap">
+    <p class="eyebrow">{{ ben_eyebrow | default: 'The payoff' }}</p>
+    <h2>{{ ben_heading | default: 'One system. Six ways you feel it.' }}</h2>
+    <div class="bgrid">
+      <div class="b"><h3>Steady energy</h3><p>CoQ10, magnesium, and taurine support how your cells turn food into energy &mdash; without the spike and crash.</p></div>
+      <div class="b"><h3>Strength &amp; muscle</h3><p>A full 5.25&nbsp;g of creatine, plus glycine, helps you hold onto lean muscle and strength.</p></div>
+      <div class="b"><h3>A clear mind</h3><p>Lithium, L-theanine, and ergothioneine support focus and a calm, steady mood.</p></div>
+      <div class="b"><h3>Better sleep</h3><p>Glycine and L-theanine support deeper rest and an easier wind-down at night.</p></div>
+      <div class="b"><h3>Smooth digestion</h3><p>Prebiotic inulin feeds the good bacteria and helps keep everything moving.</p></div>
+      <div class="b"><h3>Healthy aging</h3><p>Thirteen compounds chosen for their evidence, dosed to the research &mdash; nothing speculative.</p></div>
+    </div>
+  </div>
+</div>
