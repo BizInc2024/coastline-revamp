@@ -203,10 +203,6 @@
         "section13_padding_top": 80,
         "section13_padding_bottom": 80
       }
-    },
-    "email": {
-      "type": "cc-email-capture-apr26",
-      "settings": {}
     }
   },
   "order": [
@@ -216,7 +212,6 @@
     "guarantee",
     "community",
     "narrative-bottom",
-    "final-cta",
-    "email"
+    "final-cta"
   ]
 }

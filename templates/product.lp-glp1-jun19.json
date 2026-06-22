@@ -37,10 +37,6 @@
         "section13_padding_bottom": 80
       }
     },
-    "email": {
-      "type": "cc-email-capture-apr26",
-      "settings": {}
-    },
     "narrative-bottom": {
       "type": "cc-faq-apr26",
       "blocks": {
@@ -266,7 +262,6 @@
     "guarantee",
     "community",
     "narrative-bottom",
-    "final-cta",
-    "email"
+    "final-cta"
   ]
 }
