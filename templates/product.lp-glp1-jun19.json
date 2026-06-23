@@ -277,6 +277,10 @@
         "r14"
       ],
       "settings": {}
+    },
+    "benefits": {
+      "type": "cc-benefits",
+      "settings": {}
     }
   },
   "order": [
@@ -284,6 +288,7 @@
     "reviews",
     "pricing",
     "guarantee",
+    "benefits",
     "community",
     "narrative-bottom",
     "final-cta"

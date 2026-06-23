@@ -1,0 +1,21 @@
+{% comment %}
+  cc-benefits (section wrapper) -- lets the reusable cc-benefits snippet be placed
+  in a product template's section order. Placed after the guarantee on each LP.
+{% endcomment %}
+
+{% render 'cc-benefits',
+  ben_bg: section.settings.ben_bg,
+  ben_eyebrow: section.settings.ben_eyebrow,
+  ben_heading: section.settings.ben_heading %}
+
+{% schema %}
+{
+  "name": "CC Benefits",
+  "settings": [
+    { "type": "color", "id": "ben_bg", "label": "Background", "default": "#F7F7F7" },
+    { "type": "text", "id": "ben_eyebrow", "label": "Eyebrow", "default": "The payoff" },
+    { "type": "text", "id": "ben_heading", "label": "Heading", "default": "One system. Six ways you feel it." }
+  ],
+  "presets": [{ "name": "CC Benefits" }]
+}
+{% endschema %}

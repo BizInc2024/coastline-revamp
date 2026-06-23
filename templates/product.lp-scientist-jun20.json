@@ -227,6 +227,10 @@
         "section13_padding_top": 80,
         "section13_padding_bottom": 80
       }
+    },
+    "benefits": {
+      "type": "cc-benefits",
+      "settings": {}
     }
   },
   "order": [
@@ -234,6 +238,7 @@
     "reviews",
     "pricing",
     "guarantee",
+    "benefits",
     "community",
     "narrative-bottom",
     "final-cta"
