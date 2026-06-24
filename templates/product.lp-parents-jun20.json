@@ -220,7 +220,7 @@
       "type": "cc-final-cta-apr26",
       "settings": {
         "show_product_image": true,
-        "final_headline": "Discover a new horizon of health.",
+        "final_headline": "Discover a new<br>horizon of health.",
         "final_subheadline": "13 ingredients, every dose disclosed.<br>$99/mo, 60-day guarantee.",
         "final_cta_text": "Start my system",
         "final_cta_link": "#pricing-product-apr26",

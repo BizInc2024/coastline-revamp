@@ -45,6 +45,7 @@
   .cc-par .card { display: flex; flex-direction: column; }
   .cc-par .card-imgwrap { position: relative; margin-bottom: 22px; }
   .cc-par .card-img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; object-position: center 20%; display: block; }
+  .cc-par .card-img--low { object-position: center 64%; }
   .cc-par .card .pnum { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 10px; }
   .cc-par .card .phead { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(24px, 2.6vw, 30px); letter-spacing: -0.02em; line-height: 1.12; color: #0A0A0A; margin: 0 0 12px; }
   .cc-par .card .pbody { font-size: 15.5px; line-height: 1.62; color: #444; margin: 0; }
@@ -132,7 +133,7 @@
         </div>
         <div class="card">
           <div class="card-imgwrap">
-            <img class="card-img" src="{{ 'cc-par-3.jpg' | asset_url }}" alt="A couple walking a coastal trail together" loading="lazy">
+            <img class="card-img card-img--low" src="{{ 'cc-par-3.jpg' | asset_url }}" alt="A couple walking a coastal trail together" loading="lazy">
             <span class="ai-disc">AI-generated image</span>
           </div>
           <p class="pnum">03 &middot; Mind</p>
@@ -163,7 +164,7 @@
 
   <div class="team">
     <div class="wrap">
-      <h2>Built by scientists.<br><em>For the long game.</em></h2>
+      <h2>Built by scientists.<br><em>For the long run.</em></h2>
       <p class="lede">Four founders, four scientists &mdash; spanning sleep science, molecular medicine, naturopathic and clinical practice &mdash; chose all 13 ingredients at clinical doses.</p>
       <div class="experts">
         <div class="exp">
