@@ -29,7 +29,7 @@
         {%- endif -%}
   
         <div>
-          <a href="{{ section.settings.final_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;padding:20px 48px;background:#FAF9F6;color:#0A0A0A;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s ease;">
+          <a href="{{ section.settings.final_cta_link | default: '#cc-home-pricing' }}" style="display:inline-block;padding:20px 48px;background:{{ section.settings.final_cta_bg | default: '#FAF9F6' }};color:{{ section.settings.final_cta_color | default: '#0A0A0A' }};font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s ease;">
             {{ section.settings.final_cta_text | default: "START MY LONGEVITY SYSTEM" }}
           </a>
         </div>
@@ -49,6 +49,8 @@
     { "type": "text", "id": "final_subheadline", "label": "Subheadline", "default": "13 science-backed ingredients in one simple system -- from just $3.30 a day." },
     { "type": "text", "id": "final_cta_text", "label": "Button text", "default": "START MY LONGEVITY SYSTEM" },
     { "type": "url", "id": "final_cta_link", "label": "Button link" },
+    { "type": "color", "id": "final_cta_bg", "label": "Button background", "default": "#FAF9F6" },
+    { "type": "color", "id": "final_cta_color", "label": "Button text color", "default": "#0A0A0A" },
     { "type": "range", "id": "section13_padding_top", "label": "Padding top (px)", "min": 0, "max": 200, "step": 4, "default": 80 },
     { "type": "range", "id": "section13_padding_bottom", "label": "Padding bottom (px)", "min": 0, "max": 200, "step": 4, "default": 80 }
   ],
