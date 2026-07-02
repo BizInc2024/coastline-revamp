@@ -82,7 +82,8 @@
               {%- endif -%}
             {%- endfor -%}
           </div>
-  
+          <p class="cc-swipe-hint">Swipe for more reviews <span class="cc-arw">&rarr;</span></p>
+
           <div style="text-align:center;margin-top:40px;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
             <button
               x-show="shown[reviewFilter] < totals[reviewFilter]"
@@ -141,6 +142,12 @@
     scrollbar-width: none;
   }
   .cc-testimonials-apr26 .cc-review-grid::-webkit-scrollbar { display: none; }
+  .cc-swipe-hint { display: none; }
+  @media (max-width: 767px) {
+    .cc-swipe-hint { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px auto 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; opacity: 0.5; }
+    .cc-swipe-hint .cc-arw { animation: ccNudge 1.4s ease-in-out infinite; }
+    @keyframes ccNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+  }
   .cc-testimonials-apr26 .cc-review-grid > div {
     flex: 0 0 80%;
     max-width: 320px;

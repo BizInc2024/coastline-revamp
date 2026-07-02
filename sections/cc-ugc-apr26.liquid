@@ -22,6 +22,7 @@
         <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-4.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
         <div class="v10-ugc-item"><img src="{{ 'cc-v10-ugc-5.png' | asset_url }}" alt="Customer morning routine with Coastline" loading="lazy"></div>
       </div>
+      <p class="cc-swipe-hint">Swipe for more <span class="cc-arw">&rarr;</span></p>
     </section>
 </div>
 
@@ -60,6 +61,12 @@
       justify-content: safe center;
     }
 .cc-ugc-apr26 .v10-ugc-rail::-webkit-scrollbar { display: none; }
+.cc-swipe-hint { display: none; }
+@media (max-width: 767px) {
+  .cc-swipe-hint { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px auto 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; opacity: 0.5; }
+  .cc-swipe-hint .cc-arw { animation: ccNudge 1.4s ease-in-out infinite; }
+  @keyframes ccNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+}
 .cc-ugc-apr26 .v10-ugc-item {
       flex: 0 0 auto;
       width: 260px;

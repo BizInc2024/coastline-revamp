@@ -29,6 +29,14 @@
     .v6-study-card li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 15px; color: #E0DED9; line-height: 1.55; }
 
     .v6-table-scroll { overflow-x: auto; display: block; }
+    .cc-swipe-cue { position: relative; }
+    .cc-swipe-hint { display: none; }
+    @media (max-width: 767px) {
+      .cc-swipe-cue::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 46px; pointer-events: none; background: linear-gradient(to right, rgba(255,255,255,0), #fff); z-index: 2; }
+      .cc-swipe-hint { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px auto 0; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; opacity: 0.55; }
+      .cc-swipe-hint .cc-arw { animation: ccNudge 1.4s ease-in-out infinite; }
+      @keyframes ccNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+    }
     .v6-comparison-table { width: 100%; border-collapse: collapse; }
     .v6-comparison-table th, .v6-comparison-table td { padding: 16px 12px; text-align: left; border-bottom: 1px solid #E8E8E8; font-size: 14px; }
     .v6-comparison-table th { font-weight: 500; color: #0A0A0A; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -257,6 +265,7 @@
                     <h2 class="text-3xl lg:text-4xl font-grotesk font-medium">{{ section.settings.ingredient_comparison_headline | default: 'Side by side' }}</h2>
                 </div>
 
+                <div class="cc-swipe-cue">
                 <div class="v6-table-scroll">
                     <table class="v6-comparison-table" style="min-width: 520px;">
                         <thead>
@@ -275,6 +284,8 @@
                         </tbody>
                     </table>
                 </div>
+                </div>
+                <p class="cc-swipe-hint">Swipe to compare <span class="cc-arw">&rarr;</span></p>
             </div>
 
             <!-- 5C: EFFECTIVENESS -->
