@@ -81,6 +81,7 @@
   .cc-lp-v10-apr26 .v10-hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; background: #0A0A0A; }
   .cc-lp-v10-apr26 .v10-hero-bg { position: absolute; inset: 0; }
   .cc-lp-v10-apr26 .v10-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+  .cc-lp-v10-apr26 .v10-hero-bg .ai-disc { position: absolute; bottom: 10px; right: 12px; z-index: 2; font-size: 9px; line-height: 1; letter-spacing: 0.03em; color: rgba(255,255,255,0.72); background: rgba(0,0,0,0.30); padding: 3px 5px; border-radius: 2px; }
   @media (max-width: 640px) { .cc-lp-v10-apr26 .v10-hero-bg img { object-position: center 30%; } }
   .cc-lp-v10-apr26 .v10-hero-overlay { display: none; }
   .cc-lp-v10-apr26 .v10-hero-inner { position: relative; z-index: 2; width: 100%; padding: 48px 24px 48px; }
@@ -814,6 +815,7 @@
         <source media="(max-width: 640px)" srcset="{{ 'cc-v10-hero-baked.jpg' | asset_url }}">
         <img src="{{ 'cc-v10-hero-desktop-baked.webp' | asset_url }}" alt="A man preparing his Coastline morning system in a sunlit kitchen">
       </picture>
+      <span class="ai-disc">AI-generated image</span>
     </div>
     <div class="v10-hero-inner">
       <div class="v10-hero-grid">
