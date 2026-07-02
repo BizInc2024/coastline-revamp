@@ -594,6 +594,16 @@
   .cc-lp-v10-apr26 .v10-compare .check { color: #2D5A47; font-weight: 600; }
   .cc-lp-v10-apr26 .v10-compare .miss { color: #C0392B; font-weight: 600; }
 
+  /* ---------- SCROLL CUE (mobile) ---------- */
+  .cc-lp-v10-apr26 .cc-swipe-cue { position: relative; }
+  .cc-lp-v10-apr26 .cc-swipe-hint { display: none; }
+  @media (max-width: 767px) {
+    .cc-lp-v10-apr26 .cc-swipe-cue::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 46px; pointer-events: none; background: linear-gradient(to right, rgba(255,255,255,0), #fff); z-index: 2; }
+    .cc-lp-v10-apr26 .cc-swipe-hint { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px auto 0; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #0A0A0A; opacity: 0.55; }
+    .cc-lp-v10-apr26 .cc-swipe-hint .cc-arw { animation: ccNudge 1.4s ease-in-out infinite; }
+    @keyframes ccNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+  }
+
   /* ---------- CTA (pricing box) ---------- */
   /* uses v8 scoped styles */
 
@@ -1333,6 +1343,7 @@
         <p>Most supplements hide their doses behind mystery ingredients. Here&rsquo;s the honest comparison.</p>
       </div>
 
+      <div class="cc-swipe-cue">
       <div class="v10-compare-wrap reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <table class="v10-compare">
           <thead>
@@ -1354,6 +1365,8 @@
           </tbody>
         </table>
       </div>
+      </div>
+      <p class="cc-swipe-hint">Swipe to compare <span class="cc-arw">&rarr;</span></p>
 
       <p style="text-align:center; margin-top:32px; font-size:14px; color:#6B6B6B;">Less than your daily coffee &mdash; backed by a 60-day guarantee.</p>
     </div>
