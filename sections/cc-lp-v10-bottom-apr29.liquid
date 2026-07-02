@@ -165,7 +165,7 @@
         <h2>Before you start.</h2>
       </div>
 
-      <div class="v10-faq reveal" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
+      <div class="v10-faq reveal" x-data="{ faq: null, toggleFaq(i) { this.faq = this.faq === i ? null : i; } }" x-intersect="$el.classList.add('visible')" x-init="setTimeout(() => $el.classList.add('visible'), 100)">
         <div class="v10-faq-item">
           <button type="button" class="v10-faq-q" :aria-expanded="faq === 1" @click="toggleFaq(1)">What is Coastline? <span class="plus">+</span></button>
           <div class="v10-faq-a" :class="faq === 1 ? 'open' : ''"><p>Coastline is a complete daily longevity system &mdash; 13 science-backed ingredients split into a morning ritual (easy-scoop powder sachet + softgel) and two evening capsules. Every dose matches the level used in clinical studies. No mystery ingredients, no hidden doses, every milligram published on the label.</p></div>
