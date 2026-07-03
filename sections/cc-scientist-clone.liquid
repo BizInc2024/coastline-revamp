@@ -38,7 +38,7 @@
 
   /* CONTRAST (parchment) */
   .cc-scilp .contrast { background: #FAF9F6; padding: 110px 0; }
-  .cc-scilp .contrast-cutout { width: 260px; height: 162px; margin: 0 auto 30px; background-repeat: no-repeat; background-position: center; background-size: contain; }
+  .cc-scilp .contrast-cutout { display: block; width: 260px; height: auto; margin: 0 auto 30px; }
   .cc-scilp .contrast h2 { font-size: clamp(34px, 4.8vw, 52px); text-align: center; max-width: 760px; margin: 0 auto 14px; }
   .cc-scilp .contrast .lede { text-align: center; color: #6B6B6B; font-size: 19px; max-width: 600px; margin: 0 auto 64px; }
   .cc-scilp .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
@@ -79,7 +79,7 @@
     .cc-scilp .hero-img { height: 320px; order: -1; }
     .cc-scilp .hero-copy { padding: 56px 28px 64px; }
     .cc-scilp .hero-cutout { width: 122px; height: 72px; margin-bottom: 18px; }
-    .cc-scilp .contrast-cutout { width: 208px; height: 130px; margin-bottom: 22px; }
+    .cc-scilp .contrast-cutout { width: 208px; margin-bottom: 22px; }
     .cc-scilp .grid3 { grid-template-columns: 1fr; gap: 40px; }
     .cc-scilp .contrast, .cc-scilp .team, .cc-scilp .band { padding: 72px 0; }
     .cc-scilp .band-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -116,7 +116,7 @@
 
   <div class="contrast">
     <div class="wrap">
-      <div class="contrast-cutout" role="img" aria-label="The Coastline 13-ingredient system" style="background-image: url({{ 'cc-coastline-family-cutout.png' | asset_url }});"></div>
+      <img class="contrast-cutout" src="{{ 'cc-coastline-family-cutout.png' | asset_url }}" alt="The Coastline 13-ingredient system" loading="lazy">
       <h2>Who formulates it matters.</h2>
       <p class="lede">Most supplement brands spend on a famous face. We spent on the research. Here&rsquo;s the difference.</p>
       <div class="grid3">
