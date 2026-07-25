@@ -29,9 +29,6 @@
       {%- assign byline = article.author -%}
       {%- if byline == blank or byline contains 'Shopify' or byline contains 'Coastline' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
       By <strong itemprop="author">{{ byline }}</strong>
-      {%- if blog.handle == 'deep-dive' -%}
-        <span style="color:#6B6B6B;"> · Based on the work of <a href="https://www.youtube.com/@gregpotterphd" target="_blank" rel="noopener" style="color:#6B6B6B; text-decoration:underline;">Greg Potter,&nbsp;PhD</a></span>
-      {%- endif -%}
       <span style="margin: 0 8px; color: #E8E8E8;">|</span>
       <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
         {{ article.published_at | date: '%B %d, %Y' }}
@@ -228,7 +225,6 @@
   "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' }}",
   "author": { "@type": "Organization", "name": {{ jbyline | json }}, "url": {{ request.origin | json }} },
   {%- if blog.handle == 'deep-dive' -%}
-  "isBasedOn": { "@type": "CreativeWork", "name": "Greg Potter, PhD", "url": "https://www.youtube.com/@gregpotterphd", "creator": { "@type": "Person", "name": "Greg Potter", "honorificSuffix": "PhD", "sameAs": "https://www.youtube.com/@gregpotterphd" } },
   {%- endif -%}
   "publisher": { "@type": "Organization", "name": "Coastline Longevity", "logo": { "@type": "ImageObject", "url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/CoastlineLongevity_LogoOnly_DarkBlue.png?v=1742841454" } },
   "description": {{ article.excerpt_or_content | strip_html | truncate: 300 | json }}
@@ -253,7 +249,7 @@
       "type": "text",
       "id": "author_name",
       "label": "Author name",
-      "default": "Greg Potter, PhD, MSc"
+      "default": "Coastline Research Team"
     },
     {
       "type": "text",
