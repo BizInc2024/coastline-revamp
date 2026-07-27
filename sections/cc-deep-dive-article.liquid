@@ -27,8 +27,9 @@
 
     <p class="dd-article__byline">
       {%- assign byline = article.author -%}
-      {%- comment -%} Greg's request: no personal byline on company blog posts (exception: the NAD+ post he authored). {%- endcomment -%}
-      {%- if byline == blank or byline contains 'Shopify' or byline contains 'Coastline' or byline contains 'Greg' or byline contains 'Potter' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
+      {%- comment -%} Greg's request: no personal byline on company blog posts, EXCEPT the NAD+ post he authored + was paid for. {%- endcomment -%}
+      {%- if article.handle == 'nad-nr-nmn-or-neither' -%}{%- assign byline = 'Greg Potter, PhD, MSc' -%}
+      {%- elsif byline == blank or byline contains 'Shopify' or byline contains 'Coastline' or byline contains 'Greg' or byline contains 'Potter' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
       By <strong itemprop="author">{{ byline }}</strong>
       <span style="margin: 0 8px; color: #E8E8E8;">|</span>
       <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
@@ -65,20 +66,33 @@
     </div>
   </div>
 
-  {%- comment -%} Author Bio {%- endcomment -%}
-  {%- if section.settings.show_author_bio -%}
+  {%- comment -%} Author Bio — NAD+ post shows Greg (he authored it); all others use section settings (company). {%- endcomment -%}
+  {%- assign is_greg_post = false -%}
+  {%- if article.handle == 'nad-nr-nmn-or-neither' -%}{%- assign is_greg_post = true -%}{%- endif -%}
+  {%- if section.settings.show_author_bio or is_greg_post -%}
     <div class="dd-article__author">
       <div class="dd-article__author-card">
-        {%- if section.settings.author_photo != blank -%}
+        {%- if is_greg_post -%}
           <div class="dd-article__author-photo">
-            {{ section.settings.author_photo | image_url: width: 144 | image_tag: loading: 'lazy' }}
+            <img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015" alt="Greg Potter, PhD, MSc" width="144" height="144" loading="lazy">
+          </div>
+          <div>
+            <p class="dd-article__author-name">Greg Potter, PhD, MSc</p>
+            <p class="dd-article__author-role">Chief Science Officer, Coastline Longevity</p>
+            <p class="dd-article__author-bio">Greg holds a PhD in sleep, nutrition, and metabolic health from the University of Leeds. He has worked with the US Naval Special Warfare Command and serves as a health coach at the London Psychiatry Clinic. His research has been featured by the BBC, The Washington Post, and TIME Magazine.</p>
+          </div>
+        {%- else -%}
+          {%- if section.settings.author_photo != blank -%}
+            <div class="dd-article__author-photo">
+              {{ section.settings.author_photo | image_url: width: 144 | image_tag: loading: 'lazy' }}
+            </div>
+          {%- endif -%}
+          <div>
+            <p class="dd-article__author-name">{{ section.settings.author_name | default: 'Coastline Research Team' }}</p>
+            <p class="dd-article__author-role">{{ section.settings.author_role }}</p>
+            <p class="dd-article__author-bio">{{ section.settings.author_bio }}</p>
           </div>
         {%- endif -%}
-        <div>
-          <p class="dd-article__author-name">{{ section.settings.author_name | default: 'Coastline Research Team' }}</p>
-          <p class="dd-article__author-role">{{ section.settings.author_role }}</p>
-          <p class="dd-article__author-bio">{{ section.settings.author_bio }}</p>
-        </div>
       </div>
     </div>
   {%- endif -%}
@@ -214,7 +228,8 @@
 
 {%- comment -%} GEO: custom Article schema — author = Coastline Research Team, based on Greg Potter PhD (replaces Shopify structured_data which set author to "Shopify API"). 2026-05-24 {%- endcomment -%}
 {%- assign jbyline = article.author -%}
-{%- if jbyline == blank or jbyline contains 'Shopify' or jbyline contains 'Coastline' or jbyline contains 'Greg' or jbyline contains 'Potter' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
+{%- if article.handle == 'nad-nr-nmn-or-neither' -%}{%- assign jbyline = 'Greg Potter, PhD, MSc' -%}
+{%- elsif jbyline == blank or jbyline contains 'Shopify' or jbyline contains 'Coastline' or jbyline contains 'Greg' or jbyline contains 'Potter' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
