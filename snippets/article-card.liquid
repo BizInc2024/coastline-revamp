@@ -41,11 +41,9 @@
             </li>
           {%- endif -%}
 
-          {%- if show_author -%}
+          {%- if show_author and article.handle == 'nad-nr-nmn-or-neither' -%}
             <li class="italic text-xs relative">
-              {%- assign card_author2 = article.author -%}
-              {%- if card_author2 == blank or card_author2 contains 'Shopify' or card_author2 contains 'Coastline' -%}{%- assign card_author2 = 'Coastline Research Team' -%}{%- endif -%}
-              {%- capture author -%}<span class="font-medium not-italic">{{ card_author2 }}</span>{%- endcapture -%}
+              {%- capture author -%}<span class="font-medium not-italic">Greg Potter, PhD, MSc</span>{%- endcapture -%}
               {{- 'blogs.article.written_by_html' | t: author: author -}}
             </li>
           {%- endif -%}

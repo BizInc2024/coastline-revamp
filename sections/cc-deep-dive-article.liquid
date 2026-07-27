@@ -26,12 +26,11 @@
     <h1 class="dd-article__h1" itemprop="headline">{{ article.title }}</h1>
 
     <p class="dd-article__byline">
-      {%- assign byline = article.author -%}
-      {%- comment -%} Greg's request: no personal byline on company blog posts, EXCEPT the NAD+ post he authored + was paid for. {%- endcomment -%}
-      {%- if article.handle == 'nad-nr-nmn-or-neither' -%}{%- assign byline = 'Greg Potter, PhD, MSc' -%}
-      {%- elsif byline == blank or byline contains 'Shopify' or byline contains 'Coastline' or byline contains 'Greg' or byline contains 'Potter' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
-      By <strong itemprop="author">{{ byline }}</strong>
-      <span style="margin: 0 8px; color: #E8E8E8;">|</span>
+      {%- comment -%} No byline on company blog posts (not even "Coastline Research Team"), EXCEPT the NAD+ post Greg authored + was paid for. {%- endcomment -%}
+      {%- if article.handle == 'nad-nr-nmn-or-neither' -%}
+        By <strong itemprop="author">Greg Potter, PhD, MSc</strong>
+        <span style="margin: 0 8px; color: #E8E8E8;">|</span>
+      {%- endif -%}
       <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
         {{ article.published_at | date: '%B %d, %Y' }}
       </time>
