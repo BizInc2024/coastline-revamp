@@ -27,7 +27,8 @@
 
     <p class="dd-article__byline">
       {%- assign byline = article.author -%}
-      {%- if byline == blank or byline contains 'Shopify' or byline contains 'Coastline' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
+      {%- comment -%} Greg's request: no personal byline on company blog posts (exception: the NAD+ post he authored). {%- endcomment -%}
+      {%- if byline == blank or byline contains 'Shopify' or byline contains 'Coastline' or byline contains 'Greg' or byline contains 'Potter' -%}{%- assign byline = 'Coastline Research Team' -%}{%- endif -%}
       By <strong itemprop="author">{{ byline }}</strong>
       <span style="margin: 0 8px; color: #E8E8E8;">|</span>
       <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
@@ -213,7 +214,7 @@
 
 {%- comment -%} GEO: custom Article schema — author = Coastline Research Team, based on Greg Potter PhD (replaces Shopify structured_data which set author to "Shopify API"). 2026-05-24 {%- endcomment -%}
 {%- assign jbyline = article.author -%}
-{%- if jbyline == blank or jbyline contains 'Shopify' or jbyline contains 'Coastline' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
+{%- if jbyline == blank or jbyline contains 'Shopify' or jbyline contains 'Coastline' or jbyline contains 'Greg' or jbyline contains 'Potter' -%}{%- assign jbyline = 'Coastline Research Team' -%}{%- endif -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -255,13 +256,13 @@
       "type": "text",
       "id": "author_role",
       "label": "Author role",
-      "default": "Chief Science Officer, Coastline Longevity"
+      "default": "Coastline Longevity"
     },
     {
       "type": "textarea",
       "id": "author_bio",
       "label": "Author bio",
-      "default": "Greg holds a PhD in sleep, nutrition, and metabolic health from the University of Leeds. He has worked with the US Naval Special Warfare Command and serves as a health coach at the London Psychiatry Clinic. His research has been featured by the BBC, The Washington Post, and TIME Magazine."
+      "default": "Coastline's research team reviews the peer-reviewed evidence behind every ingredient and topic we cover. Our articles are grounded in clinical research, not trends."
     },
     {
       "type": "image_picker",
