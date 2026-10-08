@@ -13,7 +13,7 @@
             {{ section.settings.benefits_label | default: "THE BENEFITS" }}
           </span>
           <h2 class="font-grotesk font-medium text-deep-ink leading-tight" style="font-size: clamp(30px, 6.5vw, 44px);">
-            {{ section.settings.benefits_headline | default: "What Coastline does for you" }}
+            {%- assign cc_bh = section.settings.benefits_headline | default: "What Coastline does for you" -%}{%- capture cc_br -%}What Coastline <br class="md:hidden">{%- endcapture -%}{{ cc_bh | replace: "What Coastline ", cc_br }}
           </h2>
         </div>
         <div class="reveal-stagger cc-benefits-grid" x-intersect.once="$el.classList.add('visible')">

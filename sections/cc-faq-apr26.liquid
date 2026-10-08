@@ -11,6 +11,8 @@
   
         {%- assign faq_label = section.settings.faq_label | default: "FREQUENTLY ASKED QUESTIONS" -%}
         {%- assign faq_headline = section.settings.faq_headline | default: "Answers to the questions we get most" -%}
+        {%- capture faq_br -%}the questions<br>{%- endcapture -%}
+        {%- assign faq_headline = faq_headline | replace: "the questions ", faq_br -%}
         {%- if faq_label != blank -%}
           <p class="badge-minimal reveal text-center tracking-widest text-xs text-warm-gray mb-4" x-intersect.once="$el.classList.add('visible')">
             {{ faq_label }}

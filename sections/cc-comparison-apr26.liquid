@@ -15,7 +15,7 @@
           <span class="badge-minimal">{{ comparison_label }}</span>
         {%- endif -%}
         {%- if comparison_headline != blank -%}
-          <h2 class="text-deep-ink max-w-2xl mx-auto mt-4 mb-12 leading-snug" style="font-size:clamp(1.25rem,3.2vw,2.4rem);">
+          <h2 class="text-deep-ink max-w-2xl mx-auto mt-4 mb-12 leading-snug" style="font-size:clamp(1.375rem,3.2vw,2.4rem);">
             {{ comparison_headline }}
           </h2>
         {%- endif -%}
@@ -104,6 +104,7 @@
           Comparison based on publicly available product information. Prices reflect monthly subscription rates.
         </p>
       </div>
+      {% render 'cc-inline-cta', kind: 'link', text: 'Start Coastline today' %}
     </section>
 </div>
 

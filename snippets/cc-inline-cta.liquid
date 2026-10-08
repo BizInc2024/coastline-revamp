@@ -1,0 +1,30 @@
+{%- comment -%}
+  cc-inline-cta -- small "start Coastline" CTA dropped between homepage sections.
+  Params: text, kind ('button' | 'link'), url (default #cc-home-pricing), tone ('light' | 'dark').
+{%- endcomment -%}
+{%- assign cc_cta_url = url | default: '#cc-home-pricing' -%}
+<div class="cc-inline-cta{% if tone == 'dark' %} cc-inline-cta--dark{% endif %}">
+  {%- if kind == 'button' -%}
+    <a href="{{ cc_cta_url }}" class="cc-inline-cta__btn">{{ text }}</a>
+  {%- else -%}
+    <a href="{{ cc_cta_url }}" class="cc-inline-cta__link">{{ text }} <span aria-hidden="true">&rarr;</span></a>
+  {%- endif -%}
+</div>
+<style>
+  .cc-inline-cta { text-align: center; margin: 40px auto 0; padding: 0 24px; }
+  .cc-inline-cta__btn {
+    display: inline-block; background: #062F3D; color: #FAF9F6 !important;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase; padding: 20px 48px;
+    text-decoration: none; transition: opacity 0.3s ease;
+  }
+  .cc-inline-cta__btn:hover { opacity: 0.85; }
+  .cc-inline-cta__link {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 16px;
+    color: #0A0A0A !important; text-decoration: underline; text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .cc-inline-cta--dark .cc-inline-cta__link { color: #FAF9F6 !important; }
+  .cc-inline-cta--dark .cc-inline-cta__btn { background: #E7FF56; color: #062F3D !important; }
+  @media (max-width: 767px) { .cc-inline-cta__btn { display: block; padding: 20px 24px; } }
+</style>
