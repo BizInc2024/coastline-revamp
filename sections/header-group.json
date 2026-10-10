@@ -16,6 +16,7 @@
       "blocks": {
         "announcement_93QMee": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "text": "SURPRISE 20% OFF TODAY - ORDER $50+",
@@ -31,7 +32,7 @@
           "disabled": true,
           "settings": {
             "icon": "none",
-            "text": "ALWAYS FREE SHIPPING",
+            "text": "FREE SHIPPING ACROSS THE U.S.",
             "link": "",
             "hide_icon_mobile": true,
             "text_mobile": "ALWAYS FREE SHIPPING",
@@ -44,6 +45,7 @@
         "announcement_93QMee",
         "announcement_xQT6UT"
       ],
+      "disabled": true,
       "settings": {
         "show_social": false,
         "enable_language_selector": false,
