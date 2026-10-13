@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "narrative": {
@@ -19,7 +28,7 @@
         "cta_subheadline": "Join thousands who've simplified their health routine with Coastline.",
         "guarantee_headline": "Try it risk-free for 60 days.",
         "final_cta_headline": "Start your longevity journey today.",
-        "final_cta_text": "Start My System -- $99/mo"
+        "final_cta_text": "Start My System -- $79.20/mo"
       }
     },
     "pricing": {
@@ -32,6 +41,17 @@
         "pricing_trust_2": "60-day money-back guarantee.",
         "pad_top": 80,
         "pad_bottom": 80
+      }
+    },
+    "final-cta": {
+      "type": "cc-final-cta-apr26",
+      "settings": {
+        "final_headline": "Start your longevity journey today.",
+        "final_subheadline": "13 science-backed ingredients in one simple system -- from just $2.64 a day.",
+        "final_cta_text": "START MY LONGEVITY SYSTEM",
+        "final_cta_link": "#pricing-product-apr26",
+        "section13_padding_top": 80,
+        "section13_padding_bottom": 80
       }
     },
     "narrative-bottom": {
@@ -47,6 +67,7 @@
     "narrative",
     "pricing",
     "narrative-bottom",
+    "final-cta",
     "email"
   ]
 }

@@ -118,7 +118,7 @@
                             <p class="text-xs tracking-wider" style="color: rgba(250,249,246,0.5);">{{ section.settings.expert_1_credential | default: 'Sleep & Circadian Health Expert' }}</p>
                         </div>
                     </div>
-                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_1_quote | default: '&ldquo;The 13 ingredients chosen for Coastline are the most scientifically supported, and clinically validated supplements yet to be discovered.&rdquo;' }}</p>
+                    <p class="text-lg lg:text-xl font-grotesk font-normal leading-relaxed" style="color: #FAF9F6;">{{ section.settings.expert_1_quote | default: '&ldquo;We only include ingredients proven safe and effective in humans, at the forms and doses the clinical trials actually used.&rdquo;' }}</p>
                 </div>
                 <!-- Expert 2 -->
                 <div class="pt-8 reveal" style="border-top: 1px solid rgba(250,249,246,0.15);" x-init="setTimeout(() => $el.classList.add('visible'), 100)" x-intersect="$el.classList.add('visible')" >
@@ -177,11 +177,11 @@
                 </div>
                 <div class="border border-light-gray bg-white">
                     <button type="button" class="w-full flex justify-between items-center p-6 text-left" @click="openFaq = openFaq === 2 ? null : 2">
-                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_2_question | default: 'AG1 is $79/month. Why does Coastline cost $20 more?' }}</span>
+                        <span class="font-grotesk text-deep-ink pr-8">{{ section.settings.faq_2_question | default: 'AG1 is $79/month. How does Coastline compare at $79.20?' }}</span>
                         <svg class="w-5 h-5 text-warm-gray transition-transform" :class="{ 'rotate-180': openFaq === 2 }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content" :class="{ 'open': openFaq === 2 }">
-                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_2_answer | default: '<p>AG1 spreads $79 across 75 ingredients at trace amounts (~$1.05 per ingredient per month). Coastline invests $99 in 13 ingredients at clinical doses (~$7.62 per ingredient per month). You are paying for doses that match actual clinical trials, not a long ingredient list.</p>' }}</div>
+                        <div class="px-6 pb-6 text-warm-gray">{{ section.settings.faq_2_answer | default: '<p>AG1 spreads $79 across 75 ingredients at trace amounts (~$1.05 per ingredient per month). Coastline puts $79.20 into 13 ingredients at evidence-based doses (~$6.09 per ingredient per month). For 20 cents more a month, you get doses that match actual clinical trials, not a long ingredient list.</p>' }}</div>
                     </div>
                 </div>
                 <div class="border border-light-gray bg-white">

@@ -64,9 +64,9 @@
         plan: 'monthly',
         variants: { unflavored: 42179764453445, lemonade: 42179764486213 },
         plans: {
-          monthly:   { id: 1862631493, price: '$99/mo',  label: 'Monthly',  save: 'Save 34%' },
-          bimonthly: { id: 1892712517, price: '$120/mo', label: '2-Month',  save: 'Save 20%' },
-          onetime:   { id: null,       price: '$150',    label: 'One-time', save: '' }
+          monthly:   { id: 1862631493, price: '$79.20/mo',  label: 'Monthly',  save: 'Save 20%' },
+          bimonthly: { id: 1892712517, price: '$89.10/mo', label: '2-Month',  save: 'Save 10%' },
+          onetime:   { id: null,       price: '$99',     label: 'One-time', save: '' }
         },
         loading: false,
         get variantId() { return this.variants[this.flavor]; },
@@ -101,11 +101,11 @@
           <div class="cc-plan-body">
             <div>
               <span class="cc-plan-label">Monthly subscription</span>
-              <span class="cc-plan-save">Save 34%</span>
+              <span class="cc-plan-save">Save 20%</span>
               <span class="cc-plan-terms" style="display:block;font-size:12px;color:#6B6B6B;margin-top:4px;font-weight:400;letter-spacing:0;">Auto-renews — cancel anytime.</span>
             </div>
             <div class="cc-plan-price-col">
-              <span class="cc-plan-price">$99</span>
+              <span class="cc-plan-price">$79.20</span>
               <span class="cc-plan-cadence">/month</span>
             </div>
           </div>
@@ -115,11 +115,11 @@
           <div class="cc-plan-body">
             <div>
               <span class="cc-plan-label">Every 2 months</span>
-              <span class="cc-plan-save">Save 20%</span>
+              <span class="cc-plan-save">Save 10%</span>
               <span class="cc-plan-terms" style="display:block;font-size:12px;color:#6B6B6B;margin-top:4px;font-weight:400;letter-spacing:0;">Auto-renews — cancel anytime.</span>
             </div>
             <div class="cc-plan-price-col">
-              <span class="cc-plan-price">$120</span>
+              <span class="cc-plan-price">$89.10</span>
               <span class="cc-plan-cadence">/month</span>
             </div>
           </div>
@@ -132,7 +132,7 @@
               <span class="cc-plan-save cc-plan-save--muted">No subscription</span>
             </div>
             <div class="cc-plan-price-col">
-              <span class="cc-plan-price">$150</span>
+              <span class="cc-plan-price">$99</span>
               <span class="cc-plan-cadence">one-time</span>
             </div>
           </div>

@@ -33,7 +33,7 @@
             {{ section.settings.headline | default: "Complete your system for full coverage" }}
           </h2>
           <p style="font-family:'Inter',sans-serif;font-size:15px;color:rgba(255,255,255,0.65);line-height:1.7;margin:0 0 24px;">
-            {{ section.settings.body | default: "Add the Daily Softgels and Evening Capsules to target all 12 hallmarks of aging — for $99/mo." }}
+            {{ section.settings.body | default: "Add the Daily Softgels and Evening Capsules to target all 12 hallmarks of aging — for $79.20/mo." }}
           </p>
           {%- if section.settings.gift_line != blank -%}
             <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FAF9F6;letter-spacing:0.05em;margin:0 0 32px;">
@@ -42,7 +42,7 @@
           {%- endif -%}
           <a href="{{ section.settings.cta_link | default: '/products/coastline-welcome-pack' }}"
              style="display:inline-block;padding:18px 48px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;background:#FFFFFF;color:var(--ocean);text-decoration:none;transition:opacity 0.3s ease;">
-            {{ section.settings.cta_text | default: "GET THE COMPLETE SYSTEM — $99/MO" }}
+            {{ section.settings.cta_text | default: "GET THE COMPLETE SYSTEM — $79.20/MO" }}
           </a>
         </div>
 
@@ -77,7 +77,7 @@
     { "type": "text", "id": "headline", "label": "Headline", "default": "Complete your system for full coverage" },
     { "type": "textarea", "id": "body", "label": "Body copy" },
     { "type": "text", "id": "gift_line", "label": "Gift line (bold)", "default": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)" },
-    { "type": "text", "id": "cta_text", "label": "CTA button text", "default": "GET THE COMPLETE SYSTEM — $99/MO" },
+    { "type": "text", "id": "cta_text", "label": "CTA button text", "default": "GET THE COMPLETE SYSTEM — $79.20/MO" },
     { "type": "url", "id": "cta_link", "label": "CTA link" }
   ],
   "presets": [

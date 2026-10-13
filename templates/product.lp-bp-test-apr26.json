@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "narrative": {
@@ -20,7 +29,7 @@
       "type": "cc-final-cta-apr26",
       "settings": {
         "show_product_image": true,
-        "final_headline": "13 ingredients. Clinical doses. $99 a month.",
+        "final_headline": "13 ingredients. Clinical doses. $79.20 a month.",
         "final_subheadline": "Every dose disclosed. Free shipping. 60-day guarantee.",
         "final_cta_text": "START MY LONGEVITY SYSTEM",
         "final_cta_link": "#pricing-product-apr26",

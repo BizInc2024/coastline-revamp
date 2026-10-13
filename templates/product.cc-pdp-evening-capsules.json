@@ -17,11 +17,11 @@
         "hero_description": "3 evening ingredients in one capsule. Take 30-60 minutes before bed to support deeper sleep, mood, and overnight recovery.",
         "ingredients_line": "Lithium Orotate 400 mcg \u00b7 L-Theanine 200 mg \u00b7 Glucosamine Sulfate 750 mg",
         "supply_line": "30-day supply. Fully dosed.",
-        "monthly_price": "$24",
-        "monthly_save": "Save 20%",
-        "bimonthly_price": "$27",
-        "bimonthly_save": "Save 10%",
-        "onetime_price": "$30"
+        "monthly_price": "$21.60",
+        "monthly_save": "Save 10%",
+        "bimonthly_price": "$22.80",
+        "bimonthly_save": "Save 5%",
+        "onetime_price": "$24"
       }
     },
     "pdp-press": {
@@ -82,7 +82,7 @@
       "type": "cc-pdp-upsell-apr26",
       "settings": {
         "headline": "Complete your system for full coverage",
-        "body": "Evening Capsules cover 3 of our 13 ingredients. Add Morning Blend and Softgels to target all 12 hallmarks of aging \u2014 for $99/mo.",
+        "body": "Evening Capsules cover 3 of our 13 ingredients. Add Morning Blend and Softgels to target all 12 hallmarks of aging \u2014 for $79.20/mo.",
         "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
       }
     },

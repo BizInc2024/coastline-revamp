@@ -176,7 +176,7 @@
           "type": "faq",
           "settings": {
             "question": "What does it cost?",
-            "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
+            "answer": "<p>$79.20 a month — about $2.64 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
           }
         },
         "sf6": {
@@ -197,7 +197,7 @@
           "type": "faq",
           "settings": {
             "question": "Can I cancel anytime?",
-            "answer": "<p>Yes — subscriptions save 34%, ship free, and cancel in one click with no penalties. A 60-day money-back guarantee covers your first order.</p>"
+            "answer": "<p>Yes — subscriptions save 20%, ship free, and cancel in one click with no penalties. A 60-day money-back guarantee covers your first order.</p>"
           }
         }
       },
@@ -221,7 +221,7 @@
       "settings": {
         "show_product_image": true,
         "final_headline": "Discover a new<br>horizon of health.",
-        "final_subheadline": "13 ingredients, every dose disclosed.<br>$99/mo, 60-day guarantee.",
+        "final_subheadline": "13 ingredients, every dose disclosed.<br>$79.20/mo, 60-day guarantee.",
         "final_cta_text": "Get the scientists' formula",
         "final_cta_link": "#pricing-product-apr26",
         "final_cta_bg": "#E7FF56",

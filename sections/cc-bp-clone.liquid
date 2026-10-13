@@ -104,7 +104,7 @@
                 </div>
 
                 <p class="text-lg lg:text-xl text-warm-gray mb-8 max-w-2xl mx-auto leading-relaxed">
-                    {{ section.settings.hero_subheadline | default: 'Blueprint sells 7 products with 74 compounds for $361/month. Coastline uses 13 clinically dosed ingredients for $99/month. We compared the science, the doses, and the value.' }}
+                    {{ section.settings.hero_subheadline | default: 'Blueprint sells 7 products with 74 compounds for $361/month. Coastline uses 13 clinically dosed ingredients for $79.20/month. We compared the science, the doses, and the value.' }}
                 </p>
                 <div class="flex flex-col items-center gap-4 mt-6">
                     <a href="#v6-comparison-table" class="btn-primary">{{ section.settings.hero_cta_text | default: 'See the Full Comparison' }}</a>
@@ -202,7 +202,7 @@
                     {{ section.settings.bridge_2_p3 | default: "Here is exactly what we found when we compared them head to head." }}
                 </p>
                 <div class="text-center">
-                    <a href="#pricing-product-apr26" class="link-underline" style="font-size:12px; color:var(--warm-gray);">GET 34% OFF COASTLINE NOW</a>
+                    <a href="#pricing-product-apr26" class="link-underline" style="font-size:12px; color:var(--warm-gray);">GET 20% OFF COASTLINE NOW</a>
                 </div>
             </div>
         </div>
@@ -227,12 +227,12 @@
                         <img src="{% if section.settings.coastline_product_image != blank %}{{ section.settings.coastline_product_image | image_url: width: 600 }}{% else %}{{ 'cc-coastline-family-cutout.png' | asset_url }}{% endif %}" alt="Coastline" style="max-height: 153px; max-width: 100%; object-fit: contain; object-position: bottom;" loading="lazy">
                     </div>
                     <p class="text-xs tracking-widest uppercase text-warm-gray mb-2">Coastline</p>
-                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$99<span class="text-lg text-warm-gray">/month</span></p>
+                    <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$79.20<span class="text-lg text-warm-gray">/month</span></p>
                     <div class="border-t border-light-gray pt-4 space-y-2 text-sm text-warm-gray">
                         <p>13 ingredients at evidence-based doses</p>
-                        <p>~$7.62 per ingredient per month</p>
-                        <p>$3.30/day</p>
-                        <p>$1,188/year</p>
+                        <p>~$6.09 per ingredient per month</p>
+                        <p>$2.64/day</p>
+                        <p>$950/year</p>
                         <p class="text-xs pt-2" style="color: #2D5A47;">Full transparency -- every dose disclosed</p>
                     </div>
                 </div>
@@ -245,9 +245,9 @@
                     <p class="text-4xl font-grotesk font-medium text-deep-ink mb-4">$361<span class="text-lg text-warm-gray">/month</span></p>
                     <div class="border-t border-light-gray pt-4 space-y-2 text-sm text-warm-gray">
                         <p>75 ingredients at trace amounts</p>
-                        <p>~$1.05 per ingredient per month</p>
-                        <p>$2.63/day</p>
-                        <p>$948/year</p>
+                        <p>~$4.88 per ingredient per month</p>
+                        <p>$12.03/day</p>
+                        <p>$4,332/year</p>
                         <p class="text-xs pt-2" style="color: #C0392B;">Proprietary blends -- doses undisclosed</p>
                     </div>
                 </div>
@@ -255,7 +255,7 @@
 
             <div class="text-center mb-20">
                 <p class="text-warm-gray text-lg max-w-xl mx-auto leading-relaxed">
-                    {{ section.settings.price_framing | default: "$0.67/day more for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
+                    {{ section.settings.price_framing | default: "$9.39 a day less for ingredients proven to work at doses proven to matter. You are not paying for ingredient count. You are paying for ingredient doses that actually work." }}
                 </p>
             </div>
 

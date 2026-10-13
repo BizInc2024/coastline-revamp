@@ -18,34 +18,34 @@
 {%- endcomment -%}
 {%- case product.handle -%}
   {%- when 'coastline-welcome-pack' -%}
-    {%- assign default_monthly_price = '$99' -%}
-    {%- assign default_monthly_save = 'Save 34%' -%}
-    {%- assign default_bimonthly_price = '$120' -%}
-    {%- assign default_bimonthly_save = 'Save 20%' -%}
-    {%- assign default_onetime_price = '$150' -%}
+    {%- assign default_monthly_price = '$79.20' -%}
+    {%- assign default_monthly_save = 'Save 20%' -%}
+    {%- assign default_bimonthly_price = '$89.10' -%}
+    {%- assign default_bimonthly_save = 'Save 10%' -%}
+    {%- assign default_onetime_price = '$99' -%}
   {%- when 'coastline-creatine' -%}
-    {%- assign default_monthly_price = '$55.20' -%}
-    {%- assign default_monthly_save = 'Save 20%' -%}
-    {%- assign default_bimonthly_price = '$62.10' -%}
-    {%- assign default_bimonthly_save = 'Save 10%' -%}
-    {%- assign default_onetime_price = '$69' -%}
+    {%- assign default_monthly_price = '$44.10' -%}
+    {%- assign default_monthly_save = 'Save 10%' -%}
+    {%- assign default_bimonthly_price = '$46.55' -%}
+    {%- assign default_bimonthly_save = 'Save 5%' -%}
+    {%- assign default_onetime_price = '$49' -%}
   {%- when 'coastline-morning-softgels' -%}
-    {%- assign default_monthly_price = '$28' -%}
-    {%- assign default_monthly_save = 'Save 20%' -%}
-    {%- assign default_bimonthly_price = '$31.50' -%}
-    {%- assign default_bimonthly_save = 'Save 10%' -%}
-    {%- assign default_onetime_price = '$35' -%}
+    {%- assign default_monthly_price = '$26.10' -%}
+    {%- assign default_monthly_save = 'Save 10%' -%}
+    {%- assign default_bimonthly_price = '$27.55' -%}
+    {%- assign default_bimonthly_save = 'Save 5%' -%}
+    {%- assign default_onetime_price = '$29' -%}
   {%- when 'coastline-evening-capsules' -%}
-    {%- assign default_monthly_price = '$24' -%}
-    {%- assign default_monthly_save = 'Save 20%' -%}
-    {%- assign default_bimonthly_price = '$27' -%}
-    {%- assign default_bimonthly_save = 'Save 10%' -%}
-    {%- assign default_onetime_price = '$30' -%}
+    {%- assign default_monthly_price = '$21.60' -%}
+    {%- assign default_monthly_save = 'Save 10%' -%}
+    {%- assign default_bimonthly_price = '$22.80' -%}
+    {%- assign default_bimonthly_save = 'Save 5%' -%}
+    {%- assign default_onetime_price = '$24' -%}
   {%- else -%}
     {%- assign default_monthly_price = '' -%}
-    {%- assign default_monthly_save = 'Save 20%' -%}
+    {%- assign default_monthly_save = 'Save 10%' -%}
     {%- assign default_bimonthly_price = '' -%}
-    {%- assign default_bimonthly_save = 'Save 10%' -%}
+    {%- assign default_bimonthly_save = 'Save 5%' -%}
     {%- assign default_onetime_price = '' -%}
 {%- endcase -%}
 {%- comment -%}
@@ -555,10 +555,10 @@
     { "type": "textarea", "id": "ingredients_line", "label": "Ingredients line (forest accent)" },
     { "type": "text", "id": "supply_line", "label": "Supply line", "default": "30-day supply. Fully dosed." },
     { "type": "header", "content": "Pricing overrides (optional)" },
-    { "type": "text", "id": "monthly_price", "label": "Monthly price override", "info": "e.g. $55.20 - leave blank to compute from selling plan" },
-    { "type": "text", "id": "monthly_save", "label": "Monthly save label", "default": "Save 20%" },
+    { "type": "text", "id": "monthly_price", "label": "Monthly price override", "info": "e.g. $44.10 - leave blank to compute from selling plan" },
+    { "type": "text", "id": "monthly_save", "label": "Monthly save label", "default": "Save 10%" },
     { "type": "text", "id": "bimonthly_price", "label": "2-month price override" },
-    { "type": "text", "id": "bimonthly_save", "label": "2-month save label", "default": "Save 10%" },
+    { "type": "text", "id": "bimonthly_save", "label": "2-month save label", "default": "Save 5%" },
     { "type": "text", "id": "onetime_price", "label": "One-time price override" },
     { "type": "range", "id": "padding_top", "label": "Padding top (px)", "min": 0, "max": 200, "step": 4, "default": 32 },
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom (px)", "min": 0, "max": 200, "step": 4, "default": 80 }

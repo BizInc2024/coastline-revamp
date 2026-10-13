@@ -17,11 +17,11 @@
         "hero_description": "4 fat-soluble ingredients in one softgel. Take with your first meal alongside Morning Blend. Supports cellular protection, eye, brain, and skin health.",
         "ingredients_line": "Astaxanthin 6 mg \u00b7 Lutein 10 mg \u00b7 Zeaxanthin 2 mg \u00b7 CoQ10 200 mg",
         "supply_line": "30-day supply. Fully dosed.",
-        "monthly_price": "$28",
-        "monthly_save": "Save 20%",
-        "bimonthly_price": "$31.50",
-        "bimonthly_save": "Save 10%",
-        "onetime_price": "$35"
+        "monthly_price": "$26.10",
+        "monthly_save": "Save 10%",
+        "bimonthly_price": "$27.55",
+        "bimonthly_save": "Save 5%",
+        "onetime_price": "$29"
       }
     },
     "pdp-press": {
@@ -93,7 +93,7 @@
       "type": "cc-pdp-upsell-apr26",
       "settings": {
         "headline": "Complete your system for full coverage",
-        "body": "Softgels cover 4 of our 13 ingredients. Add Morning Blend and Evening Capsules to target all 12 hallmarks of aging \u2014 for $99/mo.",
+        "body": "Softgels cover 4 of our 13 ingredients. Add Morning Blend and Evening Capsules to target all 12 hallmarks of aging \u2014 for $79.20/mo.",
         "gift_line": "FREE GIFT: Glass shaker bottle included with your first order ($15 value)"
       }
     },

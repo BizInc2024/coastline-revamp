@@ -30,7 +30,7 @@
       "settings": {
         "show_product_image": true,
         "final_headline": "Discover a new<br>horizon of health.",
-        "final_subheadline": "13 ingredients, every dose disclosed.<br>$99/mo, 60-day guarantee.",
+        "final_subheadline": "13 ingredients, every dose disclosed.<br>$79.20/mo, 60-day guarantee.",
         "final_cta_text": "Keep my strength",
         "final_cta_link": "#pricing-product-apr26",
         "final_cta_bg": "#E7FF56",
@@ -74,7 +74,7 @@
           "type": "faq",
           "settings": {
             "question": "What does it cost?",
-            "answer": "<p>$99 a month — about $3.30 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
+            "answer": "<p>$79.20 a month — about $2.64 a day — with free shipping, a 60-day money-back guarantee, and cancel anytime.</p>"
           }
         },
         "glpfaq6": {
@@ -95,7 +95,7 @@
           "type": "faq",
           "settings": {
             "question": "Do I have to subscribe?",
-            "answer": "<p>No. Subscribe and save 34% with free shipping and one-click cancel anytime, or order one-time. A 60-day money-back guarantee covers your first order.</p>"
+            "answer": "<p>No. Subscribe and save 20% with free shipping and one-click cancel anytime, or order one-time. A 60-day money-back guarantee covers your first order.</p>"
           }
         }
       },
