@@ -6,21 +6,35 @@
 
 {% render 'cc-deps' %}
 
-<section id="{{ section.settings.anchor | default: 'cc-home-hero' }}" class="cc-hero-apr26">
+<section id="{{ section.settings.anchor | default: 'cc-home-hero' }}" class="cc-hero-apr26{% if section.settings.hero_scrim %} cc-hero-apr26--cliff{% endif %}">
 
+  {%- assign cc_hero_alt = section.settings.hero_alt | default: 'Coastline hero' -%}
+  {%- if section.settings.hero_desktop_asset != blank and section.settings.hero_mobile_asset != blank -%}
+    {%- comment -%} Asset-based hero (homepage cliff hero, Oct 2026) {%- endcomment -%}
+    {%- assign cc_d = section.settings.hero_desktop_asset -%}
+    {%- assign cc_m = section.settings.hero_mobile_asset -%}
+    <img src="{{ cc_d | asset_img_url: '2560x' }}"
+         srcset="{{ cc_d | asset_img_url: '1280x' }} 1280w, {{ cc_d | asset_img_url: '1920x' }} 1920w, {{ cc_d | asset_img_url: '2560x' }} 2560w"
+         sizes="100vw" alt="{{ cc_hero_alt | escape }}" class="cc-hero-apr26__img-desktop" loading="eager" fetchpriority="high">
+    <img src="{{ cc_m | asset_img_url: '1080x' }}"
+         srcset="{{ cc_m | asset_img_url: '750x' }} 750w, {{ cc_m | asset_img_url: '1080x' }} 1080w"
+         sizes="100vw" alt="{{ cc_hero_alt | escape }}" class="cc-hero-apr26__img-mobile" loading="eager">
+  {%- else -%}
   {%- comment -%} Desktop hero image {%- endcomment -%}
   {%- if section.settings.hero_image != blank -%}
-    <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="Coastline hero" class="cc-hero-apr26__img-desktop" loading="eager">
+    <img src="{{ section.settings.hero_image | image_url: width: 2560 }}" alt="{{ cc_hero_alt | escape }}" class="cc-hero-apr26__img-desktop" loading="eager">
   {%- else -%}
-    <img src="{{ 'cc-hero-desktop-apr.jpg' | asset_url }}" alt="Coastline hero" class="cc-hero-apr26__img-desktop" loading="eager">
+    <img src="{{ 'cc-hero-desktop-apr.jpg' | asset_url }}" alt="{{ cc_hero_alt | escape }}" class="cc-hero-apr26__img-desktop" loading="eager">
   {%- endif -%}
 
   {%- comment -%} Mobile hero image {%- endcomment -%}
   {%- if section.settings.hero_image_mobile != blank -%}
-    <img src="{{ section.settings.hero_image_mobile | image_url: width: 800 }}" alt="Coastline hero" class="cc-hero-apr26__img-mobile" loading="eager">
+    <img src="{{ section.settings.hero_image_mobile | image_url: width: 1080 }}" alt="{{ cc_hero_alt | escape }}" class="cc-hero-apr26__img-mobile" loading="eager">
   {%- else -%}
-    <img src="{{ 'cc-hero-mobile-apr.jpg' | asset_url }}" alt="Coastline hero" class="cc-hero-apr26__img-mobile" loading="eager">
+    <img src="{{ 'cc-hero-mobile-apr.jpg' | asset_url }}" alt="{{ cc_hero_alt | escape }}" class="cc-hero-apr26__img-mobile" loading="eager">
   {%- endif -%}
+  {%- endif -%}
+  {%- if section.settings.hero_scrim -%}<div class="cc-hero-apr26__scrim" aria-hidden="true"></div>{%- endif -%}
 
   <div class="cc-hero-content-wrap" style="position:relative;z-index:2;width:100%;">
     <div class="cc-hero-top">
@@ -192,6 +206,62 @@
     transition: opacity 0.3s ease;
   }
   .cc-hero-apr26 .cc-hero-cta-primary:hover { opacity: 0.85; }
+  /* ===== Cliff hero (Oct 2026): brighter image -> scrims + mobile stacked layout ===== */
+  .cc-hero-apr26__scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; display: block !important; }
+  /* MOBILE: image anchored top at natural ratio (1536x2688 = 175vw tall); headline over sky,
+     copy block sits below the products on the dark background. */
+  .cc-hero-apr26--cliff .cc-hero-apr26__img-mobile {
+    height: 175vw; bottom: auto; object-fit: cover; object-position: center top;
+  }
+  .cc-hero-apr26--cliff .cc-hero-apr26__scrim {
+    height: 175vw; bottom: auto;
+    background:
+      linear-gradient(180deg, rgba(4,20,28,0.62) 0%, rgba(4,20,28,0.45) 16%, rgba(4,20,28,0.15) 30%, rgba(4,20,28,0) 40%),
+      linear-gradient(180deg, rgba(10,10,10,0) 87.5%, rgba(10,10,10,0.8) 92%, #0A0A0A 96%);
+  }
+  .cc-hero-apr26--cliff { min-height: 0; align-items: stretch; }
+  .cc-hero-apr26--cliff .cc-hero-content-wrap { min-height: 0; justify-content: flex-start; padding: 0 24px 40px; position: relative; }
+  .cc-hero-apr26--cliff .cc-hero-top { position: absolute; top: 96px; left: 24px; right: 24px; }
+  .cc-hero-apr26--cliff .cc-hero-bottom { margin-top: calc(175vw * 0.905); }
+  .cc-hero-apr26--cliff .cc-hero-label { color: rgba(255,255,255,0.92); }
+  /* MOBILE v2: label + headline + subhead + stars stacked over the sky; only the CTA sits below the products */
+  @media (max-width: 767px) {
+    .cc-hero-apr26--cliff .cc-hero-content-wrap {
+      display: flex; flex-direction: column; justify-content: flex-start;
+      min-height: calc(175vw * 0.905 + 132px); padding: 88px 24px 40px;
+    }
+    .cc-hero-apr26--cliff .cc-hero-top { position: static; }
+    .cc-hero-apr26--cliff .cc-hero-bottom { display: contents; margin-top: 0; }
+    .cc-hero-apr26--cliff .cc-hero-subheadline { margin: 14px auto 14px; max-width: 340px; font-size: 14.5px; color: rgba(255,255,255,0.92) !important; text-shadow: 0 1px 12px rgba(0,0,0,0.25); }
+    .cc-hero-apr26--cliff .cc-hero-stars { margin-top: auto; margin-bottom: 16px; }
+    .cc-hero-apr26--cliff .cc-hero-ctas { margin-top: 0; }
+    .cc-hero-apr26--cliff .cc-hero-apr26__img-mobile,
+    .cc-hero-apr26--cliff .cc-hero-apr26__scrim { top: -12vw; height: calc(175vw + 3px); }
+    .cc-hero-apr26--cliff .cc-hero-apr26__img-mobile { -webkit-mask-image: linear-gradient(180deg, #000 90%, transparent 98%); mask-image: linear-gradient(180deg, #000 90%, transparent 98%); }
+    .cc-hero-apr26--cliff .cc-hero-apr26__scrim {
+      background:
+        linear-gradient(180deg, rgba(4,20,28,0.66) 0%, rgba(4,20,28,0.55) 24%, rgba(4,20,28,0.32) 44%, rgba(4,20,28,0) 60%),
+        linear-gradient(180deg, rgba(10,10,10,0) 87.5%, rgba(10,10,10,0.85) 91.5%, #0A0A0A 95%);
+    }
+  }
+  @media (min-width: 768px) {
+    .cc-hero-apr26--cliff { min-height: min(100vh, 55.8vw); align-items: center; padding: 48px 0; }
+    .cc-hero-apr26--cliff .cc-hero-content-wrap { padding: 0 64px; }
+    .cc-hero-apr26--cliff .cc-hero-top { position: static; }
+    .cc-hero-apr26--cliff .cc-hero-bottom { margin-top: 0; }
+    .cc-hero-apr26--cliff .cc-hero-apr26__img-desktop { object-position: 100% center; }
+    .cc-hero-apr26--cliff .cc-hero-bottom { max-width: 430px; }
+    .cc-hero-apr26--cliff .cc-hero-apr26__scrim {
+      height: auto; bottom: 0;
+      background:
+        linear-gradient(180deg, rgba(4,20,28,0.30) 0%, rgba(4,20,28,0) 35%),
+        linear-gradient(90deg, rgba(4,20,28,0.72) 0%, rgba(4,20,28,0.62) 24%, rgba(4,20,28,0.32) 38%, rgba(4,20,28,0) 47%);
+    }
+    .cc-hero-apr26--cliff .cc-hero-label { color: rgba(255,255,255,0.92); }
+  }
+  @media (min-width: 1200px) {
+    .cc-hero-apr26--cliff .cc-hero-content-wrap { transform: translateY(-4.5vw); }
+  }
 </style>
 
 {% schema %}
@@ -216,6 +286,10 @@
       "label": "Mobile hero image",
       "info": "Defaults to cc-hero-mobile-apr.jpg if empty"
     },
+    { "type": "text", "id": "hero_desktop_asset", "label": "Desktop hero theme asset (filename)", "info": "Overrides hero image. e.g. cc-hero-desktop-cliff.jpg" },
+    { "type": "text", "id": "hero_mobile_asset", "label": "Mobile hero theme asset (filename)" },
+    { "type": "text", "id": "hero_alt", "label": "Hero image alt text" },
+    { "type": "checkbox", "id": "hero_scrim", "label": "Bright image mode (scrims + stacked mobile layout)", "default": false },
     {
       "type": "header",
       "content": "Copy"

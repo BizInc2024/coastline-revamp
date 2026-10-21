@@ -20,7 +20,11 @@
         "hero_cta_link": "#cc-home-pricing",
         "hero_secondary_text": "SKIP TO PRICING",
         "hero_secondary_link": "#cc-home-pricing",
-        "anchor": "cc-home-hero"
+        "anchor": "cc-home-hero",
+        "hero_desktop_asset": "cc-hero-desktop-cliff.jpg",
+        "hero_mobile_asset": "cc-hero-mobile-cliff.jpg",
+        "hero_scrim": true,
+        "hero_alt": "Coastline Morning Blend, Morning SoftGels and Evening Capsules with a glass of Coastal Lemonade on a clifftop table by the ocean"
       }
     },
     "cc-press-apr26": {
