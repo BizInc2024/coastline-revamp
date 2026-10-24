@@ -41,7 +41,9 @@
     },
     "cc-system-apr26": {
       "type": "cc-system-apr26",
-      "settings": {},
+      "settings": {
+        "system_headline": "13 Ingredients. 3 Simple Products."
+      },
       "blocks": {
         "step_pMwWXk": {
           "type": "step",
