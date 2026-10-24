@@ -7,13 +7,10 @@
 
 <div class="cc-apr26 cc-genetics-stat-apr26">
     <section class="v10-genetics reveal" x-intersect.once="$el.classList.add('visible')">
-      <div class="v10-genetics-inner"
-           x-data="{ n: 0, started: false, run() { if (this.started) return; this.started = true; let i = 0; const t = setInterval(() => { i += 1; this.n = i; if (i >= 7) clearInterval(t); }, 140); } }"
-           x-intersect="run()"
-           x-init="setTimeout(() => run(), 100)">
+      <div class="v10-genetics-inner" data-cc-countup-group>
         <span class="eyebrow">Research Indicates</span>
-        <span class="stat"><span x-text="n">7</span>%</span>
-        <h2>of how long you live is genetic.<br><span class="soft">The other 93% is up to you.</span></h2>
+        <span class="stat"><span class="cc-countup" data-to="7">7</span>%</span>
+        <h2>of how long you live is genetic.<br><span class="soft">The other <span class="cc-countup" data-to="93">93</span>% is up to you.</span></h2>
         <p class="body">
           Recent twin studies show heritability accounts for only <strong>~7%</strong> of lifespan variation &mdash; far less than the widely cited 25%. How you move, sleep, eat, and what you put in your body does the other <strong>93%</strong> of the work.
         </p>
@@ -23,6 +20,7 @@
 </div>
 
 <style>
+.cc-genetics-stat-apr26 .cc-countup { font-variant-numeric: tabular-nums; }
 .cc-genetics-stat-apr26 .v10-genetics { padding: 120px 24px; background: #0A0A0A; color: #FAF9F6; text-align: center; position: relative; overflow: hidden; }
 .cc-genetics-stat-apr26 .v10-genetics::before {
       content: ''; position: absolute; inset: 0;
@@ -68,6 +66,38 @@
       .cc-genetics-stat-apr26 .v10-genetics { padding: 80px 24px; }
     }
 </style>
+
+
+<script>
+  (function () {
+    var groups = document.querySelectorAll('.cc-genetics-stat-apr26 [data-cc-countup-group]');
+    if (!groups.length || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function run(group) {
+      var nums = group.querySelectorAll('.cc-countup');
+      var duration = 1600, start = null;
+      function frame(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        nums.forEach(function (el) { el.textContent = Math.round(eased * Number(el.getAttribute('data-to'))); });
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    groups.forEach(function (group) {
+      var r = group.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) return; // already on screen at load: leave final numbers
+      group.querySelectorAll('.cc-countup').forEach(function (el) { el.textContent = '0'; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { io.disconnect(); run(group); }
+        });
+      }, { threshold: 0.35 });
+      io.observe(group);
+    });
+  })();
+</script>
 
 {% schema %}
 {
