@@ -14,7 +14,7 @@
       "settings": {
         "hero_label": "THE ULTIMATE LONGEVITY SYSTEM",
         "hero_headline": "We’ve gone the extra mile <br class=\"cc-br-desk\">so you can&nbsp;too.",
-        "hero_subheadline": "13 of the most rigorously curated ingredients in 3&nbsp;simple&nbsp;products.",
+        "hero_subheadline": "13 of the most rigorously curated ingredients<br class=\"md:hidden\"> in 3&nbsp;simple&nbsp;products.",
         "hero_reviews": "Consistent 5-Star Reviews",
         "hero_cta_text": "START MY LONGEVITY SYSTEM",
         "hero_cta_link": "#cc-home-pricing",
