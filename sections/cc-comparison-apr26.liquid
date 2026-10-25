@@ -6,7 +6,7 @@
 {% render 'cc-deps' %}
 
 <div class="cc-apr26 cc-comparison-apr26">
-    <section class="bg-parchment reveal" style="padding-top:{{ section.settings.section9_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section9_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <section class="reveal" style="background:#E8EFF1;padding-top:{{ section.settings.section9_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section9_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
       <div class="max-w-6xl mx-auto px-8 lg:px-16 text-center">
   
         {%- assign comparison_label = section.settings.comparison_label | default: "HOW COASTLINE COMPARES" -%}
@@ -22,7 +22,7 @@
   
         {%- comment -%} SVG icon captures for comparison table {%- endcomment -%}
         {%- capture svg_check -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="12" fill="#1A3A2F"/><path d="M7 12.5L10.5 16L17 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
-        {%- capture svg_empty -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="11" stroke="#E8E8E8" stroke-width="2" fill="none"/></svg>{%- endcapture -%}
+        {%- capture svg_empty -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="display:inline-block;"><circle cx="12" cy="12" r="11" stroke="#BFCDD2" stroke-width="2" fill="none"/></svg>{%- endcapture -%}
   
         <p class="text-center mb-4 md:hidden" style="font-size:11px;color:var(--warm-gray);letter-spacing:0.1em;">SCROLL RIGHT TO COMPARE &rarr;</p>
         <div class="overflow-x-auto" style="-webkit-overflow-scrolling:touch;">
@@ -38,57 +38,57 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="border-top:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Active ingredients</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;">13</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;">13</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">12</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">40+</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">75</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">1</td>
               </tr>
-              <tr style="border-top:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Clinical dosing</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
               </tr>
-              <tr style="border-top:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Full transparency</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
               </tr>
-              <tr style="border-top:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 12 hallmarks</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
               </tr>
-              <tr style="border-top:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">AM/PM system</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
               </tr>
-              <tr style="border-top:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">All 11 body systems</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;">{{ svg_check }}</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;">{{ svg_check }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
                 <td style="padding:16px 12px;text-align:center;">{{ svg_empty }}</td>
               </tr>
-              <tr style="border-top:1px solid var(--light-gray);border-bottom:1px solid var(--light-gray);">
+              <tr style="border-top:1px solid #CBD8DC;border-bottom:1px solid var(--light-gray);">
                 <td style="padding:16px 12px;font-size:14px;font-weight:500;color:var(--deep-ink);">Price/month</td>
-                <td style="padding:16px 12px;background:#F5F5F2;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);">$79.20</td>
+                <td style="padding:16px 12px;background:#FFFFFF;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--deep-ink);">$79.20</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$109</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$179+</td>
                 <td style="padding:16px 12px;text-align:center;color:var(--warm-gray);">$79</td>
