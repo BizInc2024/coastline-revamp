@@ -230,17 +230,23 @@
   .cc-hero-apr26--cliff .cc-hero-label { color: rgba(255,255,255,0.92); }
   /* MOBILE v2: label + headline + subhead + stars stacked over the sky; only the CTA sits below the products */
   @media (max-width: 767px) {
+    /* Fit the whole hero above the mobile fold: hero = visible screen minus the
+       ~119px announcement + header. Products are anchored 16px above the stars/CTA. */
+    .cc-hero-apr26--cliff { --cc-hero-h: max(500px, calc(100vh - 119px)); }
+    @supports (height: 100svh) {
+      .cc-hero-apr26--cliff { --cc-hero-h: max(500px, calc(100svh - 119px)); }
+    }
     .cc-hero-apr26--cliff .cc-hero-content-wrap {
       display: flex; flex-direction: column; justify-content: flex-start;
-      min-height: calc(175vw * 0.905 + 132px); padding: 88px 24px 40px;
+      min-height: var(--cc-hero-h); padding: 32px 24px 28px;
     }
     .cc-hero-apr26--cliff .cc-hero-top { position: static; }
     .cc-hero-apr26--cliff .cc-hero-bottom { display: contents; margin-top: 0; }
-    .cc-hero-apr26--cliff .cc-hero-subheadline { margin: 14px auto 14px; max-width: 340px; font-size: 14.5px; color: rgba(255,255,255,0.92) !important; text-shadow: 0 1px 12px rgba(0,0,0,0.25); }
+    .cc-hero-apr26--cliff .cc-hero-subheadline { margin: 12px auto 0; max-width: 340px; font-size: 14.5px; line-height: 1.6 !important; color: rgba(255,255,255,0.92) !important; text-shadow: 0 1px 12px rgba(0,0,0,0.25); }
     .cc-hero-apr26--cliff .cc-hero-stars { margin-top: auto; margin-bottom: 16px; }
     .cc-hero-apr26--cliff .cc-hero-ctas { margin-top: 0; }
     .cc-hero-apr26--cliff .cc-hero-apr26__img-mobile,
-    .cc-hero-apr26--cliff .cc-hero-apr26__scrim { top: -12vw; height: calc(175vw + 3px); }
+    .cc-hero-apr26--cliff .cc-hero-apr26__scrim { top: min(0px, calc(var(--cc-hero-h) - 136px - 154vw)); height: calc(175vw + 3px); }
     .cc-hero-apr26--cliff .cc-hero-apr26__img-mobile { -webkit-mask-image: linear-gradient(180deg, #000 90%, transparent 98%); mask-image: linear-gradient(180deg, #000 90%, transparent 98%); }
     .cc-hero-apr26--cliff .cc-hero-apr26__scrim {
       background:
