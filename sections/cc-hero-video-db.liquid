@@ -1,0 +1,121 @@
+{%- comment -%}
+  cc-hero-video-db — Deep Blue homepage hero (Nov 2026).
+  Desktop: 16:9 looping video full-bleed, copy left over a scrim.
+  Mobile: square looping video on top, copy + CTA below on ink.
+  Videos come from Shopify Files (video pickers). Poster = theme asset, shown until the video plays
+  (and as the fallback if no video is picked).
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<section id="{{ section.settings.anchor | default: 'cc-home-hero' }}" class="cc-hero-db">
+  <div class="cc-hero-db__media cc-hero-db__media--desk" aria-hidden="true">
+    {%- if section.settings.video_desktop != blank -%}
+      {{ section.settings.video_desktop | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, preload: 'auto', class: 'cc-hero-db__video', image_size: '1920x' }}
+    {%- else -%}
+      <img src="{{ section.settings.poster_desktop | default: 'cc-db-hero-desktop-v2.jpg' | asset_url }}" alt="" class="cc-hero-db__video" width="1920" height="1080" loading="eager" fetchpriority="high">
+    {%- endif -%}
+  </div>
+  <div class="cc-hero-db__media cc-hero-db__media--mob" aria-hidden="true">
+    {%- if section.settings.video_mobile != blank -%}
+      {{ section.settings.video_mobile | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, preload: 'auto', class: 'cc-hero-db__video', image_size: '900x' }}
+    {%- else -%}
+      <img src="{{ section.settings.poster_mobile | default: 'cc-db-hero-mobile-v2.jpg' | asset_url }}" alt="" class="cc-hero-db__video" width="900" height="1124" loading="eager">
+    {%- endif -%}
+  </div>
+  <div class="cc-hero-db__scrim" aria-hidden="true"></div>
+
+  <div class="cc-hero-db__wrap">
+    <div class="cc-hero-db__top">
+      <p class="cc-hero-db__label">{{ section.settings.hero_label }}</p>
+      <div class="cc-hero-db__divider"></div>
+      <h1 class="cc-hero-db__headline">{{ section.settings.hero_headline }}</h1>
+    </div>
+    <div class="cc-hero-db__bottom">
+      <p class="cc-hero-db__sub">{{ section.settings.hero_subheadline }}</p>
+      <a href="{{ section.settings.hero_reviews_anchor }}" class="cc-hero-db__stars">
+        <span class="cc-hero-db__starglyphs">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="cc-hero-db__reviews">{{ section.settings.hero_reviews }}</span>
+      </a>
+      <div class="cc-hero-db__ctas">
+        <a href="{{ section.settings.hero_cta_link }}" class="cc-hero-db__cta">{{ section.settings.hero_cta_text }}</a>
+        <a href="{{ section.settings.hero_secondary_link }}" class="cc-hero-db__link">{{ section.settings.hero_secondary_text }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cc-hero-db { position: relative; background: #070f15; overflow: hidden; color: #fff; }
+  .cc-hero-db__media { position: relative; }
+  .cc-hero-db__media .cc-hero-db__video,
+  .cc-hero-db__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cc-hero-db__media--desk { display: none; }
+  .cc-hero-db__media--mob { display: block; aspect-ratio: 4 / 5; }
+  .cc-hero-db__scrim { display: none !important; }
+
+  /* MOBILE: 4:5 video, label+headline over the dark wall at the top, rest below */
+  .cc-hero-db__wrap { position: relative; padding: 0 24px 40px; text-align: center; }
+  .cc-hero-db__top { position: absolute; top: calc(-100vw + 28px); left: 24px; right: 24px; }
+  .cc-hero-db__label { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; color: rgba(255,255,255,.75); margin: 0 0 10px; }
+  .cc-hero-db__divider { display: none; }
+  .cc-hero-db__headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(28px, 7.8vw, 44px); letter-spacing: -.02em; line-height: 1.12; color: #fff; margin: 0; text-wrap: balance; }
+  .cc-hero-db__headline .cc-br-desk { display: none; }
+  .cc-hero-db__sub { font-family: 'Inter', system-ui, sans-serif; font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,.85); margin: 20px auto 18px; max-width: 360px; }
+  .cc-hero-db__stars { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; margin-bottom: 20px; }
+  .cc-hero-db__starglyphs { color: #fff; font-size: 14px; letter-spacing: 4px; }
+  .cc-hero-db__reviews { font-family: 'Inter', sans-serif; font-size: 11px; color: rgba(255,255,255,.6); text-decoration: underline; text-underline-offset: 3px; }
+  .cc-hero-db__ctas { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .cc-hero-db__cta { display: inline-block; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; padding: 20px 40px; text-decoration: none; text-align: center; transition: opacity .3s ease; }
+  .cc-hero-db__cta:hover { opacity: .85; }
+  .cc-hero-db__cta, .cc-hero-db__link { white-space: nowrap; }
+  .cc-hero-db__link { display: none; font-family: 'Space Grotesk', sans-serif; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.65); text-decoration: underline; text-underline-offset: 4px; }
+
+  /* DESKTOP: full-bleed 16:9 video, copy left over a soft ink scrim */
+  @media (min-width: 768px) {
+    .cc-hero-db { min-height: min(100vh, 56.25vw); display: flex; align-items: center; }
+    .cc-hero-db__media--desk { display: block; position: absolute; inset: 0; }
+    .cc-hero-db__media--mob { display: none; }
+    .cc-hero-db__scrim { display: block !important; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(90deg, rgba(5,14,20,.72) 0%, rgba(5,14,20,.5) 26%, rgba(5,14,20,0) 48%); }
+    .cc-hero-db__wrap { z-index: 2; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 64px; text-align: left; }
+    .cc-hero-db__top { position: static; max-width: 620px; }
+    .cc-hero-db__label { font-size: 12px; margin-bottom: 20px; color: rgba(255,255,255,.85); }
+    .cc-hero-db__divider { display: block; width: 40px; height: 1px; background: rgba(255,255,255,.4); margin-bottom: 32px; }
+    .cc-hero-db__headline { font-size: clamp(34px, 3.8vw, 56px); }
+    .cc-hero-db__headline .cc-br-desk { display: inline; }
+    .cc-hero-db__bottom { max-width: 430px; }
+    .cc-hero-db__sub { font-size: 16px; margin: 24px 0; max-width: 430px; }
+    .cc-hero-db__stars { margin-bottom: 32px; }
+    .cc-hero-db__ctas { flex-direction: row; align-items: center; gap: 28px; }
+    .cc-hero-db__link { display: inline-block; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cc-hero-db video { display: none; } }
+</style>
+
+{% schema %}
+{
+  "name": "Hero video (deep blue)",
+  "tag": "section",
+  "class": "section-cc-hero-video-db",
+  "settings": [
+    { "type": "header", "content": "Video" },
+    { "type": "video", "id": "video_desktop", "label": "Desktop video (16:9 loop)", "info": "Upload cl-db-hero-desktop.mp4 to Content > Files" },
+    { "type": "video", "id": "video_mobile", "label": "Mobile video (4:5 loop)", "info": "Upload cl-db-hero-mobile.mp4 to Content > Files" },
+    { "type": "text", "id": "poster_desktop", "label": "Desktop poster (theme asset)", "default": "cc-db-hero-desktop-v2.jpg" },
+    { "type": "text", "id": "poster_mobile", "label": "Mobile poster (theme asset)", "default": "cc-db-hero-mobile-v2.jpg" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "hero_label", "label": "Eyebrow", "default": "THE ULTIMATE LONGEVITY SYSTEM" },
+    { "type": "textarea", "id": "hero_headline", "label": "Headline", "default": "We’ve gone the extra mile <br class=\"cc-br-desk\">so you can&nbsp;too." },
+    { "type": "textarea", "id": "hero_subheadline", "label": "Subheadline", "default": "13 of the most rigorously curated ingredients in 3&nbsp;simple&nbsp;products." },
+    { "type": "text", "id": "hero_reviews", "label": "Reviews line", "default": "Consistent 5-Star Reviews" },
+    { "type": "text", "id": "hero_reviews_anchor", "label": "Reviews link", "default": "#cc-reviews-anchor" },
+    { "type": "text", "id": "hero_cta_text", "label": "Primary CTA", "default": "START MY LONGEVITY SYSTEM" },
+    { "type": "text", "id": "hero_cta_link", "label": "Primary CTA link", "default": "#cc-home-pricing" },
+    { "type": "text", "id": "hero_secondary_text", "label": "Secondary link", "default": "SKIP TO PRICING" },
+    { "type": "text", "id": "hero_secondary_link", "label": "Secondary link URL", "default": "#cc-home-pricing" },
+    { "type": "text", "id": "anchor", "label": "Section id", "default": "cc-home-hero" }
+  ],
+  "presets": [{ "name": "Hero video (deep blue)", "category": "Coastline" }]
+}
+{% endschema %}

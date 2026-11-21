@@ -1,0 +1,501 @@
+{%- liquid
+  assign anchor = anchor | default: 'pricing-apr26'
+  assign form_id = form_id | default: anchor | append: '-cart-form'
+  assign pad_top = pad_top | default: 80
+  assign pad_bottom = pad_bottom | default: 80
+  assign label = label | default: section.settings.pricing_label
+  assign headline = headline | default: section.settings.pricing_headline | default: 'Start Your System'
+  assign trust_1 = trust_1 | default: section.settings.pricing_trust_1 | default: 'Free shipping. Cancel anytime.'
+  assign trust_2 = trust_2 | default: section.settings.pricing_trust_2 | default: '60-day money-back guarantee.'
+-%}
+
+{%- comment -%}
+  cc-pricing-db: deep-blue homepage pricing with a product selector.
+  Complete System / Morning Blend / SoftGels / Evening Capsules.
+  Variants, selling plans (ReCharge via Shopify selling plans) and prices are read live from Shopify.
+{%- endcomment -%}
+{%- liquid
+  assign handles = 'coastline-welcome-pack,coastline-creatine,coastline-morning-softgels,coastline-evening-capsules' | split: ','
+  assign keys = 'system,morning,softgels,evening' | split: ','
+-%}
+<script type="application/json" id="{{ anchor }}-data">
+{
+{%- for h in handles -%}
+  {%- assign p = all_products[h] -%}
+  {%- assign k = keys[forloop.index0] -%}
+  "{{ k }}": {
+    "handle": {{ h | json }},
+    "variants": [
+      {%- for v in p.variants -%}
+      { "id": {{ v.id }}, "title": {{ v.title | json }}, "price": {{ v.price | money_without_trailing_zeros | json }},
+        "plans": [
+          {%- for a in v.selling_plan_allocations -%}
+          { "id": {{ a.selling_plan.id }}, "name": {{ a.selling_plan.name | json }}, "price": {{ a.price | money_without_trailing_zeros | json }},
+            "pct": {%- assign pct = 0 -%}{%- for adj in a.selling_plan.price_adjustments -%}{%- if adj.value_type == 'percentage' -%}{%- assign pct = adj.value -%}{%- endif -%}{%- endfor -%}{{ pct }} }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ] }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+    "images": [
+      {%- for img in p.images limit: 10 -%}
+      { "src": {{ img | image_url: width: 1000 | json }}, "alt": {{ img.alt | default: p.title | json }} }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+}
+</script>
+
+<section id="{{ anchor }}" class="cc-pricing-apr26 cc-pricing-db" style="overflow:hidden !important;contain:layout paint !important;position:relative !important;z-index:0 !important;background-color:#E7FF56;padding-top:{{ pad_top }}px;padding-bottom:{{ pad_bottom }}px;"
+  x-data="{
+    data: JSON.parse(document.getElementById('{{ anchor }}-data').textContent),
+    product: 'system',
+    flavor: 0,
+    plan: 'monthly',
+    active: 0,
+    copy: {
+      system:   { name: 'Complete System',  headline: {{ headline | json | escape }}, sub: '30-day supply of Morning Blend, Softgels, and Evening Capsules', gift: true },
+      morning:  { name: 'Morning Blend',    headline: 'Morning Blend',    sub: 'Mix with water and take with your first meal.', gift: false },
+      softgels: { name: 'SoftGels',         headline: 'Morning SoftGels', sub: 'Take 1 SoftGel daily with your first meal.', gift: false },
+      evening:  { name: 'Evening Capsules', headline: 'Evening Capsules', sub: 'Take 1 hour before bed.', gift: false }
+    },
+    systemImages: [
+      { src: '{{ 'cc-welcome-box-vertical.png' | asset_url }}', alt: 'Coastline Welcome Pack' },
+      { src: '{{ 'cc-sell-mb-card.jpg' | asset_url }}', alt: 'Morning Blend ingredients' },
+      { src: '{{ 'cc-sell-sg-card.jpg' | asset_url }}', alt: 'Softgels ingredients' },
+      { src: '{{ 'cc-sell-ec-card.jpg' | asset_url }}', alt: 'Evening Capsules ingredients' },
+      { src: '{{ 'cc-sell-am-lifestyle.jpg' | asset_url }}', alt: 'AM routine' },
+      { src: '{{ 'cc-sell-pm-lifestyle.jpg' | asset_url }}', alt: 'PM routine' },
+      { src: '{{ 'cc-sell-ugc-brooke.jpg' | asset_url }}', alt: 'Customer review' },
+      { src: '{{ 'cc-sell-pollock-quote.jpg' | asset_url }}', alt: 'Dr. Christopher Pollock, Senior Science Advisor' },
+      { src: '{{ 'cc-sell-benefits.jpg' | asset_url }}', alt: 'Short and long-term benefits' },
+      { src: '{{ 'cc-sell-standards.jpg' | asset_url }}', alt: 'Safest standards' },
+      { src: '{{ 'cc-sell-clinical-proof.jpg' | asset_url }}', alt: 'Clinical proof' },
+      { src: '{{ 'cc-sell-guarantee.jpg' | asset_url }}', alt: '60-day money-back guarantee' }
+    ],
+    pick(k) { this.product = k; this.flavor = 0; this.active = 0; if (this.plan !== 'onetime' && !this.planFor(this.plan)) this.plan = this.planFor('monthly') ? 'monthly' : 'onetime'; },
+    get p() { return this.data[this.product]; },
+    get v() { return this.p.variants[this.flavor] || this.p.variants[0]; },
+    get images() { return this.product === 'system' ? this.systemImages : (this.p.images.length ? this.p.images : this.systemImages); },
+    planFor(kind) {
+      const ps = this.v.plans || [];
+      if (kind === 'bimonthly') return ps.find(x => /2[ -]?month/i.test(x.name)) || null;
+      if (kind === 'monthly') return ps.find(x => /1[ -]?month|monthly/i.test(x.name) && !/2[ -]?month/i.test(x.name)) || null;
+      return null;
+    },
+    priceFor(kind) { const pl = this.planFor(kind); return kind === 'onetime' ? this.v.price : (pl ? pl.price : ''); },
+    saveFor(kind) { const pl = this.planFor(kind); return pl && pl.pct ? 'Save ' + pl.pct + '%' : ''; },
+    get sellingPlanId() { const pl = this.planFor(this.plan); return this.plan === 'onetime' || !pl ? null : pl.id; },
+    get currentPrice() { return this.priceFor(this.plan) + (this.plan === 'onetime' ? '' : this.plan === 'bimonthly' ? ' every 2 months' : '/mo'); },
+    get buttonText() { return 'ADD TO CART - ' + this.currentPrice; }
+  }">
+  <div class="cc-pricing-layout" style="max-width:1100px;margin:0 auto;padding:0 24px;">
+
+    {%- comment -%} ── Image column ── {%- endcomment -%}
+    <div class="cc-pricing-image">
+      <div class="cc-sell-hero">
+        <img :src="images[active] && images[active].src" :alt="images[active] && images[active].alt" width="1000" height="1000" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
+      </div>
+      <div class="cc-sell-thumbs">
+        <template x-for="(img, i) in images" :key="product + i">
+          <button type="button" @click="active = i" :aria-pressed="active === i ? 'true' : 'false'" :class="active === i ? 'cc-thumb is-active' : 'cc-thumb'">
+            <img :src="img.src" :alt="img.alt" width="1000" height="1000" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
+          </button>
+        </template>
+      </div>
+    </div>
+
+    {%- comment -%} ── Form column ── {%- endcomment -%}
+    <div class="cc-pricing-form" style="text-align:center;">
+
+      <div class="cc-product-tabs" role="tablist" aria-label="Choose a product">
+        <button type="button" role="tab" @click="pick('system')" :aria-selected="product === 'system'" :class="product === 'system' && 'is-active'">Complete System</button>
+        <button type="button" role="tab" @click="pick('morning')" :aria-selected="product === 'morning'" :class="product === 'morning' && 'is-active'">Morning Blend</button>
+        <button type="button" role="tab" @click="pick('softgels')" :aria-selected="product === 'softgels'" :class="product === 'softgels' && 'is-active'">SoftGels</button>
+        <button type="button" role="tab" @click="pick('evening')" :aria-selected="product === 'evening'" :class="product === 'evening' && 'is-active'">Evening Capsules</button>
+      </div>
+
+      {%- if label != blank -%}<span class="cc-pricing-eyebrow">{{ label }}</span>{%- endif -%}
+      <h2 class="cc-pricing-headline" x-text="copy[product].headline">{{ headline }}</h2>
+      <p class="cc-pricing-sub" x-text="copy[product].sub">30-day supply of Morning Blend, Softgels, and Evening Capsules</p>
+      <p class="cc-pricing-sub cc-pricing-bonus" x-show="copy[product].gift">+ Glass Shaker WELCOME GIFT</p>
+
+      <div class="cc-flavor-row" x-show="p.variants.length > 1">
+        <p class="cc-selector-label">Choose your flavor</p>
+        <div class="cc-flavor-buttons">
+          <button type="button" @click="flavor = 0" :class="flavor === 0 ? 'cc-flavor-unflavored-active' : 'cc-flavor-unflavored-idle'" class="cc-flavor-btn">Unflavored Blend</button>
+          <button type="button" @click="flavor = 1" :class="flavor === 1 ? 'cc-flavor-lemonade-active' : 'cc-flavor-lemonade-idle'" class="cc-flavor-btn">Coastal Lemonade</button>
+        </div>
+      </div>
+
+      <div class="cc-plan-row">
+        <p class="cc-selector-label">Select your plan</p>
+
+        <div x-show="planFor('monthly')" @click="plan = 'monthly'" :class="plan === 'monthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;position:relative;">
+          <span class="cc-plan-flag" x-show="product === 'system'">LIMITED TIME OFFER</span>
+          <div class="cc-plan-body">
+            <div>
+              <span class="cc-plan-label">Monthly subscription</span>
+              <span class="cc-plan-save" x-text="saveFor('monthly')"></span>
+              <span class="cc-plan-terms" style="display:block;font-size:12px;color:#6B6B6B;margin-top:4px;font-weight:400;letter-spacing:0;">Auto-renews — cancel anytime.</span>
+            </div>
+            <div class="cc-plan-price-col">
+              <span class="cc-plan-price" x-text="priceFor('monthly')"></span>
+              <span class="cc-plan-cadence">/month</span>
+            </div>
+          </div>
+        </div>
+
+        <div x-show="planFor('bimonthly')" @click="plan = 'bimonthly'" :class="plan === 'bimonthly' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card" style="margin-bottom:10px;">
+          <div class="cc-plan-body">
+            <div>
+              <span class="cc-plan-label">Every 2 months</span>
+              <span class="cc-plan-save" x-text="saveFor('bimonthly')"></span>
+              <span class="cc-plan-terms" style="display:block;font-size:12px;color:#6B6B6B;margin-top:4px;font-weight:400;letter-spacing:0;">Auto-renews — cancel anytime.</span>
+            </div>
+            <div class="cc-plan-price-col">
+              <span class="cc-plan-price" x-text="priceFor('bimonthly')"></span>
+              <span class="cc-plan-cadence">every 2 months</span>
+            </div>
+          </div>
+        </div>
+
+        <div @click="plan = 'onetime'" :class="plan === 'onetime' ? 'cc-plan-active' : 'cc-plan-idle'" class="cc-plan-card">
+          <div class="cc-plan-body">
+            <div>
+              <span class="cc-plan-label">One-time purchase</span>
+              <span class="cc-plan-save cc-plan-save--muted">No subscription</span>
+            </div>
+            <div class="cc-plan-price-col">
+              <span class="cc-plan-price" x-text="priceFor('onetime')"></span>
+              <span class="cc-plan-cadence">one-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div x-show="plan !== 'onetime'" class="cc-atc-disclaimer" style="border:1px solid #D8D6CE;background:rgba(255,255,255,0.55);padding:14px 18px;margin:0 auto 14px;max-width:560px;font-family:'Inter',sans-serif;font-size:12px;line-height:1.5;color:#4A4A4A;text-align:left;">
+        By subscribing you agree to recurring billing of <span x-text="currentPrice"></span> until you cancel. Cancel anytime in one click from your account — no fees, no penalties.
+      </div>
+
+      <div class="cc-atc-wrap">
+        <form id="{{ form_id }}" action="/cart/add" method="post" is="product-form" data-type="add-to-cart-form">
+          <input type="hidden" name="id" :value="v.id" />
+          <template x-if="sellingPlanId">
+            <input type="hidden" name="selling_plan" :value="sellingPlanId" />
+          </template>
+          <button type="submit" class="cc-atc-btn">
+            <span class="btn-text"><span x-text="buttonText"></span></span>
+          </button>
+        </form>
+      </div>
+
+      <div class="cc-trust-lines">
+        <p>{{ trust_1 }}</p>
+        <p>{{ trust_2 }}</p>
+      </div>
+
+      <div class="cc-trust-meta">
+        <p>VEGAN, SUGAR-FREE, CAFFEINE-FREE</p>
+      </div>
+
+      <div class="cc-trust-badges">
+        <div class="cc-trust-badge"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/istockphoto-1279030031-612x612_1.png?v=1767983702" alt="Third-party tested" loading="lazy"></div>
+        <div class="cc-trust-badge"><img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/download_1.png?v=1767983648" alt="GMP Certified" loading="lazy"></div>
+        <div class="cc-trust-badge cc-trust-badge--large"><img src="{{ 'cc-made-in-usa.png' | asset_url }}" alt="Made in USA" loading="lazy"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .cc-pricing-apr26 .cc-pricing-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .cc-pricing-apr26 .cc-pricing-image {
+    display: block;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .cc-pricing-apr26 .cc-sell-hero {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    background: #FAF9F6;
+    overflow: hidden;
+    border: 1px solid rgba(6, 47, 61, 0.15);
+  }
+  .cc-pricing-apr26 .cc-sell-thumbs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .cc-pricing-apr26 .cc-thumb {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(6, 47, 61, 0.15);
+    background: #FAF9F6;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .cc-pricing-apr26 .cc-thumb:hover { opacity: 0.8; }
+  .cc-pricing-apr26 .cc-thumb.is-active { border: 2px solid #0A0A0A; }
+  @media (min-width: 768px) {
+    .cc-pricing-apr26 .cc-pricing-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .cc-pricing-apr26 .cc-pricing-image { max-width: none; }
+  }
+
+  .cc-pricing-apr26 .cc-pricing-eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .cc-pricing-apr26 .cc-pricing-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: #0A0A0A;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    line-height: 1.2;
+    margin: 16px 0;
+  }
+  .cc-pricing-apr26 .cc-pricing-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #4A4A4A;
+    line-height: 1.6;
+    margin: 0 auto 8px;
+    max-width: 380px;
+  }
+  .cc-pricing-apr26 .cc-pricing-bonus {
+    color: #0A0A0A;
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+
+  .cc-pricing-apr26 .cc-flavor-row { margin-bottom: 40px; }
+  .cc-pricing-apr26 .cc-plan-row { margin-bottom: 32px; text-align: left; }
+  .cc-pricing-apr26 .cc-selector-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    font-weight: 500;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .cc-pricing-apr26 .cc-flavor-buttons { display: inline-flex; gap: 10px; }
+
+  .cc-pricing-apr26 .cc-flavor-btn {
+    padding: 14px 28px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+    min-width: 140px !important;
+  }
+  .cc-pricing-apr26 .cc-flavor-unflavored-active {
+    background: #EDE8DF !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-pricing-apr26 .cc-flavor-unflavored-idle {
+    background: #EDE8DF !important;
+    color: #6B6B6B !important;
+    border: 1px solid #D5D0C8 !important;
+  }
+  .cc-pricing-apr26 .cc-flavor-lemonade-active {
+    background: #F5E0E4 !important;
+    color: #0A0A0A !important;
+    border: 3px solid #0A0A0A !important;
+    font-weight: 600 !important;
+  }
+  .cc-pricing-apr26 .cc-flavor-lemonade-idle {
+    background: #F5E0E4 !important;
+    color: #6B6B6B !important;
+    border: 1px solid #E0CDD1 !important;
+  }
+
+  .cc-pricing-apr26 .cc-plan-card {
+    border: 2px solid !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-radius: 0 !important;
+  }
+  .cc-pricing-apr26 .cc-plan-active {
+    border-color: #1A3A2F !important;
+    background: #F4F7F6 !important;
+  }
+  .cc-pricing-apr26 .cc-plan-idle {
+    border-color: #CCCCCC !important;
+    background: #FFFFFF !important;
+  }
+  .cc-pricing-apr26 .cc-plan-flag {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #0A0A0A;
+    color: #E7FF56;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+  }
+  .cc-pricing-apr26 .cc-plan-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .cc-pricing-apr26 .cc-plan-label {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: #0A0A0A;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .cc-pricing-apr26 .cc-plan-save {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #1A3A2F;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .cc-pricing-apr26 .cc-plan-save--muted {
+    color: #6B6B6B;
+    font-weight: 400;
+  }
+  .cc-pricing-apr26 .cc-plan-price-col {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .cc-pricing-apr26 .cc-plan-price {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #0A0A0A;
+    font-size: 24px;
+    line-height: 1;
+  }
+  .cc-pricing-apr26 .cc-plan-cadence {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #6B6B6B;
+    margin-top: 2px;
+  }
+
+  .cc-pricing-apr26 .cc-atc-wrap { margin-bottom: 20px; }
+  .cc-pricing-apr26 .cc-atc-btn {
+    display: block;
+    width: 100%;
+    background: #0A0A0A;
+    color: #FAF9F6;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 20px 48px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  .cc-pricing-apr26 .cc-atc-btn:hover { opacity: 0.85; }
+
+  .cc-pricing-apr26 .cc-trust-lines {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .cc-pricing-apr26 .cc-trust-lines p {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6B6B6B;
+    margin: 0 0 4px;
+  }
+  .cc-pricing-apr26 .cc-trust-meta {
+    text-align: center;
+  }
+  .cc-pricing-apr26 .cc-trust-meta p {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6B6B6B;
+    opacity: 0.7;
+    margin: 0;
+  }
+  .cc-pricing-apr26 .cc-trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .cc-pricing-apr26 .cc-trust-badge {
+    background: white;
+    border-radius: 50%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cc-pricing-apr26 .cc-trust-badge--large {
+    width: 68px;
+    height: 68px;
+    overflow: hidden;
+  }
+  .cc-pricing-apr26 .cc-trust-badge img {
+    height: 52px;
+    object-fit: contain;
+  }
+  .cc-pricing-apr26 .cc-trust-badge--large img {
+    height: 72px;
+  }
+
+  .cc-pricing-apr26 .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .cc-pricing-apr26 .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<style>
+  .cc-pricing-db .cc-flavor-row, .cc-pricing-db .cc-plan-row { margin-top: 28px; }
+  @media (min-width: 768px) {
+    .cc-pricing-db .cc-pricing-layout { align-items: start !important; }
+    .cc-pricing-db .cc-pricing-image { margin-top: 0 !important; align-self: start; }
+  }
+  .cc-pricing-db .cc-product-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 0 28px; }
+  .cc-pricing-db .cc-product-tabs button { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #062F3D; background: transparent; border: 1px solid rgba(6,47,61,.35); padding: 14px 8px; cursor: pointer; transition: opacity .2s ease; }
+  .cc-pricing-db .cc-product-tabs button:hover { opacity: .8; }
+  .cc-pricing-db .cc-product-tabs button.is-active { background: #062F3D; color: #E7FF56; border-color: #062F3D; }
+  @media (min-width: 1024px) { .cc-pricing-db .cc-product-tabs { grid-template-columns: repeat(4, 1fr); } .cc-pricing-db .cc-product-tabs button { font-size: 11px; letter-spacing: .1em; padding: 14px 4px; } }
+</style>

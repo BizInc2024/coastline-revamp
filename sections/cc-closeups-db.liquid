@@ -1,0 +1,84 @@
+{%- comment -%}
+  cc-closeups-db: the 3 products (Deep Blue homepage, Nov 2026).
+  Full approved product still, name, every ingredient with dose, button per product.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<section class="cc-prod-db">
+  <div class="cc-prod-db__inner">
+    {%- if section.settings.headline != blank -%}<h2 class="cc-prod-db__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+    <div class="cc-prod-db__grid">
+      {%- for block in section.blocks -%}
+        <div class="cc-prod-db__card" {{ block.shopify_attributes }}>
+          <a class="cc-prod-db__media" href="{{ block.settings.link | default: '#' }}">
+            <img src="{{ block.settings.image | asset_url }}" alt="Coastline {{ block.settings.name | escape }}" width="960" height="1200" loading="lazy">
+          </a>
+          <p class="cc-prod-db__when">{{ block.settings.when }}</p>
+          <h3 class="cc-prod-db__name">{{ block.settings.name }}</h3>
+          <ul class="cc-prod-db__list">
+            {%- assign lines = block.settings.ingredients | newline_to_br | split: '<br />' -%}
+            {%- for line in lines -%}
+              {%- assign parts = line | strip | split: '|' -%}
+              {%- if parts[0] != blank -%}
+                <li><span>{{ parts[0] | strip }}</span><span class="cc-prod-db__dose">{{ parts[1] | strip }}</span></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          {%- if block.settings.button_text != blank -%}
+            <a class="cc-prod-db__btn" href="{{ block.settings.link | default: '#' }}">{{ block.settings.button_text }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cc-prod-db { background: #070f15; color: #fff; padding: 72px 24px 80px; }
+  .cc-prod-db__inner { max-width: 1280px; margin: 0 auto; }
+  .cc-prod-db__headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(28px, 3.4vw, 44px); letter-spacing: -.02em; line-height: 1.15; text-align: center; margin: 0 0 48px; color: #fff; }
+  .cc-prod-db__grid { display: grid; grid-template-columns: 1fr; gap: 64px; }
+  .cc-prod-db__card { display: flex; flex-direction: column; }
+  .cc-prod-db__media { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #0b1820; }
+  .cc-prod-db__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .3s ease; }
+  .cc-prod-db__media:hover img { opacity: .85; }
+  .cc-prod-db__when { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.55); margin: 24px 0 8px; }
+  .cc-prod-db__name { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 24px; letter-spacing: -.01em; margin: 0 0 16px; color: #fff; }
+  .cc-prod-db__list { list-style: none; margin: 0 0 32px; padding: 0; border-top: 1px solid rgba(255,255,255,.14); }
+  .cc-prod-db__list li { display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.4; color: rgba(255,255,255,.85); padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .cc-prod-db__dose { color: rgba(255,255,255,.55); white-space: nowrap; }
+  .cc-prod-db__btn { margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 80px; box-sizing: border-box; line-height: 1.5; text-align: center; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; padding: 12px 24px; text-decoration: none; transition: opacity .3s ease; }
+  .cc-prod-db__btn:hover { opacity: .85; }
+  @media (min-width: 768px) {
+    .cc-prod-db { padding: 120px 64px; }
+    .cc-prod-db__headline { margin-bottom: 64px; }
+    .cc-prod-db__grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Products (deep blue)",
+  "tag": "section",
+  "class": "section-cc-closeups-db",
+  "settings": [
+    { "type": "text", "id": "headline", "label": "Headline", "default": "13 ingredients. 3 simple products." }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "text", "id": "image", "label": "Image (theme asset)" },
+        { "type": "text", "id": "when", "label": "When (small caps)" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "textarea", "id": "ingredients", "label": "Ingredients", "info": "One per line: Name | Dose" },
+        { "type": "text", "id": "button_text", "label": "Button text" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Products (deep blue)" }]
+}
+{% endschema %}

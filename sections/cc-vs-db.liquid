@@ -1,0 +1,139 @@
+{%- comment -%}
+  cc-vs-db: generic shelf of bottles (crossed out) vs the 3 Coastline products, same white set.
+  Deep Blue homepage, Nov 2026.
+{%- endcomment -%}
+
+{% render 'cc-deps' %}
+
+<section class="cc-vs-db" id="cc-vs-db-{{ section.id }}">
+  <div class="cc-vs-db__inner">
+    {%- if section.settings.headline != blank -%}<h2 class="cc-vs-db__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+    <div class="cc-vs-db__grid">
+      <figure class="cc-vs-db__col cc-vs-db__col--old">
+        <div class="cc-vs-db__media">
+          <img src="{{ section.settings.left_image | default: 'cc-vs-db-pile-lb.jpg' | asset_url }}" alt="{{ section.settings.left_label | escape }}" width="1200" height="900" loading="lazy">
+          <svg class="cc-vs-db__x" viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="31" y1="21" x2="69" y2="57" pathLength="1"/>
+            <line x1="69" y1="21" x2="31" y2="57" pathLength="1"/>
+          </svg>
+        </div>
+        <figcaption class="cc-vs-db__label">{{ section.settings.left_label }}</figcaption>
+      </figure>
+      <figure class="cc-vs-db__col">
+        <div class="cc-vs-db__media">
+          <img src="{{ section.settings.right_image | default: 'cc-vs-db-cl3-lb.jpg' | asset_url }}" alt="{{ section.settings.right_label | escape }}" width="1200" height="900" loading="lazy">
+        </div>
+        <figcaption class="cc-vs-db__label cc-vs-db__label--new">{{ section.settings.right_label }}</figcaption>
+      </figure>
+    </div>
+    <details class="cc-vs-db__cost">
+      <summary class="cc-vs-db__toggle"><span>{{ section.settings.toggle_text }}</span><svg width="14" height="9" viewBox="0 0 14 9" aria-hidden="true"><path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary>
+      <div class="cc-vs-db__costgrid">
+        <div class="cc-vs-db__costcol">
+          <p class="cc-vs-db__costlabel">{{ section.settings.left_cost_label }}</p>
+          <ul class="cc-vs-db__costlist">
+            {%- assign lines = section.settings.cost_lines | newline_to_br | split: '<br />' -%}
+            {%- for line in lines -%}
+              {%- assign parts = line | strip | split: '|' -%}
+              {%- if parts[0] != blank -%}
+                <li><span>{{ parts[0] | strip }} <em>{{ parts[1] | strip }}</em></span><span>{{ parts[2] | strip }}</span></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <p class="cc-vs-db__total cc-vs-db__total--old"><span>Total</span><span>{{ section.settings.left_total }}</span></p>
+        </div>
+        <div class="cc-vs-db__costcol cc-vs-db__costcol--new">
+          <p class="cc-vs-db__costlabel">{{ section.settings.right_cost_label }}</p>
+          <p class="cc-vs-db__price">{{ section.settings.right_price }}</p>
+          <p class="cc-vs-db__pricenote">{{ section.settings.right_note }}</p>
+          {%- if section.settings.cta_text != blank -%}<a class="cc-vs-db__cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>{%- endif -%}
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<style>
+  .cc-vs-db { background: #B9C7CB; color: #0A0A0A; padding: 72px 16px; }
+  .cc-vs-db__inner { max-width: 1280px; margin: 0 auto; }
+  .cc-vs-db__headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(26px, 3.4vw, 44px); letter-spacing: -.02em; line-height: 1.15; text-align: center; margin: 0 auto 32px; max-width: 760px; }
+  .cc-vs-db__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cc-vs-db__col { margin: 0; }
+  .cc-vs-db__media { position: relative; aspect-ratio: 4 / 3; }
+  .cc-vs-db__media img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%); }
+  .cc-vs-db__x { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .cc-vs-db__x line { stroke: #062F3D; stroke-width: 1.15; stroke-linecap: butt; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .6s ease; }
+  .cc-vs-db__x line + line { transition-delay: .35s; }
+  .cc-vs-db.is-in .cc-vs-db__x line { stroke-dashoffset: 0; }
+  .cc-vs-db__label { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; text-align: center; color: #6B6B6B; margin-top: 12px; }
+  .cc-vs-db__label--new { color: #062F3D; }
+  .cc-vs-db__cost { margin-top: 48px; }
+  .cc-vs-db__toggle { list-style: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 18px; color: #062F3D; }
+  .cc-vs-db__toggle::-webkit-details-marker { display: none; }
+  .cc-vs-db__toggle svg { transition: transform .3s ease; }
+  .cc-vs-db__cost[open] .cc-vs-db__toggle svg { transform: rotate(180deg); }
+  .cc-vs-db__toggle:hover { opacity: .8; }
+  .cc-vs-db__costgrid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-top: 40px; }
+  .cc-vs-db__costlabel { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: #6B6B6B; margin: 0 0 16px; }
+  .cc-vs-db__costcol--new .cc-vs-db__costlabel { color: #062F3D; }
+  .cc-vs-db__costlist { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(6,47,61,.15); }
+  .cc-vs-db__costlist li { display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: #0A0A0A; padding: 10px 0; border-bottom: 1px solid rgba(6,47,61,.15); }
+  .cc-vs-db__costlist em { font-style: normal; color: #6B6B6B; margin-left: 6px; }
+  .cc-vs-db__total { display: flex; justify-content: space-between; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; margin: 16px 0 0; color: #6B6B6B; }
+  .cc-vs-db__total--old span:last-child { text-decoration: line-through; text-decoration-thickness: 2px; }
+  .cc-vs-db__costcol--new { text-align: center; }
+  .cc-vs-db__price { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: clamp(48px, 6vw, 80px); letter-spacing: -.03em; line-height: 1; color: #062F3D; margin: 8px 0 12px; }
+  .cc-vs-db__pricenote { font-family: 'Inter', sans-serif; font-size: 15px; color: #4A4A4A; margin: 0 0 28px; }
+  .cc-vs-db__cta { display: inline-block; background: #062F3D; color: #FAF9F6; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; padding: 20px 40px; text-decoration: none; transition: opacity .3s ease; }
+  .cc-vs-db__cta:hover { opacity: .85; }
+  @media (min-width: 768px) {
+    .cc-vs-db__costgrid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .cc-vs-db__costcol { padding: 0 6%; }
+    .cc-vs-db__costcol--new { align-self: center; }
+  }
+  @media (min-width: 768px) {
+    .cc-vs-db { padding: 120px 64px; }
+    .cc-vs-db__headline { margin-bottom: 48px; }
+    .cc-vs-db__grid { gap: 24px; }
+    .cc-vs-db__label { font-size: 12px; margin-top: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .cc-vs-db__x line { transition: none; stroke-dashoffset: 0; } }
+</style>
+
+<script>
+  (function () {
+    var el = document.getElementById('cc-vs-db-{{ section.id }}');
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { el.classList.add('is-in'); io.disconnect(); } });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Bottles vs system",
+  "tag": "section",
+  "class": "section-cc-vs-db",
+  "settings": [
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Swap the shelf of bottles for one simple system." },
+    { "type": "text", "id": "left_image", "label": "Left image (theme asset)", "default": "cc-vs-db-pile-lb.jpg" },
+    { "type": "text", "id": "left_label", "label": "Left label", "default": "The usual shelf" },
+    { "type": "text", "id": "right_image", "label": "Right image (theme asset)", "default": "cc-vs-db-cl3-lb.jpg" },
+    { "type": "text", "id": "right_label", "label": "Right label", "default": "The Coastline system" },
+    { "type": "header", "content": "Cost drop-down" },
+    { "type": "text", "id": "toggle_text", "label": "Toggle text", "default": "See the cost" },
+    { "type": "text", "id": "left_cost_label", "label": "Left heading", "default": "Bought separately" },
+    { "type": "textarea", "id": "cost_lines", "label": "Ingredient lines", "info": "Name | dose | cost per month" },
+    { "type": "text", "id": "left_total", "label": "Left total", "default": "$229/mo" },
+    { "type": "text", "id": "right_cost_label", "label": "Right heading", "default": "Coastline" },
+    { "type": "text", "id": "right_price", "label": "Right price", "default": "$79.20/mo" },
+    { "type": "text", "id": "right_note", "label": "Right note", "default": "All 13 ingredients. Monthly subscription." },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Start my longevity system" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Bottles vs system" }]
+}
+{% endschema %}
