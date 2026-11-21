@@ -27,8 +27,10 @@
 
   <div class="cc-hero-db__wrap">
     <div class="cc-hero-db__top">
+      {%- if section.settings.hero_label != blank -%}
       <p class="cc-hero-db__label">{{ section.settings.hero_label }}</p>
       <div class="cc-hero-db__divider"></div>
+      {%- endif -%}
       <h1 class="cc-hero-db__headline">{{ section.settings.hero_headline }}</h1>
     </div>
     <div class="cc-hero-db__bottom">
