@@ -68,7 +68,7 @@
     "cc-closeups-db": {
       "type": "cc-closeups-db",
       "settings": {
-        "headline": "13 ingredients. 3 simple products.",
+        "headline": "13 ingredients.<br class=\"cc-br-mob\"> 3 simple products.",
         "more_text": "Learn more about all the ingredients in Coastline",
         "more_link": "/pages/ingredients"
       },
