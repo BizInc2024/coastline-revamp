@@ -9,86 +9,107 @@
  */
 {
   "sections": {
-    "cc-hero-apr26": {
-      "type": "cc-hero-apr26",
+    "cc-hero-video-db": {
+      "type": "cc-hero-video-db",
       "settings": {
         "hero_label": "THE ULTIMATE LONGEVITY SYSTEM",
         "hero_headline": "We’ve gone the extra mile <br class=\"cc-br-desk\">so you can&nbsp;too.",
         "hero_subheadline": "13 of the most rigorously curated ingredients<br class=\"md:hidden\"> in 3&nbsp;simple&nbsp;products.",
         "hero_reviews": "Consistent 5-Star Reviews",
+        "hero_reviews_anchor": "#cc-reviews-anchor",
         "hero_cta_text": "START MY LONGEVITY SYSTEM",
         "hero_cta_link": "#cc-home-pricing",
         "hero_secondary_text": "SKIP TO PRICING",
         "hero_secondary_link": "#cc-home-pricing",
-        "anchor": "cc-home-hero",
-        "hero_desktop_asset": "cc-hero-desktop-cliff.jpg",
-        "hero_mobile_asset": "cc-hero-mobile-cliff.jpg",
-        "hero_scrim": true,
-        "hero_alt": "Coastline Morning Blend, Morning SoftGels and Evening Capsules with a glass of Coastal Lemonade on a clifftop table by the ocean"
+        "poster_desktop": "cc-db-hero-desktop-v2.jpg",
+        "poster_mobile": "cc-db-hero-mobile-v2.jpg",
+        "anchor": "cc-home-hero"
       }
     },
     "cc-press-apr26": {
       "type": "cc-press-apr26",
       "settings": {}
     },
-    "cc-ask-apr26": {
-      "type": "cc-ask-apr26",
-      "settings": {}
-    },
-    "cc-genetics-stat-apr26": {
-      "type": "cc-genetics-stat-apr26",
-      "settings": {}
-    },
-    "cc-system-apr26": {
-      "type": "cc-system-apr26",
+    "cc-ritual-db": {
+      "type": "cc-ritual-db",
       "settings": {
-        "system_headline": "13 Ingredients. 3 Simple Products."
+        "eyebrow": "THE DAILY RITUAL",
+        "headline": "Two moments a day."
       },
       "blocks": {
-        "step_pMwWXk": {
-          "type": "step",
+        "morning": {
+          "type": "moment",
           "settings": {
-            "image": "shopify://shop_images/POWDER_1.png",
-            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Creatine_Front2.png?v=1769024194",
-            "title": "Morning Blend",
-            "description": "Mix one scoop with water. Start your day optimized.",
-            "ingredients_text": "Ergothioneine | 5 mg\nTaurine | 3.05 g\nCreatine Monohydrate | 5.25 g\nGlycine | 5 g\nInulin | 4 g\nMagnesium (as Citrate) | 150 mg\nGlucosamine Sulfate | 750 mg",
-            "directions": "Mix one scoop with 8-12 oz of water or your favorite beverage. Take with your first meal of the day.",
-            "benefits_text": "Sustained natural energy\nSharper mental clarity\nStronger muscles and bones\nOptimized metabolic health"
+            "poster": "cc-db-ritual-morning.jpg",
+            "when": "MORNING",
+            "title": "Morning Blend + 1 SoftGel",
+            "body": "Mix the Morning Blend with water and take it with your first meal, plus 1 SoftGel.",
+            "link": "/products/coastline-creatine",
+            "link_text": "See the Morning Blend"
           }
         },
-        "step_fLXUyX": {
-          "type": "step",
+        "evening": {
+          "type": "moment",
           "settings": {
-            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/SOFTGELBOTTLEW_CAPSULE.jpg?v=1764011188",
-            "title": "Morning Softgels",
-            "description": "One softgel with your first meal.",
-            "ingredients_text": "Astaxanthin | 6 mg\nLutein | 10 mg\nZeaxanthin | 2 mg\nCoenzyme Q10 | 200 mg",
-            "directions": "Take 1 softgel with your first meal of the day, alongside your Morning Blend.",
-            "benefits_text": "Powerful cellular protection\nEnhanced eye and brain health\nHeart and mitochondrial support\nSkin protection from UV"
-          }
-        },
-        "step_wzNEjy": {
-          "type": "step",
-          "settings": {
-            "fallback_image_url": "https://cdn.shopify.com/s/files/1/0619/6861/3445/files/PM_Capsule_Wide_1_2.png?v=1764266766",
+            "poster": "cc-db-ritual-evening.jpg",
+            "when": "EVENING",
             "title": "Evening Capsules",
-            "description": "Two capsules before bed. Wake refreshed.",
-            "ingredients_text": "Lithium Orotate | 400 mcg\nL-Theanine | 200 mg\nGlucosamine Sulfate | 750 mg",
-            "directions": "Take 2 capsules 30-60 minutes before bed with water.",
-            "benefits_text": "Deeper, restorative sleep\nReduced stress and anxiety\nJoint health and cellular repair\nNeuroprotection and mood support"
+            "body": "Take your Evening Capsules 1 hour before bed to cap your day.",
+            "link": "/products/coastline-evening-capsules",
+            "link_text": "See the Evening Capsules"
           }
         }
       },
       "block_order": [
-        "step_pMwWXk",
-        "step_fLXUyX",
-        "step_wzNEjy"
+        "morning",
+        "evening"
       ]
     },
-    "cc-ugc-apr26": {
-      "type": "cc-ugc-apr26",
-      "settings": {}
+    "cc-closeups-db": {
+      "type": "cc-closeups-db",
+      "settings": {
+        "headline": "13 ingredients. 3 simple products."
+      },
+      "blocks": {
+        "mb": {
+          "type": "product",
+          "settings": {
+            "image": "cc-prod-db-morning-blend.jpg",
+            "when": "Morning",
+            "name": "Morning Blend",
+            "ingredients": "Creatine Monohydrate | 5.25 g\nGlycine | 5 g\nInulin | 4 g\nTaurine | 3.05 g\nGlucosamine | 750 mg\nMagnesium (as Citrate) | 150 mg\nErgothioneine | 5 mg",
+            "button_text": "Shop Morning Blend",
+            "link": "/products/coastline-creatine"
+          }
+        },
+        "sg": {
+          "type": "product",
+          "settings": {
+            "image": "cc-prod-db-softgels.jpg",
+            "when": "Morning",
+            "name": "Morning SoftGels",
+            "ingredients": "Coenzyme Q10 | 200 mg\nLutein | 10 mg\nAstaxanthin | 6 mg\nZeaxanthin | 2 mg",
+            "button_text": "Shop SoftGels",
+            "link": "/products/coastline-morning-softgels"
+          }
+        },
+        "ev": {
+          "type": "product",
+          "settings": {
+            "image": "cc-prod-db-evening.jpg",
+            "when": "Evening",
+            "name": "Evening Capsules",
+            "ingredients": "Glucosamine | 750 mg\nL-Theanine | 200 mg\nLithium (as Orotate) | 400 mcg",
+            "button_text": "Shop Evening Capsules",
+            "link": "/products/coastline-evening-capsules"
+          }
+        }
+      },
+      "block_order": [
+        "mb",
+        "sg",
+        "ev"
+      ]
     },
     "cc-benefits-apr26": {
       "type": "cc-benefits-apr26",
@@ -153,8 +174,8 @@
         "pillar_kT9bRw"
       ]
     },
-    "cc-expert-apr26": {
-      "type": "cc-expert-apr26",
+    "cc-ugc-apr26": {
+      "type": "cc-ugc-apr26",
       "settings": {}
     },
     "cc-testimonials-apr26": {
@@ -409,14 +430,6 @@
       "type": "cc-comparison-apr26",
       "settings": {}
     },
-    "cc-math-apr26": {
-      "type": "cc-math-apr26",
-      "settings": {}
-    },
-    "cc-story-apr26": {
-      "type": "cc-story-apr26",
-      "settings": {}
-    },
     "cc-faq-apr26": {
       "type": "cc-faq-apr26",
       "settings": {},
@@ -489,16 +502,31 @@
         "faq_bFg8Aa"
       ]
     },
-    "cc-email-capture-apr26": {
-      "type": "cc-email-capture-apr26",
+    "cc-vs-db": {
+      "type": "cc-vs-db",
+      "settings": {
+        "headline": "Swap the shelf of bottles for one simple system.",
+        "left_image": "cc-vs-db-pile-lb.jpg",
+        "left_label": "The usual shelf",
+        "right_image": "cc-vs-db-cl3-lb.jpg",
+        "right_label": "The Coastline system",
+        "toggle_text": "See the cost",
+        "left_cost_label": "Bought separately",
+        "cost_lines": "Creatine Monohydrate | 5.25 g | $25\nGlycine | 5 g | $15\nInulin | 4 g | $12\nTaurine | 3.05 g | $18\nMagnesium Citrate | 150 mg | $10\nErgothioneine | 5 mg | $35\nCoQ10 | 200 mg | $30\nLutein | 10 mg | $15\nAstaxanthin | 6 mg | $20\nZeaxanthin | 2 mg | $12\nGlucosamine | 750 mg | $15\nL-Theanine | 200 mg | $12\nLithium Orotate | 400 mcg | $10",
+        "left_total": "$229/mo",
+        "right_cost_label": "Coastline",
+        "right_price": "$79.20/mo",
+        "right_note": "All 13 ingredients. Monthly subscription.",
+        "cta_text": "Start my longevity system",
+        "cta_link": "#cc-home-pricing"
+      }
+    },
+    "cc-expert-db": {
+      "type": "cc-expert-db",
       "settings": {}
     },
-    "cc-final-cta-apr26": {
-      "type": "cc-final-cta-apr26",
-      "settings": {}
-    },
-    "cc-pricing-apr26": {
-      "type": "cc-pricing-apr26",
+    "cc-pricing-db": {
+      "type": "cc-pricing-db",
       "settings": {
         "anchor": "cc-home-pricing",
         "form_id": "cc-home-cart-form",
@@ -509,21 +537,17 @@
     }
   },
   "order": [
-    "cc-hero-apr26",
+    "cc-hero-video-db",
     "cc-press-apr26",
-    "cc-genetics-stat-apr26",
-    "cc-system-apr26",
+    "cc-vs-db",
+    "cc-closeups-db",
     "cc-benefits-apr26",
-    "cc-pricing-apr26",
+    "cc-expert-db",
+    "cc-pricing-db",
     "cc-ugc-apr26",
-    "cc-expert-apr26",
+    "cc-ritual-db",
     "cc-testimonials-apr26",
     "cc-comparison-apr26",
-    "cc-math-apr26",
-    "cc-story-apr26",
-    "cc-ask-apr26",
-    "cc-faq-apr26",
-    "cc-email-capture-apr26",
-    "cc-final-cta-apr26"
+    "cc-faq-apr26"
   ]
 }
