@@ -9,6 +9,7 @@
   <div class="cc-vs-db__inner">
     {%- if section.settings.eyebrow != blank -%}<p class="cc-vs-db__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     {%- if section.settings.headline != blank -%}<h2 class="cc-vs-db__headline">{{ section.settings.headline }}</h2>{%- endif -%}
+    {%- if section.settings.subhead != blank -%}<p class="cc-vs-db__sub">{{ section.settings.subhead }}</p>{%- endif -%}
     <div class="cc-vs-db__grid">
       <figure class="cc-vs-db__col cc-vs-db__col--old">
         <div class="cc-vs-db__media">
@@ -58,6 +59,7 @@
   .cc-vs-db { background: #F3EEE5; color: #0A0A0A; padding: 72px 16px; }
   .cc-vs-db__inner { max-width: 1280px; margin: 0 auto; }
   .cc-vs-db__eyebrow { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(6,47,61,.7); text-align: center; margin: 0 0 16px; }
+  .cc-vs-db__sub { font-family: 'Inter', system-ui, sans-serif; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.5; color: rgba(10,10,10,.72); text-align: center; margin: -16px auto 40px; max-width: 560px; }
   .cc-vs-db__headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; font-size: clamp(26px, 3.4vw, 44px); letter-spacing: -.02em; line-height: 1.15; text-align: center; margin: 0 auto 32px; max-width: 760px; }
   .cc-vs-db__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .cc-vs-db__col { margin: 0; }
@@ -121,6 +123,7 @@
   "class": "section-cc-vs-db",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Streamline your supplements" },
+    { "type": "text", "id": "subhead", "label": "Subhead" },
     { "type": "text", "id": "headline", "label": "Headline", "default": "Swap the shelf of bottles for one simple system." },
     { "type": "text", "id": "left_image", "label": "Left image (theme asset)", "default": "cc-vs-db-pile-lb.jpg" },
     { "type": "text", "id": "left_label", "label": "Left label", "default": "The usual shelf" },

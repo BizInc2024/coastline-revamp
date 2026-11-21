@@ -507,7 +507,7 @@
     "cc-vs-db": {
       "type": "cc-vs-db",
       "settings": {
-        "headline": "Swap the shelf of bottles<br>for one simple system.",
+        "headline": "Stop the guesswork.<br>Streamline your supplements.",
         "left_image": "cc-vs-db-pile-lb.jpg",
         "left_label": "The usual shelf",
         "right_image": "cc-vs-db-cl3-lb.jpg",
@@ -521,7 +521,8 @@
         "right_note": "All 13 ingredients. Monthly subscription.",
         "cta_text": "Start my longevity system",
         "cta_link": "#cc-home-pricing",
-        "eyebrow": "Streamline your supplements"
+        "eyebrow": "",
+        "subhead": "Swap the shelf of bottles for one simple system."
       }
     },
     "cc-expert-db": {
