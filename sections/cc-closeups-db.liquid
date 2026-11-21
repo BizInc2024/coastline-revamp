@@ -31,6 +31,9 @@
         </div>
       {%- endfor -%}
     </div>
+    {%- if section.settings.more_text != blank -%}
+      <div class="cc-prod-db__more"><a class="cc-prod-db__more-btn" href="{{ section.settings.more_link | default: '/pages/ingredients' }}">{{ section.settings.more_text }}</a></div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -49,6 +52,9 @@
   .cc-prod-db__list li { display: flex; justify-content: space-between; gap: 16px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.4; color: rgba(255,255,255,.85); padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
   .cc-prod-db__dose { color: rgba(255,255,255,.55); white-space: nowrap; }
   .cc-prod-db__btn { margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 80px; box-sizing: border-box; line-height: 1.5; text-align: center; background: #E7FF56; color: #062F3D; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; padding: 12px 24px; text-decoration: none; transition: opacity .3s ease; }
+  .cc-prod-db__more { text-align: center; margin-top: 56px; }
+  .cc-prod-db__more-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 64px; padding: 12px 36px; border: 1px solid rgba(231,255,86,.85); color: #E7FF56; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .18em; line-height: 1.5; text-transform: uppercase; text-decoration: none; transition: background .3s ease, color .3s ease; }
+  .cc-prod-db__more-btn:hover { background: #E7FF56; color: #062F3D; }
   .cc-prod-db__btn:hover { opacity: .85; }
   @media (min-width: 768px) {
     .cc-prod-db { padding: 120px 64px; }
@@ -63,7 +69,9 @@
   "tag": "section",
   "class": "section-cc-closeups-db",
   "settings": [
-    { "type": "text", "id": "headline", "label": "Headline", "default": "13 ingredients. 3 simple products." }
+    { "type": "text", "id": "headline", "label": "Headline", "default": "13 ingredients. 3 simple products." },
+    { "type": "text", "id": "more_text", "label": "Bottom button text", "default": "Learn more about all the ingredients in Coastline" },
+    { "type": "url", "id": "more_link", "label": "Bottom button link" }
   ],
   "blocks": [
     {

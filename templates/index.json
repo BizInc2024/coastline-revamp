@@ -68,7 +68,9 @@
     "cc-closeups-db": {
       "type": "cc-closeups-db",
       "settings": {
-        "headline": "13 ingredients. 3 simple products."
+        "headline": "13 ingredients. 3 simple products.",
+        "more_text": "Learn more about all the ingredients in Coastline",
+        "more_link": "/pages/ingredients"
       },
       "blocks": {
         "mb": {
@@ -505,12 +507,12 @@
     "cc-vs-db": {
       "type": "cc-vs-db",
       "settings": {
-        "headline": "Swap the shelf of bottles for one simple system.",
+        "headline": "Swap the shelf of bottles<br>for one simple system.",
         "left_image": "cc-vs-db-pile-lb.jpg",
         "left_label": "The usual shelf",
         "right_image": "cc-vs-db-cl3-lb.jpg",
         "right_label": "The Coastline system",
-        "toggle_text": "See the cost",
+        "toggle_text": "See the cost comparison",
         "left_cost_label": "Bought separately",
         "cost_lines": "Creatine Monohydrate | 5.25 g | $25\nGlycine | 5 g | $15\nInulin | 4 g | $12\nTaurine | 3.05 g | $18\nMagnesium Citrate | 150 mg | $10\nErgothioneine | 5 mg | $35\nCoQ10 | 200 mg | $30\nLutein | 10 mg | $15\nAstaxanthin | 6 mg | $20\nZeaxanthin | 2 mg | $12\nGlucosamine | 750 mg | $15\nL-Theanine | 200 mg | $12\nLithium Orotate | 400 mcg | $10",
         "left_total": "$229/mo",

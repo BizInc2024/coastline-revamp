@@ -47,7 +47,8 @@
 
 <style>
   .cc-hero-db { position: relative; background: #070f15; overflow: hidden; color: #fff; }
-  .cc-hero-db__media { position: relative; }
+  .cc-hero-db__media { position: relative; overflow: hidden; }
+  .cc-hero-db__media .cc-hero-db__video { will-change: transform; }
   .cc-hero-db__media .cc-hero-db__video,
   .cc-hero-db__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .cc-hero-db__media--desk { display: none; }
@@ -92,6 +93,24 @@
   }
   @media (prefers-reduced-motion: reduce) { .cc-hero-db video { display: none; } }
 </style>
+
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var hero = document.querySelector('.cc-hero-db'); if (!hero) return;
+    var els = hero.querySelectorAll('.cc-hero-db__media .cc-hero-db__video'), ticking = false;
+    function run() {
+      ticking = false;
+      var r = hero.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      var y = Math.max(0, -r.top) * 0.25;
+      for (var i = 0; i < els.length; i++) els[i].style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)';
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(run); } }, { passive: true });
+    run();
+  })();
+</script>
+
 
 {% schema %}
 {
