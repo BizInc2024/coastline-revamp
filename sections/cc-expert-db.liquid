@@ -6,12 +6,12 @@
 {% render 'cc-deps' %}
 
 <div class="cc-apr26 cc-expert-apr26">
-    <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background-color:#062F3D;padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
+    <section class="reveal" x-init="setTimeout(() => $el.classList.add('visible'), 100)" style="background-color:#062F3D;background-image:linear-gradient(rgba(6,47,61,.82),rgba(6,47,61,.82)),url({{ 'cc-beach-day.jpg' | asset_url }});background-size:cover;background-position:center;padding-top:{{ section.settings.section11_padding_top | default: 80 }}px;padding-bottom:{{ section.settings.section11_padding_bottom | default: 80 }}px;" x-intersect.once="$el.classList.add('visible')">
       <div class="max-w-3xl mx-auto px-8 lg:px-16 text-center">
         <span class="badge-minimal inline-block mb-6 tracking-wider text-xs uppercase" style="color:#555555 !important;">
           {{ section.settings.founder_label | default: "OUR APPROACH" }}
         </span>
-        <h2 class="font-grotesk font-medium leading-tight mb-10" style="font-size: clamp(24px, 4vw, 44px);color:#FAF9F6 !important;">
+        <h2 class="font-grotesk font-medium leading-tight mb-10" style="font-size: clamp(24px, 4vw, 44px);color:#F3EEE5 !important;">
           {{ section.settings.founder_headline | default: "Rigorously built by researchers, not marketers" | replace: 'researchers, ', 'researchers,<br> ' }}
         </h2>
         <div class="editorial-divider hairline w-12 h-px mx-auto mb-10" style="background:rgba(255,255,255,.25);"></div>

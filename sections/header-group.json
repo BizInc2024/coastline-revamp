@@ -100,7 +100,7 @@
         "transparent_opacity": 100,
         "transparent_blur": 24,
         "color_text": "#062f3d",
-        "color_background": "#f7f7f7",
+        "color_background": "#f3eee5",
         "padding_top": 18,
         "padding_bottom": 18,
         "full_width": true,
