@@ -8,7 +8,7 @@
 
 {% render 'cc-deps' %}
 
-<section id="{{ section.settings.anchor | default: 'cc-home-hero' }}" class="cc-hero-db">
+<section id="{{ section.settings.anchor | default: 'cc-home-hero' }}" class="cc-hero-db" allow-transparent-header>
   <div class="cc-hero-db__media cc-hero-db__media--desk" aria-hidden="true">
     {%- if section.settings.video_desktop != blank -%}
       {{ section.settings.video_desktop | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, preload: 'auto', class: 'cc-hero-db__video', image_size: '1920x' }}
@@ -93,9 +93,33 @@
     .cc-hero-db__ctas { flex-direction: row; align-items: center; gap: 28px; }
     .cc-hero-db__link { display: inline-block; }
   }
+  /* Transparent header over the hero (theme's built-in mode via allow-transparent-header).
+     While the hero is on screen the header scrolls away with it; the normal sand header returns after the hero. */
+  .header-section.cc-hero-over { position: relative !important; }
+  .header-section.cc-hero-over .header { position: absolute !important; --header-background-opacity: 0; --header-logo-opacity: 0; color: rgb(var(--color-transparent)); }
+  @media (min-width: 768px) {
+    .cc-hero-db.cc-hero-db { min-height: min(calc(100vh - var(--cc-topbar-h, 56px)), 56.25vw); }
+    .cc-hero-db__media--desk { transform: scale(1.12); transform-origin: 70% 100%; }
+    .cc-hero-db__media--desk .cc-hero-db__video { object-position: 50% 100%; }
+  }
   @media (prefers-reduced-motion: reduce) { .cc-hero-db video { display: none; } }
 </style>
 
+<script>
+  (function () {
+    var hero = document.querySelector('.cc-hero-db'), hs = document.querySelector('.header-section');
+    if (!hero || !hs) return;
+    var bar = document.querySelector('.topbar-section');
+    function topbar() { if (bar) document.documentElement.style.setProperty('--cc-topbar-h', bar.offsetHeight + 'px'); }
+    function upd() {
+      var h = hs.querySelector('.header'), hh = h ? h.offsetHeight : 0;
+      hs.classList.toggle('cc-hero-over', hero.getBoundingClientRect().bottom > hh);
+    }
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', function () { topbar(); upd(); });
+    topbar(); upd();
+  })();
+</script>
 <script>
   (function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

@@ -95,7 +95,7 @@
         "show_social": false,
         "enable_language_selector": false,
         "enable_country_selector": false,
-        "transparent_color_text": "#f7f7f7",
+        "transparent_color_text": "#f3eee5",
         "transparent_bg_color": "#ffffff",
         "transparent_opacity": 100,
         "transparent_blur": 24,
