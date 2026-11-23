@@ -1,20 +1,34 @@
-{%- comment -%} Shows a slim bar when a discount code (e.g. from an email link) is saved on the cart. {%- endcomment -%}
-<div id="cc-code-applied" hidden style="background:#E7FF56;color:#062F3D;font:600 13px/1.4 Helvetica,Arial,sans-serif;text-align:center;padding:9px 16px;letter-spacing:.02em;position:relative;z-index:50;">
-  <span>&#10003; <strong id="cc-code-applied-code"></strong> applied: <span id="cc-code-applied-msg">50% off your first order. You'll see it in your cart and at checkout.</span></span>
-</div>
+{%- comment -%}
+  BFCM promo bar. Through Nov 30 2026 11:59pm EST it replaces the theme announcement bar.
+  Shows the sale line, or "code applied" once a discount code is saved on the cart.
+  After the sale ends it only appears when a code is on the cart, and the theme bar returns.
+{%- endcomment -%}
+{%- assign cc_sale_end = 1796101199 -%}
+{%- assign cc_now = 'now' | date: '%s' | plus: 0 -%}
+{%- if cc_now < cc_sale_end -%}
+  <style>.topbar-section{display:none!important}</style>
+{%- endif -%}
+<a id="cc-code-applied" href="/discount/BFCM50?redirect=/products/coastline-welcome-pack" {% unless cc_now < cc_sale_end %}hidden{% endunless %} style="display:block;background:#E7FF56;color:#062F3D;font:600 13px/1.4 Helvetica,Arial,sans-serif;text-align:center;padding:9px 16px;letter-spacing:.04em;text-decoration:none;position:relative;z-index:50;">
+  <span id="cc-code-applied-text">50% OFF EVERYTHING - BFCM SALE</span>
+</a>
 <script>
 (function(){
-  var bar=document.getElementById('cc-code-applied');
+  var SALE_END = {{ cc_sale_end }} * 1000;
+  var bar=document.getElementById('cc-code-applied'), txt=document.getElementById('cc-code-applied-text');
   if(!bar) return;
   document.body.insertBefore(bar, document.body.firstChild);
+  var onSale = Date.now() < SALE_END;
+  if(!onSale){ bar.hidden = true; var tb=document.querySelectorAll('.topbar-section'); tb.forEach(function(e){e.style.removeProperty('display')}); }
   function check(){
     fetch('/cart.js',{credentials:'same-origin'}).then(function(r){return r.json()}).then(function(c){
       var codes=(c.discount_codes||[]).filter(function(d){return d && d.code});
-      if(!codes.length){bar.hidden=true;return;}
-      var code=codes[0].code.toUpperCase();
-      document.getElementById('cc-code-applied-code').textContent=code;
-      if(code.indexOf('50')===-1){document.getElementById('cc-code-applied-msg').textContent="your discount will show in your cart and at checkout.";}
-      bar.hidden=false;
+      if(codes.length){
+        var code=codes[0].code.toUpperCase();
+        txt.innerHTML='&#10003; <strong></strong> applied: '+(code.indexOf('50')>-1?'50% off your first order. You’ll see it in your cart and at checkout.':'your discount will show in your cart and at checkout.');
+        txt.querySelector('strong').textContent=code;
+        bar.removeAttribute('href'); bar.style.cursor='default';
+        bar.hidden=false;
+      } else if(!onSale){ bar.hidden=true; }
     }).catch(function(){});
   }
   check();
