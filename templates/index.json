@@ -12,6 +12,8 @@
     "cc-hero-video-db": {
       "type": "cc-hero-video-db",
       "settings": {
+        "poster_desktop": "cc-db-hero-desktop-v2.jpg",
+        "poster_mobile": "cc-db-hero-mobile-v2.jpg",
         "hero_label": "",
         "hero_headline": "Stop guessing<br> when it comes to&nbsp;supplements.",
         "hero_subheadline": "We’ve done the work. 13 of the most science‑backed ingredients at clinical doses, in 3&nbsp;simple&nbsp;products.",
@@ -21,8 +23,6 @@
         "hero_cta_link": "#cc-home-pricing",
         "hero_secondary_text": "SKIP TO PRICING",
         "hero_secondary_link": "#cc-home-pricing",
-        "poster_desktop": "cc-db-hero-desktop-v2.jpg",
-        "poster_mobile": "cc-db-hero-mobile-v2.jpg",
         "anchor": "cc-home-hero"
       }
     },
@@ -32,10 +32,6 @@
     },
     "cc-ritual-db": {
       "type": "cc-ritual-db",
-      "settings": {
-        "eyebrow": "THE DAILY RITUAL",
-        "headline": "Two moments a day."
-      },
       "blocks": {
         "morning": {
           "type": "moment",
@@ -44,8 +40,8 @@
             "when": "MORNING",
             "title": "Morning Blend + 1 SoftGel",
             "body": "Mix the Morning Blend with water and take it with your first meal, plus 1 SoftGel.",
-            "link": "/products/coastline-creatine",
-            "link_text": "See the Morning Blend"
+            "link_text": "See the Morning Blend",
+            "link": "/products/coastline-creatine"
           }
         },
         "evening": {
@@ -55,23 +51,22 @@
             "when": "EVENING",
             "title": "Evening Capsules",
             "body": "Take your Evening Capsules 1 hour before bed to cap your day.",
-            "link": "/products/coastline-evening-capsules",
-            "link_text": "See the Evening Capsules"
+            "link_text": "See the Evening Capsules",
+            "link": "/products/coastline-evening-capsules"
           }
         }
       },
       "block_order": [
         "morning",
         "evening"
-      ]
+      ],
+      "settings": {
+        "eyebrow": "THE DAILY RITUAL",
+        "headline": "Two moments a day."
+      }
     },
     "cc-closeups-db": {
       "type": "cc-closeups-db",
-      "settings": {
-        "headline": "13 ingredients.<br class=\"cc-br-mob\"> 3 simple products.",
-        "more_text": "Learn more about all the ingredients in Coastline",
-        "more_link": "/pages/ingredients"
-      },
       "blocks": {
         "mb": {
           "type": "product",
@@ -111,11 +106,15 @@
         "mb",
         "sg",
         "ev"
-      ]
+      ],
+      "settings": {
+        "headline": "13 ingredients.<br class=\"cc-br-mob\"> 3 simple products.",
+        "more_text": "Learn more about all the ingredients in Coastline",
+        "more_link": "/pages/ingredients"
+      }
     },
     "cc-benefits-apr26": {
       "type": "cc-benefits-apr26",
-      "settings": {},
       "blocks": {
         "pillar_Lzq4VK": {
           "type": "pillar",
@@ -174,7 +173,8 @@
         "pillar_yEGHnn",
         "pillar_EVYKDp",
         "pillar_kT9bRw"
-      ]
+      ],
+      "settings": {}
     },
     "cc-ugc-apr26": {
       "type": "cc-ugc-apr26",
@@ -182,7 +182,6 @@
     },
     "cc-testimonials-apr26": {
       "type": "cc-testimonials-apr26",
-      "settings": {},
       "blocks": {
         "testimonial_t1": {
           "type": "testimonial",
@@ -426,7 +425,8 @@
         "testimonial_c4",
         "testimonial_c5",
         "testimonial_c6"
-      ]
+      ],
+      "settings": {}
     },
     "cc-comparison-apr26": {
       "type": "cc-comparison-apr26",
@@ -434,7 +434,6 @@
     },
     "cc-faq-apr26": {
       "type": "cc-faq-apr26",
-      "settings": {},
       "blocks": {
         "faq_6L9W9r": {
           "type": "faq",
@@ -502,11 +501,14 @@
         "faq_FeDmVr",
         "faq_qNMFfU",
         "faq_bFg8Aa"
-      ]
+      ],
+      "settings": {}
     },
     "cc-vs-db": {
       "type": "cc-vs-db",
       "settings": {
+        "eyebrow": "",
+        "subhead": "Swap the shelf of bottles for one simple system.",
         "headline": "Streamline your supplements.",
         "left_image": "cc-vs-db-pile-lb.jpg",
         "left_label": "The usual shelf",
@@ -520,9 +522,7 @@
         "right_price": "$79.20/mo",
         "right_note": "All 13 ingredients. Monthly subscription.",
         "cta_text": "Start my longevity system",
-        "cta_link": "#cc-home-pricing",
-        "eyebrow": "",
-        "subhead": "Swap the shelf of bottles for one simple system."
+        "cta_link": "#cc-home-pricing"
       }
     },
     "cc-expert-db": {
