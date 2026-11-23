@@ -10,7 +10,7 @@
       <div class="cc-ap">
         <p class="cc-ap__eyebrow">{{ section.settings.founder_label | default: "Our approach" }}</p>
         <h2 class="cc-ap__headline">{{ section.settings.founder_headline | default: "Rigorously built by researchers, not marketers" | replace: 'researchers, ', 'researchers,<br> ' }}</h2>
-        <div class="cc-ap__body">{{ section.settings.founder_body | default: "The wellness industry is loud, contradictory, and exhausting. One expert swears by this. Another says it is worthless. You are left with a cabinet full of half-used bottles and more questions than answers." | newline_to_br }}</div>
+        <div class="cc-ap__body">{{ section.settings.founder_body | default: "We brought together 4 experts who’ve spent their careers following the studies. Over 6 months, they chose only the most scientifically validated ingredients, guided by our <a href='/pages/approach-to-formulation'>17 principles of formulation</a>." | newline_to_br }}</div>
         <div class="cc-ap__people">
           <figure class="cc-ap__person">
             {%- if section.settings.expert_image_1 != blank -%}<img src="{{ section.settings.expert_image_1 | image_url: width: 400 }}" alt="Greg Potter, PhD" width="400" height="400" loading="lazy">{%- else -%}<img src="https://cdn.shopify.com/s/files/1/0619/6861/3445/files/Greg_Portrait.webp?v=1767053015&width=400" alt="Greg Potter, PhD" width="400" height="400" loading="lazy">{%- endif -%}
