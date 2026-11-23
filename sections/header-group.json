@@ -18,8 +18,8 @@
           "type": "announcement",
           "settings": {
             "icon": "none",
-            "text": "NEW LOWER PRICES - LIMITED TIME ONLY",
-            "link": "",
+            "text": "50% OFF EVERYTHING - BFCM SALE",
+            "link": "/discount/BFCM50?redirect=/products/coastline-welcome-pack",
             "hide_icon_mobile": true,
             "text_mobile": "",
             "highlighted_text": "none",
